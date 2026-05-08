@@ -338,13 +338,13 @@ export interface AlertPolicyState {
      * Control over how this alert policy's notification channels are notified.
      * Structure is documented below.
      */
-    alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy>;
+    alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy | undefined>;
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
      * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      */
-    combiner?: pulumi.Input<string>;
+    combiner?: pulumi.Input<string | undefined>;
     /**
      * A list of conditions for the policy. The conditions are combined by
      * AND or OR according to the combiner field. If the combined conditions
@@ -352,21 +352,21 @@ export interface AlertPolicyState {
      * one to six conditions.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCondition>[] | undefined>;
     /**
      * A read-only record of the creation of the alerting policy.
      * If provided in a call to create or update, this field will
      * be ignored.
      * Structure is documented below.
      */
-    creationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>[]>;
+    creationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyCreationRecord>[] | undefined>;
     /**
      * A short name or phrase used to identify the policy in
      * dashboards, notifications, and incidents. To avoid confusion, don't use
      * the same display name for multiple policies in the same project. The
      * name is limited to 512 Unicode characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Documentation that is included with notifications and incidents related
      * to this policy. Best practice is for the documentation to include information
@@ -375,16 +375,16 @@ export interface AlertPolicyState {
      * limited capacity might not show this documentation.
      * Structure is documented below.
      */
-    documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
+    documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation | undefined>;
     /**
      * Whether or not the policy is enabled. The default is true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique resource name for this policy.
      * Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Identifies the notification channels to which notifications should be
      * sent when incidents are opened or closed or when new violations occur
@@ -394,19 +394,19 @@ export interface AlertPolicyState {
      * entries in this field is
      * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      */
-    notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The severity of an alert policy indicates how important incidents generated
      * by that policy are. The severity level will be displayed on the Incident
      * detail page and in notifications.
      * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -414,7 +414,7 @@ export interface AlertPolicyState {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -425,7 +425,7 @@ export interface AlertPolicyArgs {
      * Control over how this alert policy's notification channels are notified.
      * Structure is documented below.
      */
-    alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy>;
+    alertStrategy?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategy | undefined>;
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
@@ -455,11 +455,11 @@ export interface AlertPolicyArgs {
      * limited capacity might not show this documentation.
      * Structure is documented below.
      */
-    documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation>;
+    documentation?: pulumi.Input<inputs.monitoring.AlertPolicyDocumentation | undefined>;
     /**
      * Whether or not the policy is enabled. The default is true.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifies the notification channels to which notifications should be
      * sent when incidents are opened or closed or when new violations occur
@@ -469,19 +469,19 @@ export interface AlertPolicyArgs {
      * entries in this field is
      * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      */
-    notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The severity of an alert policy indicates how important incidents generated
      * by that policy are. The severity level will be displayed on the Incident
      * detail page and in notifications.
      * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
      */
-    severity?: pulumi.Input<string>;
+    severity?: pulumi.Input<string | undefined>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -489,5 +489,5 @@ export interface AlertPolicyArgs {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -113,7 +113,7 @@ export interface GetBackupRunOutputArgs {
      * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
      * If left empty and multiple backups exist for the instance, `mostRecent` must be set to `true`.
      */
-    backupId?: pulumi.Input<number>;
+    backupId?: pulumi.Input<number | undefined>;
     /**
      * The name of the instance the backup is taken from.
      */
@@ -122,10 +122,10 @@ export interface GetBackupRunOutputArgs {
      * Toggles use of the most recent backup run if multiple backups exist for a 
      * Cloud SQL instance.
      */
-    mostRecent?: pulumi.Input<boolean>;
+    mostRecent?: pulumi.Input<boolean | undefined>;
     /**
      * The project to list instances for. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

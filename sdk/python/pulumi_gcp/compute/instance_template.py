@@ -23,32 +23,32 @@ class InstanceTemplateArgs:
     def __init__(__self__, *,
                  disks: pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]],
                  machine_type: pulumi.Input[_builtins.str],
-                 advanced_machine_features: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
-                 can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_revocation_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
-                 network_performance_config: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']] = None,
-                 service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 advanced_machine_features: pulumi.Input[Optional['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
+                 can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_instance_config: pulumi.Input[Optional['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
+                 network_performance_config: pulumi.Input[Optional['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
+                 partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional['InstanceTemplateReservationAffinityArgs']] = None,
+                 resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling: pulumi.Input[Optional['InstanceTemplateSchedulingArgs']] = None,
+                 service_account: pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']] = None,
+                 shielded_instance_config: pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a InstanceTemplate resource.
 
@@ -217,19 +217,19 @@ class InstanceTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> pulumi.Input[Optional['InstanceTemplateAdvancedMachineFeaturesArgs']]:
         """
         Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         """
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: pulumi.Input[Optional['InstanceTemplateAdvancedMachineFeaturesArgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @_builtins.property
     @pulumi.getter(name="canIpForward")
-    def can_ip_forward(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_ip_forward(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow sending and receiving of
         packets with non-matching source or destination IPs. This defaults to false.
@@ -237,36 +237,36 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "can_ip_forward")
 
     @can_ip_forward.setter
-    def can_ip_forward(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_ip_forward(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_ip_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']]:
+    def confidential_instance_config(self) -> pulumi.Input[Optional['InstanceTemplateConfidentialInstanceConfigArgs']]:
         """
         Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         """
         return pulumi.get(self, "confidential_instance_config")
 
     @confidential_instance_config.setter
-    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']]):
+    def confidential_instance_config(self, value: pulumi.Input[Optional['InstanceTemplateConfidentialInstanceConfigArgs']]):
         pulumi.set(self, "confidential_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A brief description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDisplay")
-    def enable_display(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_display(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -274,24 +274,24 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "enable_display")
 
     @enable_display.setter
-    def enable_display(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_display(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_display", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         """
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceDescription")
-    def instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A brief description to use for instances
         created from this template.
@@ -299,24 +299,24 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "instance_description")
 
     @instance_description.setter
-    def instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="keyRevocationActionType")
-    def key_revocation_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_revocation_action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         """
         return pulumi.get(self, "key_revocation_action_type")
 
     @key_revocation_action_type.setter
-    def key_revocation_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_revocation_action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_revocation_action_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to instances
         created from this template.
@@ -327,12 +327,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.
@@ -340,12 +340,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataStartupScript")
-    def metadata_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An alternative to using the
         startup-script metadata key, mostly to match the compute_instance resource.
@@ -355,12 +355,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "metadata_startup_script")
 
     @metadata_startup_script.setter
-    def metadata_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_startup_script", value)
 
     @_builtins.property
     @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
         `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -368,12 +368,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "min_cpu_platform")
 
     @min_cpu_platform.setter
-    def min_cpu_platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_cpu_platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_cpu_platform", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance template. If you leave
         this blank, the provider will auto-generate a unique name.
@@ -381,12 +381,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creates a unique name beginning with the specified
         prefix. Conflicts with `name`. Max length is 54 characters.
@@ -401,12 +401,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]:
         """
         Networks to attach to instances created from
         this template. This can be specified multiple times for multiple networks.
@@ -415,12 +415,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPerformanceConfig")
-    def network_performance_config(self) -> Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]:
+    def network_performance_config(self) -> pulumi.Input[Optional['InstanceTemplateNetworkPerformanceConfigArgs']]:
         """
         (Optional, Configures network performance settings for the instance created from the
         template. Structure is documented below. **Note**: `machine_type`
@@ -432,24 +432,24 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "network_performance_config")
 
     @network_performance_config.setter
-    def network_performance_config(self, value: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]):
+    def network_performance_config(self, value: pulumi.Input[Optional['InstanceTemplateNetworkPerformanceConfigArgs']]):
         pulumi.set(self, "network_performance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="partnerMetadata")
-    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def partner_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         """
         return pulumi.get(self, "partner_metadata")
 
     @partner_metadata.setter
-    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def partner_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "partner_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -457,12 +457,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An instance template is a global resource that is not
         bound to a zone or a region. However, you can still specify some regional
@@ -474,12 +474,12 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]:
+    def reservation_affinity(self) -> pulumi.Input[Optional['InstanceTemplateReservationAffinityArgs']]:
         """
         Specifies the reservations that this instance can consume from.
         Structure is documented below.
@@ -487,36 +487,36 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]):
+    def reservation_affinity(self, value: pulumi.Input[Optional['InstanceTemplateReservationAffinityArgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_manager_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_manager_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_policies(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
     @resource_policies.setter
-    def resource_policies(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_policies(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]:
+    def scheduling(self) -> pulumi.Input[Optional['InstanceTemplateSchedulingArgs']]:
         """
         The scheduling strategy to use. More details about
         this configuration option are detailed below.
@@ -524,24 +524,24 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]):
+    def scheduling(self, value: pulumi.Input[Optional['InstanceTemplateSchedulingArgs']]):
         pulumi.set(self, "scheduling", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']]:
+    def service_account(self) -> pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']]:
         """
         Service account to attach to the instance. Structure is documented below.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']]):
+    def service_account(self, value: pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']]:
         """
         Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
         **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -549,61 +549,61 @@ class InstanceTemplateArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to attach to the instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _InstanceTemplateState:
     def __init__(__self__, *,
-                 advanced_machine_features: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
-                 can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_revocation_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
-                 network_performance_config: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
-                 numeric_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_affinity: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link_unique: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
-                 shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 advanced_machine_features: pulumi.Input[Optional['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
+                 can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_instance_config: pulumi.Input[Optional['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]] = None,
+                 network_performance_config: pulumi.Input[Optional['InstanceTemplateNetworkPerformanceConfigArgs']] = None,
+                 numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional['InstanceTemplateReservationAffinityArgs']] = None,
+                 resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling: pulumi.Input[Optional['InstanceTemplateSchedulingArgs']] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link_unique: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']] = None,
+                 shielded_instance_config: pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
 
@@ -766,19 +766,19 @@ class _InstanceTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> pulumi.Input[Optional['InstanceTemplateAdvancedMachineFeaturesArgs']]:
         """
         Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         """
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: pulumi.Input[Optional['InstanceTemplateAdvancedMachineFeaturesArgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @_builtins.property
     @pulumi.getter(name="canIpForward")
-    def can_ip_forward(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_ip_forward(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow sending and receiving of
         packets with non-matching source or destination IPs. This defaults to false.
@@ -786,48 +786,48 @@ class _InstanceTemplateState:
         return pulumi.get(self, "can_ip_forward")
 
     @can_ip_forward.setter
-    def can_ip_forward(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_ip_forward(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_ip_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']]:
+    def confidential_instance_config(self) -> pulumi.Input[Optional['InstanceTemplateConfidentialInstanceConfigArgs']]:
         """
         Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         """
         return pulumi.get(self, "confidential_instance_config")
 
     @confidential_instance_config.setter
-    def confidential_instance_config(self, value: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']]):
+    def confidential_instance_config(self, value: pulumi.Input[Optional['InstanceTemplateConfidentialInstanceConfigArgs']]):
         pulumi.set(self, "confidential_instance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A brief description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]]:
         """
         Disks to attach to instances created from this template.
         This can be specified multiple times for multiple disks. Structure is
@@ -836,24 +836,24 @@ class _InstanceTemplateState:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDisplay")
-    def enable_display(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_display(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
         **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
@@ -861,24 +861,24 @@ class _InstanceTemplateState:
         return pulumi.get(self, "enable_display")
 
     @enable_display.setter
-    def enable_display(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_display(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_display", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]:
         """
         List of the type and count of accelerator cards attached to the instance. Structure documented below.
         """
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceDescription")
-    def instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A brief description to use for instances
         created from this template.
@@ -886,24 +886,24 @@ class _InstanceTemplateState:
         return pulumi.get(self, "instance_description")
 
     @instance_description.setter
-    def instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="keyRevocationActionType")
-    def key_revocation_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_revocation_action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         """
         return pulumi.get(self, "key_revocation_action_type")
 
     @key_revocation_action_type.setter
-    def key_revocation_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_revocation_action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_revocation_action_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to instances
         created from this template.
@@ -914,12 +914,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The machine type to create.
 
@@ -933,12 +933,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Metadata key/value pairs to make available from
         within instances created from this template.
@@ -946,24 +946,24 @@ class _InstanceTemplateState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataFingerprint")
-    def metadata_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique fingerprint of the metadata.
         """
         return pulumi.get(self, "metadata_fingerprint")
 
     @metadata_fingerprint.setter
-    def metadata_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataStartupScript")
-    def metadata_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An alternative to using the
         startup-script metadata key, mostly to match the compute_instance resource.
@@ -973,12 +973,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "metadata_startup_script")
 
     @metadata_startup_script.setter
-    def metadata_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_startup_script", value)
 
     @_builtins.property
     @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a minimum CPU platform. Applicable values are the friendly names of CPU platforms, such as
         `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
@@ -986,12 +986,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "min_cpu_platform")
 
     @min_cpu_platform.setter
-    def min_cpu_platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_cpu_platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_cpu_platform", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance template. If you leave
         this blank, the provider will auto-generate a unique name.
@@ -999,12 +999,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namePrefix")
-    def name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creates a unique name beginning with the specified
         prefix. Conflicts with `name`. Max length is 54 characters.
@@ -1019,12 +1019,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "name_prefix")
 
     @name_prefix.setter
-    def name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]:
         """
         Networks to attach to instances created from
         this template. This can be specified multiple times for multiple networks.
@@ -1033,12 +1033,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPerformanceConfig")
-    def network_performance_config(self) -> Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]:
+    def network_performance_config(self) -> pulumi.Input[Optional['InstanceTemplateNetworkPerformanceConfigArgs']]:
         """
         (Optional, Configures network performance settings for the instance created from the
         template. Structure is documented below. **Note**: `machine_type`
@@ -1050,36 +1050,36 @@ class _InstanceTemplateState:
         return pulumi.get(self, "network_performance_config")
 
     @network_performance_config.setter
-    def network_performance_config(self, value: Optional[pulumi.Input['InstanceTemplateNetworkPerformanceConfigArgs']]):
+    def network_performance_config(self, value: pulumi.Input[Optional['InstanceTemplateNetworkPerformanceConfigArgs']]):
         pulumi.set(self, "network_performance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="numericId")
-    def numeric_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def numeric_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         numeric identifier of the resource.
         """
         return pulumi.get(self, "numeric_id")
 
     @numeric_id.setter
-    def numeric_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def numeric_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "numeric_id", value)
 
     @_builtins.property
     @pulumi.getter(name="partnerMetadata")
-    def partner_metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def partner_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Beta key/value pair represents partner metadata assigned to instance template where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
         """
         return pulumi.get(self, "partner_metadata")
 
     @partner_metadata.setter
-    def partner_metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def partner_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "partner_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -1087,24 +1087,24 @@ class _InstanceTemplateState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An instance template is a global resource that is not
         bound to a zone or a region. However, you can still specify some regional
@@ -1116,12 +1116,12 @@ class _InstanceTemplateState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]:
+    def reservation_affinity(self) -> pulumi.Input[Optional['InstanceTemplateReservationAffinityArgs']]:
         """
         Specifies the reservations that this instance can consume from.
         Structure is documented below.
@@ -1129,36 +1129,36 @@ class _InstanceTemplateState:
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['InstanceTemplateReservationAffinityArgs']]):
+    def reservation_affinity(self, value: pulumi.Input[Optional['InstanceTemplateReservationAffinityArgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_manager_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_manager_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_policies(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
     @resource_policies.setter
-    def resource_policies(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_policies(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]:
+    def scheduling(self) -> pulumi.Input[Optional['InstanceTemplateSchedulingArgs']]:
         """
         The scheduling strategy to use. More details about
         this configuration option are detailed below.
@@ -1166,24 +1166,24 @@ class _InstanceTemplateState:
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']]):
+    def scheduling(self, value: pulumi.Input[Optional['InstanceTemplateSchedulingArgs']]):
         pulumi.set(self, "scheduling", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLinkUnique")
-    def self_link_unique(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link_unique(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
         Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
@@ -1191,24 +1191,24 @@ class _InstanceTemplateState:
         return pulumi.get(self, "self_link_unique")
 
     @self_link_unique.setter
-    def self_link_unique(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link_unique(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link_unique", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']]:
+    def service_account(self) -> pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']]:
         """
         Service account to attach to the instance. Structure is documented below.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']]):
+    def service_account(self, value: pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']]:
         """
         Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
         **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -1216,31 +1216,31 @@ class _InstanceTemplateState:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to attach to the instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tagsFingerprint")
-    def tags_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tags_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique fingerprint of the tags.
         """
         return pulumi.get(self, "tags_fingerprint")
 
     @tags_fingerprint.setter
-    def tags_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tags_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags_fingerprint", value)
 
 
@@ -1250,34 +1250,34 @@ class InstanceTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
-                 can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]]] = None,
-                 enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_revocation_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[Union['InstanceTemplateReservationAffinityArgs', 'InstanceTemplateReservationAffinityArgsDict']]] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling: Optional[pulumi.Input[Union['InstanceTemplateSchedulingArgs', 'InstanceTemplateSchedulingArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advanced_machine_features: pulumi.Input[Optional[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
+                 can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_instance_config: pulumi.Input[Optional[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]]] = None,
+                 enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
+                 partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional[Union['InstanceTemplateReservationAffinityArgs', 'InstanceTemplateReservationAffinityArgsDict']]] = None,
+                 resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling: pulumi.Input[Optional[Union['InstanceTemplateSchedulingArgs', 'InstanceTemplateSchedulingArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
@@ -1883,34 +1883,34 @@ class InstanceTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_machine_features: Optional[pulumi.Input[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
-                 can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]]] = None,
-                 enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_revocation_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
-                 network_performance_config: Optional[pulumi.Input[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
-                 partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_affinity: Optional[pulumi.Input[Union['InstanceTemplateReservationAffinityArgs', 'InstanceTemplateReservationAffinityArgsDict']]] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_policies: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduling: Optional[pulumi.Input[Union['InstanceTemplateSchedulingArgs', 'InstanceTemplateSchedulingArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
-                 shielded_instance_config: Optional[pulumi.Input[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 advanced_machine_features: pulumi.Input[Optional[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
+                 can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_instance_config: pulumi.Input[Optional[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]]] = None,
+                 enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
+                 partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_affinity: pulumi.Input[Optional[Union['InstanceTemplateReservationAffinityArgs', 'InstanceTemplateReservationAffinityArgsDict']]] = None,
+                 resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduling: pulumi.Input[Optional[Union['InstanceTemplateSchedulingArgs', 'InstanceTemplateSchedulingArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
+                 shielded_instance_config: pulumi.Input[Optional[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1972,42 +1972,42 @@ class InstanceTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_machine_features: Optional[pulumi.Input[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
-            can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-            confidential_instance_config: Optional[pulumi.Input[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_display: Optional[pulumi.Input[_builtins.bool]] = None,
-            guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
-            instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-            key_revocation_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            metadata_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-            min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
-            network_performance_config: Optional[pulumi.Input[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
-            numeric_id: Optional[pulumi.Input[_builtins.str]] = None,
-            partner_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_affinity: Optional[pulumi.Input[Union['InstanceTemplateReservationAffinityArgs', 'InstanceTemplateReservationAffinityArgsDict']]] = None,
-            resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_policies: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduling: Optional[pulumi.Input[Union['InstanceTemplateSchedulingArgs', 'InstanceTemplateSchedulingArgsDict']]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link_unique: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account: Optional[pulumi.Input[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
-            shielded_instance_config: Optional[pulumi.Input[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags_fingerprint: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceTemplate':
+            advanced_machine_features: pulumi.Input[Optional[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
+            can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+            confidential_instance_config: pulumi.Input[Optional[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_display: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
+            instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+            min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceTemplateNetworkInterfaceArgs', 'InstanceTemplateNetworkInterfaceArgsDict']]]]] = None,
+            network_performance_config: pulumi.Input[Optional[Union['InstanceTemplateNetworkPerformanceConfigArgs', 'InstanceTemplateNetworkPerformanceConfigArgsDict']]] = None,
+            numeric_id: pulumi.Input[Optional[_builtins.str]] = None,
+            partner_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_affinity: pulumi.Input[Optional[Union['InstanceTemplateReservationAffinityArgs', 'InstanceTemplateReservationAffinityArgsDict']]] = None,
+            resource_manager_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_policies: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduling: pulumi.Input[Optional[Union['InstanceTemplateSchedulingArgs', 'InstanceTemplateSchedulingArgsDict']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_unique: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
+            shielded_instance_config: pulumi.Input[Optional[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceTemplate':
         """
         Get an existing InstanceTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

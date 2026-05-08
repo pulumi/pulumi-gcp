@@ -148,8 +148,8 @@ def get_folder_settings(folder: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'))
-def get_folder_settings_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
-                               location: Optional[pulumi.Input[_builtins.str]] = None,
+def get_folder_settings_output(folder: pulumi.Input[Optional[_builtins.str]] = None,
+                               location: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderSettingsResult]:
     """
     Describes the Google Cloud Observability Settings associated with a folder.

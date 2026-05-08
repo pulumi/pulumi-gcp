@@ -234,12 +234,12 @@ export interface OauthClientState {
     /**
      * Required. The list of OAuth grant types is allowed for the OauthClient.
      */
-    allowedGrantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedGrantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. The list of redirect uris that is allowed to redirect back
      * when authorization process is completed.
      */
-    allowedRedirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedRedirectUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. The list of scopes that the OauthClient is allowed to request during
      * OAuth flows.
@@ -248,11 +248,11 @@ export interface OauthClientState {
      * and delete your Google Cloud data and see the email address for your Google
      * Account.
      */
-    allowedScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Output only. The system-generated OauthClient id.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The type of OauthClient. Either public or private.
      * For private clients, the client secret can be managed using the dedicated
@@ -262,36 +262,36 @@ export interface OauthClientState {
      * PUBLIC_CLIENT
      * CONFIDENTIAL_CLIENT
      */
-    clientType?: pulumi.Input<string>;
+    clientType?: pulumi.Input<string | undefined>;
     /**
      * A user-specified description of the OauthClient.
      * Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the OauthClient is disabled. You cannot use a disabled OAuth
      * client.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name of the OauthClient.
      * Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Time after which the OauthClient will be permanently purged and cannot
      * be recovered.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Identifier. The resource name of the OauthClient.
      * Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the OauthClient, which becomes the final component of
      * the resource name. This value should be a string of 6 to 63 lowercase
@@ -299,12 +299,12 @@ export interface OauthClientState {
      * trailing hyphen. The prefix `gcp-` is reserved for use by Google, and may
      * not be specified.
      */
-    oauthClientId?: pulumi.Input<string>;
+    oauthClientId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The state of the OauthClient.
      * Possible values:
@@ -312,7 +312,7 @@ export interface OauthClientState {
      * ACTIVE
      * DELETED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -346,22 +346,22 @@ export interface OauthClientArgs {
      * PUBLIC_CLIENT
      * CONFIDENTIAL_CLIENT
      */
-    clientType?: pulumi.Input<string>;
+    clientType?: pulumi.Input<string | undefined>;
     /**
      * A user-specified description of the OauthClient.
      * Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the OauthClient is disabled. You cannot use a disabled OAuth
      * client.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name of the OauthClient.
      * Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -378,5 +378,5 @@ export interface OauthClientArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -229,7 +229,7 @@ export interface GetClusterOutputArgs {
      * created in. One of `location`, `region`, `zone`, or a provider-level `zone` must
      * be specified.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster.
      */
@@ -238,5 +238,5 @@ export interface GetClusterOutputArgs {
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -21,11 +21,11 @@ __all__ = ['AiLogicConfigArgs', 'AiLogicConfig']
 @pulumi.input_type
 class AiLogicConfigArgs:
     def __init__(__self__, *,
-                 generative_language_config: Optional[pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None,
-                 traffic_filter: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']] = None):
+                 generative_language_config: pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_config: pulumi.Input[Optional['AiLogicConfigTelemetryConfigArgs']] = None,
+                 traffic_filter: pulumi.Input[Optional['AiLogicConfigTrafficFilterArgs']] = None):
         """
         The set of arguments for constructing a AiLogicConfig resource.
 
@@ -57,7 +57,7 @@ class AiLogicConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
-    def generative_language_config(self) -> Optional[pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs']]:
+    def generative_language_config(self) -> pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']]:
         """
         Configuration for using the Gemini Developer API via Firebase AI Logic.
         When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
@@ -68,24 +68,24 @@ class AiLogicConfigArgs:
         return pulumi.get(self, "generative_language_config")
 
     @generative_language_config.setter
-    def generative_language_config(self, value: Optional[pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs']]):
+    def generative_language_config(self, value: pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']]):
         pulumi.set(self, "generative_language_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -93,12 +93,12 @@ class AiLogicConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryConfig")
-    def telemetry_config(self) -> Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']]:
+    def telemetry_config(self) -> pulumi.Input[Optional['AiLogicConfigTelemetryConfigArgs']]:
         """
         Configuration for telemetry.
         Telemetry is the collection of metrics, logs, and traces recorded by the
@@ -108,12 +108,12 @@ class AiLogicConfigArgs:
         return pulumi.get(self, "telemetry_config")
 
     @telemetry_config.setter
-    def telemetry_config(self, value: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']]):
+    def telemetry_config(self, value: pulumi.Input[Optional['AiLogicConfigTelemetryConfigArgs']]):
         pulumi.set(self, "telemetry_config", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficFilter")
-    def traffic_filter(self) -> Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]:
+    def traffic_filter(self) -> pulumi.Input[Optional['AiLogicConfigTrafficFilterArgs']]:
         """
         Configuration for traffic filtering.
         Structure is documented below.
@@ -121,19 +121,19 @@ class AiLogicConfigArgs:
         return pulumi.get(self, "traffic_filter")
 
     @traffic_filter.setter
-    def traffic_filter(self, value: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]):
+    def traffic_filter(self, value: pulumi.Input[Optional['AiLogicConfigTrafficFilterArgs']]):
         pulumi.set(self, "traffic_filter", value)
 
 
 @pulumi.input_type
 class _AiLogicConfigState:
     def __init__(__self__, *,
-                 generative_language_config: Optional[pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_config: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']] = None,
-                 traffic_filter: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']] = None):
+                 generative_language_config: pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_config: pulumi.Input[Optional['AiLogicConfigTelemetryConfigArgs']] = None,
+                 traffic_filter: pulumi.Input[Optional['AiLogicConfigTrafficFilterArgs']] = None):
         """
         Input properties used for looking up and filtering AiLogicConfig resources.
 
@@ -169,7 +169,7 @@ class _AiLogicConfigState:
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
-    def generative_language_config(self) -> Optional[pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs']]:
+    def generative_language_config(self) -> pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']]:
         """
         Configuration for using the Gemini Developer API via Firebase AI Logic.
         When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
@@ -180,24 +180,24 @@ class _AiLogicConfigState:
         return pulumi.get(self, "generative_language_config")
 
     @generative_language_config.setter
-    def generative_language_config(self, value: Optional[pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs']]):
+    def generative_language_config(self, value: pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']]):
         pulumi.set(self, "generative_language_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the config.
         Format: projects/{project}/locations/{location}/config
@@ -205,12 +205,12 @@ class _AiLogicConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -218,12 +218,12 @@ class _AiLogicConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryConfig")
-    def telemetry_config(self) -> Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']]:
+    def telemetry_config(self) -> pulumi.Input[Optional['AiLogicConfigTelemetryConfigArgs']]:
         """
         Configuration for telemetry.
         Telemetry is the collection of metrics, logs, and traces recorded by the
@@ -233,12 +233,12 @@ class _AiLogicConfigState:
         return pulumi.get(self, "telemetry_config")
 
     @telemetry_config.setter
-    def telemetry_config(self, value: Optional[pulumi.Input['AiLogicConfigTelemetryConfigArgs']]):
+    def telemetry_config(self, value: pulumi.Input[Optional['AiLogicConfigTelemetryConfigArgs']]):
         pulumi.set(self, "telemetry_config", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficFilter")
-    def traffic_filter(self) -> Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]:
+    def traffic_filter(self) -> pulumi.Input[Optional['AiLogicConfigTrafficFilterArgs']]:
         """
         Configuration for traffic filtering.
         Structure is documented below.
@@ -246,7 +246,7 @@ class _AiLogicConfigState:
         return pulumi.get(self, "traffic_filter")
 
     @traffic_filter.setter
-    def traffic_filter(self, value: Optional[pulumi.Input['AiLogicConfigTrafficFilterArgs']]):
+    def traffic_filter(self, value: pulumi.Input[Optional['AiLogicConfigTrafficFilterArgs']]):
         pulumi.set(self, "traffic_filter", value)
 
 
@@ -256,11 +256,11 @@ class AiLogicConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 generative_language_config: Optional[pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
-                 traffic_filter: Optional[pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None,
+                 generative_language_config: pulumi.Input[Optional[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
+                 traffic_filter: pulumi.Input[Optional[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None,
                  __props__=None):
         """
         Configuration for Firebase AI Logic.
@@ -355,7 +355,7 @@ class AiLogicConfig(pulumi.CustomResource):
             },
             telemetry_config={
                 "mode": "ALL",
-                "sampling_rate": 1,
+                "sampling_rate": float(1),
             },
             traffic_filter={
                 "template_only": True,
@@ -496,7 +496,7 @@ class AiLogicConfig(pulumi.CustomResource):
             },
             telemetry_config={
                 "mode": "ALL",
-                "sampling_rate": 1,
+                "sampling_rate": float(1),
             },
             traffic_filter={
                 "template_only": True,
@@ -536,11 +536,11 @@ class AiLogicConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 generative_language_config: Optional[pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
-                 traffic_filter: Optional[pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None,
+                 generative_language_config: pulumi.Input[Optional[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
+                 traffic_filter: pulumi.Input[Optional[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -566,12 +566,12 @@ class AiLogicConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            generative_language_config: Optional[pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            telemetry_config: Optional[pulumi.Input[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
-            traffic_filter: Optional[pulumi.Input[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None) -> 'AiLogicConfig':
+            generative_language_config: pulumi.Input[Optional[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            telemetry_config: pulumi.Input[Optional[Union['AiLogicConfigTelemetryConfigArgs', 'AiLogicConfigTelemetryConfigArgsDict']]] = None,
+            traffic_filter: pulumi.Input[Optional[Union['AiLogicConfigTrafficFilterArgs', 'AiLogicConfigTrafficFilterArgsDict']]] = None) -> 'AiLogicConfig':
         """
         Get an existing AiLogicConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

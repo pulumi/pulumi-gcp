@@ -21,10 +21,10 @@ __all__ = ['V2QueuedResourceArgs', 'V2QueuedResource']
 @pulumi.input_type
 class V2QueuedResourceArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu: Optional[pulumi.Input['V2QueuedResourceTpuArgs']] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu: pulumi.Input[Optional['V2QueuedResourceTpuArgs']] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a V2QueuedResource resource.
 
@@ -46,19 +46,19 @@ class V2QueuedResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The immutable name of the Queued Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -66,12 +66,12 @@ class V2QueuedResourceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tpu(self) -> Optional[pulumi.Input['V2QueuedResourceTpuArgs']]:
+    def tpu(self) -> pulumi.Input[Optional['V2QueuedResourceTpuArgs']]:
         """
         Defines a TPU resource.
         Structure is documented below.
@@ -79,29 +79,29 @@ class V2QueuedResourceArgs:
         return pulumi.get(self, "tpu")
 
     @tpu.setter
-    def tpu(self, value: Optional[pulumi.Input['V2QueuedResourceTpuArgs']]):
+    def tpu(self, value: pulumi.Input[Optional['V2QueuedResourceTpuArgs']]):
         pulumi.set(self, "tpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _V2QueuedResourceState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu: Optional[pulumi.Input['V2QueuedResourceTpuArgs']] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu: pulumi.Input[Optional['V2QueuedResourceTpuArgs']] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering V2QueuedResource resources.
 
@@ -123,19 +123,19 @@ class _V2QueuedResourceState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The immutable name of the Queued Resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -143,12 +143,12 @@ class _V2QueuedResourceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tpu(self) -> Optional[pulumi.Input['V2QueuedResourceTpuArgs']]:
+    def tpu(self) -> pulumi.Input[Optional['V2QueuedResourceTpuArgs']]:
         """
         Defines a TPU resource.
         Structure is documented below.
@@ -156,19 +156,19 @@ class _V2QueuedResourceState:
         return pulumi.get(self, "tpu")
 
     @tpu.setter
-    def tpu(self, value: Optional[pulumi.Input['V2QueuedResourceTpuArgs']]):
+    def tpu(self, value: pulumi.Input[Optional['V2QueuedResourceTpuArgs']]):
         pulumi.set(self, "tpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -178,10 +178,10 @@ class V2QueuedResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu: Optional[pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Cloud TPU Queued Resource.
@@ -399,10 +399,10 @@ class V2QueuedResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu: Optional[pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -426,10 +426,10 @@ class V2QueuedResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            tpu: Optional[pulumi.Input[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'V2QueuedResource':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tpu: pulumi.Input[Optional[Union['V2QueuedResourceTpuArgs', 'V2QueuedResourceTpuArgsDict']]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'V2QueuedResource':
         """
         Get an existing V2QueuedResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

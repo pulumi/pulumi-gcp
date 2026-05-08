@@ -23,11 +23,11 @@ class ResizeRequestArgs:
     def __init__(__self__, *,
                  instance_group_manager: pulumi.Input[_builtins.str],
                  resize_by: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_run_duration: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_run_duration: pulumi.Input[Optional['ResizeRequestRequestedRunDurationArgs']] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResizeRequest resource.
 
@@ -80,31 +80,31 @@ class ResizeRequestArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resize-request.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -112,12 +112,12 @@ class ResizeRequestArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedRunDuration")
-    def requested_run_duration(self) -> Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']]:
+    def requested_run_duration(self) -> pulumi.Input[Optional['ResizeRequestRequestedRunDurationArgs']]:
         """
         Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
         Structure is documented below.
@@ -125,35 +125,35 @@ class ResizeRequestArgs:
         return pulumi.get(self, "requested_run_duration")
 
     @requested_run_duration.setter
-    def requested_run_duration(self, value: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']]):
+    def requested_run_duration(self, value: pulumi.Input[Optional['ResizeRequestRequestedRunDurationArgs']]):
         pulumi.set(self, "requested_run_duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _ResizeRequestState:
     def __init__(__self__, *,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_run_duration: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']] = None,
-                 resize_by: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ResizeRequestStatusArgs']]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_run_duration: pulumi.Input[Optional['ResizeRequestRequestedRunDurationArgs']] = None,
+                 resize_by: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ResizeRequestStatusArgs']]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResizeRequest resources.
 
@@ -194,55 +194,55 @@ class _ResizeRequestState:
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation timestamp for this resize request in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resize-request.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupManager")
-    def instance_group_manager(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_group_manager(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference of the instance group manager this ResizeRequest is a part of.
         """
         return pulumi.get(self, "instance_group_manager")
 
     @instance_group_manager.setter
-    def instance_group_manager(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_group_manager(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_group_manager", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -250,12 +250,12 @@ class _ResizeRequestState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedRunDuration")
-    def requested_run_duration(self) -> Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']]:
+    def requested_run_duration(self) -> pulumi.Input[Optional['ResizeRequestRequestedRunDurationArgs']]:
         """
         Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
         Structure is documented below.
@@ -263,36 +263,36 @@ class _ResizeRequestState:
         return pulumi.get(self, "requested_run_duration")
 
     @requested_run_duration.setter
-    def requested_run_duration(self, value: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']]):
+    def requested_run_duration(self, value: pulumi.Input[Optional['ResizeRequestRequestedRunDurationArgs']]):
         pulumi.set(self, "requested_run_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="resizeBy")
-    def resize_by(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resize_by(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances to be created by this resize request. The group's target size will be increased by this number.
         """
         return pulumi.get(self, "resize_by")
 
     @resize_by.setter
-    def resize_by(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resize_by(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resize_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current state of the request.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResizeRequestStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResizeRequestStatusArgs']]]]:
         """
         Status of the request.
         Structure is documented below.
@@ -300,19 +300,19 @@ class _ResizeRequestState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResizeRequestStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResizeRequestStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -322,13 +322,13 @@ class ResizeRequest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_run_duration: Optional[pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
-                 resize_by: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
+                 resize_by: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a Managed Instance Group Resize Request
@@ -555,13 +555,13 @@ class ResizeRequest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_run_duration: Optional[pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
-                 resize_by: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
+                 resize_by: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -595,16 +595,16 @@ class ResizeRequest(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_group_manager: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            requested_run_duration: Optional[pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
-            resize_by: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict']]]]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'ResizeRequest':
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_run_duration: pulumi.Input[Optional[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']]] = None,
+            resize_by: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict']]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResizeRequest':
         """
         Get an existing ResizeRequest resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

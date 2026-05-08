@@ -23,12 +23,12 @@ class ServicePerimeterArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 perimeter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['ServicePerimeterSpecArgs']] = None,
-                 status: Optional[pulumi.Input['ServicePerimeterStatusArgs']] = None,
-                 use_explicit_dry_run_spec: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['ServicePerimeterSpecArgs']] = None,
+                 status: pulumi.Input[Optional['ServicePerimeterStatusArgs']] = None,
+                 use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServicePerimeter resource.
 
@@ -117,7 +117,7 @@ class ServicePerimeterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the ServicePerimeter and its use. Does not affect
         behavior.
@@ -125,12 +125,12 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
@@ -139,12 +139,12 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="perimeterType")
-    def perimeter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def perimeter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of the Perimeter. There are two types: regular and
         bridge. Regular Service Perimeter contains resources, access levels,
@@ -166,12 +166,12 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "perimeter_type")
 
     @perimeter_type.setter
-    def perimeter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def perimeter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "perimeter_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['ServicePerimeterSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['ServicePerimeterSpecArgs']]:
         """
         Proposed (or dry run) ServicePerimeter configuration.
         This configuration allows to specify and test ServicePerimeter configuration
@@ -182,12 +182,12 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['ServicePerimeterSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['ServicePerimeterSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ServicePerimeterStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['ServicePerimeterStatusArgs']]:
         """
         ServicePerimeter configuration. Specifies sets of resources,
         restricted services and access levels that determine
@@ -197,12 +197,12 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['ServicePerimeterStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['ServicePerimeterStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="useExplicitDryRunSpec")
-    def use_explicit_dry_run_spec(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_explicit_dry_run_spec(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
         for all Service Perimeters, and that spec is identical to the status for those
@@ -217,23 +217,23 @@ class ServicePerimeterArgs:
         return pulumi.get(self, "use_explicit_dry_run_spec")
 
     @use_explicit_dry_run_spec.setter
-    def use_explicit_dry_run_spec(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_explicit_dry_run_spec(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_explicit_dry_run_spec", value)
 
 
 @pulumi.input_type
 class _ServicePerimeterState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 perimeter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['ServicePerimeterSpecArgs']] = None,
-                 status: Optional[pulumi.Input['ServicePerimeterStatusArgs']] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_explicit_dry_run_spec: Optional[pulumi.Input[_builtins.bool]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['ServicePerimeterSpecArgs']] = None,
+                 status: pulumi.Input[Optional['ServicePerimeterStatusArgs']] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeter resources.
 
@@ -305,19 +305,19 @@ class _ServicePerimeterState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the AccessPolicy was created in UTC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the ServicePerimeter and its use. Does not affect
         behavior.
@@ -325,12 +325,12 @@ class _ServicePerimeterState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name for the ServicePerimeter. The short_name component must
         begin with a letter and only include alphanumeric and '_'.
@@ -339,12 +339,12 @@ class _ServicePerimeterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AccessPolicy this ServicePerimeter lives in.
         Format: accessPolicies/{policy_id}
@@ -352,12 +352,12 @@ class _ServicePerimeterState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="perimeterType")
-    def perimeter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def perimeter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the type of the Perimeter. There are two types: regular and
         bridge. Regular Service Perimeter contains resources, access levels,
@@ -379,12 +379,12 @@ class _ServicePerimeterState:
         return pulumi.get(self, "perimeter_type")
 
     @perimeter_type.setter
-    def perimeter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def perimeter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "perimeter_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['ServicePerimeterSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['ServicePerimeterSpecArgs']]:
         """
         Proposed (or dry run) ServicePerimeter configuration.
         This configuration allows to specify and test ServicePerimeter configuration
@@ -395,12 +395,12 @@ class _ServicePerimeterState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['ServicePerimeterSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['ServicePerimeterSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ServicePerimeterStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['ServicePerimeterStatusArgs']]:
         """
         ServicePerimeter configuration. Specifies sets of resources,
         restricted services and access levels that determine
@@ -410,36 +410,36 @@ class _ServicePerimeterState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['ServicePerimeterStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['ServicePerimeterStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human readable title. Must be unique within the Policy.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the AccessPolicy was updated in UTC.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="useExplicitDryRunSpec")
-    def use_explicit_dry_run_spec(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_explicit_dry_run_spec(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
         for all Service Perimeters, and that spec is identical to the status for those
@@ -454,7 +454,7 @@ class _ServicePerimeterState:
         return pulumi.get(self, "use_explicit_dry_run_spec")
 
     @use_explicit_dry_run_spec.setter
-    def use_explicit_dry_run_spec(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_explicit_dry_run_spec(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_explicit_dry_run_spec", value)
 
 
@@ -464,14 +464,14 @@ class ServicePerimeter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 perimeter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
-                 status: Optional[pulumi.Input[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_explicit_dry_run_spec: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
+                 status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         ServicePerimeter describes a set of GCP resources which can freely import
@@ -947,14 +947,14 @@ class ServicePerimeter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 perimeter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
-                 status: Optional[pulumi.Input[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_explicit_dry_run_spec: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
+                 status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -988,16 +988,16 @@ class ServicePerimeter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            perimeter_type: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            use_explicit_dry_run_spec: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ServicePerimeter':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            perimeter_type: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['ServicePerimeterSpecArgs', 'ServicePerimeterSpecArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['ServicePerimeterStatusArgs', 'ServicePerimeterStatusArgsDict']]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            use_explicit_dry_run_spec: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ServicePerimeter':
         """
         Get an existing ServicePerimeter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

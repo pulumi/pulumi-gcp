@@ -85,7 +85,7 @@ class AppProfileSingleClusterRoutingArgsDict(TypedDict):
     """
     The cluster to which read/write requests should be routed.
     """
-    allow_transactional_writes: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_transactional_writes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
     It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -95,7 +95,7 @@ class AppProfileSingleClusterRoutingArgsDict(TypedDict):
 class AppProfileSingleClusterRoutingArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 allow_transactional_writes: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_transactional_writes: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_id: The cluster to which read/write requests should be routed.
         :param pulumi.Input[_builtins.bool] allow_transactional_writes: If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
@@ -119,7 +119,7 @@ class AppProfileSingleClusterRoutingArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowTransactionalWrites")
-    def allow_transactional_writes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_transactional_writes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
         It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -127,7 +127,7 @@ class AppProfileSingleClusterRoutingArgs:
         return pulumi.get(self, "allow_transactional_writes")
 
     @allow_transactional_writes.setter
-    def allow_transactional_writes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_transactional_writes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_transactional_writes", value)
 
 
@@ -163,13 +163,13 @@ class AppProfileStandardIsolationArgs:
 
 
 class AuthorizedViewSubsetViewArgsDict(TypedDict):
-    family_subsets: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgsDict']]]]
+    family_subsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]]
     """
     A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
 
     -----
     """
-    row_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    row_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
     """
@@ -177,8 +177,8 @@ class AuthorizedViewSubsetViewArgsDict(TypedDict):
 @pulumi.input_type
 class AuthorizedViewSubsetViewArgs:
     def __init__(__self__, *,
-                 family_subsets: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]] = None,
-                 row_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 family_subsets: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]] = None,
+                 row_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]] family_subsets: A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
                
@@ -192,7 +192,7 @@ class AuthorizedViewSubsetViewArgs:
 
     @_builtins.property
     @pulumi.getter(name="familySubsets")
-    def family_subsets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]:
+    def family_subsets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]:
         """
         A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
 
@@ -201,19 +201,19 @@ class AuthorizedViewSubsetViewArgs:
         return pulumi.get(self, "family_subsets")
 
     @family_subsets.setter
-    def family_subsets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]):
+    def family_subsets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]):
         pulumi.set(self, "family_subsets", value)
 
     @_builtins.property
     @pulumi.getter(name="rowPrefixes")
-    def row_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def row_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Base64-encoded row prefixes to be included in the authorized view. To provide access to all rows, include the empty string as a prefix ("").
         """
         return pulumi.get(self, "row_prefixes")
 
     @row_prefixes.setter
-    def row_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def row_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "row_prefixes", value)
 
 
@@ -222,12 +222,12 @@ class AuthorizedViewSubsetViewFamilySubsetArgsDict(TypedDict):
     """
     Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
     """
-    qualifier_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    qualifier_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
     Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
     """
-    qualifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    qualifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
     """
@@ -236,8 +236,8 @@ class AuthorizedViewSubsetViewFamilySubsetArgsDict(TypedDict):
 class AuthorizedViewSubsetViewFamilySubsetArgs:
     def __init__(__self__, *,
                  family_name: pulumi.Input[_builtins.str],
-                 qualifier_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 qualifier_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 qualifiers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] family_name: Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] qualifier_prefixes: A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
@@ -264,7 +264,7 @@ class AuthorizedViewSubsetViewFamilySubsetArgs:
 
     @_builtins.property
     @pulumi.getter(name="qualifierPrefixes")
-    def qualifier_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def qualifier_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
         Every qualifier starting with one of these prefixes is included in the authorized view. To provide access to all qualifiers, include the empty string as a prefix ("").
@@ -272,28 +272,28 @@ class AuthorizedViewSubsetViewFamilySubsetArgs:
         return pulumi.get(self, "qualifier_prefixes")
 
     @qualifier_prefixes.setter
-    def qualifier_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def qualifier_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "qualifier_prefixes", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def qualifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
         """
         return pulumi.get(self, "qualifiers")
 
     @qualifiers.setter
-    def qualifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def qualifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "qualifiers", value)
 
 
 class GCPolicyMaxAgeArgsDict(TypedDict):
-    days: NotRequired[pulumi.Input[_builtins.int]]
+    days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of days before applying GC policy.
     """
-    duration: NotRequired[pulumi.Input[_builtins.str]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
 
@@ -303,8 +303,8 @@ class GCPolicyMaxAgeArgsDict(TypedDict):
 @pulumi.input_type
 class GCPolicyMaxAgeArgs:
     def __init__(__self__, *,
-                 days: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 days: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] days: Number of days before applying GC policy.
         :param pulumi.Input[_builtins.str] duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
@@ -322,19 +322,19 @@ class GCPolicyMaxAgeArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated in favor of duration""")
-    def days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days before applying GC policy.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
 
@@ -343,7 +343,7 @@ class GCPolicyMaxAgeArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
 
@@ -389,15 +389,15 @@ class InstanceClusterArgsDict(TypedDict):
     """
     The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
     """
-    autoscaling_config: NotRequired[pulumi.Input['InstanceClusterAutoscalingConfigArgsDict']]
+    autoscaling_config: NotRequired[pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgs']]]
     """
     [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
     """
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
     """
-    node_scaling_factor: NotRequired[pulumi.Input[_builtins.str]]
+    node_scaling_factor: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
 
@@ -410,21 +410,21 @@ class InstanceClusterArgsDict(TypedDict):
     `bigtable.Instance` resource. If these values are changing, use a new
     `cluster_id`.
     """
-    num_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    num_nodes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of nodes in the cluster.
     If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     describes the current state of the cluster.
     """
-    storage_type: NotRequired[pulumi.Input[_builtins.str]]
+    storage_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The storage type to use. One of `"SSD"` or
     `"HDD"`. Defaults to `"SSD"`.
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone to create the Cloud Bigtable cluster in. If it not
     specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
@@ -435,13 +435,13 @@ class InstanceClusterArgsDict(TypedDict):
 class InstanceClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 autoscaling_config: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_scaling_factor: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_nodes: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoscaling_config: pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgs']] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_scaling_factor: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_nodes: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         :param pulumi.Input['InstanceClusterAutoscalingConfigArgs'] autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
@@ -495,31 +495,31 @@ class InstanceClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingConfig")
-    def autoscaling_config(self) -> Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']]:
+    def autoscaling_config(self) -> pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgs']]:
         """
         [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         """
         return pulumi.get(self, "autoscaling_config")
 
     @autoscaling_config.setter
-    def autoscaling_config(self, value: Optional[pulumi.Input['InstanceClusterAutoscalingConfigArgs']]):
+    def autoscaling_config(self, value: pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgs']]):
         pulumi.set(self, "autoscaling_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeScalingFactor")
-    def node_scaling_factor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_scaling_factor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node scaling factor for this cluster. One of `"NodeScalingFactor1X"` or `"NodeScalingFactor2X"`. Defaults to `"NodeScalingFactor1X"`. If `"NodeScalingFactor2X"` is specified, then `num_nodes`, `min_nodes`, and `max_nodes` would need to be specified in increments of 2. This value cannot be updated after the cluster is created.
 
@@ -535,12 +535,12 @@ class InstanceClusterArgs:
         return pulumi.get(self, "node_scaling_factor")
 
     @node_scaling_factor.setter
-    def node_scaling_factor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_scaling_factor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_scaling_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="numNodes")
-    def num_nodes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_nodes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes in the cluster.
         If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
@@ -548,24 +548,24 @@ class InstanceClusterArgs:
         return pulumi.get(self, "num_nodes")
 
     @num_nodes.setter
-    def num_nodes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_nodes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         describes the current state of the cluster.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type to use. One of `"SSD"` or
         `"HDD"`. Defaults to `"SSD"`.
@@ -573,12 +573,12 @@ class InstanceClusterArgs:
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone to create the Cloud Bigtable cluster in. If it not
         specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
@@ -587,7 +587,7 @@ class InstanceClusterArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -604,7 +604,7 @@ class InstanceClusterAutoscalingConfigArgsDict(TypedDict):
     """
     The minimum number of nodes for autoscaling.
     """
-    storage_target: NotRequired[pulumi.Input[_builtins.int]]
+    storage_target: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
 
@@ -617,7 +617,7 @@ class InstanceClusterAutoscalingConfigArgs:
                  cpu_target: pulumi.Input[_builtins.int],
                  max_nodes: pulumi.Input[_builtins.int],
                  min_nodes: pulumi.Input[_builtins.int],
-                 storage_target: Optional[pulumi.Input[_builtins.int]] = None):
+                 storage_target: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] cpu_target: The target CPU utilization for autoscaling, in percentage. Must be between 10 and 80.
         :param pulumi.Input[_builtins.int] max_nodes: The maximum number of nodes for autoscaling.
@@ -670,7 +670,7 @@ class InstanceClusterAutoscalingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="storageTarget")
-    def storage_target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
 
@@ -679,7 +679,7 @@ class InstanceClusterAutoscalingConfigArgs:
         return pulumi.get(self, "storage_target")
 
     @storage_target.setter
-    def storage_target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_target", value)
 
 
@@ -692,7 +692,7 @@ class InstanceIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -704,7 +704,7 @@ class InstanceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -743,7 +743,7 @@ class InstanceIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -752,7 +752,7 @@ class InstanceIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -765,7 +765,7 @@ class InstanceIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -777,7 +777,7 @@ class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -816,7 +816,7 @@ class InstanceIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -825,7 +825,7 @@ class InstanceIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -858,11 +858,11 @@ class SchemaBundleProtoSchemaArgs:
 
 
 class TableAutomatedBackupPolicyArgsDict(TypedDict):
-    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    frequency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How frequently automated backups should occur.
     """
-    retention_period: NotRequired[pulumi.Input[_builtins.str]]
+    retention_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How long the automated backups should be retained.
     """
@@ -870,8 +870,8 @@ class TableAutomatedBackupPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class TableAutomatedBackupPolicyArgs:
     def __init__(__self__, *,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.str]] = None):
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] frequency: How frequently automated backups should occur.
         :param pulumi.Input[_builtins.str] retention_period: How long the automated backups should be retained.
@@ -883,26 +883,26 @@ class TableAutomatedBackupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How frequently automated backups should occur.
         """
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How long the automated backups should be retained.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention_period", value)
 
 
@@ -911,7 +911,7 @@ class TableColumnFamilyArgsDict(TypedDict):
     """
     The name of the column family.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the column family.
     """
@@ -920,7 +920,7 @@ class TableColumnFamilyArgsDict(TypedDict):
 class TableColumnFamilyArgs:
     def __init__(__self__, *,
                  family: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] family: The name of the column family.
         :param pulumi.Input[_builtins.str] type: The type of the column family.
@@ -943,28 +943,28 @@ class TableColumnFamilyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the column family.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class TableIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TableIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -990,25 +990,25 @@ class TableIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class TableIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TableIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1034,11 +1034,11 @@ class TableIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

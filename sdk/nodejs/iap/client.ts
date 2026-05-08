@@ -156,20 +156,20 @@ export interface ClientState {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}`.
      */
-    brand?: pulumi.Input<string>;
+    brand?: pulumi.Input<string | undefined>;
     /**
      * Output only. Unique identifier of the OAuth client.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Human-friendly name given to the OAuth client.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. Client secret of the OAuth client.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
 }
 
 /**

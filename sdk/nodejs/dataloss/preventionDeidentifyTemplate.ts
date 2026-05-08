@@ -286,24 +286,24 @@ export interface PreventionDeidentifyTemplateState {
     /**
      * The creation timestamp of an deidentifyTemplate. Set by the server.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Configuration of the deidentify template
      * Structure is documented below.
      */
-    deidentifyConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig>;
+    deidentifyConfig?: pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfig | undefined>;
     /**
      * A description of the template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User set display name of the template.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the template. Set by the server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the template in any of the following formats:
      * * `projects/{{project}}`
@@ -311,17 +311,17 @@ export interface PreventionDeidentifyTemplateState {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The last update timestamp of an deidentifyTemplate. Set by the server.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -336,11 +336,11 @@ export interface PreventionDeidentifyTemplateArgs {
     /**
      * A description of the template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User set display name of the template.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The parent of the template in any of the following formats:
      * * `projects/{{project}}`
@@ -354,5 +354,5 @@ export interface PreventionDeidentifyTemplateArgs {
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }

@@ -475,48 +475,48 @@ export interface CertificateState {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of label tags associated with the Certificate resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Certificate Manager location. If not specified, "global" is used.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Configuration and state of a Managed Certificate.
      * Certificate Manager provisions and renews Managed Certificates
      * automatically, for as long as it's authorized to do so.
      * Structure is documented below.
      */
-    managed?: pulumi.Input<inputs.certificatemanager.CertificateManaged>;
+    managed?: pulumi.Input<inputs.certificatemanager.CertificateManaged | undefined>;
     /**
      * A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
      */
-    sanDnsnames?: pulumi.Input<pulumi.Input<string>[]>;
+    sanDnsnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
@@ -528,14 +528,14 @@ export interface CertificateState {
      * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
      * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Certificate data for a SelfManaged Certificate.
      * SelfManaged Certificates are uploaded by the user. Updating such
      * certificates before they expire remains the user's responsibility.
      * Structure is documented below.
      */
-    selfManaged?: pulumi.Input<inputs.certificatemanager.CertificateSelfManaged>;
+    selfManaged?: pulumi.Input<inputs.certificatemanager.CertificateSelfManaged | undefined>;
 }
 
 /**
@@ -545,35 +545,35 @@ export interface CertificateArgs {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of label tags associated with the Certificate resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Certificate Manager location. If not specified, "global" is used.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Configuration and state of a Managed Certificate.
      * Certificate Manager provisions and renews Managed Certificates
      * automatically, for as long as it's authorized to do so.
      * Structure is documented below.
      */
-    managed?: pulumi.Input<inputs.certificatemanager.CertificateManaged>;
+    managed?: pulumi.Input<inputs.certificatemanager.CertificateManaged | undefined>;
     /**
      * A user-defined name of the certificate. Certificate names must be unique
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
@@ -585,12 +585,12 @@ export interface CertificateArgs {
      * CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
      * See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Certificate data for a SelfManaged Certificate.
      * SelfManaged Certificates are uploaded by the user. Updating such
      * certificates before they expire remains the user's responsibility.
      * Structure is documented below.
      */
-    selfManaged?: pulumi.Input<inputs.certificatemanager.CertificateSelfManaged>;
+    selfManaged?: pulumi.Input<inputs.certificatemanager.CertificateSelfManaged | undefined>;
 }

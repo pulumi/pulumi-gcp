@@ -402,87 +402,87 @@ export interface NetworkFirewallPolicyRuleState {
     /**
      * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description for this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The direction in which this rule applies.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Denotes whether the firewall policy rule is disabled.
      * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
      * If this is unspecified, the firewall policy rule will be enabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
      * Logs may be exported to BigQuery or Pub/Sub.
      * Note: you cannot enable logging on "gotoNext" rules.
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * The firewall policy of the resource.
      */
-    firewallPolicy?: pulumi.Input<string>;
+    firewallPolicy?: pulumi.Input<string | undefined>;
     /**
      * Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    match?: pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleMatch>;
+    match?: pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleMatch | undefined>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
      * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An optional name for the rule. This field is not a unique identifier and can be updated.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Calculation of the complexity of a single firewall policy rule.
      */
-    ruleTupleCount?: pulumi.Input<number>;
+    ruleTupleCount?: pulumi.Input<number | undefined>;
     /**
      * A fully-qualified URL of a SecurityProfile resource instance.
      * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
      * Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
      */
-    securityProfileGroup?: pulumi.Input<string>;
+    securityProfileGroup?: pulumi.Input<string | undefined>;
     /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * Structure is documented below.
      */
-    targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleTargetSecureTag>[]>;
+    targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleTargetSecureTag>[] | undefined>;
     /**
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
-    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.
      * Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
      */
-    tlsInspect?: pulumi.Input<boolean>;
+    tlsInspect?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -496,7 +496,7 @@ export interface NetworkFirewallPolicyRuleArgs {
     /**
      * An optional description for this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The direction in which this rule applies.
      * Possible values are: `INGRESS`, `EGRESS`.
@@ -507,14 +507,14 @@ export interface NetworkFirewallPolicyRuleArgs {
      * When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
      * If this is unspecified, the firewall policy rule will be enabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Denotes whether to enable logging for a particular rule.
      * If logging is enabled, logs will be exported to the configured export destination in Stackdriver.
      * Logs may be exported to BigQuery or Pub/Sub.
      * Note: you cannot enable logging on "gotoNext" rules.
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * The firewall policy of the resource.
      */
@@ -534,31 +534,31 @@ export interface NetworkFirewallPolicyRuleArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An optional name for the rule. This field is not a unique identifier and can be updated.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * A fully-qualified URL of a SecurityProfile resource instance.
      * Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
      * Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
      */
-    securityProfileGroup?: pulumi.Input<string>;
+    securityProfileGroup?: pulumi.Input<string | undefined>;
     /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * Structure is documented below.
      */
-    targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleTargetSecureTag>[]>;
+    targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleTargetSecureTag>[] | undefined>;
     /**
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      */
-    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.
      * Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
      */
-    tlsInspect?: pulumi.Input<boolean>;
+    tlsInspect?: pulumi.Input<boolean | undefined>;
 }

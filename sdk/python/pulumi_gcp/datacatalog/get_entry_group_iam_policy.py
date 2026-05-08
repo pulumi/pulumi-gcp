@@ -142,9 +142,9 @@ def get_entry_group_iam_policy(entry_group: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-def get_entry_group_iam_policy_output(entry_group: Optional[pulumi.Input[_builtins.str]] = None,
-                                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_entry_group_iam_policy_output(entry_group: pulumi.Input[Optional[_builtins.str]] = None,
+                                      project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntryGroupIamPolicyResult]:
     """
     > **Warning:** The parent resource has been deprecated: `datacatalog.EntryGroup` is deprecated and will be removed in a future major release. Use `dataplex.EntryGroup` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.

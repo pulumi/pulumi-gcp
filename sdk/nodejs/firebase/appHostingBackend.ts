@@ -403,111 +403,111 @@ export interface AppHostingBackendState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The [ID of a Web
      * App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
      * associated with the backend.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Id of the backend. Also used as the service ID for Cloud Run, and as part
      * of the default domain name.
      */
-    backendId?: pulumi.Input<string>;
+    backendId?: pulumi.Input<string | undefined>;
     /**
      * The connection to an external source repository to watch for event-driven
      * updates to the backend.
      * Structure is documented below.
      */
-    codebase?: pulumi.Input<inputs.firebase.AppHostingBackendCodebase>;
+    codebase?: pulumi.Input<inputs.firebase.AppHostingBackendCodebase | undefined>;
     /**
      * Time at which the backend was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Time at which the backend was deleted.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Human-readable name. 63 character limit.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The environment name of the backend, used to load environment variables
      * from environment specific configuration.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize
      * objects.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The canonical IDs of a Google Cloud location such as "us-east1".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A list of the resources managed by this backend.
      * Structure is documented below.
      */
-    managedResources?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingBackendManagedResource>[]>;
+    managedResources?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingBackendManagedResource>[] | undefined>;
     /**
      * Identifier. The resource name of the backend.
      * Format:
      * `projects/{project}/locations/{locationId}/backends/{backendId}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the service account used for Cloud Build and Cloud Run.
      * Should have the role roles/firebaseapphosting.computeRunner
      * or equivalent permissions.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Specifies how App Hosting will serve the content for this backend. It will
      * either be contained to a single region (REGIONAL_STRICT) or allowed to use
      * App Hosting's global-replicated serving infrastructure (GLOBAL_ACCESS).
      * Possible values are: `REGIONAL_STRICT`, `GLOBAL_ACCESS`.
      */
-    servingLocality?: pulumi.Input<string>;
+    servingLocality?: pulumi.Input<string | undefined>;
     /**
      * System-assigned, unique identifier.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time at which the backend was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The primary URI to communicate with the backend.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -521,7 +521,7 @@ export interface AppHostingBackendArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The [ID of a Web
      * App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
@@ -538,23 +538,23 @@ export interface AppHostingBackendArgs {
      * updates to the backend.
      * Structure is documented below.
      */
-    codebase?: pulumi.Input<inputs.firebase.AppHostingBackendCodebase>;
+    codebase?: pulumi.Input<inputs.firebase.AppHostingBackendCodebase | undefined>;
     /**
      * Human-readable name. 63 character limit.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The environment name of the backend, used to load environment variables
      * from environment specific configuration.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize
      * objects.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The canonical IDs of a Google Cloud location such as "us-east1".
      */
@@ -563,7 +563,7 @@ export interface AppHostingBackendArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service account used for Cloud Build and Cloud Run.
      * Should have the role roles/firebaseapphosting.computeRunner

@@ -303,45 +303,45 @@ export interface DataStoreState {
      * Configuration data for advance site search.
      * Structure is documented below.
      */
-    advancedSiteSearchConfig?: pulumi.Input<inputs.discoveryengine.DataStoreAdvancedSiteSearchConfig>;
+    advancedSiteSearchConfig?: pulumi.Input<inputs.discoveryengine.DataStoreAdvancedSiteSearchConfig | undefined>;
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      */
-    contentConfig?: pulumi.Input<string>;
+    contentConfig?: pulumi.Input<string | undefined>;
     /**
      * If true, an advanced data store for site search will be created. If the
      * data store is not configured as site search (GENERIC vertical and
      * PUBLIC_WEBSITE contentConfig), this flag will be ignored.
      */
-    createAdvancedSiteSearch?: pulumi.Input<boolean>;
+    createAdvancedSiteSearch?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp when the DataStore was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the data store.
      */
-    dataStoreId?: pulumi.Input<string>;
+    dataStoreId?: pulumi.Input<string | undefined>;
     /**
      * The id of the default Schema associated with this data store.
      */
-    defaultSchemaId?: pulumi.Input<string>;
+    defaultSchemaId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the data store. This field must be a UTF-8 encoded
      * string with a length limit of 128 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Document understanding and enrichment.
      * Structure is documented below.
      */
-    documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig>;
+    documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig | undefined>;
     /**
      * The industry vertical that the data store registers.
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
-    industryVertical?: pulumi.Input<string>;
+    industryVertical?: pulumi.Input<string | undefined>;
     /**
      * KMS key resource name which will be used to encrypt resources:
      * `/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`
@@ -350,24 +350,24 @@ export interface DataStoreState {
      * If this field is set and processed successfully, the DataStore will be
      * protected by the KMS key, as indicated in the cmekConfig field.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the data store. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A boolean flag indicating whether to skip the default schema creation for
      * the data store. Only enable this flag if you are certain that the default
@@ -377,12 +377,12 @@ export interface DataStoreState {
      * This flag cannot be specified if `data_store.starting_schema` is
      * specified.
      */
-    skipDefaultSchemaCreation?: pulumi.Input<boolean>;
+    skipDefaultSchemaCreation?: pulumi.Input<boolean | undefined>;
     /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      */
-    solutionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    solutionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -393,18 +393,18 @@ export interface DataStoreArgs {
      * Configuration data for advance site search.
      * Structure is documented below.
      */
-    advancedSiteSearchConfig?: pulumi.Input<inputs.discoveryengine.DataStoreAdvancedSiteSearchConfig>;
+    advancedSiteSearchConfig?: pulumi.Input<inputs.discoveryengine.DataStoreAdvancedSiteSearchConfig | undefined>;
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
      */
-    contentConfig?: pulumi.Input<string>;
+    contentConfig?: pulumi.Input<string | undefined>;
     /**
      * If true, an advanced data store for site search will be created. If the
      * data store is not configured as site search (GENERIC vertical and
      * PUBLIC_WEBSITE contentConfig), this flag will be ignored.
      */
-    createAdvancedSiteSearch?: pulumi.Input<boolean>;
+    createAdvancedSiteSearch?: pulumi.Input<boolean | undefined>;
     /**
      * The unique id of the data store.
      */
@@ -418,7 +418,7 @@ export interface DataStoreArgs {
      * Configuration for Document understanding and enrichment.
      * Structure is documented below.
      */
-    documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig>;
+    documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig | undefined>;
     /**
      * The industry vertical that the data store registers.
      * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
@@ -432,7 +432,7 @@ export interface DataStoreArgs {
      * If this field is set and processed successfully, the DataStore will be
      * protected by the KMS key, as indicated in the cmekConfig field.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -442,7 +442,7 @@ export interface DataStoreArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A boolean flag indicating whether to skip the default schema creation for
      * the data store. Only enable this flag if you are certain that the default
@@ -452,10 +452,10 @@ export interface DataStoreArgs {
      * This flag cannot be specified if `data_store.starting_schema` is
      * specified.
      */
-    skipDefaultSchemaCreation?: pulumi.Input<boolean>;
+    skipDefaultSchemaCreation?: pulumi.Input<boolean | undefined>;
     /**
      * The solutions that the data store enrolls.
      * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      */
-    solutionTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    solutionTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

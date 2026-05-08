@@ -226,9 +226,9 @@ def get_security_policy(name: Optional[_builtins.str] = None,
         rules=pulumi.get(__ret__, 'rules'),
         self_link=pulumi.get(__ret__, 'self_link'),
         type=pulumi.get(__ret__, 'type'))
-def get_security_policy_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               self_link: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_security_policy_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               self_link: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityPolicyResult]:
     """
     To get more information about Google Compute Security Policy, see:

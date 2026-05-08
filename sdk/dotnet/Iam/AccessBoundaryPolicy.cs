@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     ///     var example = new Gcp.Iam.AccessBoundaryPolicy("example", new()
     ///     {
-    ///         Parent = Std.Index.Urlencode.Invoke(new()
+    ///         Parent = Std.Urlencode.Invoke(new()
     ///         {
     ///             Input = project.ProjectId.Apply(projectId =&gt; $"cloudresourcemanager.googleapis.com/projects/{projectId}"),
     ///         }).Apply(invoke =&gt; invoke.Result),

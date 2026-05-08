@@ -243,72 +243,72 @@ export interface InterconnectAttachmentState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the underlying interconnect that this attachment's traffic will traverse through.
      */
-    interconnect?: pulumi.Input<string>;
+    interconnect?: pulumi.Input<string | undefined>;
     /**
      * A unique ID that identifies this interconnect attachment.
      */
-    interconnectAttachmentId?: pulumi.Input<string>;
+    interconnectAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * Labels associated with this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * IP (L3) MTU value of the virtual edge cloud. Default value is `1500`. Possible values are: `1500`, `9000`.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The canonical name of this resource, with format
      * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/interconnectAttachments/{{interconnect_attachment_id}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network to which this interconnect attachment belongs.
      * Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time when the resource was last updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * VLAN ID provided by user. Must be site-wise unique.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
     /**
      * The name of the target Distributed Cloud Edge zone.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -318,7 +318,7 @@ export interface InterconnectAttachmentArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the underlying interconnect that this attachment's traffic will traverse through.
      */
@@ -333,7 +333,7 @@ export interface InterconnectAttachmentArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
      */
@@ -341,7 +341,7 @@ export interface InterconnectAttachmentArgs {
     /**
      * IP (L3) MTU value of the virtual edge cloud. Default value is `1500`. Possible values are: `1500`, `9000`.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The ID of the network to which this interconnect attachment belongs.
      * Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
@@ -351,7 +351,7 @@ export interface InterconnectAttachmentArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * VLAN ID provided by user. Must be site-wise unique.
      */

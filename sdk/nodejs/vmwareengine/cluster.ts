@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  *     name: "test-fs-filestore",
  *     location: "",
  *     tier: "ZONAL",
- *     deletionProtectionEnabled: "yes",
+ *     deletionProtectionEnabled: "yes" === "true",
  *     fileShares: {
  *         capacityGb: 1024,
  *         name: "share101",
@@ -498,13 +498,13 @@ export interface ClusterState {
      * Configuration of the autoscaling applied to this cluster
      * Structure is documented below.
      */
-    autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings>;
+    autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings | undefined>;
     /**
      * Creation time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Configuration to mount a datastore.
      * Mount can be done along with cluster create or during cluster update
@@ -512,42 +512,42 @@ export interface ClusterState {
      * for unmount remove 'datastore_mount_config' config from the update of cluster resource
      * Structure is documented below.
      */
-    datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[]>;
+    datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[] | undefined>;
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
      */
-    management?: pulumi.Input<boolean>;
+    management?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The map of cluster node types in this cluster,
      * where the key is canonical identifier of the node type (corresponds to the NodeType).
      * Structure is documented below.
      */
-    nodeTypeConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterNodeTypeConfig>[]>;
+    nodeTypeConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterNodeTypeConfig>[] | undefined>;
     /**
      * The resource name of the private cloud to create a new cluster in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * State of the Cluster.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -558,7 +558,7 @@ export interface ClusterArgs {
      * Configuration of the autoscaling applied to this cluster
      * Structure is documented below.
      */
-    autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings>;
+    autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings | undefined>;
     /**
      * Optional. Configuration to mount a datastore.
      * Mount can be done along with cluster create or during cluster update
@@ -566,17 +566,17 @@ export interface ClusterArgs {
      * for unmount remove 'datastore_mount_config' config from the update of cluster resource
      * Structure is documented below.
      */
-    datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[]>;
+    datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[] | undefined>;
     /**
      * The ID of the Cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The map of cluster node types in this cluster,
      * where the key is canonical identifier of the node type (corresponds to the NodeType).
      * Structure is documented below.
      */
-    nodeTypeConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterNodeTypeConfig>[]>;
+    nodeTypeConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterNodeTypeConfig>[] | undefined>;
     /**
      * The resource name of the private cloud to create a new cluster in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.

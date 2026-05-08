@@ -239,74 +239,74 @@ export interface ZoneState {
     /**
      * Output only. Aggregated status of the underlying assets of the zone.
      */
-    assetStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.ZoneAssetStatus>[]>;
+    assetStatuses?: pulumi.Input<pulumi.Input<inputs.dataplex.ZoneAssetStatus>[] | undefined>;
     /**
      * Output only. The time when the zone was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Description of the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Specification of the discovery feature applied to data in this zone.
      */
-    discoverySpec?: pulumi.Input<inputs.dataplex.ZoneDiscoverySpec>;
+    discoverySpec?: pulumi.Input<inputs.dataplex.ZoneDiscoverySpec | undefined>;
     /**
      * Optional. User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. User defined labels for the zone.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The lake for the resource
      */
-    lake?: pulumi.Input<string>;
+    lake?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      */
-    resourceSpec?: pulumi.Input<inputs.dataplex.ZoneResourceSpec>;
+    resourceSpec?: pulumi.Input<inputs.dataplex.ZoneResourceSpec | undefined>;
     /**
      * Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the zone was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -316,7 +316,7 @@ export interface ZoneArgs {
     /**
      * Optional. Description of the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Specification of the discovery feature applied to data in this zone.
      */
@@ -324,14 +324,14 @@ export interface ZoneArgs {
     /**
      * Optional. User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Optional. User defined labels for the zone.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The lake for the resource
      */
@@ -343,11 +343,11 @@ export interface ZoneArgs {
     /**
      * The name of the zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      */

@@ -60,9 +60,9 @@ class EnvGroupAttachmentArgs:
 @pulumi.input_type
 class _EnvGroupAttachmentState:
     def __init__(__self__, *,
-                 envgroup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 envgroup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvGroupAttachment resources.
 
@@ -80,7 +80,7 @@ class _EnvGroupAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="envgroupId")
-    def envgroup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def envgroup_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
@@ -88,31 +88,31 @@ class _EnvGroupAttachmentState:
         return pulumi.get(self, "envgroup_id")
 
     @envgroup_id.setter
-    def envgroup_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def envgroup_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "envgroup_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID of the environment.
         """
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the newly created  attachment (output parameter).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -122,8 +122,8 @@ class EnvGroupAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 envgroup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
+                 envgroup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An `Environment Group attachment` in Apigee.
@@ -204,8 +204,8 @@ class EnvGroupAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 envgroup_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
+                 envgroup_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -232,9 +232,9 @@ class EnvGroupAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            envgroup_id: Optional[pulumi.Input[_builtins.str]] = None,
-            environment: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvGroupAttachment':
+            envgroup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvGroupAttachment':
         """
         Get an existing EnvGroupAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

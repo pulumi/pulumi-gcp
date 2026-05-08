@@ -240,22 +240,22 @@ export interface RegionalParameterState {
     /**
      * The time at which the regional Parameter was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The format type of the regional parameter.
      * Default value is `UNFORMATTED`.
      * Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
      * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * The labels assigned to this regional Parameter.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -269,39 +269,39 @@ export interface RegionalParameterState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the regional parameter. eg us-central1
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the regional Parameter. Format:
      * `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This must be unique within the project.
      */
-    parameterId?: pulumi.Input<string>;
+    parameterId?: pulumi.Input<string | undefined>;
     /**
      * An object containing a unique resource identity tied to the regional parameter.
      * Structure is documented below.
      */
-    policyMembers?: pulumi.Input<pulumi.Input<inputs.parametermanager.RegionalParameterPolicyMember>[]>;
+    policyMembers?: pulumi.Input<pulumi.Input<inputs.parametermanager.RegionalParameterPolicyMember>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time at which the regional Parameter was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -313,12 +313,12 @@ export interface RegionalParameterArgs {
      * Default value is `UNFORMATTED`.
      * Possible values are: `UNFORMATTED`, `YAML`, `JSON`.
      */
-    format?: pulumi.Input<string>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKey used to encrypt regional parameter version payload. Format
      * `projects/{{project}}/locations/{{location}}/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * The labels assigned to this regional Parameter.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -332,7 +332,7 @@ export interface RegionalParameterArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the regional parameter. eg us-central1
      */
@@ -345,5 +345,5 @@ export interface RegionalParameterArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

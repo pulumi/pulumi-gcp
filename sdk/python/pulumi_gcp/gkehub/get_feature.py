@@ -212,9 +212,9 @@ def get_feature(location: Optional[_builtins.str] = None,
         specs=pulumi.get(__ret__, 'specs'),
         states=pulumi.get(__ret__, 'states'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_feature_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_feature_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureResult]:
     """
     Retrieves the details of a specific GKE Hub Feature. Use this data source to retrieve the feature's configuration and state.

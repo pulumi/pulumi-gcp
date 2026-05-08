@@ -257,13 +257,13 @@ export interface Datapolicyv2DataPolicyState {
      * The policy used to specify data masking rule.
      * Structure is documented below.
      */
-    dataMaskingPolicy?: pulumi.Input<inputs.bigquery.Datapolicyv2DataPolicyDataMaskingPolicy>;
+    dataMaskingPolicy?: pulumi.Input<inputs.bigquery.Datapolicyv2DataPolicyDataMaskingPolicy | undefined>;
     /**
      * User-assigned (human readable) ID of the data policy that needs to be
      * unique within a project. Used as {data_policy_id} in part of the resource
      * name.
      */
-    dataPolicyId?: pulumi.Input<string>;
+    dataPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Type of data policy.
      * Possible values:
@@ -271,7 +271,7 @@ export interface Datapolicyv2DataPolicyState {
      * RAW_DATA_ACCESS_POLICY
      * COLUMN_LEVEL_SECURITY_POLICY
      */
-    dataPolicyType?: pulumi.Input<string>;
+    dataPolicyType?: pulumi.Input<string | undefined>;
     /**
      * The etag for this Data Policy.
      * This field is used for UpdateDataPolicy calls. If Data Policy exists, this
@@ -279,7 +279,7 @@ export interface Datapolicyv2DataPolicyState {
      * populated in the response of GetDataPolicy, CreateDataPolicy, and
      * UpdateDataPolicy calls.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The list of IAM principals that have Fine Grained Access to the underlying
      * data goverened by this data policy.
@@ -289,34 +289,34 @@ export interface Datapolicyv2DataPolicyState {
      * This field is supported in V2 Data Policy only. In case of V1 data policies
      * (i.e. verion = 1 and policyTag is set), this field is not populated.
      */
-    grantees?: pulumi.Input<pulumi.Input<string>[]>;
+    grantees?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Resource name of this data policy, in the format of
      * `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Policy tag resource name, in the format of
      * `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
      * policyTag is supported only for V1 data policies.
      */
-    policyTag?: pulumi.Input<string>;
+    policyTag?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The version of the Data Policy resource.
      * Possible values:
      * V1
      * V2
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -327,7 +327,7 @@ export interface Datapolicyv2DataPolicyArgs {
      * The policy used to specify data masking rule.
      * Structure is documented below.
      */
-    dataMaskingPolicy?: pulumi.Input<inputs.bigquery.Datapolicyv2DataPolicyDataMaskingPolicy>;
+    dataMaskingPolicy?: pulumi.Input<inputs.bigquery.Datapolicyv2DataPolicyDataMaskingPolicy | undefined>;
     /**
      * User-assigned (human readable) ID of the data policy that needs to be
      * unique within a project. Used as {data_policy_id} in part of the resource
@@ -349,7 +349,7 @@ export interface Datapolicyv2DataPolicyArgs {
      * populated in the response of GetDataPolicy, CreateDataPolicy, and
      * UpdateDataPolicy calls.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The list of IAM principals that have Fine Grained Access to the underlying
      * data goverened by this data policy.
@@ -359,7 +359,7 @@ export interface Datapolicyv2DataPolicyArgs {
      * This field is supported in V2 Data Policy only. In case of V1 data policies
      * (i.e. verion = 1 and policyTag is set), this field is not populated.
      */
-    grantees?: pulumi.Input<pulumi.Input<string>[]>;
+    grantees?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -368,5 +368,5 @@ export interface Datapolicyv2DataPolicyArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -24,8 +24,8 @@ class WorkforcePoolIamBindingArgs:
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
                  workforce_pool_id: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['WorkforcePoolIamBindingConditionArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['WorkforcePoolIamBindingConditionArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolIamBinding resource.
 
@@ -108,16 +108,16 @@ class WorkforcePoolIamBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkforcePoolIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['WorkforcePoolIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkforcePoolIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['WorkforcePoolIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
         the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -126,19 +126,19 @@ class WorkforcePoolIamBindingArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
 
 @pulumi.input_type
 class _WorkforcePoolIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['WorkforcePoolIamBindingConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['WorkforcePoolIamBindingConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkforcePoolIamBinding resources.
 
@@ -178,28 +178,28 @@ class _WorkforcePoolIamBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WorkforcePoolIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['WorkforcePoolIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WorkforcePoolIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['WorkforcePoolIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
         the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -208,12 +208,12 @@ class _WorkforcePoolIamBindingState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -231,12 +231,12 @@ class _WorkforcePoolIamBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `iam.WorkforcePoolIamBinding` can be used per role. Note that custom roles must be of the format
@@ -245,19 +245,19 @@ class _WorkforcePoolIamBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="workforcePoolId")
-    def workforce_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workforce_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "workforce_pool_id")
 
     @workforce_pool_id.setter
-    def workforce_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workforce_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workforce_pool_id", value)
 
 
@@ -267,11 +267,11 @@ class WorkforcePoolIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['WorkforcePoolIamBindingConditionArgs', 'WorkforcePoolIamBindingConditionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['WorkforcePoolIamBindingConditionArgs', 'WorkforcePoolIamBindingConditionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Cloud IAM WorkforcePool. Each of these resources serves a different use case:
@@ -618,11 +618,11 @@ class WorkforcePoolIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['WorkforcePoolIamBindingConditionArgs', 'WorkforcePoolIamBindingConditionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['WorkforcePoolIamBindingConditionArgs', 'WorkforcePoolIamBindingConditionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -654,12 +654,12 @@ class WorkforcePoolIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['WorkforcePoolIamBindingConditionArgs', 'WorkforcePoolIamBindingConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkforcePoolIamBinding':
+            condition: pulumi.Input[Optional[Union['WorkforcePoolIamBindingConditionArgs', 'WorkforcePoolIamBindingConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkforcePoolIamBinding':
         """
         Get an existing WorkforcePoolIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

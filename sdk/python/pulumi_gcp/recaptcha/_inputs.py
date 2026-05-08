@@ -28,11 +28,11 @@ __all__ = [
 ]
 
 class EnterpriseKeyAndroidSettingsArgsDict(TypedDict):
-    allow_all_package_names: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_all_package_names: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, it means allowed_package_names will not be enforced.
     """
-    allowed_package_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_package_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
     """
@@ -40,8 +40,8 @@ class EnterpriseKeyAndroidSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseKeyAndroidSettingsArgs:
     def __init__(__self__, *,
-                 allow_all_package_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_package_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_all_package_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_package_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_all_package_names: If set to true, it means allowed_package_names will not be enforced.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
@@ -53,35 +53,35 @@ class EnterpriseKeyAndroidSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAllPackageNames")
-    def allow_all_package_names(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_all_package_names(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, it means allowed_package_names will not be enforced.
         """
         return pulumi.get(self, "allow_all_package_names")
 
     @allow_all_package_names.setter
-    def allow_all_package_names(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_all_package_names(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_all_package_names", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedPackageNames")
-    def allowed_package_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_package_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
         return pulumi.get(self, "allowed_package_names")
 
     @allowed_package_names.setter
-    def allowed_package_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_package_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_package_names", value)
 
 
 class EnterpriseKeyIosSettingsArgsDict(TypedDict):
-    allow_all_bundle_ids: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_all_bundle_ids: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, it means allowed_bundle_ids will not be enforced.
     """
-    allowed_bundle_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_bundle_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
     """
@@ -89,8 +89,8 @@ class EnterpriseKeyIosSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseKeyIosSettingsArgs:
     def __init__(__self__, *,
-                 allow_all_bundle_ids: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_bundle_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_all_bundle_ids: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_bundle_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_all_bundle_ids: If set to true, it means allowed_bundle_ids will not be enforced.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_bundle_ids: iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
@@ -102,35 +102,35 @@ class EnterpriseKeyIosSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAllBundleIds")
-    def allow_all_bundle_ids(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_all_bundle_ids(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, it means allowed_bundle_ids will not be enforced.
         """
         return pulumi.get(self, "allow_all_bundle_ids")
 
     @allow_all_bundle_ids.setter
-    def allow_all_bundle_ids(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_all_bundle_ids(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_all_bundle_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedBundleIds")
-    def allowed_bundle_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_bundle_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
         """
         return pulumi.get(self, "allowed_bundle_ids")
 
     @allowed_bundle_ids.setter
-    def allowed_bundle_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_bundle_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_bundle_ids", value)
 
 
 class EnterpriseKeyTestingOptionsArgsDict(TypedDict):
-    testing_challenge: NotRequired[pulumi.Input[_builtins.str]]
+    testing_challenge: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
     """
-    testing_score: NotRequired[pulumi.Input[_builtins.float]]
+    testing_score: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
     """
@@ -138,8 +138,8 @@ class EnterpriseKeyTestingOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseKeyTestingOptionsArgs:
     def __init__(__self__, *,
-                 testing_challenge: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_score: Optional[pulumi.Input[_builtins.float]] = None):
+                 testing_challenge: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_score: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] testing_challenge: For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
         :param pulumi.Input[_builtins.float] testing_score: All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
@@ -151,26 +151,26 @@ class EnterpriseKeyTestingOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="testingChallenge")
-    def testing_challenge(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def testing_challenge(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if UNSOLVABLE_CHALLENGE. Possible values: TESTING_CHALLENGE_UNSPECIFIED, NOCAPTCHA, UNSOLVABLE_CHALLENGE
         """
         return pulumi.get(self, "testing_challenge")
 
     @testing_challenge.setter
-    def testing_challenge(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def testing_challenge(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "testing_challenge", value)
 
     @_builtins.property
     @pulumi.getter(name="testingScore")
-    def testing_score(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def testing_score(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         """
         return pulumi.get(self, "testing_score")
 
     @testing_score.setter
-    def testing_score(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def testing_score(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "testing_score", value)
 
 
@@ -226,19 +226,19 @@ class EnterpriseKeyWebSettingsArgsDict(TypedDict):
     """
     Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
     """
-    allow_all_domains: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_all_domains: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, it means allowed_domains will not be enforced.
     """
-    allow_amp_traffic: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_amp_traffic: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
     """
-    allowed_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
     """
-    challenge_security_preference: NotRequired[pulumi.Input[_builtins.str]]
+    challenge_security_preference: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
     """
@@ -247,10 +247,10 @@ class EnterpriseKeyWebSettingsArgsDict(TypedDict):
 class EnterpriseKeyWebSettingsArgs:
     def __init__(__self__, *,
                  integration_type: pulumi.Input[_builtins.str],
-                 allow_all_domains: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_amp_traffic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allowed_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 challenge_security_preference: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_all_domains: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_amp_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 challenge_security_preference: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] integration_type: Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
         :param pulumi.Input[_builtins.bool] allow_all_domains: If set to true, it means allowed_domains will not be enforced.
@@ -282,50 +282,50 @@ class EnterpriseKeyWebSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAllDomains")
-    def allow_all_domains(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_all_domains(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, it means allowed_domains will not be enforced.
         """
         return pulumi.get(self, "allow_all_domains")
 
     @allow_all_domains.setter
-    def allow_all_domains(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_all_domains(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_all_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAmpTraffic")
-    def allow_amp_traffic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_amp_traffic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
         """
         return pulumi.get(self, "allow_amp_traffic")
 
     @allow_amp_traffic.setter
-    def allow_amp_traffic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_amp_traffic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_amp_traffic", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedDomains")
-    def allowed_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
         """
         return pulumi.get(self, "allowed_domains")
 
     @allowed_domains.setter
-    def allowed_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="challengeSecurityPreference")
-    def challenge_security_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def challenge_security_preference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
         """
         return pulumi.get(self, "challenge_security_preference")
 
     @challenge_security_preference.setter
-    def challenge_security_preference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def challenge_security_preference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "challenge_security_preference", value)
 
 

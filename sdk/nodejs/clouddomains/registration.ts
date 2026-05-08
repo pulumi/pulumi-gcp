@@ -299,88 +299,88 @@ export interface RegistrationState {
     /**
      * The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
      */
-    contactNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    contactNotices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. Settings for contact information linked to the Registration.
      * Structure is documented below.
      */
-    contactSettings?: pulumi.Input<inputs.clouddomains.RegistrationContactSettings>;
+    contactSettings?: pulumi.Input<inputs.clouddomains.RegistrationContactSettings | undefined>;
     /**
      * Output only. Time at which the automation was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Settings controlling the DNS configuration of the Registration.
      * Structure is documented below.
      */
-    dnsSettings?: pulumi.Input<inputs.clouddomains.RegistrationDnsSettings>;
+    dnsSettings?: pulumi.Input<inputs.clouddomains.RegistrationDnsSettings | undefined>;
     /**
      * Required. The domain name. Unicode domain names must be expressed in Punycode format.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
      */
-    domainNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNotices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Time at which the automation was updated.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The set of issues with the Registration that require attention.
      */
-    issues?: pulumi.Input<pulumi.Input<string>[]>;
+    issues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of labels associated with the Registration.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Settings for management of the Registration, including renewal, billing, and transfer
      * Structure is documented below.
      */
-    managementSettings?: pulumi.Input<inputs.clouddomains.RegistrationManagementSettings>;
+    managementSettings?: pulumi.Input<inputs.clouddomains.RegistrationManagementSettings | undefined>;
     /**
      * Output only. Name of the Registration resource, in the format projects/*&#47;locations/*&#47;registrations/<domain_name>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
      */
-    registerFailureReason?: pulumi.Input<string>;
+    registerFailureReason?: pulumi.Input<string | undefined>;
     /**
      * Output only. The current state of the Registration.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. Set of options for the contactSettings.privacy field that this Registration supports.
      */
-    supportedPrivacies?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedPrivacies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
      * registrations.retrieveRegisterParameters or registrations.searchDomains calls.
      * Structure is documented below.
      */
-    yearlyPrice?: pulumi.Input<inputs.clouddomains.RegistrationYearlyPrice>;
+    yearlyPrice?: pulumi.Input<inputs.clouddomains.RegistrationYearlyPrice | undefined>;
 }
 
 /**
@@ -390,7 +390,7 @@ export interface RegistrationArgs {
     /**
      * The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
      */
-    contactNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    contactNotices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. Settings for contact information linked to the Registration.
      * Structure is documented below.
@@ -400,7 +400,7 @@ export interface RegistrationArgs {
      * Settings controlling the DNS configuration of the Registration.
      * Structure is documented below.
      */
-    dnsSettings?: pulumi.Input<inputs.clouddomains.RegistrationDnsSettings>;
+    dnsSettings?: pulumi.Input<inputs.clouddomains.RegistrationDnsSettings | undefined>;
     /**
      * Required. The domain name. Unicode domain names must be expressed in Punycode format.
      */
@@ -408,13 +408,13 @@ export interface RegistrationArgs {
     /**
      * The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
      */
-    domainNotices?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNotices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of labels associated with the Registration.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -423,12 +423,12 @@ export interface RegistrationArgs {
      * Settings for management of the Registration, including renewal, billing, and transfer
      * Structure is documented below.
      */
-    managementSettings?: pulumi.Input<inputs.clouddomains.RegistrationManagementSettings>;
+    managementSettings?: pulumi.Input<inputs.clouddomains.RegistrationManagementSettings | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
      * registrations.retrieveRegisterParameters or registrations.searchDomains calls.

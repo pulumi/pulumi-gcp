@@ -90,7 +90,7 @@ class ClusterAutoscalingSettingsArgsDict(TypedDict):
     that describes the autoscaling policy for compute nodes.
     Structure is documented below.
     """
-    cool_down_period: NotRequired[pulumi.Input[_builtins.str]]
+    cool_down_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum duration between consecutive autoscale operations.
     It starts once addition or removal of nodes is fully completed.
@@ -98,12 +98,12 @@ class ClusterAutoscalingSettingsArgsDict(TypedDict):
     Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
     Mandatory for successful addition of autoscaling settings in cluster.
     """
-    max_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_cluster_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of nodes of any type in a cluster.
     Mandatory for successful addition of autoscaling settings in cluster.
     """
-    min_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_cluster_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of nodes of any type in a cluster.
     Mandatory for successful addition of autoscaling settings in cluster.
@@ -113,9 +113,9 @@ class ClusterAutoscalingSettingsArgsDict(TypedDict):
 class ClusterAutoscalingSettingsArgs:
     def __init__(__self__, *,
                  autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgs']]],
-                 cool_down_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cluster_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_cluster_node_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 cool_down_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cluster_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_cluster_node_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgs']]] autoscaling_policies: The map with autoscaling policies applied to the cluster.
                The key is the identifier of the policy.
@@ -170,7 +170,7 @@ class ClusterAutoscalingSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="coolDownPeriod")
-    def cool_down_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cool_down_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum duration between consecutive autoscale operations.
         It starts once addition or removal of nodes is fully completed.
@@ -181,12 +181,12 @@ class ClusterAutoscalingSettingsArgs:
         return pulumi.get(self, "cool_down_period")
 
     @cool_down_period.setter
-    def cool_down_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cool_down_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cool_down_period", value)
 
     @_builtins.property
     @pulumi.getter(name="maxClusterNodeCount")
-    def max_cluster_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cluster_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of nodes of any type in a cluster.
         Mandatory for successful addition of autoscaling settings in cluster.
@@ -194,12 +194,12 @@ class ClusterAutoscalingSettingsArgs:
         return pulumi.get(self, "max_cluster_node_count")
 
     @max_cluster_node_count.setter
-    def max_cluster_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cluster_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cluster_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minClusterNodeCount")
-    def min_cluster_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_cluster_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of nodes of any type in a cluster.
         Mandatory for successful addition of autoscaling settings in cluster.
@@ -207,7 +207,7 @@ class ClusterAutoscalingSettingsArgs:
         return pulumi.get(self, "min_cluster_node_count")
 
     @min_cluster_node_count.setter
-    def min_cluster_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_cluster_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_cluster_node_count", value)
 
 
@@ -225,17 +225,17 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgsDict(TypedDict):
     Number of nodes to add to a cluster during a scale-out operation.
     Must be divisible by 2 for stretched clusters.
     """
-    consumed_memory_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]
+    consumed_memory_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]]
     """
     Utilization thresholds pertaining to amount of consumed memory.
     Structure is documented below.
     """
-    cpu_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]
+    cpu_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]]
     """
     Utilization thresholds pertaining to CPU utilization.
     Structure is documented below.
     """
-    storage_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]
+    storage_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]]
     """
     Utilization thresholds pertaining to amount of consumed storage.
     Structure is documented below.
@@ -247,9 +247,9 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
                  autoscale_policy_id: pulumi.Input[_builtins.str],
                  node_type_id: pulumi.Input[_builtins.str],
                  scale_out_size: pulumi.Input[_builtins.int],
-                 consumed_memory_thresholds: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']] = None,
-                 cpu_thresholds: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']] = None,
-                 storage_thresholds: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']] = None):
+                 consumed_memory_thresholds: pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']] = None,
+                 cpu_thresholds: pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']] = None,
+                 storage_thresholds: pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] autoscale_policy_id: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] node_type_id: The canonical identifier of the node type to add or remove.
@@ -311,7 +311,7 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="consumedMemoryThresholds")
-    def consumed_memory_thresholds(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]:
+    def consumed_memory_thresholds(self) -> pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]:
         """
         Utilization thresholds pertaining to amount of consumed memory.
         Structure is documented below.
@@ -319,12 +319,12 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
         return pulumi.get(self, "consumed_memory_thresholds")
 
     @consumed_memory_thresholds.setter
-    def consumed_memory_thresholds(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]):
+    def consumed_memory_thresholds(self, value: pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]):
         pulumi.set(self, "consumed_memory_thresholds", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuThresholds")
-    def cpu_thresholds(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]:
+    def cpu_thresholds(self) -> pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]:
         """
         Utilization thresholds pertaining to CPU utilization.
         Structure is documented below.
@@ -332,12 +332,12 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
         return pulumi.get(self, "cpu_thresholds")
 
     @cpu_thresholds.setter
-    def cpu_thresholds(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]):
+    def cpu_thresholds(self, value: pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]):
         pulumi.set(self, "cpu_thresholds", value)
 
     @_builtins.property
     @pulumi.getter(name="storageThresholds")
-    def storage_thresholds(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]:
+    def storage_thresholds(self) -> pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]:
         """
         Utilization thresholds pertaining to amount of consumed storage.
         Structure is documented below.
@@ -345,7 +345,7 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
         return pulumi.get(self, "storage_thresholds")
 
     @storage_thresholds.setter
-    def storage_thresholds(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]):
+    def storage_thresholds(self, value: pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]):
         pulumi.set(self, "storage_thresholds", value)
 
 
@@ -506,7 +506,7 @@ class ClusterDatastoreMountConfigArgsDict(TypedDict):
     The network configuration for the datastore.
     Structure is documented below.
     """
-    access_mode: NotRequired[pulumi.Input[_builtins.str]]
+    access_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. NFS is accessed by hosts in either read or read_write mode
     Default value used will be READ_WRITE
@@ -514,26 +514,26 @@ class ClusterDatastoreMountConfigArgsDict(TypedDict):
     READ_ONLY
     READ_WRITE
     """
-    file_share: NotRequired[pulumi.Input[_builtins.str]]
+    file_share: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     File share name.
     """
-    ignore_colocation: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_colocation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. If set to true, the colocation requirement will be ignored.
     If set to false, the colocation requirement will be enforced.
     Colocation requirement is the requirement that the cluster must be in the
     same region/zone of datastore.
     """
-    nfs_version: NotRequired[pulumi.Input[_builtins.str]]
+    nfs_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The NFS protocol supported by the NFS volume.
     Default value used will be NFS_V3
     Possible values:
     NFS_V3
     """
-    servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Server IP addresses of the NFS volume.
@@ -546,11 +546,11 @@ class ClusterDatastoreMountConfigArgs:
     def __init__(__self__, *,
                  datastore: pulumi.Input[_builtins.str],
                  datastore_network: pulumi.Input['ClusterDatastoreMountConfigDatastoreNetworkArgs'],
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_share: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_colocation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nfs_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_share: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_colocation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nfs_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] datastore: The resource name of the datastore to unmount.
                The datastore requested to be mounted should be in same region/zone as the
@@ -627,7 +627,7 @@ class ClusterDatastoreMountConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. NFS is accessed by hosts in either read or read_write mode
         Default value used will be READ_WRITE
@@ -638,12 +638,12 @@ class ClusterDatastoreMountConfigArgs:
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="fileShare")
-    def file_share(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_share(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         File share name.
@@ -651,12 +651,12 @@ class ClusterDatastoreMountConfigArgs:
         return pulumi.get(self, "file_share")
 
     @file_share.setter
-    def file_share(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_share(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_share", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreColocation")
-    def ignore_colocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_colocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If set to true, the colocation requirement will be ignored.
         If set to false, the colocation requirement will be enforced.
@@ -666,12 +666,12 @@ class ClusterDatastoreMountConfigArgs:
         return pulumi.get(self, "ignore_colocation")
 
     @ignore_colocation.setter
-    def ignore_colocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_colocation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_colocation", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsVersion")
-    def nfs_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nfs_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The NFS protocol supported by the NFS volume.
         Default value used will be NFS_V3
@@ -681,12 +681,12 @@ class ClusterDatastoreMountConfigArgs:
         return pulumi.get(self, "nfs_version")
 
     @nfs_version.setter
-    def nfs_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nfs_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nfs_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Server IP addresses of the NFS volume.
@@ -696,7 +696,7 @@ class ClusterDatastoreMountConfigArgs:
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "servers", value)
 
 
@@ -708,19 +708,19 @@ class ClusterDatastoreMountConfigDatastoreNetworkArgsDict(TypedDict):
     https://cloud.google.com/apis/design/resource_names.
     e.g. projects/my-project/locations/us-central1/subnets/my-subnet
     """
-    connection_count: NotRequired[pulumi.Input[_builtins.int]]
+    connection_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The number of connections of the NFS volume.
     Supported from vsphere 8.0u1. Possible values are 1-4.
     Default value is 4.
     """
-    mtu: NotRequired[pulumi.Input[_builtins.int]]
+    mtu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The Maximal Transmission Unit (MTU) of the datastore.
     MTU value can range from 1330-9000. If not set, system sets
     default MTU size to 1500.
     """
-    network_peering: NotRequired[pulumi.Input[_builtins.str]]
+    network_peering: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The resource name of the network peering, used to access the
@@ -735,9 +735,9 @@ class ClusterDatastoreMountConfigDatastoreNetworkArgsDict(TypedDict):
 class ClusterDatastoreMountConfigDatastoreNetworkArgs:
     def __init__(__self__, *,
                  subnet: pulumi.Input[_builtins.str],
-                 connection_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_peering: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_peering: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] subnet: The resource name of the subnet
                Resource names are schemeless URIs that follow the conventions in
@@ -782,7 +782,7 @@ class ClusterDatastoreMountConfigDatastoreNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionCount")
-    def connection_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of connections of the NFS volume.
         Supported from vsphere 8.0u1. Possible values are 1-4.
@@ -791,12 +791,12 @@ class ClusterDatastoreMountConfigDatastoreNetworkArgs:
         return pulumi.get(self, "connection_count")
 
     @connection_count.setter
-    def connection_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The Maximal Transmission Unit (MTU) of the datastore.
         MTU value can range from 1330-9000. If not set, system sets
@@ -805,12 +805,12 @@ class ClusterDatastoreMountConfigDatastoreNetworkArgs:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPeering")
-    def network_peering(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_peering(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The resource name of the network peering, used to access the
@@ -823,7 +823,7 @@ class ClusterDatastoreMountConfigDatastoreNetworkArgs:
         return pulumi.get(self, "network_peering")
 
     @network_peering.setter
-    def network_peering(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_peering(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_peering", value)
 
 
@@ -836,7 +836,7 @@ class ClusterNodeTypeConfigArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    custom_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    custom_core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Customized number of cores available to each node of the type.
     This number must always be one of `nodeType.availableCustomCoreCounts`.
@@ -849,7 +849,7 @@ class ClusterNodeTypeConfigArgs:
     def __init__(__self__, *,
                  node_count: pulumi.Input[_builtins.int],
                  node_type_id: pulumi.Input[_builtins.str],
-                 custom_core_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 custom_core_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] node_count: The number of nodes of this type in the cluster.
         :param pulumi.Input[_builtins.str] node_type_id: The identifier for this object. Format specified above.
@@ -889,7 +889,7 @@ class ClusterNodeTypeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="customCoreCount")
-    def custom_core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Customized number of cores available to each node of the type.
         This number must always be one of `nodeType.availableCustomCoreCounts`.
@@ -899,17 +899,17 @@ class ClusterNodeTypeConfigArgs:
         return pulumi.get(self, "custom_core_count")
 
     @custom_core_count.setter
-    def custom_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_core_count", value)
 
 
 class DatastoreNfsDatastoreArgsDict(TypedDict):
-    google_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgsDict']]
+    google_file_service: NotRequired[pulumi.Input[Optional['DatastoreNfsDatastoreGoogleFileServiceArgs']]]
     """
     Google service file service configuration
     Structure is documented below.
     """
-    third_party_file_service: NotRequired[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgsDict']]
+    third_party_file_service: NotRequired[pulumi.Input[Optional['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]]
     """
     Third party file service configuration
     Structure is documented below.
@@ -918,8 +918,8 @@ class DatastoreNfsDatastoreArgsDict(TypedDict):
 @pulumi.input_type
 class DatastoreNfsDatastoreArgs:
     def __init__(__self__, *,
-                 google_file_service: Optional[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs']] = None,
-                 third_party_file_service: Optional[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgs']] = None):
+                 google_file_service: pulumi.Input[Optional['DatastoreNfsDatastoreGoogleFileServiceArgs']] = None,
+                 third_party_file_service: pulumi.Input[Optional['DatastoreNfsDatastoreThirdPartyFileServiceArgs']] = None):
         """
         :param pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs'] google_file_service: Google service file service configuration
                Structure is documented below.
@@ -933,7 +933,7 @@ class DatastoreNfsDatastoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="googleFileService")
-    def google_file_service(self) -> Optional[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs']]:
+    def google_file_service(self) -> pulumi.Input[Optional['DatastoreNfsDatastoreGoogleFileServiceArgs']]:
         """
         Google service file service configuration
         Structure is documented below.
@@ -941,12 +941,12 @@ class DatastoreNfsDatastoreArgs:
         return pulumi.get(self, "google_file_service")
 
     @google_file_service.setter
-    def google_file_service(self, value: Optional[pulumi.Input['DatastoreNfsDatastoreGoogleFileServiceArgs']]):
+    def google_file_service(self, value: pulumi.Input[Optional['DatastoreNfsDatastoreGoogleFileServiceArgs']]):
         pulumi.set(self, "google_file_service", value)
 
     @_builtins.property
     @pulumi.getter(name="thirdPartyFileService")
-    def third_party_file_service(self) -> Optional[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]:
+    def third_party_file_service(self) -> pulumi.Input[Optional['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]:
         """
         Third party file service configuration
         Structure is documented below.
@@ -954,17 +954,17 @@ class DatastoreNfsDatastoreArgs:
         return pulumi.get(self, "third_party_file_service")
 
     @third_party_file_service.setter
-    def third_party_file_service(self, value: Optional[pulumi.Input['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]):
+    def third_party_file_service(self, value: pulumi.Input[Optional['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]):
         pulumi.set(self, "third_party_file_service", value)
 
 
 class DatastoreNfsDatastoreGoogleFileServiceArgsDict(TypedDict):
-    filestore_instance: NotRequired[pulumi.Input[_builtins.str]]
+    filestore_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Google filestore instance resource name
     e.g. projects/my-project/locations/me-west1-b/instances/my-instance
     """
-    netapp_volume: NotRequired[pulumi.Input[_builtins.str]]
+    netapp_volume: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Google netapp volume resource name
     e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
@@ -973,8 +973,8 @@ class DatastoreNfsDatastoreGoogleFileServiceArgsDict(TypedDict):
 @pulumi.input_type
 class DatastoreNfsDatastoreGoogleFileServiceArgs:
     def __init__(__self__, *,
-                 filestore_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 netapp_volume: Optional[pulumi.Input[_builtins.str]] = None):
+                 filestore_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 netapp_volume: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filestore_instance: Google filestore instance resource name
                e.g. projects/my-project/locations/me-west1-b/instances/my-instance
@@ -988,7 +988,7 @@ class DatastoreNfsDatastoreGoogleFileServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="filestoreInstance")
-    def filestore_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filestore_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google filestore instance resource name
         e.g. projects/my-project/locations/me-west1-b/instances/my-instance
@@ -996,12 +996,12 @@ class DatastoreNfsDatastoreGoogleFileServiceArgs:
         return pulumi.get(self, "filestore_instance")
 
     @filestore_instance.setter
-    def filestore_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filestore_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filestore_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="netappVolume")
-    def netapp_volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netapp_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google netapp volume resource name
         e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
@@ -1009,7 +1009,7 @@ class DatastoreNfsDatastoreGoogleFileServiceArgs:
         return pulumi.get(self, "netapp_volume")
 
     @netapp_volume.setter
-    def netapp_volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netapp_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netapp_volume", value)
 
 
@@ -1098,11 +1098,11 @@ class DatastoreNfsDatastoreThirdPartyFileServiceArgs:
 
 
 class ExternalAccessRuleDestinationIpRangeArgsDict(TypedDict):
-    external_address: NotRequired[pulumi.Input[_builtins.str]]
+    external_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of an `ExternalAddress` resource.
     """
-    ip_address_range: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An IP address range in the CIDR format.
     """
@@ -1110,8 +1110,8 @@ class ExternalAccessRuleDestinationIpRangeArgsDict(TypedDict):
 @pulumi.input_type
 class ExternalAccessRuleDestinationIpRangeArgs:
     def __init__(__self__, *,
-                 external_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] external_address: The name of an `ExternalAddress` resource.
         :param pulumi.Input[_builtins.str] ip_address_range: An IP address range in the CIDR format.
@@ -1123,35 +1123,35 @@ class ExternalAccessRuleDestinationIpRangeArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalAddress")
-    def external_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of an `ExternalAddress` resource.
         """
         return pulumi.get(self, "external_address")
 
     @external_address.setter
-    def external_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddressRange")
-    def ip_address_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An IP address range in the CIDR format.
         """
         return pulumi.get(self, "ip_address_range")
 
     @ip_address_range.setter
-    def ip_address_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address_range", value)
 
 
 class ExternalAccessRuleSourceIpRangeArgsDict(TypedDict):
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A single IP address.
     """
-    ip_address_range: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An IP address range in the CIDR format.
     """
@@ -1159,8 +1159,8 @@ class ExternalAccessRuleSourceIpRangeArgsDict(TypedDict):
 @pulumi.input_type
 class ExternalAccessRuleSourceIpRangeArgs:
     def __init__(__self__, *,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_address: A single IP address.
         :param pulumi.Input[_builtins.str] ip_address_range: An IP address range in the CIDR format.
@@ -1172,35 +1172,35 @@ class ExternalAccessRuleSourceIpRangeArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A single IP address.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddressRange")
-    def ip_address_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An IP address range in the CIDR format.
         """
         return pulumi.get(self, "ip_address_range")
 
     @ip_address_range.setter
-    def ip_address_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address_range", value)
 
 
 class NetworkPolicyExternalIpArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if the service is enabled; false otherwise.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the service. New values may be added to this enum when appropriate.
@@ -1209,8 +1209,8 @@ class NetworkPolicyExternalIpArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkPolicyExternalIpArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: True if the service is enabled; false otherwise.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -1223,19 +1223,19 @@ class NetworkPolicyExternalIpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the service is enabled; false otherwise.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the service. New values may be added to this enum when appropriate.
@@ -1243,16 +1243,16 @@ class NetworkPolicyExternalIpArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class NetworkPolicyInternetAccessArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     True if the service is enabled; false otherwise.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the service. New values may be added to this enum when appropriate.
@@ -1261,8 +1261,8 @@ class NetworkPolicyInternetAccessArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkPolicyInternetAccessArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: True if the service is enabled; false otherwise.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -1275,19 +1275,19 @@ class NetworkPolicyInternetAccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the service is enabled; false otherwise.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the service. New values may be added to this enum when appropriate.
@@ -1295,18 +1295,18 @@ class NetworkPolicyInternetAccessArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class NetworkVpcNetworkArgsDict(TypedDict):
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The relative resource name of the service VPC network this VMware Engine network is attached to.
     For example: projects/123123/global/networks/my-network
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VMware Engine network type.
     Possible values are: `LEGACY`, `STANDARD`.
@@ -1315,8 +1315,8 @@ class NetworkVpcNetworkArgsDict(TypedDict):
 @pulumi.input_type
 class NetworkVpcNetworkArgs:
     def __init__(__self__, *,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: (Output)
                The relative resource name of the service VPC network this VMware Engine network is attached to.
@@ -1331,7 +1331,7 @@ class NetworkVpcNetworkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The relative resource name of the service VPC network this VMware Engine network is attached to.
@@ -1340,12 +1340,12 @@ class NetworkVpcNetworkArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VMware Engine network type.
         Possible values are: `LEGACY`, `STANDARD`.
@@ -1353,25 +1353,25 @@ class NetworkVpcNetworkArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class PrivateCloudHcxArgsDict(TypedDict):
-    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    fqdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified domain name of the appliance.
     """
-    internal_ip: NotRequired[pulumi.Input[_builtins.str]]
+    internal_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Internal IP address of the appliance.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     State of the appliance.
     Possible values are: `ACTIVE`, `CREATING`.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version of the appliance.
     """
@@ -1379,10 +1379,10 @@ class PrivateCloudHcxArgsDict(TypedDict):
 @pulumi.input_type
 class PrivateCloudHcxArgs:
     def __init__(__self__, *,
-                 fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of the appliance.
         :param pulumi.Input[_builtins.str] internal_ip: Internal IP address of the appliance.
@@ -1401,31 +1401,31 @@ class PrivateCloudHcxArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified domain name of the appliance.
         """
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
-    def fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fqdn", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internal IP address of the appliance.
         """
         return pulumi.get(self, "internal_ip")
 
     @internal_ip.setter
-    def internal_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the appliance.
         Possible values are: `ACTIVE`, `CREATING`.
@@ -1433,19 +1433,19 @@ class PrivateCloudHcxArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the appliance.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -1459,19 +1459,19 @@ class PrivateCloudManagementClusterArgsDict(TypedDict):
     * Not formatted as a UUID
     * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
     """
-    autoscaling_settings: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsArgsDict']]
+    autoscaling_settings: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsArgs']]]
     """
     Configuration of the autoscaling applied to this cluster
     Private cloud must have a minimum of 3 nodes to add autoscale settings
     Structure is documented below.
     """
-    node_type_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgsDict']]]]
+    node_type_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]]
     """
     The map of cluster node types in this cluster,
     where the key is canonical identifier of the node type (corresponds to the NodeType).
     Structure is documented below.
     """
-    stretched_cluster_config: NotRequired[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgsDict']]
+    stretched_cluster_config: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterStretchedClusterConfigArgs']]]
     """
     The stretched cluster configuration for the private cloud.
     Structure is documented below.
@@ -1481,9 +1481,9 @@ class PrivateCloudManagementClusterArgsDict(TypedDict):
 class PrivateCloudManagementClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 autoscaling_settings: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsArgs']] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]] = None,
-                 stretched_cluster_config: Optional[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgs']] = None):
+                 autoscaling_settings: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsArgs']] = None,
+                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]] = None,
+                 stretched_cluster_config: pulumi.Input[Optional['PrivateCloudManagementClusterStretchedClusterConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_id: The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
                * Only contains 1-63 alphanumeric characters and hyphens
@@ -1527,7 +1527,7 @@ class PrivateCloudManagementClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingSettings")
-    def autoscaling_settings(self) -> Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsArgs']]:
+    def autoscaling_settings(self) -> pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsArgs']]:
         """
         Configuration of the autoscaling applied to this cluster
         Private cloud must have a minimum of 3 nodes to add autoscale settings
@@ -1536,12 +1536,12 @@ class PrivateCloudManagementClusterArgs:
         return pulumi.get(self, "autoscaling_settings")
 
     @autoscaling_settings.setter
-    def autoscaling_settings(self, value: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsArgs']]):
+    def autoscaling_settings(self, value: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsArgs']]):
         pulumi.set(self, "autoscaling_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]:
+    def node_type_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]:
         """
         The map of cluster node types in this cluster,
         where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -1550,12 +1550,12 @@ class PrivateCloudManagementClusterArgs:
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]):
+    def node_type_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]):
         pulumi.set(self, "node_type_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="stretchedClusterConfig")
-    def stretched_cluster_config(self) -> Optional[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgs']]:
+    def stretched_cluster_config(self) -> pulumi.Input[Optional['PrivateCloudManagementClusterStretchedClusterConfigArgs']]:
         """
         The stretched cluster configuration for the private cloud.
         Structure is documented below.
@@ -1563,7 +1563,7 @@ class PrivateCloudManagementClusterArgs:
         return pulumi.get(self, "stretched_cluster_config")
 
     @stretched_cluster_config.setter
-    def stretched_cluster_config(self, value: Optional[pulumi.Input['PrivateCloudManagementClusterStretchedClusterConfigArgs']]):
+    def stretched_cluster_config(self, value: pulumi.Input[Optional['PrivateCloudManagementClusterStretchedClusterConfigArgs']]):
         pulumi.set(self, "stretched_cluster_config", value)
 
 
@@ -1582,7 +1582,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgsDict(TypedDict):
     that describes the autoscaling policy for compute nodes.
     Structure is documented below.
     """
-    cool_down_period: NotRequired[pulumi.Input[_builtins.str]]
+    cool_down_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum duration between consecutive autoscale operations.
     It starts once addition or removal of nodes is fully completed.
@@ -1590,12 +1590,12 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgsDict(TypedDict):
     Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
     Mandatory for successful addition of autoscaling settings in cluster.
     """
-    max_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_cluster_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of nodes of any type in a cluster.
     Mandatory for successful addition of autoscaling settings in cluster.
     """
-    min_cluster_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_cluster_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of nodes of any type in a cluster.
     Mandatory for successful addition of autoscaling settings in cluster.
@@ -1605,9 +1605,9 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgsDict(TypedDict):
 class PrivateCloudManagementClusterAutoscalingSettingsArgs:
     def __init__(__self__, *,
                  autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs']]],
-                 cool_down_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cluster_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_cluster_node_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 cool_down_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cluster_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_cluster_node_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs']]] autoscaling_policies: The map with autoscaling policies applied to the cluster.
                The key is the identifier of the policy.
@@ -1662,7 +1662,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="coolDownPeriod")
-    def cool_down_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cool_down_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum duration between consecutive autoscale operations.
         It starts once addition or removal of nodes is fully completed.
@@ -1673,12 +1673,12 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgs:
         return pulumi.get(self, "cool_down_period")
 
     @cool_down_period.setter
-    def cool_down_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cool_down_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cool_down_period", value)
 
     @_builtins.property
     @pulumi.getter(name="maxClusterNodeCount")
-    def max_cluster_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cluster_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of nodes of any type in a cluster.
         Mandatory for successful addition of autoscaling settings in cluster.
@@ -1686,12 +1686,12 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgs:
         return pulumi.get(self, "max_cluster_node_count")
 
     @max_cluster_node_count.setter
-    def max_cluster_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cluster_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cluster_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minClusterNodeCount")
-    def min_cluster_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_cluster_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of nodes of any type in a cluster.
         Mandatory for successful addition of autoscaling settings in cluster.
@@ -1699,7 +1699,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsArgs:
         return pulumi.get(self, "min_cluster_node_count")
 
     @min_cluster_node_count.setter
-    def min_cluster_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_cluster_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_cluster_node_count", value)
 
 
@@ -1717,17 +1717,17 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgsDict(
     Number of nodes to add to a cluster during a scale-out operation.
     Must be divisible by 2 for stretched clusters.
     """
-    consumed_memory_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]
+    consumed_memory_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]]
     """
     Utilization thresholds pertaining to amount of consumed memory.
     Structure is documented below.
     """
-    cpu_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]
+    cpu_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]]
     """
     Utilization thresholds pertaining to CPU utilization.
     Structure is documented below.
     """
-    storage_thresholds: NotRequired[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]
+    storage_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]]
     """
     Utilization thresholds pertaining to amount of consumed storage.
     Structure is documented below.
@@ -1739,9 +1739,9 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs:
                  autoscale_policy_id: pulumi.Input[_builtins.str],
                  node_type_id: pulumi.Input[_builtins.str],
                  scale_out_size: pulumi.Input[_builtins.int],
-                 consumed_memory_thresholds: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']] = None,
-                 cpu_thresholds: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']] = None,
-                 storage_thresholds: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']] = None):
+                 consumed_memory_thresholds: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']] = None,
+                 cpu_thresholds: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']] = None,
+                 storage_thresholds: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] autoscale_policy_id: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] node_type_id: The canonical identifier of the node type to add or remove.
@@ -1803,7 +1803,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="consumedMemoryThresholds")
-    def consumed_memory_thresholds(self) -> Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]:
+    def consumed_memory_thresholds(self) -> pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]:
         """
         Utilization thresholds pertaining to amount of consumed memory.
         Structure is documented below.
@@ -1811,12 +1811,12 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs:
         return pulumi.get(self, "consumed_memory_thresholds")
 
     @consumed_memory_thresholds.setter
-    def consumed_memory_thresholds(self, value: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]):
+    def consumed_memory_thresholds(self, value: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]):
         pulumi.set(self, "consumed_memory_thresholds", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuThresholds")
-    def cpu_thresholds(self) -> Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]:
+    def cpu_thresholds(self) -> pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]:
         """
         Utilization thresholds pertaining to CPU utilization.
         Structure is documented below.
@@ -1824,12 +1824,12 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs:
         return pulumi.get(self, "cpu_thresholds")
 
     @cpu_thresholds.setter
-    def cpu_thresholds(self, value: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]):
+    def cpu_thresholds(self, value: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]):
         pulumi.set(self, "cpu_thresholds", value)
 
     @_builtins.property
     @pulumi.getter(name="storageThresholds")
-    def storage_thresholds(self) -> Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]:
+    def storage_thresholds(self) -> pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]:
         """
         Utilization thresholds pertaining to amount of consumed storage.
         Structure is documented below.
@@ -1837,7 +1837,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs:
         return pulumi.get(self, "storage_thresholds")
 
     @storage_thresholds.setter
-    def storage_thresholds(self, value: Optional[pulumi.Input['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]):
+    def storage_thresholds(self, value: pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]):
         pulumi.set(self, "storage_thresholds", value)
 
 
@@ -1991,7 +1991,7 @@ class PrivateCloudManagementClusterNodeTypeConfigArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    custom_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    custom_core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Customized number of cores available to each node of the type.
     This number must always be one of `nodeType.availableCustomCoreCounts`.
@@ -2004,7 +2004,7 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
     def __init__(__self__, *,
                  node_count: pulumi.Input[_builtins.int],
                  node_type_id: pulumi.Input[_builtins.str],
-                 custom_core_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 custom_core_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] node_count: The number of nodes of this type in the cluster.
         :param pulumi.Input[_builtins.str] node_type_id: The identifier for this object. Format specified above.
@@ -2044,7 +2044,7 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="customCoreCount")
-    def custom_core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Customized number of cores available to each node of the type.
         This number must always be one of `nodeType.availableCustomCoreCounts`.
@@ -2054,17 +2054,17 @@ class PrivateCloudManagementClusterNodeTypeConfigArgs:
         return pulumi.get(self, "custom_core_count")
 
     @custom_core_count.setter
-    def custom_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_core_count", value)
 
 
 class PrivateCloudManagementClusterStretchedClusterConfigArgsDict(TypedDict):
-    preferred_location: NotRequired[pulumi.Input[_builtins.str]]
+    preferred_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone that will remain operational when connection between the two zones is lost.
     Specify the zone in the following format: projects/{project}/locations/{location}.
     """
-    secondary_location: NotRequired[pulumi.Input[_builtins.str]]
+    secondary_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Additional zone for a higher level of availability and load balancing.
     Specify the zone in the following format: projects/{project}/locations/{location}.
@@ -2073,8 +2073,8 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PrivateCloudManagementClusterStretchedClusterConfigArgs:
     def __init__(__self__, *,
-                 preferred_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 preferred_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] preferred_location: Zone that will remain operational when connection between the two zones is lost.
                Specify the zone in the following format: projects/{project}/locations/{location}.
@@ -2088,7 +2088,7 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="preferredLocation")
-    def preferred_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preferred_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone that will remain operational when connection between the two zones is lost.
         Specify the zone in the following format: projects/{project}/locations/{location}.
@@ -2096,12 +2096,12 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
         return pulumi.get(self, "preferred_location")
 
     @preferred_location.setter
-    def preferred_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preferred_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preferred_location", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryLocation")
-    def secondary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional zone for a higher level of availability and load balancing.
         Specify the zone in the following format: projects/{project}/locations/{location}.
@@ -2109,7 +2109,7 @@ class PrivateCloudManagementClusterStretchedClusterConfigArgs:
         return pulumi.get(self, "secondary_location")
 
     @secondary_location.setter
-    def secondary_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_location", value)
 
 
@@ -2118,12 +2118,12 @@ class PrivateCloudNetworkConfigArgsDict(TypedDict):
     """
     Management CIDR used by VMware management appliances.
     """
-    dns_server_ip: NotRequired[pulumi.Input[_builtins.str]]
+    dns_server_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     DNS Server IP of the Private Cloud.
     """
-    management_ip_address_layout_version: NotRequired[pulumi.Input[_builtins.int]]
+    management_ip_address_layout_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The IP address layout version of the management IP address range.
@@ -2133,13 +2133,13 @@ class PrivateCloudNetworkConfigArgsDict(TypedDict):
     * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
     used by all newly created private clouds. This version supports all current features.
     """
-    vmware_engine_network: NotRequired[pulumi.Input[_builtins.str]]
+    vmware_engine_network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The relative resource name of the VMware Engine network attached to the private cloud.
     Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
     where {project} can either be a project number or a project ID.
     """
-    vmware_engine_network_canonical: NotRequired[pulumi.Input[_builtins.str]]
+    vmware_engine_network_canonical: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The canonical name of the VMware Engine network in
@@ -2150,10 +2150,10 @@ class PrivateCloudNetworkConfigArgsDict(TypedDict):
 class PrivateCloudNetworkConfigArgs:
     def __init__(__self__, *,
                  management_cidr: pulumi.Input[_builtins.str],
-                 dns_server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 management_ip_address_layout_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 vmware_engine_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmware_engine_network_canonical: Optional[pulumi.Input[_builtins.str]] = None):
+                 dns_server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 management_ip_address_layout_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 vmware_engine_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmware_engine_network_canonical: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] management_cidr: Management CIDR used by VMware management appliances.
         :param pulumi.Input[_builtins.str] dns_server_ip: (Output)
@@ -2196,7 +2196,7 @@ class PrivateCloudNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsServerIp")
-    def dns_server_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         DNS Server IP of the Private Cloud.
@@ -2204,12 +2204,12 @@ class PrivateCloudNetworkConfigArgs:
         return pulumi.get(self, "dns_server_ip")
 
     @dns_server_ip.setter
-    def dns_server_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_server_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_server_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="managementIpAddressLayoutVersion")
-    def management_ip_address_layout_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def management_ip_address_layout_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The IP address layout version of the management IP address range.
@@ -2222,12 +2222,12 @@ class PrivateCloudNetworkConfigArgs:
         return pulumi.get(self, "management_ip_address_layout_version")
 
     @management_ip_address_layout_version.setter
-    def management_ip_address_layout_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def management_ip_address_layout_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "management_ip_address_layout_version", value)
 
     @_builtins.property
     @pulumi.getter(name="vmwareEngineNetwork")
-    def vmware_engine_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vmware_engine_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the VMware Engine network attached to the private cloud.
         Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
@@ -2236,12 +2236,12 @@ class PrivateCloudNetworkConfigArgs:
         return pulumi.get(self, "vmware_engine_network")
 
     @vmware_engine_network.setter
-    def vmware_engine_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vmware_engine_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vmware_engine_network", value)
 
     @_builtins.property
     @pulumi.getter(name="vmwareEngineNetworkCanonical")
-    def vmware_engine_network_canonical(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vmware_engine_network_canonical(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The canonical name of the VMware Engine network in
@@ -2250,25 +2250,25 @@ class PrivateCloudNetworkConfigArgs:
         return pulumi.get(self, "vmware_engine_network_canonical")
 
     @vmware_engine_network_canonical.setter
-    def vmware_engine_network_canonical(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vmware_engine_network_canonical(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vmware_engine_network_canonical", value)
 
 
 class PrivateCloudNsxArgsDict(TypedDict):
-    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    fqdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified domain name of the appliance.
     """
-    internal_ip: NotRequired[pulumi.Input[_builtins.str]]
+    internal_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Internal IP address of the appliance.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     State of the appliance.
     Possible values are: `ACTIVE`, `CREATING`.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version of the appliance.
     """
@@ -2276,10 +2276,10 @@ class PrivateCloudNsxArgsDict(TypedDict):
 @pulumi.input_type
 class PrivateCloudNsxArgs:
     def __init__(__self__, *,
-                 fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of the appliance.
         :param pulumi.Input[_builtins.str] internal_ip: Internal IP address of the appliance.
@@ -2298,31 +2298,31 @@ class PrivateCloudNsxArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified domain name of the appliance.
         """
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
-    def fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fqdn", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internal IP address of the appliance.
         """
         return pulumi.get(self, "internal_ip")
 
     @internal_ip.setter
-    def internal_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the appliance.
         Possible values are: `ACTIVE`, `CREATING`.
@@ -2330,37 +2330,37 @@ class PrivateCloudNsxArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the appliance.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class PrivateCloudVcenterArgsDict(TypedDict):
-    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    fqdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified domain name of the appliance.
     """
-    internal_ip: NotRequired[pulumi.Input[_builtins.str]]
+    internal_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Internal IP address of the appliance.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     State of the appliance.
     Possible values are: `ACTIVE`, `CREATING`.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version of the appliance.
     """
@@ -2368,10 +2368,10 @@ class PrivateCloudVcenterArgsDict(TypedDict):
 @pulumi.input_type
 class PrivateCloudVcenterArgs:
     def __init__(__self__, *,
-                 fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] fqdn: Fully qualified domain name of the appliance.
         :param pulumi.Input[_builtins.str] internal_ip: Internal IP address of the appliance.
@@ -2390,31 +2390,31 @@ class PrivateCloudVcenterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified domain name of the appliance.
         """
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
-    def fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fqdn", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internal IP address of the appliance.
         """
         return pulumi.get(self, "internal_ip")
 
     @internal_ip.setter
-    def internal_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the appliance.
         Possible values are: `ACTIVE`, `CREATING`.
@@ -2422,29 +2422,29 @@ class PrivateCloudVcenterArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the appliance.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class SubnetDhcpAddressRangeArgsDict(TypedDict):
-    first_address: NotRequired[pulumi.Input[_builtins.str]]
+    first_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The first IP address of the range.
     """
-    last_address: NotRequired[pulumi.Input[_builtins.str]]
+    last_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The last IP address of the range.
@@ -2453,8 +2453,8 @@ class SubnetDhcpAddressRangeArgsDict(TypedDict):
 @pulumi.input_type
 class SubnetDhcpAddressRangeArgs:
     def __init__(__self__, *,
-                 first_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 first_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] first_address: (Output)
                The first IP address of the range.
@@ -2468,7 +2468,7 @@ class SubnetDhcpAddressRangeArgs:
 
     @_builtins.property
     @pulumi.getter(name="firstAddress")
-    def first_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def first_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The first IP address of the range.
@@ -2476,12 +2476,12 @@ class SubnetDhcpAddressRangeArgs:
         return pulumi.get(self, "first_address")
 
     @first_address.setter
-    def first_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def first_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "first_address", value)
 
     @_builtins.property
     @pulumi.getter(name="lastAddress")
-    def last_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The last IP address of the range.
@@ -2489,7 +2489,7 @@ class SubnetDhcpAddressRangeArgs:
         return pulumi.get(self, "last_address")
 
     @last_address.setter
-    def last_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_address", value)
 
 

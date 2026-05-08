@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *     zone: zone,
  * });
  * const exampleInstanceTemplate = new gcp.compute.InstanceTemplate("example", {
- *     machineType: Promise.all([example, std.startswith({
+ *     machineType: output(Promise.all([example, std.startswith({
  *         input: mt.name,
  *         prefix: "c3-",
  *     }), example, std.startswith({
@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  *             .filter(mt => invoke1.result).map(mt => (mt.name)),
  *             .filter(mt => invoke2.result).map(mt => (mt.name)),
  *         ],
- *     })).then(invoke => invoke.result?.[0]),
+ *     })).then(invoke => invoke.result?.[0])).apply(x =>String(x)),
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-11",
  *         autoDelete: true,
@@ -184,7 +184,7 @@ export interface GetMachineTypesResult {
  *     zone: zone,
  * });
  * const exampleInstanceTemplate = new gcp.compute.InstanceTemplate("example", {
- *     machineType: Promise.all([example, std.startswith({
+ *     machineType: output(Promise.all([example, std.startswith({
  *         input: mt.name,
  *         prefix: "c3-",
  *     }), example, std.startswith({
@@ -199,7 +199,7 @@ export interface GetMachineTypesResult {
  *             .filter(mt => invoke1.result).map(mt => (mt.name)),
  *             .filter(mt => invoke2.result).map(mt => (mt.name)),
  *         ],
- *     })).then(invoke => invoke.result?.[0]),
+ *     })).then(invoke => invoke.result?.[0])).apply(x =>String(x)),
  *     disks: [{
  *         sourceImage: "debian-cloud/debian-11",
  *         autoDelete: true,
@@ -225,13 +225,13 @@ export interface GetMachineTypesOutputArgs {
     /**
      * A filter expression that filters machine types listed in the response.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Project from which to list available zones. Defaults to project declared in the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Zone from which to list machine types.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

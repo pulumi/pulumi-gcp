@@ -47,11 +47,11 @@ namespace Pulumi.Gcp.ServiceUsage
     ///     {
     ///         Project = myProject.ProjectId,
     ///         Service = "servicemanagement.googleapis.com",
-    ///         Metric = Std.Index.Urlencode.Invoke(new()
+    ///         Metric = Std.Urlencode.Invoke(new()
     ///         {
     ///             Input = "servicemanagement.googleapis.com/default_requests",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         Limit = Std.Index.Urlencode.Invoke(new()
+    ///         Limit = Std.Urlencode.Invoke(new()
     ///         {
     ///             Input = "/min/project",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -88,11 +88,11 @@ namespace Pulumi.Gcp.ServiceUsage
     ///         },
     ///         Project = myProject.ProjectId,
     ///         Service = "compute.googleapis.com",
-    ///         Metric = Std.Index.Urlencode.Invoke(new()
+    ///         Metric = Std.Urlencode.Invoke(new()
     ///         {
     ///             Input = "compute.googleapis.com/n2_cpus",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         Limit = Std.Index.Urlencode.Invoke(new()
+    ///         Limit = Std.Urlencode.Invoke(new()
     ///         {
     ///             Input = "/project/region",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -125,11 +125,11 @@ namespace Pulumi.Gcp.ServiceUsage
     ///     {
     ///         Project = myProject.ProjectId,
     ///         Service = "libraryagent.googleapis.com",
-    ///         Metric = Std.Index.Urlencode.Invoke(new()
+    ///         Metric = Std.Urlencode.Invoke(new()
     ///         {
     ///             Input = "libraryagent.googleapis.com/borrows",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         Limit = Std.Index.Urlencode.Invoke(new()
+    ///         Limit = Std.Urlencode.Invoke(new()
     ///         {
     ///             Input = "/author/project",
     ///         }).Apply(invoke =&gt; invoke.Result),

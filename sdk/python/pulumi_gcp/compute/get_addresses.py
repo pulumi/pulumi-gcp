@@ -160,9 +160,9 @@ def get_addresses(filter: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-def get_addresses_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_addresses_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressesResult]:
     """
     List IP addresses in a project. For more information see

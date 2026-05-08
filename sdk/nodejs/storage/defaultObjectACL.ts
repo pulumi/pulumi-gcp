@@ -118,13 +118,13 @@ export interface DefaultObjectACLState {
     /**
      * The name of the bucket it applies to.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * List of role/entity pairs in the form `ROLE:entity`.
      * See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Omitting the field is the same as providing an empty list.
      */
-    roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
+    roleEntities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -140,5 +140,5 @@ export interface DefaultObjectACLArgs {
      * See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
      * Omitting the field is the same as providing an empty list.
      */
-    roleEntities?: pulumi.Input<pulumi.Input<string>[]>;
+    roleEntities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -92,9 +92,9 @@ export interface GetRegistryRepositoryOutputArgs {
     /**
      * The project ID that this repository is attached to.  If not provided, provider project will be used instead.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -719,19 +719,19 @@ export interface RestorePlanState {
      * A reference to the BackupPlan from which Backups may be used
      * as the source for Restores created via this RestorePlan.
      */
-    backupPlan?: pulumi.Input<string>;
+    backupPlan?: pulumi.Input<string | undefined>;
     /**
      * The source cluster from which Restores will be created via this RestorePlan.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * User specified descriptive string for this RestorePlan.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -740,42 +740,42 @@ export interface RestorePlanState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the Restore Plan.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full name of the BackupPlan Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines the configuration of Restores created via this RestorePlan.
      * Structure is documented below.
      */
-    restoreConfig?: pulumi.Input<inputs.gkebackup.RestorePlanRestoreConfig>;
+    restoreConfig?: pulumi.Input<inputs.gkebackup.RestorePlanRestoreConfig | undefined>;
     /**
      * The State of the RestorePlan.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Detailed description of why RestorePlan is in its current state.
      */
-    stateReason?: pulumi.Input<string>;
+    stateReason?: pulumi.Input<string | undefined>;
     /**
      * Server generated, unique identifier of UUID format.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -794,7 +794,7 @@ export interface RestorePlanArgs {
     /**
      * User specified descriptive string for this RestorePlan.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -803,7 +803,7 @@ export interface RestorePlanArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the Restore Plan.
      */
@@ -811,12 +811,12 @@ export interface RestorePlanArgs {
     /**
      * The full name of the BackupPlan Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines the configuration of Restores created via this RestorePlan.
      * Structure is documented below.

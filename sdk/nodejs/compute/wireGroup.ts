@@ -224,24 +224,24 @@ export interface WireGroupState {
     /**
      * Indicates whether the wire group is administratively enabled.
      */
-    adminEnabled?: pulumi.Input<boolean>;
+    adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Required cross site network to which wire group belongs.
      */
-    crossSiteNetwork?: pulumi.Input<string>;
+    crossSiteNetwork?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Endpoints grouped by location, each mapping to interconnect configurations.
      * Structure is documented below.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupEndpoint>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -249,33 +249,33 @@ export interface WireGroupState {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Topology details for the wire group configuration.
      * Structure is documented below.
      */
-    topologies?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupTopology>[]>;
+    topologies?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupTopology>[] | undefined>;
     /**
      * (Optional, Beta)
      * Properties specific to the wire group.
      * Structure is documented below.
      */
-    wireGroupProperties?: pulumi.Input<inputs.compute.WireGroupWireGroupProperties>;
+    wireGroupProperties?: pulumi.Input<inputs.compute.WireGroupWireGroupProperties | undefined>;
     /**
      * Default properties for wires within the group.
      * Structure is documented below.
      */
-    wireProperties?: pulumi.Input<inputs.compute.WireGroupWireProperties>;
+    wireProperties?: pulumi.Input<inputs.compute.WireGroupWireProperties | undefined>;
     /**
      * The single/redundant wire(s) managed by the wire group.
      * Structure is documented below.
      */
-    wires?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupWire>[]>;
+    wires?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupWire>[] | undefined>;
 }
 
 /**
@@ -285,7 +285,7 @@ export interface WireGroupArgs {
     /**
      * Indicates whether the wire group is administratively enabled.
      */
-    adminEnabled?: pulumi.Input<boolean>;
+    adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Required cross site network to which wire group belongs.
      */
@@ -293,12 +293,12 @@ export interface WireGroupArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Endpoints grouped by location, each mapping to interconnect configurations.
      * Structure is documented below.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.compute.WireGroupEndpoint>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -306,21 +306,21 @@ export interface WireGroupArgs {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Properties specific to the wire group.
      * Structure is documented below.
      */
-    wireGroupProperties?: pulumi.Input<inputs.compute.WireGroupWireGroupProperties>;
+    wireGroupProperties?: pulumi.Input<inputs.compute.WireGroupWireGroupProperties | undefined>;
     /**
      * Default properties for wires within the group.
      * Structure is documented below.
      */
-    wireProperties?: pulumi.Input<inputs.compute.WireGroupWireProperties>;
+    wireProperties?: pulumi.Input<inputs.compute.WireGroupWireProperties | undefined>;
 }

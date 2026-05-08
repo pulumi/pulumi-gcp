@@ -249,38 +249,38 @@ export interface BackupState {
     /**
      * The amount of bytes needed to allocate a full copy of the snapshot content.
      */
-    capacityGb?: pulumi.Input<string>;
+    capacityGb?: pulumi.Input<string | undefined>;
     /**
      * The time when the snapshot was created in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Amount of bytes that will be downloaded if the backup is restored.
      */
-    downloadBytes?: pulumi.Input<string>;
+    downloadBytes?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * KMS key name used for data encryption.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the backup. The name must be unique within the specified instance.
      * The name must be 1-63 characters long, and comply with
@@ -290,44 +290,44 @@ export interface BackupState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
-    sourceFileShare?: pulumi.Input<string>;
+    sourceFileShare?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
      */
-    sourceInstance?: pulumi.Input<string>;
+    sourceInstance?: pulumi.Input<string | undefined>;
     /**
      * The service tier of the source Cloud Filestore instance that this backup is created from.
      */
-    sourceInstanceTier?: pulumi.Input<string>;
+    sourceInstanceTier?: pulumi.Input<string | undefined>;
     /**
      * The backup state.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
-    storageBytes?: pulumi.Input<string>;
+    storageBytes?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      * The field is ignored (both PUT & PATCH) when empty.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -337,14 +337,14 @@ export interface BackupArgs {
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      */
@@ -358,12 +358,12 @@ export interface BackupArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
@@ -378,5 +378,5 @@ export interface BackupArgs {
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      * The field is ignored (both PUT & PATCH) when empty.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -109,7 +109,7 @@ def get_iam_policy(folder: Optional[_builtins.str] = None,
         folder=pulumi.get(__ret__, 'folder'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_iam_policy_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
+def get_iam_policy_output(folder: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a folder.

@@ -178,16 +178,16 @@ export interface EncryptionSpecState {
      * A nested object resource.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.diagflow.EncryptionSpecEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.diagflow.EncryptionSpecEncryptionSpec | undefined>;
     /**
      * The location in which the encryptionSpec is to be initialized.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -207,5 +207,5 @@ export interface EncryptionSpecArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -25,10 +25,10 @@ class EvaluationArgs:
                  display_name: pulumi.Input[_builtins.str],
                  evaluation_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 golden: Optional[pulumi.Input['EvaluationGoldenArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 golden: pulumi.Input[Optional['EvaluationGoldenArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Evaluation resource.
 
@@ -110,19 +110,19 @@ class EvaluationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined description of the evaluation.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def golden(self) -> Optional[pulumi.Input['EvaluationGoldenArgs']]:
+    def golden(self) -> pulumi.Input[Optional['EvaluationGoldenArgs']]:
         """
         Golden input.
         Structure is documented below.
@@ -130,12 +130,12 @@ class EvaluationArgs:
         return pulumi.get(self, "golden")
 
     @golden.setter
-    def golden(self, value: Optional[pulumi.Input['EvaluationGoldenArgs']]):
+    def golden(self, value: pulumi.Input[Optional['EvaluationGoldenArgs']]):
         pulumi.set(self, "golden", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -143,42 +143,42 @@ class EvaluationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User defined tags to categorize the evaluation.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _EvaluationState:
     def __init__(__self__, *,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 evaluation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_runs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 golden: Optional[pulumi.Input['EvaluationGoldenArgs']] = None,
-                 invalid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_runs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 golden: pulumi.Input[Optional['EvaluationGoldenArgs']] = None,
+                 invalid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Evaluation resources.
 
@@ -242,91 +242,91 @@ class _EvaluationState:
 
     @_builtins.property
     @pulumi.getter
-    def app(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required)
         """
         return pulumi.get(self, "app")
 
     @app.setter
-    def app(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the evaluation was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user who created the evaluation.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined description of the evaluation.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined display name of the evaluation.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Etag used to ensure the object hasn't changed during a read-modify-write operation.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationDatasets")
-    def evaluation_datasets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def evaluation_datasets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of evaluation datasets the evaluation belongs to.
         """
         return pulumi.get(self, "evaluation_datasets")
 
     @evaluation_datasets.setter
-    def evaluation_datasets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def evaluation_datasets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "evaluation_datasets", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationId")
-    def evaluation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the evaluation, which will become the final component of
         the evaluation's resource name. If not provided, a unique ID will be
@@ -335,24 +335,24 @@ class _EvaluationState:
         return pulumi.get(self, "evaluation_id")
 
     @evaluation_id.setter
-    def evaluation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationRuns")
-    def evaluation_runs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def evaluation_runs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The evaluation runs for this evaluation.
         """
         return pulumi.get(self, "evaluation_runs")
 
     @evaluation_runs.setter
-    def evaluation_runs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def evaluation_runs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "evaluation_runs", value)
 
     @_builtins.property
     @pulumi.getter
-    def golden(self) -> Optional[pulumi.Input['EvaluationGoldenArgs']]:
+    def golden(self) -> pulumi.Input[Optional['EvaluationGoldenArgs']]:
         """
         Golden input.
         Structure is documented below.
@@ -360,48 +360,48 @@ class _EvaluationState:
         return pulumi.get(self, "golden")
 
     @golden.setter
-    def golden(self, value: Optional[pulumi.Input['EvaluationGoldenArgs']]):
+    def golden(self, value: pulumi.Input[Optional['EvaluationGoldenArgs']]):
         pulumi.set(self, "golden", value)
 
     @_builtins.property
     @pulumi.getter
-    def invalid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invalid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the evaluation is invalid.
         """
         return pulumi.get(self, "invalid")
 
     @invalid.setter
-    def invalid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invalid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invalid", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdatedBy")
-    def last_updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user who last updated the evaluation.
         """
         return pulumi.get(self, "last_updated_by")
 
     @last_updated_by.setter
-    def last_updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_updated_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required)
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The unique identifier of the evaluation.
         Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
@@ -409,12 +409,12 @@ class _EvaluationState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -422,31 +422,31 @@ class _EvaluationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User defined tags to categorize the evaluation.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the evaluation was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -456,14 +456,14 @@ class Evaluation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 golden: Optional[pulumi.Input[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Customer Engagement Suite Evaluation
@@ -1491,14 +1491,14 @@ class Evaluation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 golden: Optional[pulumi.Input[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1543,23 +1543,23 @@ class Evaluation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            evaluation_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            evaluation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            evaluation_runs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            golden: Optional[pulumi.Input[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
-            invalid: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Evaluation':
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            evaluation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_runs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            golden: pulumi.Input[Optional[Union['EvaluationGoldenArgs', 'EvaluationGoldenArgsDict']]] = None,
+            invalid: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Evaluation':
         """
         Get an existing Evaluation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

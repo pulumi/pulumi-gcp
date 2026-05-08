@@ -29,8 +29,8 @@ public final class ColabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.colab.ColabFunctions;
      * import com.pulumi.gcp.colab.inputs.GetRuntimeTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -71,8 +71,8 @@ public final class ColabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.colab.ColabFunctions;
      * import com.pulumi.gcp.colab.inputs.GetRuntimeTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -113,8 +113,8 @@ public final class ColabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.colab.ColabFunctions;
      * import com.pulumi.gcp.colab.inputs.GetRuntimeTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class ColabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.colab.ColabFunctions;
      * import com.pulumi.gcp.colab.inputs.GetRuntimeTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -197,8 +197,8 @@ public final class ColabFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.colab.ColabFunctions;
      * import com.pulumi.gcp.colab.inputs.GetRuntimeTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

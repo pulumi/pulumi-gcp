@@ -21,9 +21,9 @@ class OrganizationSccBigQueryExportArgs:
     def __init__(__self__, *,
                  big_query_export_id: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationSccBigQueryExport resource.
 
@@ -90,7 +90,7 @@ class OrganizationSccBigQueryExportArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataset to write findings' updates to.
         Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
@@ -99,24 +99,24 @@ class OrganizationSccBigQueryExportArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expression that defines the filter to apply across create/update
         events of findings. The
@@ -141,23 +141,23 @@ class OrganizationSccBigQueryExportArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
 
 @pulumi.input_type
 class _OrganizationSccBigQueryExportState:
     def __init__(__self__, *,
-                 big_query_export_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 most_recent_editor: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 most_recent_editor: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationSccBigQueryExport resources.
 
@@ -223,19 +223,19 @@ class _OrganizationSccBigQueryExportState:
 
     @_builtins.property
     @pulumi.getter(name="bigQueryExportId")
-    def big_query_export_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def big_query_export_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This must be unique within the organization.
         """
         return pulumi.get(self, "big_query_export_id")
 
     @big_query_export_id.setter
-    def big_query_export_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def big_query_export_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "big_query_export_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -244,12 +244,12 @@ class _OrganizationSccBigQueryExportState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataset to write findings' updates to.
         Its format is "projects/[projectId]/datasets/[bigquery_dataset_id]".
@@ -258,24 +258,24 @@ class _OrganizationSccBigQueryExportState:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expression that defines the filter to apply across create/update
         events of findings. The
@@ -300,12 +300,12 @@ class _OrganizationSccBigQueryExportState:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="mostRecentEditor")
-    def most_recent_editor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def most_recent_editor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the user who last edited the BigQuery export.
         This field is set by the server and will be ignored if provided on export creation or update.
@@ -313,12 +313,12 @@ class _OrganizationSccBigQueryExportState:
         return pulumi.get(self, "most_recent_editor")
 
     @most_recent_editor.setter
-    def most_recent_editor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def most_recent_editor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "most_recent_editor", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of this export, in the format
         `organizations/{{organization}}/bigQueryExports/{{big_query_export_id}}`.
@@ -327,12 +327,12 @@ class _OrganizationSccBigQueryExportState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization whose Cloud Security Command Center the Big Query Export
         Config lives in.
@@ -340,24 +340,24 @@ class _OrganizationSccBigQueryExportState:
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter
-    def principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account that needs permission to create table and upload data to the BigQuery dataset.
         """
         return pulumi.get(self, "principal")
 
     @principal.setter
-    def principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -366,7 +366,7 @@ class _OrganizationSccBigQueryExportState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -376,11 +376,11 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_export_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
+                 big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Cloud Security Command Center (Cloud SCC) Big Query Export Config.
@@ -544,11 +544,11 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_query_export_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
+                 big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -582,16 +582,16 @@ class OrganizationSccBigQueryExport(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            big_query_export_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            filter: Optional[pulumi.Input[_builtins.str]] = None,
-            most_recent_editor: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            principal: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationSccBigQueryExport':
+            big_query_export_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            most_recent_editor: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            principal: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationSccBigQueryExport':
         """
         Get an existing OrganizationSccBigQueryExport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -103,7 +103,7 @@ def get_group_transitive_memberships(group: Optional[_builtins.str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         memberships=pulumi.get(__ret__, 'memberships'))
-def get_group_transitive_memberships_output(group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_transitive_memberships_output(group: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupTransitiveMembershipsResult]:
     """
     Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `cloudidentity_get_group_memberships` returns details of only direct members of the group, `cloudidentity_get_group_transitive_memberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.

@@ -143,9 +143,9 @@ def get_runtime_iam_policy(location: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         runtime_name=pulumi.get(__ret__, 'runtime_name'))
-def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  runtime_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_runtime_iam_policy_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  runtime_name: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuntimeIamPolicyResult]:
     """
     > **Warning:** The parent resource has been deprecated: `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.

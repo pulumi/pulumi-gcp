@@ -22,9 +22,9 @@ __all__ = ['ClusterUserCreatedConnectionsArgs', 'ClusterUserCreatedConnections']
 class ClusterUserCreatedConnectionsArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 cluster_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterUserCreatedConnections resource.
 
@@ -57,7 +57,7 @@ class ClusterUserCreatedConnectionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterEndpoints")
-    def cluster_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]:
+    def cluster_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]:
         """
         A list of cluster endpoints
         Structure is documented below.
@@ -65,24 +65,24 @@ class ClusterUserCreatedConnectionsArgs:
         return pulumi.get(self, "cluster_endpoints")
 
     @cluster_endpoints.setter
-    def cluster_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]):
+    def cluster_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]):
         pulumi.set(self, "cluster_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Redis cluster these endpoints should be added to.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -90,17 +90,17 @@ class ClusterUserCreatedConnectionsArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ClusterUserCreatedConnectionsState:
     def __init__(__self__, *,
-                 cluster_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterUserCreatedConnections resources.
 
@@ -122,7 +122,7 @@ class _ClusterUserCreatedConnectionsState:
 
     @_builtins.property
     @pulumi.getter(name="clusterEndpoints")
-    def cluster_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]:
+    def cluster_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]:
         """
         A list of cluster endpoints
         Structure is documented below.
@@ -130,24 +130,24 @@ class _ClusterUserCreatedConnectionsState:
         return pulumi.get(self, "cluster_endpoints")
 
     @cluster_endpoints.setter
-    def cluster_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]):
+    def cluster_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointArgs']]]]):
         pulumi.set(self, "cluster_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Redis cluster these endpoints should be added to.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -155,19 +155,19 @@ class _ClusterUserCreatedConnectionsState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the region of the Redis cluster these endpoints should be added to.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -177,10 +177,10 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterUserCreatedConnectionsClusterEndpointArgs', 'ClusterUserCreatedConnectionsClusterEndpointArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterUserCreatedConnectionsClusterEndpointArgs', 'ClusterUserCreatedConnectionsClusterEndpointArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages user created connections for Redis cluster
@@ -736,10 +736,10 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterUserCreatedConnectionsClusterEndpointArgs', 'ClusterUserCreatedConnectionsClusterEndpointArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterUserCreatedConnectionsClusterEndpointArgs', 'ClusterUserCreatedConnectionsClusterEndpointArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -765,10 +765,10 @@ class ClusterUserCreatedConnections(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterUserCreatedConnectionsClusterEndpointArgs', 'ClusterUserCreatedConnectionsClusterEndpointArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClusterUserCreatedConnections':
+            cluster_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterUserCreatedConnectionsClusterEndpointArgs', 'ClusterUserCreatedConnectionsClusterEndpointArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClusterUserCreatedConnections':
         """
         Get an existing ClusterUserCreatedConnections resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

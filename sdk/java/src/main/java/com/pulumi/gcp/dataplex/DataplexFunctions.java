@@ -56,8 +56,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -140,8 +140,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -182,8 +182,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -224,8 +224,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAspectTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -266,8 +266,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -310,8 +310,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -354,8 +354,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -442,8 +442,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetAssetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -489,8 +489,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -534,8 +534,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -579,8 +579,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -624,8 +624,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -669,8 +669,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDataQualityRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -711,8 +711,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -753,8 +753,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -795,8 +795,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -837,8 +837,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -879,8 +879,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetDatascanIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -921,8 +921,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -963,8 +963,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1005,8 +1005,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1047,8 +1047,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1089,8 +1089,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1131,8 +1131,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1173,8 +1173,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1215,8 +1215,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1257,8 +1257,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1299,8 +1299,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetEntryTypeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1341,8 +1341,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1383,8 +1383,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1425,8 +1425,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1467,8 +1467,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1509,8 +1509,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetGlossaryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1551,8 +1551,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1593,8 +1593,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1635,8 +1635,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1677,8 +1677,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1719,8 +1719,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetLakeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1761,8 +1761,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1804,8 +1804,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1847,8 +1847,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1890,8 +1890,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1933,8 +1933,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetTaskIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1976,8 +1976,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2019,8 +2019,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2062,8 +2062,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2105,8 +2105,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2148,8 +2148,8 @@ public final class DataplexFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataplex.DataplexFunctions;
      * import com.pulumi.gcp.dataplex.inputs.GetZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -23,8 +23,8 @@ class SettingsArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
-                 email_notification_settings: Optional[pulumi.Input['SettingsEmailNotificationSettingsArgs']] = None,
-                 service_account_approver_settings: Optional[pulumi.Input['SettingsServiceAccountApproverSettingsArgs']] = None):
+                 email_notification_settings: pulumi.Input[Optional['SettingsEmailNotificationSettingsArgs']] = None,
+                 service_account_approver_settings: pulumi.Input[Optional['SettingsServiceAccountApproverSettingsArgs']] = None):
         """
         The set of arguments for constructing a Settings resource.
 
@@ -68,7 +68,7 @@ class SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="emailNotificationSettings")
-    def email_notification_settings(self) -> Optional[pulumi.Input['SettingsEmailNotificationSettingsArgs']]:
+    def email_notification_settings(self) -> pulumi.Input[Optional['SettingsEmailNotificationSettingsArgs']]:
         """
         EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
         Structure is documented below.
@@ -76,12 +76,12 @@ class SettingsArgs:
         return pulumi.get(self, "email_notification_settings")
 
     @email_notification_settings.setter
-    def email_notification_settings(self, value: Optional[pulumi.Input['SettingsEmailNotificationSettingsArgs']]):
+    def email_notification_settings(self, value: pulumi.Input[Optional['SettingsEmailNotificationSettingsArgs']]):
         pulumi.set(self, "email_notification_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountApproverSettings")
-    def service_account_approver_settings(self) -> Optional[pulumi.Input['SettingsServiceAccountApproverSettingsArgs']]:
+    def service_account_approver_settings(self) -> pulumi.Input[Optional['SettingsServiceAccountApproverSettingsArgs']]:
         """
         This controls the node-level settings for allowing service accounts as approvers.
         Structure is documented below.
@@ -89,21 +89,21 @@ class SettingsArgs:
         return pulumi.get(self, "service_account_approver_settings")
 
     @service_account_approver_settings.setter
-    def service_account_approver_settings(self, value: Optional[pulumi.Input['SettingsServiceAccountApproverSettingsArgs']]):
+    def service_account_approver_settings(self, value: pulumi.Input[Optional['SettingsServiceAccountApproverSettingsArgs']]):
         pulumi.set(self, "service_account_approver_settings", value)
 
 
 @pulumi.input_type
 class _SettingsState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_notification_settings: Optional[pulumi.Input['SettingsEmailNotificationSettingsArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_approver_settings: Optional[pulumi.Input['SettingsServiceAccountApproverSettingsArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_notification_settings: pulumi.Input[Optional['SettingsEmailNotificationSettingsArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_approver_settings: pulumi.Input[Optional['SettingsServiceAccountApproverSettingsArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
 
@@ -140,7 +140,7 @@ class _SettingsState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
         Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
@@ -148,12 +148,12 @@ class _SettingsState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="emailNotificationSettings")
-    def email_notification_settings(self) -> Optional[pulumi.Input['SettingsEmailNotificationSettingsArgs']]:
+    def email_notification_settings(self) -> pulumi.Input[Optional['SettingsEmailNotificationSettingsArgs']]:
         """
         EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
         Structure is documented below.
@@ -161,36 +161,36 @@ class _SettingsState:
         return pulumi.get(self, "email_notification_settings")
 
     @email_notification_settings.setter
-    def email_notification_settings(self, value: Optional[pulumi.Input['SettingsEmailNotificationSettingsArgs']]):
+    def email_notification_settings(self, value: pulumi.Input[Optional['SettingsEmailNotificationSettingsArgs']]):
         pulumi.set(self, "email_notification_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint for optimistic concurrency returned in the response of GetSettings. Must be provided in the requests to UpdateSettings. If the value provided does not match the value known to the server, ABORTED will be thrown, and the client should retry the read-modify-write cycle.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the PAM settings resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the settings resource. Possible formats:
         projects/{project-id|project-number}/locations/{location}/settings folders/{folder-number}/locations/{location}/settings organizations/{organization-number}/locations/{location}/settings
@@ -198,24 +198,24 @@ class _SettingsState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountApproverSettings")
-    def service_account_approver_settings(self) -> Optional[pulumi.Input['SettingsServiceAccountApproverSettingsArgs']]:
+    def service_account_approver_settings(self) -> pulumi.Input[Optional['SettingsServiceAccountApproverSettingsArgs']]:
         """
         This controls the node-level settings for allowing service accounts as approvers.
         Structure is documented below.
@@ -223,12 +223,12 @@ class _SettingsState:
         return pulumi.get(self, "service_account_approver_settings")
 
     @service_account_approver_settings.setter
-    def service_account_approver_settings(self, value: Optional[pulumi.Input['SettingsServiceAccountApproverSettingsArgs']]):
+    def service_account_approver_settings(self, value: pulumi.Input[Optional['SettingsServiceAccountApproverSettingsArgs']]):
         pulumi.set(self, "service_account_approver_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
         Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
@@ -236,7 +236,7 @@ class _SettingsState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -246,10 +246,10 @@ class Settings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email_notification_settings: Optional[pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_approver_settings: Optional[pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
+                 email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Settings resource defines the properties, applied directly to the resource or inherited through the hierarchy, to enable consistent, federated use of PAM.
@@ -403,10 +403,10 @@ class Settings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email_notification_settings: Optional[pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_approver_settings: Optional[pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
+                 email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,14 +438,14 @@ class Settings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            email_notification_settings: Optional[pulumi.Input[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_approver_settings: Optional[pulumi.Input[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Settings':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            email_notification_settings: pulumi.Input[Optional[Union['SettingsEmailNotificationSettingsArgs', 'SettingsEmailNotificationSettingsArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_approver_settings: pulumi.Input[Optional[Union['SettingsServiceAccountApproverSettingsArgs', 'SettingsServiceAccountApproverSettingsArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Settings':
         """
         Get an existing Settings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

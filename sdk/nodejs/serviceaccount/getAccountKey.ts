@@ -99,5 +99,5 @@ export interface GetAccountKeyOutputArgs {
     /**
      * The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
      */
-    publicKeyType?: pulumi.Input<string>;
+    publicKeyType?: pulumi.Input<string | undefined>;
 }

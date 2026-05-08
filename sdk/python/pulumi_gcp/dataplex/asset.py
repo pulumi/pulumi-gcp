@@ -26,11 +26,11 @@ class AssetArgs:
                  lake: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  resource_spec: pulumi.Input['AssetResourceSpecArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Asset resource.
 
@@ -126,31 +126,31 @@ class AssetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the asset.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. User friendly display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User defined labels for the asset.
 
@@ -160,56 +160,56 @@ class AssetArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the asset.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _AssetState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataplex_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_spec: Optional[pulumi.Input['AssetDiscoverySpecArgs']] = None,
-                 discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lake: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_spec: Optional[pulumi.Input['AssetResourceSpecArgs']] = None,
-                 resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]]] = None,
-                 security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_spec: pulumi.Input[Optional['AssetDiscoverySpecArgs']] = None,
+                 discovery_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lake: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_spec: pulumi.Input[Optional['AssetResourceSpecArgs']] = None,
+                 resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['AssetResourceStatusArgs']]]] = None,
+                 security_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Asset resources.
 
@@ -277,91 +277,91 @@ class _AssetState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the asset was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataplexZone")
-    def dataplex_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataplex_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone for the resource
         """
         return pulumi.get(self, "dataplex_zone")
 
     @dataplex_zone.setter
-    def dataplex_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataplex_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataplex_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the asset.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="discoverySpec")
-    def discovery_spec(self) -> Optional[pulumi.Input['AssetDiscoverySpecArgs']]:
+    def discovery_spec(self) -> pulumi.Input[Optional['AssetDiscoverySpecArgs']]:
         """
         Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         """
         return pulumi.get(self, "discovery_spec")
 
     @discovery_spec.setter
-    def discovery_spec(self, value: Optional[pulumi.Input['AssetDiscoverySpecArgs']]):
+    def discovery_spec(self, value: pulumi.Input[Optional['AssetDiscoverySpecArgs']]):
         pulumi.set(self, "discovery_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryStatuses")
-    def discovery_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]]:
+    def discovery_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]]:
         """
         Output only. Status of the discovery feature applied to data referenced by this asset.
         """
         return pulumi.get(self, "discovery_statuses")
 
     @discovery_statuses.setter
-    def discovery_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]]):
+    def discovery_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]]):
         pulumi.set(self, "discovery_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. User friendly display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User defined labels for the asset.
 
@@ -371,139 +371,139 @@ class _AssetState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lake(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lake(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lake for the resource
         """
         return pulumi.get(self, "lake")
 
     @lake.setter
-    def lake(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lake(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lake", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the asset.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceSpec")
-    def resource_spec(self) -> Optional[pulumi.Input['AssetResourceSpecArgs']]:
+    def resource_spec(self) -> pulumi.Input[Optional['AssetResourceSpecArgs']]:
         """
         Required. Immutable. Specification of the resource that is referenced by this asset.
         """
         return pulumi.get(self, "resource_spec")
 
     @resource_spec.setter
-    def resource_spec(self, value: Optional[pulumi.Input['AssetResourceSpecArgs']]):
+    def resource_spec(self, value: pulumi.Input[Optional['AssetResourceSpecArgs']]):
         pulumi.set(self, "resource_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceStatuses")
-    def resource_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]]]:
+    def resource_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetResourceStatusArgs']]]]:
         """
         Output only. Status of the resource referenced by this asset.
         """
         return pulumi.get(self, "resource_statuses")
 
     @resource_statuses.setter
-    def resource_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetResourceStatusArgs']]]]):
+    def resource_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetResourceStatusArgs']]]]):
         pulumi.set(self, "resource_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="securityStatuses")
-    def security_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]]:
+    def security_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]]:
         """
         Output only. Status of the security policy applied to resource referenced by this asset.
         """
         return pulumi.get(self, "security_statuses")
 
     @security_statuses.setter
-    def security_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]]):
+    def security_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AssetSecurityStatusArgs']]]]):
         pulumi.set(self, "security_statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the asset was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -513,16 +513,16 @@ class Asset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataplex_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_spec: Optional[pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lake: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_spec: Optional[pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
+                 dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lake: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
                  __props__=None):
         """
         The Dataplex Asset resource
@@ -695,16 +695,16 @@ class Asset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataplex_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovery_spec: Optional[pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lake: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_spec: Optional[pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
+                 dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lake: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -755,25 +755,25 @@ class Asset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dataplex_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            discovery_spec: Optional[pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
-            discovery_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            lake: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_spec: Optional[pulumi.Input[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
-            resource_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict']]]]] = None,
-            security_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict']]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Asset':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
+            discovery_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lake: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_spec: pulumi.Input[Optional[Union['AssetResourceSpecArgs', 'AssetResourceSpecArgsDict']]] = None,
+            resource_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetResourceStatusArgs', 'AssetResourceStatusArgsDict']]]]] = None,
+            security_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetSecurityStatusArgs', 'AssetSecurityStatusArgsDict']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Asset':
         """
         Get an existing Asset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

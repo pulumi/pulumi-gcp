@@ -22,10 +22,10 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 autoscaling_settings: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']] = None,
-                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None):
+                 autoscaling_settings: pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']] = None,
+                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -70,7 +70,7 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingSettings")
-    def autoscaling_settings(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]:
+    def autoscaling_settings(self) -> pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']]:
         """
         Configuration of the autoscaling applied to this cluster
         Structure is documented below.
@@ -78,12 +78,12 @@ class ClusterArgs:
         return pulumi.get(self, "autoscaling_settings")
 
     @autoscaling_settings.setter
-    def autoscaling_settings(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]):
+    def autoscaling_settings(self, value: pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']]):
         pulumi.set(self, "autoscaling_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreMountConfigs")
-    def datastore_mount_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]:
+    def datastore_mount_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]:
         """
         Optional. Configuration to mount a datastore.
         Mount can be done along with cluster create or during cluster update
@@ -94,24 +94,24 @@ class ClusterArgs:
         return pulumi.get(self, "datastore_mount_configs")
 
     @datastore_mount_configs.setter
-    def datastore_mount_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]):
+    def datastore_mount_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]):
         pulumi.set(self, "datastore_mount_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]:
+    def node_type_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]:
         """
         The map of cluster node types in this cluster,
         where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -120,23 +120,23 @@ class ClusterArgs:
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]):
+    def node_type_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]):
         pulumi.set(self, "node_type_configs", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 autoscaling_settings: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
-                 management: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoscaling_settings: pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
+                 management: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -188,7 +188,7 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingSettings")
-    def autoscaling_settings(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]:
+    def autoscaling_settings(self) -> pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']]:
         """
         Configuration of the autoscaling applied to this cluster
         Structure is documented below.
@@ -196,12 +196,12 @@ class _ClusterState:
         return pulumi.get(self, "autoscaling_settings")
 
     @autoscaling_settings.setter
-    def autoscaling_settings(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]):
+    def autoscaling_settings(self, value: pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']]):
         pulumi.set(self, "autoscaling_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -210,12 +210,12 @@ class _ClusterState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreMountConfigs")
-    def datastore_mount_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]:
+    def datastore_mount_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]:
         """
         Optional. Configuration to mount a datastore.
         Mount can be done along with cluster create or during cluster update
@@ -226,12 +226,12 @@ class _ClusterState:
         return pulumi.get(self, "datastore_mount_configs")
 
     @datastore_mount_configs.setter
-    def datastore_mount_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]):
+    def datastore_mount_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]):
         pulumi.set(self, "datastore_mount_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def management(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the cluster is a management cluster; false otherwise.
         There can only be one management cluster in a private cloud and it has to be the first one.
@@ -239,24 +239,24 @@ class _ClusterState:
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def management(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "management", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeConfigs")
-    def node_type_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]:
+    def node_type_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]:
         """
         The map of cluster node types in this cluster,
         where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -265,12 +265,12 @@ class _ClusterState:
         return pulumi.get(self, "node_type_configs")
 
     @node_type_configs.setter
-    def node_type_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]):
+    def node_type_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]]):
         pulumi.set(self, "node_type_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the private cloud to create a new cluster in.
         Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -279,36 +279,36 @@ class _ClusterState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the Cluster.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System-generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last updated time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -317,7 +317,7 @@ class _ClusterState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -327,11 +327,11 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
-                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
+                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A cluster in a private cloud.
@@ -449,7 +449,7 @@ class Cluster(pulumi.CustomResource):
             name="test-fs-filestore",
             location="",
             tier="ZONAL",
-            deletion_protection_enabled="yes",
+            deletion_protection_enabled="yes" == "true",
             file_shares={
                 "capacity_gb": 1024,
                 "name": "share101",
@@ -795,7 +795,7 @@ class Cluster(pulumi.CustomResource):
             name="test-fs-filestore",
             location="",
             tier="ZONAL",
-            deletion_protection_enabled="yes",
+            deletion_protection_enabled="yes" == "true",
             file_shares={
                 "capacity_gb": 1024,
                 "name": "share101",
@@ -1017,11 +1017,11 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
-                 datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
+                 datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1053,16 +1053,16 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            datastore_mount_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
-            management: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+            management: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

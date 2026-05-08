@@ -24,7 +24,7 @@ class BucketIAMMemberArgs:
                  bucket: pulumi.Input[_builtins.str],
                  member: pulumi.Input[_builtins.str],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['BucketIAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a BucketIAMMember resource.
 
@@ -102,7 +102,7 @@ class BucketIAMMemberArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['BucketIAMMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -110,18 +110,18 @@ class BucketIAMMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['BucketIAMMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _BucketIAMMemberState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional['BucketIAMMemberConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketIAMMember resources.
 
@@ -157,19 +157,19 @@ class _BucketIAMMemberState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['BucketIAMMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -177,24 +177,24 @@ class _BucketIAMMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['BucketIAMMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -211,12 +211,12 @@ class _BucketIAMMemberState:
         return pulumi.get(self, "member")
 
     @member.setter
-    def member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -225,7 +225,7 @@ class _BucketIAMMemberState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -235,10 +235,10 @@ class BucketIAMMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
@@ -781,10 +781,10 @@ class BucketIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -815,11 +815,11 @@ class BucketIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            condition: Optional[pulumi.Input[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            member: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketIAMMember':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['BucketIAMMemberConditionArgs', 'BucketIAMMemberConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketIAMMember':
         """
         Get an existing BucketIAMMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

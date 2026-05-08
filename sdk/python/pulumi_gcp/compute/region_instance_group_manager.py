@@ -23,32 +23,32 @@ class RegionInstanceGroupManagerArgs:
     def __init__(__self__, *,
                  base_instance_name: pulumi.Input[_builtins.str],
                  versions: pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]],
-                 all_instances_config: Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']] = None,
-                 auto_healing_policies: Optional[pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_target_shape: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_flexibility_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
-                 instance_lifecycle_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
-                 list_managed_instances_results: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
-                 params: Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_policies: Optional[pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs']] = None,
-                 standby_policy: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
-                 stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
-                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
-                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
-                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]] = None,
-                 target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_policy: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
-                 wait_for_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_instances_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 all_instances_config: pulumi.Input[Optional['RegionInstanceGroupManagerAllInstancesConfigArgs']] = None,
+                 auto_healing_policies: pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_flexibility_policy: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
+                 instance_lifecycle_policy: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
+                 list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
+                 params: pulumi.Input[Optional['RegionInstanceGroupManagerParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_policies: pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']] = None,
+                 standby_policy: pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
+                 stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
+                 stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
+                 stateful_internal_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_size_policies: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]] = None,
+                 target_stopped_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_suspended_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_policy: pulumi.Input[Optional['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
+                 wait_for_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_instances_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionInstanceGroupManager resource.
 
@@ -205,7 +205,7 @@ class RegionInstanceGroupManagerArgs:
 
     @_builtins.property
     @pulumi.getter(name="allInstancesConfig")
-    def all_instances_config(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']]:
+    def all_instances_config(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerAllInstancesConfigArgs']]:
         """
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
@@ -214,12 +214,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "all_instances_config")
 
     @all_instances_config.setter
-    def all_instances_config(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']]):
+    def all_instances_config(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerAllInstancesConfigArgs']]):
         pulumi.set(self, "all_instances_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoHealingPolicies")
-    def auto_healing_policies(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]:
+    def auto_healing_policies(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]:
         """
         The autohealing policies for this managed instance
         group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -227,12 +227,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "auto_healing_policies")
 
     @auto_healing_policies.setter
-    def auto_healing_policies(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]):
+    def auto_healing_policies(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]):
         pulumi.set(self, "auto_healing_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional textual description of the instance
         group manager.
@@ -240,24 +240,24 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="distributionPolicyTargetShape")
-    def distribution_policy_target_shape(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distribution_policy_target_shape(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         """
         return pulumi.get(self, "distribution_policy_target_shape")
 
     @distribution_policy_target_shape.setter
-    def distribution_policy_target_shape(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distribution_policy_target_shape(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distribution_policy_target_shape", value)
 
     @_builtins.property
     @pulumi.getter(name="distributionPolicyZones")
-    def distribution_policy_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def distribution_policy_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The distribution policy for this managed instance
         group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
@@ -265,36 +265,36 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "distribution_policy_zones")
 
     @distribution_policy_zones.setter
-    def distribution_policy_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def distribution_policy_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "distribution_policy_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceFlexibilityPolicy")
-    def instance_flexibility_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
+    def instance_flexibility_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
         """
         The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
         """
         return pulumi.get(self, "instance_flexibility_policy")
 
     @instance_flexibility_policy.setter
-    def instance_flexibility_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]):
+    def instance_flexibility_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]):
         pulumi.set(self, "instance_flexibility_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceLifecyclePolicy")
-    def instance_lifecycle_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]:
+    def instance_lifecycle_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]:
         """
         The instance lifecycle policy for this managed instance group.
         """
         return pulumi.get(self, "instance_lifecycle_policy")
 
     @instance_lifecycle_policy.setter
-    def instance_lifecycle_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]):
+    def instance_lifecycle_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]):
         pulumi.set(self, "instance_lifecycle_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="listManagedInstancesResults")
-    def list_managed_instances_results(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def list_managed_instances_results(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pagination behavior of the `listManagedInstances` API
         method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -306,12 +306,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "list_managed_instances_results")
 
     @list_managed_instances_results.setter
-    def list_managed_instances_results(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def list_managed_instances_results(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "list_managed_instances_results", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance group manager. Must be 1-63
         characters long and comply with
@@ -321,12 +321,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]:
+    def named_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]:
         """
         The named port configuration. See the section below
         for details on configuration.
@@ -334,24 +334,24 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "named_ports")
 
     @named_ports.setter
-    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]):
+    def named_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]):
         pulumi.set(self, "named_ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerParamsArgs']]:
         """
         ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -359,12 +359,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
 
@@ -373,12 +373,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs']]:
+    def resource_policies(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
 
@@ -387,60 +387,60 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "resource_policies")
 
     @resource_policies.setter
-    def resource_policies(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs']]):
+    def resource_policies(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']]):
         pulumi.set(self, "resource_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyPolicy")
-    def standby_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]:
+    def standby_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']]:
         """
         The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         """
         return pulumi.get(self, "standby_policy")
 
     @standby_policy.setter
-    def standby_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]):
+    def standby_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']]):
         pulumi.set(self, "standby_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulDisks")
-    def stateful_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]:
+    def stateful_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         """
         return pulumi.get(self, "stateful_disks")
 
     @stateful_disks.setter
-    def stateful_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]):
+    def stateful_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]):
         pulumi.set(self, "stateful_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulExternalIps")
-    def stateful_external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]:
+    def stateful_external_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]:
         """
         External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         """
         return pulumi.get(self, "stateful_external_ips")
 
     @stateful_external_ips.setter
-    def stateful_external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]):
+    def stateful_external_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]):
         pulumi.set(self, "stateful_external_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulInternalIps")
-    def stateful_internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]:
+    def stateful_internal_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]:
         """
         Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         """
         return pulumi.get(self, "stateful_internal_ips")
 
     @stateful_internal_ips.setter
-    def stateful_internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]):
+    def stateful_internal_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]):
         pulumi.set(self, "stateful_internal_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPools")
-    def target_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The full URL of all target pools to which new
         instances in the group are added. Updating the target pools attribute does
@@ -449,12 +449,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "target_pools")
 
     @target_pools.setter
-    def target_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSize")
-    def target_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target number of running instances for this managed
         instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
@@ -464,60 +464,60 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "target_size")
 
     @target_size.setter
-    def target_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_size", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSizePolicies")
-    def target_size_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]:
+    def target_size_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]:
         """
         The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
         """
         return pulumi.get(self, "target_size_policies")
 
     @target_size_policies.setter
-    def target_size_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]):
+    def target_size_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]):
         pulumi.set(self, "target_size_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="targetStoppedSize")
-    def target_stopped_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_stopped_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target number of stopped instances for this managed instance group.
         """
         return pulumi.get(self, "target_stopped_size")
 
     @target_stopped_size.setter
-    def target_stopped_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_stopped_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_stopped_size", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSuspendedSize")
-    def target_suspended_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_suspended_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target number of suspended instances for this managed instance group.
         """
         return pulumi.get(self, "target_suspended_size")
 
     @target_suspended_size.setter
-    def target_suspended_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_suspended_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_suspended_size", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerUpdatePolicyArgs']]:
         """
         The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         """
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForInstances")
-    def wait_for_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to wait for all instances to be created/updated before
         returning. Note that if this is set to true and the operation does not succeed, the provider will
@@ -526,12 +526,12 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "wait_for_instances")
 
     @wait_for_instances.setter
-    def wait_for_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForInstancesStatus")
-    def wait_for_instances_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wait_for_instances_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When used with `wait_for_instances` it specifies the status to wait for.
         When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -541,47 +541,47 @@ class RegionInstanceGroupManagerArgs:
         return pulumi.get(self, "wait_for_instances_status")
 
     @wait_for_instances_status.setter
-    def wait_for_instances_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wait_for_instances_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wait_for_instances_status", value)
 
 
 @pulumi.input_type
 class _RegionInstanceGroupManagerState:
     def __init__(__self__, *,
-                 all_instances_config: Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']] = None,
-                 auto_healing_policies: Optional[pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] = None,
-                 base_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_target_shape: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_flexibility_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
-                 instance_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_manager_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_lifecycle_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
-                 list_managed_instances_results: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
-                 params: Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_policies: Optional[pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs']] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_policy: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
-                 stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
-                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
-                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]] = None,
-                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]] = None,
-                 target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_policy: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]]] = None,
-                 wait_for_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_instances_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 all_instances_config: pulumi.Input[Optional['RegionInstanceGroupManagerAllInstancesConfigArgs']] = None,
+                 auto_healing_policies: pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] = None,
+                 base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_flexibility_policy: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
+                 instance_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_manager_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_lifecycle_policy: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
+                 list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]] = None,
+                 params: pulumi.Input[Optional['RegionInstanceGroupManagerParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_policies: pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_policy: pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']] = None,
+                 stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]] = None,
+                 stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]] = None,
+                 stateful_internal_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_size_policies: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]] = None,
+                 target_stopped_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_suspended_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_policy: pulumi.Input[Optional['RegionInstanceGroupManagerUpdatePolicyArgs']] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]]] = None,
+                 wait_for_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_instances_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionInstanceGroupManager resources.
 
@@ -727,7 +727,7 @@ class _RegionInstanceGroupManagerState:
 
     @_builtins.property
     @pulumi.getter(name="allInstancesConfig")
-    def all_instances_config(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']]:
+    def all_instances_config(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerAllInstancesConfigArgs']]:
         """
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
@@ -736,12 +736,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "all_instances_config")
 
     @all_instances_config.setter
-    def all_instances_config(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']]):
+    def all_instances_config(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerAllInstancesConfigArgs']]):
         pulumi.set(self, "all_instances_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoHealingPolicies")
-    def auto_healing_policies(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]:
+    def auto_healing_policies(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]:
         """
         The autohealing policies for this managed instance
         group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
@@ -749,12 +749,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "auto_healing_policies")
 
     @auto_healing_policies.setter
-    def auto_healing_policies(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]):
+    def auto_healing_policies(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]):
         pulumi.set(self, "auto_healing_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="baseInstanceName")
-    def base_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base instance name to use for
         instances in this group. The value must be a valid
@@ -766,24 +766,24 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "base_instance_name")
 
     @base_instance_name.setter
-    def base_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional textual description of the instance
         group manager.
@@ -791,24 +791,24 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="distributionPolicyTargetShape")
-    def distribution_policy_target_shape(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distribution_policy_target_shape(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         """
         return pulumi.get(self, "distribution_policy_target_shape")
 
     @distribution_policy_target_shape.setter
-    def distribution_policy_target_shape(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distribution_policy_target_shape(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distribution_policy_target_shape", value)
 
     @_builtins.property
     @pulumi.getter(name="distributionPolicyZones")
-    def distribution_policy_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def distribution_policy_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The distribution policy for this managed instance
         group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
@@ -816,72 +816,72 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "distribution_policy_zones")
 
     @distribution_policy_zones.setter
-    def distribution_policy_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def distribution_policy_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "distribution_policy_zones", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint of the instance group manager.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceFlexibilityPolicy")
-    def instance_flexibility_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
+    def instance_flexibility_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
         """
         The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
         """
         return pulumi.get(self, "instance_flexibility_policy")
 
     @instance_flexibility_policy.setter
-    def instance_flexibility_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]):
+    def instance_flexibility_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]):
         pulumi.set(self, "instance_flexibility_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroup")
-    def instance_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full URL of the instance group created by the manager.
         """
         return pulumi.get(self, "instance_group")
 
     @instance_group.setter
-    def instance_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_group", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupManagerId")
-    def instance_group_manager_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_group_manager_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier number for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "instance_group_manager_id")
 
     @instance_group_manager_id.setter
-    def instance_group_manager_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_group_manager_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_group_manager_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceLifecyclePolicy")
-    def instance_lifecycle_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]:
+    def instance_lifecycle_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]:
         """
         The instance lifecycle policy for this managed instance group.
         """
         return pulumi.get(self, "instance_lifecycle_policy")
 
     @instance_lifecycle_policy.setter
-    def instance_lifecycle_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]):
+    def instance_lifecycle_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]):
         pulumi.set(self, "instance_lifecycle_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="listManagedInstancesResults")
-    def list_managed_instances_results(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def list_managed_instances_results(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pagination behavior of the `listManagedInstances` API
         method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -893,12 +893,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "list_managed_instances_results")
 
     @list_managed_instances_results.setter
-    def list_managed_instances_results(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def list_managed_instances_results(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "list_managed_instances_results", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance group manager. Must be 1-63
         characters long and comply with
@@ -908,12 +908,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="namedPorts")
-    def named_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]:
+    def named_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]:
         """
         The named port configuration. See the section below
         for details on configuration.
@@ -921,24 +921,24 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "named_ports")
 
     @named_ports.setter
-    def named_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]):
+    def named_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]]]):
         pulumi.set(self, "named_ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerParamsArgs']]:
         """
         ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -946,12 +946,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
 
@@ -960,12 +960,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs']]:
+    def resource_policies(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']]:
         """
         Resource policies for this managed instance group. Structure is documented below.
 
@@ -974,84 +974,84 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "resource_policies")
 
     @resource_policies.setter
-    def resource_policies(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs']]):
+    def resource_policies(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerResourcePoliciesArgs']]):
         pulumi.set(self, "resource_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyPolicy")
-    def standby_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]:
+    def standby_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']]:
         """
         The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         """
         return pulumi.get(self, "standby_policy")
 
     @standby_policy.setter
-    def standby_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs']]):
+    def standby_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerStandbyPolicyArgs']]):
         pulumi.set(self, "standby_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulDisks")
-    def stateful_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]:
+    def stateful_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]:
         """
         Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         """
         return pulumi.get(self, "stateful_disks")
 
     @stateful_disks.setter
-    def stateful_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]):
+    def stateful_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]]]):
         pulumi.set(self, "stateful_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulExternalIps")
-    def stateful_external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]:
+    def stateful_external_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]:
         """
         External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         """
         return pulumi.get(self, "stateful_external_ips")
 
     @stateful_external_ips.setter
-    def stateful_external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]):
+    def stateful_external_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]]]):
         pulumi.set(self, "stateful_external_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulInternalIps")
-    def stateful_internal_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]:
+    def stateful_internal_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]:
         """
         Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         """
         return pulumi.get(self, "stateful_internal_ips")
 
     @stateful_internal_ips.setter
-    def stateful_internal_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]):
+    def stateful_internal_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulInternalIpArgs']]]]):
         pulumi.set(self, "stateful_internal_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]]:
         """
         The status of this managed instance group.
         """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPools")
-    def target_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The full URL of all target pools to which new
         instances in the group are added. Updating the target pools attribute does
@@ -1060,12 +1060,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "target_pools")
 
     @target_pools.setter
-    def target_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSize")
-    def target_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target number of running instances for this managed
         instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
@@ -1075,60 +1075,60 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "target_size")
 
     @target_size.setter
-    def target_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_size", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSizePolicies")
-    def target_size_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]:
+    def target_size_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]:
         """
         The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
         """
         return pulumi.get(self, "target_size_policies")
 
     @target_size_policies.setter
-    def target_size_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]):
+    def target_size_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerTargetSizePolicyArgs']]]]):
         pulumi.set(self, "target_size_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="targetStoppedSize")
-    def target_stopped_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_stopped_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target number of stopped instances for this managed instance group.
         """
         return pulumi.get(self, "target_stopped_size")
 
     @target_stopped_size.setter
-    def target_stopped_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_stopped_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_stopped_size", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSuspendedSize")
-    def target_suspended_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_suspended_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target number of suspended instances for this managed instance group.
         """
         return pulumi.get(self, "target_suspended_size")
 
     @target_suspended_size.setter
-    def target_suspended_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_suspended_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_suspended_size", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePolicy")
-    def update_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']]:
+    def update_policy(self) -> pulumi.Input[Optional['RegionInstanceGroupManagerUpdatePolicyArgs']]:
         """
         The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         """
         return pulumi.get(self, "update_policy")
 
     @update_policy.setter
-    def update_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs']]):
+    def update_policy(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerUpdatePolicyArgs']]):
         pulumi.set(self, "update_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]]]:
         """
         Application versions managed by this instance group. Each
         version deals with a specific instance template, allowing canary release scenarios.
@@ -1137,12 +1137,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForInstances")
-    def wait_for_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to wait for all instances to be created/updated before
         returning. Note that if this is set to true and the operation does not succeed, the provider will
@@ -1151,12 +1151,12 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "wait_for_instances")
 
     @wait_for_instances.setter
-    def wait_for_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForInstancesStatus")
-    def wait_for_instances_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wait_for_instances_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When used with `wait_for_instances` it specifies the status to wait for.
         When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
@@ -1166,7 +1166,7 @@ class _RegionInstanceGroupManagerState:
         return pulumi.get(self, "wait_for_instances_status")
 
     @wait_for_instances_status.setter
-    def wait_for_instances_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wait_for_instances_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wait_for_instances_status", value)
 
 
@@ -1176,34 +1176,34 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_instances_config: Optional[pulumi.Input[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
-                 auto_healing_policies: Optional[pulumi.Input[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
-                 base_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_target_shape: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_flexibility_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
-                 instance_lifecycle_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
-                 list_managed_instances_results: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]]] = None,
-                 params: Optional[pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_policies: Optional[pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']]] = None,
-                 standby_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']]] = None,
-                 stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
-                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
-                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
-                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
-                 target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]]] = None,
-                 wait_for_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_instances_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 all_instances_config: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
+                 auto_healing_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
+                 base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_flexibility_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
+                 instance_lifecycle_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
+                 list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]]] = None,
+                 params: pulumi.Input[Optional[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']]] = None,
+                 standby_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']]] = None,
+                 stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
+                 stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
+                 stateful_internal_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_size_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
+                 target_stopped_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_suspended_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]]] = None,
+                 wait_for_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_instances_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Google Compute Engine Regional Instance Group Manager API creates and manages pools
@@ -1533,34 +1533,34 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_instances_config: Optional[pulumi.Input[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
-                 auto_healing_policies: Optional[pulumi.Input[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
-                 base_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_target_shape: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_flexibility_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
-                 instance_lifecycle_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
-                 list_managed_instances_results: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]]] = None,
-                 params: Optional[pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_policies: Optional[pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']]] = None,
-                 standby_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']]] = None,
-                 stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
-                 stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
-                 stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
-                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
-                 target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]]] = None,
-                 wait_for_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_instances_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 all_instances_config: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
+                 auto_healing_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
+                 base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_flexibility_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
+                 instance_lifecycle_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
+                 list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]]] = None,
+                 params: pulumi.Input[Optional[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']]] = None,
+                 standby_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']]] = None,
+                 stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
+                 stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
+                 stateful_internal_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_size_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
+                 target_stopped_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_suspended_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]]] = None,
+                 wait_for_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_instances_status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1618,40 +1618,40 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all_instances_config: Optional[pulumi.Input[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
-            auto_healing_policies: Optional[pulumi.Input[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
-            base_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            distribution_policy_target_shape: Optional[pulumi.Input[_builtins.str]] = None,
-            distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_flexibility_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
-            instance_group: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_group_manager_id: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_lifecycle_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
-            list_managed_instances_results: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]]] = None,
-            params: Optional[pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_policies: Optional[pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']]] = None,
-            stateful_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
-            stateful_external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
-            stateful_internal_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatusArgs', 'RegionInstanceGroupManagerStatusArgsDict']]]]] = None,
-            target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_size: Optional[pulumi.Input[_builtins.int]] = None,
-            target_size_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
-            target_stopped_size: Optional[pulumi.Input[_builtins.int]] = None,
-            target_suspended_size: Optional[pulumi.Input[_builtins.int]] = None,
-            update_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
-            versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]]] = None,
-            wait_for_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-            wait_for_instances_status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegionInstanceGroupManager':
+            all_instances_config: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
+            auto_healing_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
+            base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
+            distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_flexibility_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
+            instance_group: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_manager_id: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_lifecycle_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
+            list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            named_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]]] = None,
+            params: pulumi.Input[Optional[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']]] = None,
+            stateful_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]]] = None,
+            stateful_external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]]] = None,
+            stateful_internal_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulInternalIpArgs', 'RegionInstanceGroupManagerStatefulInternalIpArgsDict']]]]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatusArgs', 'RegionInstanceGroupManagerStatusArgsDict']]]]] = None,
+            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_size: pulumi.Input[Optional[_builtins.int]] = None,
+            target_size_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerTargetSizePolicyArgs', 'RegionInstanceGroupManagerTargetSizePolicyArgsDict']]]]] = None,
+            target_stopped_size: pulumi.Input[Optional[_builtins.int]] = None,
+            target_suspended_size: pulumi.Input[Optional[_builtins.int]] = None,
+            update_policy: pulumi.Input[Optional[Union['RegionInstanceGroupManagerUpdatePolicyArgs', 'RegionInstanceGroupManagerUpdatePolicyArgsDict']]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerVersionArgs', 'RegionInstanceGroupManagerVersionArgsDict']]]]] = None,
+            wait_for_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+            wait_for_instances_status: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionInstanceGroupManager':
         """
         Get an existing RegionInstanceGroupManager resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

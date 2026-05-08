@@ -22,16 +22,16 @@ class AuthzExtensionArgs:
                  location: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.str],
-                 authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 wire_format: Optional[pulumi.Input[_builtins.str]] = None):
+                 authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 wire_format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthzExtension resource.
 
@@ -148,31 +148,31 @@ class AuthzExtensionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The :authority header in the gRPC request sent from Envoy to the extension service.
         """
         return pulumi.get(self, "authority")
 
     @authority.setter
-    def authority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authority", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="failOpen")
-    def fail_open(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fail_open(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines how the proxy behaves if the call to the extension fails or times out.
         When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
@@ -182,24 +182,24 @@ class AuthzExtensionArgs:
         return pulumi.get(self, "fail_open")
 
     @fail_open.setter
-    def fail_open(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fail_open(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fail_open", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")
-    def forward_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def forward_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
         """
         return pulumi.get(self, "forward_headers")
 
     @forward_headers.setter
-    def forward_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def forward_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "forward_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with the AuthzExtension resource.
 
@@ -209,12 +209,12 @@ class AuthzExtensionArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when the service points to a backend service. All backend services and forwarding rules referenced by
         this extension must share the same load balancing scheme. For more information, refer to
@@ -224,12 +224,12 @@ class AuthzExtensionArgs:
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
         {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
@@ -237,24 +237,24 @@ class AuthzExtensionArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Name of the AuthzExtension resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -262,12 +262,12 @@ class AuthzExtensionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="wireFormat")
-    def wire_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wire_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
         This field is supported only for regional AuthzExtension resources. If not specified, the default value
@@ -290,30 +290,30 @@ class AuthzExtensionArgs:
         return pulumi.get(self, "wire_format")
 
     @wire_format.setter
-    def wire_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wire_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wire_format", value)
 
 
 @pulumi.input_type
 class _AuthzExtensionState:
     def __init__(__self__, *,
-                 authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 wire_format: Optional[pulumi.Input[_builtins.str]] = None):
+                 authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 wire_format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthzExtension resources.
 
@@ -405,55 +405,55 @@ class _AuthzExtensionState:
 
     @_builtins.property
     @pulumi.getter
-    def authority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The :authority header in the gRPC request sent from Envoy to the extension service.
         """
         return pulumi.get(self, "authority")
 
     @authority.setter
-    def authority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authority", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="failOpen")
-    def fail_open(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fail_open(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines how the proxy behaves if the call to the extension fails or times out.
         When set to TRUE, request or response processing continues without error. Any subsequent extensions in the extension chain are also executed. When set to FALSE or the default setting of FALSE is used, one of the following happens:
@@ -463,24 +463,24 @@ class _AuthzExtensionState:
         return pulumi.get(self, "fail_open")
 
     @fail_open.setter
-    def fail_open(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fail_open(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fail_open", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardHeaders")
-    def forward_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def forward_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
         """
         return pulumi.get(self, "forward_headers")
 
     @forward_headers.setter
-    def forward_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def forward_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "forward_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with the AuthzExtension resource.
 
@@ -490,12 +490,12 @@ class _AuthzExtensionState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when the service points to a backend service. All backend services and forwarding rules referenced by
         this extension must share the same load balancing scheme. For more information, refer to
@@ -505,24 +505,24 @@ class _AuthzExtensionState:
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The metadata provided here is included as part of the metadata_context (of type google.protobuf.Struct) in the ProcessingRequest message sent to the extension server. The metadata is available under the namespace com.google.authz_extension.<resourceName>. The following variables are supported in the metadata Struct:
         {forwarding_rule_id} - substituted with the forwarding rule's fully qualified resource name.
@@ -530,24 +530,24 @@ class _AuthzExtensionState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Name of the AuthzExtension resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -555,12 +555,12 @@ class _AuthzExtensionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -568,12 +568,12 @@ class _AuthzExtensionState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service that runs the extension.
         The following values and formats are accepted:
@@ -585,36 +585,36 @@ class _AuthzExtensionState:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="wireFormat")
-    def wire_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def wire_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format of communication supported by the callout extension. Applicable only when the policyProfile is REQUEST_AUTHZ.
         This field is supported only for regional AuthzExtension resources. If not specified, the default value
@@ -637,7 +637,7 @@ class _AuthzExtensionState:
         return pulumi.get(self, "wire_format")
 
     @wire_format.setter
-    def wire_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def wire_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "wire_format", value)
 
 
@@ -647,19 +647,19 @@ class AuthzExtension(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 wire_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 wire_format: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         AuthzExtension is a resource that allows traffic forwarding to a callout backend service to make an authorization decision.
@@ -914,19 +914,19 @@ class AuthzExtension(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 wire_format: Optional[pulumi.Input[_builtins.str]] = None,
+                 authority: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 wire_format: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -971,23 +971,23 @@ class AuthzExtension(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authority: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            fail_open: Optional[pulumi.Input[_builtins.bool]] = None,
-            forward_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            wire_format: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthzExtension':
+            authority: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            fail_open: pulumi.Input[Optional[_builtins.bool]] = None,
+            forward_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            wire_format: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthzExtension':
         """
         Get an existing AuthzExtension resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -126,5 +126,5 @@ export interface GetParameterVersionOutputArgs {
      * The project for retrieving the Parameter Version. If it's not specified, 
      * the provider project will be used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

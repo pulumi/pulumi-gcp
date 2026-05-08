@@ -214,45 +214,45 @@ export interface SecurityMonitoringConditionState {
     /**
      * Resource ID of the security monitoring condition.
      */
-    conditionId?: pulumi.Input<string>;
+    conditionId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this profile was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      */
-    includeAllResources?: pulumi.Input<inputs.apigee.SecurityMonitoringConditionIncludeAllResources>;
+    includeAllResources?: pulumi.Input<inputs.apigee.SecurityMonitoringConditionIncludeAllResources | undefined>;
     /**
      * Name of the security monitoring condition resource,
      * in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee Security Monitoring Condition,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * ID of security profile of the security monitoring condition.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
     /**
      * ID of security profile of the security monitoring condition.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Total number of deployed resources within scope.
      */
-    totalDeployedResources?: pulumi.Input<number>;
+    totalDeployedResources?: pulumi.Input<number | undefined>;
     /**
      * Total number of monitored resources within this condition.
      */
-    totalMonitoredResources?: pulumi.Input<number>;
+    totalMonitoredResources?: pulumi.Input<number | undefined>;
     /**
      * The timestamp at which this profile was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,7 +266,7 @@ export interface SecurityMonitoringConditionArgs {
     /**
      * A nested object resource.
      */
-    includeAllResources?: pulumi.Input<inputs.apigee.SecurityMonitoringConditionIncludeAllResources>;
+    includeAllResources?: pulumi.Input<inputs.apigee.SecurityMonitoringConditionIncludeAllResources | undefined>;
     /**
      * The Apigee Organization associated with the Apigee Security Monitoring Condition,
      * in the format `organizations/{{org_name}}`.

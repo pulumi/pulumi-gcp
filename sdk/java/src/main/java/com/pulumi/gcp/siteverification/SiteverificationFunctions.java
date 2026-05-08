@@ -37,8 +37,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -72,8 +72,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -122,8 +122,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -157,8 +157,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -207,8 +207,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -242,8 +242,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -292,8 +292,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -327,8 +327,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -377,8 +377,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -412,8 +412,8 @@ public final class SiteverificationFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.siteverification.SiteverificationFunctions;
      * import com.pulumi.gcp.siteverification.inputs.GetTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

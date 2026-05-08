@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Kms
     ///         DeletionProtection = false,
     ///     });
     /// 
-    ///     var projectSuffix = new Random.Index.Id("project_suffix", new()
+    ///     var projectSuffix = new Random.Id("project_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var waitEnableServiceApi = new Time.Index.Sleep("wait_enable_service_api", new()
+    ///     var waitEnableServiceApi = new Time.Sleep("wait_enable_service_api", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions

@@ -22,14 +22,14 @@ __all__ = ['WorkloadIdentityPoolArgs', 'WorkloadIdentityPool']
 class WorkloadIdentityPoolArgs:
     def __init__(__self__, *,
                  workload_identity_pool_id: pulumi.Input[_builtins.str],
-                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inline_certificate_issuance_config: Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']] = None,
-                 inline_trust_config: Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inline_certificate_issuance_config: pulumi.Input[Optional['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']] = None,
+                 inline_trust_config: pulumi.Input[Optional['WorkloadIdentityPoolInlineTrustConfigArgs']] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPool resource.
 
@@ -116,7 +116,7 @@ class WorkloadIdentityPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="attestationRules")
-    def attestation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]:
+    def attestation_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]:
         """
         Defines which workloads can receive an identity within a pool. When an AttestationRule is
         defined under a managed identity, matching workloads may receive that identity. A maximum of
@@ -126,24 +126,24 @@ class WorkloadIdentityPoolArgs:
         return pulumi.get(self, "attestation_rules")
 
     @attestation_rules.setter
-    def attestation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]):
+    def attestation_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]):
         pulumi.set(self, "attestation_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the pool. Cannot exceed 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
         existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -152,24 +152,24 @@ class WorkloadIdentityPoolArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A display name for the pool. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="inlineCertificateIssuanceConfig")
-    def inline_certificate_issuance_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]:
+    def inline_certificate_issuance_config(self) -> pulumi.Input[Optional['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]:
         """
         Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         within this pool. Defines the Certificate Authority (CA) pool resources and configurations
@@ -179,12 +179,12 @@ class WorkloadIdentityPoolArgs:
         return pulumi.get(self, "inline_certificate_issuance_config")
 
     @inline_certificate_issuance_config.setter
-    def inline_certificate_issuance_config(self, value: Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]):
+    def inline_certificate_issuance_config(self, value: pulumi.Input[Optional['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]):
         pulumi.set(self, "inline_certificate_issuance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="inlineTrustConfig")
-    def inline_trust_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']]:
+    def inline_trust_config(self) -> pulumi.Input[Optional['WorkloadIdentityPoolInlineTrustConfigArgs']]:
         """
         Represents config to add additional trusted trust domains. Defines configuration for extending
         trust to additional trust domains. By establishing trust with another domain, the current
@@ -196,12 +196,12 @@ class WorkloadIdentityPoolArgs:
         return pulumi.get(self, "inline_trust_config")
 
     @inline_trust_config.setter
-    def inline_trust_config(self, value: Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']]):
+    def inline_trust_config(self, value: pulumi.Input[Optional['WorkloadIdentityPoolInlineTrustConfigArgs']]):
         pulumi.set(self, "inline_trust_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         are in `FEDERATION_ONLY` mode.
@@ -231,12 +231,12 @@ class WorkloadIdentityPoolArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -244,24 +244,24 @@ class WorkloadIdentityPoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _WorkloadIdentityPoolState:
     def __init__(__self__, *,
-                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inline_certificate_issuance_config: Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']] = None,
-                 inline_trust_config: Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inline_certificate_issuance_config: pulumi.Input[Optional['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']] = None,
+                 inline_trust_config: pulumi.Input[Optional['WorkloadIdentityPoolInlineTrustConfigArgs']] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPool resources.
 
@@ -350,7 +350,7 @@ class _WorkloadIdentityPoolState:
 
     @_builtins.property
     @pulumi.getter(name="attestationRules")
-    def attestation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]:
+    def attestation_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]:
         """
         Defines which workloads can receive an identity within a pool. When an AttestationRule is
         defined under a managed identity, matching workloads may receive that identity. A maximum of
@@ -360,24 +360,24 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "attestation_rules")
 
     @attestation_rules.setter
-    def attestation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]):
+    def attestation_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolAttestationRuleArgs']]]]):
         pulumi.set(self, "attestation_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the pool. Cannot exceed 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
         existing tokens to access resources. If the pool is re-enabled, existing tokens grant
@@ -386,24 +386,24 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A display name for the pool. Cannot exceed 32 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="inlineCertificateIssuanceConfig")
-    def inline_certificate_issuance_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]:
+    def inline_certificate_issuance_config(self) -> pulumi.Input[Optional['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]:
         """
         Represents configuration for generating mutual TLS (mTLS) certificates for the identities
         within this pool. Defines the Certificate Authority (CA) pool resources and configurations
@@ -413,12 +413,12 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "inline_certificate_issuance_config")
 
     @inline_certificate_issuance_config.setter
-    def inline_certificate_issuance_config(self, value: Optional[pulumi.Input['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]):
+    def inline_certificate_issuance_config(self, value: pulumi.Input[Optional['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs']]):
         pulumi.set(self, "inline_certificate_issuance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="inlineTrustConfig")
-    def inline_trust_config(self) -> Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']]:
+    def inline_trust_config(self) -> pulumi.Input[Optional['WorkloadIdentityPoolInlineTrustConfigArgs']]:
         """
         Represents config to add additional trusted trust domains. Defines configuration for extending
         trust to additional trust domains. By establishing trust with another domain, the current
@@ -430,12 +430,12 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "inline_trust_config")
 
     @inline_trust_config.setter
-    def inline_trust_config(self, value: Optional[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigArgs']]):
+    def inline_trust_config(self, value: pulumi.Input[Optional['WorkloadIdentityPoolInlineTrustConfigArgs']]):
         pulumi.set(self, "inline_trust_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
         are in `FEDERATION_ONLY` mode.
@@ -465,12 +465,12 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the pool as
         `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
@@ -478,12 +478,12 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -491,12 +491,12 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the pool.
         * `STATE_UNSPECIFIED`: State unspecified.
@@ -511,12 +511,12 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityPoolId")
-    def workload_identity_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload_identity_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the pool, which becomes the final component of the resource name. This
         value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
@@ -525,7 +525,7 @@ class _WorkloadIdentityPoolState:
         return pulumi.get(self, "workload_identity_pool_id")
 
     @workload_identity_pool_id.setter
-    def workload_identity_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload_identity_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload_identity_pool_id", value)
 
 
@@ -535,15 +535,15 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inline_certificate_issuance_config: Optional[pulumi.Input[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']]] = None,
-                 inline_trust_config: Optional[pulumi.Input[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inline_certificate_issuance_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']]] = None,
+                 inline_trust_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a collection of external workload identities. You can define IAM policies to
@@ -927,15 +927,15 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inline_certificate_issuance_config: Optional[pulumi.Input[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']]] = None,
-                 inline_trust_config: Optional[pulumi.Input[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inline_certificate_issuance_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']]] = None,
+                 inline_trust_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -968,17 +968,17 @@ class WorkloadIdentityPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            inline_certificate_issuance_config: Optional[pulumi.Input[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']]] = None,
-            inline_trust_config: Optional[pulumi.Input[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkloadIdentityPool':
+            attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolAttestationRuleArgs', 'WorkloadIdentityPoolAttestationRuleArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            inline_certificate_issuance_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs', 'WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict']]] = None,
+            inline_trust_config: pulumi.Input[Optional[Union['WorkloadIdentityPoolInlineTrustConfigArgs', 'WorkloadIdentityPoolInlineTrustConfigArgsDict']]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkloadIdentityPool':
         """
         Get an existing WorkloadIdentityPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

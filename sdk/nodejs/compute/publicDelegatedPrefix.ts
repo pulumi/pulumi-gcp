@@ -314,21 +314,21 @@ export interface PublicDelegatedPrefixState {
     /**
      * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
      */
-    allocatablePrefixLength?: pulumi.Input<number>;
+    allocatablePrefixLength?: pulumi.Input<number | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Whether this PublicDelegatedSubPrefix supports enhanced IPv4 allocations.
      * Applicable for IPv4 sub-PDPs only.
      */
-    enableEnhancedIpv4Allocation?: pulumi.Input<boolean>;
+    enableEnhancedIpv4Allocation?: pulumi.Input<boolean | undefined>;
     /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The internet access type for IPv6 Public Delegated Prefixes. Inherited
@@ -339,11 +339,11 @@ export interface PublicDelegatedPrefixState {
      * be used privately within Google Cloud. All children PDPs will have
      * access type as INTERNAL.
      */
-    ipv6AccessType?: pulumi.Input<string>;
+    ipv6AccessType?: pulumi.Input<string | undefined>;
     /**
      * If true, the prefix will be live migrated.
      */
-    isLiveMigration?: pulumi.Input<boolean>;
+    isLiveMigration?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the mode of this IPv6 PDP. MODE must be one of:
      * * DELEGATION
@@ -352,7 +352,7 @@ export interface PublicDelegatedPrefixState {
      * * INTERNAL_IPV6_SUBNETWORK_CREATION
      * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -361,31 +361,31 @@ export interface PublicDelegatedPrefixState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
      */
-    parentPrefix?: pulumi.Input<string>;
+    parentPrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * List of sub public delegated fixes for BYO IP functionality.
      * Each item in this array represents a sub prefix that can be
      * used to create addresses or further allocations.
      * Structure is documented below.
      */
-    publicDelegatedSubPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.PublicDelegatedPrefixPublicDelegatedSubPrefix>[]>;
+    publicDelegatedSubPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.PublicDelegatedPrefixPublicDelegatedSubPrefix>[] | undefined>;
     /**
      * A region where the prefix will reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -395,11 +395,11 @@ export interface PublicDelegatedPrefixArgs {
     /**
      * The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
      */
-    allocatablePrefixLength?: pulumi.Input<number>;
+    allocatablePrefixLength?: pulumi.Input<number | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP address range, in CIDR format, represented by this public delegated prefix.
      */
@@ -407,7 +407,7 @@ export interface PublicDelegatedPrefixArgs {
     /**
      * If true, the prefix will be live migrated.
      */
-    isLiveMigration?: pulumi.Input<boolean>;
+    isLiveMigration?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the mode of this IPv6 PDP. MODE must be one of:
      * * DELEGATION
@@ -416,7 +416,7 @@ export interface PublicDelegatedPrefixArgs {
      * * INTERNAL_IPV6_SUBNETWORK_CREATION
      * Possible values are: `DELEGATION`, `EXTERNAL_IPV6_FORWARDING_RULE_CREATION`, `EXTERNAL_IPV6_SUBNETWORK_CREATION`, `INTERNAL_IPV6_SUBNETWORK_CREATION`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -425,7 +425,7 @@ export interface PublicDelegatedPrefixArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
      */
@@ -434,7 +434,7 @@ export interface PublicDelegatedPrefixArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A region where the prefix will reside.
      */

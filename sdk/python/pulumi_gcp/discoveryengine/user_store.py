@@ -20,11 +20,11 @@ __all__ = ['UserStoreArgs', 'UserStore']
 class UserStoreArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 default_license_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_expired_license_auto_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_license_auto_register: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_store_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_license_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_expired_license_auto_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_license_auto_register: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_store_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserStore resource.
 
@@ -75,7 +75,7 @@ class UserStoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultLicenseConfig")
-    def default_license_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_license_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the default license config assigned to users created in
         this user store. Format:
@@ -88,12 +88,12 @@ class UserStoreArgs:
         return pulumi.get(self, "default_license_config")
 
     @default_license_config.setter
-    def default_license_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_license_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_license_config", value)
 
     @_builtins.property
     @pulumi.getter(name="enableExpiredLicenseAutoUpdate")
-    def enable_expired_license_auto_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_expired_license_auto_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic license update for users with expired licenses
         in this user store. If enabled, users with expired licenses will
@@ -103,12 +103,12 @@ class UserStoreArgs:
         return pulumi.get(self, "enable_expired_license_auto_update")
 
     @enable_expired_license_auto_update.setter
-    def enable_expired_license_auto_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_expired_license_auto_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_expired_license_auto_update", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLicenseAutoRegister")
-    def enable_license_auto_register(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_license_auto_register(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic license registration for new users created in
         this user store. If enabled, new users will automatically register under
@@ -117,12 +117,12 @@ class UserStoreArgs:
         return pulumi.get(self, "enable_license_auto_register")
 
     @enable_license_auto_register.setter
-    def enable_license_auto_register(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_license_auto_register(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_license_auto_register", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -130,32 +130,32 @@ class UserStoreArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="userStoreId")
-    def user_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user store. Currently only accepts "default_user_store".
         """
         return pulumi.get(self, "user_store_id")
 
     @user_store_id.setter
-    def user_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_store_id", value)
 
 
 @pulumi.input_type
 class _UserStoreState:
     def __init__(__self__, *,
-                 default_license_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_expired_license_auto_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_license_auto_register: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_store_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_license_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_expired_license_auto_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_license_auto_register: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_store_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserStore resources.
 
@@ -198,7 +198,7 @@ class _UserStoreState:
 
     @_builtins.property
     @pulumi.getter(name="defaultLicenseConfig")
-    def default_license_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_license_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the default license config assigned to users created in
         this user store. Format:
@@ -211,12 +211,12 @@ class _UserStoreState:
         return pulumi.get(self, "default_license_config")
 
     @default_license_config.setter
-    def default_license_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_license_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_license_config", value)
 
     @_builtins.property
     @pulumi.getter(name="enableExpiredLicenseAutoUpdate")
-    def enable_expired_license_auto_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_expired_license_auto_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic license update for users with expired licenses
         in this user store. If enabled, users with expired licenses will
@@ -226,12 +226,12 @@ class _UserStoreState:
         return pulumi.get(self, "enable_expired_license_auto_update")
 
     @enable_expired_license_auto_update.setter
-    def enable_expired_license_auto_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_expired_license_auto_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_expired_license_auto_update", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLicenseAutoRegister")
-    def enable_license_auto_register(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_license_auto_register(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic license registration for new users created in
         this user store. If enabled, new users will automatically register under
@@ -240,12 +240,12 @@ class _UserStoreState:
         return pulumi.get(self, "enable_license_auto_register")
 
     @enable_license_auto_register.setter
-    def enable_license_auto_register(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_license_auto_register(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_license_auto_register", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the data store should reside. The value can
         only be one of "global", "us" and "eu".
@@ -253,12 +253,12 @@ class _UserStoreState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique full resource name of the user store. Values are of the format
         `projects/{project}/locations/{location}/userStores/{user_store_id}`.
@@ -266,12 +266,12 @@ class _UserStoreState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -279,19 +279,19 @@ class _UserStoreState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="userStoreId")
-    def user_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user store. Currently only accepts "default_user_store".
         """
         return pulumi.get(self, "user_store_id")
 
     @user_store_id.setter
-    def user_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_store_id", value)
 
 
@@ -301,12 +301,12 @@ class UserStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_license_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_expired_license_auto_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_license_auto_register: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_store_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_license_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_expired_license_auto_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_license_auto_register: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a user store.
@@ -469,12 +469,12 @@ class UserStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_license_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_expired_license_auto_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_license_auto_register: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_store_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_license_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_expired_license_auto_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_license_auto_register: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_store_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -503,13 +503,13 @@ class UserStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_license_config: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_expired_license_auto_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_license_auto_register: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            user_store_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserStore':
+            default_license_config: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_expired_license_auto_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_license_auto_register: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            user_store_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserStore':
         """
         Get an existing UserStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

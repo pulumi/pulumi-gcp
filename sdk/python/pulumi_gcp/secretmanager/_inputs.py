@@ -86,7 +86,7 @@ class RegionalSecretIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -100,7 +100,7 @@ class RegionalSecretIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -141,7 +141,7 @@ class RegionalSecretIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -152,7 +152,7 @@ class RegionalSecretIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -165,7 +165,7 @@ class RegionalSecretIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -179,7 +179,7 @@ class RegionalSecretIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -220,7 +220,7 @@ class RegionalSecretIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -231,18 +231,18 @@ class RegionalSecretIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RegionalSecretRotationArgsDict(TypedDict):
-    next_rotation_time: NotRequired[pulumi.Input[_builtins.str]]
+    next_rotation_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timestamp in UTC at which the Secret is scheduled to rotate.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
     fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    rotation_period: NotRequired[pulumi.Input[_builtins.str]]
+    rotation_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
     and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
@@ -253,8 +253,8 @@ class RegionalSecretRotationArgsDict(TypedDict):
 @pulumi.input_type
 class RegionalSecretRotationArgs:
     def __init__(__self__, *,
-                 next_rotation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_period: Optional[pulumi.Input[_builtins.str]] = None):
+                 next_rotation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] next_rotation_time: Timestamp in UTC at which the Secret is scheduled to rotate.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -271,7 +271,7 @@ class RegionalSecretRotationArgs:
 
     @_builtins.property
     @pulumi.getter(name="nextRotationTime")
-    def next_rotation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_rotation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp in UTC at which the Secret is scheduled to rotate.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -280,12 +280,12 @@ class RegionalSecretRotationArgs:
         return pulumi.get(self, "next_rotation_time")
 
     @next_rotation_time.setter
-    def next_rotation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_rotation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_rotation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationPeriod")
-    def rotation_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
         and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
@@ -295,7 +295,7 @@ class RegionalSecretRotationArgs:
         return pulumi.get(self, "rotation_period")
 
     @rotation_period.setter
-    def rotation_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_period", value)
 
 
@@ -334,7 +334,7 @@ class RegionalSecretTopicArgs:
 
 
 class RegionalSecretVersionCustomerManagedEncryptionArgsDict(TypedDict):
-    kms_key_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
@@ -343,7 +343,7 @@ class RegionalSecretVersionCustomerManagedEncryptionArgsDict(TypedDict):
 @pulumi.input_type
 class RegionalSecretVersionCustomerManagedEncryptionArgs:
     def __init__(__self__, *,
-                 kms_key_version_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_version_name: (Output)
                The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
@@ -353,7 +353,7 @@ class RegionalSecretVersionCustomerManagedEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersionName")
-    def kms_key_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
@@ -361,7 +361,7 @@ class RegionalSecretVersionCustomerManagedEncryptionArgs:
         return pulumi.get(self, "kms_key_version_name")
 
     @kms_key_version_name.setter
-    def kms_key_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version_name", value)
 
 
@@ -374,7 +374,7 @@ class SecretIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -388,7 +388,7 @@ class SecretIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -429,7 +429,7 @@ class SecretIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -440,7 +440,7 @@ class SecretIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -453,7 +453,7 @@ class SecretIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -467,7 +467,7 @@ class SecretIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -508,7 +508,7 @@ class SecretIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -519,17 +519,17 @@ class SecretIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class SecretReplicationArgsDict(TypedDict):
-    auto: NotRequired[pulumi.Input['SecretReplicationAutoArgsDict']]
+    auto: NotRequired[pulumi.Input[Optional['SecretReplicationAutoArgs']]]
     """
     The Secret will automatically be replicated without any restrictions.
     Structure is documented below.
     """
-    user_managed: NotRequired[pulumi.Input['SecretReplicationUserManagedArgsDict']]
+    user_managed: NotRequired[pulumi.Input[Optional['SecretReplicationUserManagedArgs']]]
     """
     The Secret will be replicated to the regions specified by the user.
     Structure is documented below.
@@ -538,8 +538,8 @@ class SecretReplicationArgsDict(TypedDict):
 @pulumi.input_type
 class SecretReplicationArgs:
     def __init__(__self__, *,
-                 auto: Optional[pulumi.Input['SecretReplicationAutoArgs']] = None,
-                 user_managed: Optional[pulumi.Input['SecretReplicationUserManagedArgs']] = None):
+                 auto: pulumi.Input[Optional['SecretReplicationAutoArgs']] = None,
+                 user_managed: pulumi.Input[Optional['SecretReplicationUserManagedArgs']] = None):
         """
         :param pulumi.Input['SecretReplicationAutoArgs'] auto: The Secret will automatically be replicated without any restrictions.
                Structure is documented below.
@@ -553,7 +553,7 @@ class SecretReplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def auto(self) -> Optional[pulumi.Input['SecretReplicationAutoArgs']]:
+    def auto(self) -> pulumi.Input[Optional['SecretReplicationAutoArgs']]:
         """
         The Secret will automatically be replicated without any restrictions.
         Structure is documented below.
@@ -561,12 +561,12 @@ class SecretReplicationArgs:
         return pulumi.get(self, "auto")
 
     @auto.setter
-    def auto(self, value: Optional[pulumi.Input['SecretReplicationAutoArgs']]):
+    def auto(self, value: pulumi.Input[Optional['SecretReplicationAutoArgs']]):
         pulumi.set(self, "auto", value)
 
     @_builtins.property
     @pulumi.getter(name="userManaged")
-    def user_managed(self) -> Optional[pulumi.Input['SecretReplicationUserManagedArgs']]:
+    def user_managed(self) -> pulumi.Input[Optional['SecretReplicationUserManagedArgs']]:
         """
         The Secret will be replicated to the regions specified by the user.
         Structure is documented below.
@@ -574,12 +574,12 @@ class SecretReplicationArgs:
         return pulumi.get(self, "user_managed")
 
     @user_managed.setter
-    def user_managed(self, value: Optional[pulumi.Input['SecretReplicationUserManagedArgs']]):
+    def user_managed(self, value: pulumi.Input[Optional['SecretReplicationUserManagedArgs']]):
         pulumi.set(self, "user_managed", value)
 
 
 class SecretReplicationAutoArgsDict(TypedDict):
-    customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgsDict']]
+    customer_managed_encryption: NotRequired[pulumi.Input[Optional['SecretReplicationAutoCustomerManagedEncryptionArgs']]]
     """
     The customer-managed encryption configuration of the Secret.
     If no configuration is provided, Google-managed default
@@ -590,7 +590,7 @@ class SecretReplicationAutoArgsDict(TypedDict):
 @pulumi.input_type
 class SecretReplicationAutoArgs:
     def __init__(__self__, *,
-                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']] = None):
+                 customer_managed_encryption: pulumi.Input[Optional['SecretReplicationAutoCustomerManagedEncryptionArgs']] = None):
         """
         :param pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs'] customer_managed_encryption: The customer-managed encryption configuration of the Secret.
                If no configuration is provided, Google-managed default
@@ -602,7 +602,7 @@ class SecretReplicationAutoArgs:
 
     @_builtins.property
     @pulumi.getter(name="customerManagedEncryption")
-    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']]:
+    def customer_managed_encryption(self) -> pulumi.Input[Optional['SecretReplicationAutoCustomerManagedEncryptionArgs']]:
         """
         The customer-managed encryption configuration of the Secret.
         If no configuration is provided, Google-managed default
@@ -612,7 +612,7 @@ class SecretReplicationAutoArgs:
         return pulumi.get(self, "customer_managed_encryption")
 
     @customer_managed_encryption.setter
-    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationAutoCustomerManagedEncryptionArgs']]):
+    def customer_managed_encryption(self, value: pulumi.Input[Optional['SecretReplicationAutoCustomerManagedEncryptionArgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
 
 
@@ -680,7 +680,7 @@ class SecretReplicationUserManagedReplicaArgsDict(TypedDict):
     """
     The canonical IDs of the location to replicate data. For example: "us-east1".
     """
-    customer_managed_encryption: NotRequired[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict']]
+    customer_managed_encryption: NotRequired[pulumi.Input[Optional['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]]
     """
     Customer Managed Encryption for the secret.
     Structure is documented below.
@@ -690,7 +690,7 @@ class SecretReplicationUserManagedReplicaArgsDict(TypedDict):
 class SecretReplicationUserManagedReplicaArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 customer_managed_encryption: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']] = None):
+                 customer_managed_encryption: pulumi.Input[Optional['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] location: The canonical IDs of the location to replicate data. For example: "us-east1".
         :param pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs'] customer_managed_encryption: Customer Managed Encryption for the secret.
@@ -714,7 +714,7 @@ class SecretReplicationUserManagedReplicaArgs:
 
     @_builtins.property
     @pulumi.getter(name="customerManagedEncryption")
-    def customer_managed_encryption(self) -> Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]:
+    def customer_managed_encryption(self) -> pulumi.Input[Optional['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]:
         """
         Customer Managed Encryption for the secret.
         Structure is documented below.
@@ -722,7 +722,7 @@ class SecretReplicationUserManagedReplicaArgs:
         return pulumi.get(self, "customer_managed_encryption")
 
     @customer_managed_encryption.setter
-    def customer_managed_encryption(self, value: Optional[pulumi.Input['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]):
+    def customer_managed_encryption(self, value: pulumi.Input[Optional['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
 
 
@@ -755,12 +755,12 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
 
 
 class SecretRotationArgsDict(TypedDict):
-    next_rotation_time: NotRequired[pulumi.Input[_builtins.str]]
+    next_rotation_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timestamp in UTC at which the Secret is scheduled to rotate.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    rotation_period: NotRequired[pulumi.Input[_builtins.str]]
+    rotation_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
     If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
@@ -769,8 +769,8 @@ class SecretRotationArgsDict(TypedDict):
 @pulumi.input_type
 class SecretRotationArgs:
     def __init__(__self__, *,
-                 next_rotation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_period: Optional[pulumi.Input[_builtins.str]] = None):
+                 next_rotation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_period: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] next_rotation_time: Timestamp in UTC at which the Secret is scheduled to rotate.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -784,7 +784,7 @@ class SecretRotationArgs:
 
     @_builtins.property
     @pulumi.getter(name="nextRotationTime")
-    def next_rotation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_rotation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp in UTC at which the Secret is scheduled to rotate.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -792,12 +792,12 @@ class SecretRotationArgs:
         return pulumi.get(self, "next_rotation_time")
 
     @next_rotation_time.setter
-    def next_rotation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_rotation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_rotation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationPeriod")
-    def rotation_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
         If rotationPeriod is set, `next_rotation_time` must be set. `next_rotation_time` will be advanced by this period when the service automatically sends rotation notifications.
@@ -805,7 +805,7 @@ class SecretRotationArgs:
         return pulumi.get(self, "rotation_period")
 
     @rotation_period.setter
-    def rotation_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_period", value)
 
 

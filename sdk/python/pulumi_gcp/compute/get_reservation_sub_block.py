@@ -290,11 +290,11 @@ def get_reservation_sub_block(name: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         sub_block_count=pulumi.get(__ret__, 'sub_block_count'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_reservation_sub_block_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     reservation: Optional[pulumi.Input[_builtins.str]] = None,
-                                     reservation_block: Optional[pulumi.Input[_builtins.str]] = None,
-                                     zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_reservation_sub_block_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     reservation: pulumi.Input[Optional[_builtins.str]] = None,
+                                     reservation_block: pulumi.Input[Optional[_builtins.str]] = None,
+                                     zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservationSubBlockResult]:
     """
     Get information about a Google Compute Engine Reservation Sub-Block. Reservation sub-blocks are automatically created by Google Cloud within reservation blocks and represent a finer-grained physical grouping of resources.

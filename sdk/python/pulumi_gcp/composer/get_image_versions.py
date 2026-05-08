@@ -126,8 +126,8 @@ def get_image_versions(project: Optional[_builtins.str] = None,
         image_versions=pulumi.get(__ret__, 'image_versions'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-def get_image_versions_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_image_versions_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageVersionsResult]:
     """
     Provides access to available Cloud Composer versions in a region for a given project.

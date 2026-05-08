@@ -20,7 +20,7 @@ __all__ = ['DashboardArgs', 'Dashboard']
 class DashboardArgs:
     def __init__(__self__, *,
                  dashboard_json: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
 
@@ -64,7 +64,7 @@ class DashboardArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -72,15 +72,15 @@ class DashboardArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _DashboardState:
     def __init__(__self__, *,
-                 dashboard_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 dashboard_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
 
@@ -104,7 +104,7 @@ class _DashboardState:
 
     @_builtins.property
     @pulumi.getter(name="dashboardJson")
-    def dashboard_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
@@ -120,12 +120,12 @@ class _DashboardState:
         return pulumi.get(self, "dashboard_json")
 
     @dashboard_json.setter
-    def dashboard_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_json", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -133,7 +133,7 @@ class _DashboardState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -143,8 +143,8 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dashboard_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 dashboard_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver web application.
@@ -410,8 +410,8 @@ class Dashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dashboard_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 dashboard_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,8 +435,8 @@ class Dashboard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dashboard_json: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'Dashboard':
+            dashboard_json: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'Dashboard':
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -136,9 +136,9 @@ export interface GetCertificatesOutputArgs {
     /**
      * Filter expression to restrict the certificates returned.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

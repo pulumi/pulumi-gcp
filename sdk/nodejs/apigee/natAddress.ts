@@ -248,24 +248,24 @@ export interface NatAddressState {
     /**
      * Flag that specifies whether the reserved NAT address should be activate.
      */
-    activate?: pulumi.Input<boolean>;
+    activate?: pulumi.Input<boolean | undefined>;
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The allocated NAT IP address.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Resource ID of the NAT address.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * State of the NAT IP address.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -275,7 +275,7 @@ export interface NatAddressArgs {
     /**
      * Flag that specifies whether the reserved NAT address should be activate.
      */
-    activate?: pulumi.Input<boolean>;
+    activate?: pulumi.Input<boolean | undefined>;
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
@@ -284,5 +284,5 @@ export interface NatAddressArgs {
     /**
      * Resource ID of the NAT address.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

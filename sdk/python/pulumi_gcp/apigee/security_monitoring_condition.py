@@ -25,7 +25,7 @@ class SecurityMonitoringConditionArgs:
                  org_id: pulumi.Input[_builtins.str],
                  profile: pulumi.Input[_builtins.str],
                  scope: pulumi.Input[_builtins.str],
-                 include_all_resources: Optional[pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs']] = None):
+                 include_all_resources: pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']] = None):
         """
         The set of arguments for constructing a SecurityMonitoringCondition resource.
 
@@ -94,30 +94,30 @@ class SecurityMonitoringConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="includeAllResources")
-    def include_all_resources(self) -> Optional[pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs']]:
+    def include_all_resources(self) -> pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']]:
         """
         A nested object resource.
         """
         return pulumi.get(self, "include_all_resources")
 
     @include_all_resources.setter
-    def include_all_resources(self, value: Optional[pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs']]):
+    def include_all_resources(self, value: pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']]):
         pulumi.set(self, "include_all_resources", value)
 
 
 @pulumi.input_type
 class _SecurityMonitoringConditionState:
     def __init__(__self__, *,
-                 condition_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_all_resources: Optional[pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_deployed_resources: Optional[pulumi.Input[_builtins.int]] = None,
-                 total_monitored_resources: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_all_resources: pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_deployed_resources: pulumi.Input[Optional[_builtins.int]] = None,
+                 total_monitored_resources: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityMonitoringCondition resources.
 
@@ -157,43 +157,43 @@ class _SecurityMonitoringConditionState:
 
     @_builtins.property
     @pulumi.getter(name="conditionId")
-    def condition_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID of the security monitoring condition.
         """
         return pulumi.get(self, "condition_id")
 
     @condition_id.setter
-    def condition_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp at which this profile was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="includeAllResources")
-    def include_all_resources(self) -> Optional[pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs']]:
+    def include_all_resources(self) -> pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']]:
         """
         A nested object resource.
         """
         return pulumi.get(self, "include_all_resources")
 
     @include_all_resources.setter
-    def include_all_resources(self, value: Optional[pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs']]):
+    def include_all_resources(self, value: pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']]):
         pulumi.set(self, "include_all_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the security monitoring condition resource,
         in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
@@ -201,12 +201,12 @@ class _SecurityMonitoringConditionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization associated with the Apigee Security Monitoring Condition,
         in the format `organizations/{{org_name}}`.
@@ -214,67 +214,67 @@ class _SecurityMonitoringConditionState:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of security profile of the security monitoring condition.
         """
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of security profile of the security monitoring condition.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="totalDeployedResources")
-    def total_deployed_resources(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_deployed_resources(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of deployed resources within scope.
         """
         return pulumi.get(self, "total_deployed_resources")
 
     @total_deployed_resources.setter
-    def total_deployed_resources(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_deployed_resources(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_deployed_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="totalMonitoredResources")
-    def total_monitored_resources(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_monitored_resources(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total number of monitored resources within this condition.
         """
         return pulumi.get(self, "total_monitored_resources")
 
     @total_monitored_resources.setter
-    def total_monitored_resources(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_monitored_resources(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_monitored_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp at which this profile was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -284,11 +284,11 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_all_resources: Optional[pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Security monitoring condition for risk assessment version 2 in Apigee.
@@ -460,11 +460,11 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_all_resources: Optional[pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -502,16 +502,16 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            include_all_resources: Optional[pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            profile: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            total_deployed_resources: Optional[pulumi.Input[_builtins.int]] = None,
-            total_monitored_resources: Optional[pulumi.Input[_builtins.int]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityMonitoringCondition':
+            condition_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            profile: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            total_deployed_resources: pulumi.Input[Optional[_builtins.int]] = None,
+            total_monitored_resources: pulumi.Input[Optional[_builtins.int]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityMonitoringCondition':
         """
         Get an existing SecurityMonitoringCondition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.DataLineage
     ///         Member = "serviceAccount:my@service-account.com",
     ///     });
     /// 
-    ///     var waitForFolderIam = new Time.Index.Sleep("wait_for_folder_iam", new()
+    ///     var waitForFolderIam = new Time.Sleep("wait_for_folder_iam", new()
     ///     {
     ///         CreateDuration = "60s",
     ///     }, new CustomResourceOptions

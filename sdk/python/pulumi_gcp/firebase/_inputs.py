@@ -142,7 +142,7 @@ __all__ = [
 ]
 
 class AiLogicConfigGenerativeLanguageConfigArgsDict(TypedDict):
-    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    api_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the API key. The API key must have
     `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
@@ -151,7 +151,7 @@ class AiLogicConfigGenerativeLanguageConfigArgsDict(TypedDict):
     Do **not** add this Gemini API key into your app's codebase
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    api_key_wo: NotRequired[pulumi.Input[_builtins.str]]
+    api_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only)
@@ -164,7 +164,7 @@ class AiLogicConfigGenerativeLanguageConfigArgsDict(TypedDict):
 
     > **Note:** One of `api_key` or `api_key_wo` can only be set.
     """
-    api_key_wo_version: NotRequired[pulumi.Input[_builtins.str]]
+    api_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Triggers update of `api_key_wo` write-only. Increment this value when an update to `api_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
     """
@@ -172,9 +172,9 @@ class AiLogicConfigGenerativeLanguageConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiLogicConfigGenerativeLanguageConfigArgs:
     def __init__(__self__, *,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key_wo_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api_key: The value of the API key. The API key must have
                `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
@@ -203,7 +203,7 @@ class AiLogicConfigGenerativeLanguageConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the API key. The API key must have
         `generativelanguage.googleapis.com` in its "API restrictions" allowlist.
@@ -215,12 +215,12 @@ class AiLogicConfigGenerativeLanguageConfigArgs:
         return pulumi.get(self, "api_key")
 
     @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeyWo")
-    def api_key_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         (Optional, Write-Only)
@@ -236,31 +236,31 @@ class AiLogicConfigGenerativeLanguageConfigArgs:
         return pulumi.get(self, "api_key_wo")
 
     @api_key_wo.setter
-    def api_key_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeyWoVersion")
-    def api_key_wo_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Triggers update of `api_key_wo` write-only. Increment this value when an update to `api_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "api_key_wo_version")
 
     @api_key_wo_version.setter
-    def api_key_wo_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key_wo_version", value)
 
 
 class AiLogicConfigTelemetryConfigArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The current monitoring mode used for this project.
     Possible values:
     NONE
     ALL
     """
-    sampling_rate: NotRequired[pulumi.Input[_builtins.float]]
+    sampling_rate: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The percentage of requests to be sampled, expressed as a fraction
     in the range (0,1]. Note that the actual sampling rate may be lower than
@@ -270,8 +270,8 @@ class AiLogicConfigTelemetryConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiLogicConfigTelemetryConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 sampling_rate: Optional[pulumi.Input[_builtins.float]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 sampling_rate: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: The current monitoring mode used for this project.
                Possible values:
@@ -288,7 +288,7 @@ class AiLogicConfigTelemetryConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current monitoring mode used for this project.
         Possible values:
@@ -298,12 +298,12 @@ class AiLogicConfigTelemetryConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="samplingRate")
-    def sampling_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def sampling_rate(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The percentage of requests to be sampled, expressed as a fraction
         in the range (0,1]. Note that the actual sampling rate may be lower than
@@ -312,12 +312,12 @@ class AiLogicConfigTelemetryConfigArgs:
         return pulumi.get(self, "sampling_rate")
 
     @sampling_rate.setter
-    def sampling_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def sampling_rate(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "sampling_rate", value)
 
 
 class AiLogicConfigTrafficFilterArgsDict(TypedDict):
-    template_only: NotRequired[pulumi.Input[_builtins.bool]]
+    template_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only allows users to use AI Logic via prompt templates for this project.
     If true, only calls using server templates are permitted.
@@ -326,7 +326,7 @@ class AiLogicConfigTrafficFilterArgsDict(TypedDict):
 @pulumi.input_type
 class AiLogicConfigTrafficFilterArgs:
     def __init__(__self__, *,
-                 template_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 template_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] template_only: Only allows users to use AI Logic via prompt templates for this project.
                If true, only calls using server templates are permitted.
@@ -336,7 +336,7 @@ class AiLogicConfigTrafficFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="templateOnly")
-    def template_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only allows users to use AI Logic via prompt templates for this project.
         If true, only calls using server templates are permitted.
@@ -344,7 +344,7 @@ class AiLogicConfigTrafficFilterArgs:
         return pulumi.get(self, "template_only")
 
     @template_only.setter
-    def template_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template_only", value)
 
 
@@ -356,7 +356,7 @@ class AppHostingBackendCodebaseArgsDict(TypedDict):
     connected to this backend, in the format:
     projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}
     """
-    root_directory: NotRequired[pulumi.Input[_builtins.str]]
+    root_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If `repository` is provided, the directory relative to the root of the
     repository to use as the root for the deployed web app.
@@ -366,7 +366,7 @@ class AppHostingBackendCodebaseArgsDict(TypedDict):
 class AppHostingBackendCodebaseArgs:
     def __init__(__self__, *,
                  repository: pulumi.Input[_builtins.str],
-                 root_directory: Optional[pulumi.Input[_builtins.str]] = None):
+                 root_directory: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] repository: The resource name for the Developer Connect
                [`gitRepositoryLink`](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
@@ -396,7 +396,7 @@ class AppHostingBackendCodebaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="rootDirectory")
-    def root_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If `repository` is provided, the directory relative to the root of the
         repository to use as the root for the deployed web app.
@@ -404,12 +404,12 @@ class AppHostingBackendCodebaseArgs:
         return pulumi.get(self, "root_directory")
 
     @root_directory.setter
-    def root_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_directory", value)
 
 
 class AppHostingBackendManagedResourceArgsDict(TypedDict):
-    run_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgsDict']]]]
+    run_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]]]
     """
     (Output)
     A managed Cloud Run
@@ -420,7 +420,7 @@ class AppHostingBackendManagedResourceArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingBackendManagedResourceArgs:
     def __init__(__self__, *,
-                 run_services: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]] = None):
+                 run_services: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]] run_services: (Output)
                A managed Cloud Run
@@ -432,7 +432,7 @@ class AppHostingBackendManagedResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="runServices")
-    def run_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]]:
+    def run_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]]:
         """
         (Output)
         A managed Cloud Run
@@ -442,12 +442,12 @@ class AppHostingBackendManagedResourceArgs:
         return pulumi.get(self, "run_services")
 
     @run_services.setter
-    def run_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]]):
+    def run_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]]):
         pulumi.set(self, "run_services", value)
 
 
 class AppHostingBackendManagedResourceRunServiceArgsDict(TypedDict):
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the Cloud Run
@@ -459,7 +459,7 @@ class AppHostingBackendManagedResourceRunServiceArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingBackendManagedResourceRunServiceArgs:
     def __init__(__self__, *,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service: (Output)
                The name of the Cloud Run
@@ -472,7 +472,7 @@ class AppHostingBackendManagedResourceRunServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the Cloud Run
@@ -483,23 +483,23 @@ class AppHostingBackendManagedResourceRunServiceArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class AppHostingBuildErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
     (Output)
     A list of messages that carry the error details. There is a common set of
     message types for APIs to use.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any
@@ -510,9 +510,9 @@ class AppHostingBuildErrorArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingBuildErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -533,7 +533,7 @@ class AppHostingBuildErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -541,12 +541,12 @@ class AppHostingBuildErrorArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details. There is a common set of
@@ -555,12 +555,12 @@ class AppHostingBuildErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any
@@ -570,18 +570,18 @@ class AppHostingBuildErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class AppHostingBuildSourceArgsDict(TypedDict):
-    codebase: NotRequired[pulumi.Input['AppHostingBuildSourceCodebaseArgsDict']]
+    codebase: NotRequired[pulumi.Input[Optional['AppHostingBuildSourceCodebaseArgs']]]
     """
     A codebase source, representing the state of the codebase
     that the build will be created at.
     Structure is documented below.
     """
-    container: NotRequired[pulumi.Input['AppHostingBuildSourceContainerArgsDict']]
+    container: NotRequired[pulumi.Input[Optional['AppHostingBuildSourceContainerArgs']]]
     """
     The URI of an Artifact Registry
     [container
@@ -593,8 +593,8 @@ class AppHostingBuildSourceArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingBuildSourceArgs:
     def __init__(__self__, *,
-                 codebase: Optional[pulumi.Input['AppHostingBuildSourceCodebaseArgs']] = None,
-                 container: Optional[pulumi.Input['AppHostingBuildSourceContainerArgs']] = None):
+                 codebase: pulumi.Input[Optional['AppHostingBuildSourceCodebaseArgs']] = None,
+                 container: pulumi.Input[Optional['AppHostingBuildSourceContainerArgs']] = None):
         """
         :param pulumi.Input['AppHostingBuildSourceCodebaseArgs'] codebase: A codebase source, representing the state of the codebase
                that the build will be created at.
@@ -612,7 +612,7 @@ class AppHostingBuildSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def codebase(self) -> Optional[pulumi.Input['AppHostingBuildSourceCodebaseArgs']]:
+    def codebase(self) -> pulumi.Input[Optional['AppHostingBuildSourceCodebaseArgs']]:
         """
         A codebase source, representing the state of the codebase
         that the build will be created at.
@@ -621,12 +621,12 @@ class AppHostingBuildSourceArgs:
         return pulumi.get(self, "codebase")
 
     @codebase.setter
-    def codebase(self, value: Optional[pulumi.Input['AppHostingBuildSourceCodebaseArgs']]):
+    def codebase(self, value: pulumi.Input[Optional['AppHostingBuildSourceCodebaseArgs']]):
         pulumi.set(self, "codebase", value)
 
     @_builtins.property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input['AppHostingBuildSourceContainerArgs']]:
+    def container(self) -> pulumi.Input[Optional['AppHostingBuildSourceContainerArgs']]:
         """
         The URI of an Artifact Registry
         [container
@@ -637,50 +637,50 @@ class AppHostingBuildSourceArgs:
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input['AppHostingBuildSourceContainerArgs']]):
+    def container(self, value: pulumi.Input[Optional['AppHostingBuildSourceContainerArgs']]):
         pulumi.set(self, "container", value)
 
 
 class AppHostingBuildSourceCodebaseArgsDict(TypedDict):
-    authors: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgsDict']]]]
+    authors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]]]
     """
     (Output)
     Version control metadata for a user associated with a resolved codebase.
     Currently assumes a Git user.
     Structure is documented below.
     """
-    branch: NotRequired[pulumi.Input[_builtins.str]]
+    branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The branch in the codebase to build from, using the latest commit.
     """
-    commit: NotRequired[pulumi.Input[_builtins.str]]
+    commit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The commit in the codebase to build from.
 
 
     <a name="nested_source_codebase_author"></a>The `author` block contains:
     """
-    commit_message: NotRequired[pulumi.Input[_builtins.str]]
+    commit_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The message of a codebase change.
     """
-    commit_time: NotRequired[pulumi.Input[_builtins.str]]
+    commit_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time the change was made.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The 'name' field in a Git user's git.config. Required by Git.
     """
-    hash: NotRequired[pulumi.Input[_builtins.str]]
+    hash: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The full SHA-1 hash of a Git commit, if available.
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A URI linking to the codebase on an hosting provider's website. May
@@ -691,14 +691,14 @@ class AppHostingBuildSourceCodebaseArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingBuildSourceCodebaseArgs:
     def __init__(__self__, *,
-                 authors: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 authors: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]] authors: (Output)
                Version control metadata for a user associated with a resolved codebase.
@@ -741,7 +741,7 @@ class AppHostingBuildSourceCodebaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]]:
+    def authors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]]:
         """
         (Output)
         Version control metadata for a user associated with a resolved codebase.
@@ -751,24 +751,24 @@ class AppHostingBuildSourceCodebaseArgs:
         return pulumi.get(self, "authors")
 
     @authors.setter
-    def authors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]]):
+    def authors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]]):
         pulumi.set(self, "authors", value)
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch in the codebase to build from, using the latest commit.
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter
-    def commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit in the codebase to build from.
 
@@ -778,12 +778,12 @@ class AppHostingBuildSourceCodebaseArgs:
         return pulumi.get(self, "commit")
 
     @commit.setter
-    def commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit", value)
 
     @_builtins.property
     @pulumi.getter(name="commitMessage")
-    def commit_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The message of a codebase change.
@@ -791,12 +791,12 @@ class AppHostingBuildSourceCodebaseArgs:
         return pulumi.get(self, "commit_message")
 
     @commit_message.setter
-    def commit_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_message", value)
 
     @_builtins.property
     @pulumi.getter(name="commitTime")
-    def commit_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time the change was made.
@@ -804,12 +804,12 @@ class AppHostingBuildSourceCodebaseArgs:
         return pulumi.get(self, "commit_time")
 
     @commit_time.setter
-    def commit_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The 'name' field in a Git user's git.config. Required by Git.
@@ -817,12 +817,12 @@ class AppHostingBuildSourceCodebaseArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The full SHA-1 hash of a Git commit, if available.
@@ -830,12 +830,12 @@ class AppHostingBuildSourceCodebaseArgs:
         return pulumi.get(self, "hash")
 
     @hash.setter
-    def hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A URI linking to the codebase on an hosting provider's website. May
@@ -845,20 +845,20 @@ class AppHostingBuildSourceCodebaseArgs:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class AppHostingBuildSourceCodebaseAuthorArgsDict(TypedDict):
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human-readable name. 63 character limit.
     """
-    email: NotRequired[pulumi.Input[_builtins.str]]
+    email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The 'email' field in a Git user's git.config, if available.
     """
-    image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    image_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI of an image file associated with the user's account in an
     external source control provider, if available.
@@ -867,9 +867,9 @@ class AppHostingBuildSourceCodebaseAuthorArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingBuildSourceCodebaseAuthorArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: Human-readable name. 63 character limit.
         :param pulumi.Input[_builtins.str] email: The 'email' field in a Git user's git.config, if available.
@@ -885,31 +885,31 @@ class AppHostingBuildSourceCodebaseAuthorArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable name. 63 character limit.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The 'email' field in a Git user's git.config, if available.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUri")
-    def image_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of an image file associated with the user's account in an
         external source control provider, if available.
@@ -917,7 +917,7 @@ class AppHostingBuildSourceCodebaseAuthorArgs:
         return pulumi.get(self, "image_uri")
 
     @image_uri.setter
-    def image_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_uri", value)
 
 
@@ -950,7 +950,7 @@ class AppHostingBuildSourceContainerArgs:
 
 
 class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
-    cert_state: NotRequired[pulumi.Input[_builtins.str]]
+    cert_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Possible values:
@@ -961,7 +961,7 @@ class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
     CERT_EXPIRING_SOON
     CERT_EXPIRED
     """
-    host_state: NotRequired[pulumi.Input[_builtins.str]]
+    host_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Possible values:
@@ -972,14 +972,14 @@ class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
     HOST_WRONG_SHARD
     HOST_ACTIVE
     """
-    issues: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgsDict']]]]
+    issues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]]
     """
     (Output)
     A list of issues with domain configuration. Allows users to self-correct
     problems with DNS records.
     Structure is documented below.
     """
-    ownership_state: NotRequired[pulumi.Input[_builtins.str]]
+    ownership_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Possible values:
@@ -990,7 +990,7 @@ class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
     OWNERSHIP_PENDING
     OWNERSHIP_ACTIVE
     """
-    required_dns_updates: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict']]]]
+    required_dns_updates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]]
     """
     (Output)
     Lists the records that must added or removed to a custom domain's DNS
@@ -1004,11 +1004,11 @@ class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusArgs:
     def __init__(__self__, *,
-                 cert_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]] = None,
-                 ownership_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_dns_updates: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]] = None):
+                 cert_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]] = None,
+                 ownership_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_dns_updates: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] cert_state: (Output)
                Possible values:
@@ -1059,7 +1059,7 @@ class AppHostingDomainCustomDomainStatusArgs:
 
     @_builtins.property
     @pulumi.getter(name="certState")
-    def cert_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Possible values:
@@ -1073,12 +1073,12 @@ class AppHostingDomainCustomDomainStatusArgs:
         return pulumi.get(self, "cert_state")
 
     @cert_state.setter
-    def cert_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_state", value)
 
     @_builtins.property
     @pulumi.getter(name="hostState")
-    def host_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Possible values:
@@ -1092,12 +1092,12 @@ class AppHostingDomainCustomDomainStatusArgs:
         return pulumi.get(self, "host_state")
 
     @host_state.setter
-    def host_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]:
+    def issues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]:
         """
         (Output)
         A list of issues with domain configuration. Allows users to self-correct
@@ -1107,12 +1107,12 @@ class AppHostingDomainCustomDomainStatusArgs:
         return pulumi.get(self, "issues")
 
     @issues.setter
-    def issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]):
+    def issues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]):
         pulumi.set(self, "issues", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipState")
-    def ownership_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ownership_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Possible values:
@@ -1126,12 +1126,12 @@ class AppHostingDomainCustomDomainStatusArgs:
         return pulumi.get(self, "ownership_state")
 
     @ownership_state.setter
-    def ownership_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ownership_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ownership_state", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredDnsUpdates")
-    def required_dns_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]:
+    def required_dns_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]:
         """
         (Output)
         Lists the records that must added or removed to a custom domain's DNS
@@ -1144,22 +1144,22 @@ class AppHostingDomainCustomDomainStatusArgs:
         return pulumi.get(self, "required_dns_updates")
 
     @required_dns_updates.setter
-    def required_dns_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]):
+    def required_dns_updates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]):
         pulumi.set(self, "required_dns_updates", value)
 
 
 class AppHostingDomainCustomDomainStatusIssueArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any
@@ -1170,9 +1170,9 @@ class AppHostingDomainCustomDomainStatusIssueArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusIssueArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -1192,7 +1192,7 @@ class AppHostingDomainCustomDomainStatusIssueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -1200,12 +1200,12 @@ class AppHostingDomainCustomDomainStatusIssueArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -1213,12 +1213,12 @@ class AppHostingDomainCustomDomainStatusIssueArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any
@@ -1228,30 +1228,30 @@ class AppHostingDomainCustomDomainStatusIssueArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict(TypedDict):
-    check_time: NotRequired[pulumi.Input[_builtins.str]]
+    check_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The last time App Hosting checked your custom domain's DNS records.
     """
-    desireds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict']]]]
+    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]]
     """
     (Output)
     The set of DNS records App Hosting needs in order to be able to serve
     secure content on the domain.
     Structure is documented below.
     """
-    discovereds: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict']]]]
+    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]]
     """
     (Output)
     The set of DNS records App Hosting discovered when inspecting a domain.
     Structure is documented below.
     """
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1260,10 +1260,10 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
     def __init__(__self__, *,
-                 check_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]] = None,
-                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 desireds: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]] = None,
+                 discovereds: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] check_time: (Output)
                The last time App Hosting checked your custom domain's DNS records.
@@ -1288,7 +1288,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkTime")
-    def check_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The last time App Hosting checked your custom domain's DNS records.
@@ -1296,12 +1296,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
         return pulumi.get(self, "check_time")
 
     @check_time.setter
-    def check_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]:
+    def desireds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]:
         """
         (Output)
         The set of DNS records App Hosting needs in order to be able to serve
@@ -1311,12 +1311,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
         return pulumi.get(self, "desireds")
 
     @desireds.setter
-    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]):
+    def desireds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]):
         pulumi.set(self, "desireds", value)
 
     @_builtins.property
     @pulumi.getter
-    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]:
+    def discovereds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]:
         """
         (Output)
         The set of DNS records App Hosting discovered when inspecting a domain.
@@ -1325,12 +1325,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
         return pulumi.get(self, "discovereds")
 
     @discovereds.setter
-    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]):
+    def discovereds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]):
         pulumi.set(self, "discovereds", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1338,12 +1338,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict(TypedDict):
-    check_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDict']]]]
+    check_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -1354,12 +1354,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict(TypedDi
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The domain the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict']]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]]
     """
     (Output)
     Records on the domain.
@@ -1369,9 +1369,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict(TypedDi
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs:
     def __init__(__self__, *,
-                 check_errors: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]] = None):
+                 check_errors: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 records: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]] check_errors: (Output)
                The `Status` type defines a logical error model that is suitable for
@@ -1396,7 +1396,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkErrors")
-    def check_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]:
+    def check_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]:
         """
         (Output)
         The `Status` type defines a logical error model that is suitable for
@@ -1410,12 +1410,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs:
         return pulumi.get(self, "check_errors")
 
     @check_errors.setter
-    def check_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]):
+    def check_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]):
         pulumi.set(self, "check_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1423,12 +1423,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]:
+    def records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]:
         """
         (Output)
         Records on the domain.
@@ -1437,22 +1437,22 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]):
+    def records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any
@@ -1463,9 +1463,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDi
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -1485,7 +1485,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -1493,12 +1493,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -1506,12 +1506,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any
@@ -1521,17 +1521,17 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The domain the record pertains to, e.g. `foo.bar.com.`.
     """
-    rdata: NotRequired[pulumi.Input[_builtins.str]]
+    rdata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The data of the record. The meaning of the value depends on record type:
@@ -1542,13 +1542,13 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict(T
     permission to act on the domain's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
-    relevant_states: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    relevant_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     An enum that indicates which state(s) this DNS record applies to. Populated
     for all records with an `ADD` or `REMOVE` required action.
     """
-    required_action: NotRequired[pulumi.Input[_builtins.str]]
+    required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     An enum that indicates the a required action for this record. Populated
@@ -1559,7 +1559,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict(T
     ADD
     REMOVE
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The record's type, which determines what data the record contains.
@@ -1574,11 +1574,11 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict(T
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdata: Optional[pulumi.Input[_builtins.str]] = None,
-                 relevant_states: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 required_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdata: pulumi.Input[Optional[_builtins.str]] = None,
+                 relevant_states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 required_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: (Output)
                The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1623,7 +1623,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1631,12 +1631,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The data of the record. The meaning of the value depends on record type:
@@ -1650,12 +1650,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
         return pulumi.get(self, "rdata")
 
     @rdata.setter
-    def rdata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdata", value)
 
     @_builtins.property
     @pulumi.getter(name="relevantStates")
-    def relevant_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def relevant_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         An enum that indicates which state(s) this DNS record applies to. Populated
@@ -1664,12 +1664,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
         return pulumi.get(self, "relevant_states")
 
     @relevant_states.setter
-    def relevant_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def relevant_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "relevant_states", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAction")
-    def required_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         An enum that indicates the a required action for this record. Populated
@@ -1683,12 +1683,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
         return pulumi.get(self, "required_action")
 
     @required_action.setter
-    def required_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The record's type, which determines what data the record contains.
@@ -1702,12 +1702,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict(TypedDict):
-    check_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgsDict']]]]
+    check_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -1718,12 +1718,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict(Type
     [API Design Guide](https://cloud.google.com/apis/design/errors).
     Structure is documented below.
     """
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The domain the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDict']]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]]
     """
     (Output)
     Records on the domain.
@@ -1733,9 +1733,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict(Type
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs:
     def __init__(__self__, *,
-                 check_errors: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]] = None):
+                 check_errors: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 records: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]] check_errors: (Output)
                The `Status` type defines a logical error model that is suitable for
@@ -1760,7 +1760,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkErrors")
-    def check_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]:
+    def check_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]:
         """
         (Output)
         The `Status` type defines a logical error model that is suitable for
@@ -1774,12 +1774,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs:
         return pulumi.get(self, "check_errors")
 
     @check_errors.setter
-    def check_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]):
+    def check_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]):
         pulumi.set(self, "check_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1787,12 +1787,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]:
+    def records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]:
         """
         (Output)
         Records on the domain.
@@ -1801,22 +1801,22 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]):
+    def records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any
@@ -1827,9 +1827,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArg
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -1849,7 +1849,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArg
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -1857,12 +1857,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArg
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -1870,12 +1870,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArg
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any
@@ -1885,17 +1885,17 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArg
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The domain the record pertains to, e.g. `foo.bar.com.`.
     """
-    rdata: NotRequired[pulumi.Input[_builtins.str]]
+    rdata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The data of the record. The meaning of the value depends on record type:
@@ -1906,13 +1906,13 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDic
     permission to act on the domain's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
-    relevant_states: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    relevant_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     An enum that indicates which state(s) this DNS record applies to. Populated
     for all records with an `ADD` or `REMOVE` required action.
     """
-    required_action: NotRequired[pulumi.Input[_builtins.str]]
+    required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     An enum that indicates the a required action for this record. Populated
@@ -1923,7 +1923,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDic
     ADD
     REMOVE
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The record's type, which determines what data the record contains.
@@ -1938,11 +1938,11 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDic
 @pulumi.input_type
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdata: Optional[pulumi.Input[_builtins.str]] = None,
-                 relevant_states: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 required_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdata: pulumi.Input[Optional[_builtins.str]] = None,
+                 relevant_states: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 required_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: (Output)
                The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1987,7 +1987,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The domain the record pertains to, e.g. `foo.bar.com.`.
@@ -1995,12 +1995,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The data of the record. The meaning of the value depends on record type:
@@ -2014,12 +2014,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
         return pulumi.get(self, "rdata")
 
     @rdata.setter
-    def rdata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdata", value)
 
     @_builtins.property
     @pulumi.getter(name="relevantStates")
-    def relevant_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def relevant_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         An enum that indicates which state(s) this DNS record applies to. Populated
@@ -2028,12 +2028,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
         return pulumi.get(self, "relevant_states")
 
     @relevant_states.setter
-    def relevant_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def relevant_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "relevant_states", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAction")
-    def required_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         An enum that indicates the a required action for this record. Populated
@@ -2047,12 +2047,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
         return pulumi.get(self, "required_action")
 
     @required_action.setter
-    def required_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The record's type, which determines what data the record contains.
@@ -2066,12 +2066,12 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class AppHostingDomainServeArgsDict(TypedDict):
-    redirect: NotRequired[pulumi.Input['AppHostingDomainServeRedirectArgsDict']]
+    redirect: NotRequired[pulumi.Input[Optional['AppHostingDomainServeRedirectArgs']]]
     """
     Specifies redirect behavior for a domain.
     Structure is documented below.
@@ -2080,7 +2080,7 @@ class AppHostingDomainServeArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingDomainServeArgs:
     def __init__(__self__, *,
-                 redirect: Optional[pulumi.Input['AppHostingDomainServeRedirectArgs']] = None):
+                 redirect: pulumi.Input[Optional['AppHostingDomainServeRedirectArgs']] = None):
         """
         :param pulumi.Input['AppHostingDomainServeRedirectArgs'] redirect: Specifies redirect behavior for a domain.
                Structure is documented below.
@@ -2090,7 +2090,7 @@ class AppHostingDomainServeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def redirect(self) -> Optional[pulumi.Input['AppHostingDomainServeRedirectArgs']]:
+    def redirect(self) -> pulumi.Input[Optional['AppHostingDomainServeRedirectArgs']]:
         """
         Specifies redirect behavior for a domain.
         Structure is documented below.
@@ -2098,7 +2098,7 @@ class AppHostingDomainServeArgs:
         return pulumi.get(self, "redirect")
 
     @redirect.setter
-    def redirect(self, value: Optional[pulumi.Input['AppHostingDomainServeRedirectArgs']]):
+    def redirect(self, value: pulumi.Input[Optional['AppHostingDomainServeRedirectArgs']]):
         pulumi.set(self, "redirect", value)
 
 
@@ -2109,7 +2109,7 @@ class AppHostingDomainServeRedirectArgsDict(TypedDict):
     prepended to the original request path. URI without a scheme are
     assumed to be HTTPS.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The status code to use in a redirect response. Must be a valid HTTP 3XX
     status code. Defaults to 302 if not present.
@@ -2119,7 +2119,7 @@ class AppHostingDomainServeRedirectArgsDict(TypedDict):
 class AppHostingDomainServeRedirectArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The URI of the redirect's intended destination. This URI will be
                prepended to the original request path. URI without a scheme are
@@ -2147,7 +2147,7 @@ class AppHostingDomainServeRedirectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status code to use in a redirect response. Must be a valid HTTP 3XX
         status code. Defaults to 302 if not present.
@@ -2155,12 +2155,12 @@ class AppHostingDomainServeRedirectArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class AppHostingTrafficCurrentArgsDict(TypedDict):
-    splits: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgsDict']]]]
+    splits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]]
     """
     (Output)
     A list of traffic splits that together represent where traffic is being routed.
@@ -2170,7 +2170,7 @@ class AppHostingTrafficCurrentArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingTrafficCurrentArgs:
     def __init__(__self__, *,
-                 splits: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]] = None):
+                 splits: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]] splits: (Output)
                A list of traffic splits that together represent where traffic is being routed.
@@ -2181,7 +2181,7 @@ class AppHostingTrafficCurrentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def splits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]:
+    def splits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]:
         """
         (Output)
         A list of traffic splits that together represent where traffic is being routed.
@@ -2190,16 +2190,16 @@ class AppHostingTrafficCurrentArgs:
         return pulumi.get(self, "splits")
 
     @splits.setter
-    def splits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]):
+    def splits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]):
         pulumi.set(self, "splits", value)
 
 
 class AppHostingTrafficCurrentSplitArgsDict(TypedDict):
-    build: NotRequired[pulumi.Input[_builtins.str]]
+    build: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The build that traffic is being routed to.
     """
-    percent: NotRequired[pulumi.Input[_builtins.int]]
+    percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The percentage of traffic to send to the build. Currently must be 100 or 0.
     """
@@ -2207,8 +2207,8 @@ class AppHostingTrafficCurrentSplitArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingTrafficCurrentSplitArgs:
     def __init__(__self__, *,
-                 build: Optional[pulumi.Input[_builtins.str]] = None,
-                 percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 build: pulumi.Input[Optional[_builtins.str]] = None,
+                 percent: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] build: The build that traffic is being routed to.
         :param pulumi.Input[_builtins.int] percent: The percentage of traffic to send to the build. Currently must be 100 or 0.
@@ -2220,40 +2220,40 @@ class AppHostingTrafficCurrentSplitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def build(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def build(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The build that traffic is being routed to.
         """
         return pulumi.get(self, "build")
 
     @build.setter
-    def build(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def build(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build", value)
 
     @_builtins.property
     @pulumi.getter
-    def percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of traffic to send to the build. Currently must be 100 or 0.
         """
         return pulumi.get(self, "percent")
 
     @percent.setter
-    def percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "percent", value)
 
 
 class AppHostingTrafficRolloutPolicyArgsDict(TypedDict):
-    codebase_branch: NotRequired[pulumi.Input[_builtins.str]]
+    codebase_branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies a branch that triggers a new build to be started with this
     policy. If not set, no automatic rollouts will happen.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
     """
-    disabled_time: NotRequired[pulumi.Input[_builtins.str]]
+    disabled_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     If disabled is set, the time at which the rollouts were disabled.
@@ -2262,9 +2262,9 @@ class AppHostingTrafficRolloutPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class AppHostingTrafficRolloutPolicyArgs:
     def __init__(__self__, *,
-                 codebase_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disabled_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 codebase_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disabled_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] codebase_branch: Specifies a branch that triggers a new build to be started with this
                policy. If not set, no automatic rollouts will happen.
@@ -2281,7 +2281,7 @@ class AppHostingTrafficRolloutPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="codebaseBranch")
-    def codebase_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def codebase_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a branch that triggers a new build to be started with this
         policy. If not set, no automatic rollouts will happen.
@@ -2289,24 +2289,24 @@ class AppHostingTrafficRolloutPolicyArgs:
         return pulumi.get(self, "codebase_branch")
 
     @codebase_branch.setter
-    def codebase_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def codebase_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "codebase_branch", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="disabledTime")
-    def disabled_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disabled_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         If disabled is set, the time at which the rollouts were disabled.
@@ -2314,7 +2314,7 @@ class AppHostingTrafficRolloutPolicyArgs:
         return pulumi.get(self, "disabled_time")
 
     @disabled_time.setter
-    def disabled_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disabled_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disabled_time", value)
 
 
@@ -2405,30 +2405,30 @@ class ExtensionsInstanceConfigArgsDict(TypedDict):
     """
     Environment variables that may be configured for the Extension
     """
-    allowed_event_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_event_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of extension events selected by consumer that extension is allowed to
     emit, identified by their types.
     """
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time at which the Extension Instance Config was created.
     """
-    eventarc_channel: NotRequired[pulumi.Input[_builtins.str]]
+    eventarc_channel: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified Eventarc resource name that consumers should use for event triggers.
     """
-    extension_version: NotRequired[pulumi.Input[_builtins.str]]
+    extension_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique identifier for this configuration.
     """
-    populated_postinstall_content: NotRequired[pulumi.Input[_builtins.str]]
+    populated_postinstall_content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Postinstall instructions to be shown for this Extension, with
@@ -2437,7 +2437,7 @@ class ExtensionsInstanceConfigArgsDict(TypedDict):
     ${function:myFunc.url},
     ${function:myFunc.name}, and ${function:myFunc.location}
     """
-    system_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    system_params: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Params whose values are only available at deployment time.
     Unlike other params, these will not be set as environment variables on
@@ -2450,13 +2450,13 @@ class ExtensionsInstanceConfigArgs:
     def __init__(__self__, *,
                  extension_ref: pulumi.Input[_builtins.str],
                  params: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
-                 allowed_event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 eventarc_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 extension_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 populated_postinstall_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 allowed_event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 eventarc_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 extension_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 populated_postinstall_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] extension_ref: The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Environment variables that may be configured for the Extension
@@ -2522,7 +2522,7 @@ class ExtensionsInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedEventTypes")
-    def allowed_event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_event_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of extension events selected by consumer that extension is allowed to
         emit, identified by their types.
@@ -2530,12 +2530,12 @@ class ExtensionsInstanceConfigArgs:
         return pulumi.get(self, "allowed_event_types")
 
     @allowed_event_types.setter
-    def allowed_event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_event_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_event_types", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time at which the Extension Instance Config was created.
@@ -2543,36 +2543,36 @@ class ExtensionsInstanceConfigArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="eventarcChannel")
-    def eventarc_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eventarc_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified Eventarc resource name that consumers should use for event triggers.
         """
         return pulumi.get(self, "eventarc_channel")
 
     @eventarc_channel.setter
-    def eventarc_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eventarc_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eventarc_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="extensionVersion")
-    def extension_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extension_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
         """
         return pulumi.get(self, "extension_version")
 
     @extension_version.setter
-    def extension_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extension_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extension_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique identifier for this configuration.
@@ -2580,12 +2580,12 @@ class ExtensionsInstanceConfigArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="populatedPostinstallContent")
-    def populated_postinstall_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def populated_postinstall_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Postinstall instructions to be shown for this Extension, with
@@ -2597,12 +2597,12 @@ class ExtensionsInstanceConfigArgs:
         return pulumi.get(self, "populated_postinstall_content")
 
     @populated_postinstall_content.setter
-    def populated_postinstall_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def populated_postinstall_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "populated_postinstall_content", value)
 
     @_builtins.property
     @pulumi.getter(name="systemParams")
-    def system_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def system_params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Params whose values are only available at deployment time.
         Unlike other params, these will not be set as environment variables on
@@ -2612,20 +2612,20 @@ class ExtensionsInstanceConfigArgs:
         return pulumi.get(self, "system_params")
 
     @system_params.setter
-    def system_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def system_params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "system_params", value)
 
 
 class ExtensionsInstanceErrorStatusArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A developer-facing error message, which should be in English.
     """
@@ -2633,9 +2633,9 @@ class ExtensionsInstanceErrorStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ExtensionsInstanceErrorStatusArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of google.rpc.Code.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] details: A list of messages that carry the error details.
@@ -2650,53 +2650,53 @@ class ExtensionsInstanceErrorStatusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of google.rpc.Code.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A developer-facing error message, which should be in English.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class ExtensionsInstanceRuntimeDataArgsDict(TypedDict):
-    fatal_error: NotRequired[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgsDict']]
+    fatal_error: NotRequired[pulumi.Input[Optional['ExtensionsInstanceRuntimeDataFatalErrorArgs']]]
     """
     The fatal error state for the extension instance
     Structure is documented below.
     """
-    processing_state: NotRequired[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgsDict']]
+    processing_state: NotRequired[pulumi.Input[Optional['ExtensionsInstanceRuntimeDataProcessingStateArgs']]]
     """
     The processing state for the extension instance
     Structure is documented below.
     """
-    state_update_time: NotRequired[pulumi.Input[_builtins.str]]
+    state_update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time of the last state update.
     """
@@ -2704,9 +2704,9 @@ class ExtensionsInstanceRuntimeDataArgsDict(TypedDict):
 @pulumi.input_type
 class ExtensionsInstanceRuntimeDataArgs:
     def __init__(__self__, *,
-                 fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']] = None,
-                 processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']] = None,
-                 state_update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 fatal_error: pulumi.Input[Optional['ExtensionsInstanceRuntimeDataFatalErrorArgs']] = None,
+                 processing_state: pulumi.Input[Optional['ExtensionsInstanceRuntimeDataProcessingStateArgs']] = None,
+                 state_update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs'] fatal_error: The fatal error state for the extension instance
                Structure is documented below.
@@ -2723,7 +2723,7 @@ class ExtensionsInstanceRuntimeDataArgs:
 
     @_builtins.property
     @pulumi.getter(name="fatalError")
-    def fatal_error(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]:
+    def fatal_error(self) -> pulumi.Input[Optional['ExtensionsInstanceRuntimeDataFatalErrorArgs']]:
         """
         The fatal error state for the extension instance
         Structure is documented below.
@@ -2731,12 +2731,12 @@ class ExtensionsInstanceRuntimeDataArgs:
         return pulumi.get(self, "fatal_error")
 
     @fatal_error.setter
-    def fatal_error(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]):
+    def fatal_error(self, value: pulumi.Input[Optional['ExtensionsInstanceRuntimeDataFatalErrorArgs']]):
         pulumi.set(self, "fatal_error", value)
 
     @_builtins.property
     @pulumi.getter(name="processingState")
-    def processing_state(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]:
+    def processing_state(self) -> pulumi.Input[Optional['ExtensionsInstanceRuntimeDataProcessingStateArgs']]:
         """
         The processing state for the extension instance
         Structure is documented below.
@@ -2744,24 +2744,24 @@ class ExtensionsInstanceRuntimeDataArgs:
         return pulumi.get(self, "processing_state")
 
     @processing_state.setter
-    def processing_state(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]):
+    def processing_state(self, value: pulumi.Input[Optional['ExtensionsInstanceRuntimeDataProcessingStateArgs']]):
         pulumi.set(self, "processing_state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateUpdateTime")
-    def state_update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time of the last state update.
         """
         return pulumi.get(self, "state_update_time")
 
     @state_update_time.setter
-    def state_update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_update_time", value)
 
 
 class ExtensionsInstanceRuntimeDataFatalErrorArgsDict(TypedDict):
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The error message. This is set by the extension developer to give
     more detail on why the extension is unusable and must be re-installed
@@ -2771,7 +2771,7 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgsDict(TypedDict):
 @pulumi.input_type
 class ExtensionsInstanceRuntimeDataFatalErrorArgs:
     def __init__(__self__, *,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] error_message: The error message. This is set by the extension developer to give
                more detail on why the extension is unusable and must be re-installed
@@ -2782,7 +2782,7 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgs:
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The error message. This is set by the extension developer to give
         more detail on why the extension is unusable and must be re-installed
@@ -2791,19 +2791,19 @@ class ExtensionsInstanceRuntimeDataFatalErrorArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
 
 class ExtensionsInstanceRuntimeDataProcessingStateArgsDict(TypedDict):
-    detail_message: NotRequired[pulumi.Input[_builtins.str]]
+    detail_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Details about the processing. e.g. This could include the type of
     processing in progress or it could list errors or failures.
     This information will be shown in the console on the detail page
     for the extension instance.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The processing state of the extension instance.
     """
@@ -2811,8 +2811,8 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgsDict(TypedDict):
 @pulumi.input_type
 class ExtensionsInstanceRuntimeDataProcessingStateArgs:
     def __init__(__self__, *,
-                 detail_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 detail_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] detail_message: Details about the processing. e.g. This could include the type of
                processing in progress or it could list errors or failures.
@@ -2827,7 +2827,7 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="detailMessage")
-    def detail_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Details about the processing. e.g. This could include the type of
         processing in progress or it could list errors or failures.
@@ -2837,24 +2837,24 @@ class ExtensionsInstanceRuntimeDataProcessingStateArgs:
         return pulumi.get(self, "detail_message")
 
     @detail_message.setter
-    def detail_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processing state of the extension instance.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class HostingCustomDomainCertArgsDict(TypedDict):
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The state of the certificate. Only the `CERT_ACTIVE` and
     `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
@@ -2862,11 +2862,11 @@ class HostingCustomDomainCertArgsDict(TypedDict):
     before, that formerly-active cert provides SSL coverage for the domain name
     until the current cert propagates.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record's type, which determines what data the record contains.
     """
-    verification: NotRequired[pulumi.Input['HostingCustomDomainCertVerificationArgsDict']]
+    verification: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationArgs']]]
     """
     A set of ACME challenges you can add to your DNS records or existing,
     non-Hosting hosting provider to allow Hosting to create an SSL certificate
@@ -2879,9 +2879,9 @@ class HostingCustomDomainCertArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertArgs:
     def __init__(__self__, *,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 verification: Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']] = None):
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 verification: pulumi.Input[Optional['HostingCustomDomainCertVerificationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] state: The state of the certificate. Only the `CERT_ACTIVE` and
                `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
@@ -2905,7 +2905,7 @@ class HostingCustomDomainCertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the certificate. Only the `CERT_ACTIVE` and
         `CERT_EXPIRING_SOON` states provide SSL coverage for a domain name. If the
@@ -2916,24 +2916,24 @@ class HostingCustomDomainCertArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record's type, which determines what data the record contains.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def verification(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']]:
+    def verification(self) -> pulumi.Input[Optional['HostingCustomDomainCertVerificationArgs']]:
         """
         A set of ACME challenges you can add to your DNS records or existing,
         non-Hosting hosting provider to allow Hosting to create an SSL certificate
@@ -2945,18 +2945,18 @@ class HostingCustomDomainCertArgs:
         return pulumi.get(self, "verification")
 
     @verification.setter
-    def verification(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationArgs']]):
+    def verification(self, value: pulumi.Input[Optional['HostingCustomDomainCertVerificationArgs']]):
         pulumi.set(self, "verification", value)
 
 
 class HostingCustomDomainCertVerificationArgsDict(TypedDict):
-    dns: NotRequired[pulumi.Input['HostingCustomDomainCertVerificationDnsArgsDict']]
+    dns: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationDnsArgs']]]
     """
     A `TXT` record to add to your DNS records that confirms your intent to
     let Hosting create an SSL cert for your domain name.
     Structure is documented below.
     """
-    http: NotRequired[pulumi.Input['HostingCustomDomainCertVerificationHttpArgsDict']]
+    http: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationHttpArgs']]]
     """
     A file to add to your existing, non-Hosting hosting service that confirms
     your intent to let Hosting create an SSL cert for your domain name.
@@ -2966,8 +2966,8 @@ class HostingCustomDomainCertVerificationArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertVerificationArgs:
     def __init__(__self__, *,
-                 dns: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']] = None,
-                 http: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']] = None):
+                 dns: pulumi.Input[Optional['HostingCustomDomainCertVerificationDnsArgs']] = None,
+                 http: pulumi.Input[Optional['HostingCustomDomainCertVerificationHttpArgs']] = None):
         """
         :param pulumi.Input['HostingCustomDomainCertVerificationDnsArgs'] dns: A `TXT` record to add to your DNS records that confirms your intent to
                let Hosting create an SSL cert for your domain name.
@@ -2983,7 +2983,7 @@ class HostingCustomDomainCertVerificationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['HostingCustomDomainCertVerificationDnsArgs']]:
         """
         A `TXT` record to add to your DNS records that confirms your intent to
         let Hosting create an SSL cert for your domain name.
@@ -2992,12 +2992,12 @@ class HostingCustomDomainCertVerificationArgs:
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['HostingCustomDomainCertVerificationDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def http(self) -> Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']]:
+    def http(self) -> pulumi.Input[Optional['HostingCustomDomainCertVerificationHttpArgs']]:
         """
         A file to add to your existing, non-Hosting hosting service that confirms
         your intent to let Hosting create an SSL cert for your domain name.
@@ -3006,21 +3006,21 @@ class HostingCustomDomainCertVerificationArgs:
         return pulumi.get(self, "http")
 
     @http.setter
-    def http(self, value: Optional[pulumi.Input['HostingCustomDomainCertVerificationHttpArgs']]):
+    def http(self, value: pulumi.Input[Optional['HostingCustomDomainCertVerificationHttpArgs']]):
         pulumi.set(self, "http", value)
 
 
 class HostingCustomDomainCertVerificationDnsArgsDict(TypedDict):
-    check_time: NotRequired[pulumi.Input[_builtins.str]]
+    check_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The last time Hosting checked your CustomDomain's DNS records.
     """
-    desireds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgsDict']]]]
+    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]]
     """
     A text string to serve at the path.
     """
-    discovereds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgsDict']]]]
+    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]]
     """
     Whether Hosting was able to find the required file contents on the
     specified path during its last check.
@@ -3029,9 +3029,9 @@ class HostingCustomDomainCertVerificationDnsArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsArgs:
     def __init__(__self__, *,
-                 check_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]] = None,
-                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]] = None):
+                 check_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 desireds: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]] = None,
+                 discovereds: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] check_time: (Output)
                The last time Hosting checked your CustomDomain's DNS records.
@@ -3048,7 +3048,7 @@ class HostingCustomDomainCertVerificationDnsArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkTime")
-    def check_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The last time Hosting checked your CustomDomain's DNS records.
@@ -3056,24 +3056,24 @@ class HostingCustomDomainCertVerificationDnsArgs:
         return pulumi.get(self, "check_time")
 
     @check_time.setter
-    def check_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]:
+    def desireds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]:
         """
         A text string to serve at the path.
         """
         return pulumi.get(self, "desireds")
 
     @desireds.setter
-    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]):
+    def desireds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]):
         pulumi.set(self, "desireds", value)
 
     @_builtins.property
     @pulumi.getter
-    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]:
+    def discovereds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]:
         """
         Whether Hosting was able to find the required file contents on the
         specified path during its last check.
@@ -3081,16 +3081,16 @@ class HostingCustomDomainCertVerificationDnsArgs:
         return pulumi.get(self, "discovereds")
 
     @discovereds.setter
-    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]):
+    def discovereds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]):
         pulumi.set(self, "discovereds", value)
 
 
 class HostingCustomDomainCertVerificationDnsDesiredArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict']]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3099,8 +3099,8 @@ class HostingCustomDomainCertVerificationDnsDesiredArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDesiredArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 records: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]] records: Records on the domain
@@ -3113,19 +3113,19 @@ class HostingCustomDomainCertVerificationDnsDesiredArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]:
+    def records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -3133,16 +3133,16 @@ class HostingCustomDomainCertVerificationDnsDesiredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]):
+    def records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
 
 class HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    rdata: NotRequired[pulumi.Input[_builtins.str]]
+    rdata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data of the record. The meaning of the value depends on record type:
     - A and AAAA: IP addresses for the domain name.
@@ -3152,11 +3152,11 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict(TypedDict):
     permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
-    required_action: NotRequired[pulumi.Input[_builtins.str]]
+    required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the a required action for this record.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record's type, which determines what data the record contains.
     """
@@ -3164,10 +3164,10 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdata: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdata: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[_builtins.str] rdata: The data of the record. The meaning of the value depends on record type:
@@ -3191,19 +3191,19 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data of the record. The meaning of the value depends on record type:
         - A and AAAA: IP addresses for the domain name.
@@ -3216,40 +3216,40 @@ class HostingCustomDomainCertVerificationDnsDesiredRecordArgs:
         return pulumi.get(self, "rdata")
 
     @rdata.setter
-    def rdata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdata", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAction")
-    def required_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the a required action for this record.
         """
         return pulumi.get(self, "required_action")
 
     @required_action.setter
-    def required_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record's type, which determines what data the record contains.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class HostingCustomDomainCertVerificationDnsDiscoveredArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict']]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3258,8 +3258,8 @@ class HostingCustomDomainCertVerificationDnsDiscoveredArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 records: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]] records: Records on the domain
@@ -3272,19 +3272,19 @@ class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]:
+    def records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -3292,16 +3292,16 @@ class HostingCustomDomainCertVerificationDnsDiscoveredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]):
+    def records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
 
 class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    rdata: NotRequired[pulumi.Input[_builtins.str]]
+    rdata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data of the record. The meaning of the value depends on record type:
     - A and AAAA: IP addresses for the domain name.
@@ -3311,11 +3311,11 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict(TypedDict):
     permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
-    required_action: NotRequired[pulumi.Input[_builtins.str]]
+    required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the a required action for this record.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record's type, which determines what data the record contains.
     """
@@ -3323,10 +3323,10 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdata: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdata: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[_builtins.str] rdata: The data of the record. The meaning of the value depends on record type:
@@ -3350,19 +3350,19 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data of the record. The meaning of the value depends on record type:
         - A and AAAA: IP addresses for the domain name.
@@ -3375,50 +3375,50 @@ class HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs:
         return pulumi.get(self, "rdata")
 
     @rdata.setter
-    def rdata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdata", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAction")
-    def required_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the a required action for this record.
         """
         return pulumi.get(self, "required_action")
 
     @required_action.setter
-    def required_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record's type, which determines what data the record contains.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class HostingCustomDomainCertVerificationHttpArgsDict(TypedDict):
-    desired: NotRequired[pulumi.Input[_builtins.str]]
+    desired: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A text string to serve at the path.
     """
-    discovered: NotRequired[pulumi.Input[_builtins.str]]
+    discovered: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether Hosting was able to find the required file contents on the
     specified path during its last check.
     """
-    last_check_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_check_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The last time Hosting systems checked for the file contents.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the file.
     """
@@ -3426,10 +3426,10 @@ class HostingCustomDomainCertVerificationHttpArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainCertVerificationHttpArgs:
     def __init__(__self__, *,
-                 desired: Optional[pulumi.Input[_builtins.str]] = None,
-                 discovered: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_check_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired: pulumi.Input[Optional[_builtins.str]] = None,
+                 discovered: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_check_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] desired: A text string to serve at the path.
         :param pulumi.Input[_builtins.str] discovered: Whether Hosting was able to find the required file contents on the
@@ -3449,19 +3449,19 @@ class HostingCustomDomainCertVerificationHttpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def desired(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A text string to serve at the path.
         """
         return pulumi.get(self, "desired")
 
     @desired.setter
-    def desired(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired", value)
 
     @_builtins.property
     @pulumi.getter
-    def discovered(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovered(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether Hosting was able to find the required file contents on the
         specified path during its last check.
@@ -3469,12 +3469,12 @@ class HostingCustomDomainCertVerificationHttpArgs:
         return pulumi.get(self, "discovered")
 
     @discovered.setter
-    def discovered(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovered(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovered", value)
 
     @_builtins.property
     @pulumi.getter(name="lastCheckTime")
-    def last_check_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_check_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The last time Hosting systems checked for the file contents.
@@ -3482,32 +3482,32 @@ class HostingCustomDomainCertVerificationHttpArgs:
         return pulumi.get(self, "last_check_time")
 
     @last_check_time.setter
-    def last_check_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_check_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_check_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the file.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
 class HostingCustomDomainIssueArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of `google.rpc.Code`
     """
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Error message
     """
@@ -3515,9 +3515,9 @@ class HostingCustomDomainIssueArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainIssueArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of `google.rpc.Code`
         :param pulumi.Input[_builtins.str] details: A list of messages that carry the error details.
@@ -3532,52 +3532,52 @@ class HostingCustomDomainIssueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of `google.rpc.Code`
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Error message
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class HostingCustomDomainRequiredDnsUpdateArgsDict(TypedDict):
-    check_time: NotRequired[pulumi.Input[_builtins.str]]
+    check_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The last time Hosting checked your CustomDomain's DNS records.
     """
-    desireds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgsDict']]]]
+    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]]
     """
     A text string to serve at the path.
     """
-    discovereds: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict']]]]
+    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]]
     """
     Whether Hosting was able to find the required file contents on the
     specified path during its last check.
@@ -3586,9 +3586,9 @@ class HostingCustomDomainRequiredDnsUpdateArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateArgs:
     def __init__(__self__, *,
-                 check_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 desireds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]] = None,
-                 discovereds: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]] = None):
+                 check_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 desireds: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]] = None,
+                 discovereds: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] check_time: (Output)
                The last time Hosting checked your CustomDomain's DNS records.
@@ -3605,7 +3605,7 @@ class HostingCustomDomainRequiredDnsUpdateArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkTime")
-    def check_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The last time Hosting checked your CustomDomain's DNS records.
@@ -3613,24 +3613,24 @@ class HostingCustomDomainRequiredDnsUpdateArgs:
         return pulumi.get(self, "check_time")
 
     @check_time.setter
-    def check_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def desireds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]:
+    def desireds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]:
         """
         A text string to serve at the path.
         """
         return pulumi.get(self, "desireds")
 
     @desireds.setter
-    def desireds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]):
+    def desireds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]):
         pulumi.set(self, "desireds", value)
 
     @_builtins.property
     @pulumi.getter
-    def discovereds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]:
+    def discovereds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]:
         """
         Whether Hosting was able to find the required file contents on the
         specified path during its last check.
@@ -3638,16 +3638,16 @@ class HostingCustomDomainRequiredDnsUpdateArgs:
         return pulumi.get(self, "discovereds")
 
     @discovereds.setter
-    def discovereds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]):
+    def discovereds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]):
         pulumi.set(self, "discovereds", value)
 
 
 class HostingCustomDomainRequiredDnsUpdateDesiredArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict']]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3656,8 +3656,8 @@ class HostingCustomDomainRequiredDnsUpdateDesiredArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 records: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]] records: Records on the domain
@@ -3670,19 +3670,19 @@ class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]:
+    def records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -3690,16 +3690,16 @@ class HostingCustomDomainRequiredDnsUpdateDesiredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]):
+    def records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
 
 class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    rdata: NotRequired[pulumi.Input[_builtins.str]]
+    rdata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data of the record. The meaning of the value depends on record type:
     - A and AAAA: IP addresses for the domain name.
@@ -3709,11 +3709,11 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict(TypedDict):
     permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
-    required_action: NotRequired[pulumi.Input[_builtins.str]]
+    required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the a required action for this record.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record's type, which determines what data the record contains.
     """
@@ -3721,10 +3721,10 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdata: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdata: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[_builtins.str] rdata: The data of the record. The meaning of the value depends on record type:
@@ -3748,19 +3748,19 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data of the record. The meaning of the value depends on record type:
         - A and AAAA: IP addresses for the domain name.
@@ -3773,40 +3773,40 @@ class HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs:
         return pulumi.get(self, "rdata")
 
     @rdata.setter
-    def rdata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdata", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAction")
-    def required_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the a required action for this record.
         """
         return pulumi.get(self, "required_action")
 
     @required_action.setter
-    def required_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record's type, which determines what data the record contains.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict']]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3815,8 +3815,8 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 records: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]] records: Records on the domain
@@ -3829,19 +3829,19 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]:
+    def records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]:
         """
         Records on the domain
         Structure is documented below.
@@ -3849,16 +3849,16 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredArgs:
         return pulumi.get(self, "records")
 
     @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]):
+    def records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]):
         pulumi.set(self, "records", value)
 
 
 class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict(TypedDict):
-    domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    rdata: NotRequired[pulumi.Input[_builtins.str]]
+    rdata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data of the record. The meaning of the value depends on record type:
     - A and AAAA: IP addresses for the domain name.
@@ -3868,11 +3868,11 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict(TypedDict):
     permission to act on the domain name's behalf.
     - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
     """
-    required_action: NotRequired[pulumi.Input[_builtins.str]]
+    required_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates the a required action for this record.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record's type, which determines what data the record contains.
     """
@@ -3880,10 +3880,10 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict(TypedDict):
 @pulumi.input_type
 class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdata: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdata: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain_name: The domain name the record pertains to, e.g. `foo.bar.com.`.
         :param pulumi.Input[_builtins.str] rdata: The data of the record. The meaning of the value depends on record type:
@@ -3907,19 +3907,19 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name the record pertains to, e.g. `foo.bar.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data of the record. The meaning of the value depends on record type:
         - A and AAAA: IP addresses for the domain name.
@@ -3932,48 +3932,48 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
         return pulumi.get(self, "rdata")
 
     @rdata.setter
-    def rdata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdata", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAction")
-    def required_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def required_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the a required action for this record.
         """
         return pulumi.get(self, "required_action")
 
     @required_action.setter
-    def required_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def required_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "required_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record's type, which determines what data the record contains.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class HostingVersionConfigArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgsDict']]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]]
     """
     An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
     triggers Hosting to apply the specified custom response headers.
     Structure is documented below.
     """
-    redirects: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgsDict']]]]
+    redirects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]]
     """
     An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
     triggers Hosting to respond with a redirect to the specified destination path.
     Structure is documented below.
     """
-    rewrites: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgsDict']]]]
+    rewrites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]]
     """
     An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
     request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
@@ -3983,9 +3983,9 @@ class HostingVersionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class HostingVersionConfigArgs:
     def __init__(__self__, *,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]] = None,
-                 redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]] = None,
-                 rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]] = None):
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]] = None,
+                 redirects: pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]] = None,
+                 rewrites: pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]] headers: An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
                triggers Hosting to apply the specified custom response headers.
@@ -4006,7 +4006,7 @@ class HostingVersionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]:
+    def headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]:
         """
         An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
         triggers Hosting to apply the specified custom response headers.
@@ -4015,12 +4015,12 @@ class HostingVersionConfigArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]):
+    def headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def redirects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]:
+    def redirects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]:
         """
         An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
         triggers Hosting to respond with a redirect to the specified destination path.
@@ -4029,12 +4029,12 @@ class HostingVersionConfigArgs:
         return pulumi.get(self, "redirects")
 
     @redirects.setter
-    def redirects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]):
+    def redirects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]):
         pulumi.set(self, "redirects", value)
 
     @_builtins.property
     @pulumi.getter
-    def rewrites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]:
+    def rewrites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]:
         """
         An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
         request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
@@ -4043,7 +4043,7 @@ class HostingVersionConfigArgs:
         return pulumi.get(self, "rewrites")
 
     @rewrites.setter
-    def rewrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]):
+    def rewrites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]):
         pulumi.set(self, "rewrites", value)
 
 
@@ -4052,11 +4052,11 @@ class HostingVersionConfigHeaderArgsDict(TypedDict):
     """
     The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    glob: NotRequired[pulumi.Input[_builtins.str]]
+    glob: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-supplied glob to match against the request URL path.
     """
-    regex: NotRequired[pulumi.Input[_builtins.str]]
+    regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-supplied RE2 regular expression to match against the request URL path.
     """
@@ -4065,8 +4065,8 @@ class HostingVersionConfigHeaderArgsDict(TypedDict):
 class HostingVersionConfigHeaderArgs:
     def __init__(__self__, *,
                  headers: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
-                 glob: Optional[pulumi.Input[_builtins.str]] = None,
-                 regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 glob: pulumi.Input[Optional[_builtins.str]] = None,
+                 regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[_builtins.str] glob: The user-supplied glob to match against the request URL path.
@@ -4092,26 +4092,26 @@ class HostingVersionConfigHeaderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def glob(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def glob(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied glob to match against the request URL path.
         """
         return pulumi.get(self, "glob")
 
     @glob.setter
-    def glob(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def glob(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "glob", value)
 
     @_builtins.property
     @pulumi.getter
-    def regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied RE2 regular expression to match against the request URL path.
         """
         return pulumi.get(self, "regex")
 
     @regex.setter
-    def regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "regex", value)
 
 
@@ -4126,11 +4126,11 @@ class HostingVersionConfigRedirectArgsDict(TypedDict):
     """
     The status HTTP code to return in the response. It must be a valid 3xx status code.
     """
-    glob: NotRequired[pulumi.Input[_builtins.str]]
+    glob: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-supplied glob to match against the request URL path.
     """
-    regex: NotRequired[pulumi.Input[_builtins.str]]
+    regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-supplied RE2 regular expression to match against the request URL path.
     """
@@ -4140,8 +4140,8 @@ class HostingVersionConfigRedirectArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  status_code: pulumi.Input[_builtins.int],
-                 glob: Optional[pulumi.Input[_builtins.str]] = None,
-                 regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 glob: pulumi.Input[Optional[_builtins.str]] = None,
+                 regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The value to put in the HTTP location header of the response.
                The location can contain capture group values from the pattern using a : prefix to identify
@@ -4185,47 +4185,47 @@ class HostingVersionConfigRedirectArgs:
 
     @_builtins.property
     @pulumi.getter
-    def glob(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def glob(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied glob to match against the request URL path.
         """
         return pulumi.get(self, "glob")
 
     @glob.setter
-    def glob(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def glob(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "glob", value)
 
     @_builtins.property
     @pulumi.getter
-    def regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied RE2 regular expression to match against the request URL path.
         """
         return pulumi.get(self, "regex")
 
     @regex.setter
-    def regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "regex", value)
 
 
 class HostingVersionConfigRewriteArgsDict(TypedDict):
-    function: NotRequired[pulumi.Input[_builtins.str]]
+    function: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The function to proxy requests to. Must match the exported function name exactly.
     """
-    glob: NotRequired[pulumi.Input[_builtins.str]]
+    glob: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-supplied glob to match against the request URL path.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL path to rewrite the request to.
     """
-    regex: NotRequired[pulumi.Input[_builtins.str]]
+    regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-supplied RE2 regular expression to match against the request URL path.
     """
-    run: NotRequired[pulumi.Input['HostingVersionConfigRewriteRunArgsDict']]
+    run: NotRequired[pulumi.Input[Optional['HostingVersionConfigRewriteRunArgs']]]
     """
     The request will be forwarded to Cloud Run.
     Structure is documented below.
@@ -4234,11 +4234,11 @@ class HostingVersionConfigRewriteArgsDict(TypedDict):
 @pulumi.input_type
 class HostingVersionConfigRewriteArgs:
     def __init__(__self__, *,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 glob: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 regex: Optional[pulumi.Input[_builtins.str]] = None,
-                 run: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']] = None):
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 glob: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 regex: pulumi.Input[Optional[_builtins.str]] = None,
+                 run: pulumi.Input[Optional['HostingVersionConfigRewriteRunArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] function: The function to proxy requests to. Must match the exported function name exactly.
         :param pulumi.Input[_builtins.str] glob: The user-supplied glob to match against the request URL path.
@@ -4260,55 +4260,55 @@ class HostingVersionConfigRewriteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def function(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function to proxy requests to. Must match the exported function name exactly.
         """
         return pulumi.get(self, "function")
 
     @function.setter
-    def function(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function", value)
 
     @_builtins.property
     @pulumi.getter
-    def glob(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def glob(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied glob to match against the request URL path.
         """
         return pulumi.get(self, "glob")
 
     @glob.setter
-    def glob(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def glob(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "glob", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL path to rewrite the request to.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-supplied RE2 regular expression to match against the request URL path.
         """
         return pulumi.get(self, "regex")
 
     @regex.setter
-    def regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "regex", value)
 
     @_builtins.property
     @pulumi.getter
-    def run(self) -> Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']]:
+    def run(self) -> pulumi.Input[Optional['HostingVersionConfigRewriteRunArgs']]:
         """
         The request will be forwarded to Cloud Run.
         Structure is documented below.
@@ -4316,7 +4316,7 @@ class HostingVersionConfigRewriteArgs:
         return pulumi.get(self, "run")
 
     @run.setter
-    def run(self, value: Optional[pulumi.Input['HostingVersionConfigRewriteRunArgs']]):
+    def run(self, value: pulumi.Input[Optional['HostingVersionConfigRewriteRunArgs']]):
         pulumi.set(self, "run", value)
 
 
@@ -4325,7 +4325,7 @@ class HostingVersionConfigRewriteRunArgsDict(TypedDict):
     """
     User-defined ID of the Cloud Run service.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
     """
@@ -4334,7 +4334,7 @@ class HostingVersionConfigRewriteRunArgsDict(TypedDict):
 class HostingVersionConfigRewriteRunArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_id: User-defined ID of the Cloud Run service.
         :param pulumi.Input[_builtins.str] region: Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
@@ -4357,14 +4357,14 @@ class HostingVersionConfigRewriteRunArgs:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -4381,7 +4381,7 @@ class RemoteConfigRemoteConfigConditionArgsDict(TypedDict):
     """
     A non-empty and unique name of this condition.
     """
-    tag_color: NotRequired[pulumi.Input[_builtins.str]]
+    tag_color: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The color associated with this condition for display purposes in the Firebase Console.
     Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
@@ -4393,7 +4393,7 @@ class RemoteConfigRemoteConfigConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 tag_color: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag_color: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: The logic of this condition.
                See the documentation regarding
@@ -4440,7 +4440,7 @@ class RemoteConfigRemoteConfigConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="tagColor")
-    def tag_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_color(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The color associated with this condition for display purposes in the Firebase Console.
         Not specifying this value results in the Console picking an arbitrary color to associate with the condition.
@@ -4449,7 +4449,7 @@ class RemoteConfigRemoteConfigConditionArgs:
         return pulumi.get(self, "tag_color")
 
     @tag_color.setter
-    def tag_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_color(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_color", value)
 
 
@@ -4458,7 +4458,7 @@ class RemoteConfigRemoteConfigParameterArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    conditional_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgsDict']]]]
+    conditional_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]]]
     """
     The condition_name of the highest priority
     (the one listed first in the RemoteConfig's conditions list) determines
@@ -4466,18 +4466,18 @@ class RemoteConfigRemoteConfigParameterArgsDict(TypedDict):
     Only one of use_in_app_default or value may be specified.
     Structure is documented below.
     """
-    default_value: NotRequired[pulumi.Input['RemoteConfigRemoteConfigParameterDefaultValueArgsDict']]
+    default_value: NotRequired[pulumi.Input[Optional['RemoteConfigRemoteConfigParameterDefaultValueArgs']]]
     """
     Value to set the parameter to, when none of the named conditions evaluate to true.
     Only one of use_in_app_default or value may be specified.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description for this Parameter. Its length must be less than or equal to
     256 characters . A description may contain any Unicode characters.
     """
-    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    value_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data type for all values of this parameter in the current version of
     the template.
@@ -4489,10 +4489,10 @@ class RemoteConfigRemoteConfigParameterArgsDict(TypedDict):
 class RemoteConfigRemoteConfigParameterArgs:
     def __init__(__self__, *,
                  parameter_name: pulumi.Input[_builtins.str],
-                 conditional_values: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]] = None,
-                 default_value: Optional[pulumi.Input['RemoteConfigRemoteConfigParameterDefaultValueArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditional_values: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]] = None,
+                 default_value: pulumi.Input[Optional['RemoteConfigRemoteConfigParameterDefaultValueArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_name: The identifier for this object. Format specified above.
         :param pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]] conditional_values: The condition_name of the highest priority
@@ -4534,7 +4534,7 @@ class RemoteConfigRemoteConfigParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="conditionalValues")
-    def conditional_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]]:
+    def conditional_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]]:
         """
         The condition_name of the highest priority
         (the one listed first in the RemoteConfig's conditions list) determines
@@ -4545,12 +4545,12 @@ class RemoteConfigRemoteConfigParameterArgs:
         return pulumi.get(self, "conditional_values")
 
     @conditional_values.setter
-    def conditional_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]]):
+    def conditional_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]]):
         pulumi.set(self, "conditional_values", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultValue")
-    def default_value(self) -> Optional[pulumi.Input['RemoteConfigRemoteConfigParameterDefaultValueArgs']]:
+    def default_value(self) -> pulumi.Input[Optional['RemoteConfigRemoteConfigParameterDefaultValueArgs']]:
         """
         Value to set the parameter to, when none of the named conditions evaluate to true.
         Only one of use_in_app_default or value may be specified.
@@ -4559,12 +4559,12 @@ class RemoteConfigRemoteConfigParameterArgs:
         return pulumi.get(self, "default_value")
 
     @default_value.setter
-    def default_value(self, value: Optional[pulumi.Input['RemoteConfigRemoteConfigParameterDefaultValueArgs']]):
+    def default_value(self, value: pulumi.Input[Optional['RemoteConfigRemoteConfigParameterDefaultValueArgs']]):
         pulumi.set(self, "default_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for this Parameter. Its length must be less than or equal to
         256 characters . A description may contain any Unicode characters.
@@ -4572,12 +4572,12 @@ class RemoteConfigRemoteConfigParameterArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data type for all values of this parameter in the current version of
         the template.
@@ -4587,7 +4587,7 @@ class RemoteConfigRemoteConfigParameterArgs:
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_type", value)
 
 
@@ -4596,12 +4596,12 @@ class RemoteConfigRemoteConfigParameterConditionalValueArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    use_in_app_default: NotRequired[pulumi.Input[_builtins.bool]]
+    use_in_app_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the parameter is omitted from the parameter values returned
     to a client.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The string value that the parameter is set to.
     """
@@ -4610,8 +4610,8 @@ class RemoteConfigRemoteConfigParameterConditionalValueArgsDict(TypedDict):
 class RemoteConfigRemoteConfigParameterConditionalValueArgs:
     def __init__(__self__, *,
                  condition_name: pulumi.Input[_builtins.str],
-                 use_in_app_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 use_in_app_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition_name: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.bool] use_in_app_default: If true, the parameter is omitted from the parameter values returned
@@ -4638,7 +4638,7 @@ class RemoteConfigRemoteConfigParameterConditionalValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="useInAppDefault")
-    def use_in_app_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_in_app_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the parameter is omitted from the parameter values returned
         to a client.
@@ -4646,29 +4646,29 @@ class RemoteConfigRemoteConfigParameterConditionalValueArgs:
         return pulumi.get(self, "use_in_app_default")
 
     @use_in_app_default.setter
-    def use_in_app_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_in_app_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_in_app_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string value that the parameter is set to.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RemoteConfigRemoteConfigParameterDefaultValueArgsDict(TypedDict):
-    use_in_app_default: NotRequired[pulumi.Input[_builtins.bool]]
+    use_in_app_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the parameter is omitted from the parameter values returned
     to a client.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The string value that the parameter is set to.
     """
@@ -4676,8 +4676,8 @@ class RemoteConfigRemoteConfigParameterDefaultValueArgsDict(TypedDict):
 @pulumi.input_type
 class RemoteConfigRemoteConfigParameterDefaultValueArgs:
     def __init__(__self__, *,
-                 use_in_app_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 use_in_app_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] use_in_app_default: If true, the parameter is omitted from the parameter values returned
                to a client.
@@ -4690,7 +4690,7 @@ class RemoteConfigRemoteConfigParameterDefaultValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="useInAppDefault")
-    def use_in_app_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_in_app_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the parameter is omitted from the parameter values returned
         to a client.
@@ -4698,19 +4698,19 @@ class RemoteConfigRemoteConfigParameterDefaultValueArgs:
         return pulumi.get(self, "use_in_app_default")
 
     @use_in_app_default.setter
-    def use_in_app_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_in_app_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_in_app_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string value that the parameter is set to.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4719,12 +4719,12 @@ class RemoteConfigRemoteConfigParameterGroupArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description for the group. Its length must be less than or equal to 256
     characters. A description may contain any Unicode characters.
     """
-    parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgsDict']]]]
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]]]
     """
     Map of parameter keys to their optional default values and optional
     conditional values for parameters that belong to this group.
@@ -4738,8 +4738,8 @@ class RemoteConfigRemoteConfigParameterGroupArgsDict(TypedDict):
 class RemoteConfigRemoteConfigParameterGroupArgs:
     def __init__(__self__, *,
                  parameter_group_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_group_name: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] description: A description for the group. Its length must be less than or equal to 256
@@ -4771,7 +4771,7 @@ class RemoteConfigRemoteConfigParameterGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the group. Its length must be less than or equal to 256
         characters. A description may contain any Unicode characters.
@@ -4779,12 +4779,12 @@ class RemoteConfigRemoteConfigParameterGroupArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]]:
         """
         Map of parameter keys to their optional default values and optional
         conditional values for parameters that belong to this group.
@@ -4796,7 +4796,7 @@ class RemoteConfigRemoteConfigParameterGroupArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -4805,7 +4805,7 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    conditional_values: NotRequired[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgsDict']]]]
+    conditional_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]]]
     """
     The condition_name of the highest priority
     (the one listed first in the RemoteConfig's conditions list) determines
@@ -4813,18 +4813,18 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgsDict(TypedDict):
     Only one of use_in_app_default or value may be specified.
     Structure is documented below.
     """
-    default_value: NotRequired[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgsDict']]
+    default_value: NotRequired[pulumi.Input[Optional['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']]]
     """
     Value to set the parameter to, when none of the named conditions evaluate to true.
     Only one of use_in_app_default or value may be specified.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description for this Parameter. Its length must be less than or equal to
     256 characters . A description may contain any Unicode characters.
     """
-    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    value_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data type for all values of this parameter in the current version of
     the template.
@@ -4836,10 +4836,10 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgsDict(TypedDict):
 class RemoteConfigRemoteConfigParameterGroupParameterArgs:
     def __init__(__self__, *,
                  parameter_name: pulumi.Input[_builtins.str],
-                 conditional_values: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]] = None,
-                 default_value: Optional[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditional_values: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]] = None,
+                 default_value: pulumi.Input[Optional['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_name: The identifier for this object. Format specified above.
         :param pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]] conditional_values: The condition_name of the highest priority
@@ -4881,7 +4881,7 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="conditionalValues")
-    def conditional_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]]:
+    def conditional_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]]:
         """
         The condition_name of the highest priority
         (the one listed first in the RemoteConfig's conditions list) determines
@@ -4892,12 +4892,12 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgs:
         return pulumi.get(self, "conditional_values")
 
     @conditional_values.setter
-    def conditional_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]]):
+    def conditional_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]]):
         pulumi.set(self, "conditional_values", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultValue")
-    def default_value(self) -> Optional[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']]:
+    def default_value(self) -> pulumi.Input[Optional['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']]:
         """
         Value to set the parameter to, when none of the named conditions evaluate to true.
         Only one of use_in_app_default or value may be specified.
@@ -4906,12 +4906,12 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgs:
         return pulumi.get(self, "default_value")
 
     @default_value.setter
-    def default_value(self, value: Optional[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']]):
+    def default_value(self, value: pulumi.Input[Optional['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']]):
         pulumi.set(self, "default_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for this Parameter. Its length must be less than or equal to
         256 characters . A description may contain any Unicode characters.
@@ -4919,12 +4919,12 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data type for all values of this parameter in the current version of
         the template.
@@ -4934,7 +4934,7 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgs:
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_type", value)
 
 
@@ -4943,12 +4943,12 @@ class RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgsDict(Ty
     """
     The identifier for this object. Format specified above.
     """
-    use_in_app_default: NotRequired[pulumi.Input[_builtins.bool]]
+    use_in_app_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the parameter is omitted from the parameter values returned
     to a client.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The string value that the parameter is set to.
     """
@@ -4957,8 +4957,8 @@ class RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgsDict(Ty
 class RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs:
     def __init__(__self__, *,
                  condition_name: pulumi.Input[_builtins.str],
-                 use_in_app_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 use_in_app_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition_name: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.bool] use_in_app_default: If true, the parameter is omitted from the parameter values returned
@@ -4985,7 +4985,7 @@ class RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="useInAppDefault")
-    def use_in_app_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_in_app_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the parameter is omitted from the parameter values returned
         to a client.
@@ -4993,29 +4993,29 @@ class RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs:
         return pulumi.get(self, "use_in_app_default")
 
     @use_in_app_default.setter
-    def use_in_app_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_in_app_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_in_app_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string value that the parameter is set to.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgsDict(TypedDict):
-    use_in_app_default: NotRequired[pulumi.Input[_builtins.bool]]
+    use_in_app_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the parameter is omitted from the parameter values returned
     to a client.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The string value that the parameter is set to.
     """
@@ -5023,8 +5023,8 @@ class RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgsDict(TypedD
 @pulumi.input_type
 class RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs:
     def __init__(__self__, *,
-                 use_in_app_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 use_in_app_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] use_in_app_default: If true, the parameter is omitted from the parameter values returned
                to a client.
@@ -5037,7 +5037,7 @@ class RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="useInAppDefault")
-    def use_in_app_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_in_app_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the parameter is omitted from the parameter values returned
         to a client.
@@ -5045,62 +5045,62 @@ class RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs:
         return pulumi.get(self, "use_in_app_default")
 
     @use_in_app_default.setter
-    def use_in_app_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_in_app_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_in_app_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string value that the parameter is set to.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RemoteConfigRemoteConfigVersionArgsDict(TypedDict):
-    is_legacy: NotRequired[pulumi.Input[_builtins.bool]]
+    is_legacy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     `True` if this Remote Config template was published before
     version history was supported.
     """
-    rollback_source: NotRequired[pulumi.Input[_builtins.str]]
+    rollback_source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Only present if this version is the result of a rollback, and
     will be the version number of the Remote Config template that was
     rolled-back to.
     """
-    update_origin: NotRequired[pulumi.Input[_builtins.str]]
+    update_origin: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Where the update action originated.
     For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdateorigin).
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     When the Remote Config template was written to the Remote
     Config server.
     """
-    update_type: NotRequired[pulumi.Input[_builtins.str]]
+    update_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     What type of update was made.
     For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
     """
-    update_users: NotRequired[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgsDict']]]]
+    update_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]]]
     """
     (Output)
     All the fields associated with the person/service account that wrote a
     Remote Config template.
     Structure is documented below.
     """
-    version_number: NotRequired[pulumi.Input[_builtins.str]]
+    version_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The version number of the version's corresponding
@@ -5110,13 +5110,13 @@ class RemoteConfigRemoteConfigVersionArgsDict(TypedDict):
 @pulumi.input_type
 class RemoteConfigRemoteConfigVersionArgs:
     def __init__(__self__, *,
-                 is_legacy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rollback_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_users: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]] = None,
-                 version_number: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_legacy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rollback_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_users: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]] = None,
+                 version_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] is_legacy: (Output)
                `True` if this Remote Config template was published before
@@ -5159,7 +5159,7 @@ class RemoteConfigRemoteConfigVersionArgs:
 
     @_builtins.property
     @pulumi.getter(name="isLegacy")
-    def is_legacy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_legacy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         `True` if this Remote Config template was published before
@@ -5168,12 +5168,12 @@ class RemoteConfigRemoteConfigVersionArgs:
         return pulumi.get(self, "is_legacy")
 
     @is_legacy.setter
-    def is_legacy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_legacy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_legacy", value)
 
     @_builtins.property
     @pulumi.getter(name="rollbackSource")
-    def rollback_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollback_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Only present if this version is the result of a rollback, and
@@ -5183,12 +5183,12 @@ class RemoteConfigRemoteConfigVersionArgs:
         return pulumi.get(self, "rollback_source")
 
     @rollback_source.setter
-    def rollback_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollback_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollback_source", value)
 
     @_builtins.property
     @pulumi.getter(name="updateOrigin")
-    def update_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Where the update action originated.
@@ -5197,12 +5197,12 @@ class RemoteConfigRemoteConfigVersionArgs:
         return pulumi.get(self, "update_origin")
 
     @update_origin.setter
-    def update_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         When the Remote Config template was written to the Remote
@@ -5211,12 +5211,12 @@ class RemoteConfigRemoteConfigVersionArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="updateType")
-    def update_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         What type of update was made.
@@ -5225,12 +5225,12 @@ class RemoteConfigRemoteConfigVersionArgs:
         return pulumi.get(self, "update_type")
 
     @update_type.setter
-    def update_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateUsers")
-    def update_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]]:
+    def update_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]]:
         """
         (Output)
         All the fields associated with the person/service account that wrote a
@@ -5240,12 +5240,12 @@ class RemoteConfigRemoteConfigVersionArgs:
         return pulumi.get(self, "update_users")
 
     @update_users.setter
-    def update_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]]):
+    def update_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]]):
         pulumi.set(self, "update_users", value)
 
     @_builtins.property
     @pulumi.getter(name="versionNumber")
-    def version_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The version number of the version's corresponding
@@ -5254,22 +5254,22 @@ class RemoteConfigRemoteConfigVersionArgs:
         return pulumi.get(self, "version_number")
 
     @version_number.setter
-    def version_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_number", value)
 
 
 class RemoteConfigRemoteConfigVersionUpdateUserArgsDict(TypedDict):
-    email: NotRequired[pulumi.Input[_builtins.str]]
+    email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Email address.
     """
-    image_url: NotRequired[pulumi.Input[_builtins.str]]
+    image_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Image URL.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Display name.
@@ -5278,9 +5278,9 @@ class RemoteConfigRemoteConfigVersionUpdateUserArgsDict(TypedDict):
 @pulumi.input_type
 class RemoteConfigRemoteConfigVersionUpdateUserArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] email: (Output)
                Email address.
@@ -5298,7 +5298,7 @@ class RemoteConfigRemoteConfigVersionUpdateUserArgs:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Email address.
@@ -5306,12 +5306,12 @@ class RemoteConfigRemoteConfigVersionUpdateUserArgs:
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUrl")
-    def image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Image URL.
@@ -5319,12 +5319,12 @@ class RemoteConfigRemoteConfigVersionUpdateUserArgs:
         return pulumi.get(self, "image_url")
 
     @image_url.setter
-    def image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Display name.
@@ -5332,12 +5332,12 @@ class RemoteConfigRemoteConfigVersionUpdateUserArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class StorageDefaultBucketBucketArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The resource name of the bucket in the format
@@ -5347,7 +5347,7 @@ class StorageDefaultBucketBucketArgsDict(TypedDict):
 @pulumi.input_type
 class StorageDefaultBucketBucketArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: (Output)
                The resource name of the bucket in the format
@@ -5358,7 +5358,7 @@ class StorageDefaultBucketBucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The resource name of the bucket in the format
@@ -5367,7 +5367,7 @@ class StorageDefaultBucketBucketArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 

@@ -245,72 +245,72 @@ export interface GdcApplicationEnvironmentState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The id of the application environment
      */
-    applicationEnvironmentId?: pulumi.Input<string>;
+    applicationEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the application environment
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the application environment. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/applicationEnvironments/{application_environment_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace in which to create this ApplicationEnvironment. This namespace must already exist in the cluster
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The id of the service instance to which this application environment belongs.
      */
-    serviceinstance?: pulumi.Input<string>;
+    serviceinstance?: pulumi.Input<string | undefined>;
     /**
      * Represents the SparkApplicationEnvironmentConfig.
      * Structure is documented below.
      */
-    sparkApplicationEnvironmentConfig?: pulumi.Input<inputs.dataproc.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>;
+    sparkApplicationEnvironmentConfig?: pulumi.Input<inputs.dataproc.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig | undefined>;
     /**
      * System generated unique identifier for this application environment, formatted as UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -322,21 +322,21 @@ export interface GdcApplicationEnvironmentArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The id of the application environment
      */
-    applicationEnvironmentId?: pulumi.Input<string>;
+    applicationEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The labels to associate with this application environment. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the application environment
      */
@@ -344,12 +344,12 @@ export interface GdcApplicationEnvironmentArgs {
     /**
      * The name of the namespace in which to create this ApplicationEnvironment. This namespace must already exist in the cluster
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The id of the service instance to which this application environment belongs.
      */
@@ -358,5 +358,5 @@ export interface GdcApplicationEnvironmentArgs {
      * Represents the SparkApplicationEnvironmentConfig.
      * Structure is documented below.
      */
-    sparkApplicationEnvironmentConfig?: pulumi.Input<inputs.dataproc.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig>;
+    sparkApplicationEnvironmentConfig?: pulumi.Input<inputs.dataproc.GdcApplicationEnvironmentSparkApplicationEnvironmentConfig | undefined>;
 }

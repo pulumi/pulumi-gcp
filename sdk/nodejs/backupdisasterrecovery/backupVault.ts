@@ -361,68 +361,68 @@ export interface BackupVaultState {
      * Default value is `WITHIN_ORGANIZATION`.
      * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
      */
-    accessRestriction?: pulumi.Input<string>;
+    accessRestriction?: pulumi.Input<string | undefined>;
     /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      */
-    allowMissing?: pulumi.Input<boolean>;
+    allowMissing?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. User annotations. See https://google.aip.dev/128#annotations
      * Stores small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The number of backups in this backup vault.
      */
-    backupCount?: pulumi.Input<string>;
+    backupCount?: pulumi.Input<string | undefined>;
     /**
      * Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
      */
-    backupMinimumEnforcedRetentionDuration?: pulumi.Input<string>;
+    backupMinimumEnforcedRetentionDuration?: pulumi.Input<string | undefined>;
     /**
      * How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
      * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
      */
-    backupRetentionInheritance?: pulumi.Input<string>;
+    backupRetentionInheritance?: pulumi.Input<string | undefined>;
     /**
      * Required. ID of the requesting object.
      */
-    backupVaultId?: pulumi.Input<string>;
+    backupVaultId?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the instance was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Set to true when there are no backups nested under this resource.
      */
-    deletable?: pulumi.Input<boolean>;
+    deletable?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. The description of the BackupVault instance (2048 characters or less).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Time after which the BackupVault resource is locked.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Encryption configuration for the backup vault.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.backupdisasterrecovery.BackupVaultEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.backupdisasterrecovery.BackupVaultEncryptionConfig | undefined>;
     /**
      * Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -433,52 +433,52 @@ export interface BackupVaultState {
      *
      * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * If set, allow update to extend the minimum enforced retention for backup vault. This overrides
      * the restriction against conflicting retention periods. This conflict may occur when the
      * expiration schedule defined by the associated backup plan is shorter than the minimum
      * retention set by the backup vault.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      */
-    ignoreBackupPlanReferences?: pulumi.Input<boolean>;
+    ignoreBackupPlanReferences?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      */
-    ignoreInactiveDatasources?: pulumi.Input<boolean>;
+    ignoreInactiveDatasources?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The GCP location for the backup vault.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. Identifier. The resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Service account used by the BackupVault Service for this BackupVault.  The user should grant this account permissions in their workload project to enable the service to run backups and restores there.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Output only. The BackupVault resource instance state.
      * Possible values:
@@ -488,19 +488,19 @@ export interface BackupVaultState {
      * DELETING
      * ERROR
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. Total size of the storage used by all backup resources.
      */
-    totalStoredBytes?: pulumi.Input<string>;
+    totalStoredBytes?: pulumi.Input<string | undefined>;
     /**
      * Output only. Output only Immutable after resource creation until resource deletion.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when the instance was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -512,18 +512,18 @@ export interface BackupVaultArgs {
      * Default value is `WITHIN_ORGANIZATION`.
      * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
      */
-    accessRestriction?: pulumi.Input<string>;
+    accessRestriction?: pulumi.Input<string | undefined>;
     /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      */
-    allowMissing?: pulumi.Input<boolean>;
+    allowMissing?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. User annotations. See https://google.aip.dev/128#annotations
      * Stores small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.
      */
@@ -532,7 +532,7 @@ export interface BackupVaultArgs {
      * How a backup's enforced retention end time is inherited. Default value is `INHERIT_VAULT_RETENTION` if not provided during creation.
      * Possible values are: `BACKUP_RETENTION_INHERITANCE_UNSPECIFIED`, `INHERIT_VAULT_RETENTION`, `MATCH_BACKUP_EXPIRE_TIME`.
      */
-    backupRetentionInheritance?: pulumi.Input<string>;
+    backupRetentionInheritance?: pulumi.Input<string | undefined>;
     /**
      * Required. ID of the requesting object.
      */
@@ -540,16 +540,16 @@ export interface BackupVaultArgs {
     /**
      * Optional. The description of the BackupVault instance (2048 characters or less).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. Time after which the BackupVault resource is locked.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Encryption configuration for the backup vault.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.backupdisasterrecovery.BackupVaultEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.backupdisasterrecovery.BackupVaultEncryptionConfig | undefined>;
     /**
      * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -560,30 +560,30 @@ export interface BackupVaultArgs {
      *
      * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * If set, allow update to extend the minimum enforced retention for backup vault. This overrides
      * the restriction against conflicting retention periods. This conflict may occur when the
      * expiration schedule defined by the associated backup plan is shorter than the minimum
      * retention set by the backup vault.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      */
-    ignoreBackupPlanReferences?: pulumi.Input<boolean>;
+    ignoreBackupPlanReferences?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      */
-    ignoreInactiveDatasources?: pulumi.Input<boolean>;
+    ignoreInactiveDatasources?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The GCP location for the backup vault.
      */
@@ -592,5 +592,5 @@ export interface BackupVaultArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

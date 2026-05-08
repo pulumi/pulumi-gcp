@@ -156,33 +156,33 @@ export interface TagValueState {
      * Output only. Creation time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-assigned description of the TagValue. Must not exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The generated numeric id for the TagValue.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      */
-    namespacedName?: pulumi.Input<string>;
+    namespacedName?: pulumi.Input<string | undefined>;
     /**
      * Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
      * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
      */
-    shortName?: pulumi.Input<string>;
+    shortName?: pulumi.Input<string | undefined>;
     /**
      * Output only. Update time.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,7 +192,7 @@ export interface TagValueArgs {
     /**
      * User-assigned description of the TagValue. Must not exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
      */

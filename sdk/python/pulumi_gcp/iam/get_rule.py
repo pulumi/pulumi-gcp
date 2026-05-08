@@ -121,7 +121,7 @@ def get_rule(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         stage=pulumi.get(__ret__, 'stage'),
         title=pulumi.get(__ret__, 'title'))
-def get_rule_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_rule_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleResult]:
     """
     Use this data source to get information about a Google IAM Role.

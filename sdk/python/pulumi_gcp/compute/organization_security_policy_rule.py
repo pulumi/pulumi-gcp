@@ -25,15 +25,15 @@ class OrganizationSecurityPolicyRuleArgs:
                  match: pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs'],
                  policy_id: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 header_action: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 redirect_options: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']] = None,
-                 target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 header_action: pulumi.Input[Optional['OrganizationSecurityPolicyRuleHeaderActionArgs']] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 redirect_options: pulumi.Input[Optional['OrganizationSecurityPolicyRuleRedirectOptionsArgs']] = None,
+                 target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a OrganizationSecurityPolicyRule resource.
 
@@ -156,19 +156,19 @@ class OrganizationSecurityPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -178,12 +178,12 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Denotes whether to enable logging for a particular rule.
@@ -194,12 +194,12 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]:
+    def header_action(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyRuleHeaderActionArgs']]:
         """
         Optional, additional actions that are performed on headers.
         Structure is documented below.
@@ -207,12 +207,12 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]):
+    def header_action(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyRuleHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
     @_builtins.property
     @pulumi.getter(name="preconfiguredWafConfig")
-    def preconfigured_waf_config(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+    def preconfigured_waf_config(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]:
         """
         Preconfigured WAF configuration to be applied for the rule.
         If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
@@ -221,24 +221,24 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "preconfigured_waf_config")
 
     @preconfigured_waf_config.setter
-    def preconfigured_waf_config(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+    def preconfigured_waf_config(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]):
         pulumi.set(self, "preconfigured_waf_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def preview(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preview(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the specified action is not enforced.
         """
         return pulumi.get(self, "preview")
 
     @preview.setter
-    def preview(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preview(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preview", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectOptions")
-    def redirect_options(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]:
+    def redirect_options(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]:
         """
         Parameters defining the redirect action. Cannot be specified for any other actions.
         Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
@@ -247,12 +247,12 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "redirect_options")
 
     @redirect_options.setter
-    def redirect_options(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]):
+    def redirect_options(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]):
         pulumi.set(self, "redirect_options", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResources")
-    def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         A list of network resource URLs to which this rule applies.
@@ -263,12 +263,12 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "target_resources")
 
     @target_resources.setter
-    def target_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="targetServiceAccounts")
-    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_service_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         A list of service accounts indicating the sets of
@@ -277,26 +277,26 @@ class OrganizationSecurityPolicyRuleArgs:
         return pulumi.get(self, "target_service_accounts")
 
     @target_service_accounts.setter
-    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_service_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_service_accounts", value)
 
 
 @pulumi.input_type
 class _OrganizationSecurityPolicyRuleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 header_action: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']] = None,
-                 match: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_options: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']] = None,
-                 target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 header_action: pulumi.Input[Optional['OrganizationSecurityPolicyRuleHeaderActionArgs']] = None,
+                 match: pulumi.Input[Optional['OrganizationSecurityPolicyRuleMatchArgs']] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_options: pulumi.Input[Optional['OrganizationSecurityPolicyRuleRedirectOptionsArgs']] = None,
+                 target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering OrganizationSecurityPolicyRule resources.
 
@@ -368,7 +368,7 @@ class _OrganizationSecurityPolicyRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Action to perform when the client connection triggers the rule. Valid actions are:
         "allow": allow access to target.
@@ -379,24 +379,24 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         The direction in which this rule applies. If unspecified an INGRESS rule is created.
@@ -406,12 +406,12 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Denotes whether to enable logging for a particular rule.
@@ -422,12 +422,12 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="headerAction")
-    def header_action(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]:
+    def header_action(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyRuleHeaderActionArgs']]:
         """
         Optional, additional actions that are performed on headers.
         Structure is documented below.
@@ -435,12 +435,12 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "header_action")
 
     @header_action.setter
-    def header_action(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleHeaderActionArgs']]):
+    def header_action(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyRuleHeaderActionArgs']]):
         pulumi.set(self, "header_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']]:
+    def match(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyRuleMatchArgs']]:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         Structure is documented below.
@@ -448,24 +448,24 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleMatchArgs']]):
+    def match(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyRuleMatchArgs']]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the OrganizationSecurityPolicy this rule applies to.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="preconfiguredWafConfig")
-    def preconfigured_waf_config(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+    def preconfigured_waf_config(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]:
         """
         Preconfigured WAF configuration to be applied for the rule.
         If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
@@ -474,24 +474,24 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "preconfigured_waf_config")
 
     @preconfigured_waf_config.setter
-    def preconfigured_waf_config(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+    def preconfigured_waf_config(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs']]):
         pulumi.set(self, "preconfigured_waf_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def preview(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preview(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the specified action is not enforced.
         """
         return pulumi.get(self, "preview")
 
     @preview.setter
-    def preview(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preview(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preview", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer indicating the priority of a rule in the list. The priority must be a value
         between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
@@ -500,12 +500,12 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectOptions")
-    def redirect_options(self) -> Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]:
+    def redirect_options(self) -> pulumi.Input[Optional['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]:
         """
         Parameters defining the redirect action. Cannot be specified for any other actions.
         Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
@@ -514,12 +514,12 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "redirect_options")
 
     @redirect_options.setter
-    def redirect_options(self, value: Optional[pulumi.Input['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]):
+    def redirect_options(self, value: pulumi.Input[Optional['OrganizationSecurityPolicyRuleRedirectOptionsArgs']]):
         pulumi.set(self, "redirect_options", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResources")
-    def target_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         A list of network resource URLs to which this rule applies.
@@ -530,12 +530,12 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "target_resources")
 
     @target_resources.setter
-    def target_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="targetServiceAccounts")
-    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_service_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Beta)
         A list of service accounts indicating the sets of
@@ -544,7 +544,7 @@ class _OrganizationSecurityPolicyRuleState:
         return pulumi.get(self, "target_service_accounts")
 
     @target_service_accounts.setter
-    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_service_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_service_accounts", value)
 
 
@@ -554,19 +554,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 header_action: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
-                 match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_options: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
-                 target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+                 target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A rule for the OrganizationSecurityPolicy.
@@ -1034,19 +1034,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 header_action: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
-                 match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 preconfigured_waf_config: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
-                 preview: Optional[pulumi.Input[_builtins.bool]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirect_options: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
-                 target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
+                 match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+                 preview: pulumi.Input[Optional[_builtins.bool]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+                 target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1087,19 +1087,19 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            header_action: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
-            match: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            preconfigured_waf_config: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
-            preview: Optional[pulumi.Input[_builtins.bool]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            redirect_options: Optional[pulumi.Input[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
-            target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OrganizationSecurityPolicyRule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            header_action: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleHeaderActionArgs', 'OrganizationSecurityPolicyRuleHeaderActionArgsDict']]] = None,
+            match: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleMatchArgs', 'OrganizationSecurityPolicyRuleMatchArgsDict']]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            preconfigured_waf_config: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs', 'OrganizationSecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
+            preview: pulumi.Input[Optional[_builtins.bool]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            redirect_options: pulumi.Input[Optional[Union['OrganizationSecurityPolicyRuleRedirectOptionsArgs', 'OrganizationSecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
+            target_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'OrganizationSecurityPolicyRule':
         """
         Get an existing OrganizationSecurityPolicyRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

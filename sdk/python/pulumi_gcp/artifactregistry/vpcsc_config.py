@@ -19,9 +19,9 @@ __all__ = ['VpcscConfigArgs', 'VpcscConfig']
 @pulumi.input_type
 class VpcscConfigArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcsc_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcscConfig resource.
 
@@ -40,19 +40,19 @@ class VpcscConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location this config is located in.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -60,12 +60,12 @@ class VpcscConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcscPolicy")
-    def vpcsc_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpcsc_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC SC policy for project and location.
         Possible values are: `DENY`, `ALLOW`.
@@ -73,17 +73,17 @@ class VpcscConfigArgs:
         return pulumi.get(self, "vpcsc_policy")
 
     @vpcsc_policy.setter
-    def vpcsc_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpcsc_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpcsc_policy", value)
 
 
 @pulumi.input_type
 class _VpcscConfigState:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcsc_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcscConfig resources.
 
@@ -106,19 +106,19 @@ class _VpcscConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location this config is located in.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project's VPC SC Config.
         Always of the form: projects/{project}/location/{location}/vpcscConfig
@@ -126,12 +126,12 @@ class _VpcscConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -139,12 +139,12 @@ class _VpcscConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcscPolicy")
-    def vpcsc_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpcsc_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC SC policy for project and location.
         Possible values are: `DENY`, `ALLOW`.
@@ -152,7 +152,7 @@ class _VpcscConfigState:
         return pulumi.get(self, "vpcsc_policy")
 
     @vpcsc_policy.setter
-    def vpcsc_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpcsc_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpcsc_policy", value)
 
 
@@ -162,9 +162,9 @@ class VpcscConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcsc_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Artifact Registry VPC SC config that applies to a Project.
@@ -291,9 +291,9 @@ class VpcscConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcsc_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,10 +317,10 @@ class VpcscConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            vpcsc_policy: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcscConfig':
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            vpcsc_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcscConfig':
         """
         Get an existing VpcscConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

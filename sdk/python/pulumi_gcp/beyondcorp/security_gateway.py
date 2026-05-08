@@ -22,13 +22,13 @@ __all__ = ['SecurityGatewayArgs', 'SecurityGateway']
 class SecurityGatewayArgs:
     def __init__(__self__, *,
                  security_gateway_id: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hubs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input['SecurityGatewayLoggingArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']] = None,
-                 service_discovery: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional['SecurityGatewayLoggingArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigArgs']] = None,
+                 service_discovery: pulumi.Input[Optional['SecurityGatewayServiceDiscoveryArgs']] = None):
         """
         The set of arguments for constructing a SecurityGateway resource.
 
@@ -89,7 +89,7 @@ class SecurityGatewayArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. An arbitrary user-provided name for the SecurityGateway.
         Cannot exceed 64 characters.
@@ -97,12 +97,12 @@ class SecurityGatewayArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def hubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]:
+    def hubs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]:
         """
         Optional. Map of Hubs that represents regional data path deployment with GCP region
         as a key.
@@ -111,13 +111,13 @@ class SecurityGatewayArgs:
         return pulumi.get(self, "hubs")
 
     @hubs.setter
-    def hubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]):
+    def hubs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]):
         pulumi.set(self, "hubs", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`location` is deprecated and will be removed in a future major release.""")
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
@@ -127,24 +127,24 @@ class SecurityGatewayArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['SecurityGatewayLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['SecurityGatewayLoggingArgs']]:
         """
         Settings related to Cloud Logging.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['SecurityGatewayLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['SecurityGatewayLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -152,12 +152,12 @@ class SecurityGatewayArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolConfig")
-    def proxy_protocol_config(self) -> Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]:
+    def proxy_protocol_config(self) -> pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigArgs']]:
         """
         Shared proxy configuration for all apps.
         Structure is documented below.
@@ -165,12 +165,12 @@ class SecurityGatewayArgs:
         return pulumi.get(self, "proxy_protocol_config")
 
     @proxy_protocol_config.setter
-    def proxy_protocol_config(self, value: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]):
+    def proxy_protocol_config(self, value: pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigArgs']]):
         pulumi.set(self, "proxy_protocol_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDiscovery")
-    def service_discovery(self) -> Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]:
+    def service_discovery(self) -> pulumi.Input[Optional['SecurityGatewayServiceDiscoveryArgs']]:
         """
         Settings related to the Service Discovery.
         Structure is documented below.
@@ -178,27 +178,27 @@ class SecurityGatewayArgs:
         return pulumi.get(self, "service_discovery")
 
     @service_discovery.setter
-    def service_discovery(self, value: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]):
+    def service_discovery(self, value: pulumi.Input[Optional['SecurityGatewayServiceDiscoveryArgs']]):
         pulumi.set(self, "service_discovery", value)
 
 
 @pulumi.input_type
 class _SecurityGatewayState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delegating_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hubs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input['SecurityGatewayLoggingArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']] = None,
-                 security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_discovery: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delegating_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional['SecurityGatewayLoggingArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigArgs']] = None,
+                 security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_discovery: pulumi.Input[Optional['SecurityGatewayServiceDiscoveryArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGateway resources.
 
@@ -272,31 +272,31 @@ class _SecurityGatewayState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="delegatingServiceAccount")
-    def delegating_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delegating_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account used for operations that involve resources in consumer projects.
         """
         return pulumi.get(self, "delegating_service_account")
 
     @delegating_service_account.setter
-    def delegating_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delegating_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delegating_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. An arbitrary user-provided name for the SecurityGateway.
         Cannot exceed 64 characters.
@@ -304,12 +304,12 @@ class _SecurityGatewayState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIps")
-    def external_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def external_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. IP addresses that will be used for establishing
         connection to the endpoints.
@@ -317,12 +317,12 @@ class _SecurityGatewayState:
         return pulumi.get(self, "external_ips")
 
     @external_ips.setter
-    def external_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def external_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def hubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]:
+    def hubs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]:
         """
         Optional. Map of Hubs that represents regional data path deployment with GCP region
         as a key.
@@ -331,13 +331,13 @@ class _SecurityGatewayState:
         return pulumi.get(self, "hubs")
 
     @hubs.setter
-    def hubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]):
+    def hubs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGatewayHubArgs']]]]):
         pulumi.set(self, "hubs", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`location` is deprecated and will be removed in a future major release.""")
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
@@ -347,36 +347,36 @@ class _SecurityGatewayState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['SecurityGatewayLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['SecurityGatewayLoggingArgs']]:
         """
         Settings related to Cloud Logging.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['SecurityGatewayLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['SecurityGatewayLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -384,12 +384,12 @@ class _SecurityGatewayState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolConfig")
-    def proxy_protocol_config(self) -> Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]:
+    def proxy_protocol_config(self) -> pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigArgs']]:
         """
         Shared proxy configuration for all apps.
         Structure is documented below.
@@ -397,12 +397,12 @@ class _SecurityGatewayState:
         return pulumi.get(self, "proxy_protocol_config")
 
     @proxy_protocol_config.setter
-    def proxy_protocol_config(self, value: Optional[pulumi.Input['SecurityGatewayProxyProtocolConfigArgs']]):
+    def proxy_protocol_config(self, value: pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigArgs']]):
         pulumi.set(self, "proxy_protocol_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGatewayId")
-    def security_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. User-settable SecurityGateway resource ID.
         * Must start with a letter.
@@ -412,12 +412,12 @@ class _SecurityGatewayState:
         return pulumi.get(self, "security_gateway_id")
 
     @security_gateway_id.setter
-    def security_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDiscovery")
-    def service_discovery(self) -> Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]:
+    def service_discovery(self) -> pulumi.Input[Optional['SecurityGatewayServiceDiscoveryArgs']]:
         """
         Settings related to the Service Discovery.
         Structure is documented below.
@@ -425,12 +425,12 @@ class _SecurityGatewayState:
         return pulumi.get(self, "service_discovery")
 
     @service_discovery.setter
-    def service_discovery(self, value: Optional[pulumi.Input['SecurityGatewayServiceDiscoveryArgs']]):
+    def service_discovery(self, value: pulumi.Input[Optional['SecurityGatewayServiceDiscoveryArgs']]):
         pulumi.set(self, "service_discovery", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The operational state of the SecurityGateway.
         Possible values:
@@ -445,19 +445,19 @@ class _SecurityGatewayState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Timestamp when the resource was last modified.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -467,14 +467,14 @@ class SecurityGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
-                 security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_discovery: Optional[pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
+                 security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
                  __props__=None):
         """
         Deployment of Security Gateway.
@@ -702,14 +702,14 @@ class SecurityGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging: Optional[pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
-                 security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_discovery: Optional[pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
+                 security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -745,20 +745,20 @@ class SecurityGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delegating_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            external_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hubs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            logging: Optional[pulumi.Input[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_protocol_config: Optional[pulumi.Input[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
-            security_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_discovery: Optional[pulumi.Input[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityGateway':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delegating_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hubs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGatewayHubArgs', 'SecurityGatewayHubArgsDict']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging: pulumi.Input[Optional[Union['SecurityGatewayLoggingArgs', 'SecurityGatewayLoggingArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol_config: pulumi.Input[Optional[Union['SecurityGatewayProxyProtocolConfigArgs', 'SecurityGatewayProxyProtocolConfigArgsDict']]] = None,
+            security_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_discovery: pulumi.Input[Optional[Union['SecurityGatewayServiceDiscoveryArgs', 'SecurityGatewayServiceDiscoveryArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityGateway':
         """
         Get an existing SecurityGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

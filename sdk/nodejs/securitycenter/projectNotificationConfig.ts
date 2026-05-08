@@ -166,36 +166,36 @@ export interface ProjectNotificationConfigState {
     /**
      * This must be unique within the organization.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The resource name of this notification config, in the format
      * `projects/{{projectId}}/notificationConfigs/{{config_id}}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
      * "projects/[projectId]/topics/[topic]".
      */
-    pubsubTopic?: pulumi.Input<string>;
+    pubsubTopic?: pulumi.Input<string | undefined>;
     /**
      * The service account that needs "pubsub.topics.publish" permission to
      * publish to the Pub/Sub topic.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * The config for triggering streaming-based notifications.
      * Structure is documented below.
      */
-    streamingConfig?: pulumi.Input<inputs.securitycenter.ProjectNotificationConfigStreamingConfig>;
+    streamingConfig?: pulumi.Input<inputs.securitycenter.ProjectNotificationConfigStreamingConfig | undefined>;
 }
 
 /**
@@ -209,12 +209,12 @@ export interface ProjectNotificationConfigArgs {
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Pub/Sub topic to send notifications to. Its format is
      * "projects/[projectId]/topics/[topic]".

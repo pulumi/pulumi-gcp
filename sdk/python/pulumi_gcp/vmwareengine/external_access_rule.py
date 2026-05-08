@@ -29,8 +29,8 @@ class ExternalAccessRuleArgs:
                  priority: pulumi.Input[_builtins.int],
                  source_ip_ranges: pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]],
                  source_ports: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExternalAccessRule resource.
 
@@ -170,46 +170,46 @@ class ExternalAccessRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description for the external access rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the external access rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ExternalAccessRuleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleDestinationIpRangeArgs']]]] = None,
-                 destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]]] = None,
-                 source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['ExternalAccessRuleDestinationIpRangeArgs']]]] = None,
+                 destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]]] = None,
+                 source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalAccessRule resources.
 
@@ -270,7 +270,7 @@ class _ExternalAccessRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action that the external access rule performs.
         Possible values are: `ALLOW`, `DENY`.
@@ -278,12 +278,12 @@ class _ExternalAccessRuleState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -292,24 +292,24 @@ class _ExternalAccessRuleState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description for the external access rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationIpRanges")
-    def destination_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleDestinationIpRangeArgs']]]]:
+    def destination_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExternalAccessRuleDestinationIpRangeArgs']]]]:
         """
         If destination ranges are specified, the external access rule applies only to
         traffic that has a destination IP address in these ranges.
@@ -318,48 +318,48 @@ class _ExternalAccessRuleState:
         return pulumi.get(self, "destination_ip_ranges")
 
     @destination_ip_ranges.setter
-    def destination_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleDestinationIpRangeArgs']]]]):
+    def destination_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExternalAccessRuleDestinationIpRangeArgs']]]]):
         pulumi.set(self, "destination_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationPorts")
-    def destination_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of destination ports to which the external access rule applies.
         """
         return pulumi.get(self, "destination_ports")
 
     @destination_ports.setter
-    def destination_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol to which the external access rule applies.
         """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the external access rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the network policy.
         Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -368,24 +368,24 @@ class _ExternalAccessRuleState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         External access rule priority, which determines the external access rule to use when multiple rules apply.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIpRanges")
-    def source_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]]]:
+    def source_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]]]:
         """
         If source ranges are specified, the external access rule applies only to
         traffic that has a source IP address in these ranges.
@@ -394,48 +394,48 @@ class _ExternalAccessRuleState:
         return pulumi.get(self, "source_ip_ranges")
 
     @source_ip_ranges.setter
-    def source_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]]]):
+    def source_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExternalAccessRuleSourceIpRangeArgs']]]]):
         pulumi.set(self, "source_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePorts")
-    def source_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of source ports to which the external access rule applies.
         """
         return pulumi.get(self, "source_ports")
 
     @source_ports.setter
-    def source_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the Cluster.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System-generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last updated time of this resource.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -444,7 +444,7 @@ class _ExternalAccessRuleState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -454,16 +454,16 @@ class ExternalAccessRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
-                 destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
-                 source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
+                 destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
+                 source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         External access firewall rules for filtering incoming traffic destined to `ExternalAddress` resources.
@@ -716,16 +716,16 @@ class ExternalAccessRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
-                 destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
-                 source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
+                 destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
+                 source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -775,20 +775,20 @@ class ExternalAccessRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
-            destination_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
-            source_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExternalAccessRule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleDestinationIpRangeArgs', 'ExternalAccessRuleDestinationIpRangeArgsDict']]]]] = None,
+            destination_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExternalAccessRuleSourceIpRangeArgs', 'ExternalAccessRuleSourceIpRangeArgsDict']]]]] = None,
+            source_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExternalAccessRule':
         """
         Get an existing ExternalAccessRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

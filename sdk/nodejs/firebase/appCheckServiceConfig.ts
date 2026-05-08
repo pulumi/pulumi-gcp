@@ -224,16 +224,16 @@ export interface AppCheckServiceConfigState {
      * clients in use.
      * Possible values are: `UNENFORCED`, `ENFORCED`.
      */
-    enforcementMode?: pulumi.Input<string>;
+    enforcementMode?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified resource name of the service enforcement configuration.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
      * firebasestorage.googleapis.com (Cloud Storage for Firebase)
@@ -241,7 +241,7 @@ export interface AppCheckServiceConfigState {
      * firestore.googleapis.com (Cloud Firestore)
      * identitytoolkit.googleapis.com (Authentication)
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -276,12 +276,12 @@ export interface AppCheckServiceConfigArgs {
      * clients in use.
      * Possible values are: `UNENFORCED`, `ENFORCED`.
      */
-    enforcementMode?: pulumi.Input<string>;
+    enforcementMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
      * firebasestorage.googleapis.com (Cloud Storage for Firebase)

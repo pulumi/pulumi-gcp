@@ -176,17 +176,17 @@ export interface VariableState {
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the RuntimeConfig resource containing this
      * variable.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * or `value` - (Required) The content to associate with the variable.
      * Exactly one of `text` or `variable` must be specified. If `text` is specified,
@@ -195,14 +195,14 @@ export interface VariableState {
      *
      * - - -
      */
-    text?: pulumi.Input<string>;
+    text?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds, representing when the variable was last updated.
      * Example: "2016-10-09T12:33:37.578138407Z".
      */
-    updateTime?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -213,7 +213,7 @@ export interface VariableArgs {
      * The name of the variable to manage. Note that variable
      * names can be hierarchical using slashes (e.g. "prod-variables/hostname").
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the RuntimeConfig resource containing this
      * variable.
@@ -223,7 +223,7 @@ export interface VariableArgs {
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * or `value` - (Required) The content to associate with the variable.
      * Exactly one of `text` or `variable` must be specified. If `text` is specified,
@@ -232,6 +232,6 @@ export interface VariableArgs {
      *
      * - - -
      */
-    text?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    text?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }

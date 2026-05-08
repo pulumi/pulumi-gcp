@@ -24,7 +24,7 @@ class DicomStoreIamBindingArgs:
                  dicom_store_id: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['DicomStoreIamBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a DicomStoreIamBinding resource.
 
@@ -100,22 +100,22 @@ class DicomStoreIamBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['DicomStoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['DicomStoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _DicomStoreIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']] = None,
-                 dicom_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['DicomStoreIamBindingConditionArgs']] = None,
+                 dicom_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DicomStoreIamBinding resources.
 
@@ -149,16 +149,16 @@ class _DicomStoreIamBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['DicomStoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DicomStoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['DicomStoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="dicomStoreId")
-    def dicom_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dicom_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DICOM store ID, in the form
         `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
@@ -168,24 +168,24 @@ class _DicomStoreIamBindingState:
         return pulumi.get(self, "dicom_store_id")
 
     @dicom_store_id.setter
-    def dicom_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dicom_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dicom_store_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the DICOM store's IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -199,12 +199,12 @@ class _DicomStoreIamBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `healthcare.DicomStoreIamBinding` can be used per role. Note that custom roles must be of the format
@@ -213,7 +213,7 @@ class _DicomStoreIamBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -223,10 +223,10 @@ class DicomStoreIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['DicomStoreIamBindingConditionArgs', 'DicomStoreIamBindingConditionArgsDict']]] = None,
-                 dicom_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['DicomStoreIamBindingConditionArgs', 'DicomStoreIamBindingConditionArgsDict']]] = None,
+                 dicom_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
@@ -433,10 +433,10 @@ class DicomStoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['DicomStoreIamBindingConditionArgs', 'DicomStoreIamBindingConditionArgsDict']]] = None,
-                 dicom_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['DicomStoreIamBindingConditionArgs', 'DicomStoreIamBindingConditionArgsDict']]] = None,
+                 dicom_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,11 +467,11 @@ class DicomStoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['DicomStoreIamBindingConditionArgs', 'DicomStoreIamBindingConditionArgsDict']]] = None,
-            dicom_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'DicomStoreIamBinding':
+            condition: pulumi.Input[Optional[Union['DicomStoreIamBindingConditionArgs', 'DicomStoreIamBindingConditionArgsDict']]] = None,
+            dicom_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'DicomStoreIamBinding':
         """
         Get an existing DicomStoreIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

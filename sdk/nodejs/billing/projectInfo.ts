@@ -124,12 +124,12 @@ export interface ProjectInfoState {
      * any. Set to empty string to disable billing for the project.
      * For example, `"012345-567890-ABCDEF"` or `""`.
      */
-    billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -146,5 +146,5 @@ export interface ProjectInfoArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

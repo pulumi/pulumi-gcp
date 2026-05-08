@@ -337,16 +337,16 @@ export interface WorkflowState {
      * the execution level takes precedence.
      * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
      */
-    callLogLevel?: pulumi.Input<string>;
+    callLogLevel?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The KMS key used to encrypt workflow and execution data.
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
-    cryptoKeyName?: pulumi.Input<string>;
+    cryptoKeyName?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the workflow. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the workflow,
@@ -355,56 +355,56 @@ export interface WorkflowState {
      * or `terraform destroy` that would delete the workflow will fail.
      * When the field is set to false, deleting the workflow is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Describes the level of execution history to be stored for this workflow. This configuration
      * determines how much information about workflow executions is preserved. If not specified,
      * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
      * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
      */
-    executionHistoryLevel?: pulumi.Input<string>;
+    executionHistoryLevel?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the Workflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. If this and name are unspecified, a random value is chosen for the name.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the workflow.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The revision of the workflow. A new one is generated if the service account or source contents is changed.
      */
-    revisionId?: pulumi.Input<string>;
+    revisionId?: pulumi.Input<string | undefined>;
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
@@ -414,29 +414,29 @@ export interface WorkflowState {
      * If not provided, workflow will use the project's default service account.
      * Modifying this field for an existing workflow results in a new workflow revision.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Workflow code to be executed. The size limit is 128KB.
      */
-    sourceContents?: pulumi.Input<string>;
+    sourceContents?: pulumi.Input<string | undefined>;
     /**
      * State of the workflow deployment.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition
      * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
      * the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
      */
-    userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -449,12 +449,12 @@ export interface WorkflowArgs {
      * the execution level takes precedence.
      * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
      */
-    callLogLevel?: pulumi.Input<string>;
+    callLogLevel?: pulumi.Input<string | undefined>;
     /**
      * The KMS key used to encrypt workflow and execution data.
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
-    cryptoKeyName?: pulumi.Input<string>;
+    cryptoKeyName?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the workflow. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the workflow,
@@ -463,43 +463,43 @@ export interface WorkflowArgs {
      * or `terraform destroy` that would delete the workflow will fail.
      * When the field is set to false, deleting the workflow is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Describes the level of execution history to be stored for this workflow. This configuration
      * determines how much information about workflow executions is preserved. If not specified,
      * defaults to EXECUTION_HISTORY_LEVEL_UNSPECIFIED.
      * Possible values are: `EXECUTION_HISTORY_LEVEL_UNSPECIFIED`, `EXECUTION_HISTORY_BASIC`, `EXECUTION_HISTORY_DETAILED`.
      */
-    executionHistoryLevel?: pulumi.Input<string>;
+    executionHistoryLevel?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Workflow.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the Workflow.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name beginning with the
      * specified prefix. If this and name are unspecified, a random value is chosen for the name.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the workflow.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
@@ -509,19 +509,19 @@ export interface WorkflowArgs {
      * If not provided, workflow will use the project's default service account.
      * Modifying this field for an existing workflow results in a new workflow revision.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Workflow code to be executed. The size limit is 128KB.
      */
-    sourceContents?: pulumi.Input<string>;
+    sourceContents?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags. Resource manager tag keys and values have the same definition
      * as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
      * the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
      */
-    userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

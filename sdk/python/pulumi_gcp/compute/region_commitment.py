@@ -22,17 +22,17 @@ __all__ = ['RegionCommitmentArgs', 'RegionCommitment']
 class RegionCommitmentArgs:
     def __init__(__self__, *,
                  plan: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['RegionCommitmentParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_resource: pulumi.Input[Optional['RegionCommitmentLicenseResourceArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['RegionCommitmentParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionCommitment resource.
 
@@ -111,7 +111,7 @@ class RegionCommitmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic renewal for the commitment.
         The default value is false if not specified.
@@ -121,12 +121,12 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the commitment. Category MACHINE specifies commitments composed of
         machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE
@@ -137,36 +137,36 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="existingReservations")
-    def existing_reservations(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def existing_reservations(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the already existing reservations to attach to the Commitment.
         """
         return pulumi.get(self, "existing_reservations")
 
     @existing_reservations.setter
-    def existing_reservations(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def existing_reservations(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "existing_reservations", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseResource")
-    def license_resource(self) -> Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]:
+    def license_resource(self) -> pulumi.Input[Optional['RegionCommitmentLicenseResourceArgs']]:
         """
         The license specification required as part of a license commitment.
         Structure is documented below.
@@ -174,12 +174,12 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "license_resource")
 
     @license_resource.setter
-    def license_resource(self, value: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]):
+    def license_resource(self, value: pulumi.Input[Optional['RegionCommitmentLicenseResourceArgs']]):
         pulumi.set(self, "license_resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long and match
         the regular expression `a-z?` which means the
@@ -190,12 +190,12 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RegionCommitmentParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RegionCommitmentParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -203,12 +203,12 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RegionCommitmentParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RegionCommitmentParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -216,24 +216,24 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the region where this commitment may be used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]:
         """
         A list of commitment amounts for particular resources.
         Note that VCPU and MEMORY resource commitments must occur together.
@@ -242,12 +242,12 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of commitment, which affects the discount rate and the eligible resources.
         The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
@@ -258,32 +258,32 @@ class RegionCommitmentArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _RegionCommitmentState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 commitment_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['RegionCommitmentParamsArgs']] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 commitment_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_resource: pulumi.Input[Optional['RegionCommitmentLicenseResourceArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['RegionCommitmentParamsArgs']] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegionCommitment resources.
 
@@ -371,7 +371,7 @@ class _RegionCommitmentState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic renewal for the commitment.
         The default value is false if not specified.
@@ -381,12 +381,12 @@ class _RegionCommitmentState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the commitment. Category MACHINE specifies commitments composed of
         machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE
@@ -397,72 +397,72 @@ class _RegionCommitmentState:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="commitmentId")
-    def commitment_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def commitment_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique identifier for the resource.
         """
         return pulumi.get(self, "commitment_id")
 
     @commitment_id.setter
-    def commitment_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def commitment_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "commitment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="endTimestamp")
-    def end_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commitment end time in RFC3339 text format.
         """
         return pulumi.get(self, "end_timestamp")
 
     @end_timestamp.setter
-    def end_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="existingReservations")
-    def existing_reservations(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def existing_reservations(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the already existing reservations to attach to the Commitment.
         """
         return pulumi.get(self, "existing_reservations")
 
     @existing_reservations.setter
-    def existing_reservations(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def existing_reservations(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "existing_reservations", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseResource")
-    def license_resource(self) -> Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]:
+    def license_resource(self) -> pulumi.Input[Optional['RegionCommitmentLicenseResourceArgs']]:
         """
         The license specification required as part of a license commitment.
         Structure is documented below.
@@ -470,12 +470,12 @@ class _RegionCommitmentState:
         return pulumi.get(self, "license_resource")
 
     @license_resource.setter
-    def license_resource(self, value: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']]):
+    def license_resource(self, value: pulumi.Input[Optional['RegionCommitmentLicenseResourceArgs']]):
         pulumi.set(self, "license_resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long and match
         the regular expression `a-z?` which means the
@@ -486,12 +486,12 @@ class _RegionCommitmentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RegionCommitmentParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RegionCommitmentParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -499,12 +499,12 @@ class _RegionCommitmentState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RegionCommitmentParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RegionCommitmentParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plan for this commitment, which determines duration and discount rate.
         The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
@@ -513,12 +513,12 @@ class _RegionCommitmentState:
         return pulumi.get(self, "plan")
 
     @plan.setter
-    def plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -526,24 +526,24 @@ class _RegionCommitmentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the region where this commitment may be used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]:
         """
         A list of commitment amounts for particular resources.
         Note that VCPU and MEMORY resource commitments must occur together.
@@ -552,36 +552,36 @@ class _RegionCommitmentState:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionCommitmentResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimestamp")
-    def start_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commitment start time in RFC3339 text format.
         """
         return pulumi.get(self, "start_timestamp")
 
     @start_timestamp.setter
-    def start_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the commitment with regards to eventual expiration
         (each commitment has an end date defined).
@@ -589,24 +589,24 @@ class _RegionCommitmentState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable explanation of the status.
         """
         return pulumi.get(self, "status_message")
 
     @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of commitment, which affects the discount rate and the eligible resources.
         The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
@@ -617,7 +617,7 @@ class _RegionCommitmentState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -627,18 +627,18 @@ class RegionCommitment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a regional Commitment resource.
@@ -886,18 +886,18 @@ class RegionCommitment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -938,25 +938,25 @@ class RegionCommitment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            commitment_id: Optional[pulumi.Input[_builtins.int]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            end_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            existing_reservations: Optional[pulumi.Input[_builtins.str]] = None,
-            license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
-            plan: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            start_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            status_message: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegionCommitment':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            commitment_id: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            end_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            existing_reservations: pulumi.Input[Optional[_builtins.str]] = None,
+            license_resource: pulumi.Input[Optional[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['RegionCommitmentParamsArgs', 'RegionCommitmentParamsArgsDict']]] = None,
+            plan: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionCommitmentResourceArgs', 'RegionCommitmentResourceArgsDict']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            start_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegionCommitment':
         """
         Get an existing RegionCommitment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

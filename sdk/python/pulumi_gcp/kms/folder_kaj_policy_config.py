@@ -22,7 +22,7 @@ __all__ = ['FolderKajPolicyConfigArgs', 'FolderKajPolicyConfig']
 class FolderKajPolicyConfigArgs:
     def __init__(__self__, *,
                  folder: pulumi.Input[_builtins.str],
-                 default_key_access_justification_policy: Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
+                 default_key_access_justification_policy: pulumi.Input[Optional['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
         """
         The set of arguments for constructing a FolderKajPolicyConfig resource.
 
@@ -50,7 +50,7 @@ class FolderKajPolicyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultKeyAccessJustificationPolicy")
-    def default_key_access_justification_policy(self) -> Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
+    def default_key_access_justification_policy(self) -> pulumi.Input[Optional['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
         """
         The default key access justification policy used when a CryptoKey is
         created in this folder. This is only used when a Key Access Justifications
@@ -60,15 +60,15 @@ class FolderKajPolicyConfigArgs:
         return pulumi.get(self, "default_key_access_justification_policy")
 
     @default_key_access_justification_policy.setter
-    def default_key_access_justification_policy(self, value: Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
+    def default_key_access_justification_policy(self, value: pulumi.Input[Optional['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
         pulumi.set(self, "default_key_access_justification_policy", value)
 
 
 @pulumi.input_type
 class _FolderKajPolicyConfigState:
     def __init__(__self__, *,
-                 default_key_access_justification_policy: Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_key_access_justification_policy: pulumi.Input[Optional['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderKajPolicyConfig resources.
 
@@ -85,7 +85,7 @@ class _FolderKajPolicyConfigState:
 
     @_builtins.property
     @pulumi.getter(name="defaultKeyAccessJustificationPolicy")
-    def default_key_access_justification_policy(self) -> Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
+    def default_key_access_justification_policy(self) -> pulumi.Input[Optional['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
         """
         The default key access justification policy used when a CryptoKey is
         created in this folder. This is only used when a Key Access Justifications
@@ -95,19 +95,19 @@ class _FolderKajPolicyConfigState:
         return pulumi.get(self, "default_key_access_justification_policy")
 
     @default_key_access_justification_policy.setter
-    def default_key_access_justification_policy(self, value: Optional[pulumi.Input['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
+    def default_key_access_justification_policy(self, value: pulumi.Input[Optional['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
         pulumi.set(self, "default_key_access_justification_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The numeric folder number for which to retrieve config.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
 
@@ -117,8 +117,8 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: Optional[pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         `FolderKajPolicyConfigs` is a folder-level singleton resource
@@ -301,8 +301,8 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: Optional[pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -326,8 +326,8 @@ class FolderKajPolicyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_key_access_justification_policy: Optional[pulumi.Input[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None) -> 'FolderKajPolicyConfig':
+            default_key_access_justification_policy: pulumi.Input[Optional[Union['FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'FolderKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None) -> 'FolderKajPolicyConfig':
         """
         Get an existing FolderKajPolicyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

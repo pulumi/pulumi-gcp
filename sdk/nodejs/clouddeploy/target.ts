@@ -337,66 +337,66 @@ export interface TargetState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Information specifying an Anthos Cluster.
      */
-    anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster>;
+    anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster | undefined>;
     /**
      * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
      */
-    associatedEntities?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetAssociatedEntity>[]>;
+    associatedEntities?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetAssociatedEntity>[] | undefined>;
     /**
      * Output only. Time at which the `Target` was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Information specifying a Custom Target.
      */
-    customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget>;
+    customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget | undefined>;
     /**
      * Optional. The deploy parameters to use for this target.
      */
-    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
      */
-    executionConfigs?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetExecutionConfig>[]>;
+    executionConfigs?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetExecutionConfig>[] | undefined>;
     /**
      * Information specifying a GKE Cluster.
      */
-    gke?: pulumi.Input<inputs.clouddeploy.TargetGke>;
+    gke?: pulumi.Input<inputs.clouddeploy.TargetGke | undefined>;
     /**
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Information specifying a multiTarget.
      */
-    multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
+    multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget | undefined>;
     /**
      * Name of the `Target`. Format is `a-z?`.
      *
@@ -404,35 +404,35 @@ export interface TargetState {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Whether or not the `Target` requires approval.
      */
-    requireApproval?: pulumi.Input<boolean>;
+    requireApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Information specifying a Cloud Run deployment target.
      */
-    run?: pulumi.Input<inputs.clouddeploy.TargetRun>;
+    run?: pulumi.Input<inputs.clouddeploy.TargetRun | undefined>;
     /**
      * Output only. Resource id of the `Target`.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
     /**
      * Output only. Unique identifier of the `Target`.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. Most recent time at which the `Target` was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -445,42 +445,42 @@ export interface TargetArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Information specifying an Anthos Cluster.
      */
-    anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster>;
+    anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster | undefined>;
     /**
      * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
      */
-    associatedEntities?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetAssociatedEntity>[]>;
+    associatedEntities?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetAssociatedEntity>[] | undefined>;
     /**
      * Optional. Information specifying a Custom Target.
      */
-    customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget>;
+    customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget | undefined>;
     /**
      * Optional. The deploy parameters to use for this target.
      */
-    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
      */
-    executionConfigs?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetExecutionConfig>[]>;
+    executionConfigs?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetExecutionConfig>[] | undefined>;
     /**
      * Information specifying a GKE Cluster.
      */
-    gke?: pulumi.Input<inputs.clouddeploy.TargetGke>;
+    gke?: pulumi.Input<inputs.clouddeploy.TargetGke | undefined>;
     /**
      * Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -488,7 +488,7 @@ export interface TargetArgs {
     /**
      * Information specifying a multiTarget.
      */
-    multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
+    multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget | undefined>;
     /**
      * Name of the `Target`. Format is `a-z?`.
      *
@@ -496,17 +496,17 @@ export interface TargetArgs {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Optional. Whether or not the `Target` requires approval.
      */
-    requireApproval?: pulumi.Input<boolean>;
+    requireApproval?: pulumi.Input<boolean | undefined>;
     /**
      * Information specifying a Cloud Run deployment target.
      */
-    run?: pulumi.Input<inputs.clouddeploy.TargetRun>;
+    run?: pulumi.Input<inputs.clouddeploy.TargetRun | undefined>;
 }

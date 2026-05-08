@@ -23,22 +23,22 @@ class ApiProductArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
-                 api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approval_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductAttributeArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 graphql_operation_group: Optional[pulumi.Input['ApiProductGraphqlOperationGroupArgs']] = None,
-                 grpc_operation_group: Optional[pulumi.Input['ApiProductGrpcOperationGroupArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_group: Optional[pulumi.Input['ApiProductOperationGroupArgs']] = None,
-                 proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_counter_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_time_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approval_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 graphql_operation_group: pulumi.Input[Optional['ApiProductGraphqlOperationGroupArgs']] = None,
+                 grpc_operation_group: pulumi.Input[Optional['ApiProductGrpcOperationGroupArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_group: pulumi.Input[Optional['ApiProductOperationGroupArgs']] = None,
+                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_counter_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiProduct resource.
 
@@ -137,7 +137,7 @@ class ApiProductArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiResources")
-    def api_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def api_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the proxy.pathsuffix variable.
         The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the apiResources element is defined to be /forecastrss and the base path defined for the API proxy is /weather, then only requests to /weather/forecastrss are permitted by the API product.
@@ -145,12 +145,12 @@ class ApiProductArgs:
         return pulumi.get(self, "api_resources")
 
     @api_resources.setter
-    def api_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def api_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "api_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalType")
-    def approval_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approval_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flag that specifies how API keys are approved to access the APIs defined by the API product.
         Valid values are `auto` or `manual`.
@@ -159,12 +159,12 @@ class ApiProductArgs:
         return pulumi.get(self, "approval_type")
 
     @approval_type.setter
-    def approval_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approval_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approval_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]:
+    def attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]:
         """
         Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
         Use this property to specify the access level of the API product as either public, private, or internal.
@@ -173,24 +173,24 @@ class ApiProductArgs:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]):
+    def attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]):
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the API product. Include key information about the API product that is not captured by other fields.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
         By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment.
@@ -198,12 +198,12 @@ class ApiProductArgs:
         return pulumi.get(self, "environments")
 
     @environments.setter
-    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environments", value)
 
     @_builtins.property
     @pulumi.getter(name="graphqlOperationGroup")
-    def graphql_operation_group(self) -> Optional[pulumi.Input['ApiProductGraphqlOperationGroupArgs']]:
+    def graphql_operation_group(self) -> pulumi.Input[Optional['ApiProductGraphqlOperationGroupArgs']]:
         """
         Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
         Structure is documented below.
@@ -211,12 +211,12 @@ class ApiProductArgs:
         return pulumi.get(self, "graphql_operation_group")
 
     @graphql_operation_group.setter
-    def graphql_operation_group(self, value: Optional[pulumi.Input['ApiProductGraphqlOperationGroupArgs']]):
+    def graphql_operation_group(self, value: pulumi.Input[Optional['ApiProductGraphqlOperationGroupArgs']]):
         pulumi.set(self, "graphql_operation_group", value)
 
     @_builtins.property
     @pulumi.getter(name="grpcOperationGroup")
-    def grpc_operation_group(self) -> Optional[pulumi.Input['ApiProductGrpcOperationGroupArgs']]:
+    def grpc_operation_group(self) -> pulumi.Input[Optional['ApiProductGrpcOperationGroupArgs']]:
         """
         Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
         Structure is documented below.
@@ -224,24 +224,24 @@ class ApiProductArgs:
         return pulumi.get(self, "grpc_operation_group")
 
     @grpc_operation_group.setter
-    def grpc_operation_group(self, value: Optional[pulumi.Input['ApiProductGrpcOperationGroupArgs']]):
+    def grpc_operation_group(self, value: pulumi.Input[Optional['ApiProductGrpcOperationGroupArgs']]):
         pulumi.set(self, "grpc_operation_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internal name of the API product.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="operationGroup")
-    def operation_group(self) -> Optional[pulumi.Input['ApiProductOperationGroupArgs']]:
+    def operation_group(self) -> pulumi.Input[Optional['ApiProductOperationGroupArgs']]:
         """
         Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the quota setting).
         Note: The apiResources setting cannot be specified for both the API product and operation group; otherwise the call will fail.
@@ -250,12 +250,12 @@ class ApiProductArgs:
         return pulumi.get(self, "operation_group")
 
     @operation_group.setter
-    def operation_group(self, value: Optional[pulumi.Input['ApiProductOperationGroupArgs']]):
+    def operation_group(self, value: pulumi.Input[Optional['ApiProductOperationGroupArgs']]):
         pulumi.set(self, "operation_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def proxies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies.
         Apigee rejects requests to API proxies that are not listed.
@@ -263,12 +263,12 @@ class ApiProductArgs:
         return pulumi.get(self, "proxies")
 
     @proxies.setter
-    def proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def proxies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "proxies", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of request messages permitted per app by this API product for the specified quotaInterval and quotaTimeUnit.
         For example, a quota of 50, for a quotaInterval of 12 and a quotaTimeUnit of hours means 50 requests are allowed every 12 hours.
@@ -276,12 +276,12 @@ class ApiProductArgs:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaCounterScope")
-    def quota_counter_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_counter_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
         Possible values are: `QUOTA_COUNTER_SCOPE_UNSPECIFIED`, `PROXY`, `OPERATION`.
@@ -289,81 +289,81 @@ class ApiProductArgs:
         return pulumi.get(self, "quota_counter_scope")
 
     @quota_counter_scope.setter
-    def quota_counter_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_counter_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_counter_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaInterval")
-    def quota_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time interval over which the number of request messages is calculated.
         """
         return pulumi.get(self, "quota_interval")
 
     @quota_interval.setter
-    def quota_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaTimeUnit")
-    def quota_time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_time_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time unit defined for the quotaInterval. Valid values include second, minute, hour, day, month or year.
         """
         return pulumi.get(self, "quota_time_unit")
 
     @quota_time_unit.setter
-    def quota_time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_time_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_time_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def space(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The resource ID of the parent Space. If not set, the parent resource will be the Organization.
         """
         return pulumi.get(self, "space")
 
     @space.setter
-    def space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "space", value)
 
 
 @pulumi.input_type
 class _ApiProductState:
     def __init__(__self__, *,
-                 api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approval_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductAttributeArgs']]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 graphql_operation_group: Optional[pulumi.Input['ApiProductGraphqlOperationGroupArgs']] = None,
-                 grpc_operation_group: Optional[pulumi.Input['ApiProductGrpcOperationGroupArgs']] = None,
-                 last_modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_group: Optional[pulumi.Input['ApiProductOperationGroupArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_counter_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_time_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approval_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 graphql_operation_group: pulumi.Input[Optional['ApiProductGraphqlOperationGroupArgs']] = None,
+                 grpc_operation_group: pulumi.Input[Optional['ApiProductGrpcOperationGroupArgs']] = None,
+                 last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_group: pulumi.Input[Optional['ApiProductOperationGroupArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_counter_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiProduct resources.
 
@@ -445,7 +445,7 @@ class _ApiProductState:
 
     @_builtins.property
     @pulumi.getter(name="apiResources")
-    def api_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def api_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of API resources to be bundled in the API product. By default, the resource paths are mapped from the proxy.pathsuffix variable.
         The proxy path suffix is defined as the URI fragment following the ProxyEndpoint base path. For example, if the apiResources element is defined to be /forecastrss and the base path defined for the API proxy is /weather, then only requests to /weather/forecastrss are permitted by the API product.
@@ -453,12 +453,12 @@ class _ApiProductState:
         return pulumi.get(self, "api_resources")
 
     @api_resources.setter
-    def api_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def api_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "api_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="approvalType")
-    def approval_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approval_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flag that specifies how API keys are approved to access the APIs defined by the API product.
         Valid values are `auto` or `manual`.
@@ -467,12 +467,12 @@ class _ApiProductState:
         return pulumi.get(self, "approval_type")
 
     @approval_type.setter
-    def approval_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approval_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approval_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]:
+    def attributes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]:
         """
         Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
         Use this property to specify the access level of the API product as either public, private, or internal.
@@ -481,48 +481,48 @@ class _ApiProductState:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]):
+    def attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]):
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Response only. Creation time of this environment as milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the API product. Include key information about the API product that is not captured by other fields.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name displayed in the UI or developer portal to developers registering for API access.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def environments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def environments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
         By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment.
@@ -530,12 +530,12 @@ class _ApiProductState:
         return pulumi.get(self, "environments")
 
     @environments.setter
-    def environments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def environments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environments", value)
 
     @_builtins.property
     @pulumi.getter(name="graphqlOperationGroup")
-    def graphql_operation_group(self) -> Optional[pulumi.Input['ApiProductGraphqlOperationGroupArgs']]:
+    def graphql_operation_group(self) -> pulumi.Input[Optional['ApiProductGraphqlOperationGroupArgs']]:
         """
         Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
         Structure is documented below.
@@ -543,12 +543,12 @@ class _ApiProductState:
         return pulumi.get(self, "graphql_operation_group")
 
     @graphql_operation_group.setter
-    def graphql_operation_group(self, value: Optional[pulumi.Input['ApiProductGraphqlOperationGroupArgs']]):
+    def graphql_operation_group(self, value: pulumi.Input[Optional['ApiProductGraphqlOperationGroupArgs']]):
         pulumi.set(self, "graphql_operation_group", value)
 
     @_builtins.property
     @pulumi.getter(name="grpcOperationGroup")
-    def grpc_operation_group(self) -> Optional[pulumi.Input['ApiProductGrpcOperationGroupArgs']]:
+    def grpc_operation_group(self) -> pulumi.Input[Optional['ApiProductGrpcOperationGroupArgs']]:
         """
         Optional. Configuration used to group Apigee proxies with gRPC services and method names. This grouping allows us to set quota for a particular proxy with the gRPC service name and method. If a method name is not set, this implies quota and authorization are applied to all gRPC methods implemented by that proxy for that particular gRPC service.
         Structure is documented below.
@@ -556,36 +556,36 @@ class _ApiProductState:
         return pulumi.get(self, "grpc_operation_group")
 
     @grpc_operation_group.setter
-    def grpc_operation_group(self, value: Optional[pulumi.Input['ApiProductGrpcOperationGroupArgs']]):
+    def grpc_operation_group(self, value: pulumi.Input[Optional['ApiProductGrpcOperationGroupArgs']]):
         pulumi.set(self, "grpc_operation_group", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedAt")
-    def last_modified_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Response only. Modified time of this environment as milliseconds since epoch.
         """
         return pulumi.get(self, "last_modified_at")
 
     @last_modified_at.setter
-    def last_modified_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internal name of the API product.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="operationGroup")
-    def operation_group(self) -> Optional[pulumi.Input['ApiProductOperationGroupArgs']]:
+    def operation_group(self) -> pulumi.Input[Optional['ApiProductOperationGroupArgs']]:
         """
         Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the quota setting).
         Note: The apiResources setting cannot be specified for both the API product and operation group; otherwise the call will fail.
@@ -594,12 +594,12 @@ class _ApiProductState:
         return pulumi.get(self, "operation_group")
 
     @operation_group.setter
-    def operation_group(self, value: Optional[pulumi.Input['ApiProductOperationGroupArgs']]):
+    def operation_group(self, value: pulumi.Input[Optional['ApiProductOperationGroupArgs']]):
         pulumi.set(self, "operation_group", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization associated with the Apigee API product,
         in the format `organizations/{{org_name}}`.
@@ -607,12 +607,12 @@ class _ApiProductState:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def proxies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies.
         Apigee rejects requests to API proxies that are not listed.
@@ -620,12 +620,12 @@ class _ApiProductState:
         return pulumi.get(self, "proxies")
 
     @proxies.setter
-    def proxies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def proxies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "proxies", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of request messages permitted per app by this API product for the specified quotaInterval and quotaTimeUnit.
         For example, a quota of 50, for a quotaInterval of 12 and a quotaTimeUnit of hours means 50 requests are allowed every 12 hours.
@@ -633,12 +633,12 @@ class _ApiProductState:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaCounterScope")
-    def quota_counter_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_counter_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
         Possible values are: `QUOTA_COUNTER_SCOPE_UNSPECIFIED`, `PROXY`, `OPERATION`.
@@ -646,55 +646,55 @@ class _ApiProductState:
         return pulumi.get(self, "quota_counter_scope")
 
     @quota_counter_scope.setter
-    def quota_counter_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_counter_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_counter_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaInterval")
-    def quota_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time interval over which the number of request messages is calculated.
         """
         return pulumi.get(self, "quota_interval")
 
     @quota_interval.setter
-    def quota_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="quotaTimeUnit")
-    def quota_time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def quota_time_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time unit defined for the quotaInterval. Valid values include second, minute, hour, day, month or year.
         """
         return pulumi.get(self, "quota_time_unit")
 
     @quota_time_unit.setter
-    def quota_time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def quota_time_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "quota_time_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def space(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The resource ID of the parent Space. If not set, the parent resource will be the Organization.
         """
         return pulumi.get(self, "space")
 
     @space.setter
-    def space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "space", value)
 
 
@@ -704,24 +704,24 @@ class ApiProduct(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approval_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 graphql_operation_group: Optional[pulumi.Input[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
-                 grpc_operation_group: Optional[pulumi.Input[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_group: Optional[pulumi.Input[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_counter_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_time_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approval_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
+                 grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_counter_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An `ApiProduct` in Apigee.
@@ -1031,24 +1031,24 @@ class ApiProduct(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approval_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 graphql_operation_group: Optional[pulumi.Input[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
-                 grpc_operation_group: Optional[pulumi.Input[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_group: Optional[pulumi.Input[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 quota: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_counter_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota_time_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approval_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
+                 grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 quota: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_counter_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1092,26 +1092,26 @@ class ApiProduct(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            approval_type: Optional[pulumi.Input[_builtins.str]] = None,
-            attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            environments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            graphql_operation_group: Optional[pulumi.Input[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
-            grpc_operation_group: Optional[pulumi.Input[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
-            last_modified_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_group: Optional[pulumi.Input[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            proxies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            quota: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_counter_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            quota_time_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            space: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApiProduct':
+            api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            approval_type: pulumi.Input[Optional[_builtins.str]] = None,
+            attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            graphql_operation_group: pulumi.Input[Optional[Union['ApiProductGraphqlOperationGroupArgs', 'ApiProductGraphqlOperationGroupArgsDict']]] = None,
+            grpc_operation_group: pulumi.Input[Optional[Union['ApiProductGrpcOperationGroupArgs', 'ApiProductGrpcOperationGroupArgsDict']]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_group: pulumi.Input[Optional[Union['ApiProductOperationGroupArgs', 'ApiProductOperationGroupArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            quota: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_counter_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_time_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            space: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiProduct':
         """
         Get an existing ApiProduct resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,10 +23,10 @@ class RestorePlanIamMemberArgs:
     def __init__(__self__, *,
                  member: pulumi.Input[_builtins.str],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['RestorePlanIamMemberConditionArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['RestorePlanIamMemberConditionArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestorePlanIamMember resource.
 
@@ -103,16 +103,16 @@ class RestorePlanIamMemberArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RestorePlanIamMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['RestorePlanIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RestorePlanIamMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['RestorePlanIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Restore Plan.
         Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -122,24 +122,24 @@ class RestorePlanIamMemberArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -147,20 +147,20 @@ class RestorePlanIamMemberArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RestorePlanIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['RestorePlanIamMemberConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['RestorePlanIamMemberConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestorePlanIamMember resources.
 
@@ -205,28 +205,28 @@ class _RestorePlanIamMemberState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RestorePlanIamMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['RestorePlanIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RestorePlanIamMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['RestorePlanIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Restore Plan.
         Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -236,12 +236,12 @@ class _RestorePlanIamMemberState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -259,24 +259,24 @@ class _RestorePlanIamMemberState:
         return pulumi.get(self, "member")
 
     @member.setter
-    def member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -284,12 +284,12 @@ class _RestorePlanIamMemberState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `gkebackup.RestorePlanIamBinding` can be used per role. Note that custom roles must be of the format
@@ -298,7 +298,7 @@ class _RestorePlanIamMemberState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -308,12 +308,12 @@ class RestorePlanIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['RestorePlanIamMemberConditionArgs', 'RestorePlanIamMemberConditionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['RestorePlanIamMemberConditionArgs', 'RestorePlanIamMemberConditionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Backup for GKE RestorePlan. Each of these resources serves a different use case:
@@ -675,12 +675,12 @@ class RestorePlanIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['RestorePlanIamMemberConditionArgs', 'RestorePlanIamMemberConditionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['RestorePlanIamMemberConditionArgs', 'RestorePlanIamMemberConditionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -711,13 +711,13 @@ class RestorePlanIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['RestorePlanIamMemberConditionArgs', 'RestorePlanIamMemberConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            member: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'RestorePlanIamMember':
+            condition: pulumi.Input[Optional[Union['RestorePlanIamMemberConditionArgs', 'RestorePlanIamMemberConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'RestorePlanIamMember':
         """
         Get an existing RestorePlanIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

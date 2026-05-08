@@ -22,16 +22,16 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[_builtins.str],
-                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 database_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional['UserPasswordPolicyArgs']] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -115,7 +115,7 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="databaseRoles")
-    def database_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def database_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of database roles to be assigned to the user.
         This option is only available for MySQL 8+ and PostgreSQL instances. You
@@ -129,12 +129,12 @@ class UserArgs:
         return pulumi.get(self, "database_roles")
 
     @database_roles.setter
-    def database_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def database_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "database_roles", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the user.
         Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -147,12 +147,12 @@ class UserArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host the user can connect from. This is only supported
         for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
@@ -161,12 +161,12 @@ class UserArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user. Changing this forces a new resource
         to be created.
@@ -174,12 +174,12 @@ class UserArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the user. Can be updated. For Postgres
         instances this is a Required field, unless type is set to either CLOUD_IAM_USER
@@ -189,21 +189,21 @@ class UserArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
-    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArgs']]:
+    def password_policy(self) -> pulumi.Input[Optional['UserPasswordPolicyArgs']]:
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
-    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArgs']]):
+    def password_policy(self, value: pulumi.Input[Optional['UserPasswordPolicyArgs']]):
         pulumi.set(self, "password_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         The password for the user. Can be updated. For Postgres
@@ -216,24 +216,24 @@ class UserArgs:
         return pulumi.get(self, "password_wo")
 
     @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
         """
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -241,12 +241,12 @@ class UserArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user type. It determines the method to authenticate the
         user during login. The default is the database's built-in user type. Flags
@@ -258,26 +258,26 @@ class UserArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input['UserPasswordPolicyArgs']] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 database_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional['UserPasswordPolicyArgs']] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_server_user_details: pulumi.Input[Optional[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -354,7 +354,7 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="databaseRoles")
-    def database_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def database_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of database roles to be assigned to the user.
         This option is only available for MySQL 8+ and PostgreSQL instances. You
@@ -368,12 +368,12 @@ class _UserState:
         return pulumi.get(self, "database_roles")
 
     @database_roles.setter
-    def database_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def database_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "database_roles", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the user.
         Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
@@ -386,12 +386,12 @@ class _UserState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host the user can connect from. This is only supported
         for BUILT_IN users in MySQL instances. Don't set this field for PostgreSQL and SQL Server instances.
@@ -400,24 +400,24 @@ class _UserState:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="iamEmail")
-    def iam_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IAM email address for MySQL IAM database users.
         """
         return pulumi.get(self, "iam_email")
 
     @iam_email.setter
-    def iam_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cloud SQL instance. Changing this
         forces a new resource to be created.
@@ -425,12 +425,12 @@ class _UserState:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user. Changing this forces a new resource
         to be created.
@@ -438,12 +438,12 @@ class _UserState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the user. Can be updated. For Postgres
         instances this is a Required field, unless type is set to either CLOUD_IAM_USER
@@ -453,21 +453,21 @@ class _UserState:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
-    def password_policy(self) -> Optional[pulumi.Input['UserPasswordPolicyArgs']]:
+    def password_policy(self) -> pulumi.Input[Optional['UserPasswordPolicyArgs']]:
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
-    def password_policy(self, value: Optional[pulumi.Input['UserPasswordPolicyArgs']]):
+    def password_policy(self, value: pulumi.Input[Optional['UserPasswordPolicyArgs']]):
         pulumi.set(self, "password_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
-    def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         The password for the user. Can be updated. For Postgres
@@ -480,24 +480,24 @@ class _UserState:
         return pulumi.get(self, "password_wo")
 
     @password_wo.setter
-    def password_wo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_wo", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWoVersion")
-    def password_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
         """
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
-    def password_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -505,21 +505,21 @@ class _UserState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServerUserDetails")
-    def sql_server_user_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]:
+    def sql_server_user_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]:
         return pulumi.get(self, "sql_server_user_details")
 
     @sql_server_user_details.setter
-    def sql_server_user_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]):
+    def sql_server_user_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserSqlServerUserDetailArgs']]]]):
         pulumi.set(self, "sql_server_user_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user type. It determines the method to authenticate the
         user during login. The default is the database's built-in user type. Flags
@@ -531,7 +531,7 @@ class _UserState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -541,17 +541,17 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
@@ -885,17 +885,17 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
-                 password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -932,19 +932,19 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            database_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            iam_email: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            password_policy: Optional[pulumi.Input[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
-            password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-            password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_server_user_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict']]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            database_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            iam_email: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_policy: pulumi.Input[Optional[Union['UserPasswordPolicyArgs', 'UserPasswordPolicyArgsDict']]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_server_user_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserSqlServerUserDetailArgs', 'UserSqlServerUserDetailArgsDict']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

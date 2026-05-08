@@ -207,11 +207,11 @@ export interface RowAccessPolicyState {
      * The time when this row access policy was created, in milliseconds since
      * the epoch.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dataset containing this row access policy.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * A SQL boolean expression that represents the rows defined by this row
      * access policy, similar to the boolean expression in a WHERE clause of a
@@ -223,7 +223,7 @@ export interface RowAccessPolicyState {
      * nullableField is not NULL
      * numericField BETWEEN 1.0 AND 5.0
      */
-    filterPredicate?: pulumi.Input<string>;
+    filterPredicate?: pulumi.Input<string | undefined>;
     /**
      * Input only. The optional list of iamMember users or groups that specifies the initial
      * members that the row-level access policy should be created with.
@@ -247,27 +247,27 @@ export interface RowAccessPolicyState {
      * BigQuery requires authentication before a user can access the service,
      * allUsers includes only authenticated users.
      */
-    grantees?: pulumi.Input<pulumi.Input<string>[]>;
+    grantees?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time when this row access policy was last modified, in milliseconds
      * since the epoch.
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the row access policy. The ID must contain only
      * letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
      * length is 256 characters.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the table containing this row access policy.
      */
-    tableId?: pulumi.Input<string>;
+    tableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -313,7 +313,7 @@ export interface RowAccessPolicyArgs {
      * BigQuery requires authentication before a user can access the service,
      * allUsers includes only authenticated users.
      */
-    grantees?: pulumi.Input<pulumi.Input<string>[]>;
+    grantees?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the row access policy. The ID must contain only
      * letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
@@ -324,7 +324,7 @@ export interface RowAccessPolicyArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the table containing this row access policy.
      */

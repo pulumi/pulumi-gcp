@@ -196,48 +196,48 @@ export interface EngineModelState {
      * prediction requests that do not specify a version.
      * Structure is documented below.
      */
-    defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
+    defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion | undefined>;
     /**
      * The description specified for the model when it was created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * One or more labels that you can add, to organize your models.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name specified for the model.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
      */
-    onlinePredictionConsoleLogging?: pulumi.Input<boolean>;
+    onlinePredictionConsoleLogging?: pulumi.Input<boolean | undefined>;
     /**
      * If true, online prediction access logs are sent to StackDriver Logging.
      */
-    onlinePredictionLogging?: pulumi.Input<boolean>;
+    onlinePredictionLogging?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The list of regions where the model is going to be deployed.
      * Currently only one region per model is supported
      */
-    regions?: pulumi.Input<string>;
+    regions?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -249,37 +249,37 @@ export interface EngineModelArgs {
      * prediction requests that do not specify a version.
      * Structure is documented below.
      */
-    defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion>;
+    defaultVersion?: pulumi.Input<inputs.ml.EngineModelDefaultVersion | undefined>;
     /**
      * The description specified for the model when it was created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * One or more labels that you can add, to organize your models.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name specified for the model.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
      */
-    onlinePredictionConsoleLogging?: pulumi.Input<boolean>;
+    onlinePredictionConsoleLogging?: pulumi.Input<boolean | undefined>;
     /**
      * If true, online prediction access logs are sent to StackDriver Logging.
      */
-    onlinePredictionLogging?: pulumi.Input<boolean>;
+    onlinePredictionLogging?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The list of regions where the model is going to be deployed.
      * Currently only one region per model is supported
      */
-    regions?: pulumi.Input<string>;
+    regions?: pulumi.Input<string | undefined>;
 }

@@ -352,10 +352,10 @@ def get_router_nat(name: Optional[_builtins.str] = None,
         tcp_transitory_idle_timeout_sec=pulumi.get(__ret__, 'tcp_transitory_idle_timeout_sec'),
         type=pulumi.get(__ret__, 'type'),
         udp_idle_timeout_sec=pulumi.get(__ret__, 'udp_idle_timeout_sec'))
-def get_router_nat_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          router: Optional[pulumi.Input[_builtins.str]] = None,
+def get_router_nat_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          router: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterNatResult]:
     """
     To get more information about RouterNat, see:

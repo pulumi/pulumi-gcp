@@ -120,16 +120,16 @@ export interface AiCacheConfigState {
     /**
      * If set to true, disables GenAI caching. Otherwise caching is enabled.
      */
-    disableCache?: pulumi.Input<boolean>;
+    disableCache?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -144,5 +144,5 @@ export interface AiCacheConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

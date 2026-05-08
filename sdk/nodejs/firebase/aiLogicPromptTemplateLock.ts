@@ -146,25 +146,25 @@ export interface AiLogicPromptTemplateLockState {
     /**
      * The location of the prompt template.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the prompt template is currently locked.
      * This is verified against the server-side PromptTemplate resource.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the prompt template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the prompt template.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,7 +179,7 @@ export interface AiLogicPromptTemplateLockArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the prompt template.
      */

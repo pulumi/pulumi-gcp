@@ -322,73 +322,73 @@ export interface CustomTargetTypeState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Time at which the `CustomTargetType` was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
      * Structure is documented below.
      */
-    customActions?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeCustomActions>;
+    customActions?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeCustomActions | undefined>;
     /**
      * Resource id of the `CustomTargetType`.
      */
-    customTargetTypeId?: pulumi.Input<string>;
+    customTargetTypeId?: pulumi.Input<string | undefined>;
     /**
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The weak etag of the `CustomTargetType` resource. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the source.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the `CustomTargetType`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configures render and deploy for the `CustomTargetType` using tasks.
      * Structure is documented below.
      */
-    tasks?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeTasks>;
+    tasks?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeTasks | undefined>;
     /**
      * Unique identifier of the `CustomTargetType`.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time at which the `CustomTargetType` was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -400,22 +400,22 @@ export interface CustomTargetTypeArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configures render and deploy for the `CustomTargetType` using Skaffold custom actions.
      * Structure is documented below.
      */
-    customActions?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeCustomActions>;
+    customActions?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeCustomActions | undefined>;
     /**
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the source.
      */
@@ -423,15 +423,15 @@ export interface CustomTargetTypeArgs {
     /**
      * Name of the `CustomTargetType`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configures render and deploy for the `CustomTargetType` using tasks.
      * Structure is documented below.
      */
-    tasks?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeTasks>;
+    tasks?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeTasks | undefined>;
 }

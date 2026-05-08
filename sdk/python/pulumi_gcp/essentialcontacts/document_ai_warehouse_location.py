@@ -23,8 +23,8 @@ class DocumentAiWarehouseLocationArgs:
                  database_type: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  project_number: pulumi.Input[_builtins.str],
-                 document_creator_default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 document_creator_default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DocumentAiWarehouseLocation resource.
 
@@ -103,7 +103,7 @@ class DocumentAiWarehouseLocationArgs:
 
     @_builtins.property
     @pulumi.getter(name="documentCreatorDefaultRole")
-    def document_creator_default_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def document_creator_default_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default role for the person who create a document.
         Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
@@ -111,12 +111,12 @@ class DocumentAiWarehouseLocationArgs:
         return pulumi.get(self, "document_creator_default_role")
 
     @document_creator_default_role.setter
-    def document_creator_default_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def document_creator_default_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "document_creator_default_role", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used for CMEK encryption. It is required that
         the kms key is in the same region as the endpoint. The
@@ -127,19 +127,19 @@ class DocumentAiWarehouseLocationArgs:
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
 
 @pulumi.input_type
 class _DocumentAiWarehouseLocationState:
     def __init__(__self__, *,
-                 access_control_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_creator_default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_creator_default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DocumentAiWarehouseLocation resources.
 
@@ -172,7 +172,7 @@ class _DocumentAiWarehouseLocationState:
 
     @_builtins.property
     @pulumi.getter(name="accessControlMode")
-    def access_control_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_control_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access control mode for accessing the customer data.
         Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.
@@ -180,12 +180,12 @@ class _DocumentAiWarehouseLocationState:
         return pulumi.get(self, "access_control_mode")
 
     @access_control_mode.setter
-    def access_control_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_control_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_control_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of database used to store customer data.
         Possible values are: `DB_INFRA_SPANNER`, `DB_CLOUD_SQL_POSTGRES`.
@@ -193,12 +193,12 @@ class _DocumentAiWarehouseLocationState:
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
     @_builtins.property
     @pulumi.getter(name="documentCreatorDefaultRole")
-    def document_creator_default_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def document_creator_default_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default role for the person who create a document.
         Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
@@ -206,12 +206,12 @@ class _DocumentAiWarehouseLocationState:
         return pulumi.get(self, "document_creator_default_role")
 
     @document_creator_default_role.setter
-    def document_creator_default_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def document_creator_default_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "document_creator_default_role", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKey")
-    def kms_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key used for CMEK encryption. It is required that
         the kms key is in the same region as the endpoint. The
@@ -222,31 +222,31 @@ class _DocumentAiWarehouseLocationState:
         return pulumi.get(self, "kms_key")
 
     @kms_key.setter
-    def kms_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the project.
         """
         return pulumi.get(self, "project_number")
 
     @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_number", value)
 
 
@@ -256,12 +256,12 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_control_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_creator_default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_creator_default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A location is used to initialize a project.
@@ -364,12 +364,12 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_control_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 document_creator_default_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 document_creator_default_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -403,12 +403,12 @@ class DocumentAiWarehouseLocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_control_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            database_type: Optional[pulumi.Input[_builtins.str]] = None,
-            document_creator_default_role: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            project_number: Optional[pulumi.Input[_builtins.str]] = None) -> 'DocumentAiWarehouseLocation':
+            access_control_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            document_creator_default_role: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project_number: pulumi.Input[Optional[_builtins.str]] = None) -> 'DocumentAiWarehouseLocation':
         """
         Get an existing DocumentAiWarehouseLocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

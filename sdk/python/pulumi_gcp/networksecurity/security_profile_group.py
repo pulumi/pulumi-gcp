@@ -19,15 +19,15 @@ __all__ = ['SecurityProfileGroupArgs', 'SecurityProfileGroup']
 @pulumi.input_type
 class SecurityProfileGroupArgs:
     def __init__(__self__, *,
-                 custom_intercept_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_mirroring_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_intercept_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_mirroring_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityProfileGroup resource.
 
@@ -67,43 +67,43 @@ class SecurityProfileGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="customInterceptProfile")
-    def custom_intercept_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_intercept_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the CustomIntercept configuration.
         """
         return pulumi.get(self, "custom_intercept_profile")
 
     @custom_intercept_profile.setter
-    def custom_intercept_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_intercept_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_intercept_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="customMirroringProfile")
-    def custom_mirroring_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_mirroring_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
         """
         return pulumi.get(self, "custom_mirroring_profile")
 
     @custom_mirroring_profile.setter
-    def custom_mirroring_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_mirroring_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_mirroring_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the profile. The Max length is 512 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key/value label pairs to assign to the resource.
 
@@ -113,12 +113,12 @@ class SecurityProfileGroupArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the security profile group.
         The default value is `global`.
@@ -126,24 +126,24 @@ class SecurityProfileGroupArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the security profile group resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this security profile group belongs to.
         Format: organizations/{organization_id}.
@@ -151,51 +151,51 @@ class SecurityProfileGroupArgs:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="threatPreventionProfile")
-    def threat_prevention_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_prevention_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         """
         return pulumi.get(self, "threat_prevention_profile")
 
     @threat_prevention_profile.setter
-    def threat_prevention_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_prevention_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_prevention_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="urlFilteringProfile")
-    def url_filtering_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_filtering_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         """
         return pulumi.get(self, "url_filtering_profile")
 
     @url_filtering_profile.setter
-    def url_filtering_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_filtering_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_filtering_profile", value)
 
 
 @pulumi.input_type
 class _SecurityProfileGroupState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_intercept_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_mirroring_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_intercept_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_mirroring_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityProfileGroup resources.
 
@@ -253,67 +253,67 @@ class _SecurityProfileGroupState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the security profile group was created in UTC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customInterceptProfile")
-    def custom_intercept_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_intercept_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the CustomIntercept configuration.
         """
         return pulumi.get(self, "custom_intercept_profile")
 
     @custom_intercept_profile.setter
-    def custom_intercept_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_intercept_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_intercept_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="customMirroringProfile")
-    def custom_mirroring_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_mirroring_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
         """
         return pulumi.get(self, "custom_mirroring_profile")
 
     @custom_mirroring_profile.setter
-    def custom_mirroring_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_mirroring_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_mirroring_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the profile. The Max length is 512 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other fields,
         and may be sent on update and delete requests to ensure the client has an up-to-date
@@ -322,12 +322,12 @@ class _SecurityProfileGroupState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of key/value label pairs to assign to the resource.
 
@@ -337,12 +337,12 @@ class _SecurityProfileGroupState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the security profile group.
         The default value is `global`.
@@ -350,24 +350,24 @@ class _SecurityProfileGroupState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the security profile group resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parent this security profile group belongs to.
         Format: organizations/{organization_id}.
@@ -375,12 +375,12 @@ class _SecurityProfileGroupState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -388,43 +388,43 @@ class _SecurityProfileGroupState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="threatPreventionProfile")
-    def threat_prevention_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threat_prevention_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
         """
         return pulumi.get(self, "threat_prevention_profile")
 
     @threat_prevention_profile.setter
-    def threat_prevention_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threat_prevention_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threat_prevention_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the security profile group was updated in UTC.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="urlFilteringProfile")
-    def url_filtering_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_filtering_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
         """
         return pulumi.get(self, "url_filtering_profile")
 
     @url_filtering_profile.setter
-    def url_filtering_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_filtering_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_filtering_profile", value)
 
 
@@ -434,15 +434,15 @@ class SecurityProfileGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_intercept_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_mirroring_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_intercept_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_mirroring_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A security profile group defines a container for security profiles.
@@ -760,15 +760,15 @@ class SecurityProfileGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_intercept_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_mirroring_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_intercept_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_mirroring_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -804,20 +804,20 @@ class SecurityProfileGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_intercept_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_mirroring_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            threat_prevention_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            url_filtering_profile: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityProfileGroup':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_intercept_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_mirroring_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            threat_prevention_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            url_filtering_profile: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityProfileGroup':
         """
         Get an existing SecurityProfileGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

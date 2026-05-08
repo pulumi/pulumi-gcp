@@ -21,7 +21,7 @@ class SslCertArgs:
     def __init__(__self__, *,
                  common_name: pulumi.Input[_builtins.str],
                  instance: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SslCert resource.
 
@@ -65,7 +65,7 @@ class SslCertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -73,23 +73,23 @@ class SslCertArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _SslCertState:
     def __init__(__self__, *,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_serial_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha1_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha1_fingerprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SslCert resources.
 
@@ -132,31 +132,31 @@ class _SslCertState:
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The actual certificate data for this client certificate.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="certSerialNumber")
-    def cert_serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_serial_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serial number extracted from the certificate data.
         """
         return pulumi.get(self, "cert_serial_number")
 
     @cert_serial_number.setter
-    def cert_serial_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_serial_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_serial_number", value)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The common name to be used in the certificate to identify the
         client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
@@ -164,12 +164,12 @@ class _SslCertState:
         return pulumi.get(self, "common_name")
 
     @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "common_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the certificate was created in RFC 3339 format,
         for example 2012-11-15T16:19:00.094Z.
@@ -177,12 +177,12 @@ class _SslCertState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the certificate expires in RFC 3339 format,
         for example 2012-11-15T16:19:00.094Z.
@@ -190,12 +190,12 @@ class _SslCertState:
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cloud SQL instance. Changing this
         forces a new resource to be created.
@@ -203,24 +203,24 @@ class _SslCertState:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key associated with the client certificate.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -228,31 +228,31 @@ class _SslCertState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaCert")
-    def server_ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CA cert of the server this client cert was generated from.
         """
         return pulumi.get(self, "server_ca_cert")
 
     @server_ca_cert.setter
-    def server_ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="sha1Fingerprint")
-    def sha1_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha1_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA1 Fingerprint of the certificate.
         """
         return pulumi.get(self, "sha1_fingerprint")
 
     @sha1_fingerprint.setter
-    def sha1_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha1_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha1_fingerprint", value)
 
 
@@ -262,9 +262,9 @@ class SslCert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
@@ -358,9 +358,9 @@ class SslCert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -396,16 +396,16 @@ class SslCert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cert: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_serial_number: Optional[pulumi.Input[_builtins.str]] = None,
-            common_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            server_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            sha1_fingerprint: Optional[pulumi.Input[_builtins.str]] = None) -> 'SslCert':
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            sha1_fingerprint: pulumi.Input[Optional[_builtins.str]] = None) -> 'SslCert':
         """
         Get an existing SslCert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

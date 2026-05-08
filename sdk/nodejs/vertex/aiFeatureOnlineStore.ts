@@ -274,20 +274,20 @@ export interface AiFeatureOnlineStoreState {
      * Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
      * Structure is documented below.
      */
-    bigtable?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreBigtable>;
+    bigtable?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreBigtable | undefined>;
     /**
      * The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      */
-    dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint>;
+    dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -297,56 +297,56 @@ export interface AiFeatureOnlineStoreState {
      *
      * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      */
-    embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
+    embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement | undefined>;
     /**
      * If set, both of the online and offline data storage will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEncryptionSpec | undefined>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The labels with user-defined metadata to organize your feature online stores.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      */
-    optimized?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreOptimized>;
+    optimized?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreOptimized | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of feature online store. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The state of the Feature Online Store. See the possible states in [this link](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores#state).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the feature online store was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -357,12 +357,12 @@ export interface AiFeatureOnlineStoreArgs {
      * Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
      * Structure is documented below.
      */
-    bigtable?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreBigtable>;
+    bigtable?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreBigtable | undefined>;
     /**
      * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      */
-    dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint>;
+    dedicatedServingEndpoint?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpoint | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
@@ -372,37 +372,37 @@ export interface AiFeatureOnlineStoreArgs {
      *
      * @deprecated `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
      */
-    embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement>;
+    embeddingManagement?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEmbeddingManagement | undefined>;
     /**
      * If set, both of the online and offline data storage will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreEncryptionSpec | undefined>;
     /**
      * If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The labels with user-defined metadata to organize your feature online stores.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      */
-    optimized?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreOptimized>;
+    optimized?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreOptimized | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of feature online store. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

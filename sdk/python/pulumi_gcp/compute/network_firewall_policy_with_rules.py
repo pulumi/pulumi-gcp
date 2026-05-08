@@ -22,10 +22,10 @@ __all__ = ['NetworkFirewallPolicyWithRulesArgs', 'NetworkFirewallPolicyWithRules
 class NetworkFirewallPolicyWithRulesArgs:
     def __init__(__self__, *,
                  rules: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkFirewallPolicyWithRules resource.
 
@@ -70,19 +70,19 @@ class NetworkFirewallPolicyWithRulesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided name of the Network firewall policy.
         The name should be unique in the project in which the firewall policy is created.
@@ -94,12 +94,12 @@ class NetworkFirewallPolicyWithRulesArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy type is used to determine which resources (networks) the policy can be associated with.
         A policy can be associated with a network only if the network has the matching policyType in its network profile.
@@ -109,12 +109,12 @@ class NetworkFirewallPolicyWithRulesArgs:
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -122,25 +122,25 @@ class NetworkFirewallPolicyWithRulesArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _NetworkFirewallPolicyWithRulesState:
     def __init__(__self__, *,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 predefined_rules: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesPredefinedRuleArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_tuple_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 predefined_rules: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesPredefinedRuleArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkFirewallPolicyWithRules resources.
 
@@ -195,43 +195,43 @@ class _NetworkFirewallPolicyWithRulesState:
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of the resource. This field is used internally during updates of this resource.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided name of the Network firewall policy.
         The name should be unique in the project in which the firewall policy is created.
@@ -243,24 +243,24 @@ class _NetworkFirewallPolicyWithRulesState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkFirewallPolicyId")
-    def network_firewall_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_firewall_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "network_firewall_policy_id")
 
     @network_firewall_policy_id.setter
-    def network_firewall_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_firewall_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_firewall_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy type is used to determine which resources (networks) the policy can be associated with.
         A policy can be associated with a network only if the network has the matching policyType in its network profile.
@@ -270,12 +270,12 @@ class _NetworkFirewallPolicyWithRulesState:
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="predefinedRules")
-    def predefined_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesPredefinedRuleArgs']]]]:
+    def predefined_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesPredefinedRuleArgs']]]]:
         """
         A list of firewall policy pre-defined rules.
         Structure is documented below.
@@ -283,12 +283,12 @@ class _NetworkFirewallPolicyWithRulesState:
         return pulumi.get(self, "predefined_rules")
 
     @predefined_rules.setter
-    def predefined_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesPredefinedRuleArgs']]]]):
+    def predefined_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesPredefinedRuleArgs']]]]):
         pulumi.set(self, "predefined_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -296,24 +296,24 @@ class _NetworkFirewallPolicyWithRulesState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleTupleCount")
-    def rule_tuple_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_tuple_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         """
         return pulumi.get(self, "rule_tuple_count")
 
     @rule_tuple_count.setter
-    def rule_tuple_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_tuple_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_tuple_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]]]:
         """
         A list of firewall policy rules.
         Structure is documented below.
@@ -321,31 +321,31 @@ class _NetworkFirewallPolicyWithRulesState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLinkWithId")
-    def self_link_with_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link_with_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_id")
 
     @self_link_with_id.setter
-    def self_link_with_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link_with_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link_with_id", value)
 
 
@@ -355,11 +355,11 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesRuleArgs', 'NetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesRuleArgs', 'NetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         The Compute NetworkFirewallPolicy with rules resource
@@ -692,11 +692,11 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesRuleArgs', 'NetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesRuleArgs', 'NetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -730,18 +730,18 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_firewall_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            predefined_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesPredefinedRuleArgs', 'NetworkFirewallPolicyWithRulesPredefinedRuleArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_tuple_count: Optional[pulumi.Input[_builtins.int]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesRuleArgs', 'NetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link_with_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkFirewallPolicyWithRules':
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_firewall_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            predefined_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesPredefinedRuleArgs', 'NetworkFirewallPolicyWithRulesPredefinedRuleArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyWithRulesRuleArgs', 'NetworkFirewallPolicyWithRulesRuleArgsDict']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_with_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkFirewallPolicyWithRules':
         """
         Get an existing NetworkFirewallPolicyWithRules resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

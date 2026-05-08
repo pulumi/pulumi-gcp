@@ -23,8 +23,8 @@ class MetastoreTableIamPolicyArgs:
                  policy_data: pulumi.Input[_builtins.str],
                  service_id: pulumi.Input[_builtins.str],
                  table: pulumi.Input[_builtins.str],
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MetastoreTableIamPolicy resource.
 
@@ -99,7 +99,7 @@ class MetastoreTableIamPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to. If not specified,
         the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -108,12 +108,12 @@ class MetastoreTableIamPolicyArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -121,20 +121,20 @@ class MetastoreTableIamPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _MetastoreTableIamPolicyState:
     def __init__(__self__, *,
-                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None):
+                 database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreTableIamPolicy resources.
 
@@ -167,31 +167,31 @@ class _MetastoreTableIamPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="databaseId")
-    def database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "database_id")
 
     @database_id.setter
-    def database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to. If not specified,
         the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -200,12 +200,12 @@ class _MetastoreTableIamPolicyState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="policyData")
-    def policy_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy data generated by
         a `organizations_get_iam_policy` data source.
@@ -213,12 +213,12 @@ class _MetastoreTableIamPolicyState:
         return pulumi.get(self, "policy_data")
 
     @policy_data.setter
-    def policy_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -226,31 +226,31 @@ class _MetastoreTableIamPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
 
@@ -260,12 +260,12 @@ class MetastoreTableIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Dataproc Metastore Table. Each of these resources serves a different use case:
@@ -639,12 +639,12 @@ class MetastoreTableIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -679,13 +679,13 @@ class MetastoreTableIamPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            database_id: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            table: Optional[pulumi.Input[_builtins.str]] = None) -> 'MetastoreTableIamPolicy':
+            database_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetastoreTableIamPolicy':
         """
         Get an existing MetastoreTableIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

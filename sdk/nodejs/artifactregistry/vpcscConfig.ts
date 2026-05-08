@@ -136,22 +136,22 @@ export interface VpcscConfigState {
     /**
      * The name of the location this config is located in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the project's VPC SC Config.
      * Always of the form: projects/{project}/location/{location}/vpcscConfig
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The VPC SC policy for project and location.
      * Possible values are: `DENY`, `ALLOW`.
      */
-    vpcscPolicy?: pulumi.Input<string>;
+    vpcscPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -161,15 +161,15 @@ export interface VpcscConfigArgs {
     /**
      * The name of the location this config is located in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The VPC SC policy for project and location.
      * Possible values are: `DENY`, `ALLOW`.
      */
-    vpcscPolicy?: pulumi.Input<string>;
+    vpcscPolicy?: pulumi.Input<string | undefined>;
 }

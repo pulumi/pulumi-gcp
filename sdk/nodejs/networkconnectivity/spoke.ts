@@ -709,95 +709,95 @@ export interface SpokeState {
     /**
      * Output only. The time the spoke was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An optional description of the spoke.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Optional, Beta)
      * This is a gateway that can apply specialized processing to traffic going through it.
      * Structure is documented below.
      */
-    gateway?: pulumi.Input<inputs.networkconnectivity.SpokeGateway>;
+    gateway?: pulumi.Input<inputs.networkconnectivity.SpokeGateway | undefined>;
     /**
      * The name of the group that this spoke is associated with.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */
-    hub?: pulumi.Input<string>;
+    hub?: pulumi.Input<string | undefined>;
     /**
      * Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
      * Structure is documented below.
      */
-    linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
+    linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments | undefined>;
     /**
      * Producer VPC network that is associated with the spoke.
      * Structure is documented below.
      */
-    linkedProducerVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedProducerVpcNetwork>;
+    linkedProducerVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedProducerVpcNetwork | undefined>;
     /**
      * The URIs of linked Router appliance resources
      * Structure is documented below.
      */
-    linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances>;
+    linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances | undefined>;
     /**
      * VPC network that is associated with the spoke.
      * Structure is documented below.
      */
-    linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork>;
+    linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork | undefined>;
     /**
      * The URIs of linked VPN tunnel resources
      * Structure is documented below.
      */
-    linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
+    linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The name of the spoke. Spoke names must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The reasons for the current state in the lifecycle
      * Structure is documented below.
      */
-    reasons?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.SpokeReason>[]>;
+    reasons?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.SpokeReason>[] | undefined>;
     /**
      * Output only. The current lifecycle state of this spoke.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
      */
-    uniqueId?: pulumi.Input<string>;
+    uniqueId?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time the spoke was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -807,17 +807,17 @@ export interface SpokeArgs {
     /**
      * An optional description of the spoke.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * This is a gateway that can apply specialized processing to traffic going through it.
      * Structure is documented below.
      */
-    gateway?: pulumi.Input<inputs.networkconnectivity.SpokeGateway>;
+    gateway?: pulumi.Input<inputs.networkconnectivity.SpokeGateway | undefined>;
     /**
      * The name of the group that this spoke is associated with.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */
@@ -827,32 +827,32 @@ export interface SpokeArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
      * Structure is documented below.
      */
-    linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
+    linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments | undefined>;
     /**
      * Producer VPC network that is associated with the spoke.
      * Structure is documented below.
      */
-    linkedProducerVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedProducerVpcNetwork>;
+    linkedProducerVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedProducerVpcNetwork | undefined>;
     /**
      * The URIs of linked Router appliance resources
      * Structure is documented below.
      */
-    linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances>;
+    linkedRouterApplianceInstances?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedRouterApplianceInstances | undefined>;
     /**
      * VPC network that is associated with the spoke.
      * Structure is documented below.
      */
-    linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork>;
+    linkedVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpcNetwork | undefined>;
     /**
      * The URIs of linked VPN tunnel resources
      * Structure is documented below.
      */
-    linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels>;
+    linkedVpnTunnels?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedVpnTunnels | undefined>;
     /**
      * The location for the resource
      */
@@ -860,10 +860,10 @@ export interface SpokeArgs {
     /**
      * Immutable. The name of the spoke. Spoke names must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

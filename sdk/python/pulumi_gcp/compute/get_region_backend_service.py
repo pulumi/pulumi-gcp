@@ -464,9 +464,9 @@ def get_region_backend_service(name: Optional[_builtins.str] = None,
         subsettings=pulumi.get(__ret__, 'subsettings'),
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'),
         tls_settings=pulumi.get(__ret__, 'tls_settings'))
-def get_region_backend_service_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_region_backend_service_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                      project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionBackendServiceResult]:
     """
     Get information about a Regional Backend Service. For more information see

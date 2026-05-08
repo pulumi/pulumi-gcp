@@ -266,81 +266,81 @@ export interface GitRepositoryLinkState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required. Git Clone URI.
      */
-    cloneUri?: pulumi.Input<string>;
+    cloneUri?: pulumi.Input<string | undefined>;
     /**
      * Output only. [Output only] Create timestamp
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. [Output only] Delete timestamp
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the repository, which will become the final component of
      * the repository's resource name. This ID should be unique in the connection.
      * Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
      */
-    gitRepositoryLinkId?: pulumi.Input<string>;
+    gitRepositoryLinkId?: pulumi.Input<string | undefined>;
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Resource name of the repository, in the format
      * `projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
-    parentConnection?: pulumi.Input<string>;
+    parentConnection?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Set to true when the connection is being set up or updated in the
      * background.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. A system-assigned unique identifier for a the GitRepositoryLink.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. [Output only] Update timestamp
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -352,7 +352,7 @@ export interface GitRepositoryLinkArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Required. Git Clone URI.
      */
@@ -362,7 +362,7 @@ export interface GitRepositoryLinkArgs {
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the repository, which will become the final component of
      * the repository's resource name. This ID should be unique in the connection.
@@ -374,7 +374,7 @@ export interface GitRepositoryLinkArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
@@ -387,5 +387,5 @@ export interface GitRepositoryLinkArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

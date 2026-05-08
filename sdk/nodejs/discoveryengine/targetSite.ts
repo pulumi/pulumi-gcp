@@ -245,7 +245,7 @@ export interface TargetSiteState {
     /**
      * The unique id of the data store.
      */
-    dataStoreId?: pulumi.Input<string>;
+    dataStoreId?: pulumi.Input<string | undefined>;
     /**
      * If set to false, a uriPattern is generated to include all pages whose
      * address contains the provided_uri_pattern. If set to true, an uriPattern
@@ -254,64 +254,64 @@ export interface TargetSiteState {
      * providedUriPattern is always normalized to generate the URI pattern to
      * be used by the search engine.
      */
-    exactMatch?: pulumi.Input<boolean>;
+    exactMatch?: pulumi.Input<boolean | undefined>;
     /**
      * Site search indexing failure reasons.
      * Structure is documented below.
      */
-    failureReasons?: pulumi.Input<pulumi.Input<inputs.discoveryengine.TargetSiteFailureReason>[]>;
+    failureReasons?: pulumi.Input<pulumi.Input<inputs.discoveryengine.TargetSiteFailureReason>[] | undefined>;
     /**
      * This is system-generated based on the `providedUriPattern`.
      */
-    generatedUriPattern?: pulumi.Input<string>;
+    generatedUriPattern?: pulumi.Input<string | undefined>;
     /**
      * The indexing status.
      */
-    indexingStatus?: pulumi.Input<string>;
+    indexingStatus?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the target site. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/siteSearchEngine/targetSites/{target_site_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user provided URI pattern from which the `generatedUriPattern` is
      * generated.
      */
-    providedUriPattern?: pulumi.Input<string>;
+    providedUriPattern?: pulumi.Input<string | undefined>;
     /**
      * Root domain of the `providedUriPattern`.
      */
-    rootDomainUri?: pulumi.Input<string>;
+    rootDomainUri?: pulumi.Input<string | undefined>;
     /**
      * Site ownership and validity verification status.
      * Structure is documented below.
      */
-    siteVerificationInfos?: pulumi.Input<pulumi.Input<inputs.discoveryengine.TargetSiteSiteVerificationInfo>[]>;
+    siteVerificationInfos?: pulumi.Input<pulumi.Input<inputs.discoveryengine.TargetSiteSiteVerificationInfo>[] | undefined>;
     /**
      * The unique id of the target site.
      */
-    targetSiteId?: pulumi.Input<string>;
+    targetSiteId?: pulumi.Input<string | undefined>;
     /**
      * The possible target site types.
      * Possible values are: `INCLUDE`, `EXCLUDE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The target site's last updated time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -330,7 +330,7 @@ export interface TargetSiteArgs {
      * providedUriPattern is always normalized to generate the URI pattern to
      * be used by the search engine.
      */
-    exactMatch?: pulumi.Input<boolean>;
+    exactMatch?: pulumi.Input<boolean | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -340,7 +340,7 @@ export interface TargetSiteArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user provided URI pattern from which the `generatedUriPattern` is
      * generated.
@@ -350,5 +350,5 @@ export interface TargetSiteArgs {
      * The possible target site types.
      * Possible values are: `INCLUDE`, `EXCLUDE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

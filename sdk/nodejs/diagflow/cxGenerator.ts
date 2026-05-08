@@ -185,43 +185,43 @@ export interface CxGeneratorState {
     /**
      * The human-readable name of the generator, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The language to create generators for the following fields:
      * * Generator.prompt_text.text
      * If not specified, the agent's default language is used.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * The LLM model settings.
      * Structure is documented below.
      */
-    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGeneratorLlmModelSettings>;
+    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGeneratorLlmModelSettings | undefined>;
     /**
      * Parameters passed to the LLM to configure its behavior.
      * Structure is documented below.
      */
-    modelParameter?: pulumi.Input<inputs.diagflow.CxGeneratorModelParameter>;
+    modelParameter?: pulumi.Input<inputs.diagflow.CxGeneratorModelParameter | undefined>;
     /**
      * The unique identifier of the Generator.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/generators/<Generator ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The agent to create a Generator for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * List of custom placeholders in the prompt text.
      * Structure is documented below.
      */
-    placeholders?: pulumi.Input<pulumi.Input<inputs.diagflow.CxGeneratorPlaceholder>[]>;
+    placeholders?: pulumi.Input<pulumi.Input<inputs.diagflow.CxGeneratorPlaceholder>[] | undefined>;
     /**
      * Prompt for the LLM model.
      * Structure is documented below.
      */
-    promptText?: pulumi.Input<inputs.diagflow.CxGeneratorPromptText>;
+    promptText?: pulumi.Input<inputs.diagflow.CxGeneratorPromptText | undefined>;
 }
 
 /**
@@ -237,27 +237,27 @@ export interface CxGeneratorArgs {
      * * Generator.prompt_text.text
      * If not specified, the agent's default language is used.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * The LLM model settings.
      * Structure is documented below.
      */
-    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGeneratorLlmModelSettings>;
+    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGeneratorLlmModelSettings | undefined>;
     /**
      * Parameters passed to the LLM to configure its behavior.
      * Structure is documented below.
      */
-    modelParameter?: pulumi.Input<inputs.diagflow.CxGeneratorModelParameter>;
+    modelParameter?: pulumi.Input<inputs.diagflow.CxGeneratorModelParameter | undefined>;
     /**
      * The agent to create a Generator for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * List of custom placeholders in the prompt text.
      * Structure is documented below.
      */
-    placeholders?: pulumi.Input<pulumi.Input<inputs.diagflow.CxGeneratorPlaceholder>[]>;
+    placeholders?: pulumi.Input<pulumi.Input<inputs.diagflow.CxGeneratorPlaceholder>[] | undefined>;
     /**
      * Prompt for the LLM model.
      * Structure is documented below.

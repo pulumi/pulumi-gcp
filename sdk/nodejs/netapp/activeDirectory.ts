@@ -316,118 +316,118 @@ export interface ActiveDirectoryState {
     /**
      * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
      */
-    administrators?: pulumi.Input<pulumi.Input<string>[]>;
+    administrators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      */
-    aesEncryption?: pulumi.Input<boolean>;
+    aesEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
      */
-    backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    backupOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Comma separated list of DNS server IP addresses for the Active Directory domain.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified domain name for the Active Directory domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
      */
-    encryptDcConnections?: pulumi.Input<boolean>;
+    encryptDcConnections?: pulumi.Input<boolean | undefined>;
     /**
      * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      */
-    kdcHostname?: pulumi.Input<string>;
+    kdcHostname?: pulumi.Input<string | undefined>;
     /**
      * IP address of the Active Directory server used as Kerberos Key Distribution Center.
      */
-    kdcIp?: pulumi.Input<string>;
+    kdcIp?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether or not the LDAP traffic needs to be signed.
      */
-    ldapSigning?: pulumi.Input<boolean>;
+    ldapSigning?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the region for the policy to apply to.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NetBIOS name prefix of the server to be created.
      * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
      * `\\NetBIOS_PREFIX-ABCD.DOMAIN_NAME\SHARE_NAME`
      */
-    netBiosPrefix?: pulumi.Input<string>;
+    netBiosPrefix?: pulumi.Input<string | undefined>;
     /**
      * Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
      * This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
      */
-    nfsUsersWithLdap?: pulumi.Input<boolean>;
+    nfsUsersWithLdap?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
      * Defaults to `CN=Computers` if left empty.
      */
-    organizationalUnit?: pulumi.Input<string>;
+    organizationalUnit?: pulumi.Input<string | undefined>;
     /**
      * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
      */
-    securityOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    securityOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies an Active Directory site to manage domain controller selection.
      * Use when Active Directory domain controllers in multiple regions are configured. Defaults to `Default-First-Site-Name` if left empty.
      */
-    site?: pulumi.Input<string>;
+    site?: pulumi.Input<string | undefined>;
     /**
      * The state of the Active Directory policy (not the Active Directory itself).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The state details of the Active Directory.
      */
-    stateDetails?: pulumi.Input<string>;
+    stateDetails?: pulumi.Input<string | undefined>;
     /**
      * Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -437,19 +437,19 @@ export interface ActiveDirectoryArgs {
     /**
      * Domain user accounts to be added to the local Administrators group of the SMB service. Comma-separated list of domain users or groups. The Domain Admin group is automatically added when the service joins your domain as a hidden group.
      */
-    administrators?: pulumi.Input<pulumi.Input<string>[]>;
+    administrators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enables AES-128 and AES-256 encryption for Kerberos-based communication with Active Directory.
      */
-    aesEncryption?: pulumi.Input<boolean>;
+    aesEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
      */
-    backupOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    backupOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Comma separated list of DNS server IP addresses for the Active Directory domain.
      */
@@ -461,26 +461,26 @@ export interface ActiveDirectoryArgs {
     /**
      * If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
      */
-    encryptDcConnections?: pulumi.Input<boolean>;
+    encryptDcConnections?: pulumi.Input<boolean | undefined>;
     /**
      * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      */
-    kdcHostname?: pulumi.Input<string>;
+    kdcHostname?: pulumi.Input<string | undefined>;
     /**
      * IP address of the Active Directory server used as Kerberos Key Distribution Center.
      */
-    kdcIp?: pulumi.Input<string>;
+    kdcIp?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether or not the LDAP traffic needs to be signed.
      */
-    ldapSigning?: pulumi.Input<boolean>;
+    ldapSigning?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the region for the policy to apply to.
      */
@@ -488,7 +488,7 @@ export interface ActiveDirectoryArgs {
     /**
      * The resource name of the Active Directory pool. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NetBIOS name prefix of the server to be created.
      * A five-character random ID is generated automatically, for example, -6f9a, and appended to the prefix. The full UNC share path will have the following format:
@@ -499,12 +499,12 @@ export interface ActiveDirectoryArgs {
      * Local UNIX users on clients without valid user information in Active Directory are blocked from access to LDAP enabled volumes.
      * This option can be used to temporarily switch such volumes to AUTH_SYS authentication (user ID + 1-16 groups).
      */
-    nfsUsersWithLdap?: pulumi.Input<boolean>;
+    nfsUsersWithLdap?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Organizational Unit where you intend to create the computer account for NetApp Volumes.
      * Defaults to `CN=Computers` if left empty.
      */
-    organizationalUnit?: pulumi.Input<string>;
+    organizationalUnit?: pulumi.Input<string | undefined>;
     /**
      * Password for specified username. Note - Manual changes done to the password will not be detected. Terraform will not re-apply the password, unless you use a new password in Terraform.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -514,16 +514,16 @@ export interface ActiveDirectoryArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
      */
-    securityOperators?: pulumi.Input<pulumi.Input<string>[]>;
+    securityOperators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies an Active Directory site to manage domain controller selection.
      * Use when Active Directory domain controllers in multiple regions are configured. Defaults to `Default-First-Site-Name` if left empty.
      */
-    site?: pulumi.Input<string>;
+    site?: pulumi.Input<string | undefined>;
     /**
      * Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
      */

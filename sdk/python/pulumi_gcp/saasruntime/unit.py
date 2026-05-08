@@ -23,13 +23,13 @@ class UnitArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  unit_id: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance: Optional[pulumi.Input['UnitMaintenanceArgs']] = None,
-                 management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance: pulumi.Input[Optional['UnitMaintenanceArgs']] = None,
+                 management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Unit resource.
 
@@ -106,7 +106,7 @@ class UnitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations is an unstructured key-value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata.
@@ -118,12 +118,12 @@ class UnitArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels on the resource, which can be used for categorization.
         similar to Kubernetes resource labels.
@@ -133,12 +133,12 @@ class UnitArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input['UnitMaintenanceArgs']]:
+    def maintenance(self) -> pulumi.Input[Optional['UnitMaintenanceArgs']]:
         """
         Captures requested directives for performing future maintenance on the
         unit. This includes a request for the unit to skip maintenance for a period
@@ -149,12 +149,12 @@ class UnitArgs:
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input['UnitMaintenanceArgs']]):
+    def maintenance(self, value: pulumi.Input[Optional['UnitMaintenanceArgs']]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter(name="managementMode")
-    def management_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the Unit life cycle is controlled
         by the user or by the system.
@@ -166,12 +166,12 @@ class UnitArgs:
         return pulumi.get(self, "management_mode")
 
     @management_mode.setter
-    def management_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -179,12 +179,12 @@ class UnitArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the Saas Tenant resource this unit belongs to. This for
         example informs the maintenance policies to use for scheduling future
@@ -193,53 +193,53 @@ class UnitArgs:
         return pulumi.get(self, "tenant")
 
     @tenant.setter
-    def tenant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant", value)
 
     @_builtins.property
     @pulumi.getter(name="unitKind")
-    def unit_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the UnitKind this Unit belongs to. Immutable once set.
         """
         return pulumi.get(self, "unit_kind")
 
     @unit_kind.setter
-    def unit_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_kind", value)
 
 
 @pulumi.input_type
 class _UnitState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['UnitConditionArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dependencies: Optional[pulumi.Input[Sequence[pulumi.Input['UnitDependencyArgs']]]] = None,
-                 dependents: Optional[pulumi.Input[Sequence[pulumi.Input['UnitDependentArgs']]]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 input_variables: Optional[pulumi.Input[Sequence[pulumi.Input['UnitInputVariableArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input['UnitMaintenanceArgs']] = None,
-                 management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ongoing_operations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 output_variables: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOutputVariableArgs']]]] = None,
-                 pending_operations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 release: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduled_operations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_cleanup_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_managed_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['UnitConditionArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependencyArgs']]]] = None,
+                 dependents: pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependentArgs']]]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 input_variables: pulumi.Input[Optional[Sequence[pulumi.Input['UnitInputVariableArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional['UnitMaintenanceArgs']] = None,
+                 management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ongoing_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 output_variables: pulumi.Input[Optional[Sequence[pulumi.Input['UnitOutputVariableArgs']]]] = None,
+                 pending_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 release: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduled_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_cleanup_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_managed_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Unit resources.
 
@@ -382,7 +382,7 @@ class _UnitState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations is an unstructured key-value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata.
@@ -394,12 +394,12 @@ class _UnitState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UnitConditionArgs']]]]:
         """
         A set of conditions which indicate the various conditions this resource can
         have.
@@ -408,24 +408,24 @@ class _UnitState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UnitConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def dependencies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitDependencyArgs']]]]:
+    def dependencies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependencyArgs']]]]:
         """
         Set of dependencies for this unit. Maximum 10.
         Structure is documented below.
@@ -433,12 +433,12 @@ class _UnitState:
         return pulumi.get(self, "dependencies")
 
     @dependencies.setter
-    def dependencies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitDependencyArgs']]]]):
+    def dependencies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependencyArgs']]]]):
         pulumi.set(self, "dependencies", value)
 
     @_builtins.property
     @pulumi.getter
-    def dependents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitDependentArgs']]]]:
+    def dependents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependentArgs']]]]:
         """
         List of Units that depend on this unit. Unit can only be deprovisioned if
         this list is empty. Maximum 1000.
@@ -447,36 +447,36 @@ class _UnitState:
         return pulumi.get(self, "dependents")
 
     @dependents.setter
-    def dependents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitDependentArgs']]]]):
+    def dependents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UnitDependentArgs']]]]):
         pulumi.set(self, "dependents", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="inputVariables")
-    def input_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitInputVariableArgs']]]]:
+    def input_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UnitInputVariableArgs']]]]:
         """
         Indicates the current input variables deployed by the unit
         Structure is documented below.
@@ -484,12 +484,12 @@ class _UnitState:
         return pulumi.get(self, "input_variables")
 
     @input_variables.setter
-    def input_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitInputVariableArgs']]]]):
+    def input_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UnitInputVariableArgs']]]]):
         pulumi.set(self, "input_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels on the resource, which can be used for categorization.
         similar to Kubernetes resource labels.
@@ -499,24 +499,24 @@ class _UnitState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input['UnitMaintenanceArgs']]:
+    def maintenance(self) -> pulumi.Input[Optional['UnitMaintenanceArgs']]:
         """
         Captures requested directives for performing future maintenance on the
         unit. This includes a request for the unit to skip maintenance for a period
@@ -527,12 +527,12 @@ class _UnitState:
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input['UnitMaintenanceArgs']]):
+    def maintenance(self, value: pulumi.Input[Optional['UnitMaintenanceArgs']]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter(name="managementMode")
-    def management_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the Unit life cycle is controlled
         by the user or by the system.
@@ -544,12 +544,12 @@ class _UnitState:
         return pulumi.get(self, "management_mode")
 
     @management_mode.setter
-    def management_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name (full URI of the resource) following the standard naming
         scheme:
@@ -558,24 +558,24 @@ class _UnitState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ongoingOperations")
-    def ongoing_operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ongoing_operations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of concurrent UnitOperations that are operating on this Unit.
         """
         return pulumi.get(self, "ongoing_operations")
 
     @ongoing_operations.setter
-    def ongoing_operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ongoing_operations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ongoing_operations", value)
 
     @_builtins.property
     @pulumi.getter(name="outputVariables")
-    def output_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UnitOutputVariableArgs']]]]:
+    def output_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UnitOutputVariableArgs']]]]:
         """
         Set of key/value pairs corresponding to output variables from execution of
         actuation templates. The variables are declared in actuation configs (e.g
@@ -586,24 +586,24 @@ class _UnitState:
         return pulumi.get(self, "output_variables")
 
     @output_variables.setter
-    def output_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UnitOutputVariableArgs']]]]):
+    def output_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UnitOutputVariableArgs']]]]):
         pulumi.set(self, "output_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingOperations")
-    def pending_operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pending_operations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of pending (wait to be executed) UnitOperations for this unit.
         """
         return pulumi.get(self, "pending_operations")
 
     @pending_operations.setter
-    def pending_operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pending_operations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pending_operations", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -611,12 +611,12 @@ class _UnitState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -624,36 +624,36 @@ class _UnitState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def release(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current Release object for this Unit.
         """
         return pulumi.get(self, "release")
 
     @release.setter
-    def release(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduledOperations")
-    def scheduled_operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scheduled_operations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of scheduled UnitOperations for this unit.
         """
         return pulumi.get(self, "scheduled_operations")
 
     @scheduled_operations.setter
-    def scheduled_operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scheduled_operations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scheduled_operations", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current lifecycle state of the resource (e.g. if it's being
         created or ready to use).
@@ -668,24 +668,24 @@ class _UnitState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="systemCleanupAt")
-    def system_cleanup_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_cleanup_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, indicates the time when the system will start removing the unit.
         """
         return pulumi.get(self, "system_cleanup_at")
 
     @system_cleanup_at.setter
-    def system_cleanup_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_cleanup_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_cleanup_at", value)
 
     @_builtins.property
     @pulumi.getter(name="systemManagedState")
-    def system_managed_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_managed_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the system managed state of the unit.
         Possible values:
@@ -696,12 +696,12 @@ class _UnitState:
         return pulumi.get(self, "system_managed_state")
 
     @system_managed_state.setter
-    def system_managed_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_managed_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_managed_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tenant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the Saas Tenant resource this unit belongs to. This for
         example informs the maintenance policies to use for scheduling future
@@ -710,12 +710,12 @@ class _UnitState:
         return pulumi.get(self, "tenant")
 
     @tenant.setter
-    def tenant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the resource. UID is unique in the time
         and space for this resource within the scope of the service. It is
@@ -726,36 +726,36 @@ class _UnitState:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="unitId")
-    def unit_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID value for the new unit.
         """
         return pulumi.get(self, "unit_id")
 
     @unit_id.setter
-    def unit_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_id", value)
 
     @_builtins.property
     @pulumi.getter(name="unitKind")
-    def unit_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the UnitKind this Unit belongs to. Immutable once set.
         """
         return pulumi.get(self, "unit_kind")
 
     @unit_kind.setter
-    def unit_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was last updated. Any
         change to the resource made by users must refresh this value.
@@ -764,7 +764,7 @@ class _UnitState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -774,15 +774,15 @@ class Unit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
-                 management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
+                 management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Unit is the fundamental structural building block of a SaaS offering. Each Unit is an instance of a UnitKind. It is a versioned, manageable component of a service that has its own lifecycle, representing elements like infrastructure, workloads, or an entire application stack that a service producer intends to manage as a single entity.
@@ -927,15 +927,15 @@ class Unit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
-                 management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tenant: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
+                 management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -989,34 +989,34 @@ class Unit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dependencies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict']]]]] = None,
-            dependents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict']]]]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            input_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance: Optional[pulumi.Input[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
-            management_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ongoing_operations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            output_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict']]]]] = None,
-            pending_operations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            release: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduled_operations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            system_cleanup_at: Optional[pulumi.Input[_builtins.str]] = None,
-            system_managed_state: Optional[pulumi.Input[_builtins.str]] = None,
-            tenant: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_id: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Unit':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitConditionArgs', 'UnitConditionArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependencyArgs', 'UnitDependencyArgsDict']]]]] = None,
+            dependents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitDependentArgs', 'UnitDependentArgsDict']]]]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            input_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitInputVariableArgs', 'UnitInputVariableArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance: pulumi.Input[Optional[Union['UnitMaintenanceArgs', 'UnitMaintenanceArgsDict']]] = None,
+            management_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ongoing_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            output_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UnitOutputVariableArgs', 'UnitOutputVariableArgsDict']]]]] = None,
+            pending_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            release: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_operations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            system_cleanup_at: pulumi.Input[Optional[_builtins.str]] = None,
+            system_managed_state: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_id: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Unit':
         """
         Get an existing Unit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

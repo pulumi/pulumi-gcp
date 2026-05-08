@@ -156,25 +156,25 @@ class InstanceEventPublishConfigArgs:
 
 
 class InstanceNetworkConfigArgsDict(TypedDict):
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
     the corresponding tenant project from a predefined list of available connection modes.
     If this field is unspecified for a private instance, VPC peering is used.
     Possible values are: `VPC_PEERING`, `PRIVATE_SERVICE_CONNECT_INTERFACES`.
     """
-    ip_allocation: NotRequired[pulumi.Input[_builtins.str]]
+    ip_allocation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP range in CIDR notation to use for the managed Data Fusion instance
     nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the network in the project with which the tenant project
     will be peered for executing pipelines. In case of shared VPC where the network resides in another host
     project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
     """
-    private_service_connect_config: NotRequired[pulumi.Input['InstanceNetworkConfigPrivateServiceConnectConfigArgsDict']]
+    private_service_connect_config: NotRequired[pulumi.Input[Optional['InstanceNetworkConfigPrivateServiceConnectConfigArgs']]]
     """
     Optional. Configuration for Private Service Connect.
     This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
@@ -184,10 +184,10 @@ class InstanceNetworkConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceNetworkConfigArgs:
     def __init__(__self__, *,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_allocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input['InstanceNetworkConfigPrivateServiceConnectConfigArgs']] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_allocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_service_connect_config: pulumi.Input[Optional['InstanceNetworkConfigPrivateServiceConnectConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] connection_type: Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
                the corresponding tenant project from a predefined list of available connection modes.
@@ -213,7 +213,7 @@ class InstanceNetworkConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
         the corresponding tenant project from a predefined list of available connection modes.
@@ -223,12 +223,12 @@ class InstanceNetworkConfigArgs:
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllocation")
-    def ip_allocation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_allocation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP range in CIDR notation to use for the managed Data Fusion instance
         nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.
@@ -236,12 +236,12 @@ class InstanceNetworkConfigArgs:
         return pulumi.get(self, "ip_allocation")
 
     @ip_allocation.setter
-    def ip_allocation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_allocation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_allocation", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the network in the project with which the tenant project
         will be peered for executing pipelines. In case of shared VPC where the network resides in another host
@@ -250,12 +250,12 @@ class InstanceNetworkConfigArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['InstanceNetworkConfigPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> pulumi.Input[Optional['InstanceNetworkConfigPrivateServiceConnectConfigArgs']]:
         """
         Optional. Configuration for Private Service Connect.
         This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
@@ -264,24 +264,24 @@ class InstanceNetworkConfigArgs:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['InstanceNetworkConfigPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: pulumi.Input[Optional['InstanceNetworkConfigPrivateServiceConnectConfigArgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
 
 class InstanceNetworkConfigPrivateServiceConnectConfigArgsDict(TypedDict):
-    effective_unreachable_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    effective_unreachable_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
     The size of this block is /25. The format of this field is governed by RFC 4632.
     """
-    network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    network_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The reference to the network attachment used to establish private connectivity.
     It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
     This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.
     """
-    unreachable_cidr_block: NotRequired[pulumi.Input[_builtins.str]]
+    unreachable_cidr_block: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
     The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
@@ -292,9 +292,9 @@ class InstanceNetworkConfigPrivateServiceConnectConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceNetworkConfigPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
-                 effective_unreachable_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_attachment: Optional[pulumi.Input[_builtins.str]] = None,
-                 unreachable_cidr_block: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_unreachable_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+                 unreachable_cidr_block: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effective_unreachable_cidr_block: (Output)
                Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
@@ -316,7 +316,7 @@ class InstanceNetworkConfigPrivateServiceConnectConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveUnreachableCidrBlock")
-    def effective_unreachable_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_unreachable_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
@@ -325,12 +325,12 @@ class InstanceNetworkConfigPrivateServiceConnectConfigArgs:
         return pulumi.get(self, "effective_unreachable_cidr_block")
 
     @effective_unreachable_cidr_block.setter
-    def effective_unreachable_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_unreachable_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_unreachable_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAttachment")
-    def network_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The reference to the network attachment used to establish private connectivity.
         It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
@@ -339,12 +339,12 @@ class InstanceNetworkConfigPrivateServiceConnectConfigArgs:
         return pulumi.get(self, "network_attachment")
 
     @network_attachment.setter
-    def network_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_attachment", value)
 
     @_builtins.property
     @pulumi.getter(name="unreachableCidrBlock")
-    def unreachable_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unreachable_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Input only. The CIDR block to which the CDF instance can't route traffic to in the consumer project VPC.
         The size of this block should be at least /25. This range should not overlap with the primary address range of any subnetwork used by the network attachment.
@@ -354,7 +354,7 @@ class InstanceNetworkConfigPrivateServiceConnectConfigArgs:
         return pulumi.get(self, "unreachable_cidr_block")
 
     @unreachable_cidr_block.setter
-    def unreachable_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unreachable_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unreachable_cidr_block", value)
 
 

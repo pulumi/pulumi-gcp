@@ -24,7 +24,7 @@ class ProjectCustomModuleArgs:
                  custom_config: pulumi.Input['ProjectCustomModuleCustomConfigArgs'],
                  display_name: pulumi.Input[_builtins.str],
                  enablement_state: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectCustomModule resource.
 
@@ -90,7 +90,7 @@ class ProjectCustomModuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -98,21 +98,21 @@ class ProjectCustomModuleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ProjectCustomModuleState:
     def __init__(__self__, *,
-                 ancestor_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_config: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enablement_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_editor: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 ancestor_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_config: pulumi.Input[Optional['ProjectCustomModuleCustomConfigArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_editor: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectCustomModule resources.
 
@@ -156,7 +156,7 @@ class _ProjectCustomModuleState:
 
     @_builtins.property
     @pulumi.getter(name="ancestorModule")
-    def ancestor_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ancestor_module(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If empty, indicates that the custom module was created in the organization,folder,
         or project in which you are viewing the custom module. Otherwise, ancestor_module
@@ -165,12 +165,12 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "ancestor_module")
 
     @ancestor_module.setter
-    def ancestor_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ancestor_module(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ancestor_module", value)
 
     @_builtins.property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']]:
+    def custom_config(self) -> pulumi.Input[Optional['ProjectCustomModuleCustomConfigArgs']]:
         """
         The user specified custom configuration for the module.
         Structure is documented below.
@@ -178,12 +178,12 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input['ProjectCustomModuleCustomConfigArgs']]):
+    def custom_config(self, value: pulumi.Input[Optional['ProjectCustomModuleCustomConfigArgs']]):
         pulumi.set(self, "custom_config", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Security Health Analytics custom module. This
         display name becomes the finding category for all findings that are
@@ -194,12 +194,12 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enablementState")
-    def enablement_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enablement_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The enablement state of the custom module.
         Possible values are: `ENABLED`, `DISABLED`.
@@ -207,24 +207,24 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "enablement_state")
 
     @enablement_state.setter
-    def enablement_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enablement_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enablement_state", value)
 
     @_builtins.property
     @pulumi.getter(name="lastEditor")
-    def last_editor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_editor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The editor that last updated the custom module.
         """
         return pulumi.get(self, "last_editor")
 
     @last_editor.setter
-    def last_editor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_editor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_editor", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
         The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
@@ -232,12 +232,12 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -245,12 +245,12 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the custom module was last updated.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -259,7 +259,7 @@ class _ProjectCustomModuleState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -269,10 +269,10 @@ class ProjectCustomModule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enablement_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents an instance of a Security Health Analytics custom module, including
@@ -487,10 +487,10 @@ class ProjectCustomModule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enablement_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -524,14 +524,14 @@ class ProjectCustomModule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ancestor_module: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_config: Optional[pulumi.Input[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enablement_state: Optional[pulumi.Input[_builtins.str]] = None,
-            last_editor: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectCustomModule':
+            ancestor_module: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_config: pulumi.Input[Optional[Union['ProjectCustomModuleCustomConfigArgs', 'ProjectCustomModuleCustomConfigArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
+            last_editor: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectCustomModule':
         """
         Get an existing ProjectCustomModule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

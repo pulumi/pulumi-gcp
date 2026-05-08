@@ -22,23 +22,23 @@ __all__ = ['FirewallArgs', 'Firewall']
 class FirewallArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 allows: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
-                 denies: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_config: Optional[pulumi.Input['FirewallLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['FirewallParamsArgs']] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allows: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
+                 denies: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_config: pulumi.Input[Optional['FirewallLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['FirewallParamsArgs']] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
 
@@ -180,7 +180,7 @@ class FirewallArgs:
 
     @_builtins.property
     @pulumi.getter
-    def allows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]]:
+    def allows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]]:
         """
         The list of ALLOW rules specified by this firewall. Each rule
         specifies a protocol and port-range tuple that describes a permitted
@@ -190,12 +190,12 @@ class FirewallArgs:
         return pulumi.get(self, "allows")
 
     @allows.setter
-    def allows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]]):
+    def allows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]]):
         pulumi.set(self, "allows", value)
 
     @_builtins.property
     @pulumi.getter
-    def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]]:
+    def denies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]]:
         """
         The list of DENY rules specified by this firewall. Each rule specifies
         a protocol and port-range tuple that describes a denied connection.
@@ -204,12 +204,12 @@ class FirewallArgs:
         return pulumi.get(self, "denies")
 
     @denies.setter
-    def denies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]]):
+    def denies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]]):
         pulumi.set(self, "denies", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -217,12 +217,12 @@ class FirewallArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRanges")
-    def destination_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If destination ranges are specified, the firewall will apply only to
         traffic that has destination IP address in these ranges. These ranges
@@ -231,12 +231,12 @@ class FirewallArgs:
         return pulumi.get(self, "destination_ranges")
 
     @destination_ranges.setter
-    def destination_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Direction of traffic to which this firewall applies; default is
         INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
@@ -246,12 +246,12 @@ class FirewallArgs:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the firewall rule is disabled, i.e not applied to the
         network it is associated with. When set to true, the firewall rule is
@@ -261,13 +261,13 @@ class FirewallArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
     @_utilities.deprecated("""Deprecated in favor of log_config""")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field denotes whether to enable logging for a particular firewall rule.
         If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
@@ -275,12 +275,12 @@ class FirewallArgs:
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['FirewallLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['FirewallLogConfigArgs']]:
         """
         This field denotes the logging options for a particular firewall rule.
         If defined, logging is enabled, and logs will be exported to Cloud Logging.
@@ -289,12 +289,12 @@ class FirewallArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['FirewallLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['FirewallLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -307,12 +307,12 @@ class FirewallArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['FirewallParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['FirewallParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -320,12 +320,12 @@ class FirewallArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['FirewallParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['FirewallParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority for this rule. This is an integer between 0 and 65535, both
         inclusive. When not specified, the value assumed is 1000. Relative
@@ -337,12 +337,12 @@ class FirewallArgs:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -350,12 +350,12 @@ class FirewallArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRanges")
-    def source_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If source ranges are specified, the firewall will apply only to
         traffic that has source IP address in these ranges. These ranges must
@@ -370,12 +370,12 @@ class FirewallArgs:
         return pulumi.get(self, "source_ranges")
 
     @source_ranges.setter
-    def source_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceServiceAccounts")
-    def source_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_service_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If source service accounts are specified, the firewall will apply only
         to traffic originating from an instance with a service account in this
@@ -393,12 +393,12 @@ class FirewallArgs:
         return pulumi.get(self, "source_service_accounts")
 
     @source_service_accounts.setter
-    def source_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_service_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_service_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceTags")
-    def source_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If source tags are specified, the firewall will apply only to traffic
         with source IP that belongs to a tag listed in source tags. Source
@@ -414,12 +414,12 @@ class FirewallArgs:
         return pulumi.get(self, "source_tags")
 
     @source_tags.setter
-    def source_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetServiceAccounts")
-    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_service_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of service accounts indicating sets of instances located in the
         network that may make network connections as specified in allowed[].
@@ -431,12 +431,12 @@ class FirewallArgs:
         return pulumi.get(self, "target_service_accounts")
 
     @target_service_accounts.setter
-    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_service_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_service_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTags")
-    def target_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of instance tags indicating sets of instances located in the
         network that may make network connections as specified in allowed[].
@@ -446,33 +446,33 @@ class FirewallArgs:
         return pulumi.get(self, "target_tags")
 
     @target_tags.setter
-    def target_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_tags", value)
 
 
 @pulumi.input_type
 class _FirewallState:
     def __init__(__self__, *,
-                 allows: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 denies: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_config: Optional[pulumi.Input['FirewallLogConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['FirewallParamsArgs']] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allows: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 denies: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_config: pulumi.Input[Optional['FirewallLogConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['FirewallParamsArgs']] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
 
@@ -609,7 +609,7 @@ class _FirewallState:
 
     @_builtins.property
     @pulumi.getter
-    def allows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]]:
+    def allows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]]:
         """
         The list of ALLOW rules specified by this firewall. Each rule
         specifies a protocol and port-range tuple that describes a permitted
@@ -619,24 +619,24 @@ class _FirewallState:
         return pulumi.get(self, "allows")
 
     @allows.setter
-    def allows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowArgs']]]]):
+    def allows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallAllowArgs']]]]):
         pulumi.set(self, "allows", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]]:
+    def denies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]]:
         """
         The list of DENY rules specified by this firewall. Each rule specifies
         a protocol and port-range tuple that describes a denied connection.
@@ -645,12 +645,12 @@ class _FirewallState:
         return pulumi.get(self, "denies")
 
     @denies.setter
-    def denies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDenyArgs']]]]):
+    def denies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDenyArgs']]]]):
         pulumi.set(self, "denies", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -658,12 +658,12 @@ class _FirewallState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRanges")
-    def destination_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If destination ranges are specified, the firewall will apply only to
         traffic that has destination IP address in these ranges. These ranges
@@ -672,12 +672,12 @@ class _FirewallState:
         return pulumi.get(self, "destination_ranges")
 
     @destination_ranges.setter
-    def destination_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Direction of traffic to which this firewall applies; default is
         INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
@@ -687,12 +687,12 @@ class _FirewallState:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the firewall rule is disabled, i.e not applied to the
         network it is associated with. When set to true, the firewall rule is
@@ -702,13 +702,13 @@ class _FirewallState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
     @_utilities.deprecated("""Deprecated in favor of log_config""")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field denotes whether to enable logging for a particular firewall rule.
         If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `log_config`
@@ -716,12 +716,12 @@ class _FirewallState:
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['FirewallLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['FirewallLogConfigArgs']]:
         """
         This field denotes the logging options for a particular firewall rule.
         If defined, logging is enabled, and logs will be exported to Cloud Logging.
@@ -730,12 +730,12 @@ class _FirewallState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['FirewallLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['FirewallLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -748,24 +748,24 @@ class _FirewallState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or self_link of the network to attach this firewall to.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['FirewallParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['FirewallParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -773,12 +773,12 @@ class _FirewallState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['FirewallParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['FirewallParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Priority for this rule. This is an integer between 0 and 65535, both
         inclusive. When not specified, the value assumed is 1000. Relative
@@ -790,12 +790,12 @@ class _FirewallState:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -803,24 +803,24 @@ class _FirewallState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRanges")
-    def source_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If source ranges are specified, the firewall will apply only to
         traffic that has source IP address in these ranges. These ranges must
@@ -835,12 +835,12 @@ class _FirewallState:
         return pulumi.get(self, "source_ranges")
 
     @source_ranges.setter
-    def source_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceServiceAccounts")
-    def source_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_service_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If source service accounts are specified, the firewall will apply only
         to traffic originating from an instance with a service account in this
@@ -858,12 +858,12 @@ class _FirewallState:
         return pulumi.get(self, "source_service_accounts")
 
     @source_service_accounts.setter
-    def source_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_service_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_service_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceTags")
-    def source_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If source tags are specified, the firewall will apply only to traffic
         with source IP that belongs to a tag listed in source tags. Source
@@ -879,12 +879,12 @@ class _FirewallState:
         return pulumi.get(self, "source_tags")
 
     @source_tags.setter
-    def source_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetServiceAccounts")
-    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_service_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of service accounts indicating sets of instances located in the
         network that may make network connections as specified in allowed[].
@@ -896,12 +896,12 @@ class _FirewallState:
         return pulumi.get(self, "target_service_accounts")
 
     @target_service_accounts.setter
-    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_service_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_service_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTags")
-    def target_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of instance tags indicating sets of instances located in the
         network that may make network connections as specified in allowed[].
@@ -911,7 +911,7 @@ class _FirewallState:
         return pulumi.get(self, "target_tags")
 
     @target_tags.setter
-    def target_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_tags", value)
 
 
@@ -921,24 +921,24 @@ class Firewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
-                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
+                 denies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_config: pulumi.Input[Optional[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Each network has its own firewall controlling access to and from the
@@ -1222,24 +1222,24 @@ class Firewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
-                 denies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
+                 denies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_config: pulumi.Input[Optional[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1281,26 +1281,26 @@ class Firewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            denies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_config: Optional[pulumi.Input[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            source_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Firewall':
+            allows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallAllowArgs', 'FirewallAllowArgsDict']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            denies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDenyArgs', 'FirewallDenyArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_config: pulumi.Input[Optional[Union['FirewallLogConfigArgs', 'FirewallLogConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['FirewallParamsArgs', 'FirewallParamsArgsDict']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Firewall':
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

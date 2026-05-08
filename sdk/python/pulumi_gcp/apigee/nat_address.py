@@ -20,8 +20,8 @@ __all__ = ['NatAddressArgs', 'NatAddress']
 class NatAddressArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatAddress resource.
 
@@ -51,37 +51,37 @@ class NatAddressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def activate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def activate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies whether the reserved NAT address should be activate.
         """
         return pulumi.get(self, "activate")
 
     @activate.setter
-    def activate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def activate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activate", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID of the NAT address.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _NatAddressState:
     def __init__(__self__, *,
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatAddress resources.
 
@@ -105,19 +105,19 @@ class _NatAddressState:
 
     @_builtins.property
     @pulumi.getter
-    def activate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def activate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies whether the reserved NAT address should be activate.
         """
         return pulumi.get(self, "activate")
 
     @activate.setter
-    def activate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def activate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activate", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee instance associated with the Apigee environment,
         in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
@@ -125,43 +125,43 @@ class _NatAddressState:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocated NAT IP address.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID of the NAT address.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the NAT IP address.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -171,9 +171,9 @@ class NatAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
@@ -471,9 +471,9 @@ class NatAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 activate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -500,11 +500,11 @@ class NatAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activate: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'NatAddress':
+            activate: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'NatAddress':
         """
         Get an existing NatAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

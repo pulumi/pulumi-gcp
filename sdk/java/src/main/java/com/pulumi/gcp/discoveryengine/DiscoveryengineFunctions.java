@@ -36,8 +36,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -69,8 +69,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -113,8 +113,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -146,8 +146,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -190,8 +190,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -223,8 +223,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -267,8 +267,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -300,8 +300,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -344,8 +344,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -377,8 +377,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -421,8 +421,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -454,8 +454,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -498,8 +498,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -531,8 +531,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -573,8 +573,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -615,8 +615,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -657,8 +657,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -699,8 +699,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -741,8 +741,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -783,8 +783,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -825,8 +825,8 @@ public final class DiscoveryengineFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.discoveryengine.DiscoveryengineFunctions;
      * import com.pulumi.gcp.discoveryengine.inputs.GetDataStoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

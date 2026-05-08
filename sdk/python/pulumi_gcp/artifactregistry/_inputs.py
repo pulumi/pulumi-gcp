@@ -76,17 +76,17 @@ class RepositoryCleanupPolicyArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    action: NotRequired[pulumi.Input[_builtins.str]]
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy action.
     Possible values are: `DELETE`, `KEEP`.
     """
-    condition: NotRequired[pulumi.Input['RepositoryCleanupPolicyConditionArgsDict']]
+    condition: NotRequired[pulumi.Input[Optional['RepositoryCleanupPolicyConditionArgs']]]
     """
     Policy condition for matching versions.
     Structure is documented below.
     """
-    most_recent_versions: NotRequired[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgsDict']]
+    most_recent_versions: NotRequired[pulumi.Input[Optional['RepositoryCleanupPolicyMostRecentVersionsArgs']]]
     """
     Policy condition for retaining a minimum number of versions. May only be
     specified with a Keep action.
@@ -97,9 +97,9 @@ class RepositoryCleanupPolicyArgsDict(TypedDict):
 class RepositoryCleanupPolicyArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']] = None,
-                 most_recent_versions: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional['RepositoryCleanupPolicyConditionArgs']] = None,
+                 most_recent_versions: pulumi.Input[Optional['RepositoryCleanupPolicyMostRecentVersionsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] id: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] action: Policy action.
@@ -132,7 +132,7 @@ class RepositoryCleanupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy action.
         Possible values are: `DELETE`, `KEEP`.
@@ -140,12 +140,12 @@ class RepositoryCleanupPolicyArgs:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['RepositoryCleanupPolicyConditionArgs']]:
         """
         Policy condition for matching versions.
         Structure is documented below.
@@ -153,12 +153,12 @@ class RepositoryCleanupPolicyArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['RepositoryCleanupPolicyConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="mostRecentVersions")
-    def most_recent_versions(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']]:
+    def most_recent_versions(self) -> pulumi.Input[Optional['RepositoryCleanupPolicyMostRecentVersionsArgs']]:
         """
         Policy condition for retaining a minimum number of versions. May only be
         specified with a Keep action.
@@ -167,34 +167,34 @@ class RepositoryCleanupPolicyArgs:
         return pulumi.get(self, "most_recent_versions")
 
     @most_recent_versions.setter
-    def most_recent_versions(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']]):
+    def most_recent_versions(self, value: pulumi.Input[Optional['RepositoryCleanupPolicyMostRecentVersionsArgs']]):
         pulumi.set(self, "most_recent_versions", value)
 
 
 class RepositoryCleanupPolicyConditionArgsDict(TypedDict):
-    newer_than: NotRequired[pulumi.Input[_builtins.str]]
+    newer_than: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Match versions newer than a duration.
     """
-    older_than: NotRequired[pulumi.Input[_builtins.str]]
+    older_than: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Match versions older than a duration.
     """
-    package_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    package_name_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Match versions by package prefix. Applied on any prefix match.
     """
-    tag_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tag_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Match versions by tag prefix. Applied on any prefix match.
     """
-    tag_state: NotRequired[pulumi.Input[_builtins.str]]
+    tag_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Match versions by tag status.
     Default value is `ANY`.
     Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
     """
-    version_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    version_name_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Match versions by version name prefix. Applied on any prefix match.
     """
@@ -202,12 +202,12 @@ class RepositoryCleanupPolicyConditionArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryCleanupPolicyConditionArgs:
     def __init__(__self__, *,
-                 newer_than: Optional[pulumi.Input[_builtins.str]] = None,
-                 older_than: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tag_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tag_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 newer_than: pulumi.Input[Optional[_builtins.str]] = None,
+                 older_than: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tag_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tag_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] newer_than: Match versions newer than a duration.
         :param pulumi.Input[_builtins.str] older_than: Match versions older than a duration.
@@ -233,55 +233,55 @@ class RepositoryCleanupPolicyConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="newerThan")
-    def newer_than(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def newer_than(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Match versions newer than a duration.
         """
         return pulumi.get(self, "newer_than")
 
     @newer_than.setter
-    def newer_than(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def newer_than(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "newer_than", value)
 
     @_builtins.property
     @pulumi.getter(name="olderThan")
-    def older_than(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def older_than(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Match versions older than a duration.
         """
         return pulumi.get(self, "older_than")
 
     @older_than.setter
-    def older_than(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def older_than(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "older_than", value)
 
     @_builtins.property
     @pulumi.getter(name="packageNamePrefixes")
-    def package_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def package_name_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Match versions by package prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "package_name_prefixes")
 
     @package_name_prefixes.setter
-    def package_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def package_name_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "package_name_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="tagPrefixes")
-    def tag_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tag_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Match versions by tag prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "tag_prefixes")
 
     @tag_prefixes.setter
-    def tag_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tag_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tag_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="tagState")
-    def tag_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Match versions by tag status.
         Default value is `ANY`.
@@ -290,28 +290,28 @@ class RepositoryCleanupPolicyConditionArgs:
         return pulumi.get(self, "tag_state")
 
     @tag_state.setter
-    def tag_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_state", value)
 
     @_builtins.property
     @pulumi.getter(name="versionNamePrefixes")
-    def version_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def version_name_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Match versions by version name prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "version_name_prefixes")
 
     @version_name_prefixes.setter
-    def version_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def version_name_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "version_name_prefixes", value)
 
 
 class RepositoryCleanupPolicyMostRecentVersionsArgsDict(TypedDict):
-    keep_count: NotRequired[pulumi.Input[_builtins.int]]
+    keep_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of versions to keep.
     """
-    package_name_prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    package_name_prefixes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Match versions by package prefix. Applied on any prefix match.
     """
@@ -319,8 +319,8 @@ class RepositoryCleanupPolicyMostRecentVersionsArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryCleanupPolicyMostRecentVersionsArgs:
     def __init__(__self__, *,
-                 keep_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 keep_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_name_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.int] keep_count: Minimum number of versions to keep.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] package_name_prefixes: Match versions by package prefix. Applied on any prefix match.
@@ -332,31 +332,31 @@ class RepositoryCleanupPolicyMostRecentVersionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="keepCount")
-    def keep_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def keep_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of versions to keep.
         """
         return pulumi.get(self, "keep_count")
 
     @keep_count.setter
-    def keep_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def keep_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "keep_count", value)
 
     @_builtins.property
     @pulumi.getter(name="packageNamePrefixes")
-    def package_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def package_name_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Match versions by package prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "package_name_prefixes")
 
     @package_name_prefixes.setter
-    def package_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def package_name_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "package_name_prefixes", value)
 
 
 class RepositoryDockerConfigArgsDict(TypedDict):
-    immutable_tags: NotRequired[pulumi.Input[_builtins.bool]]
+    immutable_tags: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
     """
@@ -364,7 +364,7 @@ class RepositoryDockerConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryDockerConfigArgs:
     def __init__(__self__, *,
-                 immutable_tags: Optional[pulumi.Input[_builtins.bool]] = None):
+                 immutable_tags: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] immutable_tags: The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
         """
@@ -373,28 +373,28 @@ class RepositoryDockerConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="immutableTags")
-    def immutable_tags(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def immutable_tags(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
         """
         return pulumi.get(self, "immutable_tags")
 
     @immutable_tags.setter
-    def immutable_tags(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def immutable_tags(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "immutable_tags", value)
 
 
 class RepositoryIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -420,25 +420,25 @@ class RepositoryIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RepositoryIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -464,21 +464,21 @@ class RepositoryIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RepositoryMavenConfigArgsDict(TypedDict):
-    allow_snapshot_overwrites: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_snapshot_overwrites: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The repository with this flag will allow publishing the same
     snapshot versions.
     """
-    version_policy: NotRequired[pulumi.Input[_builtins.str]]
+    version_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version policy defines the versions that the registry will accept.
     Default value is `VERSION_POLICY_UNSPECIFIED`.
@@ -488,8 +488,8 @@ class RepositoryMavenConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryMavenConfigArgs:
     def __init__(__self__, *,
-                 allow_snapshot_overwrites: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_snapshot_overwrites: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_snapshot_overwrites: The repository with this flag will allow publishing the same
                snapshot versions.
@@ -504,7 +504,7 @@ class RepositoryMavenConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowSnapshotOverwrites")
-    def allow_snapshot_overwrites(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_snapshot_overwrites(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The repository with this flag will allow publishing the same
         snapshot versions.
@@ -512,12 +512,12 @@ class RepositoryMavenConfigArgs:
         return pulumi.get(self, "allow_snapshot_overwrites")
 
     @allow_snapshot_overwrites.setter
-    def allow_snapshot_overwrites(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_snapshot_overwrites(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_snapshot_overwrites", value)
 
     @_builtins.property
     @pulumi.getter(name="versionPolicy")
-    def version_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version policy defines the versions that the registry will accept.
         Default value is `VERSION_POLICY_UNSPECIFIED`.
@@ -526,56 +526,56 @@ class RepositoryMavenConfigArgs:
         return pulumi.get(self, "version_policy")
 
     @version_policy.setter
-    def version_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_policy", value)
 
 
 class RepositoryRemoteRepositoryConfigArgsDict(TypedDict):
-    apt_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgsDict']]
+    apt_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]]
     """
     Specific settings for an Apt remote repository.
     Structure is documented below.
     """
-    common_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict']]
+    common_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]]
     """
     Specific settings for an Artifact Registory remote repository.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the remote source.
     """
-    disable_upstream_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_upstream_validation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the remote repository upstream and upstream credentials will
     not be validated.
     """
-    docker_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict']]
+    docker_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]]
     """
     Specific settings for a Docker remote repository.
     Structure is documented below.
     """
-    maven_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict']]
+    maven_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]]
     """
     Specific settings for a Maven remote repository.
     Structure is documented below.
     """
-    npm_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict']]
+    npm_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]]
     """
     Specific settings for an Npm remote repository.
     Structure is documented below.
     """
-    python_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict']]
+    python_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]]
     """
     Specific settings for a Python remote repository.
     Structure is documented below.
     """
-    upstream_credentials: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict']]
+    upstream_credentials: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]]
     """
     The credentials used to access the remote repository.
     Structure is documented below.
     """
-    yum_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgsDict']]
+    yum_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]]
     """
     Specific settings for an Yum remote repository.
     Structure is documented below.
@@ -584,16 +584,16 @@ class RepositoryRemoteRepositoryConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigArgs:
     def __init__(__self__, *,
-                 apt_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']] = None,
-                 common_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_upstream_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
-                 maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
-                 npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
-                 python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None,
-                 upstream_credentials: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']] = None,
-                 yum_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']] = None):
+                 apt_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryArgs']] = None,
+                 common_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_upstream_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 docker_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
+                 maven_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
+                 npm_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
+                 python_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None,
+                 upstream_credentials: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']] = None,
+                 yum_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryArgs']] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repository: Specific settings for an Apt remote repository.
                Structure is documented below.
@@ -638,7 +638,7 @@ class RepositoryRemoteRepositoryConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="aptRepository")
-    def apt_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]:
+    def apt_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]:
         """
         Specific settings for an Apt remote repository.
         Structure is documented below.
@@ -646,12 +646,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "apt_repository")
 
     @apt_repository.setter
-    def apt_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]):
+    def apt_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]):
         pulumi.set(self, "apt_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="commonRepository")
-    def common_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]:
+    def common_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]:
         """
         Specific settings for an Artifact Registory remote repository.
         Structure is documented below.
@@ -659,24 +659,24 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "common_repository")
 
     @common_repository.setter
-    def common_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]):
+    def common_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]):
         pulumi.set(self, "common_repository", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the remote source.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableUpstreamValidation")
-    def disable_upstream_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_upstream_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the remote repository upstream and upstream credentials will
         not be validated.
@@ -684,12 +684,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "disable_upstream_validation")
 
     @disable_upstream_validation.setter
-    def disable_upstream_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_upstream_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_upstream_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerRepository")
-    def docker_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]:
+    def docker_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]:
         """
         Specific settings for a Docker remote repository.
         Structure is documented below.
@@ -697,12 +697,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "docker_repository")
 
     @docker_repository.setter
-    def docker_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]):
+    def docker_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]):
         pulumi.set(self, "docker_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="mavenRepository")
-    def maven_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]:
+    def maven_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]:
         """
         Specific settings for a Maven remote repository.
         Structure is documented below.
@@ -710,12 +710,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "maven_repository")
 
     @maven_repository.setter
-    def maven_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]):
+    def maven_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]):
         pulumi.set(self, "maven_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="npmRepository")
-    def npm_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]:
+    def npm_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]:
         """
         Specific settings for an Npm remote repository.
         Structure is documented below.
@@ -723,12 +723,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "npm_repository")
 
     @npm_repository.setter
-    def npm_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]):
+    def npm_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]):
         pulumi.set(self, "npm_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonRepository")
-    def python_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]:
+    def python_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]:
         """
         Specific settings for a Python remote repository.
         Structure is documented below.
@@ -736,12 +736,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "python_repository")
 
     @python_repository.setter
-    def python_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]):
+    def python_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]):
         pulumi.set(self, "python_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="upstreamCredentials")
-    def upstream_credentials(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]:
+    def upstream_credentials(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]:
         """
         The credentials used to access the remote repository.
         Structure is documented below.
@@ -749,12 +749,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "upstream_credentials")
 
     @upstream_credentials.setter
-    def upstream_credentials(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]):
+    def upstream_credentials(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]):
         pulumi.set(self, "upstream_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="yumRepository")
-    def yum_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]:
+    def yum_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]:
         """
         Specific settings for an Yum remote repository.
         Structure is documented below.
@@ -762,12 +762,12 @@ class RepositoryRemoteRepositoryConfigArgs:
         return pulumi.get(self, "yum_repository")
 
     @yum_repository.setter
-    def yum_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]):
+    def yum_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]):
         pulumi.set(self, "yum_repository", value)
 
 
 class RepositoryRemoteRepositoryConfigAptRepositoryArgsDict(TypedDict):
-    public_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgsDict']]
+    public_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]]
     """
     One of the publicly available Apt repositories supported by Artifact Registry.
     Structure is documented below.
@@ -776,7 +776,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
     def __init__(__self__, *,
-                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']] = None):
+                 public_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Apt repositories supported by Artifact Registry.
                Structure is documented below.
@@ -786,7 +786,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]:
+    def public_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]:
         """
         One of the publicly available Apt repositories supported by Artifact Registry.
         Structure is documented below.
@@ -794,7 +794,7 @@ class RepositoryRemoteRepositoryConfigAptRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]):
+    def public_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]):
         pulumi.set(self, "public_repository", value)
 
 
@@ -886,12 +886,12 @@ class RepositoryRemoteRepositoryConfigCommonRepositoryArgs:
 
 
 class RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict']]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
     """
-    public_repository: NotRequired[pulumi.Input[_builtins.str]]
+    public_repository: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Address of the remote repository.
     Possible values are: `DOCKER_HUB`.
@@ -900,8 +900,8 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
     def __init__(__self__, *,
-                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']] = None,
-                 public_repository: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']] = None,
+                 public_repository: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
@@ -915,7 +915,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="customRepository")
-    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]:
+    def custom_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]:
         """
         [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
@@ -923,12 +923,12 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
         return pulumi.get(self, "custom_repository")
 
     @custom_repository.setter
-    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]):
+    def custom_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]):
         pulumi.set(self, "custom_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address of the remote repository.
         Possible values are: `DOCKER_HUB`.
@@ -936,12 +936,12 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_repository", value)
 
 
 class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specific uri to the registry, e.g. `"https://pypi.io"`
     """
@@ -949,7 +949,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict(T
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
         """
@@ -958,24 +958,24 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specific uri to the registry, e.g. `"https://pypi.io"`
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict']]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
     """
-    public_repository: NotRequired[pulumi.Input[_builtins.str]]
+    public_repository: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Address of the remote repository.
     Possible values are: `MAVEN_CENTRAL`.
@@ -984,8 +984,8 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
     def __init__(__self__, *,
-                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']] = None,
-                 public_repository: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']] = None,
+                 public_repository: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
@@ -999,7 +999,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="customRepository")
-    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]:
+    def custom_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]:
         """
         [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
@@ -1007,12 +1007,12 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
         return pulumi.get(self, "custom_repository")
 
     @custom_repository.setter
-    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]):
+    def custom_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]):
         pulumi.set(self, "custom_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address of the remote repository.
         Possible values are: `MAVEN_CENTRAL`.
@@ -1020,12 +1020,12 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_repository", value)
 
 
 class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specific uri to the registry, e.g. `"https://pypi.io"`
     """
@@ -1033,7 +1033,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict(Ty
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
         """
@@ -1042,24 +1042,24 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specific uri to the registry, e.g. `"https://pypi.io"`
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict']]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
     """
-    public_repository: NotRequired[pulumi.Input[_builtins.str]]
+    public_repository: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Address of the remote repository.
     Possible values are: `NPMJS`.
@@ -1068,8 +1068,8 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
     def __init__(__self__, *,
-                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']] = None,
-                 public_repository: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']] = None,
+                 public_repository: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
@@ -1083,7 +1083,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="customRepository")
-    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]:
+    def custom_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]:
         """
         [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
@@ -1091,12 +1091,12 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
         return pulumi.get(self, "custom_repository")
 
     @custom_repository.setter
-    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]):
+    def custom_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]):
         pulumi.set(self, "custom_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address of the remote repository.
         Possible values are: `NPMJS`.
@@ -1104,12 +1104,12 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_repository", value)
 
 
 class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specific uri to the registry, e.g. `"https://pypi.io"`
     """
@@ -1117,7 +1117,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict(Type
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
         """
@@ -1126,24 +1126,24 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specific uri to the registry, e.g. `"https://pypi.io"`
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict']]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
     """
-    public_repository: NotRequired[pulumi.Input[_builtins.str]]
+    public_repository: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Address of the remote repository.
     Possible values are: `PYPI`.
@@ -1152,8 +1152,8 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
     def __init__(__self__, *,
-                 custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']] = None,
-                 public_repository: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']] = None,
+                 public_repository: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
@@ -1167,7 +1167,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="customRepository")
-    def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]:
+    def custom_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]:
         """
         [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
@@ -1175,12 +1175,12 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
         return pulumi.get(self, "custom_repository")
 
     @custom_repository.setter
-    def custom_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]):
+    def custom_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]):
         pulumi.set(self, "custom_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address of the remote repository.
         Possible values are: `PYPI`.
@@ -1188,12 +1188,12 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_repository", value)
 
 
 class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specific uri to the registry, e.g. `"https://pypi.io"`
     """
@@ -1201,7 +1201,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict(T
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: Specific uri to the registry, e.g. `"https://pypi.io"`
         """
@@ -1210,19 +1210,19 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specific uri to the registry, e.g. `"https://pypi.io"`
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict(TypedDict):
-    username_password_credentials: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgsDict']]
+    username_password_credentials: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]]
     """
     Use username and password to access the remote repository.
     Structure is documented below.
@@ -1231,7 +1231,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs:
     def __init__(__self__, *,
-                 username_password_credentials: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']] = None):
+                 username_password_credentials: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs'] username_password_credentials: Use username and password to access the remote repository.
                Structure is documented below.
@@ -1241,7 +1241,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="usernamePasswordCredentials")
-    def username_password_credentials(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]:
+    def username_password_credentials(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]:
         """
         Use username and password to access the remote repository.
         Structure is documented below.
@@ -1249,18 +1249,18 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs:
         return pulumi.get(self, "username_password_credentials")
 
     @username_password_credentials.setter
-    def username_password_credentials(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]):
+    def username_password_credentials(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]):
         pulumi.set(self, "username_password_credentials", value)
 
 
 class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgsDict(TypedDict):
-    password_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    password_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Secret Manager key version that holds the password to access the
     remote repository. Must be in the format of
     `projects/{project}/secrets/{secret}/versions/{version}`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username to access the remote repository.
     """
@@ -1268,8 +1268,8 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs:
     def __init__(__self__, *,
-                 password_secret_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 password_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password_secret_version: The Secret Manager key version that holds the password to access the
                remote repository. Must be in the format of
@@ -1283,7 +1283,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
 
     @_builtins.property
     @pulumi.getter(name="passwordSecretVersion")
-    def password_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Secret Manager key version that holds the password to access the
         remote repository. Must be in the format of
@@ -1292,24 +1292,24 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
         return pulumi.get(self, "password_secret_version")
 
     @password_secret_version.setter
-    def password_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_secret_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to access the remote repository.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class RepositoryRemoteRepositoryConfigYumRepositoryArgsDict(TypedDict):
-    public_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgsDict']]
+    public_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]]
     """
     One of the publicly available Yum repositories supported by Artifact Registry.
     Structure is documented below.
@@ -1318,7 +1318,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
     def __init__(__self__, *,
-                 public_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']] = None):
+                 public_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs'] public_repository: One of the publicly available Yum repositories supported by Artifact Registry.
                Structure is documented below.
@@ -1328,7 +1328,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="publicRepository")
-    def public_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]:
+    def public_repository(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]:
         """
         One of the publicly available Yum repositories supported by Artifact Registry.
         Structure is documented below.
@@ -1336,7 +1336,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryArgs:
         return pulumi.get(self, "public_repository")
 
     @public_repository.setter
-    def public_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]):
+    def public_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]):
         pulumi.set(self, "public_repository", value)
 
 
@@ -1391,7 +1391,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
 
 
 class RepositoryVirtualRepositoryConfigArgsDict(TypedDict):
-    upstream_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict']]]]
+    upstream_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]]
     """
     Policies that configure the upstream artifacts distributed by the Virtual
     Repository. Upstream policies cannot be set on a standard repository.
@@ -1401,7 +1401,7 @@ class RepositoryVirtualRepositoryConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryVirtualRepositoryConfigArgs:
     def __init__(__self__, *,
-                 upstream_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]] = None):
+                 upstream_policies: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
                Repository. Upstream policies cannot be set on a standard repository.
@@ -1412,7 +1412,7 @@ class RepositoryVirtualRepositoryConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="upstreamPolicies")
-    def upstream_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]:
+    def upstream_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]:
         """
         Policies that configure the upstream artifacts distributed by the Virtual
         Repository. Upstream policies cannot be set on a standard repository.
@@ -1421,20 +1421,20 @@ class RepositoryVirtualRepositoryConfigArgs:
         return pulumi.get(self, "upstream_policies")
 
     @upstream_policies.setter
-    def upstream_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]):
+    def upstream_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]):
         pulumi.set(self, "upstream_policies", value)
 
 
 class RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-provided ID of the upstream policy.
     """
-    priority: NotRequired[pulumi.Input[_builtins.int]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Entries with a greater priority value take precedence in the pull order.
     """
-    repository: NotRequired[pulumi.Input[_builtins.str]]
+    repository: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A reference to the repository resource, for example:
     "projects/p1/locations/us-central1/repository/repo1".
@@ -1443,9 +1443,9 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryVirtualRepositoryConfigUpstreamPolicyArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The user-provided ID of the upstream policy.
         :param pulumi.Input[_builtins.int] priority: Entries with a greater priority value take precedence in the pull order.
@@ -1461,31 +1461,31 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-provided ID of the upstream policy.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Entries with a greater priority value take precedence in the pull order.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the repository resource, for example:
         "projects/p1/locations/us-central1/repository/repo1".
@@ -1493,22 +1493,22 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicyArgs:
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository", value)
 
 
 class RepositoryVulnerabilityScanningConfigArgsDict(TypedDict):
-    enablement_config: NotRequired[pulumi.Input[_builtins.str]]
+    enablement_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
     Possible values are: `INHERITED`, `DISABLED`.
     """
-    enablement_state: NotRequired[pulumi.Input[_builtins.str]]
+    enablement_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     This field returns whether scanning is active for this repository.
     """
-    enablement_state_reason: NotRequired[pulumi.Input[_builtins.str]]
+    enablement_state_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     This provides an explanation for the state of scanning on this repository.
@@ -1517,9 +1517,9 @@ class RepositoryVulnerabilityScanningConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RepositoryVulnerabilityScanningConfigArgs:
     def __init__(__self__, *,
-                 enablement_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 enablement_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 enablement_state_reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 enablement_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 enablement_state_reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] enablement_config: This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
                Possible values are: `INHERITED`, `DISABLED`.
@@ -1537,7 +1537,7 @@ class RepositoryVulnerabilityScanningConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enablementConfig")
-    def enablement_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enablement_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
         Possible values are: `INHERITED`, `DISABLED`.
@@ -1545,12 +1545,12 @@ class RepositoryVulnerabilityScanningConfigArgs:
         return pulumi.get(self, "enablement_config")
 
     @enablement_config.setter
-    def enablement_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enablement_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enablement_config", value)
 
     @_builtins.property
     @pulumi.getter(name="enablementState")
-    def enablement_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enablement_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         This field returns whether scanning is active for this repository.
@@ -1558,12 +1558,12 @@ class RepositoryVulnerabilityScanningConfigArgs:
         return pulumi.get(self, "enablement_state")
 
     @enablement_state.setter
-    def enablement_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enablement_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enablement_state", value)
 
     @_builtins.property
     @pulumi.getter(name="enablementStateReason")
-    def enablement_state_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enablement_state_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         This provides an explanation for the state of scanning on this repository.
@@ -1571,7 +1571,7 @@ class RepositoryVulnerabilityScanningConfigArgs:
         return pulumi.get(self, "enablement_state_reason")
 
     @enablement_state_reason.setter
-    def enablement_state_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enablement_state_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enablement_state_reason", value)
 
 
@@ -1580,17 +1580,17 @@ class RuleConditionArgsDict(TypedDict):
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of the expression. This is a longer text which
     describes the expression, e.g. when hovered over it in a UI.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. String indicating the location of the expression for error
     reporting, e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Title for the expression, i.e. a short string describing its purpose.
     """
@@ -1599,9 +1599,9 @@ class RuleConditionArgsDict(TypedDict):
 class RuleConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the expression. This is a longer text which
@@ -1632,7 +1632,7 @@ class RuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the expression. This is a longer text which
         describes the expression, e.g. when hovered over it in a UI.
@@ -1640,12 +1640,12 @@ class RuleConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. String indicating the location of the expression for error
         reporting, e.g. a file name and a position in the file.
@@ -1653,19 +1653,19 @@ class RuleConditionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 

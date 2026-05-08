@@ -187,8 +187,8 @@ def get_parameter(parameter_id: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_parameter_output(parameter_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_parameter_output(parameter_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetParameterResult]:
     """
     Use this data source to get information about a Parameter Manager Parameter.

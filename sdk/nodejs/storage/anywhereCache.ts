@@ -170,39 +170,39 @@ export interface AnywhereCacheState {
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
      */
-    admissionPolicy?: pulumi.Input<string>;
+    admissionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Anywhere cache instance.
      */
-    anywhereCacheId?: pulumi.Input<string>;
+    anywhereCacheId?: pulumi.Input<string | undefined>;
     /**
      * A reference to Bucket resource
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the cache instance in RFC 3339 format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * True if the cache instance has an active Update long-running operation.
      */
-    pendingUpdate?: pulumi.Input<boolean>;
+    pendingUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * The current state of the cache instance.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
     /**
      * The modification time of the cache instance metadata in RFC 3339 format.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The zone in which the cache instance needs to be created. For example, `us-central1-a.`
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,7 +214,7 @@ export interface AnywhereCacheArgs {
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
      */
-    admissionPolicy?: pulumi.Input<string>;
+    admissionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A reference to Bucket resource
      */
@@ -222,7 +222,7 @@ export interface AnywhereCacheArgs {
     /**
      * The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
     /**
      * The zone in which the cache instance needs to be created. For example, `us-central1-a.`
      */

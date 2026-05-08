@@ -264,67 +264,67 @@ export interface DataProductState {
      * Custom user defined access groups at the data product level.
      * Structure is documented below.
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductAccessGroup>[] | undefined>;
     /**
      * Number of associated data assets.
      */
-    assetCount?: pulumi.Input<number>;
+    assetCount?: pulumi.Input<number | undefined>;
     /**
      * Creation timestamp.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data product.
      */
-    dataProductId?: pulumi.Input<string>;
+    dataProductId?: pulumi.Input<string | undefined>;
     /**
      * Description of the data product.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User-friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Checksum for concurrency control.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the data product.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Emails of the owners.
      */
-    ownerEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * System generated unique ID.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last update timestamp.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -335,7 +335,7 @@ export interface DataProductArgs {
      * Custom user defined access groups at the data product level.
      * Structure is documented below.
      */
-    accessGroups?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductAccessGroup>[]>;
+    accessGroups?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductAccessGroup>[] | undefined>;
     /**
      * The ID of the data product.
      */
@@ -343,7 +343,7 @@ export interface DataProductArgs {
     /**
      * Description of the data product.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User-friendly display name.
      */
@@ -353,7 +353,7 @@ export interface DataProductArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the data product.
      */
@@ -366,5 +366,5 @@ export interface DataProductArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

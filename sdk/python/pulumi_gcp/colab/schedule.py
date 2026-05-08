@@ -26,12 +26,12 @@ class ScheduleArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  max_concurrent_run_count: pulumi.Input[_builtins.str],
-                 allow_queueing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schedule resource.
 
@@ -130,55 +130,55 @@ class ScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowQueueing")
-    def allow_queueing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_queueing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         """
         return pulumi.get(self, "allow_queueing")
 
     @allow_queueing.setter
-    def allow_queueing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_queueing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_queueing", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRunCount")
-    def max_run_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_run_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         """
         return pulumi.get(self, "max_run_count")
 
     @max_run_count.setter
-    def max_run_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_run_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_run_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -186,38 +186,38 @@ class ScheduleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type
 class _ScheduleState:
     def __init__(__self__, *,
-                 allow_queueing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_notebook_execution_job_request: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestArgs']] = None,
-                 cron: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_concurrent_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_notebook_execution_job_request: pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestArgs']] = None,
+                 cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrent_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schedule resources.
 
@@ -266,19 +266,19 @@ class _ScheduleState:
 
     @_builtins.property
     @pulumi.getter(name="allowQueueing")
-    def allow_queueing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_queueing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
         """
         return pulumi.get(self, "allow_queueing")
 
     @allow_queueing.setter
-    def allow_queueing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_queueing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_queueing", value)
 
     @_builtins.property
     @pulumi.getter(name="createNotebookExecutionJobRequest")
-    def create_notebook_execution_job_request(self) -> Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestArgs']]:
+    def create_notebook_execution_job_request(self) -> pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestArgs']]:
         """
         Request for google_colab_notebook_execution.
         Structure is documented below.
@@ -286,108 +286,108 @@ class _ScheduleState:
         return pulumi.get(self, "create_notebook_execution_job_request")
 
     @create_notebook_execution_job_request.setter
-    def create_notebook_execution_job_request(self, value: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestArgs']]):
+    def create_notebook_execution_job_request(self, value: pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestArgs']]):
         pulumi.set(self, "create_notebook_execution_job_request", value)
 
     @_builtins.property
     @pulumi.getter
-    def cron(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
         """
         return pulumi.get(self, "cron")
 
     @cron.setter
-    def cron(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The display name of the Schedule.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource: https://cloud.google.com/colab/docs/locations
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentRunCount")
-    def max_concurrent_run_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_concurrent_run_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
         """
         return pulumi.get(self, "max_concurrent_run_count")
 
     @max_concurrent_run_count.setter
-    def max_concurrent_run_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_concurrent_run_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_concurrent_run_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRunCount")
-    def max_run_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_run_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
         """
         return pulumi.get(self, "max_run_count")
 
     @max_run_count.setter
-    def max_run_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_run_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_run_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Schedule
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -395,31 +395,31 @@ class _ScheduleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The state of the schedule.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -429,17 +429,17 @@ class Schedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_queueing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_notebook_execution_job_request: Optional[pulumi.Input[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
-                 cron: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_concurrent_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_notebook_execution_job_request: pulumi.Input[Optional[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
+                 cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrent_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         'Colab Enterprise Notebook Execution Schedules.'
@@ -525,7 +525,7 @@ class Schedule(pulumi.CustomResource):
                             name=notebook.name
         ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
         ,
-                        "generation": notebook.generation,
+                        "generation": notebook.generation.apply(lambda x: str(x)),
                     },
                     "notebook_runtime_template_resource_name": pulumi.Output.all(
                         project=my_runtime_template.project,
@@ -616,7 +616,7 @@ class Schedule(pulumi.CustomResource):
                             name=notebook.name
         ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
         ,
-                        "generation": notebook.generation,
+                        "generation": notebook.generation.apply(lambda x: str(x)),
                     },
                     "notebook_runtime_template_resource_name": pulumi.Output.all(
                         project=my_runtime_template.project,
@@ -839,7 +839,7 @@ class Schedule(pulumi.CustomResource):
                             name=notebook.name
         ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
         ,
-                        "generation": notebook.generation,
+                        "generation": notebook.generation.apply(lambda x: str(x)),
                     },
                     "notebook_runtime_template_resource_name": pulumi.Output.all(
                         project=my_runtime_template.project,
@@ -930,7 +930,7 @@ class Schedule(pulumi.CustomResource):
                             name=notebook.name
         ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucket']}/{resolved_outputs['name']}")
         ,
-                        "generation": notebook.generation,
+                        "generation": notebook.generation.apply(lambda x: str(x)),
                     },
                     "notebook_runtime_template_resource_name": pulumi.Output.all(
                         project=my_runtime_template.project,
@@ -1062,17 +1062,17 @@ class Schedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_queueing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_notebook_execution_job_request: Optional[pulumi.Input[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
-                 cron: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_concurrent_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_notebook_execution_job_request: pulumi.Input[Optional[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
+                 cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrent_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1115,19 +1115,19 @@ class Schedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_queueing: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_notebook_execution_job_request: Optional[pulumi.Input[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
-            cron: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            max_concurrent_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-            max_run_count: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'Schedule':
+            allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_notebook_execution_job_request: pulumi.Input[Optional[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
+            cron: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_concurrent_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+            max_run_count: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'Schedule':
         """
         Get an existing Schedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

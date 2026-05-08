@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         Name = "tf-test-psa-network-peering",
     ///         Description = "test description",
     ///         VmwareEngineNetwork = cluster_nw.Id,
-    ///         PeerNetwork = Std.Index.Trimprefix.Invoke(new()
+    ///         PeerNetwork = Std.Trimprefix.Invoke(new()
     ///         {
     ///             Input = snPeering.Apply(getNetworkPeeringResult =&gt; getNetworkPeeringResult.PeerNetwork),
     ///             Prefix = "https://www.googleapis.com/compute/v1",
@@ -378,7 +378,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         Name = "tf-test-gcnv-network-peering",
     ///         Description = "test description",
     ///         VmwareEngineNetwork = cluster_nw.Id,
-    ///         PeerNetwork = Std.Index.Trimprefix.Invoke(new()
+    ///         PeerNetwork = Std.Trimprefix.Invoke(new()
     ///         {
     ///             Input = snPeering.Apply(getNetworkPeeringResult =&gt; getNetworkPeeringResult.PeerNetwork),
     ///             Prefix = "https://www.googleapis.com/compute/v1",

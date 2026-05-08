@@ -90,5 +90,5 @@ export interface GetSupportedDatabaseFlagsOutputArgs {
     /**
      * The ID of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

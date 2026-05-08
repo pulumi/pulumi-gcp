@@ -23,8 +23,8 @@ class QaScorecardRevisionArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  qa_scorecard: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 qa_scorecard_revision_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 qa_scorecard_revision_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a QaScorecardRevision resource.
 
@@ -69,7 +69,7 @@ class QaScorecardRevisionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -77,12 +77,12 @@ class QaScorecardRevisionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="qaScorecardRevisionId")
-    def qa_scorecard_revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qa_scorecard_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique ID for the new QaScorecardRevision. This ID will become the final
         component of the QaScorecardRevision's resource name.
@@ -91,22 +91,22 @@ class QaScorecardRevisionArgs:
         return pulumi.get(self, "qa_scorecard_revision_id")
 
     @qa_scorecard_revision_id.setter
-    def qa_scorecard_revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qa_scorecard_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qa_scorecard_revision_id", value)
 
 
 @pulumi.input_type
 class _QaScorecardRevisionState:
     def __init__(__self__, *,
-                 alternate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 qa_scorecard: Optional[pulumi.Input[_builtins.str]] = None,
-                 qa_scorecard_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshots: Optional[pulumi.Input[Sequence[pulumi.Input['QaScorecardRevisionSnapshotArgs']]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 alternate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
+                 qa_scorecard_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshots: pulumi.Input[Optional[Sequence[pulumi.Input['QaScorecardRevisionSnapshotArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QaScorecardRevision resources.
 
@@ -158,19 +158,19 @@ class _QaScorecardRevisionState:
 
     @_builtins.property
     @pulumi.getter(name="alternateIds")
-    def alternate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alternate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Alternative IDs for this revision of the scorecard, e.g., `latest`.
         """
         return pulumi.get(self, "alternate_ids")
 
     @alternate_ids.setter
-    def alternate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alternate_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time at which this scorecard was created.
@@ -178,24 +178,24 @@ class _QaScorecardRevisionState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Identifier. The scorecard name.
@@ -205,12 +205,12 @@ class _QaScorecardRevisionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -218,24 +218,24 @@ class _QaScorecardRevisionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="qaScorecard")
-    def qa_scorecard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qa_scorecard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "qa_scorecard")
 
     @qa_scorecard.setter
-    def qa_scorecard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qa_scorecard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qa_scorecard", value)
 
     @_builtins.property
     @pulumi.getter(name="qaScorecardRevisionId")
-    def qa_scorecard_revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qa_scorecard_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique ID for the new QaScorecardRevision. This ID will become the final
         component of the QaScorecardRevision's resource name.
@@ -244,12 +244,12 @@ class _QaScorecardRevisionState:
         return pulumi.get(self, "qa_scorecard_revision_id")
 
     @qa_scorecard_revision_id.setter
-    def qa_scorecard_revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qa_scorecard_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qa_scorecard_revision_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def snapshots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QaScorecardRevisionSnapshotArgs']]]]:
+    def snapshots(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QaScorecardRevisionSnapshotArgs']]]]:
         """
         A QaScorecard represents a collection of questions to be scored during
         analysis.
@@ -258,12 +258,12 @@ class _QaScorecardRevisionState:
         return pulumi.get(self, "snapshots")
 
     @snapshots.setter
-    def snapshots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QaScorecardRevisionSnapshotArgs']]]]):
+    def snapshots(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QaScorecardRevisionSnapshotArgs']]]]):
         pulumi.set(self, "snapshots", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the scorecard revision, indicating whether it's ready to
         be used in analysis.
@@ -278,7 +278,7 @@ class _QaScorecardRevisionState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -288,10 +288,10 @@ class QaScorecardRevision(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 qa_scorecard: Optional[pulumi.Input[_builtins.str]] = None,
-                 qa_scorecard_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
+                 qa_scorecard_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A revision of a QaScorecard.
@@ -368,10 +368,10 @@ class QaScorecardRevision(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 qa_scorecard: Optional[pulumi.Input[_builtins.str]] = None,
-                 qa_scorecard_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
+                 qa_scorecard_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -404,15 +404,15 @@ class QaScorecardRevision(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alternate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            qa_scorecard: Optional[pulumi.Input[_builtins.str]] = None,
-            qa_scorecard_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshots: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QaScorecardRevisionSnapshotArgs', 'QaScorecardRevisionSnapshotArgsDict']]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'QaScorecardRevision':
+            alternate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            qa_scorecard: pulumi.Input[Optional[_builtins.str]] = None,
+            qa_scorecard_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QaScorecardRevisionSnapshotArgs', 'QaScorecardRevisionSnapshotArgsDict']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'QaScorecardRevision':
         """
         Get an existing QaScorecardRevision resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

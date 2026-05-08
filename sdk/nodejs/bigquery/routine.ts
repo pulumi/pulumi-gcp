@@ -512,80 +512,80 @@ export interface RoutineState {
      * Input/output argument of a function or a stored procedure.
      * Structure is documented below.
      */
-    arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
+    arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[] | undefined>;
     /**
      * The time when this routine was created, in milliseconds since the
      * epoch.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
      * Possible values are: `DATA_MASKING`.
      */
-    dataGovernanceType?: pulumi.Input<string>;
+    dataGovernanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dataset containing this routine
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      */
-    definitionBody?: pulumi.Input<string>;
+    definitionBody?: pulumi.Input<string | undefined>;
     /**
      * The description of the routine if defined.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The determinism level of the JavaScript UDF if defined.
      * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      */
-    determinismLevel?: pulumi.Input<string>;
+    determinismLevel?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
      */
-    externalRuntimeOptions?: pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptions>;
+    externalRuntimeOptions?: pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptions | undefined>;
     /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
-    importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
+    importedLibraries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The language of the routine.
      * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The time when this routine was modified, in milliseconds since the
      * epoch.
      */
-    lastModifiedTime?: pulumi.Input<number>;
+    lastModifiedTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Options for a user-defined Python function.
      * Structure is documented below.
      */
-    pythonOptions?: pulumi.Input<inputs.bigquery.RoutinePythonOptions>;
+    pythonOptions?: pulumi.Input<inputs.bigquery.RoutinePythonOptions | undefined>;
     /**
      * Remote function specific options.
      * Structure is documented below.
      */
-    remoteFunctionOptions?: pulumi.Input<inputs.bigquery.RoutineRemoteFunctionOptions>;
+    remoteFunctionOptions?: pulumi.Input<inputs.bigquery.RoutineRemoteFunctionOptions | undefined>;
     /**
      * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
      * If absent, the return table type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the columns in the evaluated table result will
      * be cast to match the column types specificed in return table type, at query time.
      */
-    returnTableType?: pulumi.Input<string>;
+    returnTableType?: pulumi.Input<string | undefined>;
     /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
@@ -597,26 +597,26 @@ export interface RoutineState {
      * cannot suppress the recurring diff this causes. As a workaround, we recommend using
      * the schema as returned by the API.
      */
-    returnType?: pulumi.Input<string>;
+    returnType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
      */
-    routineId?: pulumi.Input<string>;
+    routineId?: pulumi.Input<string | undefined>;
     /**
      * The type of routine.
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
-    routineType?: pulumi.Input<string>;
+    routineType?: pulumi.Input<string | undefined>;
     /**
      * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
      * Possible values are: `DEFINER`, `INVOKER`.
      */
-    securityMode?: pulumi.Input<string>;
+    securityMode?: pulumi.Input<string | undefined>;
     /**
      * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
      * Structure is documented below.
      */
-    sparkOptions?: pulumi.Input<inputs.bigquery.RoutineSparkOptions>;
+    sparkOptions?: pulumi.Input<inputs.bigquery.RoutineSparkOptions | undefined>;
 }
 
 /**
@@ -627,12 +627,12 @@ export interface RoutineArgs {
      * Input/output argument of a function or a stored procedure.
      * Structure is documented below.
      */
-    arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[]>;
+    arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgument>[] | undefined>;
     /**
      * If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
      * Possible values are: `DATA_MASKING`.
      */
-    dataGovernanceType?: pulumi.Input<string>;
+    dataGovernanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dataset containing this routine
      */
@@ -645,52 +645,52 @@ export interface RoutineArgs {
     /**
      * The description of the routine if defined.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The determinism level of the JavaScript UDF if defined.
      * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      */
-    determinismLevel?: pulumi.Input<string>;
+    determinismLevel?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Options for the runtime of the external system.
      * This field is only applicable for Python UDFs.
      * Structure is documented below.
      */
-    externalRuntimeOptions?: pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptions>;
+    externalRuntimeOptions?: pulumi.Input<inputs.bigquery.RoutineExternalRuntimeOptions | undefined>;
     /**
      * Optional. If language = "JAVASCRIPT", this field stores the path of the
      * imported JAVASCRIPT libraries.
      */
-    importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
+    importedLibraries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The language of the routine.
      * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Options for a user-defined Python function.
      * Structure is documented below.
      */
-    pythonOptions?: pulumi.Input<inputs.bigquery.RoutinePythonOptions>;
+    pythonOptions?: pulumi.Input<inputs.bigquery.RoutinePythonOptions | undefined>;
     /**
      * Remote function specific options.
      * Structure is documented below.
      */
-    remoteFunctionOptions?: pulumi.Input<inputs.bigquery.RoutineRemoteFunctionOptions>;
+    remoteFunctionOptions?: pulumi.Input<inputs.bigquery.RoutineRemoteFunctionOptions | undefined>;
     /**
      * Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
      * If absent, the return table type is inferred from definitionBody at query time in each query
      * that references this routine. If present, then the columns in the evaluated table result will
      * be cast to match the column types specificed in return table type, at query time.
      */
-    returnTableType?: pulumi.Input<string>;
+    returnTableType?: pulumi.Input<string | undefined>;
     /**
      * A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
      * If absent, the return type is inferred from definitionBody at query time in each query
@@ -702,7 +702,7 @@ export interface RoutineArgs {
      * cannot suppress the recurring diff this causes. As a workaround, we recommend using
      * the schema as returned by the API.
      */
-    returnType?: pulumi.Input<string>;
+    returnType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
      */
@@ -716,10 +716,10 @@ export interface RoutineArgs {
      * Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
      * Possible values are: `DEFINER`, `INVOKER`.
      */
-    securityMode?: pulumi.Input<string>;
+    securityMode?: pulumi.Input<string | undefined>;
     /**
      * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
      * Structure is documented below.
      */
-    sparkOptions?: pulumi.Input<inputs.bigquery.RoutineSparkOptions>;
+    sparkOptions?: pulumi.Input<inputs.bigquery.RoutineSparkOptions | undefined>;
 }

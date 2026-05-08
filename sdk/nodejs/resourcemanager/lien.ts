@@ -161,29 +161,29 @@ export interface LienState {
     /**
      * Time of creation
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A system-generated unique identifier for this Lien.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A stable, user-visible/meaningful string identifying the origin
      * of the Lien, intended to be inspected programmatically. Maximum length of
      * 200 characters.
      */
-    origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string | undefined>;
     /**
      * A reference to the resource this Lien is attached to.
      * The server will validate the parent against those for which Liens are supported.
      * Since a variety of objects can have Liens against them, you must provide the type
      * prefix (e.g. "projects/my-project-name").
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Concise user-visible strings indicating why an action cannot be performed
      * on a resource. Maximum length of 200 characters.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
     /**
      * The types of operations which should be blocked as a result of this Lien.
      * Each value should correspond to an IAM permission. The server will validate
@@ -191,7 +191,7 @@ export interface LienState {
      * list is meaningless and will be rejected.
      * e.g. ['resourcemanager.projects.delete']
      */
-    restrictions?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

@@ -130,5 +130,5 @@ export interface GetKeysOutputArgs {
     /**
      * The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

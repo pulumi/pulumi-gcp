@@ -176,10 +176,10 @@ def get_package(location: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         repository_id=pulumi.get(__ret__, 'repository_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_package_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_package_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPackageResult]:
     """
     This data source fetches information of a package from a provided Artifact Registry repository.

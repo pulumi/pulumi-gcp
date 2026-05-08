@@ -24,14 +24,14 @@ class AiIndexEndpointDeployedIndexArgs:
                  deployed_index_id: pulumi.Input[_builtins.str],
                  index: pulumi.Input[_builtins.str],
                  index_endpoint: pulumi.Input[_builtins.str],
-                 automatic_resources: Optional[pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']] = None,
-                 dedicated_resources: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']] = None,
-                 deployed_index_auth_config: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']] = None,
-                 deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_access_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 automatic_resources: pulumi.Input[Optional['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']] = None,
+                 dedicated_resources: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']] = None,
+                 deployed_index_auth_config: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']] = None,
+                 deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_access_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AiIndexEndpointDeployedIndex resource.
 
@@ -119,7 +119,7 @@ class AiIndexEndpointDeployedIndexArgs:
 
     @_builtins.property
     @pulumi.getter(name="automaticResources")
-    def automatic_resources(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]:
+    def automatic_resources(self) -> pulumi.Input[Optional['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]:
         """
         A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
         Structure is documented below.
@@ -127,12 +127,12 @@ class AiIndexEndpointDeployedIndexArgs:
         return pulumi.get(self, "automatic_resources")
 
     @automatic_resources.setter
-    def automatic_resources(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]):
+    def automatic_resources(self, value: pulumi.Input[Optional['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]):
         pulumi.set(self, "automatic_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedResources")
-    def dedicated_resources(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]:
+    def dedicated_resources(self) -> pulumi.Input[Optional['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]:
         """
         A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
         Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
@@ -144,12 +144,12 @@ class AiIndexEndpointDeployedIndexArgs:
         return pulumi.get(self, "dedicated_resources")
 
     @dedicated_resources.setter
-    def dedicated_resources(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]):
+    def dedicated_resources(self, value: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]):
         pulumi.set(self, "dedicated_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedIndexAuthConfig")
-    def deployed_index_auth_config(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]:
+    def deployed_index_auth_config(self) -> pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]:
         """
         If set, the authentication is enabled for the private endpoint.
         Structure is documented below.
@@ -157,12 +157,12 @@ class AiIndexEndpointDeployedIndexArgs:
         return pulumi.get(self, "deployed_index_auth_config")
 
     @deployed_index_auth_config.setter
-    def deployed_index_auth_config(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]):
+    def deployed_index_auth_config(self, value: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]):
         pulumi.set(self, "deployed_index_auth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentGroup")
-    def deployment_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
         Creating deployment_groups with reserved_ip_ranges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deployment_group (except 'default') can only be used with the same reserved_ip_ranges which means if the deployment_group has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
@@ -171,48 +171,48 @@ class AiIndexEndpointDeployedIndexArgs:
         return pulumi.get(self, "deployment_group")
 
     @deployment_group.setter
-    def deployment_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_group", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAccessLogging")
-    def enable_access_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_access_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, private endpoint's access logs are sent to Cloud Logging.
         """
         return pulumi.get(self, "enable_access_logging")
 
     @enable_access_logging.setter
-    def enable_access_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_access_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_access_logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the index endpoint deployment. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRanges")
-    def reserved_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reserved_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
         If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
@@ -222,28 +222,28 @@ class AiIndexEndpointDeployedIndexArgs:
         return pulumi.get(self, "reserved_ip_ranges")
 
     @reserved_ip_ranges.setter
-    def reserved_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reserved_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reserved_ip_ranges", value)
 
 
 @pulumi.input_type
 class _AiIndexEndpointDeployedIndexState:
     def __init__(__self__, *,
-                 automatic_resources: Optional[pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_resources: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']] = None,
-                 deployed_index_auth_config: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']] = None,
-                 deployed_index_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_access_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 automatic_resources: pulumi.Input[Optional['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_resources: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']] = None,
+                 deployed_index_auth_config: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']] = None,
+                 deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_access_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AiIndexEndpointDeployedIndex resources.
 
@@ -311,7 +311,7 @@ class _AiIndexEndpointDeployedIndexState:
 
     @_builtins.property
     @pulumi.getter(name="automaticResources")
-    def automatic_resources(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]:
+    def automatic_resources(self) -> pulumi.Input[Optional['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]:
         """
         A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
         Structure is documented below.
@@ -319,24 +319,24 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "automatic_resources")
 
     @automatic_resources.setter
-    def automatic_resources(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]):
+    def automatic_resources(self, value: pulumi.Input[Optional['AiIndexEndpointDeployedIndexAutomaticResourcesArgs']]):
         pulumi.set(self, "automatic_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedResources")
-    def dedicated_resources(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]:
+    def dedicated_resources(self) -> pulumi.Input[Optional['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]:
         """
         A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
         Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
@@ -348,12 +348,12 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "dedicated_resources")
 
     @dedicated_resources.setter
-    def dedicated_resources(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]):
+    def dedicated_resources(self, value: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDedicatedResourcesArgs']]):
         pulumi.set(self, "dedicated_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedIndexAuthConfig")
-    def deployed_index_auth_config(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]:
+    def deployed_index_auth_config(self) -> pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]:
         """
         If set, the authentication is enabled for the private endpoint.
         Structure is documented below.
@@ -361,24 +361,24 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "deployed_index_auth_config")
 
     @deployed_index_auth_config.setter
-    def deployed_index_auth_config(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]):
+    def deployed_index_auth_config(self, value: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs']]):
         pulumi.set(self, "deployed_index_auth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedIndexId")
-    def deployed_index_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployed_index_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
         """
         return pulumi.get(self, "deployed_index_id")
 
     @deployed_index_id.setter
-    def deployed_index_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployed_index_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployed_index_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentGroup")
-    def deployment_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
         Creating deployment_groups with reserved_ip_ranges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deployment_group (except 'default') can only be used with the same reserved_ip_ranges which means if the deployment_group has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
@@ -387,48 +387,48 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "deployment_group")
 
     @deployment_group.setter
-    def deployment_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_group", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAccessLogging")
-    def enable_access_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_access_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, private endpoint's access logs are sent to Cloud Logging.
         """
         return pulumi.get(self, "enable_access_logging")
 
     @enable_access_logging.setter
-    def enable_access_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_access_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_access_logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Index this is the deployment of.
         """
         return pulumi.get(self, "index")
 
     @index.setter
-    def index(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index", value)
 
     @_builtins.property
     @pulumi.getter(name="indexEndpoint")
-    def index_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifies the index endpoint. Must be in the format
         'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
@@ -436,12 +436,12 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "index_endpoint")
 
     @index_endpoint.setter
-    def index_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="indexSyncTime")
-    def index_sync_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_sync_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -449,24 +449,24 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "index_sync_time")
 
     @index_sync_time.setter
-    def index_sync_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_sync_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_sync_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the DeployedIndex resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateEndpoints")
-    def private_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointArgs']]]]:
+    def private_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointArgs']]]]:
         """
         Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
         Structure is documented below.
@@ -474,24 +474,24 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "private_endpoints")
 
     @private_endpoints.setter
-    def private_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointArgs']]]]):
+    def private_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointArgs']]]]):
         pulumi.set(self, "private_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the index endpoint deployment. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRanges")
-    def reserved_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reserved_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
         If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
@@ -501,7 +501,7 @@ class _AiIndexEndpointDeployedIndexState:
         return pulumi.get(self, "reserved_ip_ranges")
 
     @reserved_ip_ranges.setter
-    def reserved_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reserved_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reserved_ip_ranges", value)
 
 
@@ -511,17 +511,17 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_resources: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
-                 dedicated_resources: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
-                 deployed_index_auth_config: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
-                 deployed_index_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_access_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
+                 dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
+                 deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
+                 deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_access_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         An endpoint indexes are deployed into. An index endpoint can have multiple deployed indexes.
@@ -903,17 +903,17 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_resources: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
-                 dedicated_resources: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
-                 deployed_index_auth_config: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
-                 deployed_index_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_access_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 index: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
+                 dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
+                 deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
+                 deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_access_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -954,21 +954,21 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            automatic_resources: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_resources: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
-            deployed_index_auth_config: Optional[pulumi.Input[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
-            deployed_index_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_access_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            index: Optional[pulumi.Input[_builtins.str]] = None,
-            index_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            index_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiIndexEndpointDeployedIndexPrivateEndpointArgs', 'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AiIndexEndpointDeployedIndex':
+            automatic_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexAutomaticResourcesArgs', 'AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_resources: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDedicatedResourcesArgs', 'AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict']]] = None,
+            deployed_index_auth_config: pulumi.Input[Optional[Union['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs', 'AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict']]] = None,
+            deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_access_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            index: pulumi.Input[Optional[_builtins.str]] = None,
+            index_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            index_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexEndpointDeployedIndexPrivateEndpointArgs', 'AiIndexEndpointDeployedIndexPrivateEndpointArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AiIndexEndpointDeployedIndex':
         """
         Get an existing AiIndexEndpointDeployedIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -403,69 +403,69 @@ export interface ServiceState {
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<inputs.apphub.ServiceAttributes>;
+    attributes?: pulumi.Input<inputs.apphub.ServiceAttributes | undefined>;
     /**
      * Output only. Create time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-defined description of a Service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The resource name of the original discovered service.
      */
-    discoveredService?: pulumi.Input<string>;
+    discoveredService?: pulumi.Input<string | undefined>;
     /**
      * User-defined name for the Service.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of a Service. Format:
      * "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Service identifier.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * Properties of an underlying cloud resource that can comprise a Service.
      * Structure is documented below.
      */
-    serviceProperties?: pulumi.Input<pulumi.Input<inputs.apphub.ServiceServiceProperty>[]>;
+    serviceProperties?: pulumi.Input<pulumi.Input<inputs.apphub.ServiceServiceProperty>[] | undefined>;
     /**
      * Reference to an underlying networking resource that can comprise a Service.
      * Structure is documented below.
      */
-    serviceReferences?: pulumi.Input<pulumi.Input<inputs.apphub.ServiceServiceReference>[]>;
+    serviceReferences?: pulumi.Input<pulumi.Input<inputs.apphub.ServiceServiceReference>[] | undefined>;
     /**
      * Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. A universally unique identifier (UUID) for the `Service` in the UUID4
      * format.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. Update time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -480,11 +480,11 @@ export interface ServiceArgs {
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<inputs.apphub.ServiceAttributes>;
+    attributes?: pulumi.Input<inputs.apphub.ServiceAttributes | undefined>;
     /**
      * User-defined description of a Service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The resource name of the original discovered service.
      */
@@ -492,7 +492,7 @@ export interface ServiceArgs {
     /**
      * User-defined name for the Service.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
@@ -501,7 +501,7 @@ export interface ServiceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Service identifier.
      */

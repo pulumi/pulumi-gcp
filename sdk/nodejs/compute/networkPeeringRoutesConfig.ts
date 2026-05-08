@@ -188,36 +188,36 @@ export interface NetworkPeeringRoutesConfigState {
     /**
      * Whether to export the custom routes to the peer network.
      */
-    exportCustomRoutes?: pulumi.Input<boolean>;
+    exportCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are exported.
      * IPv4 special-use ranges are always exported to peers and
      * are not controlled by this field.
      */
-    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to import the custom routes to the peer network.
      */
-    importCustomRoutes?: pulumi.Input<boolean>;
+    importCustomRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Whether subnet routes with public IP range are imported.
      * IPv4 special-use ranges are always imported from peers and
      * are not controlled by this field.
      */
-    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the primary network for the peering.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Name of the peering.
      */
-    peering?: pulumi.Input<string>;
+    peering?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -233,7 +233,7 @@ export interface NetworkPeeringRoutesConfigArgs {
      * IPv4 special-use ranges are always exported to peers and
      * are not controlled by this field.
      */
-    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    exportSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to import the custom routes to the peer network.
      */
@@ -243,7 +243,7 @@ export interface NetworkPeeringRoutesConfigArgs {
      * IPv4 special-use ranges are always imported from peers and
      * are not controlled by this field.
      */
-    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean>;
+    importSubnetRoutesWithPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the primary network for the peering.
      */
@@ -256,5 +256,5 @@ export interface NetworkPeeringRoutesConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -23,10 +23,10 @@ class OrganizationPolicyArgs:
     def __init__(__self__, *,
                  constraint: pulumi.Input[_builtins.str],
                  folder: pulumi.Input[_builtins.str],
-                 boolean_policy: Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']] = None,
-                 list_policy: Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']] = None,
-                 restore_policy: Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 boolean_policy: pulumi.Input[Optional['OrganizationPolicyBooleanPolicyArgs']] = None,
+                 list_policy: pulumi.Input[Optional['OrganizationPolicyListPolicyArgs']] = None,
+                 restore_policy: pulumi.Input[Optional['OrganizationPolicyRestorePolicyArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a OrganizationPolicy resource.
 
@@ -84,19 +84,19 @@ class OrganizationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="booleanPolicy")
-    def boolean_policy(self) -> Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']]:
+    def boolean_policy(self) -> pulumi.Input[Optional['OrganizationPolicyBooleanPolicyArgs']]:
         """
         A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         """
         return pulumi.get(self, "boolean_policy")
 
     @boolean_policy.setter
-    def boolean_policy(self, value: Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']]):
+    def boolean_policy(self, value: pulumi.Input[Optional['OrganizationPolicyBooleanPolicyArgs']]):
         pulumi.set(self, "boolean_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="listPolicy")
-    def list_policy(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']]:
+    def list_policy(self) -> pulumi.Input[Optional['OrganizationPolicyListPolicyArgs']]:
         """
         A policy that can define specific values that are allowed or denied for the given constraint. It
         can also be used to allow or deny all values. Structure is documented below.
@@ -104,12 +104,12 @@ class OrganizationPolicyArgs:
         return pulumi.get(self, "list_policy")
 
     @list_policy.setter
-    def list_policy(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']]):
+    def list_policy(self, value: pulumi.Input[Optional['OrganizationPolicyListPolicyArgs']]):
         pulumi.set(self, "list_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="restorePolicy")
-    def restore_policy(self) -> Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']]:
+    def restore_policy(self) -> pulumi.Input[Optional['OrganizationPolicyRestorePolicyArgs']]:
         """
         A restore policy is a constraint to restore the default policy. Structure is documented below.
 
@@ -121,33 +121,33 @@ class OrganizationPolicyArgs:
         return pulumi.get(self, "restore_policy")
 
     @restore_policy.setter
-    def restore_policy(self, value: Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']]):
+    def restore_policy(self, value: pulumi.Input[Optional['OrganizationPolicyRestorePolicyArgs']]):
         pulumi.set(self, "restore_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version of the Policy. Default version is 0.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _OrganizationPolicyState:
     def __init__(__self__, *,
-                 boolean_policy: Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']] = None,
-                 constraint: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_policy: Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']] = None,
-                 restore_policy: Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 boolean_policy: pulumi.Input[Optional['OrganizationPolicyBooleanPolicyArgs']] = None,
+                 constraint: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_policy: pulumi.Input[Optional['OrganizationPolicyListPolicyArgs']] = None,
+                 restore_policy: pulumi.Input[Optional['OrganizationPolicyRestorePolicyArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering OrganizationPolicy resources.
 
@@ -187,19 +187,19 @@ class _OrganizationPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="booleanPolicy")
-    def boolean_policy(self) -> Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']]:
+    def boolean_policy(self) -> pulumi.Input[Optional['OrganizationPolicyBooleanPolicyArgs']]:
         """
         A boolean policy is a constraint that is either enforced or not. Structure is documented below.
         """
         return pulumi.get(self, "boolean_policy")
 
     @boolean_policy.setter
-    def boolean_policy(self, value: Optional[pulumi.Input['OrganizationPolicyBooleanPolicyArgs']]):
+    def boolean_policy(self, value: pulumi.Input[Optional['OrganizationPolicyBooleanPolicyArgs']]):
         pulumi.set(self, "boolean_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def constraint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def constraint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
 
@@ -208,36 +208,36 @@ class _OrganizationPolicyState:
         return pulumi.get(self, "constraint")
 
     @constraint.setter
-    def constraint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def constraint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "constraint", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="listPolicy")
-    def list_policy(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']]:
+    def list_policy(self) -> pulumi.Input[Optional['OrganizationPolicyListPolicyArgs']]:
         """
         A policy that can define specific values that are allowed or denied for the given constraint. It
         can also be used to allow or deny all values. Structure is documented below.
@@ -245,12 +245,12 @@ class _OrganizationPolicyState:
         return pulumi.get(self, "list_policy")
 
     @list_policy.setter
-    def list_policy(self, value: Optional[pulumi.Input['OrganizationPolicyListPolicyArgs']]):
+    def list_policy(self, value: pulumi.Input[Optional['OrganizationPolicyListPolicyArgs']]):
         pulumi.set(self, "list_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="restorePolicy")
-    def restore_policy(self) -> Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']]:
+    def restore_policy(self) -> pulumi.Input[Optional['OrganizationPolicyRestorePolicyArgs']]:
         """
         A restore policy is a constraint to restore the default policy. Structure is documented below.
 
@@ -262,31 +262,31 @@ class _OrganizationPolicyState:
         return pulumi.get(self, "restore_policy")
 
     @restore_policy.setter
-    def restore_policy(self, value: Optional[pulumi.Input['OrganizationPolicyRestorePolicyArgs']]):
+    def restore_policy(self, value: pulumi.Input[Optional['OrganizationPolicyRestorePolicyArgs']]):
         pulumi.set(self, "restore_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version of the Policy. Default version is 0.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -296,12 +296,12 @@ class OrganizationPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_policy: Optional[pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
-                 constraint: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_policy: Optional[pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
-                 restore_policy: Optional[pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
+                 boolean_policy: pulumi.Input[Optional[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
+                 constraint: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_policy: pulumi.Input[Optional[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
+                 restore_policy: pulumi.Input[Optional[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Allows management of Organization Policies for a Google Cloud Folder.
@@ -519,12 +519,12 @@ class OrganizationPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_policy: Optional[pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
-                 constraint: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_policy: Optional[pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
-                 restore_policy: Optional[pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
+                 boolean_policy: pulumi.Input[Optional[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
+                 constraint: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_policy: pulumi.Input[Optional[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
+                 restore_policy: pulumi.Input[Optional[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -556,14 +556,14 @@ class OrganizationPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            boolean_policy: Optional[pulumi.Input[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
-            constraint: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            list_policy: Optional[pulumi.Input[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
-            restore_policy: Optional[pulumi.Input[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'OrganizationPolicy':
+            boolean_policy: pulumi.Input[Optional[Union['OrganizationPolicyBooleanPolicyArgs', 'OrganizationPolicyBooleanPolicyArgsDict']]] = None,
+            constraint: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            list_policy: pulumi.Input[Optional[Union['OrganizationPolicyListPolicyArgs', 'OrganizationPolicyListPolicyArgsDict']]] = None,
+            restore_policy: pulumi.Input[Optional[Union['OrganizationPolicyRestorePolicyArgs', 'OrganizationPolicyRestorePolicyArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'OrganizationPolicy':
         """
         Get an existing OrganizationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -126,9 +126,9 @@ def get_key_rings(filter: Optional[_builtins.str] = None,
         key_rings=pulumi.get(__ret__, 'key_rings'),
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'))
-def get_key_rings_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         location: Optional[pulumi.Input[_builtins.str]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_key_rings_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         location: pulumi.Input[Optional[_builtins.str]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyRingsResult]:
     """
     Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see

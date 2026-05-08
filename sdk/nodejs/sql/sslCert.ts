@@ -166,48 +166,48 @@ export interface SslCertState {
     /**
      * The actual certificate data for this client certificate.
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * The serial number extracted from the certificate data.
      */
-    certSerialNumber?: pulumi.Input<string>;
+    certSerialNumber?: pulumi.Input<string | undefined>;
     /**
      * The common name to be used in the certificate to identify the
      * client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
      */
-    commonName?: pulumi.Input<string>;
+    commonName?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate was created in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate expires in RFC 3339 format,
      * for example 2012-11-15T16:19:00.094Z.
      */
-    expirationTime?: pulumi.Input<string>;
+    expirationTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud SQL instance. Changing this
      * forces a new resource to be created.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The private key associated with the client certificate.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The CA cert of the server this client cert was generated from.
      */
-    serverCaCert?: pulumi.Input<string>;
+    serverCaCert?: pulumi.Input<string | undefined>;
     /**
      * The SHA1 Fingerprint of the certificate.
      */
-    sha1Fingerprint?: pulumi.Input<string>;
+    sha1Fingerprint?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,5 +228,5 @@ export interface SslCertArgs {
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

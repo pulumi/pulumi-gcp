@@ -90,23 +90,23 @@ export class AiEndpointIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AiEndpointIamMember resources.
  */
 export interface AiEndpointIamMemberState {
-    condition?: pulumi.Input<inputs.vertex.AiEndpointIamMemberCondition>;
-    endpoint?: pulumi.Input<string>;
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.vertex.AiEndpointIamMemberCondition | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    member?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AiEndpointIamMember resource.
  */
 export interface AiEndpointIamMemberArgs {
-    condition?: pulumi.Input<inputs.vertex.AiEndpointIamMemberCondition>;
+    condition?: pulumi.Input<inputs.vertex.AiEndpointIamMemberCondition | undefined>;
     endpoint: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     member: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

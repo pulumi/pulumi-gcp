@@ -87,23 +87,23 @@ export class TargetIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TargetIamBinding resources.
  */
 export interface TargetIamBindingState {
-    condition?: pulumi.Input<inputs.clouddeploy.TargetIamBindingCondition>;
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.TargetIamBindingCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TargetIamBinding resource.
  */
 export interface TargetIamBindingArgs {
-    condition?: pulumi.Input<inputs.clouddeploy.TargetIamBindingCondition>;
-    location?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.TargetIamBindingCondition | undefined>;
+    location?: pulumi.Input<string | undefined>;
     members: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

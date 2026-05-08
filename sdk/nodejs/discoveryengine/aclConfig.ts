@@ -137,22 +137,22 @@ export interface AclConfigState {
      * Identity provider config.
      * Structure is documented below.
      */
-    idpConfig?: pulumi.Input<inputs.discoveryengine.AclConfigIdpConfig>;
+    idpConfig?: pulumi.Input<inputs.discoveryengine.AclConfigIdpConfig | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the aclConfig. Values are of the format
      * `projects/{project}/locations/{location}/aclConfig`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface AclConfigArgs {
      * Identity provider config.
      * Structure is documented below.
      */
-    idpConfig?: pulumi.Input<inputs.discoveryengine.AclConfigIdpConfig>;
+    idpConfig?: pulumi.Input<inputs.discoveryengine.AclConfigIdpConfig | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -173,5 +173,5 @@ export interface AclConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

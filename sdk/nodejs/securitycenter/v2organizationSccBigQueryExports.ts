@@ -221,23 +221,23 @@ export interface V2OrganizationSccBigQueryExportsState {
     /**
      * This must be unique within the organization.
      */
-    bigQueryExportId?: pulumi.Input<string>;
+    bigQueryExportId?: pulumi.Input<string | undefined>;
     /**
      * The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The dataset to write findings' updates to.
      * Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Expression that defines the filter to apply across create/update
      * events of findings. The
@@ -259,37 +259,37 @@ export interface V2OrganizationSccBigQueryExportsState {
      * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      * for information on how to write a filter.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * location Id is provided by organization. If not provided, Use global as default.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Email address of the user who last edited the BigQuery export.
      * This field is set by the server and will be ignored if provided on export creation or update.
      */
-    mostRecentEditor?: pulumi.Input<string>;
+    mostRecentEditor?: pulumi.Input<string | undefined>;
     /**
      * The resource name of this export, in the format
      * `organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`.
      * This field is provided in responses, and is ignored when provided in create requests.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization whose Cloud Security Command Center the Big Query Export
      * Config lives in.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The service account that needs permission to create table and upload data to the BigQuery dataset.
      */
-    principal?: pulumi.Input<string>;
+    principal?: pulumi.Input<string | undefined>;
     /**
      * The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -305,11 +305,11 @@ export interface V2OrganizationSccBigQueryExportsArgs {
      * Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
      * BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * The description of the notification config (max of 1024 characters).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Expression that defines the filter to apply across create/update
      * events of findings. The
@@ -331,17 +331,17 @@ export interface V2OrganizationSccBigQueryExportsArgs {
      * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
      * for information on how to write a filter.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * location Id is provided by organization. If not provided, Use global as default.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of this export, in the format
      * `organizations/{{organization}}/locations/{{location}}/bigQueryExports/{{big_query_export_id}}`.
      * This field is provided in responses, and is ignored when provided in create requests.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization whose Cloud Security Command Center the Big Query Export
      * Config lives in.

@@ -23,19 +23,19 @@ class WorkerPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  template: pulumi.Input['WorkerPoolTemplateArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['WorkerPoolBinaryAuthorizationArgs']] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_splits: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling: Optional[pulumi.Input['WorkerPoolScalingArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['WorkerPoolBinaryAuthorizationArgs']] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling: pulumi.Input[Optional['WorkerPoolScalingArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
 
@@ -141,7 +141,7 @@ class WorkerPoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
@@ -153,12 +153,12 @@ class WorkerPoolArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['WorkerPoolBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['WorkerPoolBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -166,37 +166,37 @@ class WorkerPoolArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['WorkerPoolBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['WorkerPoolBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary identifier for the API client.
         """
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary version identifier for the API client.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter(name="customAudiences")
     @_utilities.deprecated("""`custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
-    def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Deprecated)
         One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
@@ -207,12 +207,12 @@ class WorkerPoolArgs:
         return pulumi.get(self, "custom_audiences")
 
     @custom_audiences.setter
-    def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the service. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the service,
@@ -224,24 +224,24 @@ class WorkerPoolArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the WorkerPool. This field currently has a 512-character limit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSplits")
-    def instance_splits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]:
+    def instance_splits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]:
         """
         Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
         Structure is documented below.
@@ -249,12 +249,12 @@ class WorkerPoolArgs:
         return pulumi.get(self, "instance_splits")
 
     @instance_splits.setter
-    def instance_splits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]):
+    def instance_splits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]):
         pulumi.set(self, "instance_splits", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
         environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -266,12 +266,12 @@ class WorkerPoolArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
         If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -281,24 +281,24 @@ class WorkerPoolArgs:
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_stage", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the WorkerPool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -306,12 +306,12 @@ class WorkerPoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['WorkerPoolScalingArgs']]:
+    def scaling(self) -> pulumi.Input[Optional['WorkerPoolScalingArgs']]:
         """
         Scaling settings that apply to the worker pool.
         Structure is documented below.
@@ -319,47 +319,47 @@ class WorkerPoolArgs:
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['WorkerPoolScalingArgs']]):
+    def scaling(self, value: pulumi.Input[Optional['WorkerPoolScalingArgs']]):
         pulumi.set(self, "scaling", value)
 
 
 @pulumi.input_type
 class _WorkerPoolState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['WorkerPoolBinaryAuthorizationArgs']] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolConditionArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_split_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitStatusArgs']]]] = None,
-                 instance_splits: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 last_modifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_created_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_ready_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaling: Optional[pulumi.Input['WorkerPoolScalingArgs']] = None,
-                 template: Optional[pulumi.Input['WorkerPoolTemplateArgs']] = None,
-                 terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTerminalConditionArgs']]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['WorkerPoolBinaryAuthorizationArgs']] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolConditionArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_split_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitStatusArgs']]]] = None,
+                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_created_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_ready_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaling: pulumi.Input[Optional['WorkerPoolScalingArgs']] = None,
+                 template: pulumi.Input[Optional['WorkerPoolTemplateArgs']] = None,
+                 terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTerminalConditionArgs']]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
 
@@ -506,7 +506,7 @@ class _WorkerPoolState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
@@ -518,12 +518,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['WorkerPoolBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['WorkerPoolBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -531,36 +531,36 @@ class _WorkerPoolState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['WorkerPoolBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['WorkerPoolBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary identifier for the API client.
         """
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary version identifier for the API client.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolConditionArgs']]]]:
         """
         The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the WorkerPool does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -568,37 +568,37 @@ class _WorkerPoolState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the authenticated creator.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="customAudiences")
     @_utilities.deprecated("""`custom_audiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.""")
-    def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional, Deprecated)
         One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
@@ -609,24 +609,24 @@ class _WorkerPoolState:
         return pulumi.get(self, "custom_audiences")
 
     @custom_audiences.setter
-    def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion time.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the service. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the service,
@@ -638,84 +638,84 @@ class _WorkerPoolState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the WorkerPool. This field currently has a 512-character limit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSplitStatuses")
-    def instance_split_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitStatusArgs']]]]:
+    def instance_split_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitStatusArgs']]]]:
         """
         Detailed status information for corresponding instance splits. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -723,12 +723,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "instance_split_statuses")
 
     @instance_split_statuses.setter
-    def instance_split_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitStatusArgs']]]]):
+    def instance_split_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitStatusArgs']]]]):
         pulumi.set(self, "instance_split_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSplits")
-    def instance_splits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]:
+    def instance_splits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]:
         """
         Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest Ready Revision.
         Structure is documented below.
@@ -736,12 +736,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "instance_splits")
 
     @instance_splits.setter
-    def instance_splits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]):
+    def instance_splits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolInstanceSplitArgs']]]]):
         pulumi.set(self, "instance_splits", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
         environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -753,48 +753,48 @@ class _WorkerPoolState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifier")
-    def last_modifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the last authenticated modifier.
         """
         return pulumi.get(self, "last_modifier")
 
     @last_modifier.setter
-    def last_modifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modifier", value)
 
     @_builtins.property
     @pulumi.getter(name="latestCreatedRevision")
-    def latest_created_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_created_revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "latest_created_revision")
 
     @latest_created_revision.setter
-    def latest_created_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_created_revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_created_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="latestReadyRevision")
-    def latest_ready_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_ready_revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "latest_ready_revision")
 
     @latest_ready_revision.setter
-    def latest_ready_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_ready_revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_ready_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
         If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -804,48 +804,48 @@ class _WorkerPoolState:
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_stage", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the cloud run worker pool
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the WorkerPool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def observed_generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The generation of this WorkerPool currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         """
         return pulumi.get(self, "observed_generation")
 
     @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def observed_generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "observed_generation", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -853,12 +853,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -866,12 +866,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Returns true if the WorkerPool is currently being acted upon by the system to bring it into the desired state.
         When a new WorkerPool is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the WorkerPool to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the WorkerPool, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
@@ -881,12 +881,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['WorkerPoolScalingArgs']]:
+    def scaling(self) -> pulumi.Input[Optional['WorkerPoolScalingArgs']]:
         """
         Scaling settings that apply to the worker pool.
         Structure is documented below.
@@ -894,12 +894,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['WorkerPoolScalingArgs']]):
+    def scaling(self, value: pulumi.Input[Optional['WorkerPoolScalingArgs']]):
         pulumi.set(self, "scaling", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['WorkerPoolTemplateArgs']]:
+    def template(self) -> pulumi.Input[Optional['WorkerPoolTemplateArgs']]:
         """
         The template used to create revisions for this WorkerPool.
         Structure is documented below.
@@ -907,12 +907,12 @@ class _WorkerPoolState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['WorkerPoolTemplateArgs']]):
+    def template(self, value: pulumi.Input[Optional['WorkerPoolTemplateArgs']]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="terminalConditions")
-    def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTerminalConditionArgs']]]]:
+    def terminal_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTerminalConditionArgs']]]]:
         """
         The Condition of this WorkerPool, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -920,31 +920,31 @@ class _WorkerPoolState:
         return pulumi.get(self, "terminal_conditions")
 
     @terminal_conditions.setter
-    def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerPoolTerminalConditionArgs']]]]):
+    def terminal_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTerminalConditionArgs']]]]):
         pulumi.set(self, "terminal_conditions", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -954,21 +954,21 @@ class WorkerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling: Optional[pulumi.Input[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
-                 template: Optional[pulumi.Input[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
+                 template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
                  __props__=None):
         """
         WorkerPool acts as a top-level container that manages a set of configurations and revision templates which implement a pull-based workload. WorkerPool exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
@@ -1960,21 +1960,21 @@ class WorkerPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling: Optional[pulumi.Input[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
-                 template: Optional[pulumi.Input[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
+                 template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2034,40 +2034,40 @@ class WorkerPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: Optional[pulumi.Input[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
-            client: Optional[pulumi.Input[_builtins.str]] = None,
-            client_version: Optional[pulumi.Input[_builtins.str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            generation: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_split_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitStatusArgs', 'WorkerPoolInstanceSplitStatusArgsDict']]]]] = None,
-            instance_splits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            last_modifier: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_created_revision: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_ready_revision: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            scaling: Optional[pulumi.Input[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
-            template: Optional[pulumi.Input[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
-            terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkerPoolTerminalConditionArgs', 'WorkerPoolTerminalConditionArgsDict']]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkerPool':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['WorkerPoolBinaryAuthorizationArgs', 'WorkerPoolBinaryAuthorizationArgsDict']]] = None,
+            client: pulumi.Input[Optional[_builtins.str]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolConditionArgs', 'WorkerPoolConditionArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_split_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitStatusArgs', 'WorkerPoolInstanceSplitStatusArgsDict']]]]] = None,
+            instance_splits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolInstanceSplitArgs', 'WorkerPoolInstanceSplitArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_created_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_ready_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaling: pulumi.Input[Optional[Union['WorkerPoolScalingArgs', 'WorkerPoolScalingArgsDict']]] = None,
+            template: pulumi.Input[Optional[Union['WorkerPoolTemplateArgs', 'WorkerPoolTemplateArgsDict']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkerPoolTerminalConditionArgs', 'WorkerPoolTerminalConditionArgsDict']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkerPool':
         """
         Get an existing WorkerPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

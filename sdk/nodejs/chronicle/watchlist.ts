@@ -235,68 +235,68 @@ export interface WatchlistState {
     /**
      * Output only. Time the watchlist was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Description of the watchlist.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Display name of the watchlist.
      * Note that it must be at least one character and less than 63 characters
      * (https://google.aip.dev/148).
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Count of different types of entities in the watchlist.
      * Structure is documented below.
      */
-    entityCounts?: pulumi.Input<pulumi.Input<inputs.chronicle.WatchlistEntityCount>[]>;
+    entityCounts?: pulumi.Input<pulumi.Input<inputs.chronicle.WatchlistEntityCount>[] | undefined>;
     /**
      * Mechanism to populate entities in the watchlist.
      * Structure is documented below.
      */
-    entityPopulationMechanism?: pulumi.Input<inputs.chronicle.WatchlistEntityPopulationMechanism>;
+    entityPopulationMechanism?: pulumi.Input<inputs.chronicle.WatchlistEntityPopulationMechanism | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Optional. Weight applied to the risk score for entities
      * in this watchlist.
      * The default is 1.0 if it is not specified.
      */
-    multiplyingFactor?: pulumi.Input<number>;
+    multiplyingFactor?: pulumi.Input<number | undefined>;
     /**
      * Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. Time the watchlist was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. The ID to use for the watchlist,
      * which will become the final component of the watchlist's resource name.
      * This value should be 4-63 characters, and valid characters
      * are /a-z-/.
      */
-    watchlistId?: pulumi.Input<string>;
+    watchlistId?: pulumi.Input<string | undefined>;
     /**
      * A collection of user preferences for watchlist UI configuration.
      * Structure is documented below.
      */
-    watchlistUserPreferences?: pulumi.Input<inputs.chronicle.WatchlistWatchlistUserPreferences>;
+    watchlistUserPreferences?: pulumi.Input<inputs.chronicle.WatchlistWatchlistUserPreferences | undefined>;
 }
 
 /**
@@ -306,7 +306,7 @@ export interface WatchlistArgs {
     /**
      * Optional. Description of the watchlist.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. Display name of the watchlist.
      * Note that it must be at least one character and less than 63 characters
@@ -331,22 +331,22 @@ export interface WatchlistArgs {
      * in this watchlist.
      * The default is 1.0 if it is not specified.
      */
-    multiplyingFactor?: pulumi.Input<number>;
+    multiplyingFactor?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Optional. The ID to use for the watchlist,
      * which will become the final component of the watchlist's resource name.
      * This value should be 4-63 characters, and valid characters
      * are /a-z-/.
      */
-    watchlistId?: pulumi.Input<string>;
+    watchlistId?: pulumi.Input<string | undefined>;
     /**
      * A collection of user preferences for watchlist UI configuration.
      * Structure is documented below.
      */
-    watchlistUserPreferences?: pulumi.Input<inputs.chronicle.WatchlistWatchlistUserPreferences>;
+    watchlistUserPreferences?: pulumi.Input<inputs.chronicle.WatchlistWatchlistUserPreferences | undefined>;
 }

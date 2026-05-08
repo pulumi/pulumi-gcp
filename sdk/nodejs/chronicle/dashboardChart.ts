@@ -328,43 +328,43 @@ export interface DashboardChartState {
     /**
      * The unique identifier of the chart, automatically extracted from the full resource name.
      */
-    chartId?: pulumi.Input<string>;
+    chartId?: pulumi.Input<string | undefined>;
     /**
      * The layout of this chart within the NativeDashboard.
      * Structure is documented below.
      */
-    chartLayout?: pulumi.Input<inputs.chronicle.DashboardChartChartLayout>;
+    chartLayout?: pulumi.Input<inputs.chronicle.DashboardChartChartLayout | undefined>;
     /**
      * Core configuration details for the DashboardChart.
      * Structure is documented below.
      */
-    dashboardChart?: pulumi.Input<inputs.chronicle.DashboardChartDashboardChart>;
+    dashboardChart?: pulumi.Input<inputs.chronicle.DashboardChartDashboardChart | undefined>;
     /**
      * The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
      * Structure is documented below.
      */
-    dashboardQuery?: pulumi.Input<inputs.chronicle.DashboardChartDashboardQuery>;
+    dashboardQuery?: pulumi.Input<inputs.chronicle.DashboardChartDashboardQuery | undefined>;
     /**
      * The ID of the Chronicle instance.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The location of the Chronicle instance.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full resource name of the DashboardChart.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent NativeDashboard resource name, formatted as projects/{project}/locations/{location}/instances/{instance}/nativeDashboards/{dashboard_id}
      */
-    nativeDashboard?: pulumi.Input<string>;
+    nativeDashboard?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -375,7 +375,7 @@ export interface DashboardChartArgs {
      * The layout of this chart within the NativeDashboard.
      * Structure is documented below.
      */
-    chartLayout?: pulumi.Input<inputs.chronicle.DashboardChartChartLayout>;
+    chartLayout?: pulumi.Input<inputs.chronicle.DashboardChartChartLayout | undefined>;
     /**
      * Core configuration details for the DashboardChart.
      * Structure is documented below.
@@ -385,7 +385,7 @@ export interface DashboardChartArgs {
      * The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
      * Structure is documented below.
      */
-    dashboardQuery?: pulumi.Input<inputs.chronicle.DashboardChartDashboardQuery>;
+    dashboardQuery?: pulumi.Input<inputs.chronicle.DashboardChartDashboardQuery | undefined>;
     /**
      * The ID of the Chronicle instance.
      */
@@ -397,10 +397,10 @@ export interface DashboardChartArgs {
     /**
      * The parent NativeDashboard resource name, formatted as projects/{project}/locations/{location}/instances/{instance}/nativeDashboards/{dashboard_id}
      */
-    nativeDashboard?: pulumi.Input<string>;
+    nativeDashboard?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

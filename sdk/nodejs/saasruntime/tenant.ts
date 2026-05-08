@@ -229,63 +229,63 @@ export interface TenantState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the consumer resource this SaaS Tenant is representing.
      * The relationship with a consumer resource can be used by App Lifecycle Manager for
      * retrieving consumer-defined settings and policies such as maintenance
      * policies (using Unified Maintenance Policy API).
      */
-    consumerResource?: pulumi.Input<string>;
+    consumerResource?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name (full URI of the resource) following the standard naming
      * scheme:
      * "projects/{project}/locations/{location}/tenants/{tenant}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the Saas that defines the product (managed service) that
      * the producer wants to manage with App Lifecycle Manager. Part of the
      * App Lifecycle Manager common data model.
      */
-    saas?: pulumi.Input<string>;
+    saas?: pulumi.Input<string | undefined>;
     /**
      * The ID value for the new tenant.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the resource. UID is unique in the time
      * and space for this resource within the scope of the service. It is
@@ -293,13 +293,13 @@ export interface TenantState {
      * and must not be changed. UID is used to uniquely identify resources
      * with resource name reuses. This should be a UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was last updated. Any
      * change to the resource made by users must refresh this value.
      * Changes to a resource made by the service should refresh this value.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -314,21 +314,21 @@ export interface TenantArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the consumer resource this SaaS Tenant is representing.
      * The relationship with a consumer resource can be used by App Lifecycle Manager for
      * retrieving consumer-defined settings and policies such as maintenance
      * policies (using Unified Maintenance Policy API).
      */
-    consumerResource?: pulumi.Input<string>;
+    consumerResource?: pulumi.Input<string | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -337,7 +337,7 @@ export interface TenantArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the Saas that defines the product (managed service) that
      * the producer wants to manage with App Lifecycle Manager. Part of the

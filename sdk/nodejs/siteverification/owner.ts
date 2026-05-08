@@ -176,12 +176,12 @@ export interface OwnerState {
      *
      * - - -
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
      * such as `webResource/https://www.example.com/`
      */
-    webResourceId?: pulumi.Input<string>;
+    webResourceId?: pulumi.Input<string | undefined>;
 }
 
 /**

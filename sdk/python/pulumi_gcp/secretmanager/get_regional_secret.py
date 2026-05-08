@@ -271,9 +271,9 @@ def get_regional_secret(location: Optional[_builtins.str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         version_aliases=pulumi.get(__ret__, 'version_aliases'),
         version_destroy_ttl=pulumi.get(__ret__, 'version_destroy_ttl'))
-def get_regional_secret_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_regional_secret_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               secret_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretResult]:
     """
     Use this data source to get information about a Secret Manager Regional Secret

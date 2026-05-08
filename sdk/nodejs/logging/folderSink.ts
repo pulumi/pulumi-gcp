@@ -195,11 +195,11 @@ export interface FolderSinkState {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
+    bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      *
@@ -211,45 +211,45 @@ export interface FolderSinkState {
      *
      * The writer associated with the sink must have access to write to the above resource.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * If set to True, then this sink is disabled and it does not export any log entries.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
-    exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[] | undefined>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
      * accepted.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to include children folders in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
-    includeChildren?: pulumi.Input<boolean>;
+    includeChildren?: pulumi.Input<boolean | undefined>;
     /**
      * Whether or not to intercept logs from child projects. If true, matching logs will not
      * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      */
-    interceptChildren?: pulumi.Input<boolean>;
+    interceptChildren?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the logging sink.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The identity associated with this sink. This identity must be granted write access to the
      * configured `destination`.
      */
-    writerIdentity?: pulumi.Input<string>;
+    writerIdentity?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -259,11 +259,11 @@ export interface FolderSinkArgs {
     /**
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      */
-    bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
+    bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      *
@@ -279,17 +279,17 @@ export interface FolderSinkArgs {
     /**
      * If set to True, then this sink is disabled and it does not export any log entries.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
-    exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<inputs.logging.FolderSinkExclusion>[] | undefined>;
     /**
      * The filter to apply when exporting logs. Only log entries that match the filter are exported.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
      * accepted.
@@ -299,14 +299,14 @@ export interface FolderSinkArgs {
      * Whether or not to include children folders in the sink export. If true, logs
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      */
-    includeChildren?: pulumi.Input<boolean>;
+    includeChildren?: pulumi.Input<boolean | undefined>;
     /**
      * Whether or not to intercept logs from child projects. If true, matching logs will not
      * match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
      */
-    interceptChildren?: pulumi.Input<boolean>;
+    interceptChildren?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the logging sink.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

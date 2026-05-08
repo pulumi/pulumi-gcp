@@ -197,25 +197,25 @@ export interface GroupState {
      * Additional group keys associated with the Group
      * Structure is documented below.
      */
-    additionalGroupKeys?: pulumi.Input<pulumi.Input<inputs.cloudidentity.GroupAdditionalGroupKey>[]>;
+    additionalGroupKeys?: pulumi.Input<pulumi.Input<inputs.cloudidentity.GroupAdditionalGroupKey>[] | undefined>;
     /**
      * The time when the Group was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An extended description to help users determine the purpose of a Group.
      * Must not be longer than 4,096 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Group.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * EntityKey of the Group.
      * Structure is documented below.
      */
-    groupKey?: pulumi.Input<inputs.cloudidentity.GroupGroupKey>;
+    groupKey?: pulumi.Input<inputs.cloudidentity.GroupGroupKey | undefined>;
     /**
      * The initial configuration options for creating a Group.
      * See the
@@ -224,7 +224,7 @@ export interface GroupState {
      * Default value is `EMPTY`.
      * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      */
-    initialGroupConfig?: pulumi.Input<string>;
+    initialGroupConfig?: pulumi.Input<string | undefined>;
     /**
      * One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
      * Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -232,23 +232,23 @@ export interface GroupState {
      * Dynamic groups have a label with a key of cloudidentity.googleapis.com/groups.dynamic.
      * Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource name of the Group in the format: groups/{group_id}, where groupId
      * is the unique ID assigned to the Group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the entity under which this Group resides in the
      * Cloud Identity resource hierarchy.
      * Must be of the form identitysources/{identity_source_id} for external-identity-mapped
      * groups or customers/{customer_id} for Google Groups.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The time when the Group was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -259,11 +259,11 @@ export interface GroupArgs {
      * An extended description to help users determine the purpose of a Group.
      * Must not be longer than 4,096 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Group.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * EntityKey of the Group.
      * Structure is documented below.
@@ -277,7 +277,7 @@ export interface GroupArgs {
      * Default value is `EMPTY`.
      * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      */
-    initialGroupConfig?: pulumi.Input<string>;
+    initialGroupConfig?: pulumi.Input<string | undefined>;
     /**
      * One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
      * Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.

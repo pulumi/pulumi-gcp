@@ -777,20 +777,20 @@ export interface GlobalForwardingRuleState {
      * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
-    allowPscGlobalAccess?: pulumi.Input<boolean>;
+    allowPscGlobalAccess?: pulumi.Input<boolean | undefined>;
     /**
      * [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
      */
-    baseForwardingRule?: pulumi.Input<string>;
+    baseForwardingRule?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the canary migration state for the backend buckets attached to this forwarding rule.
      * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
@@ -805,7 +805,7 @@ export interface GlobalForwardingRuleState {
      * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
      * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
      */
-    externalManagedBackendBucketMigrationState?: pulumi.Input<string>;
+    externalManagedBackendBucketMigrationState?: pulumi.Input<string | undefined>;
     /**
      * Determines the fraction of requests to backend buckets that should be processed by the Global
      * external Application Load Balancer.
@@ -813,11 +813,11 @@ export interface GlobalForwardingRuleState {
      * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
      * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
      */
-    externalManagedBackendBucketMigrationTestingPercentage?: pulumi.Input<number>;
+    externalManagedBackendBucketMigrationTestingPercentage?: pulumi.Input<number | undefined>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    forwardingRuleId?: pulumi.Input<number>;
+    forwardingRuleId?: pulumi.Input<number | undefined>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
@@ -851,7 +851,7 @@ export interface GlobalForwardingRuleState {
      * When reading an `IPAddress`, the API always returns the IP
      * address number.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
@@ -863,24 +863,24 @@ export interface GlobalForwardingRuleState {
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The IP Version that will be used by this global forwarding rule.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
@@ -888,7 +888,7 @@ export interface GlobalForwardingRuleState {
      * Default value is `EXTERNAL`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * Opaque filter criteria used by Loadbalancer to restrict routing
      * configuration to a limited set xDS compliant clients. In their xDS
@@ -906,7 +906,7 @@ export interface GlobalForwardingRuleState {
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
+    metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[] | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with
@@ -920,7 +920,7 @@ export interface GlobalForwardingRuleState {
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This field is not used for external load balancing.
      * For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -931,7 +931,7 @@ export interface GlobalForwardingRuleState {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, a network must be provided.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * This signifies the networking tier used for configuring
      * this load balancer and can only take the following values:
@@ -944,11 +944,11 @@ export interface GlobalForwardingRuleState {
      * networkTier of the Address.
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<string | undefined>;
     /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      */
-    noAutomateDnsZone?: pulumi.Input<boolean>;
+    noAutomateDnsZone?: pulumi.Input<boolean | undefined>;
     /**
      * The `portRange` field has the following limitations:
      * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -968,39 +968,39 @@ export interface GlobalForwardingRuleState {
      * cannot have overlapping `portRange`s.
      * @pattern: \d+(?:-\d+)?
      */
-    portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The PSC connection id of the PSC Forwarding Rule.
      */
-    pscConnectionId?: pulumi.Input<string>;
+    pscConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
      */
-    pscConnectionStatus?: pulumi.Input<string>;
+    pscConnectionStatus?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Service Directory resources to register this forwarding rule with.
      * Currently, only supports a single Service Directory resource.
      * Structure is documented below.
      */
-    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations>;
+    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations | undefined>;
     /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
-    sourceIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This field identifies the subnetwork that the load balanced IP should
      * belong to for this Forwarding Rule, used in internal load balancing and
@@ -1009,7 +1009,7 @@ export interface GlobalForwardingRuleState {
      * However, a subnetwork must be specified if the network is in custom subnet
      * mode or when creating external forwarding rule with IPv6.
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the
@@ -1022,7 +1022,7 @@ export interface GlobalForwardingRuleState {
      * *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
      * For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1033,12 +1033,12 @@ export interface GlobalForwardingRuleArgs {
      * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
-    allowPscGlobalAccess?: pulumi.Input<boolean>;
+    allowPscGlobalAccess?: pulumi.Input<boolean | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the canary migration state for the backend buckets attached to this forwarding rule.
      * Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
@@ -1053,7 +1053,7 @@ export interface GlobalForwardingRuleArgs {
      * back to EXTERNAL or PREPARE can be used to migrate all traffic back to EXTERNAL.
      * Possible values are: `PREPARE`, `TEST_BY_PERCENTAGE`, `TEST_ALL_TRAFFIC`.
      */
-    externalManagedBackendBucketMigrationState?: pulumi.Input<string>;
+    externalManagedBackendBucketMigrationState?: pulumi.Input<string | undefined>;
     /**
      * Determines the fraction of requests to backend buckets that should be processed by the Global
      * external Application Load Balancer.
@@ -1061,7 +1061,7 @@ export interface GlobalForwardingRuleArgs {
      * This value can only be set if the loadBalancingScheme in the forwarding rule is set to
      * EXTERNAL (when using the Classic ALB) and the migration state is TEST_BY_PERCENTAGE.
      */
-    externalManagedBackendBucketMigrationTestingPercentage?: pulumi.Input<number>;
+    externalManagedBackendBucketMigrationTestingPercentage?: pulumi.Input<number | undefined>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
@@ -1095,7 +1095,7 @@ export interface GlobalForwardingRuleArgs {
      * When reading an `IPAddress`, the API always returns the IP
      * address number.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The IP protocol to which this rule applies.
      * For protocol forwarding, valid
@@ -1107,19 +1107,19 @@ export interface GlobalForwardingRuleArgs {
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The IP Version that will be used by this global forwarding rule.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this forwarding rule.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the forwarding rule type.
      * For more information about forwarding rules, refer to
@@ -1127,7 +1127,7 @@ export interface GlobalForwardingRuleArgs {
      * Default value is `EXTERNAL`.
      * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * Opaque filter criteria used by Loadbalancer to restrict routing
      * configuration to a limited set xDS compliant clients. In their xDS
@@ -1145,7 +1145,7 @@ export interface GlobalForwardingRuleArgs {
      * loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * Structure is documented below.
      */
-    metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[]>;
+    metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.GlobalForwardingRuleMetadataFilter>[] | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with
@@ -1159,7 +1159,7 @@ export interface GlobalForwardingRuleArgs {
      * APIs, the forwarding rule name must be a 1-20 characters string with
      * lowercase letters and numbers and must start with a letter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This field is not used for external load balancing.
      * For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -1170,7 +1170,7 @@ export interface GlobalForwardingRuleArgs {
      * For Private Service Connect forwarding rules that forward traffic to Google
      * APIs, a network must be provided.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * This signifies the networking tier used for configuring
      * this load balancer and can only take the following values:
@@ -1183,11 +1183,11 @@ export interface GlobalForwardingRuleArgs {
      * networkTier of the Address.
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<string | undefined>;
     /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      */
-    noAutomateDnsZone?: pulumi.Input<boolean>;
+    noAutomateDnsZone?: pulumi.Input<boolean | undefined>;
     /**
      * The `portRange` field has the following limitations:
      * * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -1207,22 +1207,22 @@ export interface GlobalForwardingRuleArgs {
      * cannot have overlapping `portRange`s.
      * @pattern: \d+(?:-\d+)?
      */
-    portRange?: pulumi.Input<string>;
+    portRange?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service Directory resources to register this forwarding rule with.
      * Currently, only supports a single Service Directory resource.
      * Structure is documented below.
      */
-    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations>;
+    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.GlobalForwardingRuleServiceDirectoryRegistrations | undefined>;
     /**
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
-    sourceIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This field identifies the subnetwork that the load balanced IP should
      * belong to for this Forwarding Rule, used in internal load balancing and
@@ -1231,7 +1231,7 @@ export interface GlobalForwardingRuleArgs {
      * However, a subnetwork must be specified if the network is in custom subnet
      * mode or when creating external forwarding rule with IPv6.
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the

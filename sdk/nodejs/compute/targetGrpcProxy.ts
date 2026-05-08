@@ -262,11 +262,11 @@ export interface TargetGrpcProxyState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in
      * this object. This field is used in optimistic locking. This field
@@ -276,7 +276,7 @@ export interface TargetGrpcProxyState {
      * 412 conditionNotMet. To see the latest fingerprint, make a get()
      * request to retrieve the TargetGrpcProxy. A base64-encoded string.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource
      * is created. The name must be 1-63 characters long, and comply
@@ -286,26 +286,26 @@ export interface TargetGrpcProxyState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL with id for the resource.
      */
-    selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string | undefined>;
     /**
      * URL to the UrlMap resource that defines the mapping from URL to
      * the BackendService. The protocol field in the BackendService
      * must be set to GRPC.
      */
-    urlMap?: pulumi.Input<string>;
+    urlMap?: pulumi.Input<string | undefined>;
     /**
      * If true, indicates that the BackendServices referenced by
      * the urlMap may be accessed by gRPC applications without using
@@ -318,7 +318,7 @@ export interface TargetGrpcProxyState {
      * must not use "xds:///" scheme in the target URI of the service
      * it is connecting to
      */
-    validateForProxyless?: pulumi.Input<boolean>;
+    validateForProxyless?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -328,7 +328,7 @@ export interface TargetGrpcProxyArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource
      * is created. The name must be 1-63 characters long, and comply
@@ -338,18 +338,18 @@ export interface TargetGrpcProxyArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL to the UrlMap resource that defines the mapping from URL to
      * the BackendService. The protocol field in the BackendService
      * must be set to GRPC.
      */
-    urlMap?: pulumi.Input<string>;
+    urlMap?: pulumi.Input<string | undefined>;
     /**
      * If true, indicates that the BackendServices referenced by
      * the urlMap may be accessed by gRPC applications without using
@@ -362,5 +362,5 @@ export interface TargetGrpcProxyArgs {
      * must not use "xds:///" scheme in the target URI of the service
      * it is connecting to
      */
-    validateForProxyless?: pulumi.Input<boolean>;
+    validateForProxyless?: pulumi.Input<boolean | undefined>;
 }

@@ -23,12 +23,12 @@ class InsightsConfigArgs:
     def __init__(__self__, *,
                  insights_config_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 app_hub_application: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_projects: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_projects: pulumi.Input[Optional['InsightsConfigTargetProjectsArgs']] = None):
         """
         The set of arguments for constructing a InsightsConfig resource.
 
@@ -92,7 +92,7 @@ class InsightsConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User specified annotations. See https://google.aip.dev/148#annotations
         for more details such as format and size limitations.
@@ -102,12 +102,12 @@ class InsightsConfigArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="appHubApplication")
-    def app_hub_application(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_hub_application(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the App Hub Application.
         Format:
@@ -116,12 +116,12 @@ class InsightsConfigArgs:
         return pulumi.get(self, "app_hub_application")
 
     @app_hub_application.setter
-    def app_hub_application(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_hub_application(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_hub_application", value)
 
     @_builtins.property
     @pulumi.getter(name="artifactConfigs")
-    def artifact_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]:
+    def artifact_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]:
         """
         The artifact configurations of the artifacts that are deployed.
         Structure is documented below.
@@ -129,12 +129,12 @@ class InsightsConfigArgs:
         return pulumi.get(self, "artifact_configs")
 
     @artifact_configs.setter
-    def artifact_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]):
+    def artifact_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]):
         pulumi.set(self, "artifact_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with an InsightsConfig.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -143,12 +143,12 @@ class InsightsConfigArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -156,12 +156,12 @@ class InsightsConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="targetProjects")
-    def target_projects(self) -> Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]:
+    def target_projects(self) -> pulumi.Input[Optional['InsightsConfigTargetProjectsArgs']]:
         """
         The projects to track with the InsightsConfig.
         Structure is documented below.
@@ -169,31 +169,31 @@ class InsightsConfigArgs:
         return pulumi.get(self, "target_projects")
 
     @target_projects.setter
-    def target_projects(self, value: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]):
+    def target_projects(self, value: pulumi.Input[Optional['InsightsConfigTargetProjectsArgs']]):
         pulumi.set(self, "target_projects", value)
 
 
 @pulumi.input_type
 class _InsightsConfigState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 app_hub_application: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorArgs']]]] = None,
-                 insights_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 runtime_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigRuntimeConfigArgs']]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_projects: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorArgs']]]] = None,
+                 insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 runtime_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigRuntimeConfigArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_projects: pulumi.Input[Optional['InsightsConfigTargetProjectsArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InsightsConfig resources.
 
@@ -282,7 +282,7 @@ class _InsightsConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User specified annotations. See https://google.aip.dev/148#annotations
         for more details such as format and size limitations.
@@ -292,12 +292,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="appHubApplication")
-    def app_hub_application(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_hub_application(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the App Hub Application.
         Format:
@@ -306,12 +306,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "app_hub_application")
 
     @app_hub_application.setter
-    def app_hub_application(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_hub_application(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_hub_application", value)
 
     @_builtins.property
     @pulumi.getter(name="artifactConfigs")
-    def artifact_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]:
+    def artifact_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]:
         """
         The artifact configurations of the artifacts that are deployed.
         Structure is documented below.
@@ -319,48 +319,48 @@ class _InsightsConfigState:
         return pulumi.get(self, "artifact_configs")
 
     @artifact_configs.setter
-    def artifact_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]):
+    def artifact_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]]):
         pulumi.set(self, "artifact_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only] Create timestamp
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorArgs']]]]:
         """
         Any errors that occurred while setting up the InsightsConfig.
         Each error will be in the format: `field_name: error_message`, e.g.
@@ -371,24 +371,24 @@ class _InsightsConfigState:
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="insightsConfigId")
-    def insights_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def insights_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the requesting InsightsConfig.
         """
         return pulumi.get(self, "insights_config_id")
 
     @insights_config_id.setter
-    def insights_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def insights_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "insights_config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with an InsightsConfig.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -397,24 +397,24 @@ class _InsightsConfigState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The name of the InsightsConfig.
         Format:
@@ -423,12 +423,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -436,12 +436,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -449,12 +449,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reconciling (https://google.aip.dev/128#reconciliation).
         Set to true if the current state of InsightsConfig does not match the
@@ -465,12 +465,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeConfigs")
-    def runtime_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigRuntimeConfigArgs']]]]:
+    def runtime_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigRuntimeConfigArgs']]]]:
         """
         The runtime configurations where the application is deployed.
         Structure is documented below.
@@ -478,12 +478,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "runtime_configs")
 
     @runtime_configs.setter
-    def runtime_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigRuntimeConfigArgs']]]]):
+    def runtime_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigRuntimeConfigArgs']]]]):
         pulumi.set(self, "runtime_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The state of the Runtime.
@@ -495,12 +495,12 @@ class _InsightsConfigState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="targetProjects")
-    def target_projects(self) -> Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]:
+    def target_projects(self) -> pulumi.Input[Optional['InsightsConfigTargetProjectsArgs']]:
         """
         The projects to track with the InsightsConfig.
         Structure is documented below.
@@ -508,19 +508,19 @@ class _InsightsConfigState:
         return pulumi.get(self, "target_projects")
 
     @target_projects.setter
-    def target_projects(self, value: Optional[pulumi.Input['InsightsConfigTargetProjectsArgs']]):
+    def target_projects(self, value: pulumi.Input[Optional['InsightsConfigTargetProjectsArgs']]):
         pulumi.set(self, "target_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only] Update timestamp
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -530,14 +530,14 @@ class InsightsConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 app_hub_application: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
-                 insights_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_projects: Optional[pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+                 insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
                  __props__=None):
         """
         Description
@@ -1067,14 +1067,14 @@ class InsightsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 app_hub_application: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
-                 insights_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_projects: Optional[pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+                 insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1118,24 +1118,24 @@ class InsightsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            app_hub_application: Optional[pulumi.Input[_builtins.str]] = None,
-            artifact_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]]] = None,
-            insights_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            runtime_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigRuntimeConfigArgs', 'InsightsConfigRuntimeConfigArgsDict']]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            target_projects: Optional[pulumi.Input[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'InsightsConfig':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
+            artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]]] = None,
+            insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            runtime_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigRuntimeConfigArgs', 'InsightsConfigRuntimeConfigArgsDict']]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            target_projects: pulumi.Input[Optional[Union['InsightsConfigTargetProjectsArgs', 'InsightsConfigTargetProjectsArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'InsightsConfig':
         """
         Get an existing InsightsConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

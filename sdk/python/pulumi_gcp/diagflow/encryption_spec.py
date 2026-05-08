@@ -23,7 +23,7 @@ class EncryptionSpecArgs:
     def __init__(__self__, *,
                  encryption_spec: pulumi.Input['EncryptionSpecEncryptionSpecArgs'],
                  location: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EncryptionSpec resource.
 
@@ -65,7 +65,7 @@ class EncryptionSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -73,16 +73,16 @@ class EncryptionSpecArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _EncryptionSpecState:
     def __init__(__self__, *,
-                 encryption_spec: Optional[pulumi.Input['EncryptionSpecEncryptionSpecArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 encryption_spec: pulumi.Input[Optional['EncryptionSpecEncryptionSpecArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EncryptionSpec resources.
 
@@ -101,7 +101,7 @@ class _EncryptionSpecState:
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['EncryptionSpecEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['EncryptionSpecEncryptionSpecArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -109,24 +109,24 @@ class _EncryptionSpecState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['EncryptionSpecEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['EncryptionSpecEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location in which the encryptionSpec is to be initialized.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -134,7 +134,7 @@ class _EncryptionSpecState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -144,9 +144,9 @@ class EncryptionSpec(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Initializes a location-level encryption key specification.
@@ -323,9 +323,9 @@ class EncryptionSpec(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -352,9 +352,9 @@ class EncryptionSpec(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            encryption_spec: Optional[pulumi.Input[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'EncryptionSpec':
+            encryption_spec: pulumi.Input[Optional[Union['EncryptionSpecEncryptionSpecArgs', 'EncryptionSpecEncryptionSpecArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'EncryptionSpec':
         """
         Get an existing EncryptionSpec resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

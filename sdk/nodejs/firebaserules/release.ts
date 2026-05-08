@@ -162,19 +162,19 @@ export interface ReleaseState {
     /**
      * Output only. Time the release was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      *
@@ -182,11 +182,11 @@ export interface ReleaseState {
      *
      * - - -
      */
-    rulesetName?: pulumi.Input<string>;
+    rulesetName?: pulumi.Input<string | undefined>;
     /**
      * Output only. Time the release was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,11 +196,11 @@ export interface ReleaseArgs {
     /**
      * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      *

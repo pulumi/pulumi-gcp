@@ -135,26 +135,26 @@ export interface BillingAccountExclusionState {
     /**
      * The billing account to create the exclusion for.
      */
-    billingAccount?: pulumi.Input<string>;
+    billingAccount?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
      * write a filter.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The name of the logging exclusion.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -168,12 +168,12 @@ export interface BillingAccountExclusionArgs {
     /**
      * A human-readable description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether this exclusion rule should be disabled or not. This defaults to
      * false.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The filter to apply when excluding logs. Only log entries that match the filter are excluded.
      * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
@@ -183,5 +183,5 @@ export interface BillingAccountExclusionArgs {
     /**
      * The name of the logging exclusion.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

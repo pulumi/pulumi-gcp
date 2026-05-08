@@ -175,52 +175,52 @@ export interface DataSharingWithGoogleSettingState {
     /**
      * Create time stamp.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Id of the Data Sharing With Google Setting.
      */
-    dataSharingWithGoogleSettingId?: pulumi.Input<string>;
+    dataSharingWithGoogleSettingId?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether data sharing should be enabled in GA products.
      */
-    enableDataSharing?: pulumi.Input<boolean>;
+    enableDataSharing?: pulumi.Input<boolean | undefined>;
     /**
      * Whether data sharing should be enabled in Preview products.
      */
-    enablePreviewDataSharing?: pulumi.Input<boolean>;
+    enablePreviewDataSharing?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Name of the resource.
      * Format:projects/{project}/locations/{location}/dataSharingWithGoogleSettings/{dataSharingWithGoogleSetting}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Update time stamp.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,24 +234,24 @@ export interface DataSharingWithGoogleSettingArgs {
     /**
      * Whether data sharing should be enabled in GA products.
      */
-    enableDataSharing?: pulumi.Input<boolean>;
+    enableDataSharing?: pulumi.Input<boolean | undefined>;
     /**
      * Whether data sharing should be enabled in Preview products.
      */
-    enablePreviewDataSharing?: pulumi.Input<boolean>;
+    enablePreviewDataSharing?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

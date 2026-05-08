@@ -21,11 +21,11 @@ class AppleAppArgs:
     def __init__(__self__, *,
                  bundle_id: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppleApp resource.
 
@@ -81,7 +81,7 @@ class AppleAppArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiKeyId")
-    def api_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
         If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
@@ -90,24 +90,24 @@ class AppleAppArgs:
         return pulumi.get(self, "api_key_id")
 
     @api_key_id.setter
-    def api_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appStoreId")
-    def app_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         """
         return pulumi.get(self, "app_store_id")
 
     @app_store_id.setter
-    def app_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_store_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
         rather than deleted upon `terraform destroy`. This is useful because the Apple may be
@@ -116,12 +116,12 @@ class AppleAppArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -129,34 +129,34 @@ class AppleAppArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apple Developer Team ID associated with the App in the App Store.
         """
         return pulumi.get(self, "team_id")
 
     @team_id.setter
-    def team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_id", value)
 
 
 @pulumi.input_type
 class _AppleAppState:
     def __init__(__self__, *,
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppleApp resources.
 
@@ -198,7 +198,7 @@ class _AppleAppState:
 
     @_builtins.property
     @pulumi.getter(name="apiKeyId")
-    def api_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
         If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
@@ -207,12 +207,12 @@ class _AppleAppState:
         return pulumi.get(self, "api_key_id")
 
     @api_key_id.setter
-    def api_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique, Firebase-assigned identifier of the App.
         This identifier should be treated as an opaque token, as the data format is not specified.
@@ -220,36 +220,36 @@ class _AppleAppState:
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appStoreId")
-    def app_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         """
         return pulumi.get(self, "app_store_id")
 
     @app_store_id.setter
-    def app_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_store_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bundleId")
-    def bundle_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bundle_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
         """
         return pulumi.get(self, "bundle_id")
 
     @bundle_id.setter
-    def bundle_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bundle_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bundle_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
         rather than deleted upon `terraform destroy`. This is useful because the Apple may be
@@ -258,24 +258,24 @@ class _AppleAppState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-assigned display name of the App.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified resource name of the App, for example:
         projects/projectId/iosApps/appId
@@ -283,12 +283,12 @@ class _AppleAppState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -296,19 +296,19 @@ class _AppleAppState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apple Developer Team ID associated with the App in the App Store.
         """
         return pulumi.get(self, "team_id")
 
     @team_id.setter
-    def team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_id", value)
 
 
@@ -318,13 +318,13 @@ class AppleApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Google Cloud Firebase Apple application instance
@@ -502,13 +502,13 @@ class AppleApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -541,15 +541,15 @@ class AppleApp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            team_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppleApp':
+            api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            team_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppleApp':
         """
         Get an existing AppleApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

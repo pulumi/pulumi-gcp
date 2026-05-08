@@ -177,11 +177,11 @@ export interface LbRouteExtensionState {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A set of ordered extension chains that contain the match conditions and extensions to execute.
      * Match conditions for each extension chain are evaluated in sequence for a given request.
@@ -190,43 +190,43 @@ export interface LbRouteExtensionState {
      * Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
      * Structure is documented below.
      */
-    extensionChains?: pulumi.Input<pulumi.Input<inputs.networkservices.LbRouteExtensionExtensionChain>[]>;
+    extensionChains?: pulumi.Input<pulumi.Input<inputs.networkservices.LbRouteExtensionExtensionChain>[] | undefined>;
     /**
      * A list of references to the forwarding rules to which this service extension is attached to.
      * At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
      */
-    forwardingRules?: pulumi.Input<pulumi.Input<string>[]>;
+    forwardingRules?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of labels associated with the LbRouteExtension resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
      * For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
      * [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
      * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
-    loadBalancingScheme?: pulumi.Input<string>;
+    loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
      * The location of the route extension
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface LbRouteExtensionArgs {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A set of ordered extension chains that contain the match conditions and extensions to execute.
      * Match conditions for each extension chain are evaluated in sequence for a given request.
@@ -256,7 +256,7 @@ export interface LbRouteExtensionArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
      * For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
@@ -271,10 +271,10 @@ export interface LbRouteExtensionArgs {
     /**
      * Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

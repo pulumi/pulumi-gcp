@@ -197,50 +197,50 @@ export interface DnsAuthorizationState {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The structure describing the DNS Resource Record that needs to be added
      * to DNS configuration for the authorization to be usable by
      * certificate.
      * Structure is documented below.
      */
-    dnsResourceRecords?: pulumi.Input<pulumi.Input<inputs.certificatemanager.DnsAuthorizationDnsResourceRecord>[]>;
+    dnsResourceRecords?: pulumi.Input<pulumi.Input<inputs.certificatemanager.DnsAuthorizationDnsResourceRecord>[] | undefined>;
     /**
      * A domain which is being authorized. A DnsAuthorization resource covers a
      * single domain and its wildcard, e.g. authorization for "example.com" can
      * be used to issue certificates for "example.com" and "*.example.com".
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of label tags associated with the DNS Authorization resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Certificate Manager location. If not specified, "global" is used.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
      * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -250,7 +250,7 @@ export interface DnsAuthorizationState {
      * projects.
      * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -260,7 +260,7 @@ export interface DnsAuthorizationArgs {
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A domain which is being authorized. A DnsAuthorization resource covers a
      * single domain and its wildcard, e.g. authorization for "example.com" can
@@ -272,22 +272,22 @@ export interface DnsAuthorizationArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Certificate Manager location. If not specified, "global" is used.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
      * be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -297,5 +297,5 @@ export interface DnsAuthorizationArgs {
      * projects.
      * Possible values are: `FIXED_RECORD`, `PER_PROJECT_RECORD`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

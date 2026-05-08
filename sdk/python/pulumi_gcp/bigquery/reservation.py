@@ -22,17 +22,17 @@ __all__ = ['ReservationArgs', 'Reservation']
 class ReservationArgs:
     def __init__(__self__, *,
                  slot_capacity: pulumi.Input[_builtins.int],
-                 autoscale: Optional[pulumi.Input['ReservationAutoscaleArgs']] = None,
-                 concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoscale: pulumi.Input[Optional['ReservationAutoscaleArgs']] = None,
+                 concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
 
@@ -162,7 +162,7 @@ class ReservationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def autoscale(self) -> Optional[pulumi.Input['ReservationAutoscaleArgs']]:
+    def autoscale(self) -> pulumi.Input[Optional['ReservationAutoscaleArgs']]:
         """
         The configuration parameters for the auto scaling feature.
         Structure is documented below.
@@ -170,36 +170,36 @@ class ReservationArgs:
         return pulumi.get(self, "autoscale")
 
     @autoscale.setter
-    def autoscale(self, value: Optional[pulumi.Input['ReservationAutoscaleArgs']]):
+    def autoscale(self, value: pulumi.Input[Optional['ReservationAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
 
     @_builtins.property
     @pulumi.getter
-    def concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         """
         return pulumi.get(self, "concurrency")
 
     @concurrency.setter
-    def concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrency", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreIdleSlots")
-    def ignore_idle_slots(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_idle_slots(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If false, any query using this reservation will use idle slots from other reservations within
         the same admin project. If true, a query using this reservation will execute with the slot
@@ -208,12 +208,12 @@ class ReservationArgs:
         return pulumi.get(self, "ignore_idle_slots")
 
     @ignore_idle_slots.setter
-    def ignore_idle_slots(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_idle_slots(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_idle_slots", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the transfer config should reside.
         Examples: US, EU, asia-northeast1. The default value is US.
@@ -221,12 +221,12 @@ class ReservationArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSlots")
-    def max_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_slots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional, Beta)
         The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
@@ -265,24 +265,24 @@ class ReservationArgs:
         return pulumi.get(self, "max_slots")
 
     @max_slots.setter
-    def max_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_slots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_slots", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -290,24 +290,24 @@ class ReservationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationGroup")
-    def reservation_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservation group that this reservation belongs to.
         """
         return pulumi.get(self, "reservation_group")
 
     @reservation_group.setter
-    def reservation_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_group", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingMode")
-    def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         The scaling mode for the reservation. If the field is present but maxSlots is not present,
@@ -347,12 +347,12 @@ class ReservationArgs:
         return pulumi.get(self, "scaling_mode")
 
     @scaling_mode.setter
-    def scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryLocation")
-    def secondary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current location of the reservation's secondary replica. This field is only set for
         reservations using the managed disaster recovery feature. Users can set this in create
@@ -362,28 +362,28 @@ class ReservationArgs:
         return pulumi.get(self, "secondary_location")
 
     @secondary_location.setter
-    def secondary_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_location", value)
 
 
 @pulumi.input_type
 class _ReservationState:
     def __init__(__self__, *,
-                 autoscale: Optional[pulumi.Input['ReservationAutoscaleArgs']] = None,
-                 concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 original_primary_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]] = None,
-                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 slot_capacity: Optional[pulumi.Input[_builtins.int]] = None):
+                 autoscale: pulumi.Input[Optional['ReservationAutoscaleArgs']] = None,
+                 concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 original_primary_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]] = None,
+                 reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 slot_capacity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
 
@@ -519,7 +519,7 @@ class _ReservationState:
 
     @_builtins.property
     @pulumi.getter
-    def autoscale(self) -> Optional[pulumi.Input['ReservationAutoscaleArgs']]:
+    def autoscale(self) -> pulumi.Input[Optional['ReservationAutoscaleArgs']]:
         """
         The configuration parameters for the auto scaling feature.
         Structure is documented below.
@@ -527,36 +527,36 @@ class _ReservationState:
         return pulumi.get(self, "autoscale")
 
     @autoscale.setter
-    def autoscale(self, value: Optional[pulumi.Input['ReservationAutoscaleArgs']]):
+    def autoscale(self, value: pulumi.Input[Optional['ReservationAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
 
     @_builtins.property
     @pulumi.getter
-    def concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         """
         return pulumi.get(self, "concurrency")
 
     @concurrency.setter
-    def concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "concurrency", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreIdleSlots")
-    def ignore_idle_slots(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_idle_slots(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If false, any query using this reservation will use idle slots from other reservations within
         the same admin project. If true, a query using this reservation will execute with the slot
@@ -565,12 +565,12 @@ class _ReservationState:
         return pulumi.get(self, "ignore_idle_slots")
 
     @ignore_idle_slots.setter
-    def ignore_idle_slots(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_idle_slots(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_idle_slots", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the transfer config should reside.
         Examples: US, EU, asia-northeast1. The default value is US.
@@ -578,12 +578,12 @@ class _ReservationState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSlots")
-    def max_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_slots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional, Beta)
         The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
@@ -622,24 +622,24 @@ class _ReservationState:
         return pulumi.get(self, "max_slots")
 
     @max_slots.setter
-    def max_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_slots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_slots", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the reservation. This field must only contain alphanumeric characters or dash.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="originalPrimaryLocation")
-    def original_primary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def original_primary_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the reservation was originally created. This is set only during the
         failover reservation's creation. All billing charges for the failover reservation will be
@@ -648,12 +648,12 @@ class _ReservationState:
         return pulumi.get(self, "original_primary_location")
 
     @original_primary_location.setter
-    def original_primary_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def original_primary_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "original_primary_location", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryLocation")
-    def primary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current location of the reservation's primary replica. This field is only set for
         reservations using the managed disaster recovery feature.
@@ -661,12 +661,12 @@ class _ReservationState:
         return pulumi.get(self, "primary_location")
 
     @primary_location.setter
-    def primary_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -674,12 +674,12 @@ class _ReservationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationStatuses")
-    def replication_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]]:
+    def replication_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]]:
         """
         The Disaster Recovery(DR) replication status of the reservation. This is only available for
         the primary replicas of DR/failover reservations and provides information about the both the
@@ -692,24 +692,24 @@ class _ReservationState:
         return pulumi.get(self, "replication_statuses")
 
     @replication_statuses.setter
-    def replication_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]]):
+    def replication_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]]):
         pulumi.set(self, "replication_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationGroup")
-    def reservation_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservation group that this reservation belongs to.
         """
         return pulumi.get(self, "reservation_group")
 
     @reservation_group.setter
-    def reservation_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_group", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingMode")
-    def scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         The scaling mode for the reservation. If the field is present but maxSlots is not present,
@@ -749,12 +749,12 @@ class _ReservationState:
         return pulumi.get(self, "scaling_mode")
 
     @scaling_mode.setter
-    def scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryLocation")
-    def secondary_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current location of the reservation's secondary replica. This field is only set for
         reservations using the managed disaster recovery feature. Users can set this in create
@@ -764,12 +764,12 @@ class _ReservationState:
         return pulumi.get(self, "secondary_location")
 
     @secondary_location.setter
-    def secondary_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_location", value)
 
     @_builtins.property
     @pulumi.getter(name="slotCapacity")
-    def slot_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def slot_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
         unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
@@ -777,7 +777,7 @@ class _ReservationState:
         return pulumi.get(self, "slot_capacity")
 
     @slot_capacity.setter
-    def slot_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def slot_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "slot_capacity", value)
 
 
@@ -787,18 +787,18 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
-                 concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 slot_capacity: Optional[pulumi.Input[_builtins.int]] = None,
+                 autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
+                 concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 slot_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         A reservation is a mechanism used to guarantee BigQuery slots to users.
@@ -1002,18 +1002,18 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscale: Optional[pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
-                 concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 slot_capacity: Optional[pulumi.Input[_builtins.int]] = None,
+                 autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
+                 concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_slots: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 slot_capacity: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1050,21 +1050,21 @@ class Reservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscale: Optional[pulumi.Input[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
-            concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-            edition: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_idle_slots: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            max_slots: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            original_primary_location: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_location: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            replication_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]]] = None,
-            reservation_group: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_location: Optional[pulumi.Input[_builtins.str]] = None,
-            slot_capacity: Optional[pulumi.Input[_builtins.int]] = None) -> 'Reservation':
+            autoscale: pulumi.Input[Optional[Union['ReservationAutoscaleArgs', 'ReservationAutoscaleArgsDict']]] = None,
+            concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            max_slots: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            original_primary_location: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]]] = None,
+            reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_location: pulumi.Input[Optional[_builtins.str]] = None,
+            slot_capacity: pulumi.Input[Optional[_builtins.int]] = None) -> 'Reservation':
         """
         Get an existing Reservation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -424,63 +424,63 @@ export interface HttpRouteState {
     /**
      * Time the HttpRoute was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
      */
-    gateways?: pulumi.Input<pulumi.Input<string>[]>;
+    gateways?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
      */
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of label tags associated with the HttpRoute resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>.
      * The attached Mesh should be of a type SIDECAR.
      */
-    meshes?: pulumi.Input<pulumi.Input<string>[]>;
+    meshes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the HttpRoute resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.networkservices.HttpRouteRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.networkservices.HttpRouteRule>[] | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Time the HttpRoute was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -490,12 +490,12 @@ export interface HttpRouteArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      * Each gateway reference should match the pattern: projects/*&#47;locations/global/gateways/<gateway_name>
      */
-    gateways?: pulumi.Input<pulumi.Input<string>[]>;
+    gateways?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
      */
@@ -505,22 +505,22 @@ export interface HttpRouteArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      * Each mesh reference should match the pattern: projects/*&#47;locations/global/meshes/<mesh_name>.
      * The attached Mesh should be of a type SIDECAR.
      */
-    meshes?: pulumi.Input<pulumi.Input<string>[]>;
+    meshes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the HttpRoute resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.

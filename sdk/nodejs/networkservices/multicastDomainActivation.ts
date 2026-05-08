@@ -253,65 +253,65 @@ export interface MulticastDomainActivationState {
     /**
      * The URL of the admin network.
      */
-    adminNetwork?: pulumi.Input<string>;
+    adminNetwork?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the multicast domain activation was
      * created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An optional text description of the multicast domain activation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Option to allow disabling placement policy for multicast infrastructure.
      * Only applicable if the activation is for a domain associating with a
      * multicast domain group.
      */
-    disablePlacementPolicy?: pulumi.Input<boolean>;
+    disablePlacementPolicy?: pulumi.Input<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels as key-value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the multicast domain to activate.
      * Use the following format:
      * `projects/*&#47;locations/global/multicastDomains/*`.
      */
-    multicastDomain?: pulumi.Input<string>;
+    multicastDomain?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the multicast domain activation.
      * The name is restricted to letters, numbers, and hyphen, with the first
      * character a letter, and the last a letter or a number. The name must not
      * exceed 48 characters.
      */
-    multicastDomainActivationId?: pulumi.Input<string>;
+    multicastDomainActivationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the multicast domain activation.
      * Use the following format:
      * `projects/*&#47;locations/*&#47;multicastDomainActivations/*`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Output)
      * The state of the multicast resource.
@@ -324,25 +324,25 @@ export interface MulticastDomainActivationState {
      * UPDATE_FAILED
      * INACTIVE
      */
-    states?: pulumi.Input<pulumi.Input<inputs.networkservices.MulticastDomainActivationState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.networkservices.MulticastDomainActivationState>[] | undefined>;
     /**
      * Specifies the traffic volume and multicast group scale parameters that are
      * used to set up multicast infrastructure for a multicast domain in a zone.
      * Structure is documented below.
      */
-    trafficSpec?: pulumi.Input<inputs.networkservices.MulticastDomainActivationTrafficSpec>;
+    trafficSpec?: pulumi.Input<inputs.networkservices.MulticastDomainActivationTrafficSpec | undefined>;
     /**
      * The Google-generated UUID for the resource. This value is
      * unique across all multicast domain activation resources. If a domain
      * activation is deleted and another with the same name is created, the new
      * domain activation is assigned a different unique_id.
      */
-    uniqueId?: pulumi.Input<string>;
+    uniqueId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the multicast domain activation was most
      * recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -352,19 +352,19 @@ export interface MulticastDomainActivationArgs {
     /**
      * An optional text description of the multicast domain activation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Option to allow disabling placement policy for multicast infrastructure.
      * Only applicable if the activation is for a domain associating with a
      * multicast domain group.
      */
-    disablePlacementPolicy?: pulumi.Input<boolean>;
+    disablePlacementPolicy?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key-value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -386,11 +386,11 @@ export interface MulticastDomainActivationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the traffic volume and multicast group scale parameters that are
      * used to set up multicast infrastructure for a multicast domain in a zone.
      * Structure is documented below.
      */
-    trafficSpec?: pulumi.Input<inputs.networkservices.MulticastDomainActivationTrafficSpec>;
+    trafficSpec?: pulumi.Input<inputs.networkservices.MulticastDomainActivationTrafficSpec | undefined>;
 }

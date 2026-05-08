@@ -282,25 +282,25 @@ export interface RouterState {
      * BGP information specific to this router.
      * Structure is documented below.
      */
-    bgp?: pulumi.Input<inputs.compute.RouterBgp>;
+    bgp?: pulumi.Input<inputs.compute.RouterBgp | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates if a router is dedicated for use with encrypted VLAN
      * attachments (interconnectAttachments).
      */
-    encryptedInterconnectRouter?: pulumi.Input<boolean>;
+    encryptedInterconnectRouter?: pulumi.Input<boolean | undefined>;
     /**
      * Keys used for MD5 authentication.
      * Structure is documented below.
      */
-    md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys>;
+    md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -309,34 +309,34 @@ export interface RouterState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
-    nccGateway?: pulumi.Input<string>;
+    nccGateway?: pulumi.Input<string | undefined>;
     /**
      * A reference to the network to which this router belongs.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RouterParams>;
+    params?: pulumi.Input<inputs.compute.RouterParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -347,21 +347,21 @@ export interface RouterArgs {
      * BGP information specific to this router.
      * Structure is documented below.
      */
-    bgp?: pulumi.Input<inputs.compute.RouterBgp>;
+    bgp?: pulumi.Input<inputs.compute.RouterBgp | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates if a router is dedicated for use with encrypted VLAN
      * attachments (interconnectAttachments).
      */
-    encryptedInterconnectRouter?: pulumi.Input<boolean>;
+    encryptedInterconnectRouter?: pulumi.Input<boolean | undefined>;
     /**
      * Keys used for MD5 authentication.
      * Structure is documented below.
      */
-    md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys>;
+    md5AuthenticationKeys?: pulumi.Input<inputs.compute.RouterMd5AuthenticationKeys | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -370,28 +370,28 @@ export interface RouterArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
-    nccGateway?: pulumi.Input<string>;
+    nccGateway?: pulumi.Input<string | undefined>;
     /**
      * A reference to the network to which this router belongs.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RouterParams>;
+    params?: pulumi.Input<inputs.compute.RouterParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -89,11 +89,11 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Location = "us-central1",
     ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             PemCertificate = Std.Index.File.Invoke(new()
+    ///             PemCertificate = Std.File.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/cert.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             PemPrivateKey = Std.Index.File.Invoke(new()
+    ///             PemPrivateKey = Std.File.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/private-key.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),
@@ -193,11 +193,11 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Location = "us-south1",
     ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             PemCertificate = Std.Index.File.Invoke(new()
+    ///             PemCertificate = Std.File.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/cert.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             PemPrivateKey = Std.Index.File.Invoke(new()
+    ///             PemPrivateKey = Std.File.Invoke(new()
     ///             {
     ///                 Input = "test-fixtures/private-key.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),

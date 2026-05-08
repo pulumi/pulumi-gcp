@@ -102,7 +102,7 @@ def get_folders(parent_id: Optional[_builtins.str] = None,
         folders=pulumi.get(__ret__, 'folders'),
         id=pulumi.get(__ret__, 'id'),
         parent_id=pulumi.get(__ret__, 'parent_id'))
-def get_folders_output(parent_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_folders_output(parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFoldersResult]:
     """
     Retrieve information about a set of folders based on a parent ID. See the

@@ -499,12 +499,12 @@ export interface TopicState {
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for ingestion from a data source into this topic.
      * Structure is documented below.
      */
-    ingestionDataSourceSettings?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettings>;
+    ingestionDataSourceSettings?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettings | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account
@@ -512,14 +512,14 @@ export interface TopicState {
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Topic.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates the minimum duration to retain a message after it is published
      * to the topic. If this field is set, messages published to the topic in
@@ -530,39 +530,39 @@ export interface TopicState {
      * The rotation period has the format of a decimal number, followed by the
      * letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
      */
-    messageRetentionDuration?: pulumi.Input<string>;
+    messageRetentionDuration?: pulumi.Input<string | undefined>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
      * constraints are in effect.
      * Structure is documented below.
      */
-    messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
+    messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy | undefined>;
     /**
      * Transforms to be applied to messages published to the topic. Transforms are applied in the
      * order specified.
      * Structure is documented below.
      */
-    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[]>;
+    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[] | undefined>;
     /**
      * Name of the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for validating messages published against a schema.
      * Structure is documented below.
      */
-    schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
+    schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings | undefined>;
     /**
      * Input only. Resource manager tags to be bound to the topic. Tag keys and
      * values have the same definition as resource manager tags. Keys must be in
@@ -573,7 +573,7 @@ export interface TopicState {
      * apply tags to an existing resource, see the `gcp.tags.TagValue`
      * resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -584,7 +584,7 @@ export interface TopicArgs {
      * Settings for ingestion from a data source into this topic.
      * Structure is documented below.
      */
-    ingestionDataSourceSettings?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettings>;
+    ingestionDataSourceSettings?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettings | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKey to be used to protect access
      * to messages published on this topic. Your project's PubSub service account
@@ -592,14 +592,14 @@ export interface TopicArgs {
      * `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
      * The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * A set of key/value label pairs to assign to this Topic.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates the minimum duration to retain a message after it is published
      * to the topic. If this field is set, messages published to the topic in
@@ -610,34 +610,34 @@ export interface TopicArgs {
      * The rotation period has the format of a decimal number, followed by the
      * letter `s` (seconds). Cannot be more than 31 days or less than 10 minutes.
      */
-    messageRetentionDuration?: pulumi.Input<string>;
+    messageRetentionDuration?: pulumi.Input<string | undefined>;
     /**
      * Policy constraining the set of Google Cloud Platform regions where
      * messages published to the topic may be stored. If not present, then no
      * constraints are in effect.
      * Structure is documented below.
      */
-    messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy>;
+    messageStoragePolicy?: pulumi.Input<inputs.pubsub.TopicMessageStoragePolicy | undefined>;
     /**
      * Transforms to be applied to messages published to the topic. Transforms are applied in the
      * order specified.
      * Structure is documented below.
      */
-    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[]>;
+    messageTransforms?: pulumi.Input<pulumi.Input<inputs.pubsub.TopicMessageTransform>[] | undefined>;
     /**
      * Name of the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Settings for validating messages published against a schema.
      * Structure is documented below.
      */
-    schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings>;
+    schemaSettings?: pulumi.Input<inputs.pubsub.TopicSchemaSettings | undefined>;
     /**
      * Input only. Resource manager tags to be bound to the topic. Tag keys and
      * values have the same definition as resource manager tags. Keys must be in
@@ -648,5 +648,5 @@ export interface TopicArgs {
      * apply tags to an existing resource, see the `gcp.tags.TagValue`
      * resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

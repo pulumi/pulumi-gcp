@@ -475,9 +475,9 @@ def get_table(dataset_id: Optional[_builtins.str] = None,
         time_partitionings=pulumi.get(__ret__, 'time_partitionings'),
         type=pulumi.get(__ret__, 'type'),
         views=pulumi.get(__ret__, 'views'))
-def get_table_output(dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_table_output(dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     table_id: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableResult]:
     """
     Get a specific table in a BigQuery dataset. For more information see

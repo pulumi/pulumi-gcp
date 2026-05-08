@@ -22,16 +22,16 @@ __all__ = ['CxFlowArgs', 'CxFlow']
 class CxFlowArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 advanced_settings: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
-                 is_default_start_flow: Optional[pulumi.Input[_builtins.bool]] = None,
-                 knowledge_connector_settings: Optional[pulumi.Input['CxFlowKnowledgeConnectorSettingsArgs']] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 nlu_settings: Optional[pulumi.Input['CxFlowNluSettingsArgs']] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None):
+                 advanced_settings: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
+                 is_default_start_flow: pulumi.Input[Optional[_builtins.bool]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional['CxFlowKnowledgeConnectorSettingsArgs']] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nlu_settings: pulumi.Input[Optional['CxFlowNluSettingsArgs']] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a CxFlow resource.
 
@@ -110,7 +110,7 @@ class CxFlowArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedSettings")
-    def advanced_settings(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]:
+    def advanced_settings(self) -> pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']]:
         """
         Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
         Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
@@ -119,24 +119,24 @@ class CxFlowArgs:
         return pulumi.get(self, "advanced_settings")
 
     @advanced_settings.setter
-    def advanced_settings(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]):
+    def advanced_settings(self, value: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']]):
         pulumi.set(self, "advanced_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventHandlers")
-    def event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]:
+    def event_handlers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]:
         """
         A flow's event handlers serve two purposes:
         They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -147,12 +147,12 @@ class CxFlowArgs:
         return pulumi.get(self, "event_handlers")
 
     @event_handlers.setter
-    def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]):
+    def event_handlers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]):
         pulumi.set(self, "event_handlers", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefaultStartFlow")
-    def is_default_start_flow(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_start_flow(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
         The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
@@ -162,12 +162,12 @@ class CxFlowArgs:
         return pulumi.get(self, "is_default_start_flow")
 
     @is_default_start_flow.setter
-    def is_default_start_flow(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_start_flow(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_start_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeConnectorSettings")
-    def knowledge_connector_settings(self) -> Optional[pulumi.Input['CxFlowKnowledgeConnectorSettingsArgs']]:
+    def knowledge_connector_settings(self) -> pulumi.Input[Optional['CxFlowKnowledgeConnectorSettingsArgs']]:
         """
         Knowledge connector configuration.
         Structure is documented below.
@@ -175,12 +175,12 @@ class CxFlowArgs:
         return pulumi.get(self, "knowledge_connector_settings")
 
     @knowledge_connector_settings.setter
-    def knowledge_connector_settings(self, value: Optional[pulumi.Input['CxFlowKnowledgeConnectorSettingsArgs']]):
+    def knowledge_connector_settings(self, value: pulumi.Input[Optional['CxFlowKnowledgeConnectorSettingsArgs']]):
         pulumi.set(self, "knowledge_connector_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the following fields in flow:
         Flow.event_handlers.trigger_fulfillment.messages
@@ -192,12 +192,12 @@ class CxFlowArgs:
         return pulumi.get(self, "language_code")
 
     @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language_code", value)
 
     @_builtins.property
     @pulumi.getter(name="nluSettings")
-    def nlu_settings(self) -> Optional[pulumi.Input['CxFlowNluSettingsArgs']]:
+    def nlu_settings(self) -> pulumi.Input[Optional['CxFlowNluSettingsArgs']]:
         """
         NLU related settings of the flow.
         Structure is documented below.
@@ -205,12 +205,12 @@ class CxFlowArgs:
         return pulumi.get(self, "nlu_settings")
 
     @nlu_settings.setter
-    def nlu_settings(self, value: Optional[pulumi.Input['CxFlowNluSettingsArgs']]):
+    def nlu_settings(self, value: pulumi.Input[Optional['CxFlowNluSettingsArgs']]):
         pulumi.set(self, "nlu_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create a flow for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -218,12 +218,12 @@ class CxFlowArgs:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="transitionRouteGroups")
-    def transition_route_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def transition_route_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A flow's transition route group serve two purposes:
         They are responsible for matching the user's first utterances in the flow.
@@ -233,12 +233,12 @@ class CxFlowArgs:
         return pulumi.get(self, "transition_route_groups")
 
     @transition_route_groups.setter
-    def transition_route_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def transition_route_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transition_route_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="transitionRoutes")
-    def transition_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]:
+    def transition_routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]:
         """
         A flow's transition routes serve two purposes:
         They are responsible for matching the user's first utterances in the flow.
@@ -252,25 +252,25 @@ class CxFlowArgs:
         return pulumi.get(self, "transition_routes")
 
     @transition_routes.setter
-    def transition_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]):
+    def transition_routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]):
         pulumi.set(self, "transition_routes", value)
 
 
 @pulumi.input_type
 class _CxFlowState:
     def __init__(__self__, *,
-                 advanced_settings: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
-                 is_default_start_flow: Optional[pulumi.Input[_builtins.bool]] = None,
-                 knowledge_connector_settings: Optional[pulumi.Input['CxFlowKnowledgeConnectorSettingsArgs']] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nlu_settings: Optional[pulumi.Input['CxFlowNluSettingsArgs']] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None):
+                 advanced_settings: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]] = None,
+                 is_default_start_flow: pulumi.Input[Optional[_builtins.bool]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional['CxFlowKnowledgeConnectorSettingsArgs']] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nlu_settings: pulumi.Input[Optional['CxFlowNluSettingsArgs']] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]] = None):
         """
         Input properties used for looking up and filtering CxFlow resources.
 
@@ -342,7 +342,7 @@ class _CxFlowState:
 
     @_builtins.property
     @pulumi.getter(name="advancedSettings")
-    def advanced_settings(self) -> Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]:
+    def advanced_settings(self) -> pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']]:
         """
         Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
         Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
@@ -351,36 +351,36 @@ class _CxFlowState:
         return pulumi.get(self, "advanced_settings")
 
     @advanced_settings.setter
-    def advanced_settings(self, value: Optional[pulumi.Input['CxFlowAdvancedSettingsArgs']]):
+    def advanced_settings(self, value: pulumi.Input[Optional['CxFlowAdvancedSettingsArgs']]):
         pulumi.set(self, "advanced_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the flow.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="eventHandlers")
-    def event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]:
+    def event_handlers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]:
         """
         A flow's event handlers serve two purposes:
         They are responsible for handling events (e.g. no match, webhook errors) in the flow.
@@ -391,12 +391,12 @@ class _CxFlowState:
         return pulumi.get(self, "event_handlers")
 
     @event_handlers.setter
-    def event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]):
+    def event_handlers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowEventHandlerArgs']]]]):
         pulumi.set(self, "event_handlers", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefaultStartFlow")
-    def is_default_start_flow(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_start_flow(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
         The Default Start Flow cannot be deleted; deleting the `diagflow.CxFlow` resource does nothing to the underlying GCP resources.
@@ -406,12 +406,12 @@ class _CxFlowState:
         return pulumi.get(self, "is_default_start_flow")
 
     @is_default_start_flow.setter
-    def is_default_start_flow(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_start_flow(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_start_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeConnectorSettings")
-    def knowledge_connector_settings(self) -> Optional[pulumi.Input['CxFlowKnowledgeConnectorSettingsArgs']]:
+    def knowledge_connector_settings(self) -> pulumi.Input[Optional['CxFlowKnowledgeConnectorSettingsArgs']]:
         """
         Knowledge connector configuration.
         Structure is documented below.
@@ -419,12 +419,12 @@ class _CxFlowState:
         return pulumi.get(self, "knowledge_connector_settings")
 
     @knowledge_connector_settings.setter
-    def knowledge_connector_settings(self, value: Optional[pulumi.Input['CxFlowKnowledgeConnectorSettingsArgs']]):
+    def knowledge_connector_settings(self, value: pulumi.Input[Optional['CxFlowKnowledgeConnectorSettingsArgs']]):
         pulumi.set(self, "knowledge_connector_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="languageCode")
-    def language_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the following fields in flow:
         Flow.event_handlers.trigger_fulfillment.messages
@@ -436,12 +436,12 @@ class _CxFlowState:
         return pulumi.get(self, "language_code")
 
     @language_code.setter
-    def language_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the flow.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
@@ -449,12 +449,12 @@ class _CxFlowState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nluSettings")
-    def nlu_settings(self) -> Optional[pulumi.Input['CxFlowNluSettingsArgs']]:
+    def nlu_settings(self) -> pulumi.Input[Optional['CxFlowNluSettingsArgs']]:
         """
         NLU related settings of the flow.
         Structure is documented below.
@@ -462,12 +462,12 @@ class _CxFlowState:
         return pulumi.get(self, "nlu_settings")
 
     @nlu_settings.setter
-    def nlu_settings(self, value: Optional[pulumi.Input['CxFlowNluSettingsArgs']]):
+    def nlu_settings(self, value: pulumi.Input[Optional['CxFlowNluSettingsArgs']]):
         pulumi.set(self, "nlu_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create a flow for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -475,12 +475,12 @@ class _CxFlowState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="transitionRouteGroups")
-    def transition_route_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def transition_route_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A flow's transition route group serve two purposes:
         They are responsible for matching the user's first utterances in the flow.
@@ -490,12 +490,12 @@ class _CxFlowState:
         return pulumi.get(self, "transition_route_groups")
 
     @transition_route_groups.setter
-    def transition_route_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def transition_route_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transition_route_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="transitionRoutes")
-    def transition_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]:
+    def transition_routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]:
         """
         A flow's transition routes serve two purposes:
         They are responsible for matching the user's first utterances in the flow.
@@ -509,7 +509,7 @@ class _CxFlowState:
         return pulumi.get(self, "transition_routes")
 
     @transition_routes.setter
-    def transition_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]):
+    def transition_routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CxFlowTransitionRouteArgs']]]]):
         pulumi.set(self, "transition_routes", value)
 
 
@@ -519,17 +519,17 @@ class CxFlow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
-                 is_default_start_flow: Optional[pulumi.Input[_builtins.bool]] = None,
-                 knowledge_connector_settings: Optional[pulumi.Input[Union['CxFlowKnowledgeConnectorSettingsArgs', 'CxFlowKnowledgeConnectorSettingsArgsDict']]] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 nlu_settings: Optional[pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None,
+                 advanced_settings: pulumi.Input[Optional[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
+                 is_default_start_flow: pulumi.Input[Optional[_builtins.bool]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxFlowKnowledgeConnectorSettingsArgs', 'CxFlowKnowledgeConnectorSettingsArgsDict']]] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nlu_settings: pulumi.Input[Optional[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None,
                  __props__=None):
         """
         Flows represents the conversation flows when you build your chatbot agent.
@@ -1629,17 +1629,17 @@ class CxFlow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_settings: Optional[pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
-                 is_default_start_flow: Optional[pulumi.Input[_builtins.bool]] = None,
-                 knowledge_connector_settings: Optional[pulumi.Input[Union['CxFlowKnowledgeConnectorSettingsArgs', 'CxFlowKnowledgeConnectorSettingsArgsDict']]] = None,
-                 language_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 nlu_settings: Optional[pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None,
+                 advanced_settings: pulumi.Input[Optional[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
+                 is_default_start_flow: pulumi.Input[Optional[_builtins.bool]] = None,
+                 knowledge_connector_settings: pulumi.Input[Optional[Union['CxFlowKnowledgeConnectorSettingsArgs', 'CxFlowKnowledgeConnectorSettingsArgsDict']]] = None,
+                 language_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 nlu_settings: pulumi.Input[Optional[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1673,18 +1673,18 @@ class CxFlow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_settings: Optional[pulumi.Input[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
-            is_default_start_flow: Optional[pulumi.Input[_builtins.bool]] = None,
-            knowledge_connector_settings: Optional[pulumi.Input[Union['CxFlowKnowledgeConnectorSettingsArgs', 'CxFlowKnowledgeConnectorSettingsArgsDict']]] = None,
-            language_code: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nlu_settings: Optional[pulumi.Input[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None) -> 'CxFlow':
+            advanced_settings: pulumi.Input[Optional[Union['CxFlowAdvancedSettingsArgs', 'CxFlowAdvancedSettingsArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_handlers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowEventHandlerArgs', 'CxFlowEventHandlerArgsDict']]]]] = None,
+            is_default_start_flow: pulumi.Input[Optional[_builtins.bool]] = None,
+            knowledge_connector_settings: pulumi.Input[Optional[Union['CxFlowKnowledgeConnectorSettingsArgs', 'CxFlowKnowledgeConnectorSettingsArgsDict']]] = None,
+            language_code: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nlu_settings: pulumi.Input[Optional[Union['CxFlowNluSettingsArgs', 'CxFlowNluSettingsArgsDict']]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            transition_route_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            transition_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CxFlowTransitionRouteArgs', 'CxFlowTransitionRouteArgsDict']]]]] = None) -> 'CxFlow':
         """
         Get an existing CxFlow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

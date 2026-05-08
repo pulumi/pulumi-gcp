@@ -35,8 +35,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -78,8 +78,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -121,8 +121,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -164,8 +164,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -207,8 +207,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -247,8 +247,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -288,8 +288,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -329,8 +329,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -370,8 +370,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -411,8 +411,8 @@ public final class SourcerepoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
      * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -188,61 +188,61 @@ export interface HookState {
     /**
      * Create timestamp.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Determines if the hook disabled or not.
      * Set to true to stop sending traffic.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The events that trigger hook on.
      * Each value may be one of: `PUSH`, `PULL_REQUEST`.
      */
-    events?: pulumi.Input<pulumi.Input<string>[]>;
+    events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID for the Hook.
      */
-    hookId?: pulumi.Input<string>;
+    hookId?: pulumi.Input<string | undefined>;
     /**
      * The location for the Repository.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier for a Hook. The name should be of the format:
      * `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The trigger option for push events.
      * Structure is documented below.
      */
-    pushOption?: pulumi.Input<inputs.securesourcemanager.HookPushOption>;
+    pushOption?: pulumi.Input<inputs.securesourcemanager.HookPushOption | undefined>;
     /**
      * The ID for the Repository.
      */
-    repositoryId?: pulumi.Input<string>;
+    repositoryId?: pulumi.Input<string | undefined>;
     /**
      * The sensitive query string to be appended to the target URI.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    sensitiveQueryString?: pulumi.Input<string>;
+    sensitiveQueryString?: pulumi.Input<string | undefined>;
     /**
      * The target URI to which the payloads will be delivered.
      */
-    targetUri?: pulumi.Input<string>;
+    targetUri?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the hook.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Update timestamp.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,12 +253,12 @@ export interface HookArgs {
      * Determines if the hook disabled or not.
      * Set to true to stop sending traffic.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The events that trigger hook on.
      * Each value may be one of: `PUSH`, `PULL_REQUEST`.
      */
-    events?: pulumi.Input<pulumi.Input<string>[]>;
+    events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID for the Hook.
      */
@@ -271,12 +271,12 @@ export interface HookArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The trigger option for push events.
      * Structure is documented below.
      */
-    pushOption?: pulumi.Input<inputs.securesourcemanager.HookPushOption>;
+    pushOption?: pulumi.Input<inputs.securesourcemanager.HookPushOption | undefined>;
     /**
      * The ID for the Repository.
      */
@@ -285,7 +285,7 @@ export interface HookArgs {
      * The sensitive query string to be appended to the target URI.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    sensitiveQueryString?: pulumi.Input<string>;
+    sensitiveQueryString?: pulumi.Input<string | undefined>;
     /**
      * The target URI to which the payloads will be delivered.
      */

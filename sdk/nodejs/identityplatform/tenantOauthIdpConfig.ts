@@ -165,36 +165,36 @@ export interface TenantOauthIdpConfigState {
     /**
      * The client id of an OAuth client.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Human friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * If this config allows users to sign in with the provider.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * For OIDC Idps, the issuer identifier.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the tenant where this OIDC IDP configuration resource exists
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface TenantOauthIdpConfigArgs {
     /**
      * The client secret of the OAuth client, to enable OIDC code flow.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Human friendly display name.
      */
@@ -216,7 +216,7 @@ export interface TenantOauthIdpConfigArgs {
     /**
      * If this config allows users to sign in with the provider.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * For OIDC Idps, the issuer identifier.
      */
@@ -224,12 +224,12 @@ export interface TenantOauthIdpConfigArgs {
     /**
      * The name of the OauthIdpConfig. Must start with `oidc.`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the tenant where this OIDC IDP configuration resource exists
      */

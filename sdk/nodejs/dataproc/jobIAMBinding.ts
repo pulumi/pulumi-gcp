@@ -226,12 +226,12 @@ export class JobIAMBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering JobIAMBinding resources.
  */
 export interface JobIAMBindingState {
-    condition?: pulumi.Input<inputs.dataproc.JobIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.dataproc.JobIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the jobs's IAM policy.
      */
-    etag?: pulumi.Input<string>;
-    jobId?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -242,17 +242,17 @@ export interface JobIAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project in which the job belongs. If it
      * is not provided, the provider will use a default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the job belongs. If it
      * is not provided, the provider will use a default.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -260,14 +260,14 @@ export interface JobIAMBindingState {
      *
      * `gcp.dataproc.JobIAMPolicy` only:
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a JobIAMBinding resource.
  */
 export interface JobIAMBindingArgs {
-    condition?: pulumi.Input<inputs.dataproc.JobIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.dataproc.JobIAMBindingCondition | undefined>;
     jobId: pulumi.Input<string>;
     /**
      * Identities that will be granted the privilege in `role`.
@@ -284,12 +284,12 @@ export interface JobIAMBindingArgs {
      * The project in which the job belongs. If it
      * is not provided, the provider will use a default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the job belongs. If it
      * is not provided, the provider will use a default.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format

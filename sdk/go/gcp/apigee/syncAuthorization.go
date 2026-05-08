@@ -51,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigee, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
+//			apigee2, err := projects.NewService(ctx, "apigee", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("apigee.googleapis.com"),
 //			})
@@ -63,7 +63,7 @@ import (
 //				ProjectId:       project.ProjectId,
 //				RuntimeType:     pulumi.String("HYBRID"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				apigee,
+//				apigee2,
 //			}))
 //			if err != nil {
 //				return err

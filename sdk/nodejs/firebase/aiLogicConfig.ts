@@ -243,33 +243,33 @@ export interface AiLogicConfigState {
      * **not** add your Gemini API key directly into your app's codebase.
      * Structure is documented below.
      */
-    generativeLanguageConfig?: pulumi.Input<inputs.firebase.AiLogicConfigGenerativeLanguageConfig>;
+    generativeLanguageConfig?: pulumi.Input<inputs.firebase.AiLogicConfigGenerativeLanguageConfig | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the config.
      * Format: projects/{project}/locations/{location}/config
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration for telemetry.
      * Telemetry is the collection of metrics, logs, and traces recorded by the
      * Firebase AI Logic backend.
      * Structure is documented below.
      */
-    telemetryConfig?: pulumi.Input<inputs.firebase.AiLogicConfigTelemetryConfig>;
+    telemetryConfig?: pulumi.Input<inputs.firebase.AiLogicConfigTelemetryConfig | undefined>;
     /**
      * Configuration for traffic filtering.
      * Structure is documented below.
      */
-    trafficFilter?: pulumi.Input<inputs.firebase.AiLogicConfigTrafficFilter>;
+    trafficFilter?: pulumi.Input<inputs.firebase.AiLogicConfigTrafficFilter | undefined>;
 }
 
 /**
@@ -283,26 +283,26 @@ export interface AiLogicConfigArgs {
      * **not** add your Gemini API key directly into your app's codebase.
      * Structure is documented below.
      */
-    generativeLanguageConfig?: pulumi.Input<inputs.firebase.AiLogicConfigGenerativeLanguageConfig>;
+    generativeLanguageConfig?: pulumi.Input<inputs.firebase.AiLogicConfigGenerativeLanguageConfig | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration for telemetry.
      * Telemetry is the collection of metrics, logs, and traces recorded by the
      * Firebase AI Logic backend.
      * Structure is documented below.
      */
-    telemetryConfig?: pulumi.Input<inputs.firebase.AiLogicConfigTelemetryConfig>;
+    telemetryConfig?: pulumi.Input<inputs.firebase.AiLogicConfigTelemetryConfig | undefined>;
     /**
      * Configuration for traffic filtering.
      * Structure is documented below.
      */
-    trafficFilter?: pulumi.Input<inputs.firebase.AiLogicConfigTrafficFilter>;
+    trafficFilter?: pulumi.Input<inputs.firebase.AiLogicConfigTrafficFilter | undefined>;
 }

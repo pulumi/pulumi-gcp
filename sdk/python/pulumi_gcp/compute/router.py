@@ -21,16 +21,16 @@ __all__ = ['RouterArgs', 'Router']
 @pulumi.input_type
 class RouterArgs:
     def __init__(__self__, *,
-                 bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5_authentication_keys: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['RouterParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 bgp: pulumi.Input[Optional['RouterBgpArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5_authentication_keys: pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['RouterParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Router resource.
 
@@ -79,7 +79,7 @@ class RouterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['RouterBgpArgs']]:
+    def bgp(self) -> pulumi.Input[Optional['RouterBgpArgs']]:
         """
         BGP information specific to this router.
         Structure is documented below.
@@ -87,24 +87,24 @@ class RouterArgs:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['RouterBgpArgs']]):
+    def bgp(self, value: pulumi.Input[Optional['RouterBgpArgs']]):
         pulumi.set(self, "bgp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptedInterconnectRouter")
-    def encrypted_interconnect_router(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted_interconnect_router(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if a router is dedicated for use with encrypted VLAN
         attachments (interconnectAttachments).
@@ -112,12 +112,12 @@ class RouterArgs:
         return pulumi.get(self, "encrypted_interconnect_router")
 
     @encrypted_interconnect_router.setter
-    def encrypted_interconnect_router(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted_interconnect_router(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted_interconnect_router", value)
 
     @_builtins.property
     @pulumi.getter(name="md5AuthenticationKeys")
-    def md5_authentication_keys(self) -> Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']]:
+    def md5_authentication_keys(self) -> pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']]:
         """
         Keys used for MD5 authentication.
         Structure is documented below.
@@ -125,12 +125,12 @@ class RouterArgs:
         return pulumi.get(self, "md5_authentication_keys")
 
     @md5_authentication_keys.setter
-    def md5_authentication_keys(self, value: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']]):
+    def md5_authentication_keys(self, value: pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']]):
         pulumi.set(self, "md5_authentication_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -142,12 +142,12 @@ class RouterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nccGateway")
-    def ncc_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ncc_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         A URI of an NCC Gateway spoke
@@ -155,24 +155,24 @@ class RouterArgs:
         return pulumi.get(self, "ncc_gateway")
 
     @ncc_gateway.setter
-    def ncc_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ncc_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ncc_gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the network to which this router belongs.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RouterParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RouterParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -180,12 +180,12 @@ class RouterArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RouterParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RouterParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -193,37 +193,37 @@ class RouterArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _RouterState:
     def __init__(__self__, *,
-                 bgp: Optional[pulumi.Input['RouterBgpArgs']] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5_authentication_keys: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['RouterParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None):
+                 bgp: pulumi.Input[Optional['RouterBgpArgs']] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5_authentication_keys: pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['RouterParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Router resources.
 
@@ -278,7 +278,7 @@ class _RouterState:
 
     @_builtins.property
     @pulumi.getter
-    def bgp(self) -> Optional[pulumi.Input['RouterBgpArgs']]:
+    def bgp(self) -> pulumi.Input[Optional['RouterBgpArgs']]:
         """
         BGP information specific to this router.
         Structure is documented below.
@@ -286,36 +286,36 @@ class _RouterState:
         return pulumi.get(self, "bgp")
 
     @bgp.setter
-    def bgp(self, value: Optional[pulumi.Input['RouterBgpArgs']]):
+    def bgp(self, value: pulumi.Input[Optional['RouterBgpArgs']]):
         pulumi.set(self, "bgp", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptedInterconnectRouter")
-    def encrypted_interconnect_router(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted_interconnect_router(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if a router is dedicated for use with encrypted VLAN
         attachments (interconnectAttachments).
@@ -323,12 +323,12 @@ class _RouterState:
         return pulumi.get(self, "encrypted_interconnect_router")
 
     @encrypted_interconnect_router.setter
-    def encrypted_interconnect_router(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted_interconnect_router(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted_interconnect_router", value)
 
     @_builtins.property
     @pulumi.getter(name="md5AuthenticationKeys")
-    def md5_authentication_keys(self) -> Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']]:
+    def md5_authentication_keys(self) -> pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']]:
         """
         Keys used for MD5 authentication.
         Structure is documented below.
@@ -336,12 +336,12 @@ class _RouterState:
         return pulumi.get(self, "md5_authentication_keys")
 
     @md5_authentication_keys.setter
-    def md5_authentication_keys(self, value: Optional[pulumi.Input['RouterMd5AuthenticationKeysArgs']]):
+    def md5_authentication_keys(self, value: pulumi.Input[Optional['RouterMd5AuthenticationKeysArgs']]):
         pulumi.set(self, "md5_authentication_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. The name must be 1-63 characters long, and
         comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -353,12 +353,12 @@ class _RouterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nccGateway")
-    def ncc_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ncc_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         A URI of an NCC Gateway spoke
@@ -366,24 +366,24 @@ class _RouterState:
         return pulumi.get(self, "ncc_gateway")
 
     @ncc_gateway.setter
-    def ncc_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ncc_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ncc_gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the network to which this router belongs.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RouterParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RouterParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -391,12 +391,12 @@ class _RouterState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RouterParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RouterParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -404,31 +404,31 @@ class _RouterState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
 
@@ -438,16 +438,16 @@ class Router(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a Router resource.
@@ -748,16 +748,16 @@ class Router(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bgp: Optional[pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -789,18 +789,18 @@ class Router(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bgp: Optional[pulumi.Input[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypted_interconnect_router: Optional[pulumi.Input[_builtins.bool]] = None,
-            md5_authentication_keys: Optional[pulumi.Input[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ncc_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'Router':
+            bgp: pulumi.Input[Optional[Union['RouterBgpArgs', 'RouterBgpArgsDict']]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_interconnect_router: pulumi.Input[Optional[_builtins.bool]] = None,
+            md5_authentication_keys: pulumi.Input[Optional[Union['RouterMd5AuthenticationKeysArgs', 'RouterMd5AuthenticationKeysArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ncc_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['RouterParamsArgs', 'RouterParamsArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'Router':
         """
         Get an existing Router resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

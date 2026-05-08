@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 class CertificateIssuanceConfigCertificateAuthorityConfigArgsDict(TypedDict):
-    certificate_authority_service_config: NotRequired[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict']]
+    certificate_authority_service_config: NotRequired[pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]]
     """
     Defines a CertificateAuthorityServiceConfig.
     Structure is documented below.
@@ -53,7 +53,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgsDict(TypedDict):
 @pulumi.input_type
 class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
     def __init__(__self__, *,
-                 certificate_authority_service_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']] = None):
+                 certificate_authority_service_config: pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']] = None):
         """
         :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs'] certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
                Structure is documented below.
@@ -63,7 +63,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityServiceConfig")
-    def certificate_authority_service_config(self) -> Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]:
+    def certificate_authority_service_config(self) -> pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]:
         """
         Defines a CertificateAuthorityServiceConfig.
         Structure is documented below.
@@ -71,7 +71,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
         return pulumi.get(self, "certificate_authority_service_config")
 
     @certificate_authority_service_config.setter
-    def certificate_authority_service_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]):
+    def certificate_authority_service_config(self, value: pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]):
         pulumi.set(self, "certificate_authority_service_config", value)
 
 
@@ -110,7 +110,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
 
 
 class CertificateManagedArgsDict(TypedDict):
-    authorization_attempt_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgsDict']]]]
+    authorization_attempt_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]]
     """
     (Output)
     Detailed state of the latest authorization attempt for each domain
@@ -120,28 +120,28 @@ class CertificateManagedArgsDict(TypedDict):
 
     <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
     """
-    dns_authorizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dns_authorizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
     """
-    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The domains for which a managed SSL certificate will be generated.
     Wildcard domains are only supported with DNS challenge resolution
     """
-    issuance_config: NotRequired[pulumi.Input[_builtins.str]]
+    issuance_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
     If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
     Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
     """
-    provisioning_issues: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgsDict']]]]
+    provisioning_issues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]]
     """
     (Output)
     Information about issues with provisioning this Managed Certificate.
     Structure is documented below.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of the domain for managed certificate issuance.
@@ -150,12 +150,12 @@ class CertificateManagedArgsDict(TypedDict):
 @pulumi.input_type
 class CertificateManagedArgs:
     def __init__(__self__, *,
-                 authorization_attempt_infos: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]] = None,
-                 dns_authorizations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 issuance_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioning_issues: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 authorization_attempt_infos: pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]] = None,
+                 dns_authorizations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 issuance_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioning_issues: pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]] authorization_attempt_infos: (Output)
                Detailed state of the latest authorization attempt for each domain
@@ -191,7 +191,7 @@ class CertificateManagedArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizationAttemptInfos")
-    def authorization_attempt_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]:
+    def authorization_attempt_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]:
         """
         (Output)
         Detailed state of the latest authorization attempt for each domain
@@ -204,24 +204,24 @@ class CertificateManagedArgs:
         return pulumi.get(self, "authorization_attempt_infos")
 
     @authorization_attempt_infos.setter
-    def authorization_attempt_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]):
+    def authorization_attempt_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]):
         pulumi.set(self, "authorization_attempt_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsAuthorizations")
-    def dns_authorizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dns_authorizations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         """
         return pulumi.get(self, "dns_authorizations")
 
     @dns_authorizations.setter
-    def dns_authorizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dns_authorizations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dns_authorizations", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The domains for which a managed SSL certificate will be generated.
         Wildcard domains are only supported with DNS challenge resolution
@@ -229,12 +229,12 @@ class CertificateManagedArgs:
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="issuanceConfig")
-    def issuance_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuance_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
         If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
@@ -243,12 +243,12 @@ class CertificateManagedArgs:
         return pulumi.get(self, "issuance_config")
 
     @issuance_config.setter
-    def issuance_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuance_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningIssues")
-    def provisioning_issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]:
+    def provisioning_issues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]:
         """
         (Output)
         Information about issues with provisioning this Managed Certificate.
@@ -257,12 +257,12 @@ class CertificateManagedArgs:
         return pulumi.get(self, "provisioning_issues")
 
     @provisioning_issues.setter
-    def provisioning_issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]):
+    def provisioning_issues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]):
         pulumi.set(self, "provisioning_issues", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of the domain for managed certificate issuance.
@@ -270,26 +270,26 @@ class CertificateManagedArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class CertificateManagedAuthorizationAttemptInfoArgsDict(TypedDict):
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human readable explanation for reaching the state. Provided to help
     address the configuration issues.
     Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
     """
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain name of the authorization attempt.
     """
-    failure_reason: NotRequired[pulumi.Input[_builtins.str]]
+    failure_reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reason for failure of the authorization attempt for the domain.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     State of the domain for managed certificate issuance.
     """
@@ -297,10 +297,10 @@ class CertificateManagedAuthorizationAttemptInfoArgsDict(TypedDict):
 @pulumi.input_type
 class CertificateManagedAuthorizationAttemptInfoArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] details: Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
@@ -320,7 +320,7 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
@@ -329,54 +329,54 @@ class CertificateManagedAuthorizationAttemptInfoArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name of the authorization attempt.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="failureReason")
-    def failure_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failure_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason for failure of the authorization attempt for the domain.
         """
         return pulumi.get(self, "failure_reason")
 
     @failure_reason.setter
-    def failure_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failure_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failure_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the domain for managed certificate issuance.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class CertificateManagedProvisioningIssueArgsDict(TypedDict):
-    details: NotRequired[pulumi.Input[_builtins.str]]
+    details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human readable explanation about the issue. Provided to help address
     the configuration issues.
     Not guaranteed to be stable. For programmatic access use 'reason' field.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reason for provisioning failures.
     """
@@ -384,8 +384,8 @@ class CertificateManagedProvisioningIssueArgsDict(TypedDict):
 @pulumi.input_type
 class CertificateManagedProvisioningIssueArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 details: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] details: Human readable explanation about the issue. Provided to help address
                the configuration issues.
@@ -399,7 +399,7 @@ class CertificateManagedProvisioningIssueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human readable explanation about the issue. Provided to help address
         the configuration issues.
@@ -408,35 +408,35 @@ class CertificateManagedProvisioningIssueArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reason for provisioning failures.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 class CertificateMapGclbTargetArgsDict(TypedDict):
-    ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgsDict']]]]
+    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]]
     """
     An IP configuration where this Certificate Map is serving
     Structure is documented below.
     """
-    target_https_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    target_https_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
     This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
     `targetSslProxy` may be set.
     """
-    target_ssl_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    target_ssl_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
     This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
@@ -446,9 +446,9 @@ class CertificateMapGclbTargetArgsDict(TypedDict):
 @pulumi.input_type
 class CertificateMapGclbTargetArgs:
     def __init__(__self__, *,
-                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]] = None,
-                 target_https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_ssl_proxy: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]] = None,
+                 target_https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_ssl_proxy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]] ip_configs: An IP configuration where this Certificate Map is serving
                Structure is documented below.
@@ -468,7 +468,7 @@ class CertificateMapGclbTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
-    def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]:
+    def ip_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]:
         """
         An IP configuration where this Certificate Map is serving
         Structure is documented below.
@@ -476,12 +476,12 @@ class CertificateMapGclbTargetArgs:
         return pulumi.get(self, "ip_configs")
 
     @ip_configs.setter
-    def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]):
+    def ip_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]):
         pulumi.set(self, "ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="targetHttpsProxy")
-    def target_https_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_https_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
         This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
@@ -490,12 +490,12 @@ class CertificateMapGclbTargetArgs:
         return pulumi.get(self, "target_https_proxy")
 
     @target_https_proxy.setter
-    def target_https_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_https_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_https_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSslProxy")
-    def target_ssl_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_ssl_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
         This field is part of a union field `target_proxy`: Only one of `targetHttpsProxy` or
@@ -504,16 +504,16 @@ class CertificateMapGclbTargetArgs:
         return pulumi.get(self, "target_ssl_proxy")
 
     @target_ssl_proxy.setter
-    def target_ssl_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_ssl_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_ssl_proxy", value)
 
 
 class CertificateMapGclbTargetIpConfigArgsDict(TypedDict):
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An external IP address
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     A list of ports
     """
@@ -521,8 +521,8 @@ class CertificateMapGclbTargetIpConfigArgsDict(TypedDict):
 @pulumi.input_type
 class CertificateMapGclbTargetIpConfigArgs:
     def __init__(__self__, *,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_address: An external IP address
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] ports: A list of ports
@@ -534,31 +534,31 @@ class CertificateMapGclbTargetIpConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An external IP address
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of ports
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "ports", value)
 
 
 class CertificateSelfManagedArgsDict(TypedDict):
-    certificate_pem: NotRequired[pulumi.Input[_builtins.str]]
+    certificate_pem: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The certificate chain in PEM-encoded form.
@@ -567,18 +567,18 @@ class CertificateSelfManagedArgsDict(TypedDict):
 
     > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
     """
-    pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    pem_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The certificate chain in PEM-encoded form.
     Leaf certificate comes first, followed by intermediate ones if any.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    pem_private_key: NotRequired[pulumi.Input[_builtins.str]]
+    pem_private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The private key of the leaf certificate in PEM-encoded form.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    private_key_pem: NotRequired[pulumi.Input[_builtins.str]]
+    private_key_pem: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The private key of the leaf certificate in PEM-encoded form.
@@ -590,10 +590,10 @@ class CertificateSelfManagedArgsDict(TypedDict):
 @pulumi.input_type
 class CertificateSelfManagedArgs:
     def __init__(__self__, *,
-                 certificate_pem: Optional[pulumi.Input[_builtins.str]] = None,
-                 pem_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 pem_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_pem: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_pem: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_pem: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] certificate_pem: (Optional, Deprecated)
                The certificate chain in PEM-encoded form.
@@ -630,7 +630,7 @@ class CertificateSelfManagedArgs:
     @_builtins.property
     @pulumi.getter(name="certificatePem")
     @_utilities.deprecated("""`certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""")
-    def certificate_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The certificate chain in PEM-encoded form.
@@ -642,12 +642,12 @@ class CertificateSelfManagedArgs:
         return pulumi.get(self, "certificate_pem")
 
     @certificate_pem.setter
-    def certificate_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_pem", value)
 
     @_builtins.property
     @pulumi.getter(name="pemCertificate")
-    def pem_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
@@ -656,12 +656,12 @@ class CertificateSelfManagedArgs:
         return pulumi.get(self, "pem_certificate")
 
     @pem_certificate.setter
-    def pem_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="pemPrivateKey")
-    def pem_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key of the leaf certificate in PEM-encoded form.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -669,13 +669,13 @@ class CertificateSelfManagedArgs:
         return pulumi.get(self, "pem_private_key")
 
     @pem_private_key.setter
-    def pem_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyPem")
     @_utilities.deprecated("""`private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""")
-    def private_key_pem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_pem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The private key of the leaf certificate in PEM-encoded form.
@@ -686,23 +686,23 @@ class CertificateSelfManagedArgs:
         return pulumi.get(self, "private_key_pem")
 
     @private_key_pem.setter
-    def private_key_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_pem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_pem", value)
 
 
 class DnsAuthorizationDnsResourceRecordArgsDict(TypedDict):
-    data: NotRequired[pulumi.Input[_builtins.str]]
+    data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Data of the DNS Resource Record.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the resource; provided by the client when the resource is created.
     The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
     and all following characters must be a dash, underscore, letter or digit.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
     be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -716,9 +716,9 @@ class DnsAuthorizationDnsResourceRecordArgsDict(TypedDict):
 @pulumi.input_type
 class DnsAuthorizationDnsResourceRecordArgs:
     def __init__(__self__, *,
-                 data: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 data: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] data: (Output)
                Data of the DNS Resource Record.
@@ -742,7 +742,7 @@ class DnsAuthorizationDnsResourceRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Data of the DNS Resource Record.
@@ -750,12 +750,12 @@ class DnsAuthorizationDnsResourceRecordArgs:
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -764,12 +764,12 @@ class DnsAuthorizationDnsResourceRecordArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
         be used for global resources, and PER_PROJECT_RECORD will be used for other locations.
@@ -782,7 +782,7 @@ class DnsAuthorizationDnsResourceRecordArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -815,13 +815,13 @@ class TrustConfigAllowlistedCertificateArgs:
 
 
 class TrustConfigTrustStoreArgsDict(TypedDict):
-    intermediate_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgsDict']]]]
+    intermediate_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]]
     """
     Set of intermediate CA certificates used for the path building phase of chain validation.
     The field is currently not supported if trust config is used for the workload certificate feature.
     Structure is documented below.
     """
-    trust_anchors: NotRequired[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgsDict']]]]
+    trust_anchors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]]
     """
     List of Trust Anchors to be used while performing validation against a given TrustStore.
     Structure is documented below.
@@ -830,8 +830,8 @@ class TrustConfigTrustStoreArgsDict(TypedDict):
 @pulumi.input_type
 class TrustConfigTrustStoreArgs:
     def __init__(__self__, *,
-                 intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]] = None,
-                 trust_anchors: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]] = None):
+                 intermediate_cas: pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]] = None,
+                 trust_anchors: pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation.
                The field is currently not supported if trust config is used for the workload certificate feature.
@@ -846,7 +846,7 @@ class TrustConfigTrustStoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="intermediateCas")
-    def intermediate_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]:
+    def intermediate_cas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]:
         """
         Set of intermediate CA certificates used for the path building phase of chain validation.
         The field is currently not supported if trust config is used for the workload certificate feature.
@@ -855,12 +855,12 @@ class TrustConfigTrustStoreArgs:
         return pulumi.get(self, "intermediate_cas")
 
     @intermediate_cas.setter
-    def intermediate_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]):
+    def intermediate_cas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]):
         pulumi.set(self, "intermediate_cas", value)
 
     @_builtins.property
     @pulumi.getter(name="trustAnchors")
-    def trust_anchors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]:
+    def trust_anchors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]:
         """
         List of Trust Anchors to be used while performing validation against a given TrustStore.
         Structure is documented below.
@@ -868,12 +868,12 @@ class TrustConfigTrustStoreArgs:
         return pulumi.get(self, "trust_anchors")
 
     @trust_anchors.setter
-    def trust_anchors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]):
+    def trust_anchors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]):
         pulumi.set(self, "trust_anchors", value)
 
 
 class TrustConfigTrustStoreIntermediateCaArgsDict(TypedDict):
-    pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    pem_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM intermediate certificate used for building up paths for validation.
     Each certificate provided in PEM format may occupy up to 5kB.
@@ -883,7 +883,7 @@ class TrustConfigTrustStoreIntermediateCaArgsDict(TypedDict):
 @pulumi.input_type
 class TrustConfigTrustStoreIntermediateCaArgs:
     def __init__(__self__, *,
-                 pem_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 pem_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pem_certificate: PEM intermediate certificate used for building up paths for validation.
                Each certificate provided in PEM format may occupy up to 5kB.
@@ -894,7 +894,7 @@ class TrustConfigTrustStoreIntermediateCaArgs:
 
     @_builtins.property
     @pulumi.getter(name="pemCertificate")
-    def pem_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM intermediate certificate used for building up paths for validation.
         Each certificate provided in PEM format may occupy up to 5kB.
@@ -903,12 +903,12 @@ class TrustConfigTrustStoreIntermediateCaArgs:
         return pulumi.get(self, "pem_certificate")
 
     @pem_certificate.setter
-    def pem_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_certificate", value)
 
 
 class TrustConfigTrustStoreTrustAnchorArgsDict(TypedDict):
-    pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    pem_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM root certificate of the PKI used for validation.
     Each certificate provided in PEM format may occupy up to 5kB.
@@ -918,7 +918,7 @@ class TrustConfigTrustStoreTrustAnchorArgsDict(TypedDict):
 @pulumi.input_type
 class TrustConfigTrustStoreTrustAnchorArgs:
     def __init__(__self__, *,
-                 pem_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 pem_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pem_certificate: PEM root certificate of the PKI used for validation.
                Each certificate provided in PEM format may occupy up to 5kB.
@@ -929,7 +929,7 @@ class TrustConfigTrustStoreTrustAnchorArgs:
 
     @_builtins.property
     @pulumi.getter(name="pemCertificate")
-    def pem_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM root certificate of the PKI used for validation.
         Each certificate provided in PEM format may occupy up to 5kB.
@@ -938,7 +938,7 @@ class TrustConfigTrustStoreTrustAnchorArgs:
         return pulumi.get(self, "pem_certificate")
 
     @pem_certificate.setter
-    def pem_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_certificate", value)
 
 

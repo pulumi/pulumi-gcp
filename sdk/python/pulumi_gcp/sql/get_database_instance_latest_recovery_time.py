@@ -131,9 +131,9 @@ def get_database_instance_latest_recovery_time(instance: Optional[_builtins.str]
         latest_recovery_time=pulumi.get(__ret__, 'latest_recovery_time'),
         project=pulumi.get(__ret__, 'project'),
         source_instance_deletion_time=pulumi.get(__ret__, 'source_instance_deletion_time'))
-def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
-                                                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                      source_instance_deletion_time: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_database_instance_latest_recovery_time_output(instance: pulumi.Input[Optional[_builtins.str]] = None,
+                                                      project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                      source_instance_deletion_time: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceLatestRecoveryTimeResult]:
     """
     Get Latest Recovery Time for a given instance. For more information see the

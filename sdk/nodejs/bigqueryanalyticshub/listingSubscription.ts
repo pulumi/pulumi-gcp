@@ -301,80 +301,80 @@ export interface ListingSubscriptionState {
      * Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
      * Structure is documented below.
      */
-    commercialInfos?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionCommercialInfo>[]>;
+    commercialInfos?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionCommercialInfo>[] | undefined>;
     /**
      * Timestamp when the subscription was created.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    dataExchangeId?: pulumi.Input<string>;
+    dataExchangeId?: pulumi.Input<string | undefined>;
     /**
      * The destination dataset for this subscription.
      * Structure is documented below.
      */
-    destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset>;
+    destinationDataset?: pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionDestinationDataset | undefined>;
     /**
      * Timestamp when the subscription was last modified.
      */
-    lastModifyTime?: pulumi.Input<string>;
+    lastModifyTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Map of listing resource names to associated linked resource,
      * e.g. projects/123/locations/US/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
      * Structure is documented below.
      */
-    linkedDatasetMaps?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionLinkedDatasetMap>[]>;
+    linkedDatasetMaps?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionLinkedDatasetMap>[] | undefined>;
     /**
      * Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
      * Structure is documented below.
      */
-    linkedResources?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionLinkedResource>[]>;
+    linkedResources?: pulumi.Input<pulumi.Input<inputs.bigqueryanalyticshub.ListingSubscriptionLinkedResource>[] | undefined>;
     /**
      * The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      */
-    listingId?: pulumi.Input<string>;
+    listingId?: pulumi.Input<string | undefined>;
     /**
      * The name of the location of the data exchange. Distinct from the location of the destination data set.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
      */
-    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean>;
+    logLinkedDatasetQueryUserEmail?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Display name of the project of this subscription.
      */
-    organizationDisplayName?: pulumi.Input<string>;
+    organizationDisplayName?: pulumi.Input<string | undefined>;
     /**
      * Organization of the project this subscription belongs to.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Listing shared asset type.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Current state of the subscription.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Email of the subscriber.
      */
-    subscriberContact?: pulumi.Input<string>;
+    subscriberContact?: pulumi.Input<string | undefined>;
     /**
      * The subscription id used to reference the subscription.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -402,5 +402,5 @@ export interface ListingSubscriptionArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

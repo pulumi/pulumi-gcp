@@ -213,36 +213,36 @@ export interface AppCheckResourcePolicyState {
      * clients in use.
      * Possible values are: `UNENFORCED`, `ENFORCED`.
      */
-    enforcementMode?: pulumi.Input<string>;
+    enforcementMode?: pulumi.Input<string | undefined>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The server-generated UID for the Resource Policy.
      */
-    resourcePolicyId?: pulumi.Input<string>;
+    resourcePolicyId?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the service to configure a Resource Policy for.
      * Currently, the following service IDs are supported:
      * * `oauth2.googleapis.com` (Google Identity for iOS)
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * Service specific name of the resource object to which this policy applies, in the format:
      * * iOS OAuth clients (Google Identity for iOS):
      * `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
      */
-    targetResource?: pulumi.Input<string>;
+    targetResource?: pulumi.Input<string | undefined>;
     /**
      * Output only. Timestamp when this resource policy configuration object was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -278,12 +278,12 @@ export interface AppCheckResourcePolicyArgs {
      * clients in use.
      * Possible values are: `UNENFORCED`, `ENFORCED`.
      */
-    enforcementMode?: pulumi.Input<string>;
+    enforcementMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the service to configure a Resource Policy for.
      * Currently, the following service IDs are supported:

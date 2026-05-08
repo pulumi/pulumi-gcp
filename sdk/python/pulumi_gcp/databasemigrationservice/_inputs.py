@@ -86,7 +86,7 @@ class ConnectionProfileAlloydbArgsDict(TypedDict):
     """
     Required. The AlloyDB cluster ID that this connection profile is associated with.
     """
-    settings: NotRequired[pulumi.Input['ConnectionProfileAlloydbSettingsArgsDict']]
+    settings: NotRequired[pulumi.Input[Optional['ConnectionProfileAlloydbSettingsArgs']]]
     """
     Immutable. Metadata used to create the destination AlloyDB cluster.
     Structure is documented below.
@@ -96,7 +96,7 @@ class ConnectionProfileAlloydbArgsDict(TypedDict):
 class ConnectionProfileAlloydbArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']] = None):
+                 settings: pulumi.Input[Optional['ConnectionProfileAlloydbSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_id: Required. The AlloyDB cluster ID that this connection profile is associated with.
         :param pulumi.Input['ConnectionProfileAlloydbSettingsArgs'] settings: Immutable. Metadata used to create the destination AlloyDB cluster.
@@ -120,7 +120,7 @@ class ConnectionProfileAlloydbArgs:
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['ConnectionProfileAlloydbSettingsArgs']]:
         """
         Immutable. Metadata used to create the destination AlloyDB cluster.
         Structure is documented below.
@@ -128,7 +128,7 @@ class ConnectionProfileAlloydbArgs:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['ConnectionProfileAlloydbSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
 
@@ -143,11 +143,11 @@ class ConnectionProfileAlloydbSettingsArgsDict(TypedDict):
     Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
     It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels for the AlloyDB cluster created by DMS.
     """
-    primary_instance_settings: NotRequired[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgsDict']]
+    primary_instance_settings: NotRequired[pulumi.Input[Optional['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]]
     """
     Settings for the cluster's primary instance
     Structure is documented below.
@@ -158,8 +158,8 @@ class ConnectionProfileAlloydbSettingsArgs:
     def __init__(__self__, *,
                  initial_user: pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgs'],
                  vpc_network: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 primary_instance_settings: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 primary_instance_settings: pulumi.Input[Optional['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']] = None):
         """
         :param pulumi.Input['ConnectionProfileAlloydbSettingsInitialUserArgs'] initial_user: Required. Input only. Initial user to setup during cluster creation.
                Structure is documented below.
@@ -204,19 +204,19 @@ class ConnectionProfileAlloydbSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the AlloyDB cluster created by DMS.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryInstanceSettings")
-    def primary_instance_settings(self) -> Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]:
+    def primary_instance_settings(self) -> pulumi.Input[Optional['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]:
         """
         Settings for the cluster's primary instance
         Structure is documented below.
@@ -224,7 +224,7 @@ class ConnectionProfileAlloydbSettingsArgs:
         return pulumi.get(self, "primary_instance_settings")
 
     @primary_instance_settings.setter
-    def primary_instance_settings(self, value: Optional[pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]):
+    def primary_instance_settings(self, value: pulumi.Input[Optional['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]):
         pulumi.set(self, "primary_instance_settings", value)
 
 
@@ -238,7 +238,7 @@ class ConnectionProfileAlloydbSettingsInitialUserArgsDict(TypedDict):
     """
     The database username.
     """
-    password_set: NotRequired[pulumi.Input[_builtins.bool]]
+    password_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Output only. Indicates if the initialUser.password field has been set.
@@ -249,7 +249,7 @@ class ConnectionProfileAlloydbSettingsInitialUserArgs:
     def __init__(__self__, *,
                  password: pulumi.Input[_builtins.str],
                  user: pulumi.Input[_builtins.str],
-                 password_set: Optional[pulumi.Input[_builtins.bool]] = None):
+                 password_set: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] password: The initial password for the user.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -289,7 +289,7 @@ class ConnectionProfileAlloydbSettingsInitialUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="passwordSet")
-    def password_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Output only. Indicates if the initialUser.password field has been set.
@@ -297,7 +297,7 @@ class ConnectionProfileAlloydbSettingsInitialUserArgs:
         return pulumi.get(self, "password_set")
 
     @password_set.setter
-    def password_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_set", value)
 
 
@@ -311,15 +311,15 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgsDict(TypedDict)
     Configuration for the machines that host the underlying database engine.
     Structure is documented below.
     """
-    database_flags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    database_flags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels for the AlloyDB primary instance created by DMS.
     """
-    private_ip: NotRequired[pulumi.Input[_builtins.str]]
+    private_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The private IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -330,9 +330,9 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
                  machine_config: pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs'],
-                 database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 database_flags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The database username.
         :param pulumi.Input['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs'] machine_config: Configuration for the machines that host the underlying database engine.
@@ -378,31 +378,31 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def database_flags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
         """
         return pulumi.get(self, "database_flags")
 
     @database_flags.setter
-    def database_flags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def database_flags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "database_flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for the AlloyDB primary instance created by DMS.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The private IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -410,7 +410,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs:
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
 
@@ -443,22 +443,22 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs:
 
 
 class ConnectionProfileCloudsqlArgsDict(TypedDict):
-    cloud_sql_id: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_sql_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The Cloud SQL instance ID that this connection profile is associated with.
     """
-    private_ip: NotRequired[pulumi.Input[_builtins.str]]
+    private_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The Cloud SQL database instance's private IP.
     """
-    public_ip: NotRequired[pulumi.Input[_builtins.str]]
+    public_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The Cloud SQL database instance's public IP.
     """
-    settings: NotRequired[pulumi.Input['ConnectionProfileCloudsqlSettingsArgsDict']]
+    settings: NotRequired[pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsArgs']]]
     """
     Immutable. Metadata used to create the destination Cloud SQL database.
     Structure is documented below.
@@ -467,10 +467,10 @@ class ConnectionProfileCloudsqlArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileCloudsqlArgs:
     def __init__(__self__, *,
-                 cloud_sql_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']] = None):
+                 cloud_sql_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_sql_id: (Output)
                Output only. The Cloud SQL instance ID that this connection profile is associated with.
@@ -492,7 +492,7 @@ class ConnectionProfileCloudsqlArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlId")
-    def cloud_sql_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_sql_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The Cloud SQL instance ID that this connection profile is associated with.
@@ -500,12 +500,12 @@ class ConnectionProfileCloudsqlArgs:
         return pulumi.get(self, "cloud_sql_id")
 
     @cloud_sql_id.setter
-    def cloud_sql_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_sql_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_sql_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The Cloud SQL database instance's private IP.
@@ -513,12 +513,12 @@ class ConnectionProfileCloudsqlArgs:
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The Cloud SQL database instance's public IP.
@@ -526,12 +526,12 @@ class ConnectionProfileCloudsqlArgs:
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']]:
+    def settings(self) -> pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsArgs']]:
         """
         Immutable. Metadata used to create the destination Cloud SQL database.
         Structure is documented below.
@@ -539,7 +539,7 @@ class ConnectionProfileCloudsqlArgs:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsArgs']]):
+    def settings(self, value: pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
 
@@ -548,76 +548,76 @@ class ConnectionProfileCloudsqlSettingsArgsDict(TypedDict):
     """
     The Database Migration Service source connection profile ID, in the format: projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID
     """
-    activation_policy: NotRequired[pulumi.Input[_builtins.str]]
+    activation_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'.
     Possible values are: `ALWAYS`, `NEVER`.
     """
-    auto_storage_increase: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_storage_increase: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity.
     If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
     """
-    cmek_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    cmek_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The KMS key name used for the csql instance.
     """
-    collation: NotRequired[pulumi.Input[_builtins.str]]
+    collation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud SQL default instance level collation.
     """
-    data_disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
+    data_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
     """
-    data_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    data_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of storage.
     Possible values are: `PD_SSD`, `PD_HDD`.
     """
-    database_flags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    database_flags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The database flags passed to the Cloud SQL instance at startup.
     """
-    database_version: NotRequired[pulumi.Input[_builtins.str]]
+    database_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The database engine type and version.
     Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
     """
-    edition: NotRequired[pulumi.Input[_builtins.str]]
+    edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The edition of the given Cloud SQL instance.
     Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
     """
-    ip_config: NotRequired[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgsDict']]
+    ip_config: NotRequired[pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsIpConfigArgs']]]
     """
     The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
     Structure is documented below.
     """
-    root_password: NotRequired[pulumi.Input[_builtins.str]]
+    root_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. Initial root password.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    root_password_set: NotRequired[pulumi.Input[_builtins.bool]]
+    root_password_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Output only. Indicates If this connection profile root password is stored.
     """
-    storage_auto_resize_limit: NotRequired[pulumi.Input[_builtins.str]]
+    storage_auto_resize_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
     """
-    tier: NotRequired[pulumi.Input[_builtins.str]]
+    tier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
     For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
     """
-    user_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    user_labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
     """
@@ -626,22 +626,22 @@ class ConnectionProfileCloudsqlSettingsArgsDict(TypedDict):
 class ConnectionProfileCloudsqlSettingsArgs:
     def __init__(__self__, *,
                  source_id: pulumi.Input[_builtins.str],
-                 activation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_storage_increase: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cmek_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disk_size_gb: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 database_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_config: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']] = None,
-                 root_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_password_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage_auto_resize_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 activation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_storage_increase: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cmek_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disk_size_gb: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_flags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 database_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_config: pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsIpConfigArgs']] = None,
+                 root_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_password_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage_auto_resize_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_id: The Database Migration Service source connection profile ID, in the format: projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID
         :param pulumi.Input[_builtins.str] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'.
@@ -718,7 +718,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="activationPolicy")
-    def activation_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def activation_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'.
         Possible values are: `ALWAYS`, `NEVER`.
@@ -726,12 +726,12 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "activation_policy")
 
     @activation_policy.setter
-    def activation_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def activation_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "activation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="autoStorageIncrease")
-    def auto_storage_increase(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_storage_increase(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity.
         If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
@@ -739,48 +739,48 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "auto_storage_increase")
 
     @auto_storage_increase.setter
-    def auto_storage_increase(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_storage_increase(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_storage_increase", value)
 
     @_builtins.property
     @pulumi.getter(name="cmekKeyName")
-    def cmek_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cmek_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key name used for the csql instance.
         """
         return pulumi.get(self, "cmek_key_name")
 
     @cmek_key_name.setter
-    def cmek_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cmek_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cmek_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud SQL default instance level collation.
         """
         return pulumi.get(self, "collation")
 
     @collation.setter
-    def collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collation", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskSizeGb")
-    def data_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         """
         return pulumi.get(self, "data_disk_size_gb")
 
     @data_disk_size_gb.setter
-    def data_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskType")
-    def data_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of storage.
         Possible values are: `PD_SSD`, `PD_HDD`.
@@ -788,24 +788,24 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "data_disk_type")
 
     @data_disk_type.setter
-    def data_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def database_flags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The database flags passed to the Cloud SQL instance at startup.
         """
         return pulumi.get(self, "database_flags")
 
     @database_flags.setter
-    def database_flags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def database_flags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "database_flags", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseVersion")
-    def database_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database engine type and version.
         Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
@@ -813,12 +813,12 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "database_version")
 
     @database_version.setter
-    def database_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the given Cloud SQL instance.
         Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
@@ -826,12 +826,12 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfig")
-    def ip_config(self) -> Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']]:
+    def ip_config(self) -> pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsIpConfigArgs']]:
         """
         The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         Structure is documented below.
@@ -839,12 +839,12 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "ip_config")
 
     @ip_config.setter
-    def ip_config(self, value: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']]):
+    def ip_config(self, value: pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsIpConfigArgs']]):
         pulumi.set(self, "ip_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPassword")
-    def root_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. Initial root password.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -852,12 +852,12 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "root_password")
 
     @root_password.setter
-    def root_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_password", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPasswordSet")
-    def root_password_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def root_password_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Output only. Indicates If this connection profile root password is stored.
@@ -865,24 +865,24 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "root_password_set")
 
     @root_password_set.setter
-    def root_password_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def root_password_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "root_password_set", value)
 
     @_builtins.property
     @pulumi.getter(name="storageAutoResizeLimit")
-    def storage_auto_resize_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_auto_resize_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         """
         return pulumi.get(self, "storage_auto_resize_limit")
 
     @storage_auto_resize_limit.setter
-    def storage_auto_resize_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_auto_resize_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_auto_resize_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
         For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
@@ -890,50 +890,50 @@ class ConnectionProfileCloudsqlSettingsArgs:
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
         """
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 class ConnectionProfileCloudsqlSettingsIpConfigArgsDict(TypedDict):
-    authorized_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict']]]]
+    authorized_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]]
     """
     The list of external networks that are allowed to connect to the instance using the IP.
     Structure is documented below.
     """
-    enable_ipv4: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_ipv4: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the instance should be assigned an IPv4 address or not.
     """
-    private_network: NotRequired[pulumi.Input[_builtins.str]]
+    private_network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
     This setting can be updated, but it cannot be removed after it is set.
     """
-    require_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    require_ssl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether SSL connections over IP should be enforced or not.
     """
@@ -941,10 +941,10 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileCloudsqlSettingsIpConfigArgs:
     def __init__(__self__, *,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]] = None,
-                 enable_ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_ssl: Optional[pulumi.Input[_builtins.bool]] = None):
+                 authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]] = None,
+                 enable_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_ssl: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP.
                Structure is documented below.
@@ -964,7 +964,7 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]:
+    def authorized_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]:
         """
         The list of external networks that are allowed to connect to the instance using the IP.
         Structure is documented below.
@@ -972,24 +972,24 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
         return pulumi.get(self, "authorized_networks")
 
     @authorized_networks.setter
-    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]):
+    def authorized_networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]):
         pulumi.set(self, "authorized_networks", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIpv4")
-    def enable_ipv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance should be assigned an IPv4 address or not.
         """
         return pulumi.get(self, "enable_ipv4")
 
     @enable_ipv4.setter
-    def enable_ipv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ipv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ipv4", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetwork")
-    def private_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
         This setting can be updated, but it cannot be removed after it is set.
@@ -997,19 +997,19 @@ class ConnectionProfileCloudsqlSettingsIpConfigArgs:
         return pulumi.get(self, "private_network")
 
     @private_network.setter
-    def private_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_network", value)
 
     @_builtins.property
     @pulumi.getter(name="requireSsl")
-    def require_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether SSL connections over IP should be enforced or not.
         """
         return pulumi.get(self, "require_ssl")
 
     @require_ssl.setter
-    def require_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_ssl", value)
 
 
@@ -1018,15 +1018,15 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict(TypedDi
     """
     The allowlisted value for the access control list.
     """
-    expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time when this access control entry expires in RFC 3339 format.
     """
-    label: NotRequired[pulumi.Input[_builtins.str]]
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A label to identify this entry.
     """
-    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The time-to-leave of this access control entry.
     """
@@ -1035,9 +1035,9 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict(TypedDi
 class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[_builtins.str],
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] value: The allowlisted value for the access control list.
         :param pulumi.Input[_builtins.str] expire_time: The time when this access control entry expires in RFC 3339 format.
@@ -1066,53 +1066,53 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when this access control entry expires in RFC 3339 format.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A label to identify this entry.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The time-to-leave of this access control entry.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ttl", value)
 
 
 class ConnectionProfileErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
@@ -1121,9 +1121,9 @@ class ConnectionProfileErrorArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -1141,7 +1141,7 @@ class ConnectionProfileErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -1149,12 +1149,12 @@ class ConnectionProfileErrorArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -1162,12 +1162,12 @@ class ConnectionProfileErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -1175,40 +1175,40 @@ class ConnectionProfileErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class ConnectionProfileMysqlArgsDict(TypedDict):
-    cloud_sql_id: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_sql_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
     """
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP or hostname of the source MySQL database.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The password for the user that Database Migration Service will be using to connect to the database.
     This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    password_set: NotRequired[pulumi.Input[_builtins.bool]]
+    password_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Output only. Indicates If this connection profile password is stored.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The network port of the source MySQL database.
     """
-    ssl: NotRequired[pulumi.Input['ConnectionProfileMysqlSslArgsDict']]
+    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfileMysqlSslArgs']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
     """
@@ -1216,13 +1216,13 @@ class ConnectionProfileMysqlArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileMysqlArgs:
     def __init__(__self__, *,
-                 cloud_sql_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssl: Optional[pulumi.Input['ConnectionProfileMysqlSslArgs']] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_sql_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl: pulumi.Input[Optional['ConnectionProfileMysqlSslArgs']] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param pulumi.Input[_builtins.str] host: The IP or hostname of the source MySQL database.
@@ -1253,31 +1253,31 @@ class ConnectionProfileMysqlArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlId")
-    def cloud_sql_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_sql_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         """
         return pulumi.get(self, "cloud_sql_id")
 
     @cloud_sql_id.setter
-    def cloud_sql_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_sql_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_sql_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP or hostname of the source MySQL database.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The password for the user that Database Migration Service will be using to connect to the database.
         This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
@@ -1286,12 +1286,12 @@ class ConnectionProfileMysqlArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSet")
-    def password_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Output only. Indicates If this connection profile password is stored.
@@ -1299,24 +1299,24 @@ class ConnectionProfileMysqlArgs:
         return pulumi.get(self, "password_set")
 
     @password_set.setter
-    def password_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_set", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The network port of the source MySQL database.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['ConnectionProfileMysqlSslArgs']]:
+    def ssl(self) -> pulumi.Input[Optional['ConnectionProfileMysqlSslArgs']]:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
@@ -1324,42 +1324,42 @@ class ConnectionProfileMysqlArgs:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['ConnectionProfileMysqlSslArgs']]):
+    def ssl(self, value: pulumi.Input[Optional['ConnectionProfileMysqlSslArgs']]):
         pulumi.set(self, "ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class ConnectionProfileMysqlSslArgsDict(TypedDict):
-    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
     The replica will use this certificate to verify it's connecting to the right host.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
     If this field is used then the 'clientKey' field is mandatory
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
     If this field is used then the 'clientCertificate' field is mandatory.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current connection profile state.
@@ -1368,10 +1368,10 @@ class ConnectionProfileMysqlSslArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileMysqlSslArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
                The replica will use this certificate to verify it's connecting to the right host.
@@ -1396,7 +1396,7 @@ class ConnectionProfileMysqlSslArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
@@ -1405,12 +1405,12 @@ class ConnectionProfileMysqlSslArgs:
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
         If this field is used then the 'clientKey' field is mandatory
@@ -1419,12 +1419,12 @@ class ConnectionProfileMysqlSslArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
         If this field is used then the 'clientCertificate' field is mandatory.
@@ -1433,12 +1433,12 @@ class ConnectionProfileMysqlSslArgs:
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current connection profile state.
@@ -1446,7 +1446,7 @@ class ConnectionProfileMysqlSslArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1473,27 +1473,27 @@ class ConnectionProfileOracleArgsDict(TypedDict):
     """
     Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
     """
-    forward_ssh_connectivity: NotRequired[pulumi.Input['ConnectionProfileOracleForwardSshConnectivityArgsDict']]
+    forward_ssh_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleForwardSshConnectivityArgs']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
     """
-    password_set: NotRequired[pulumi.Input[_builtins.bool]]
+    password_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Output only. Indicates If this connection profile password is stored.
     """
-    private_connectivity: NotRequired[pulumi.Input['ConnectionProfileOraclePrivateConnectivityArgsDict']]
+    private_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOraclePrivateConnectivityArgs']]]
     """
     Configuration for using a private network to communicate with the source database
     Structure is documented below.
     """
-    ssl: NotRequired[pulumi.Input['ConnectionProfileOracleSslArgsDict']]
+    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleSslArgs']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
     """
-    static_service_ip_connectivity: NotRequired[pulumi.Input['ConnectionProfileOracleStaticServiceIpConnectivityArgsDict']]
+    static_service_ip_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleStaticServiceIpConnectivityArgs']]]
     """
     This object has no nested fields.
     Static IP address connectivity configured on service project.
@@ -1507,11 +1507,11 @@ class ConnectionProfileOracleArgs:
                  password: pulumi.Input[_builtins.str],
                  port: pulumi.Input[_builtins.int],
                  username: pulumi.Input[_builtins.str],
-                 forward_ssh_connectivity: Optional[pulumi.Input['ConnectionProfileOracleForwardSshConnectivityArgs']] = None,
-                 password_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_connectivity: Optional[pulumi.Input['ConnectionProfileOraclePrivateConnectivityArgs']] = None,
-                 ssl: Optional[pulumi.Input['ConnectionProfileOracleSslArgs']] = None,
-                 static_service_ip_connectivity: Optional[pulumi.Input['ConnectionProfileOracleStaticServiceIpConnectivityArgs']] = None):
+                 forward_ssh_connectivity: pulumi.Input[Optional['ConnectionProfileOracleForwardSshConnectivityArgs']] = None,
+                 password_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_connectivity: pulumi.Input[Optional['ConnectionProfileOraclePrivateConnectivityArgs']] = None,
+                 ssl: pulumi.Input[Optional['ConnectionProfileOracleSslArgs']] = None,
+                 static_service_ip_connectivity: pulumi.Input[Optional['ConnectionProfileOracleStaticServiceIpConnectivityArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] database_service: Required. Database service for the Oracle connection.
         :param pulumi.Input[_builtins.str] host: Required. The IP or hostname of the source Oracle database.
@@ -1611,7 +1611,7 @@ class ConnectionProfileOracleArgs:
 
     @_builtins.property
     @pulumi.getter(name="forwardSshConnectivity")
-    def forward_ssh_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileOracleForwardSshConnectivityArgs']]:
+    def forward_ssh_connectivity(self) -> pulumi.Input[Optional['ConnectionProfileOracleForwardSshConnectivityArgs']]:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
@@ -1619,12 +1619,12 @@ class ConnectionProfileOracleArgs:
         return pulumi.get(self, "forward_ssh_connectivity")
 
     @forward_ssh_connectivity.setter
-    def forward_ssh_connectivity(self, value: Optional[pulumi.Input['ConnectionProfileOracleForwardSshConnectivityArgs']]):
+    def forward_ssh_connectivity(self, value: pulumi.Input[Optional['ConnectionProfileOracleForwardSshConnectivityArgs']]):
         pulumi.set(self, "forward_ssh_connectivity", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSet")
-    def password_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Output only. Indicates If this connection profile password is stored.
@@ -1632,12 +1632,12 @@ class ConnectionProfileOracleArgs:
         return pulumi.get(self, "password_set")
 
     @password_set.setter
-    def password_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_set", value)
 
     @_builtins.property
     @pulumi.getter(name="privateConnectivity")
-    def private_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileOraclePrivateConnectivityArgs']]:
+    def private_connectivity(self) -> pulumi.Input[Optional['ConnectionProfileOraclePrivateConnectivityArgs']]:
         """
         Configuration for using a private network to communicate with the source database
         Structure is documented below.
@@ -1645,12 +1645,12 @@ class ConnectionProfileOracleArgs:
         return pulumi.get(self, "private_connectivity")
 
     @private_connectivity.setter
-    def private_connectivity(self, value: Optional[pulumi.Input['ConnectionProfileOraclePrivateConnectivityArgs']]):
+    def private_connectivity(self, value: pulumi.Input[Optional['ConnectionProfileOraclePrivateConnectivityArgs']]):
         pulumi.set(self, "private_connectivity", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['ConnectionProfileOracleSslArgs']]:
+    def ssl(self) -> pulumi.Input[Optional['ConnectionProfileOracleSslArgs']]:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
@@ -1658,12 +1658,12 @@ class ConnectionProfileOracleArgs:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['ConnectionProfileOracleSslArgs']]):
+    def ssl(self, value: pulumi.Input[Optional['ConnectionProfileOracleSslArgs']]):
         pulumi.set(self, "ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="staticServiceIpConnectivity")
-    def static_service_ip_connectivity(self) -> Optional[pulumi.Input['ConnectionProfileOracleStaticServiceIpConnectivityArgs']]:
+    def static_service_ip_connectivity(self) -> pulumi.Input[Optional['ConnectionProfileOracleStaticServiceIpConnectivityArgs']]:
         """
         This object has no nested fields.
         Static IP address connectivity configured on service project.
@@ -1671,7 +1671,7 @@ class ConnectionProfileOracleArgs:
         return pulumi.get(self, "static_service_ip_connectivity")
 
     @static_service_ip_connectivity.setter
-    def static_service_ip_connectivity(self, value: Optional[pulumi.Input['ConnectionProfileOracleStaticServiceIpConnectivityArgs']]):
+    def static_service_ip_connectivity(self, value: pulumi.Input[Optional['ConnectionProfileOracleStaticServiceIpConnectivityArgs']]):
         pulumi.set(self, "static_service_ip_connectivity", value)
 
 
@@ -1688,12 +1688,12 @@ class ConnectionProfileOracleForwardSshConnectivityArgsDict(TypedDict):
     """
     Required. Username for the SSH tunnel.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. SSH password. Only one of `password` and `private_key` can be configured.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. SSH private key. Only one of `password` and `private_key` can be configured.
     **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1705,8 +1705,8 @@ class ConnectionProfileOracleForwardSshConnectivityArgs:
                  hostname: pulumi.Input[_builtins.str],
                  port: pulumi.Input[_builtins.int],
                  username: pulumi.Input[_builtins.str],
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Required. Hostname for the SSH tunnel.
         :param pulumi.Input[_builtins.int] port: Port for the SSH tunnel, default value is 22.
@@ -1762,7 +1762,7 @@ class ConnectionProfileOracleForwardSshConnectivityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. SSH password. Only one of `password` and `private_key` can be configured.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1770,12 +1770,12 @@ class ConnectionProfileOracleForwardSshConnectivityArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. SSH private key. Only one of `password` and `private_key` can be configured.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1783,7 +1783,7 @@ class ConnectionProfileOracleForwardSshConnectivityArgs:
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
@@ -1816,25 +1816,25 @@ class ConnectionProfileOraclePrivateConnectivityArgs:
 
 
 class ConnectionProfileOracleSslArgsDict(TypedDict):
-    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
     The replica will use this certificate to verify it's connecting to the right host.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
     If this field is used then the 'clientKey' field is mandatory
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
     If this field is used then the 'clientCertificate' field is mandatory.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current connection profile state.
@@ -1843,10 +1843,10 @@ class ConnectionProfileOracleSslArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfileOracleSslArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
                The replica will use this certificate to verify it's connecting to the right host.
@@ -1871,7 +1871,7 @@ class ConnectionProfileOracleSslArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
@@ -1880,12 +1880,12 @@ class ConnectionProfileOracleSslArgs:
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
         If this field is used then the 'clientKey' field is mandatory
@@ -1894,12 +1894,12 @@ class ConnectionProfileOracleSslArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
         If this field is used then the 'clientCertificate' field is mandatory.
@@ -1908,12 +1908,12 @@ class ConnectionProfileOracleSslArgs:
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current connection profile state.
@@ -1921,7 +1921,7 @@ class ConnectionProfileOracleSslArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1935,44 +1935,44 @@ class ConnectionProfileOracleStaticServiceIpConnectivityArgs:
 
 
 class ConnectionProfilePostgresqlArgsDict(TypedDict):
-    alloydb_cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    alloydb_cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
     """
-    cloud_sql_id: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_sql_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
     """
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP or hostname of the source MySQL database.
     """
-    network_architecture: NotRequired[pulumi.Input[_builtins.str]]
+    network_architecture: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The password for the user that Database Migration Service will be using to connect to the database.
     This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    password_set: NotRequired[pulumi.Input[_builtins.bool]]
+    password_set: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Output only. Indicates If this connection profile password is stored.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The network port of the source MySQL database.
     """
-    ssl: NotRequired[pulumi.Input['ConnectionProfilePostgresqlSslArgsDict']]
+    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlSslArgs']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
     """
@@ -1980,15 +1980,15 @@ class ConnectionProfilePostgresqlArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfilePostgresqlArgs:
     def __init__(__self__, *,
-                 alloydb_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_sql_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssl: Optional[pulumi.Input['ConnectionProfilePostgresqlSslArgs']] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 alloydb_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_sql_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl: pulumi.Input[Optional['ConnectionProfilePostgresqlSslArgs']] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alloydb_cluster_id: If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
         :param pulumi.Input[_builtins.str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2026,43 +2026,43 @@ class ConnectionProfilePostgresqlArgs:
 
     @_builtins.property
     @pulumi.getter(name="alloydbClusterId")
-    def alloydb_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alloydb_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
         """
         return pulumi.get(self, "alloydb_cluster_id")
 
     @alloydb_cluster_id.setter
-    def alloydb_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alloydb_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alloydb_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlId")
-    def cloud_sql_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_sql_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         """
         return pulumi.get(self, "cloud_sql_id")
 
     @cloud_sql_id.setter
-    def cloud_sql_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_sql_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_sql_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP or hostname of the source MySQL database.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="networkArchitecture")
-    def network_architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
@@ -2070,12 +2070,12 @@ class ConnectionProfilePostgresqlArgs:
         return pulumi.get(self, "network_architecture")
 
     @network_architecture.setter
-    def network_architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The password for the user that Database Migration Service will be using to connect to the database.
         This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
@@ -2084,12 +2084,12 @@ class ConnectionProfilePostgresqlArgs:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSet")
-    def password_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Output only. Indicates If this connection profile password is stored.
@@ -2097,24 +2097,24 @@ class ConnectionProfilePostgresqlArgs:
         return pulumi.get(self, "password_set")
 
     @password_set.setter
-    def password_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_set", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The network port of the source MySQL database.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input['ConnectionProfilePostgresqlSslArgs']]:
+    def ssl(self) -> pulumi.Input[Optional['ConnectionProfilePostgresqlSslArgs']]:
         """
         SSL configuration for the destination to connect to the source database.
         Structure is documented below.
@@ -2122,42 +2122,42 @@ class ConnectionProfilePostgresqlArgs:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input['ConnectionProfilePostgresqlSslArgs']]):
+    def ssl(self, value: pulumi.Input[Optional['ConnectionProfilePostgresqlSslArgs']]):
         pulumi.set(self, "ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class ConnectionProfilePostgresqlSslArgsDict(TypedDict):
-    ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
     The replica will use this certificate to verify it's connecting to the right host.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    client_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
     If this field is used then the 'clientKey' field is mandatory
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    client_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
     If this field is used then the 'clientCertificate' field is mandatory.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current connection profile state.
@@ -2166,10 +2166,10 @@ class ConnectionProfilePostgresqlSslArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionProfilePostgresqlSslArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
                The replica will use this certificate to verify it's connecting to the right host.
@@ -2194,7 +2194,7 @@ class ConnectionProfilePostgresqlSslArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
         The replica will use this certificate to verify it's connecting to the right host.
@@ -2203,12 +2203,12 @@ class ConnectionProfilePostgresqlSslArgs:
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
         If this field is used then the 'clientKey' field is mandatory
@@ -2217,12 +2217,12 @@ class ConnectionProfilePostgresqlSslArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
         If this field is used then the 'clientCertificate' field is mandatory.
@@ -2231,12 +2231,12 @@ class ConnectionProfilePostgresqlSslArgs:
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current connection profile state.
@@ -2244,12 +2244,12 @@ class ConnectionProfilePostgresqlSslArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class MigrationJobDumpFlagsArgsDict(TypedDict):
-    dump_flags: NotRequired[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgsDict']]]]
+    dump_flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]]
     """
     A list of dump flags
     Structure is documented below.
@@ -2258,7 +2258,7 @@ class MigrationJobDumpFlagsArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobDumpFlagsArgs:
     def __init__(__self__, *,
-                 dump_flags: Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]] = None):
+                 dump_flags: pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]] dump_flags: A list of dump flags
                Structure is documented below.
@@ -2268,7 +2268,7 @@ class MigrationJobDumpFlagsArgs:
 
     @_builtins.property
     @pulumi.getter(name="dumpFlags")
-    def dump_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]:
+    def dump_flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]:
         """
         A list of dump flags
         Structure is documented below.
@@ -2276,16 +2276,16 @@ class MigrationJobDumpFlagsArgs:
         return pulumi.get(self, "dump_flags")
 
     @dump_flags.setter
-    def dump_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]):
+    def dump_flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]):
         pulumi.set(self, "dump_flags", value)
 
 
 class MigrationJobDumpFlagsDumpFlagArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the flag
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The vale of the flag
     """
@@ -2293,8 +2293,8 @@ class MigrationJobDumpFlagsDumpFlagArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobDumpFlagsDumpFlagArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the flag
         :param pulumi.Input[_builtins.str] value: The vale of the flag
@@ -2306,41 +2306,41 @@ class MigrationJobDumpFlagsDumpFlagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the flag
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vale of the flag
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class MigrationJobErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
@@ -2349,9 +2349,9 @@ class MigrationJobErrorArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -2369,7 +2369,7 @@ class MigrationJobErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -2377,12 +2377,12 @@ class MigrationJobErrorArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -2390,12 +2390,12 @@ class MigrationJobErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -2403,12 +2403,12 @@ class MigrationJobErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class MigrationJobObjectsConfigArgsDict(TypedDict):
-    source_objects_config: NotRequired[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigArgsDict']]
+    source_objects_config: NotRequired[pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigArgs']]]
     """
     Configuration for the source objects to be migrated.
     Structure is documented below.
@@ -2417,7 +2417,7 @@ class MigrationJobObjectsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobObjectsConfigArgs:
     def __init__(__self__, *,
-                 source_objects_config: Optional[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigArgs']] = None):
+                 source_objects_config: pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigArgs']] = None):
         """
         :param pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigArgs'] source_objects_config: Configuration for the source objects to be migrated.
                Structure is documented below.
@@ -2427,7 +2427,7 @@ class MigrationJobObjectsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceObjectsConfig")
-    def source_objects_config(self) -> Optional[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigArgs']]:
+    def source_objects_config(self) -> pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigArgs']]:
         """
         Configuration for the source objects to be migrated.
         Structure is documented below.
@@ -2435,18 +2435,18 @@ class MigrationJobObjectsConfigArgs:
         return pulumi.get(self, "source_objects_config")
 
     @source_objects_config.setter
-    def source_objects_config(self, value: Optional[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigArgs']]):
+    def source_objects_config(self, value: pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigArgs']]):
         pulumi.set(self, "source_objects_config", value)
 
 
 class MigrationJobObjectsConfigSourceObjectsConfigArgsDict(TypedDict):
-    object_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgsDict']]]]
+    object_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]]]
     """
     The list of objects to migrate. Should only be set when
     `objectsSelectionType` is `SPECIFIED_OBJECTS`.
     Structure is documented below.
     """
-    objects_selection_type: NotRequired[pulumi.Input[_builtins.str]]
+    objects_selection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The objects selection type of the migration job. When set to
     `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
@@ -2458,8 +2458,8 @@ class MigrationJobObjectsConfigSourceObjectsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobObjectsConfigSourceObjectsConfigArgs:
     def __init__(__self__, *,
-                 object_configs: Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]] = None,
-                 objects_selection_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 object_configs: pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]] = None,
+                 objects_selection_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]] object_configs: The list of objects to migrate. Should only be set when
                `objectsSelectionType` is `SPECIFIED_OBJECTS`.
@@ -2477,7 +2477,7 @@ class MigrationJobObjectsConfigSourceObjectsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="objectConfigs")
-    def object_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]]:
+    def object_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]]:
         """
         The list of objects to migrate. Should only be set when
         `objectsSelectionType` is `SPECIFIED_OBJECTS`.
@@ -2486,12 +2486,12 @@ class MigrationJobObjectsConfigSourceObjectsConfigArgs:
         return pulumi.get(self, "object_configs")
 
     @object_configs.setter
-    def object_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]]):
+    def object_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]]):
         pulumi.set(self, "object_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="objectsSelectionType")
-    def objects_selection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def objects_selection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The objects selection type of the migration job. When set to
         `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
@@ -2502,12 +2502,12 @@ class MigrationJobObjectsConfigSourceObjectsConfigArgs:
         return pulumi.get(self, "objects_selection_type")
 
     @objects_selection_type.setter
-    def objects_selection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def objects_selection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "objects_selection_type", value)
 
 
 class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgsDict(TypedDict):
-    object_identifier: NotRequired[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgsDict']]
+    object_identifier: NotRequired[pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']]]
     """
     The identifier of the migration job object.
     Structure is documented below.
@@ -2516,7 +2516,7 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgsDict(TypedDict
 @pulumi.input_type
 class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs:
     def __init__(__self__, *,
-                 object_identifier: Optional[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']] = None):
+                 object_identifier: pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']] = None):
         """
         :param pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs'] object_identifier: The identifier of the migration job object.
                Structure is documented below.
@@ -2526,7 +2526,7 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="objectIdentifier")
-    def object_identifier(self) -> Optional[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']]:
+    def object_identifier(self) -> pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']]:
         """
         The identifier of the migration job object.
         Structure is documented below.
@@ -2534,7 +2534,7 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs:
         return pulumi.get(self, "object_identifier")
 
     @object_identifier.setter
-    def object_identifier(self, value: Optional[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']]):
+    def object_identifier(self, value: pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']]):
         pulumi.set(self, "object_identifier", value)
 
 
@@ -2545,17 +2545,17 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierAr
     `SCHEMA`, or `TABLE`.
     Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.
     """
-    database: NotRequired[pulumi.Input[_builtins.str]]
+    database: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The database name. Required only if the object uses
     a database name as part of its unique identifier.
     """
-    schema: NotRequired[pulumi.Input[_builtins.str]]
+    schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The schema name. Required only if the object uses
     a schema name as part of its unique identifier.
     """
-    table: NotRequired[pulumi.Input[_builtins.str]]
+    table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The table name. Required only if the object is a level
     below database or schema.
@@ -2565,9 +2565,9 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierAr
 class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None):
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The category of the migration job object: `DATABASE`,
                `SCHEMA`, or `TABLE`.
@@ -2603,7 +2603,7 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierAr
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database name. Required only if the object uses
         a database name as part of its unique identifier.
@@ -2611,12 +2611,12 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierAr
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema name. Required only if the object uses
         a schema name as part of its unique identifier.
@@ -2624,12 +2624,12 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierAr
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The table name. Required only if the object is a level
         below database or schema.
@@ -2637,12 +2637,12 @@ class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierAr
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
 
 class MigrationJobPerformanceConfigArgsDict(TypedDict):
-    dump_parallel_level: NotRequired[pulumi.Input[_builtins.str]]
+    dump_parallel_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Initial dump parallelism level.
     Possible values are: `MIN`, `OPTIMAL`, `MAX`.
@@ -2651,7 +2651,7 @@ class MigrationJobPerformanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobPerformanceConfigArgs:
     def __init__(__self__, *,
-                 dump_parallel_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 dump_parallel_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dump_parallel_level: Initial dump parallelism level.
                Possible values are: `MIN`, `OPTIMAL`, `MAX`.
@@ -2661,7 +2661,7 @@ class MigrationJobPerformanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dumpParallelLevel")
-    def dump_parallel_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dump_parallel_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initial dump parallelism level.
         Possible values are: `MIN`, `OPTIMAL`, `MAX`.
@@ -2669,27 +2669,27 @@ class MigrationJobPerformanceConfigArgs:
         return pulumi.get(self, "dump_parallel_level")
 
     @dump_parallel_level.setter
-    def dump_parallel_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dump_parallel_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dump_parallel_level", value)
 
 
 class MigrationJobReverseSshConnectivityArgsDict(TypedDict):
-    vm: NotRequired[pulumi.Input[_builtins.str]]
+    vm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the virtual machine (Compute Engine) used as the bastion server
     for the SSH tunnel.
     """
-    vm_ip: NotRequired[pulumi.Input[_builtins.str]]
+    vm_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP of the virtual machine (Compute Engine) used as the bastion server
     for the SSH tunnel.
     """
-    vm_port: NotRequired[pulumi.Input[_builtins.int]]
+    vm_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The forwarding port of the virtual machine (Compute Engine) used as the
     bastion server for the SSH tunnel.
     """
-    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    vpc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the VPC to peer with the Cloud SQL private network.
     """
@@ -2697,10 +2697,10 @@ class MigrationJobReverseSshConnectivityArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobReverseSshConnectivityArgs:
     def __init__(__self__, *,
-                 vm: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None):
+                 vm: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vm: The name of the virtual machine (Compute Engine) used as the bastion server
                for the SSH tunnel.
@@ -2721,7 +2721,7 @@ class MigrationJobReverseSshConnectivityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def vm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the virtual machine (Compute Engine) used as the bastion server
         for the SSH tunnel.
@@ -2729,12 +2729,12 @@ class MigrationJobReverseSshConnectivityArgs:
         return pulumi.get(self, "vm")
 
     @vm.setter
-    def vm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm", value)
 
     @_builtins.property
     @pulumi.getter(name="vmIp")
-    def vm_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vm_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP of the virtual machine (Compute Engine) used as the bastion server
         for the SSH tunnel.
@@ -2742,12 +2742,12 @@ class MigrationJobReverseSshConnectivityArgs:
         return pulumi.get(self, "vm_ip")
 
     @vm_ip.setter
-    def vm_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vm_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vm_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="vmPort")
-    def vm_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The forwarding port of the virtual machine (Compute Engine) used as the
         bastion server for the SSH tunnel.
@@ -2755,19 +2755,19 @@ class MigrationJobReverseSshConnectivityArgs:
         return pulumi.get(self, "vm_port")
 
     @vm_port.setter
-    def vm_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC to peer with the Cloud SQL private network.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
 
@@ -2781,7 +2781,7 @@ class MigrationJobStaticIpConnectivityArgs:
 
 
 class MigrationJobVpcPeeringConnectivityArgsDict(TypedDict):
-    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    vpc: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the VPC network to peer with the Cloud SQL private network.
     """
@@ -2789,7 +2789,7 @@ class MigrationJobVpcPeeringConnectivityArgsDict(TypedDict):
 @pulumi.input_type
 class MigrationJobVpcPeeringConnectivityArgs:
     def __init__(__self__, *,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None):
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc: The name of the VPC network to peer with the Cloud SQL private network.
         """
@@ -2798,23 +2798,23 @@ class MigrationJobVpcPeeringConnectivityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC network to peer with the Cloud SQL private network.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
 
 class PrivateConnectionErrorArgsDict(TypedDict):
-    details: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    details: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A message containing more information about the error that occurred.
     """
@@ -2822,8 +2822,8 @@ class PrivateConnectionErrorArgsDict(TypedDict):
 @pulumi.input_type
 class PrivateConnectionErrorArgs:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 details: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] details: A list of messages that carry the error details.
         :param pulumi.Input[_builtins.str] message: A message containing more information about the error that occurred.
@@ -2835,26 +2835,26 @@ class PrivateConnectionErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def details(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A list of messages that carry the error details.
         """
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def details(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A message containing more information about the error that occurred.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 

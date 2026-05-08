@@ -46,8 +46,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -99,8 +99,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -152,8 +152,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -205,8 +205,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -258,8 +258,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -313,8 +313,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -372,8 +372,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -431,8 +431,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -490,8 +490,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -549,8 +549,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -608,8 +608,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -667,8 +667,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.EnvironmentArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
      * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -728,8 +728,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -800,8 +800,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -872,8 +872,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -944,8 +944,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1016,8 +1016,8 @@ public final class ComposerFunctions {
      * import com.pulumi.gcp.composer.UserWorkloadsConfigMapArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsConfigMapArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1090,8 +1090,8 @@ public final class ComposerFunctions {
      * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1168,8 +1168,8 @@ public final class ComposerFunctions {
      * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1246,8 +1246,8 @@ public final class ComposerFunctions {
      * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1324,8 +1324,8 @@ public final class ComposerFunctions {
      * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1402,8 +1402,8 @@ public final class ComposerFunctions {
      * import com.pulumi.std.inputs.Base64encodeArgs;
      * import com.pulumi.gcp.composer.ComposerFunctions;
      * import com.pulumi.gcp.composer.inputs.GetUserWorkloadsSecretArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

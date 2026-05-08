@@ -395,18 +395,18 @@ export interface OrganizationSecurityPolicyRuleState {
      * "gotoNext": forward the request to the next hierarchical policy for evaluation.
      * "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * A description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
      * This field may only be specified when the versionedExpr is set to FIREWALL.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Denotes whether to enable logging for a particular rule.
@@ -414,43 +414,43 @@ export interface OrganizationSecurityPolicyRuleState {
      * configured export destination in Stackdriver.
      * This field may only be specified when the versionedExpr is set to FIREWALL.
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Optional, additional actions that are performed on headers.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleHeaderAction | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    match?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatch>;
+    match?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatch | undefined>;
     /**
      * The ID of the OrganizationSecurityPolicy this rule applies to.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Preconfigured WAF configuration to be applied for the rule.
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    preconfiguredWafConfig?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRulePreconfiguredWafConfig>;
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list. The priority must be a value
      * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
      * highest priority and 2147483647 is the lowest prority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Parameters defining the redirect action. Cannot be specified for any other actions.
      * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
      * Structure is documented below.
      */
-    redirectOptions?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleRedirectOptions>;
+    redirectOptions?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleRedirectOptions | undefined>;
     /**
      * (Optional, Beta)
      * A list of network resource URLs to which this rule applies.
@@ -458,13 +458,13 @@ export interface OrganizationSecurityPolicyRuleState {
      * this rule. If this field is left blank, all VMs
      * within the organization will receive the rule.
      */
-    targetResources?: pulumi.Input<pulumi.Input<string>[]>;
+    targetResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Optional, Beta)
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */
-    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -482,14 +482,14 @@ export interface OrganizationSecurityPolicyRuleArgs {
     /**
      * A description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
      * This field may only be specified when the versionedExpr is set to FIREWALL.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Denotes whether to enable logging for a particular rule.
@@ -497,12 +497,12 @@ export interface OrganizationSecurityPolicyRuleArgs {
      * configured export destination in Stackdriver.
      * This field may only be specified when the versionedExpr is set to FIREWALL.
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Optional, additional actions that are performed on headers.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleHeaderAction | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
@@ -517,11 +517,11 @@ export interface OrganizationSecurityPolicyRuleArgs {
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    preconfiguredWafConfig?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRulePreconfiguredWafConfig>;
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list. The priority must be a value
      * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
@@ -533,7 +533,7 @@ export interface OrganizationSecurityPolicyRuleArgs {
      * Note: For organization security policies, only EXTERNAL_302 redirect type is supported. GOOGLE_RECAPTCHA is not supported.
      * Structure is documented below.
      */
-    redirectOptions?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleRedirectOptions>;
+    redirectOptions?: pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleRedirectOptions | undefined>;
     /**
      * (Optional, Beta)
      * A list of network resource URLs to which this rule applies.
@@ -541,11 +541,11 @@ export interface OrganizationSecurityPolicyRuleArgs {
      * this rule. If this field is left blank, all VMs
      * within the organization will receive the rule.
      */
-    targetResources?: pulumi.Input<pulumi.Input<string>[]>;
+    targetResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Optional, Beta)
      * A list of service accounts indicating the sets of
      * instances that are applied with this rule.
      */
-    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

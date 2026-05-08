@@ -241,70 +241,70 @@ export interface VpnConnectionState {
     /**
      * The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * The time when the VPN connection was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    details?: pulumi.Input<pulumi.Input<inputs.edgecontainer.VpnConnectionDetail>[]>;
+    details?: pulumi.Input<pulumi.Input<inputs.edgecontainer.VpnConnectionDetail>[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
      */
-    enableHighAvailability?: pulumi.Input<boolean>;
+    enableHighAvailability?: pulumi.Input<boolean | undefined>;
     /**
      * Labels associated with this resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Google Cloud Platform location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of VPN connection
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
      * This is empty if NAT is not used.
      */
-    natGatewayIp?: pulumi.Input<string>;
+    natGatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPN connection Cloud Router name.
      */
-    router?: pulumi.Input<string>;
+    router?: pulumi.Input<string | undefined>;
     /**
      * The time when the VPN connection was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The network ID of VPC to connect to.
      */
-    vpc?: pulumi.Input<string>;
+    vpc?: pulumi.Input<string | undefined>;
     /**
      * Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
      * Structure is documented below.
      */
-    vpcProject?: pulumi.Input<inputs.edgecontainer.VpnConnectionVpcProject>;
+    vpcProject?: pulumi.Input<inputs.edgecontainer.VpnConnectionVpcProject | undefined>;
 }
 
 /**
@@ -318,13 +318,13 @@ export interface VpnConnectionArgs {
     /**
      * Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
      */
-    enableHighAvailability?: pulumi.Input<boolean>;
+    enableHighAvailability?: pulumi.Input<boolean | undefined>;
     /**
      * Labels associated with this resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Google Cloud Platform location.
      */
@@ -332,28 +332,28 @@ export interface VpnConnectionArgs {
     /**
      * The resource name of VPN connection
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
      * This is empty if NAT is not used.
      */
-    natGatewayIp?: pulumi.Input<string>;
+    natGatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The VPN connection Cloud Router name.
      */
-    router?: pulumi.Input<string>;
+    router?: pulumi.Input<string | undefined>;
     /**
      * The network ID of VPC to connect to.
      */
-    vpc?: pulumi.Input<string>;
+    vpc?: pulumi.Input<string | undefined>;
     /**
      * Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
      * Structure is documented below.
      */
-    vpcProject?: pulumi.Input<inputs.edgecontainer.VpnConnectionVpcProject>;
+    vpcProject?: pulumi.Input<inputs.edgecontainer.VpnConnectionVpcProject | undefined>;
 }

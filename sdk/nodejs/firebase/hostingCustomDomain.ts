@@ -367,7 +367,7 @@ export interface HostingCustomDomainState {
      * `GROUPED` cert type, while Blaze plan can select any option.
      * Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
      */
-    certPreference?: pulumi.Input<string>;
+    certPreference?: pulumi.Input<string | undefined>;
     /**
      * The SSL certificate Hosting has for this `CustomDomain`'s domain name.
      * For new `CustomDomain`s, this often represents Hosting's intent to create
@@ -375,31 +375,31 @@ export interface HostingCustomDomainState {
      * more.
      * Structure is documented below.
      */
-    certs?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainCert>[]>;
+    certs?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainCert>[] | undefined>;
     /**
      * The `CustomDomain`'s create time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
      */
-    customDomain?: pulumi.Input<string>;
+    customDomain?: pulumi.Input<string | undefined>;
     /**
      * The time the `CustomDomain` was deleted; null for `CustomDomains` that
      * haven't been deleted. Deleted `CustomDomains` persist for approximately 30
      * days, after which time Hosting removes them completely.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * A string that represents the current state of the `CustomDomain` and
      * allows you to confirm its initial state in requests that would modify it.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The minimum time before a soft-deleted `CustomDomain` is completely removed
      * from Hosting; null for `CustomDomains` that haven't been deleted.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The host state of your domain name. Host state is determined by checking each
      * IP address associated with your domain name to see if it's serving
@@ -422,18 +422,18 @@ export interface HostingCustomDomainState {
      * Hosting. If the `CustomDomain`'s `OwnershipState` is also `ACTIVE`, Hosting
      * serves your Hosting Site's content on the domain name.
      */
-    hostState?: pulumi.Input<string>;
+    hostState?: pulumi.Input<string | undefined>;
     /**
      * A set of errors Hosting systems encountered when trying to establish
      * Hosting's ability to serve secure content for your domain name. Resolve
      * these issues to ensure your `CustomDomain` behaves properly.
      * Structure is documented below.
      */
-    issues?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainIssue>[]>;
+    issues?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainIssue>[] | undefined>;
     /**
      * The fully-qualified name of the `CustomDomain`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ownership state of your domain name. Ownership is determined at a
      * Firebase project level, and established by adding `TXT` records to your
@@ -468,46 +468,46 @@ export interface HostingCustomDomainState {
      * Your `CustomDomain`'s domain name has `TXT` records that grant its project
      * permission to act on its behalf.
      */
-    ownershipState?: pulumi.Input<string>;
+    ownershipState?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * if true, indicates that Hosting's systems are attempting to
      * make the `CustomDomain`'s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
      * a new SSL certificate to match an updated `certPreference`
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
      * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      */
-    redirectTarget?: pulumi.Input<string>;
+    redirectTarget?: pulumi.Input<string | undefined>;
     /**
      * A set of updates you should make to the domain name's DNS records to
      * let Hosting serve secure content on its behalf.
      * Structure is documented below.
      */
-    requiredDnsUpdates?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainRequiredDnsUpdate>[]>;
+    requiredDnsUpdates?: pulumi.Input<pulumi.Input<inputs.firebase.HostingCustomDomainRequiredDnsUpdate>[] | undefined>;
     /**
      * The ID of the site in which to create this custom domain association.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The last time the `CustomDomain` was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
      * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
      * the `CustomDomain` will be returned and stored in the Terraform state.
      */
-    waitDnsVerification?: pulumi.Input<boolean>;
+    waitDnsVerification?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -520,7 +520,7 @@ export interface HostingCustomDomainArgs {
      * `GROUPED` cert type, while Blaze plan can select any option.
      * Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
      */
-    certPreference?: pulumi.Input<string>;
+    certPreference?: pulumi.Input<string | undefined>;
     /**
      * The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
      */
@@ -529,14 +529,14 @@ export interface HostingCustomDomainArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A domain name that this CustomDomain should direct traffic towards. If
      * specified, Hosting will respond to requests against this CustomDomain
      * with an HTTP 301 code, and route traffic to the specified `redirectTarget`
      * instead.
      */
-    redirectTarget?: pulumi.Input<string>;
+    redirectTarget?: pulumi.Input<string | undefined>;
     /**
      * The ID of the site in which to create this custom domain association.
      */
@@ -546,5 +546,5 @@ export interface HostingCustomDomainArgs {
      * If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
      * the `CustomDomain` will be returned and stored in the Terraform state.
      */
-    waitDnsVerification?: pulumi.Input<boolean>;
+    waitDnsVerification?: pulumi.Input<boolean | undefined>;
 }

@@ -69,12 +69,12 @@ class CollectionVectorSchemaArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    dense_vector: NotRequired[pulumi.Input['CollectionVectorSchemaDenseVectorArgsDict']]
+    dense_vector: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaDenseVectorArgs']]]
     """
     Message describing a dense vector field.
     Structure is documented below.
     """
-    sparse_vector: NotRequired[pulumi.Input['CollectionVectorSchemaSparseVectorArgsDict']]
+    sparse_vector: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaSparseVectorArgs']]]
     """
     Message describing a sparse vector field.
     """
@@ -83,8 +83,8 @@ class CollectionVectorSchemaArgsDict(TypedDict):
 class CollectionVectorSchemaArgs:
     def __init__(__self__, *,
                  field_name: pulumi.Input[_builtins.str],
-                 dense_vector: Optional[pulumi.Input['CollectionVectorSchemaDenseVectorArgs']] = None,
-                 sparse_vector: Optional[pulumi.Input['CollectionVectorSchemaSparseVectorArgs']] = None):
+                 dense_vector: pulumi.Input[Optional['CollectionVectorSchemaDenseVectorArgs']] = None,
+                 sparse_vector: pulumi.Input[Optional['CollectionVectorSchemaSparseVectorArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] field_name: The identifier for this object. Format specified above.
         :param pulumi.Input['CollectionVectorSchemaDenseVectorArgs'] dense_vector: Message describing a dense vector field.
@@ -111,7 +111,7 @@ class CollectionVectorSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="denseVector")
-    def dense_vector(self) -> Optional[pulumi.Input['CollectionVectorSchemaDenseVectorArgs']]:
+    def dense_vector(self) -> pulumi.Input[Optional['CollectionVectorSchemaDenseVectorArgs']]:
         """
         Message describing a dense vector field.
         Structure is documented below.
@@ -119,28 +119,28 @@ class CollectionVectorSchemaArgs:
         return pulumi.get(self, "dense_vector")
 
     @dense_vector.setter
-    def dense_vector(self, value: Optional[pulumi.Input['CollectionVectorSchemaDenseVectorArgs']]):
+    def dense_vector(self, value: pulumi.Input[Optional['CollectionVectorSchemaDenseVectorArgs']]):
         pulumi.set(self, "dense_vector", value)
 
     @_builtins.property
     @pulumi.getter(name="sparseVector")
-    def sparse_vector(self) -> Optional[pulumi.Input['CollectionVectorSchemaSparseVectorArgs']]:
+    def sparse_vector(self) -> pulumi.Input[Optional['CollectionVectorSchemaSparseVectorArgs']]:
         """
         Message describing a sparse vector field.
         """
         return pulumi.get(self, "sparse_vector")
 
     @sparse_vector.setter
-    def sparse_vector(self, value: Optional[pulumi.Input['CollectionVectorSchemaSparseVectorArgs']]):
+    def sparse_vector(self, value: pulumi.Input[Optional['CollectionVectorSchemaSparseVectorArgs']]):
         pulumi.set(self, "sparse_vector", value)
 
 
 class CollectionVectorSchemaDenseVectorArgsDict(TypedDict):
-    dimensions: NotRequired[pulumi.Input[_builtins.int]]
+    dimensions: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Dimensionality of the vector field.
     """
-    vertex_embedding_config: NotRequired[pulumi.Input['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgsDict']]
+    vertex_embedding_config: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']]]
     """
     Message describing the configuration for generating embeddings for a vector
     field using Vertex AI embeddings API.
@@ -150,8 +150,8 @@ class CollectionVectorSchemaDenseVectorArgsDict(TypedDict):
 @pulumi.input_type
 class CollectionVectorSchemaDenseVectorArgs:
     def __init__(__self__, *,
-                 dimensions: Optional[pulumi.Input[_builtins.int]] = None,
-                 vertex_embedding_config: Optional[pulumi.Input['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']] = None):
+                 dimensions: pulumi.Input[Optional[_builtins.int]] = None,
+                 vertex_embedding_config: pulumi.Input[Optional['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] dimensions: Dimensionality of the vector field.
         :param pulumi.Input['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs'] vertex_embedding_config: Message describing the configuration for generating embeddings for a vector
@@ -165,19 +165,19 @@ class CollectionVectorSchemaDenseVectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dimensions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Dimensionality of the vector field.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dimensions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="vertexEmbeddingConfig")
-    def vertex_embedding_config(self) -> Optional[pulumi.Input['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']]:
+    def vertex_embedding_config(self) -> pulumi.Input[Optional['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']]:
         """
         Message describing the configuration for generating embeddings for a vector
         field using Vertex AI embeddings API.
@@ -186,7 +186,7 @@ class CollectionVectorSchemaDenseVectorArgs:
         return pulumi.get(self, "vertex_embedding_config")
 
     @vertex_embedding_config.setter
-    def vertex_embedding_config(self, value: Optional[pulumi.Input['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']]):
+    def vertex_embedding_config(self, value: pulumi.Input[Optional['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']]):
         pulumi.set(self, "vertex_embedding_config", value)
 
 

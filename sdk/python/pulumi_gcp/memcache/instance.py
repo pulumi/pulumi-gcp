@@ -23,18 +23,18 @@ class InstanceArgs:
     def __init__(__self__, *,
                  node_config: pulumi.Input['InstanceNodeConfigArgs'],
                  node_count: pulumi.Input[_builtins.int],
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
-                 memcache_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
+                 memcache_parameters: pulumi.Input[Optional['InstanceMemcacheParametersArgs']] = None,
+                 memcache_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -127,7 +127,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the GCE network to connect the instance to.  If not provided,
         'default' will be used.
@@ -135,12 +135,12 @@ class InstanceArgs:
         return pulumi.get(self, "authorized_network")
 
     @authorized_network.setter
-    def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the instance.
         When a `terraform destroy` or `pulumi up` would delete the instance,
@@ -152,24 +152,24 @@ class InstanceArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-visible name for the instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
 
@@ -179,12 +179,12 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -192,12 +192,12 @@ class InstanceArgs:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="memcacheParameters")
-    def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArgs']]:
+    def memcache_parameters(self) -> pulumi.Input[Optional['InstanceMemcacheParametersArgs']]:
         """
         User-specified parameters for this memcache instance.
         Structure is documented below.
@@ -205,12 +205,12 @@ class InstanceArgs:
         return pulumi.get(self, "memcache_parameters")
 
     @memcache_parameters.setter
-    def memcache_parameters(self, value: Optional[pulumi.Input['InstanceMemcacheParametersArgs']]):
+    def memcache_parameters(self, value: pulumi.Input[Optional['InstanceMemcacheParametersArgs']]):
         pulumi.set(self, "memcache_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="memcacheVersion")
-    def memcache_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memcache_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The major version of Memcached software. If not provided, latest supported version will be used.
         Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -221,24 +221,24 @@ class InstanceArgs:
         return pulumi.get(self, "memcache_version")
 
     @memcache_version.setter
-    def memcache_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memcache_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memcache_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -246,24 +246,24 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Memcache instance. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRangeIds")
-    def reserved_ip_range_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reserved_ip_range_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Contains the name of allocated IP address ranges associated with
         the private service access connection for example, "test-default"
@@ -272,12 +272,12 @@ class InstanceArgs:
         return pulumi.get(self, "reserved_ip_range_ids")
 
     @reserved_ip_range_ids.setter
-    def reserved_ip_range_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reserved_ip_range_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reserved_ip_range_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Zones where memcache nodes should be provisioned.  If not
         provided, all zones will be used.
@@ -285,34 +285,34 @@ class InstanceArgs:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
-                 memcache_full_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]] = None,
-                 memcache_parameters: Optional[pulumi.Input['InstanceMemcacheParametersArgs']] = None,
-                 memcache_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input['InstanceNodeConfigArgs']] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 memcache_full_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 memcache_nodes: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]] = None,
+                 memcache_parameters: pulumi.Input[Optional['InstanceMemcacheParametersArgs']] = None,
+                 memcache_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional['InstanceNodeConfigArgs']] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -406,7 +406,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the GCE network to connect the instance to.  If not provided,
         'default' will be used.
@@ -414,24 +414,24 @@ class _InstanceState:
         return pulumi.get(self, "authorized_network")
 
     @authorized_network.setter
-    def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the instance.
         When a `terraform destroy` or `pulumi up` would delete the instance,
@@ -443,48 +443,48 @@ class _InstanceState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryEndpoint")
-    def discovery_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoint for Discovery API
         """
         return pulumi.get(self, "discovery_endpoint")
 
     @discovery_endpoint.setter
-    def discovery_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-visible name for the instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user-provided metadata.
 
@@ -494,12 +494,12 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -507,12 +507,12 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceSchedules")
-    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
+    def maintenance_schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
         """
         Output only. Published maintenance schedule.
         Structure is documented below.
@@ -520,24 +520,24 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_schedules")
 
     @maintenance_schedules.setter
-    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+    def maintenance_schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
 
     @_builtins.property
     @pulumi.getter(name="memcacheFullVersion")
-    def memcache_full_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memcache_full_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full version of memcached server running on this instance.
         """
         return pulumi.get(self, "memcache_full_version")
 
     @memcache_full_version.setter
-    def memcache_full_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memcache_full_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memcache_full_version", value)
 
     @_builtins.property
     @pulumi.getter(name="memcacheNodes")
-    def memcache_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]]:
+    def memcache_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]]:
         """
         Additional information about the instance state, if available.
         Structure is documented below.
@@ -545,12 +545,12 @@ class _InstanceState:
         return pulumi.get(self, "memcache_nodes")
 
     @memcache_nodes.setter
-    def memcache_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]]):
+    def memcache_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMemcacheNodeArgs']]]]):
         pulumi.set(self, "memcache_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="memcacheParameters")
-    def memcache_parameters(self) -> Optional[pulumi.Input['InstanceMemcacheParametersArgs']]:
+    def memcache_parameters(self) -> pulumi.Input[Optional['InstanceMemcacheParametersArgs']]:
         """
         User-specified parameters for this memcache instance.
         Structure is documented below.
@@ -558,12 +558,12 @@ class _InstanceState:
         return pulumi.get(self, "memcache_parameters")
 
     @memcache_parameters.setter
-    def memcache_parameters(self, value: Optional[pulumi.Input['InstanceMemcacheParametersArgs']]):
+    def memcache_parameters(self, value: pulumi.Input[Optional['InstanceMemcacheParametersArgs']]):
         pulumi.set(self, "memcache_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="memcacheVersion")
-    def memcache_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memcache_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The major version of Memcached software. If not provided, latest supported version will be used.
         Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -574,24 +574,24 @@ class _InstanceState:
         return pulumi.get(self, "memcache_version")
 
     @memcache_version.setter
-    def memcache_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memcache_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memcache_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['InstanceNodeConfigArgs']]:
+    def node_config(self) -> pulumi.Input[Optional['InstanceNodeConfigArgs']]:
         """
         Configuration for memcache nodes.
         Structure is documented below.
@@ -599,24 +599,24 @@ class _InstanceState:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['InstanceNodeConfigArgs']]):
+    def node_config(self, value: pulumi.Input[Optional['InstanceNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nodes in the memcache instance.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -624,12 +624,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -637,24 +637,24 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Memcache instance. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRangeIds")
-    def reserved_ip_range_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reserved_ip_range_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Contains the name of allocated IP address ranges associated with
         the private service access connection for example, "test-default"
@@ -663,12 +663,12 @@ class _InstanceState:
         return pulumi.get(self, "reserved_ip_range_ids")
 
     @reserved_ip_range_ids.setter
-    def reserved_ip_range_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reserved_ip_range_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reserved_ip_range_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Zones where memcache nodes should be provisioned.  If not
         provided, all zones will be used.
@@ -676,7 +676,7 @@ class _InstanceState:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -686,20 +686,20 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-                 memcache_parameters: Optional[pulumi.Input[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']]] = None,
-                 memcache_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 memcache_parameters: pulumi.Input[Optional[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']]] = None,
+                 memcache_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A Google Cloud Memcache instance.
@@ -923,20 +923,20 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-                 memcache_parameters: Optional[pulumi.Input[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']]] = None,
-                 memcache_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 memcache_parameters: pulumi.Input[Optional[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']]] = None,
+                 memcache_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -983,27 +983,27 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            discovery_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
-            memcache_full_version: Optional[pulumi.Input[_builtins.str]] = None,
-            memcache_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMemcacheNodeArgs', 'InstanceMemcacheNodeArgsDict']]]]] = None,
-            memcache_parameters: Optional[pulumi.Input[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']]] = None,
-            memcache_version: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_config: Optional[pulumi.Input[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_ip_range_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
+            authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            discovery_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+            maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
+            memcache_full_version: pulumi.Input[Optional[_builtins.str]] = None,
+            memcache_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMemcacheNodeArgs', 'InstanceMemcacheNodeArgsDict']]]]] = None,
+            memcache_parameters: pulumi.Input[Optional[Union['InstanceMemcacheParametersArgs', 'InstanceMemcacheParametersArgsDict']]] = None,
+            memcache_version: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_config: pulumi.Input[Optional[Union['InstanceNodeConfigArgs', 'InstanceNodeConfigArgsDict']]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_ip_range_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

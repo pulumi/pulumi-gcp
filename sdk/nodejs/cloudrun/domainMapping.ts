@@ -168,31 +168,31 @@ export interface DomainMappingState {
     /**
      * The location of the cloud run instance. eg us-central1
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with this DomainMapping.
      * Structure is documented below.
      */
-    metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
+    metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata | undefined>;
     /**
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The spec for this DomainMapping.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.cloudrun.DomainMappingSpec>;
+    spec?: pulumi.Input<inputs.cloudrun.DomainMappingSpec | undefined>;
     /**
      * (Output)
      * Status of the condition, one of True, False, Unknown.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.DomainMappingStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.cloudrun.DomainMappingStatus>[] | undefined>;
 }
 
 /**
@@ -207,16 +207,16 @@ export interface DomainMappingArgs {
      * Metadata associated with this DomainMapping.
      * Structure is documented below.
      */
-    metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata>;
+    metadata?: pulumi.Input<inputs.cloudrun.DomainMappingMetadata | undefined>;
     /**
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The spec for this DomainMapping.
      * Structure is documented below.

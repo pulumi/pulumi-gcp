@@ -24,13 +24,13 @@ class AuthzPolicyArgs:
                  action: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  target: pulumi.Input['AuthzPolicyTargetArgs'],
-                 custom_provider: Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_provider: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthzPolicy resource.
 
@@ -132,7 +132,7 @@ class AuthzPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="customProvider")
-    def custom_provider(self) -> Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']]:
+    def custom_provider(self) -> pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']]:
         """
         Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
         Structure is documented below.
@@ -140,24 +140,24 @@ class AuthzPolicyArgs:
         return pulumi.get(self, "custom_provider")
 
     @custom_provider.setter
-    def custom_provider(self, value: Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']]):
+    def custom_provider(self, value: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']]):
         pulumi.set(self, "custom_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="httpRules")
-    def http_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]:
+    def http_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]:
         """
         A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
         Limited to 5 rules.
@@ -166,12 +166,12 @@ class AuthzPolicyArgs:
         return pulumi.get(self, "http_rules")
 
     @http_rules.setter
-    def http_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]):
+    def http_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]):
         pulumi.set(self, "http_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with the AuthzExtension resource.
 
@@ -181,24 +181,24 @@ class AuthzPolicyArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Name of the AuthzPolicy resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyProfile")
-    def policy_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
         authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
@@ -211,12 +211,12 @@ class AuthzPolicyArgs:
         return pulumi.get(self, "policy_profile")
 
     @policy_profile.setter
-    def policy_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -224,27 +224,27 @@ class AuthzPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _AuthzPolicyState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_provider: Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 http_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target: Optional[pulumi.Input['AuthzPolicyTargetArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_provider: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target: pulumi.Input[Optional['AuthzPolicyTargetArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthzPolicy resources.
 
@@ -317,7 +317,7 @@ class _AuthzPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the action is CUSTOM, customProvider must be specified.
         When the action is ALLOW, only requests matching the policy will be allowed.
@@ -332,24 +332,24 @@ class _AuthzPolicyState:
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customProvider")
-    def custom_provider(self) -> Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']]:
+    def custom_provider(self) -> pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']]:
         """
         Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
         Structure is documented below.
@@ -357,36 +357,36 @@ class _AuthzPolicyState:
         return pulumi.get(self, "custom_provider")
 
     @custom_provider.setter
-    def custom_provider(self, value: Optional[pulumi.Input['AuthzPolicyCustomProviderArgs']]):
+    def custom_provider(self, value: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']]):
         pulumi.set(self, "custom_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="httpRules")
-    def http_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]:
+    def http_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]:
         """
         A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
         Limited to 5 rules.
@@ -395,12 +395,12 @@ class _AuthzPolicyState:
         return pulumi.get(self, "http_rules")
 
     @http_rules.setter
-    def http_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]):
+    def http_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]]):
         pulumi.set(self, "http_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with the AuthzExtension resource.
 
@@ -410,36 +410,36 @@ class _AuthzPolicyState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Name of the AuthzPolicy resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyProfile")
-    def policy_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
         authorization policies with Authz extensions will be allowed with ext_authz or ext_proc protocols. Extensions are
@@ -452,12 +452,12 @@ class _AuthzPolicyState:
         return pulumi.get(self, "policy_profile")
 
     @policy_profile.setter
-    def policy_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -465,12 +465,12 @@ class _AuthzPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -478,12 +478,12 @@ class _AuthzPolicyState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['AuthzPolicyTargetArgs']]:
+    def target(self) -> pulumi.Input[Optional['AuthzPolicyTargetArgs']]:
         """
         Specifies the set of resources to which this policy should be applied to.
         Structure is documented below.
@@ -491,19 +491,19 @@ class _AuthzPolicyState:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['AuthzPolicyTargetArgs']]):
+    def target(self, value: pulumi.Input[Optional['AuthzPolicyTargetArgs']]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -513,16 +513,16 @@ class AuthzPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_provider: Optional[pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
                  __props__=None):
         """
         AuthzPolicy is a resource that allows to forward traffic to a callout backend designed to scan the traffic for security purposes.
@@ -710,16 +710,16 @@ class AuthzPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_provider: Optional[pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -761,20 +761,20 @@ class AuthzPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_provider: Optional[pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            http_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_profile: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            target: Optional[pulumi.Input[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthzPolicy':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target: pulumi.Input[Optional[Union['AuthzPolicyTargetArgs', 'AuthzPolicyTargetArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthzPolicy':
         """
         Get an existing AuthzPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

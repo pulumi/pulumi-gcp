@@ -46,11 +46,11 @@ namespace Pulumi.Gcp.Composer
     ///         Environment = example.Name,
     ///         Data = 
     ///         {
-    ///             { "email", Std.Index.Base64encode.Invoke(new()
+    ///             { "email", Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "example-email",
     ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///             { "password", Std.Index.Base64encode.Invoke(new()
+    ///             { "password", Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = "example-password",
     ///             }).Apply(invoke =&gt; invoke.Result) },

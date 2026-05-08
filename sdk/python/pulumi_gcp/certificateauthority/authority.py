@@ -26,18 +26,18 @@ class AuthorityArgs:
                  key_spec: pulumi.Input['AuthorityKeySpecArgs'],
                  location: pulumi.Input[_builtins.str],
                  pool: pulumi.Input[_builtins.str],
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_active_certificates_on_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 pem_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_grace_period: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_access_urls: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']] = None):
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subordinate_config: pulumi.Input[Optional['AuthoritySubordinateConfigArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_access_urls: pulumi.Input[Optional['AuthorityUserDefinedAccessUrlsArgs']] = None):
         """
         The set of arguments for constructing a Authority resource.
 
@@ -189,7 +189,7 @@ class AuthorityArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the CertificateAuthority.
         When the field is set to true or unset in Terraform state, a `pulumi up`
@@ -199,12 +199,12 @@ class AuthorityArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         Possible values: ENABLED, DISABLED, STAGED.
@@ -212,12 +212,12 @@ class AuthorityArgs:
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsBucket")
-    def gcs_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcs_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -228,12 +228,12 @@ class AuthorityArgs:
         return pulumi.get(self, "gcs_bucket")
 
     @gcs_bucket.setter
-    def gcs_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcs_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcs_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreActiveCertificatesOnDeletion")
-    def ignore_active_certificates_on_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_active_certificates_on_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
         Use with care. Defaults to `false`.
@@ -241,12 +241,12 @@ class AuthorityArgs:
         return pulumi.get(self, "ignore_active_certificates_on_deletion")
 
     @ignore_active_certificates_on_deletion.setter
-    def ignore_active_certificates_on_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_active_certificates_on_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_active_certificates_on_deletion", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -258,12 +258,12 @@ class AuthorityArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifetime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
         "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -272,24 +272,24 @@ class AuthorityArgs:
         return pulumi.get(self, "lifetime")
 
     @lifetime.setter
-    def lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifetime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="pemCaCertificate")
-    def pem_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
         """
         return pulumi.get(self, "pem_ca_certificate")
 
     @pem_ca_certificate.setter
-    def pem_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -297,12 +297,12 @@ class AuthorityArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="skipGracePeriod")
-    def skip_grace_period(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_grace_period(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this flag is set, the Certificate Authority will be deleted as soon as
         possible without a 30-day grace period where undeletion would have been
@@ -312,12 +312,12 @@ class AuthorityArgs:
         return pulumi.get(self, "skip_grace_period")
 
     @skip_grace_period.setter
-    def skip_grace_period(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_grace_period(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_grace_period", value)
 
     @_builtins.property
     @pulumi.getter(name="subordinateConfig")
-    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
+    def subordinate_config(self) -> pulumi.Input[Optional['AuthoritySubordinateConfigArgs']]:
         """
         If this is a subordinate CertificateAuthority, this field will be set
         with the subordinate configuration, which describes its issuers.
@@ -326,12 +326,12 @@ class AuthorityArgs:
         return pulumi.get(self, "subordinate_config")
 
     @subordinate_config.setter
-    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
+    def subordinate_config(self, value: pulumi.Input[Optional['AuthoritySubordinateConfigArgs']]):
         pulumi.set(self, "subordinate_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Type of this CertificateAuthority.
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
@@ -342,12 +342,12 @@ class AuthorityArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedAccessUrls")
-    def user_defined_access_urls(self) -> Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]:
+    def user_defined_access_urls(self) -> pulumi.Input[Optional['AuthorityUserDefinedAccessUrlsArgs']]:
         """
         Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
         that can be specified by users.
@@ -356,38 +356,38 @@ class AuthorityArgs:
         return pulumi.get(self, "user_defined_access_urls")
 
     @user_defined_access_urls.setter
-    def user_defined_access_urls(self, value: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]):
+    def user_defined_access_urls(self, value: pulumi.Input[Optional['AuthorityUserDefinedAccessUrlsArgs']]):
         pulumi.set(self, "user_defined_access_urls", value)
 
 
 @pulumi.input_type
 class _AuthorityState:
     def __init__(__self__, *,
-                 access_urls: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]] = None,
-                 certificate_authority_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['AuthorityConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gcs_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_active_certificates_on_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_spec: Optional[pulumi.Input['AuthorityKeySpecArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pem_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 skip_grace_period: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subordinate_config: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_access_urls: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']] = None):
+                 access_urls: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]] = None,
+                 certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['AuthorityConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_spec: pulumi.Input[Optional['AuthorityKeySpecArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subordinate_config: pulumi.Input[Optional['AuthoritySubordinateConfigArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_access_urls: pulumi.Input[Optional['AuthorityUserDefinedAccessUrlsArgs']] = None):
         """
         Input properties used for looking up and filtering Authority resources.
 
@@ -513,7 +513,7 @@ class _AuthorityState:
 
     @_builtins.property
     @pulumi.getter(name="accessUrls")
-    def access_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]]:
+    def access_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]]:
         """
         URLs for accessing content published by this CA, such as the CA certificate and CRLs.
         Structure is documented below.
@@ -521,24 +521,24 @@ class _AuthorityState:
         return pulumi.get(self, "access_urls")
 
     @access_urls.setter
-    def access_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]]):
+    def access_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityAccessUrlArgs']]]]):
         pulumi.set(self, "access_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityId")
-    def certificate_authority_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_authority_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user provided Resource ID for this Certificate Authority.
         """
         return pulumi.get(self, "certificate_authority_id")
 
     @certificate_authority_id.setter
-    def certificate_authority_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_authority_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_authority_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['AuthorityConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['AuthorityConfigArgs']]:
         """
         The config used to create a self-signed X.509 certificate or CSR.
         Structure is documented below.
@@ -546,12 +546,12 @@ class _AuthorityState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['AuthorityConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['AuthorityConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which this CertificateAuthority was created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -560,12 +560,12 @@ class _AuthorityState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the CertificateAuthority.
         When the field is set to true or unset in Terraform state, a `pulumi up`
@@ -575,12 +575,12 @@ class _AuthorityState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
         Possible values: ENABLED, DISABLED, STAGED.
@@ -588,24 +588,24 @@ class _AuthorityState:
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsBucket")
-    def gcs_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcs_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
         such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -616,12 +616,12 @@ class _AuthorityState:
         return pulumi.get(self, "gcs_bucket")
 
     @gcs_bucket.setter
-    def gcs_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcs_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcs_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreActiveCertificatesOnDeletion")
-    def ignore_active_certificates_on_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_active_certificates_on_deletion(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
         Use with care. Defaults to `false`.
@@ -629,12 +629,12 @@ class _AuthorityState:
         return pulumi.get(self, "ignore_active_certificates_on_deletion")
 
     @ignore_active_certificates_on_deletion.setter
-    def ignore_active_certificates_on_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_active_certificates_on_deletion(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_active_certificates_on_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="keySpec")
-    def key_spec(self) -> Optional[pulumi.Input['AuthorityKeySpecArgs']]:
+    def key_spec(self) -> pulumi.Input[Optional['AuthorityKeySpecArgs']]:
         """
         Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
         is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
@@ -644,12 +644,12 @@ class _AuthorityState:
         return pulumi.get(self, "key_spec")
 
     @key_spec.setter
-    def key_spec(self, value: Optional[pulumi.Input['AuthorityKeySpecArgs']]):
+    def key_spec(self, value: pulumi.Input[Optional['AuthorityKeySpecArgs']]):
         pulumi.set(self, "key_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels with user-defined metadata.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -661,12 +661,12 @@ class _AuthorityState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifetime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
         "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
@@ -675,12 +675,12 @@ class _AuthorityState:
         return pulumi.get(self, "lifetime")
 
     @lifetime.setter
-    def lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifetime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifetime", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the CertificateAuthority. A full list of valid locations can be found by
         running `gcloud privateca locations list`.
@@ -688,12 +688,12 @@ class _AuthorityState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for this CertificateAuthority in the format
         projects/*/locations/*/certificateAuthorities/*.
@@ -701,24 +701,24 @@ class _AuthorityState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pemCaCertificate")
-    def pem_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
         """
         return pulumi.get(self, "pem_ca_certificate")
 
     @pem_ca_certificate.setter
-    def pem_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="pemCaCertificates")
-    def pem_ca_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pem_ca_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         This CertificateAuthority's certificate chain, including the current
         CertificateAuthority's certificate. Ordered such that the root issuer is the final
@@ -728,24 +728,24 @@ class _AuthorityState:
         return pulumi.get(self, "pem_ca_certificates")
 
     @pem_ca_certificates.setter
-    def pem_ca_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pem_ca_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pem_ca_certificates", value)
 
     @_builtins.property
     @pulumi.getter
-    def pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the CaPool this Certificate Authority belongs to.
         """
         return pulumi.get(self, "pool")
 
     @pool.setter
-    def pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -753,12 +753,12 @@ class _AuthorityState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -766,12 +766,12 @@ class _AuthorityState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="skipGracePeriod")
-    def skip_grace_period(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_grace_period(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this flag is set, the Certificate Authority will be deleted as soon as
         possible without a 30-day grace period where undeletion would have been
@@ -781,24 +781,24 @@ class _AuthorityState:
         return pulumi.get(self, "skip_grace_period")
 
     @skip_grace_period.setter
-    def skip_grace_period(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_grace_period(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_grace_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The State for this CertificateAuthority.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subordinateConfig")
-    def subordinate_config(self) -> Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]:
+    def subordinate_config(self) -> pulumi.Input[Optional['AuthoritySubordinateConfigArgs']]:
         """
         If this is a subordinate CertificateAuthority, this field will be set
         with the subordinate configuration, which describes its issuers.
@@ -807,12 +807,12 @@ class _AuthorityState:
         return pulumi.get(self, "subordinate_config")
 
     @subordinate_config.setter
-    def subordinate_config(self, value: Optional[pulumi.Input['AuthoritySubordinateConfigArgs']]):
+    def subordinate_config(self, value: pulumi.Input[Optional['AuthoritySubordinateConfigArgs']]):
         pulumi.set(self, "subordinate_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Type of this CertificateAuthority.
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
@@ -823,12 +823,12 @@ class _AuthorityState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which this CertificateAuthority was updated.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -837,12 +837,12 @@ class _AuthorityState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedAccessUrls")
-    def user_defined_access_urls(self) -> Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]:
+    def user_defined_access_urls(self) -> pulumi.Input[Optional['AuthorityUserDefinedAccessUrlsArgs']]:
         """
         Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
         that can be specified by users.
@@ -851,7 +851,7 @@ class _AuthorityState:
         return pulumi.get(self, "user_defined_access_urls")
 
     @user_defined_access_urls.setter
-    def user_defined_access_urls(self, value: Optional[pulumi.Input['AuthorityUserDefinedAccessUrlsArgs']]):
+    def user_defined_access_urls(self, value: pulumi.Input[Optional['AuthorityUserDefinedAccessUrlsArgs']]):
         pulumi.set(self, "user_defined_access_urls", value)
 
 
@@ -861,23 +861,23 @@ class Authority(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_active_certificates_on_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_spec: Optional[pulumi.Input[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 pem_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_grace_period: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subordinate_config: Optional[pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_access_urls: Optional[pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
+                 certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
                  __props__=None):
         """
         A CertificateAuthority represents an individual Certificate Authority. A
@@ -1593,23 +1593,23 @@ class Authority(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_active_certificates_on_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_spec: Optional[pulumi.Input[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 pem_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_grace_period: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subordinate_config: Optional[pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_access_urls: Optional[pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
+                 certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1666,31 +1666,31 @@ class Authority(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AuthorityAccessUrlArgs', 'AuthorityAccessUrlArgsDict']]]]] = None,
-            certificate_authority_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config: Optional[pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gcs_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_active_certificates_on_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
-            key_spec: Optional[pulumi.Input[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pem_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            pem_ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            pool: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            skip_grace_period: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subordinate_config: Optional[pulumi.Input[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            user_defined_access_urls: Optional[pulumi.Input[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None) -> 'Authority':
+            access_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthorityAccessUrlArgs', 'AuthorityAccessUrlArgsDict']]]]] = None,
+            certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_active_certificates_on_deletion: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_spec: pulumi.Input[Optional[Union['AuthorityKeySpecArgs', 'AuthorityKeySpecArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pem_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            pem_ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pool: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            skip_grace_period: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subordinate_config: pulumi.Input[Optional[Union['AuthoritySubordinateConfigArgs', 'AuthoritySubordinateConfigArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            user_defined_access_urls: pulumi.Input[Optional[Union['AuthorityUserDefinedAccessUrlsArgs', 'AuthorityUserDefinedAccessUrlsArgsDict']]] = None) -> 'Authority':
         """
         Get an existing Authority resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

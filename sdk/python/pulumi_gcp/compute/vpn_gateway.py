@@ -22,11 +22,11 @@ __all__ = ['VPNGatewayArgs', 'VPNGateway']
 class VPNGatewayArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['VPNGatewayParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['VPNGatewayParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VPNGateway resource.
 
@@ -71,19 +71,19 @@ class VPNGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -96,12 +96,12 @@ class VPNGatewayArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['VPNGatewayParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['VPNGatewayParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -109,12 +109,12 @@ class VPNGatewayArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['VPNGatewayParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['VPNGatewayParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -122,34 +122,34 @@ class VPNGatewayArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region this gateway should sit in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _VPNGatewayState:
     def __init__(__self__, *,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['VPNGatewayParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['VPNGatewayParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VPNGateway resources.
 
@@ -192,43 +192,43 @@ class _VPNGatewayState:
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
-    def gateway_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gateway_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier for the resource.
         """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
-    def gateway_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gateway_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gateway_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -241,24 +241,24 @@ class _VPNGatewayState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network this VPN gateway is accepting traffic for.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['VPNGatewayParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['VPNGatewayParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -266,12 +266,12 @@ class _VPNGatewayState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['VPNGatewayParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['VPNGatewayParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -279,31 +279,31 @@ class _VPNGatewayState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region this gateway should sit in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
 
@@ -313,12 +313,12 @@ class VPNGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a VPN gateway running in GCP. This virtual device is managed
@@ -636,12 +636,12 @@ class VPNGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -672,15 +672,15 @@ class VPNGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_id: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'VPNGateway':
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['VPNGatewayParamsArgs', 'VPNGatewayParamsArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'VPNGateway':
         """
         Get an existing VPNGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

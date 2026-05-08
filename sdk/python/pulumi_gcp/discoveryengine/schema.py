@@ -22,8 +22,8 @@ class SchemaArgs:
                  data_store_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  schema_id: pulumi.Input[_builtins.str],
-                 json_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 json_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Schema resource.
 
@@ -82,19 +82,19 @@ class SchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="jsonSchema")
-    def json_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JSON representation of the schema.
         """
         return pulumi.get(self, "json_schema")
 
     @json_schema.setter
-    def json_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -102,19 +102,19 @@ class SchemaArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _SchemaState:
     def __init__(__self__, *,
-                 data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Schema resources.
 
@@ -145,31 +145,31 @@ class _SchemaState:
 
     @_builtins.property
     @pulumi.getter(name="dataStoreId")
-    def data_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id of the data store.
         """
         return pulumi.get(self, "data_store_id")
 
     @data_store_id.setter
-    def data_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_store_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonSchema")
-    def json_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The JSON representation of the schema.
         """
         return pulumi.get(self, "json_schema")
 
     @json_schema.setter
-    def json_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the data store should reside. The value can
         only be one of "global", "us" and "eu".
@@ -177,12 +177,12 @@ class _SchemaState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique full resource name of the schema. Values are of the format
         `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/schemas/{schema_id}`.
@@ -192,12 +192,12 @@ class _SchemaState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -205,19 +205,19 @@ class _SchemaState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaId")
-    def schema_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id of the schema.
         """
         return pulumi.get(self, "schema_id")
 
     @schema_id.setter
-    def schema_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_id", value)
 
 
@@ -227,11 +227,11 @@ class Schema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Schema defines the structure and layout of a type of document data.
@@ -364,11 +364,11 @@ class Schema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,12 +400,12 @@ class Schema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            json_schema: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            schema_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Schema':
+            data_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            json_schema: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            schema_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Schema':
         """
         Get an existing Schema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

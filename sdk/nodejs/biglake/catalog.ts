@@ -158,40 +158,40 @@ export interface CatalogState {
      * "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The deletion time of the catalog. Only set after the catalog
      * is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
      * resolution and up to nine fractional digits.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when this catalog is considered expired. Only set
      * after the catalog is deleted. Only set after the catalog is deleted.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the Catalog should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. The last modification time of the catalog. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,10 +206,10 @@ export interface CatalogArgs {
      * The name of the Catalog. Format:
      * projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

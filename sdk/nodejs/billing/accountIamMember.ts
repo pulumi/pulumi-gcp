@@ -216,12 +216,12 @@ export interface AccountIamMemberState {
      *
      * For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
      */
-    billingAccountId?: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition>;
+    billingAccountId?: pulumi.Input<string | undefined>;
+    condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the billing account's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -230,7 +230,7 @@ export interface AccountIamMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
@@ -238,7 +238,7 @@ export interface AccountIamMemberState {
      *
      * `gcp.billing.AccountIamPolicy` only:
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface AccountIamMemberArgs {
      * For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
      */
     billingAccountId: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition>;
+    condition?: pulumi.Input<inputs.billing.AccountIamMemberCondition | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:

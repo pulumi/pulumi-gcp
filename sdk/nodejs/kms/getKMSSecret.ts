@@ -191,7 +191,7 @@ export interface GetKMSSecretOutputArgs {
     /**
      * The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
      */
-    additionalAuthenticatedData?: pulumi.Input<string>;
+    additionalAuthenticatedData?: pulumi.Input<string | undefined>;
     /**
      * The ciphertext to be decrypted, encoded in base64
      */

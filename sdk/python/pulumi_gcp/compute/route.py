@@ -23,18 +23,18 @@ class RouteArgs:
     def __init__(__self__, *,
                  dest_range: pulumi.Input[_builtins.str],
                  network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ilb: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['RouteParamsArgs']] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ilb: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['RouteParamsArgs']] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Route resource.
 
@@ -147,7 +147,7 @@ class RouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property
         when you create the resource.
@@ -155,12 +155,12 @@ class RouteArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -173,12 +173,12 @@ class RouteArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopGateway")
-    def next_hop_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to a gateway that should handle matching packets.
         Currently, you can only specify the internet gateway, using a full or
@@ -191,12 +191,12 @@ class RouteArgs:
         return pulumi.get(self, "next_hop_gateway")
 
     @next_hop_gateway.setter
-    def next_hop_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopIlb")
-    def next_hop_ilb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_ilb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address or URL to a forwarding rule of type
         loadBalancingScheme=INTERNAL that should handle matching
@@ -215,12 +215,12 @@ class RouteArgs:
         return pulumi.get(self, "next_hop_ilb")
 
     @next_hop_ilb.setter
-    def next_hop_ilb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_ilb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_ilb", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopInstance")
-    def next_hop_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to an instance that should handle matching packets.
         You can specify this as a full or partial URL. For example:
@@ -232,12 +232,12 @@ class RouteArgs:
         return pulumi.get(self, "next_hop_instance")
 
     @next_hop_instance.setter
-    def next_hop_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopInstanceZone")
-    def next_hop_instance_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_instance_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional when `next_hop_instance` is
         specified)  The zone of the instance specified in
@@ -247,36 +247,36 @@ class RouteArgs:
         return pulumi.get(self, "next_hop_instance_zone")
 
     @next_hop_instance_zone.setter
-    def next_hop_instance_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_instance_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_instance_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopIp")
-    def next_hop_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network IP address of an instance that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_ip")
 
     @next_hop_ip.setter
-    def next_hop_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopVpnTunnel")
-    def next_hop_vpn_tunnel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_vpn_tunnel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to a VpnTunnel that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_vpn_tunnel")
 
     @next_hop_vpn_tunnel.setter
-    def next_hop_vpn_tunnel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_vpn_tunnel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_vpn_tunnel", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RouteParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RouteParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -284,12 +284,12 @@ class RouteArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RouteParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RouteParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of this route. Priority is used to break ties in cases
         where there is more than one matching route of equal prefix length.
@@ -300,12 +300,12 @@ class RouteArgs:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -313,51 +313,51 @@ class RouteArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _RouteState:
     def __init__(__self__, *,
-                 as_paths: Optional[pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_hub: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ilb: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_med: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['RouteParamsArgs']] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]]] = None):
+                 as_paths: pulumi.Input[Optional[Sequence[pulumi.Input['RouteAsPathArgs']]]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_hub: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ilb: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_med: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['RouteParamsArgs']] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 warnings: pulumi.Input[Optional[Sequence[pulumi.Input['RouteWarningArgs']]]] = None):
         """
         Input properties used for looking up and filtering Route resources.
 
@@ -490,31 +490,31 @@ class _RouteState:
 
     @_builtins.property
     @pulumi.getter(name="asPaths")
-    def as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]]]:
+    def as_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouteAsPathArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "as_paths")
 
     @as_paths.setter
-    def as_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteAsPathArgs']]]]):
+    def as_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouteAsPathArgs']]]]):
         pulumi.set(self, "as_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property
         when you create the resource.
@@ -522,12 +522,12 @@ class _RouteState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destRange")
-    def dest_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination range of outgoing packets that this route applies to.
         Only IPv4 is supported.
@@ -535,12 +535,12 @@ class _RouteState:
         return pulumi.get(self, "dest_range")
 
     @dest_range.setter
-    def dest_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -553,24 +553,24 @@ class _RouteState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network that this route applies to.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopGateway")
-    def next_hop_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to a gateway that should handle matching packets.
         Currently, you can only specify the internet gateway, using a full or
@@ -583,24 +583,24 @@ class _RouteState:
         return pulumi.get(self, "next_hop_gateway")
 
     @next_hop_gateway.setter
-    def next_hop_gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopHub")
-    def next_hop_hub(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_hub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hub network that should handle matching packets, which should conform to RFC1035.
         """
         return pulumi.get(self, "next_hop_hub")
 
     @next_hop_hub.setter
-    def next_hop_hub(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_hub(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_hub", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopIlb")
-    def next_hop_ilb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_ilb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address or URL to a forwarding rule of type
         loadBalancingScheme=INTERNAL that should handle matching
@@ -619,12 +619,12 @@ class _RouteState:
         return pulumi.get(self, "next_hop_ilb")
 
     @next_hop_ilb.setter
-    def next_hop_ilb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_ilb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_ilb", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopInstance")
-    def next_hop_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to an instance that should handle matching packets.
         You can specify this as a full or partial URL. For example:
@@ -636,12 +636,12 @@ class _RouteState:
         return pulumi.get(self, "next_hop_instance")
 
     @next_hop_instance.setter
-    def next_hop_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopInstanceZone")
-    def next_hop_instance_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_instance_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional when `next_hop_instance` is
         specified)  The zone of the instance specified in
@@ -651,96 +651,96 @@ class _RouteState:
         return pulumi.get(self, "next_hop_instance_zone")
 
     @next_hop_instance_zone.setter
-    def next_hop_instance_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_instance_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_instance_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopInterRegionCost")
-    def next_hop_inter_region_cost(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_inter_region_cost(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
         """
         return pulumi.get(self, "next_hop_inter_region_cost")
 
     @next_hop_inter_region_cost.setter
-    def next_hop_inter_region_cost(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_inter_region_cost(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_inter_region_cost", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopIp")
-    def next_hop_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network IP address of an instance that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_ip")
 
     @next_hop_ip.setter
-    def next_hop_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopMed")
-    def next_hop_med(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_med(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         """
         return pulumi.get(self, "next_hop_med")
 
     @next_hop_med.setter
-    def next_hop_med(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_med(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_med", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopNetwork")
-    def next_hop_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to a Network that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_network")
 
     @next_hop_network.setter
-    def next_hop_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_network", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopOrigin")
-    def next_hop_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         """
         return pulumi.get(self, "next_hop_origin")
 
     @next_hop_origin.setter
-    def next_hop_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopPeering")
-    def next_hop_peering(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_peering(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network peering name that should handle matching packets, which should conform to RFC1035.
         """
         return pulumi.get(self, "next_hop_peering")
 
     @next_hop_peering.setter
-    def next_hop_peering(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_peering(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_peering", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopVpnTunnel")
-    def next_hop_vpn_tunnel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_vpn_tunnel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to a VpnTunnel that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_vpn_tunnel")
 
     @next_hop_vpn_tunnel.setter
-    def next_hop_vpn_tunnel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_vpn_tunnel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_vpn_tunnel", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RouteParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RouteParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -748,12 +748,12 @@ class _RouteState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RouteParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RouteParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of this route. Priority is used to break ties in cases
         where there is more than one matching route of equal prefix length.
@@ -764,12 +764,12 @@ class _RouteState:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -777,12 +777,12 @@ class _RouteState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="routeStatus")
-    def route_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the route, which can be one of the following values:
         - 'ACTIVE' for an active route
@@ -791,12 +791,12 @@ class _RouteState:
         return pulumi.get(self, "route_status")
 
     @route_status.setter
-    def route_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_status", value)
 
     @_builtins.property
     @pulumi.getter(name="routeType")
-    def route_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of this route, which can be one of the following values:
         - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
@@ -807,36 +807,36 @@ class _RouteState:
         return pulumi.get(self, "route_type")
 
     @route_type.setter
-    def route_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_type", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of instance tags to which this route applies.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]]]:
+    def warnings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouteWarningArgs']]]]:
         """
         If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         Structure is documented below.
@@ -844,7 +844,7 @@ class _RouteState:
         return pulumi.get(self, "warnings")
 
     @warnings.setter
-    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningArgs']]]]):
+    def warnings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouteWarningArgs']]]]):
         pulumi.set(self, "warnings", value)
 
 
@@ -854,20 +854,20 @@ class Route(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ilb: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ilb: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Represents a Route resource.
@@ -1283,20 +1283,20 @@ class Route(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ilb: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_instance_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ilb: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1346,32 +1346,32 @@ class Route(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict']]]]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dest_range: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_hub: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_ilb: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_instance: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_instance_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_inter_region_cost: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_med: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_network: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_origin: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_peering: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_vpn_tunnel: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            route_status: Optional[pulumi.Input[_builtins.str]] = None,
-            route_type: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict']]]]] = None) -> 'Route':
+            as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteAsPathArgs', 'RouteAsPathArgsDict']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_range: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_hub: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_ilb: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_instance_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_med: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_network: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_peering: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_vpn_tunnel: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['RouteParamsArgs', 'RouteParamsArgsDict']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            route_status: pulumi.Input[Optional[_builtins.str]] = None,
+            route_type: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            warnings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouteWarningArgs', 'RouteWarningArgsDict']]]]] = None) -> 'Route':
         """
         Get an existing Route resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

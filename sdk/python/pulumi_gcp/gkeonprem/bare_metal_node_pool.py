@@ -24,10 +24,10 @@ class BareMetalNodePoolArgs:
                  bare_metal_cluster: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  node_pool_config: pulumi.Input['BareMetalNodePoolNodePoolConfigArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BareMetalNodePool resource.
 
@@ -102,7 +102,7 @@ class BareMetalNodePoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations on the Bare Metal Node Pool.
         This field has the same restrictions as Kubernetes annotations.
@@ -119,36 +119,36 @@ class BareMetalNodePoolArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the Bare Metal Node Pool.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bare metal node pool name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -156,29 +156,29 @@ class BareMetalNodePoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _BareMetalNodePoolState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bare_metal_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_config: Optional[pulumi.Input['BareMetalNodePoolNodePoolConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bare_metal_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_config: pulumi.Input[Optional['BareMetalNodePoolNodePoolConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BareMetalNodePool resources.
 
@@ -252,7 +252,7 @@ class _BareMetalNodePoolState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations on the Bare Metal Node Pool.
         This field has the same restrictions as Kubernetes annotations.
@@ -269,72 +269,72 @@ class _BareMetalNodePoolState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="bareMetalCluster")
-    def bare_metal_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bare_metal_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster this node pool belongs to.
         """
         return pulumi.get(self, "bare_metal_cluster")
 
     @bare_metal_cluster.setter
-    def bare_metal_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bare_metal_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bare_metal_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was created, in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was deleted, in RFC3339 text format.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the Bare Metal Node Pool.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -345,36 +345,36 @@ class _BareMetalNodePoolState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bare metal node pool name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolConfig")
-    def node_pool_config(self) -> Optional[pulumi.Input['BareMetalNodePoolNodePoolConfigArgs']]:
+    def node_pool_config(self) -> pulumi.Input[Optional['BareMetalNodePoolNodePoolConfigArgs']]:
         """
         Node pool configuration.
         Structure is documented below.
@@ -382,12 +382,12 @@ class _BareMetalNodePoolState:
         return pulumi.get(self, "node_pool_config")
 
     @node_pool_config.setter
-    def node_pool_config(self, value: Optional[pulumi.Input['BareMetalNodePoolNodePoolConfigArgs']]):
+    def node_pool_config(self, value: pulumi.Input[Optional['BareMetalNodePoolNodePoolConfigArgs']]):
         pulumi.set(self, "node_pool_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -395,24 +395,24 @@ class _BareMetalNodePoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, there are currently changes in flight to the Bare Metal User Cluster.
         """
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -420,12 +420,12 @@ class _BareMetalNodePoolState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]]:
         """
         Specifies detailed node pool status.
         Structure is documented below.
@@ -433,31 +433,31 @@ class _BareMetalNodePoolState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the Bare Metal Node Pool.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was last updated, in RFC3339 text format.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -467,13 +467,13 @@ class BareMetalNodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bare_metal_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_config: Optional[pulumi.Input[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bare_metal_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Google Bare Metal Node Pool.
@@ -930,13 +930,13 @@ class BareMetalNodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bare_metal_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_config: Optional[pulumi.Input[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bare_metal_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -978,22 +978,22 @@ class BareMetalNodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            bare_metal_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_pool_config: Optional[pulumi.Input[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BareMetalNodePoolStatusArgs', 'BareMetalNodePoolStatusArgsDict']]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'BareMetalNodePool':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bare_metal_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_pool_config: pulumi.Input[Optional[Union['BareMetalNodePoolNodePoolConfigArgs', 'BareMetalNodePoolNodePoolConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BareMetalNodePoolStatusArgs', 'BareMetalNodePoolStatusArgsDict']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BareMetalNodePool':
         """
         Get an existing BareMetalNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

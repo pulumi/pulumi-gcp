@@ -701,39 +701,39 @@ export interface JobState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      */
-    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.JobBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.JobBinaryAuthorization | undefined>;
     /**
      * Arbitrary identifier for the API client.
      */
-    client?: pulumi.Input<string>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Arbitrary version identifier for the API client.
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobCondition>[] | undefined>;
     /**
      * (Output)
      * Creation timestamp of the execution.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Email address of the authenticated creator.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The deletion time.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the job. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the job,
@@ -742,31 +742,31 @@ export interface JobState {
      * or `terraform destroy` that would delete the job will fail.
      * When the field is set to false, deleting the job is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Number of executions created for this job.
      */
-    executionCount?: pulumi.Input<number>;
+    executionCount?: pulumi.Input<number | undefined>;
     /**
      * For a deleted resource, the time after which it will be permanently deleted.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * A number that monotonically increases every time the user modifies the desired state.
      */
-    generation?: pulumi.Input<string>;
+    generation?: pulumi.Input<string | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
      * environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -775,82 +775,82 @@ export interface JobState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Email address of the last authenticated modifier.
      */
-    lastModifier?: pulumi.Input<string>;
+    lastModifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the last created execution.
      * Structure is documented below.
      */
-    latestCreatedExecutions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobLatestCreatedExecution>[]>;
+    latestCreatedExecutions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobLatestCreatedExecution>[] | undefined>;
     /**
      * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
      * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
      * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
-    launchStage?: pulumi.Input<string>;
+    launchStage?: pulumi.Input<string | undefined>;
     /**
      * The location of the cloud run job
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the Job.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
-    observedGeneration?: pulumi.Input<string>;
+    observedGeneration?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
      * When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
      * If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
      * If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
      * The sum of job name and token length must be fewer than 63 characters.
      */
-    runExecutionToken?: pulumi.Input<string>;
+    runExecutionToken?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
      * The sum of job name and token length must be fewer than 63 characters.
      */
-    startExecutionToken?: pulumi.Input<string>;
+    startExecutionToken?: pulumi.Input<string | undefined>;
     /**
      * The template used to create executions for this Job.
      * Structure is documented below.
      */
-    template?: pulumi.Input<inputs.cloudrunv2.JobTemplate>;
+    template?: pulumi.Input<inputs.cloudrunv2.JobTemplate | undefined>;
     /**
      * The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
      * Structure is documented below.
      */
-    terminalConditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTerminalCondition>[]>;
+    terminalConditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobTerminalCondition>[] | undefined>;
     /**
      * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The last-modified time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -865,20 +865,20 @@ export interface JobArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for the Binary Authorization feature.
      * Structure is documented below.
      */
-    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.JobBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.JobBinaryAuthorization | undefined>;
     /**
      * Arbitrary identifier for the API client.
      */
-    client?: pulumi.Input<string>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Arbitrary version identifier for the API client.
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the job. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the job,
@@ -887,7 +887,7 @@ export interface JobArgs {
      * or `terraform destroy` that would delete the job will fail.
      * When the field is set to false, deleting the job is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
      * environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -896,14 +896,14 @@ export interface JobArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
      * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
      * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
-    launchStage?: pulumi.Input<string>;
+    launchStage?: pulumi.Input<string | undefined>;
     /**
      * The location of the cloud run job
      */
@@ -911,24 +911,24 @@ export interface JobArgs {
     /**
      * Name of the Job.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
      * The sum of job name and token length must be fewer than 63 characters.
      */
-    runExecutionToken?: pulumi.Input<string>;
+    runExecutionToken?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
      * The sum of job name and token length must be fewer than 63 characters.
      */
-    startExecutionToken?: pulumi.Input<string>;
+    startExecutionToken?: pulumi.Input<string | undefined>;
     /**
      * The template used to create executions for this Job.
      * Structure is documented below.

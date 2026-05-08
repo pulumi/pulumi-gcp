@@ -185,15 +185,15 @@ export interface DnsThreatDetectorState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of networks that are excluded from detection. Format: projects/{project}/global/networks/{name}.
      */
-    excludedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of label tags associated with the DNS Threat Detector resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -201,35 +201,35 @@ export interface DnsThreatDetectorState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the DNS Threat Detector. The only supported value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the DnsThreatDetector resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * DNS Threat Detection provider. The only supported value is `INFOBLOX`.
      */
-    threatDetectorProvider?: pulumi.Input<string>;
+    threatDetectorProvider?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface DnsThreatDetectorArgs {
     /**
      * List of networks that are excluded from detection. Format: projects/{project}/global/networks/{name}.
      */
-    excludedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of label tags associated with the DNS Threat Detector resource.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -247,22 +247,22 @@ export interface DnsThreatDetectorArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the DNS Threat Detector. The only supported value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the DnsThreatDetector resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * DNS Threat Detection provider. The only supported value is `INFOBLOX`.
      */
-    threatDetectorProvider?: pulumi.Input<string>;
+    threatDetectorProvider?: pulumi.Input<string | undefined>;
 }

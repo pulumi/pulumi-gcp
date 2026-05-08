@@ -243,9 +243,9 @@ def get_ai_index(name: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_ai_index_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        region: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_index_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        region: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiIndexResult]:
     """
     A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.

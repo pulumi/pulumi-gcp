@@ -126,5 +126,5 @@ export interface GetFolderOutputArgs {
     /**
      * `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
      */
-    lookupOrganization?: pulumi.Input<boolean>;
+    lookupOrganization?: pulumi.Input<boolean | undefined>;
 }

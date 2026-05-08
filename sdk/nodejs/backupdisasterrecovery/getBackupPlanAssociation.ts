@@ -105,5 +105,5 @@ export interface GetBackupPlanAssociationOutputArgs {
      * The location in which the Backupplan association resource belongs.
      */
     location: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

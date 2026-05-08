@@ -353,17 +353,17 @@ export interface RuntimeState {
      * The config settings for accessing runtime.
      * Structure is documented below.
      */
-    accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig>;
+    accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The health state of this runtime. For a list of possible output
      * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
      * reference/rest/v1/projects.locations.runtimes#healthstate`.
      */
-    healthState?: pulumi.Input<string>;
+    healthState?: pulumi.Input<string | undefined>;
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -374,45 +374,45 @@ export interface RuntimeState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Contains Runtime daemon metrics such as Service status and JupyterLab
      * status
      * Structure is documented below.
      */
-    metrics?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeMetric>[]>;
+    metrics?: pulumi.Input<pulumi.Input<inputs.notebooks.RuntimeMetric>[] | undefined>;
     /**
      * The name specified for the Notebook runtime.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The config settings for software inside the runtime.
      * Structure is documented below.
      */
-    softwareConfig?: pulumi.Input<inputs.notebooks.RuntimeSoftwareConfig>;
+    softwareConfig?: pulumi.Input<inputs.notebooks.RuntimeSoftwareConfig | undefined>;
     /**
      * The state of this runtime.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Use a Compute Engine VM image to start the managed notebook instance.
      * Structure is documented below.
      */
-    virtualMachine?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachine>;
+    virtualMachine?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachine | undefined>;
 }
 
 /**
@@ -423,7 +423,7 @@ export interface RuntimeArgs {
      * The config settings for accessing runtime.
      * Structure is documented below.
      */
-    accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig>;
+    accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig | undefined>;
     /**
      * The labels to associate with this runtime. Label **keys** must
      * contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -434,7 +434,7 @@ export interface RuntimeArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
@@ -442,20 +442,20 @@ export interface RuntimeArgs {
     /**
      * The name specified for the Notebook runtime.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The config settings for software inside the runtime.
      * Structure is documented below.
      */
-    softwareConfig?: pulumi.Input<inputs.notebooks.RuntimeSoftwareConfig>;
+    softwareConfig?: pulumi.Input<inputs.notebooks.RuntimeSoftwareConfig | undefined>;
     /**
      * Use a Compute Engine VM image to start the managed notebook instance.
      * Structure is documented below.
      */
-    virtualMachine?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachine>;
+    virtualMachine?: pulumi.Input<inputs.notebooks.RuntimeVirtualMachine | undefined>;
 }

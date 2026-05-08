@@ -68,17 +68,17 @@ __all__ = [
 ]
 
 class NotebookExecutionCustomEnvironmentSpecArgsDict(TypedDict):
-    machine_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict']]
+    machine_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']]]
     """
     'The machine configuration of the runtime.'
     Structure is documented below.
     """
-    network_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict']]
+    network_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']]]
     """
     The network configuration for the runtime.
     Structure is documented below.
     """
-    persistent_disk_spec: NotRequired[pulumi.Input['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict']]
+    persistent_disk_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']]]
     """
     The configuration for the data disk of the runtime.
     Structure is documented below.
@@ -87,9 +87,9 @@ class NotebookExecutionCustomEnvironmentSpecArgsDict(TypedDict):
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecArgs:
     def __init__(__self__, *,
-                 machine_spec: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']] = None,
-                 network_spec: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']] = None,
-                 persistent_disk_spec: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']] = None):
+                 machine_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']] = None,
+                 network_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']] = None,
+                 persistent_disk_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']] = None):
         """
         :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs'] machine_spec: 'The machine configuration of the runtime.'
                Structure is documented below.
@@ -107,7 +107,7 @@ class NotebookExecutionCustomEnvironmentSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="machineSpec")
-    def machine_spec(self) -> Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']]:
+    def machine_spec(self) -> pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']]:
         """
         'The machine configuration of the runtime.'
         Structure is documented below.
@@ -115,12 +115,12 @@ class NotebookExecutionCustomEnvironmentSpecArgs:
         return pulumi.get(self, "machine_spec")
 
     @machine_spec.setter
-    def machine_spec(self, value: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']]):
+    def machine_spec(self, value: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']]):
         pulumi.set(self, "machine_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="networkSpec")
-    def network_spec(self) -> Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']]:
+    def network_spec(self) -> pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']]:
         """
         The network configuration for the runtime.
         Structure is documented below.
@@ -128,12 +128,12 @@ class NotebookExecutionCustomEnvironmentSpecArgs:
         return pulumi.get(self, "network_spec")
 
     @network_spec.setter
-    def network_spec(self, value: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']]):
+    def network_spec(self, value: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']]):
         pulumi.set(self, "network_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="persistentDiskSpec")
-    def persistent_disk_spec(self) -> Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']]:
+    def persistent_disk_spec(self) -> pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']]:
         """
         The configuration for the data disk of the runtime.
         Structure is documented below.
@@ -141,20 +141,20 @@ class NotebookExecutionCustomEnvironmentSpecArgs:
         return pulumi.get(self, "persistent_disk_spec")
 
     @persistent_disk_spec.setter
-    def persistent_disk_spec(self, value: Optional[pulumi.Input['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']]):
+    def persistent_disk_spec(self, value: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']]):
         pulumi.set(self, "persistent_disk_spec", value)
 
 
 class NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict(TypedDict):
-    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    accelerator_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of accelerators used by the runtime.
     """
-    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Compute Engine machine type selected for the runtime.
     """
@@ -162,9 +162,9 @@ class NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict(TypedDict):
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecMachineSpecArgs:
     def __init__(__self__, *,
-                 accelerator_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] accelerator_count: The number of accelerators used by the runtime.
         :param pulumi.Input[_builtins.str] accelerator_type: The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
@@ -179,51 +179,51 @@ class NotebookExecutionCustomEnvironmentSpecMachineSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accelerator_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of accelerators used by the runtime.
         """
         return pulumi.get(self, "accelerator_count")
 
     @accelerator_count.setter
-    def accelerator_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accelerator_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accelerator_count", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
         """
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Compute Engine machine type selected for the runtime.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict(TypedDict):
-    enable_internet_access: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_internet_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable public internet access for the runtime.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the VPC that this runtime is in.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the subnetwork that this runtime is in.
     """
@@ -231,9 +231,9 @@ class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict(TypedDict):
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs:
     def __init__(__self__, *,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_internet_access: Enable public internet access for the runtime.
         :param pulumi.Input[_builtins.str] network: The name of the VPC that this runtime is in.
@@ -248,47 +248,47 @@ class NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable public internet access for the runtime.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC that this runtime is in.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnetwork that this runtime is in.
         """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
 class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict(TypedDict):
-    disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the persistent disk.
     """
@@ -296,8 +296,8 @@ class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict(TypedDict
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs:
     def __init__(__self__, *,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_size_gb: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_size_gb: The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
         :param pulumi.Input[_builtins.str] disk_type: The type of the persistent disk.
@@ -309,26 +309,26 @@ class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the persistent disk.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
 
@@ -337,7 +337,7 @@ class NotebookExecutionDataformRepositorySourceArgsDict(TypedDict):
     """
     The resource name of the Dataform Repository.
     """
-    commit_sha: NotRequired[pulumi.Input[_builtins.str]]
+    commit_sha: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The commit SHA to read repository with. If unset, the file will be read at HEAD.
     """
@@ -346,7 +346,7 @@ class NotebookExecutionDataformRepositorySourceArgsDict(TypedDict):
 class NotebookExecutionDataformRepositorySourceArgs:
     def __init__(__self__, *,
                  dataform_repository_resource_name: pulumi.Input[_builtins.str],
-                 commit_sha: Optional[pulumi.Input[_builtins.str]] = None):
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dataform_repository_resource_name: The resource name of the Dataform Repository.
         :param pulumi.Input[_builtins.str] commit_sha: The commit SHA to read repository with. If unset, the file will be read at HEAD.
@@ -369,14 +369,14 @@ class NotebookExecutionDataformRepositorySourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="commitSha")
-    def commit_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit SHA to read repository with. If unset, the file will be read at HEAD.
         """
         return pulumi.get(self, "commit_sha")
 
     @commit_sha.setter
-    def commit_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_sha", value)
 
 
@@ -413,7 +413,7 @@ class NotebookExecutionGcsNotebookSourceArgsDict(TypedDict):
     """
     The Cloud Storage uri pointing to the ipynb file.
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
     """
@@ -422,7 +422,7 @@ class NotebookExecutionGcsNotebookSourceArgsDict(TypedDict):
 class NotebookExecutionGcsNotebookSourceArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The Cloud Storage uri pointing to the ipynb file.
         :param pulumi.Input[_builtins.str] generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
@@ -445,14 +445,14 @@ class NotebookExecutionGcsNotebookSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 
@@ -485,11 +485,11 @@ class RuntimeNotebookRuntimeTemplateRefArgs:
 
 
 class RuntimeTemplateDataPersistentDiskSpecArgsDict(TypedDict):
-    disk_size_gb: NotRequired[pulumi.Input[_builtins.str]]
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the persistent disk.
     """
@@ -497,8 +497,8 @@ class RuntimeTemplateDataPersistentDiskSpecArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateDataPersistentDiskSpecArgs:
     def __init__(__self__, *,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_size_gb: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_size_gb: The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
         :param pulumi.Input[_builtins.str] disk_type: The type of the persistent disk.
@@ -510,31 +510,31 @@ class RuntimeTemplateDataPersistentDiskSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the persistent disk.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
 
 class RuntimeTemplateEncryptionSpecArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
     """
@@ -542,7 +542,7 @@ class RuntimeTemplateEncryptionSpecArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateEncryptionSpecArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
         """
@@ -551,19 +551,19 @@ class RuntimeTemplateEncryptionSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
 class RuntimeTemplateEucConfigArgsDict(TypedDict):
-    euc_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    euc_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Disable end user credential access for the runtime.
     """
@@ -571,7 +571,7 @@ class RuntimeTemplateEucConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateEucConfigArgs:
     def __init__(__self__, *,
-                 euc_disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 euc_disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] euc_disabled: Disable end user credential access for the runtime.
         """
@@ -580,28 +580,28 @@ class RuntimeTemplateEucConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="eucDisabled")
-    def euc_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def euc_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable end user credential access for the runtime.
         """
         return pulumi.get(self, "euc_disabled")
 
     @euc_disabled.setter
-    def euc_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def euc_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "euc_disabled", value)
 
 
 class RuntimeTemplateIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RuntimeTemplateIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -627,25 +627,25 @@ class RuntimeTemplateIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RuntimeTemplateIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RuntimeTemplateIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -671,16 +671,16 @@ class RuntimeTemplateIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RuntimeTemplateIdleShutdownConfigArgsDict(TypedDict):
-    idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
     """
@@ -688,7 +688,7 @@ class RuntimeTemplateIdleShutdownConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateIdleShutdownConfigArgs:
     def __init__(__self__, *,
-                 idle_timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 idle_timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] idle_timeout: The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
         """
@@ -697,27 +697,27 @@ class RuntimeTemplateIdleShutdownConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idle_timeout", value)
 
 
 class RuntimeTemplateMachineSpecArgsDict(TypedDict):
-    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    accelerator_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of accelerators used by the runtime.
     """
-    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Compute Engine machine type selected for the runtime.
     """
@@ -725,9 +725,9 @@ class RuntimeTemplateMachineSpecArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateMachineSpecArgs:
     def __init__(__self__, *,
-                 accelerator_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] accelerator_count: The number of accelerators used by the runtime.
         :param pulumi.Input[_builtins.str] accelerator_type: The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
@@ -742,51 +742,51 @@ class RuntimeTemplateMachineSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accelerator_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of accelerators used by the runtime.
         """
         return pulumi.get(self, "accelerator_count")
 
     @accelerator_count.setter
-    def accelerator_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accelerator_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accelerator_count", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
         """
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Compute Engine machine type selected for the runtime.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class RuntimeTemplateNetworkSpecArgsDict(TypedDict):
-    enable_internet_access: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_internet_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable public internet access for the runtime.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the VPC that this runtime is in.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the subnetwork that this runtime is in.
     """
@@ -794,9 +794,9 @@ class RuntimeTemplateNetworkSpecArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateNetworkSpecArgs:
     def __init__(__self__, *,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_internet_access: Enable public internet access for the runtime.
         :param pulumi.Input[_builtins.str] network: The name of the VPC that this runtime is in.
@@ -811,43 +811,43 @@ class RuntimeTemplateNetworkSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable public internet access for the runtime.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC that this runtime is in.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the subnetwork that this runtime is in.
         """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
 class RuntimeTemplateShieldedVmConfigArgsDict(TypedDict):
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables secure boot for the runtime.
     """
@@ -855,7 +855,7 @@ class RuntimeTemplateShieldedVmConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateShieldedVmConfigArgs:
     def __init__(__self__, *,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_secure_boot: Enables secure boot for the runtime.
         """
@@ -864,29 +864,29 @@ class RuntimeTemplateShieldedVmConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables secure boot for the runtime.
         """
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
 
 class RuntimeTemplateSoftwareConfigArgsDict(TypedDict):
-    colab_image: NotRequired[pulumi.Input['RuntimeTemplateSoftwareConfigColabImageArgsDict']]
+    colab_image: NotRequired[pulumi.Input[Optional['RuntimeTemplateSoftwareConfigColabImageArgs']]]
     """
     Colab Image Configuration.
     Structure is documented below.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]]
     """
     Environment variables to be passed to the container.
     Structure is documented below.
     """
-    post_startup_script_config: NotRequired[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict']]
+    post_startup_script_config: NotRequired[pulumi.Input[Optional['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]]
     """
     Post startup script config.
     Structure is documented below.
@@ -895,9 +895,9 @@ class RuntimeTemplateSoftwareConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigArgs:
     def __init__(__self__, *,
-                 colab_image: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigColabImageArgs']] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]] = None,
-                 post_startup_script_config: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']] = None):
+                 colab_image: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigColabImageArgs']] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]] = None,
+                 post_startup_script_config: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']] = None):
         """
         :param pulumi.Input['RuntimeTemplateSoftwareConfigColabImageArgs'] colab_image: Colab Image Configuration.
                Structure is documented below.
@@ -915,7 +915,7 @@ class RuntimeTemplateSoftwareConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="colabImage")
-    def colab_image(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigColabImageArgs']]:
+    def colab_image(self) -> pulumi.Input[Optional['RuntimeTemplateSoftwareConfigColabImageArgs']]:
         """
         Colab Image Configuration.
         Structure is documented below.
@@ -923,12 +923,12 @@ class RuntimeTemplateSoftwareConfigArgs:
         return pulumi.get(self, "colab_image")
 
     @colab_image.setter
-    def colab_image(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigColabImageArgs']]):
+    def colab_image(self, value: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigColabImageArgs']]):
         pulumi.set(self, "colab_image", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]:
         """
         Environment variables to be passed to the container.
         Structure is documented below.
@@ -936,12 +936,12 @@ class RuntimeTemplateSoftwareConfigArgs:
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScriptConfig")
-    def post_startup_script_config(self) -> Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]:
+    def post_startup_script_config(self) -> pulumi.Input[Optional['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]:
         """
         Post startup script config.
         Structure is documented below.
@@ -949,12 +949,12 @@ class RuntimeTemplateSoftwareConfigArgs:
         return pulumi.get(self, "post_startup_script_config")
 
     @post_startup_script_config.setter
-    def post_startup_script_config(self, value: Optional[pulumi.Input['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]):
+    def post_startup_script_config(self, value: pulumi.Input[Optional['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]):
         pulumi.set(self, "post_startup_script_config", value)
 
 
 class RuntimeTemplateSoftwareConfigColabImageArgsDict(TypedDict):
-    release_name: NotRequired[pulumi.Input[_builtins.str]]
+    release_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
     """
@@ -962,7 +962,7 @@ class RuntimeTemplateSoftwareConfigColabImageArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigColabImageArgs:
     def __init__(__self__, *,
-                 release_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 release_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] release_name: The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
         """
@@ -971,23 +971,23 @@ class RuntimeTemplateSoftwareConfigColabImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="releaseName")
-    def release_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The release name of the NotebookRuntime Colab image, e.g. "py310". If not specified, detault to the latest release.
         """
         return pulumi.get(self, "release_name")
 
     @release_name.setter
-    def release_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_name", value)
 
 
 class RuntimeTemplateSoftwareConfigEnvArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the environment variable. Must be a valid C identifier.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
     """
@@ -995,8 +995,8 @@ class RuntimeTemplateSoftwareConfigEnvArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigEnvArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the environment variable. Must be a valid C identifier.
         :param pulumi.Input[_builtins.str] value: Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
@@ -1008,40 +1008,40 @@ class RuntimeTemplateSoftwareConfigEnvArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the environment variable. Must be a valid C identifier.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Variables that reference a $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict(TypedDict):
-    post_startup_script: NotRequired[pulumi.Input[_builtins.str]]
+    post_startup_script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Post startup script to run after runtime is started.
     """
-    post_startup_script_behavior: NotRequired[pulumi.Input[_builtins.str]]
+    post_startup_script_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Post startup script behavior that defines download and execution behavior.
     Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
     """
-    post_startup_script_url: NotRequired[pulumi.Input[_builtins.str]]
+    post_startup_script_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Post startup script url to download. Example: https://bucket/script.sh.
     """
@@ -1049,9 +1049,9 @@ class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs:
     def __init__(__self__, *,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] post_startup_script: Post startup script to run after runtime is started.
         :param pulumi.Input[_builtins.str] post_startup_script_behavior: Post startup script behavior that defines download and execution behavior.
@@ -1067,19 +1067,19 @@ class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Post startup script to run after runtime is started.
         """
         return pulumi.get(self, "post_startup_script")
 
     @post_startup_script.setter
-    def post_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScriptBehavior")
-    def post_startup_script_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Post startup script behavior that defines download and execution behavior.
         Possible values are: `RUN_ONCE`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
@@ -1087,19 +1087,19 @@ class RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs:
         return pulumi.get(self, "post_startup_script_behavior")
 
     @post_startup_script_behavior.setter
-    def post_startup_script_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScriptUrl")
-    def post_startup_script_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Post startup script url to download. Example: https://bucket/script.sh.
         """
         return pulumi.get(self, "post_startup_script_url")
 
     @post_startup_script_url.setter
-    def post_startup_script_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script_url", value)
 
 
@@ -1147,25 +1147,25 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict(Type
     """
     The NotebookRuntimeTemplate to source compute configuration from.
     """
-    dataform_repository_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict']]
+    dataform_repository_source: NotRequired[pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]]
     """
     The Dataform Repository containing the input notebook.
     Structure is documented below.
     """
-    execution_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    execution_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
     """
-    execution_user: NotRequired[pulumi.Input[_builtins.str]]
+    execution_user: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user email to run the execution as.
     """
-    gcs_notebook_source: NotRequired[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict']]
+    gcs_notebook_source: NotRequired[pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]]
     """
     The Cloud Storage uri for the input notebook.
     Structure is documented below.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account to run the execution as.
     """
@@ -1176,11 +1176,11 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
                  display_name: pulumi.Input[_builtins.str],
                  gcs_output_uri: pulumi.Input[_builtins.str],
                  notebook_runtime_template_resource_name: pulumi.Input[_builtins.str],
-                 dataform_repository_source: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']] = None,
-                 execution_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcs_notebook_source: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataform_repository_source: pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']] = None,
+                 execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_notebook_source: pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Notebook Execution.
         :param pulumi.Input[_builtins.str] gcs_output_uri: The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
@@ -1245,7 +1245,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataformRepositorySource")
-    def dataform_repository_source(self) -> Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]:
+    def dataform_repository_source(self) -> pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]:
         """
         The Dataform Repository containing the input notebook.
         Structure is documented below.
@@ -1253,36 +1253,36 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
         return pulumi.get(self, "dataform_repository_source")
 
     @dataform_repository_source.setter
-    def dataform_repository_source(self, value: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]):
+    def dataform_repository_source(self, value: pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]):
         pulumi.set(self, "dataform_repository_source", value)
 
     @_builtins.property
     @pulumi.getter(name="executionTimeout")
-    def execution_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
         """
         return pulumi.get(self, "execution_timeout")
 
     @execution_timeout.setter
-    def execution_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="executionUser")
-    def execution_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user email to run the execution as.
         """
         return pulumi.get(self, "execution_user")
 
     @execution_user.setter
-    def execution_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_user", value)
 
     @_builtins.property
     @pulumi.getter(name="gcsNotebookSource")
-    def gcs_notebook_source(self) -> Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]:
+    def gcs_notebook_source(self) -> pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]:
         """
         The Cloud Storage uri for the input notebook.
         Structure is documented below.
@@ -1290,19 +1290,19 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs:
         return pulumi.get(self, "gcs_notebook_source")
 
     @gcs_notebook_source.setter
-    def gcs_notebook_source(self, value: Optional[pulumi.Input['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]):
+    def gcs_notebook_source(self, value: pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]):
         pulumi.set(self, "gcs_notebook_source", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account to run the execution as.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
 
@@ -1311,7 +1311,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
     """
     The resource name of the Dataform Repository.
     """
-    commit_sha: NotRequired[pulumi.Input[_builtins.str]]
+    commit_sha: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The commit SHA to read repository with. If unset, the file will be read at HEAD.
     """
@@ -1320,7 +1320,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs:
     def __init__(__self__, *,
                  dataform_repository_resource_name: pulumi.Input[_builtins.str],
-                 commit_sha: Optional[pulumi.Input[_builtins.str]] = None):
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dataform_repository_resource_name: The resource name of the Dataform Repository.
         :param pulumi.Input[_builtins.str] commit_sha: The commit SHA to read repository with. If unset, the file will be read at HEAD.
@@ -1343,14 +1343,14 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
 
     @_builtins.property
     @pulumi.getter(name="commitSha")
-    def commit_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The commit SHA to read repository with. If unset, the file will be read at HEAD.
         """
         return pulumi.get(self, "commit_sha")
 
     @commit_sha.setter
-    def commit_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_sha", value)
 
 
@@ -1359,7 +1359,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSo
     """
     The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
     """
-    generation: NotRequired[pulumi.Input[_builtins.str]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
     """
@@ -1368,7 +1368,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSo
 class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 generation: Optional[pulumi.Input[_builtins.str]] = None):
+                 generation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
         :param pulumi.Input[_builtins.str] generation: The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
@@ -1391,14 +1391,14 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSo
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Cloud Storage object to read. If unset, the current version of the object is read. See https://cloud.google.com/storage/docs/metadata#generation-number.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
 

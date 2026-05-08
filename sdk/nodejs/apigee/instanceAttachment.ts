@@ -111,16 +111,16 @@ export interface InstanceAttachmentState {
     /**
      * The resource ID of the environment.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the newly created  attachment (output parameter).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**

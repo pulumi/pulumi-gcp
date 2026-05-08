@@ -144,30 +144,30 @@ export interface BiReservationState {
     /**
      * LOCATION_DESCRIPTION
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Preferred tables to use BI capacity for.
      * Structure is documented below.
      */
-    preferredTables?: pulumi.Input<pulumi.Input<inputs.bigquery.BiReservationPreferredTable>[]>;
+    preferredTables?: pulumi.Input<pulumi.Input<inputs.bigquery.BiReservationPreferredTable>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Size of a reservation, in bytes.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The last update timestamp of a reservation.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,14 +182,14 @@ export interface BiReservationArgs {
      * Preferred tables to use BI capacity for.
      * Structure is documented below.
      */
-    preferredTables?: pulumi.Input<pulumi.Input<inputs.bigquery.BiReservationPreferredTable>[]>;
+    preferredTables?: pulumi.Input<pulumi.Input<inputs.bigquery.BiReservationPreferredTable>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Size of a reservation, in bytes.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }

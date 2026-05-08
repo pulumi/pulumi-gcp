@@ -24,7 +24,7 @@ class Hl7StoreIamBindingArgs:
                  hl7_v2_store_id: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['Hl7StoreIamBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a Hl7StoreIamBinding resource.
 
@@ -100,22 +100,22 @@ class Hl7StoreIamBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['Hl7StoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['Hl7StoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _Hl7StoreIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 hl7_v2_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['Hl7StoreIamBindingConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 hl7_v2_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hl7StoreIamBinding resources.
 
@@ -149,28 +149,28 @@ class _Hl7StoreIamBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['Hl7StoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['Hl7StoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['Hl7StoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the HL7v2 store's IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="hl7V2StoreId")
-    def hl7_v2_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hl7_v2_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HL7v2 store ID, in the form
         `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
@@ -180,12 +180,12 @@ class _Hl7StoreIamBindingState:
         return pulumi.get(self, "hl7_v2_store_id")
 
     @hl7_v2_store_id.setter
-    def hl7_v2_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hl7_v2_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hl7_v2_store_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -199,12 +199,12 @@ class _Hl7StoreIamBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
@@ -213,7 +213,7 @@ class _Hl7StoreIamBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -223,10 +223,10 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['Hl7StoreIamBindingConditionArgs', 'Hl7StoreIamBindingConditionArgsDict']]] = None,
-                 hl7_v2_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['Hl7StoreIamBindingConditionArgs', 'Hl7StoreIamBindingConditionArgsDict']]] = None,
+                 hl7_v2_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
@@ -433,10 +433,10 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['Hl7StoreIamBindingConditionArgs', 'Hl7StoreIamBindingConditionArgsDict']]] = None,
-                 hl7_v2_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['Hl7StoreIamBindingConditionArgs', 'Hl7StoreIamBindingConditionArgsDict']]] = None,
+                 hl7_v2_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,11 +467,11 @@ class Hl7StoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['Hl7StoreIamBindingConditionArgs', 'Hl7StoreIamBindingConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            hl7_v2_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'Hl7StoreIamBinding':
+            condition: pulumi.Input[Optional[Union['Hl7StoreIamBindingConditionArgs', 'Hl7StoreIamBindingConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            hl7_v2_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'Hl7StoreIamBinding':
         """
         Get an existing Hl7StoreIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -232,71 +232,71 @@ export interface InterceptDeploymentGroupState {
      * The list of endpoint groups that are connected to this resource.
      * Structure is documented below.
      */
-    connectedEndpointGroups?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptDeploymentGroupConnectedEndpointGroup>[]>;
+    connectedEndpointGroups?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptDeploymentGroupConnectedEndpointGroup>[] | undefined>;
     /**
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the deployment group.
      * Used as additional context for the deployment group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group's resource name.
      */
-    interceptDeploymentGroupId?: pulumi.Input<string>;
+    interceptDeploymentGroupId?: pulumi.Input<string | undefined>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cloud location of the deployment group, currently restricted to `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The list of locations where the deployment group is present.
      * Structure is documented below.
      */
-    locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptDeploymentGroupLocation>[]>;
+    locations?: pulumi.Input<pulumi.Input<inputs.networksecurity.InterceptDeploymentGroupLocation>[] | undefined>;
     /**
      * (Output)
      * The connected endpoint group's resource name, for example:
      * `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
      * See https://google.aip.dev/124.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network that will be used for all child deployments, for example:
      * `projects/{project}/global/networks/{network}`.
      * See https://google.aip.dev/124.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The current state of the resource does not match the user's intended state,
      * and the system is working to reconcile them. This is part of the normal
      * operation (e.g. adding a new deployment to the group)
      * See https://google.aip.dev/128.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * (Output)
      * The current state of the association in this location.
@@ -305,12 +305,12 @@ export interface InterceptDeploymentGroupState {
      * ACTIVE
      * OUT_OF_SYNC
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -321,7 +321,7 @@ export interface InterceptDeploymentGroupArgs {
      * User-provided description of the deployment group.
      * Used as additional context for the deployment group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the new deployment group, which will become the final
      * component of the deployment group's resource name.
@@ -332,7 +332,7 @@ export interface InterceptDeploymentGroupArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cloud location of the deployment group, currently restricted to `global`.
      */
@@ -347,5 +347,5 @@ export interface InterceptDeploymentGroupArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

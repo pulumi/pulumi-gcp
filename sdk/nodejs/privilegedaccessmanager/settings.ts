@@ -186,39 +186,39 @@ export interface SettingsState {
      * Create timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
      * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
      * Structure is documented below.
      */
-    emailNotificationSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsEmailNotificationSettings>;
+    emailNotificationSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsEmailNotificationSettings | undefined>;
     /**
      * Fingerprint for optimistic concurrency returned in the response of GetSettings. Must be provided in the requests to UpdateSettings. If the value provided does not match the value known to the server, ABORTED will be thrown, and the client should retry the read-modify-write cycle.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The region of the PAM settings resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the settings resource. Possible formats:
      * projects/{project-id|project-number}/locations/{location}/settings folders/{folder-number}/locations/{location}/settings organizations/{organization-number}/locations/{location}/settings
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * This controls the node-level settings for allowing service accounts as approvers.
      * Structure is documented below.
      */
-    serviceAccountApproverSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsServiceAccountApproverSettings>;
+    serviceAccountApproverSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsServiceAccountApproverSettings | undefined>;
     /**
      * Update timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
      * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,7 +229,7 @@ export interface SettingsArgs {
      * EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
      * Structure is documented below.
      */
-    emailNotificationSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsEmailNotificationSettings>;
+    emailNotificationSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsEmailNotificationSettings | undefined>;
     /**
      * The region of the PAM settings resource.
      */
@@ -242,5 +242,5 @@ export interface SettingsArgs {
      * This controls the node-level settings for allowing service accounts as approvers.
      * Structure is documented below.
      */
-    serviceAccountApproverSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsServiceAccountApproverSettings>;
+    serviceAccountApproverSettings?: pulumi.Input<inputs.privilegedaccessmanager.SettingsServiceAccountApproverSettings | undefined>;
 }

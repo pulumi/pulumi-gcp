@@ -318,9 +318,9 @@ def get_instance(location: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tier=pulumi.get(__ret__, 'tier'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_instance_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
     Get info about a Google Cloud Filestore instance.

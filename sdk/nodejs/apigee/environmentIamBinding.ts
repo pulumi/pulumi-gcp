@@ -279,15 +279,15 @@ export class EnvironmentIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EnvironmentIamBinding resources.
  */
 export interface EnvironmentIamBindingState {
-    condition?: pulumi.Input<inputs.apigee.EnvironmentIamBindingCondition>;
+    condition?: pulumi.Input<inputs.apigee.EnvironmentIamBindingCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -302,26 +302,26 @@ export interface EnvironmentIamBindingState {
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      * * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Apigee Organization associated with the Apigee environment,
      * in the format `organizations/{{org_name}}`.
      * Used to find the parent resource to bind the IAM policy to
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.apigee.EnvironmentIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a EnvironmentIamBinding resource.
  */
 export interface EnvironmentIamBindingArgs {
-    condition?: pulumi.Input<inputs.apigee.EnvironmentIamBindingCondition>;
+    condition?: pulumi.Input<inputs.apigee.EnvironmentIamBindingCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */

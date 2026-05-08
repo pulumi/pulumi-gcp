@@ -405,27 +405,27 @@ export interface BareMetalNodePoolState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster this node pool belongs to.
      */
-    bareMetalCluster?: pulumi.Input<string>;
+    bareMetalCluster?: pulumi.Input<string | undefined>;
     /**
      * The time the cluster was created, in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The time the cluster was deleted, in RFC3339 text format.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * The display name for the Bare Metal Node Pool.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
@@ -433,47 +433,47 @@ export interface BareMetalNodePoolState {
      * Allows clients to perform consistent read-modify-writes
      * through optimistic concurrency control.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The bare metal node pool name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node pool configuration.
      * Structure is documented below.
      */
-    nodePoolConfig?: pulumi.Input<inputs.gkeonprem.BareMetalNodePoolNodePoolConfig>;
+    nodePoolConfig?: pulumi.Input<inputs.gkeonprem.BareMetalNodePoolNodePoolConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If set, there are currently changes in flight to the Bare Metal User Cluster.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * (Output)
      * The lifecycle state of the condition.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Specifies detailed node pool status.
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalNodePoolStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalNodePoolStatus>[] | undefined>;
     /**
      * The unique identifier of the Bare Metal Node Pool.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The time the cluster was last updated, in RFC3339 text format.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -493,7 +493,7 @@ export interface BareMetalNodePoolArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cluster this node pool belongs to.
      */
@@ -501,7 +501,7 @@ export interface BareMetalNodePoolArgs {
     /**
      * The display name for the Bare Metal Node Pool.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
@@ -509,7 +509,7 @@ export interface BareMetalNodePoolArgs {
     /**
      * The bare metal node pool name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node pool configuration.
      * Structure is documented below.
@@ -519,5 +519,5 @@ export interface BareMetalNodePoolArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

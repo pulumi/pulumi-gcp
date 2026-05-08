@@ -171,13 +171,13 @@ export interface GetSOutputArgs {
     /**
      * A prefix for filtering. It's applied with the `accountId`.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A regular expression for filtering. It's applied with the `email`. Further information about the syntax can be found [here](https://github.com/google/re2/wiki/Syntax).
      */
-    regex?: pulumi.Input<string>;
+    regex?: pulumi.Input<string | undefined>;
 }

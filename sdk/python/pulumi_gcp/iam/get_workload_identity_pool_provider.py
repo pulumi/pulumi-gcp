@@ -229,9 +229,9 @@ def get_workload_identity_pool_provider(project: Optional[_builtins.str] = None,
         workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'),
         workload_identity_pool_provider_id=pulumi.get(__ret__, 'workload_identity_pool_provider_id'),
         x509s=pulumi.get(__ret__, 'x509s'))
-def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                               workload_identity_pool_provider_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workload_identity_pool_provider_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                               workload_identity_pool_provider_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkloadIdentityPoolProviderResult]:
     """
     Get a IAM workload identity provider from Google Cloud by its id.

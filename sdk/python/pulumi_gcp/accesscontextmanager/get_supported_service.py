@@ -172,7 +172,7 @@ def get_supported_service(service_name: Optional[_builtins.str] = None,
         support_stage=pulumi.get(__ret__, 'support_stage'),
         supported_methods=pulumi.get(__ret__, 'supported_methods'),
         title=pulumi.get(__ret__, 'title'))
-def get_supported_service_output(service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_supported_service_output(service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSupportedServiceResult]:
     """
     Get information about a VPC Service Controls supported service, including its supported methods.

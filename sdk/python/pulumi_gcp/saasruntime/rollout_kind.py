@@ -24,13 +24,13 @@ class RolloutKindArgs:
                  location: pulumi.Input[_builtins.str],
                  rollout_kind_id: pulumi.Input[_builtins.str],
                  unit_kind: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 error_budget: Optional[pulumi.Input['RolloutKindErrorBudgetArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_orchestration_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 error_budget: pulumi.Input[Optional['RolloutKindErrorBudgetArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_orchestration_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_unit_kind_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RolloutKind resource.
 
@@ -128,7 +128,7 @@ class RolloutKindArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations is an unstructured key-value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata.
@@ -140,12 +140,12 @@ class RolloutKindArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="errorBudget")
-    def error_budget(self) -> Optional[pulumi.Input['RolloutKindErrorBudgetArgs']]:
+    def error_budget(self) -> pulumi.Input[Optional['RolloutKindErrorBudgetArgs']]:
         """
         The configuration for error budget. If the number of failed units exceeds
         max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
@@ -154,12 +154,12 @@ class RolloutKindArgs:
         return pulumi.get(self, "error_budget")
 
     @error_budget.setter
-    def error_budget(self, value: Optional[pulumi.Input['RolloutKindErrorBudgetArgs']]):
+    def error_budget(self, value: pulumi.Input[Optional['RolloutKindErrorBudgetArgs']]):
         pulumi.set(self, "error_budget", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels on the resource, which can be used for categorization.
         similar to Kubernetes resource labels.
@@ -169,12 +169,12 @@ class RolloutKindArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -182,12 +182,12 @@ class RolloutKindArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutOrchestrationStrategy")
-    def rollout_orchestration_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_orchestration_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The strategy used for executing a Rollout. This is a required field.
         There are two supported values strategies which are used to control a rollout.
@@ -199,12 +199,12 @@ class RolloutKindArgs:
         return pulumi.get(self, "rollout_orchestration_strategy")
 
     @rollout_orchestration_strategy.setter
-    def rollout_orchestration_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_orchestration_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_orchestration_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="unitFilter")
-    def unit_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEL(https://github.com/google/cel-spec) formatted filter string against
         Unit. The filter will be applied to determine the eligible unit population.
@@ -213,12 +213,12 @@ class RolloutKindArgs:
         return pulumi.get(self, "unit_filter")
 
     @unit_filter.setter
-    def unit_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="updateUnitKindStrategy")
-    def update_unit_kind_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_unit_kind_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The config for updating the unit kind. By default, the unit kind will be
         updated on the rollout start.
@@ -230,30 +230,30 @@ class RolloutKindArgs:
         return pulumi.get(self, "update_unit_kind_strategy")
 
     @update_unit_kind_strategy.setter
-    def update_unit_kind_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_unit_kind_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_unit_kind_strategy", value)
 
 
 @pulumi.input_type
 class _RolloutKindState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 error_budget: Optional[pulumi.Input['RolloutKindErrorBudgetArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 rollout_kind_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_orchestration_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 error_budget: pulumi.Input[Optional['RolloutKindErrorBudgetArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rollout_kind_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_orchestration_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_unit_kind_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RolloutKind resources.
 
@@ -346,7 +346,7 @@ class _RolloutKindState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations is an unstructured key-value map stored with a resource that
         may be set by external tools to store and retrieve arbitrary metadata.
@@ -358,48 +358,48 @@ class _RolloutKindState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="errorBudget")
-    def error_budget(self) -> Optional[pulumi.Input['RolloutKindErrorBudgetArgs']]:
+    def error_budget(self) -> pulumi.Input[Optional['RolloutKindErrorBudgetArgs']]:
         """
         The configuration for error budget. If the number of failed units exceeds
         max(allowed_count, allowed_ratio * total_units), the rollout will be paused.
@@ -408,12 +408,12 @@ class _RolloutKindState:
         return pulumi.get(self, "error_budget")
 
     @error_budget.setter
-    def error_budget(self, value: Optional[pulumi.Input['RolloutKindErrorBudgetArgs']]):
+    def error_budget(self, value: pulumi.Input[Optional['RolloutKindErrorBudgetArgs']]):
         pulumi.set(self, "error_budget", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels on the resource, which can be used for categorization.
         similar to Kubernetes resource labels.
@@ -423,24 +423,24 @@ class _RolloutKindState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name (full URI of the resource) following the standard naming
         scheme:
@@ -449,12 +449,12 @@ class _RolloutKindState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -462,12 +462,12 @@ class _RolloutKindState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -475,24 +475,24 @@ class _RolloutKindState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutKindId")
-    def rollout_kind_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_kind_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID value for the new rollout kind.
         """
         return pulumi.get(self, "rollout_kind_id")
 
     @rollout_kind_id.setter
-    def rollout_kind_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_kind_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_kind_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutOrchestrationStrategy")
-    def rollout_orchestration_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_orchestration_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The strategy used for executing a Rollout. This is a required field.
         There are two supported values strategies which are used to control a rollout.
@@ -504,12 +504,12 @@ class _RolloutKindState:
         return pulumi.get(self, "rollout_orchestration_strategy")
 
     @rollout_orchestration_strategy.setter
-    def rollout_orchestration_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_orchestration_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_orchestration_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the resource. UID is unique in the time
         and space for this resource within the scope of the service. It is
@@ -520,12 +520,12 @@ class _RolloutKindState:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="unitFilter")
-    def unit_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEL(https://github.com/google/cel-spec) formatted filter string against
         Unit. The filter will be applied to determine the eligible unit population.
@@ -534,12 +534,12 @@ class _RolloutKindState:
         return pulumi.get(self, "unit_filter")
 
     @unit_filter.setter
-    def unit_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="unitKind")
-    def unit_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UnitKind that this rollout kind corresponds to. Rollouts stemming from this
         rollout kind will target the units of this unit kind. In other words, this
@@ -548,12 +548,12 @@ class _RolloutKindState:
         return pulumi.get(self, "unit_kind")
 
     @unit_kind.setter
-    def unit_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was last updated. Any
         change to the resource made by users must refresh this value.
@@ -562,12 +562,12 @@ class _RolloutKindState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="updateUnitKindStrategy")
-    def update_unit_kind_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_unit_kind_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The config for updating the unit kind. By default, the unit kind will be
         updated on the rollout start.
@@ -579,7 +579,7 @@ class _RolloutKindState:
         return pulumi.get(self, "update_unit_kind_strategy")
 
     @update_unit_kind_strategy.setter
-    def update_unit_kind_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_unit_kind_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_unit_kind_strategy", value)
 
 
@@ -589,16 +589,16 @@ class RolloutKind(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 error_budget: Optional[pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_kind_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_orchestration_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_kind_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_orchestration_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_unit_kind_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A RolloutKind is a reusable configuration resource that defines the policies, strategies, and targeting for Rollout operations. It acts as a template for repeatable Rollouts, providing guardrails and ensuring that updates are executed in a consistent manner across a fleet of Units.
@@ -763,16 +763,16 @@ class RolloutKind(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 error_budget: Optional[pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_kind_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_orchestration_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_kind_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_orchestration_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_unit_kind_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -817,23 +817,23 @@ class RolloutKind(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            error_budget: Optional[pulumi.Input[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rollout_kind_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rollout_orchestration_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            unit_kind: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            update_unit_kind_strategy: Optional[pulumi.Input[_builtins.str]] = None) -> 'RolloutKind':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            error_budget: pulumi.Input[Optional[Union['RolloutKindErrorBudgetArgs', 'RolloutKindErrorBudgetArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rollout_kind_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout_orchestration_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            unit_kind: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_unit_kind_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'RolloutKind':
         """
         Get an existing RolloutKind resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

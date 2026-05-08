@@ -208,9 +208,9 @@ def get_network(name: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
         subnetworks_self_links=pulumi.get(__ret__, 'subnetworks_self_links'))
-def get_network_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                       network_profile: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_network_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                       network_profile: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     Get a network within GCE from its name.

@@ -257,62 +257,62 @@ export interface ServiceLbPoliciesState {
      * Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
      * Structure is documented below.
      */
-    autoCapacityDrain?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesAutoCapacityDrain>;
+    autoCapacityDrain?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesAutoCapacityDrain | undefined>;
     /**
      * Time the ServiceLbPolicy was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
      * Structure is documented below.
      */
-    failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig>;
+    failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig | undefined>;
     /**
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      */
-    isolationConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesIsolationConfig>;
+    isolationConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesIsolationConfig | undefined>;
     /**
      * Set of label tags associated with the ServiceLbPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
      * Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
      */
-    loadBalancingAlgorithm?: pulumi.Input<string>;
+    loadBalancingAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The location of the service lb policy.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Time the ServiceLbPolicy was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,32 +323,32 @@ export interface ServiceLbPoliciesArgs {
      * Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
      * Structure is documented below.
      */
-    autoCapacityDrain?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesAutoCapacityDrain>;
+    autoCapacityDrain?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesAutoCapacityDrain | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
      * Structure is documented below.
      */
-    failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig>;
+    failoverConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesFailoverConfig | undefined>;
     /**
      * Configuration to provide isolation support for the associated Backend Service.
      * Structure is documented below.
      */
-    isolationConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesIsolationConfig>;
+    isolationConfig?: pulumi.Input<inputs.networkservices.ServiceLbPoliciesIsolationConfig | undefined>;
     /**
      * Set of label tags associated with the ServiceLbPolicy resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
      * Possible values are: `SPRAY_TO_REGION`, `SPRAY_TO_WORLD`, `WATERFALL_BY_REGION`, `WATERFALL_BY_ZONE`.
      */
-    loadBalancingAlgorithm?: pulumi.Input<string>;
+    loadBalancingAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The location of the service lb policy.
      */
@@ -356,10 +356,10 @@ export interface ServiceLbPoliciesArgs {
     /**
      * Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

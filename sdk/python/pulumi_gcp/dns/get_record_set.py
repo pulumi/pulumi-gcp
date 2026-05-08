@@ -155,10 +155,10 @@ def get_record_set(managed_zone: Optional[_builtins.str] = None,
         rrdatas=pulumi.get(__ret__, 'rrdatas'),
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'))
-def get_record_set_output(managed_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                          name: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_record_set_output(managed_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                          name: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          type: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordSetResult]:
     """
     Get a DNS record set within Google Cloud DNS

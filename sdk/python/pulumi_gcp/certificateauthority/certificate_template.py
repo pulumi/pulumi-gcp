@@ -22,14 +22,14 @@ __all__ = ['CertificateTemplateArgs', 'CertificateTemplate']
 class CertificateTemplateArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maximum_lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
-                 predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_constraints: pulumi.Input[Optional['CertificateTemplateIdentityConstraintsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maximum_lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 passthrough_extensions: pulumi.Input[Optional['CertificateTemplatePassthroughExtensionsArgs']] = None,
+                 predefined_values: pulumi.Input[Optional['CertificateTemplatePredefinedValuesArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificateTemplate resource.
 
@@ -81,19 +81,19 @@ class CertificateTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. A human-readable description of scenarios this template is intended for.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="identityConstraints")
-    def identity_constraints(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']]:
+    def identity_constraints(self) -> pulumi.Input[Optional['CertificateTemplateIdentityConstraintsArgs']]:
         """
         Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         Structure is documented below.
@@ -101,12 +101,12 @@ class CertificateTemplateArgs:
         return pulumi.get(self, "identity_constraints")
 
     @identity_constraints.setter
-    def identity_constraints(self, value: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']]):
+    def identity_constraints(self, value: pulumi.Input[Optional['CertificateTemplateIdentityConstraintsArgs']]):
         pulumi.set(self, "identity_constraints", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels with user-defined metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -115,36 +115,36 @@ class CertificateTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumLifetime")
-    def maximum_lifetime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum_lifetime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         """
         return pulumi.get(self, "maximum_lifetime")
 
     @maximum_lifetime.setter
-    def maximum_lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum_lifetime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum_lifetime", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="passthroughExtensions")
-    def passthrough_extensions(self) -> Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']]:
+    def passthrough_extensions(self) -> pulumi.Input[Optional['CertificateTemplatePassthroughExtensionsArgs']]:
         """
         Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         Structure is documented below.
@@ -152,12 +152,12 @@ class CertificateTemplateArgs:
         return pulumi.get(self, "passthrough_extensions")
 
     @passthrough_extensions.setter
-    def passthrough_extensions(self, value: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']]):
+    def passthrough_extensions(self, value: pulumi.Input[Optional['CertificateTemplatePassthroughExtensionsArgs']]):
         pulumi.set(self, "passthrough_extensions", value)
 
     @_builtins.property
     @pulumi.getter(name="predefinedValues")
-    def predefined_values(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']]:
+    def predefined_values(self) -> pulumi.Input[Optional['CertificateTemplatePredefinedValuesArgs']]:
         """
         Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         Structure is documented below.
@@ -165,12 +165,12 @@ class CertificateTemplateArgs:
         return pulumi.get(self, "predefined_values")
 
     @predefined_values.setter
-    def predefined_values(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']]):
+    def predefined_values(self, value: pulumi.Input[Optional['CertificateTemplatePredefinedValuesArgs']]):
         pulumi.set(self, "predefined_values", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -178,26 +178,26 @@ class CertificateTemplateArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _CertificateTemplateState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 identity_constraints: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 passthrough_extensions: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']] = None,
-                 predefined_values: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 identity_constraints: pulumi.Input[Optional['CertificateTemplateIdentityConstraintsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 passthrough_extensions: pulumi.Input[Optional['CertificateTemplatePassthroughExtensionsArgs']] = None,
+                 predefined_values: pulumi.Input[Optional['CertificateTemplatePredefinedValuesArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificateTemplate resources.
 
@@ -251,43 +251,43 @@ class _CertificateTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time at which this CertificateTemplate was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. A human-readable description of scenarios this template is intended for.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="identityConstraints")
-    def identity_constraints(self) -> Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']]:
+    def identity_constraints(self) -> pulumi.Input[Optional['CertificateTemplateIdentityConstraintsArgs']]:
         """
         Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         Structure is documented below.
@@ -295,12 +295,12 @@ class _CertificateTemplateState:
         return pulumi.get(self, "identity_constraints")
 
     @identity_constraints.setter
-    def identity_constraints(self, value: Optional[pulumi.Input['CertificateTemplateIdentityConstraintsArgs']]):
+    def identity_constraints(self, value: pulumi.Input[Optional['CertificateTemplateIdentityConstraintsArgs']]):
         pulumi.set(self, "identity_constraints", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels with user-defined metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -309,48 +309,48 @@ class _CertificateTemplateState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumLifetime")
-    def maximum_lifetime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum_lifetime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The maximum lifetime allowed for all issued certificates that use this template. If the issuing CaPool's IssuancePolicy specifies a maximum lifetime the minimum of the two durations will be the maximum lifetime for issued. Note that if the issuing CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         """
         return pulumi.get(self, "maximum_lifetime")
 
     @maximum_lifetime.setter
-    def maximum_lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum_lifetime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum_lifetime", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="passthroughExtensions")
-    def passthrough_extensions(self) -> Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']]:
+    def passthrough_extensions(self) -> pulumi.Input[Optional['CertificateTemplatePassthroughExtensionsArgs']]:
         """
         Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         Structure is documented below.
@@ -358,12 +358,12 @@ class _CertificateTemplateState:
         return pulumi.get(self, "passthrough_extensions")
 
     @passthrough_extensions.setter
-    def passthrough_extensions(self, value: Optional[pulumi.Input['CertificateTemplatePassthroughExtensionsArgs']]):
+    def passthrough_extensions(self, value: pulumi.Input[Optional['CertificateTemplatePassthroughExtensionsArgs']]):
         pulumi.set(self, "passthrough_extensions", value)
 
     @_builtins.property
     @pulumi.getter(name="predefinedValues")
-    def predefined_values(self) -> Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']]:
+    def predefined_values(self) -> pulumi.Input[Optional['CertificateTemplatePredefinedValuesArgs']]:
         """
         Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
         Structure is documented below.
@@ -371,12 +371,12 @@ class _CertificateTemplateState:
         return pulumi.get(self, "predefined_values")
 
     @predefined_values.setter
-    def predefined_values(self, value: Optional[pulumi.Input['CertificateTemplatePredefinedValuesArgs']]):
+    def predefined_values(self, value: pulumi.Input[Optional['CertificateTemplatePredefinedValuesArgs']]):
         pulumi.set(self, "predefined_values", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -384,12 +384,12 @@ class _CertificateTemplateState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -397,19 +397,19 @@ class _CertificateTemplateState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time at which this CertificateTemplate was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -419,15 +419,15 @@ class CertificateTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity_constraints: Optional[pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 passthrough_extensions: Optional[pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
-                 predefined_values: Optional[pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_constraints: pulumi.Input[Optional[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 passthrough_extensions: pulumi.Input[Optional[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
+                 predefined_values: pulumi.Input[Optional[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Certificate Authority Service provides reusable and parameterized templates that you can use for common certificate issuance scenarios. A certificate template represents a relatively static and well-defined certificate issuance schema within an organization. A certificate template can essentially become a full-fledged vertical certificate issuance framework.
@@ -940,15 +940,15 @@ class CertificateTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity_constraints: Optional[pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 passthrough_extensions: Optional[pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
-                 predefined_values: Optional[pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_constraints: pulumi.Input[Optional[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 passthrough_extensions: pulumi.Input[Optional[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
+                 predefined_values: pulumi.Input[Optional[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -985,19 +985,19 @@ class CertificateTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            identity_constraints: Optional[pulumi.Input[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            maximum_lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            passthrough_extensions: Optional[pulumi.Input[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
-            predefined_values: Optional[pulumi.Input[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'CertificateTemplate':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            identity_constraints: pulumi.Input[Optional[Union['CertificateTemplateIdentityConstraintsArgs', 'CertificateTemplateIdentityConstraintsArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            maximum_lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            passthrough_extensions: pulumi.Input[Optional[Union['CertificateTemplatePassthroughExtensionsArgs', 'CertificateTemplatePassthroughExtensionsArgsDict']]] = None,
+            predefined_values: pulumi.Input[Optional[Union['CertificateTemplatePredefinedValuesArgs', 'CertificateTemplatePredefinedValuesArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'CertificateTemplate':
         """
         Get an existing CertificateTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

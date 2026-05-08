@@ -126,8 +126,8 @@ def get_v2_accelerator_types(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         types=pulumi.get(__ret__, 'types'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_v2_accelerator_types_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_v2_accelerator_types_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetV2AcceleratorTypesResult]:
     """
     Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).

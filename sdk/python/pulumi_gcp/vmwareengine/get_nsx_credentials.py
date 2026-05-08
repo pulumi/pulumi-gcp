@@ -112,7 +112,7 @@ def get_nsx_credentials(parent: Optional[_builtins.str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         password=pulumi.get(__ret__, 'password'),
         username=pulumi.get(__ret__, 'username'))
-def get_nsx_credentials_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_nsx_credentials_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNsxCredentialsResult]:
     """
     Use this data source to get NSX credentials for a Private Cloud.

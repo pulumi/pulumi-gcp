@@ -90,23 +90,23 @@ export class RepositoryIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RepositoryIamBinding resources.
  */
 export interface RepositoryIamBindingState {
-    condition?: pulumi.Input<inputs.dataform.RepositoryIamBindingCondition>;
-    etag?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<string>[]>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    repository?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.dataform.RepositoryIamBindingCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    repository?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RepositoryIamBinding resource.
  */
 export interface RepositoryIamBindingArgs {
-    condition?: pulumi.Input<inputs.dataform.RepositoryIamBindingCondition>;
+    condition?: pulumi.Input<inputs.dataform.RepositoryIamBindingCondition | undefined>;
     members: pulumi.Input<pulumi.Input<string>[]>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     repository: pulumi.Input<string>;
     role: pulumi.Input<string>;
 }

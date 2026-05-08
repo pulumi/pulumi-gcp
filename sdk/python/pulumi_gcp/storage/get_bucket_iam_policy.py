@@ -110,7 +110,7 @@ def get_bucket_iam_policy(bucket: Optional[_builtins.str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[_builtins.str]] = None,
+def get_bucket_iam_policy_output(bucket: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketIamPolicyResult]:
     """
     Retrieves the current IAM policy data for bucket

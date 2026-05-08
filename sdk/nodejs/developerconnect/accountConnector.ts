@@ -357,79 +357,79 @@ export interface AccountConnectorState {
      * to https://google.aip.dev/122#resource-id-segments Names must be unique
      * per-project per-location.
      */
-    accountConnectorId?: pulumi.Input<string>;
+    accountConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Allows users to store small amounts of arbitrary data.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The timestamp when the accountConnector was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Message for a customized OAuth config.
      * Structure is documented below.
      */
-    customOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorCustomOauthConfig>;
+    customOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorCustomOauthConfig | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the accountConnector, in the format
      * `projects/{project}/locations/{location}/accountConnectors/{account_connector_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Start OAuth flow by clicking on this URL.
      */
-    oauthStartUri?: pulumi.Input<string>;
+    oauthStartUri?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * ProviderOAuthConfig is the OAuth config for a provider.
      * Structure is documented below.
      */
-    providerOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProviderOauthConfig>;
+    providerOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProviderOauthConfig | undefined>;
     /**
      * The proxy configuration.
      * Structure is documented below.
      */
-    proxyConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProxyConfig>;
+    proxyConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProxyConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The timestamp when the accountConnector was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -448,24 +448,24 @@ export interface AccountConnectorArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Message for a customized OAuth config.
      * Structure is documented below.
      */
-    customOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorCustomOauthConfig>;
+    customOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorCustomOauthConfig | undefined>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -474,15 +474,15 @@ export interface AccountConnectorArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * ProviderOAuthConfig is the OAuth config for a provider.
      * Structure is documented below.
      */
-    providerOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProviderOauthConfig>;
+    providerOauthConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProviderOauthConfig | undefined>;
     /**
      * The proxy configuration.
      * Structure is documented below.
      */
-    proxyConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProxyConfig>;
+    proxyConfig?: pulumi.Input<inputs.developerconnect.AccountConnectorProxyConfig | undefined>;
 }

@@ -244,45 +244,45 @@ export interface BackupScheduleState {
     /**
      * The database to create the backup schedule on.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the encryption of the backup schedule.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.spanner.BackupScheduleEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.spanner.BackupScheduleEncryptionConfig | undefined>;
     /**
      * The schedule creates only full backups..
      */
-    fullBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleFullBackupSpec>;
+    fullBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleFullBackupSpec | undefined>;
     /**
      * The schedule creates incremental backup chains.
      */
-    incrementalBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleIncrementalBackupSpec>;
+    incrementalBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleIncrementalBackupSpec | undefined>;
     /**
      * The instance to create the database on.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier for the backup schedule, which cannot be changed after
      * the backup schedule is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
      * You can set this to a value up to 366 days.
      */
-    retentionDuration?: pulumi.Input<string>;
+    retentionDuration?: pulumi.Input<string | undefined>;
     /**
      * Defines specifications of the backup schedule.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.spanner.BackupScheduleSpec>;
+    spec?: pulumi.Input<inputs.spanner.BackupScheduleSpec | undefined>;
 }
 
 /**
@@ -297,15 +297,15 @@ export interface BackupScheduleArgs {
      * Configuration for the encryption of the backup schedule.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.spanner.BackupScheduleEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.spanner.BackupScheduleEncryptionConfig | undefined>;
     /**
      * The schedule creates only full backups..
      */
-    fullBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleFullBackupSpec>;
+    fullBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleFullBackupSpec | undefined>;
     /**
      * The schedule creates incremental backup chains.
      */
-    incrementalBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleIncrementalBackupSpec>;
+    incrementalBackupSpec?: pulumi.Input<inputs.spanner.BackupScheduleIncrementalBackupSpec | undefined>;
     /**
      * The instance to create the database on.
      */
@@ -314,12 +314,12 @@ export interface BackupScheduleArgs {
      * A unique identifier for the backup schedule, which cannot be changed after
      * the backup schedule is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
@@ -330,5 +330,5 @@ export interface BackupScheduleArgs {
      * Defines specifications of the backup schedule.
      * Structure is documented below.
      */
-    spec?: pulumi.Input<inputs.spanner.BackupScheduleSpec>;
+    spec?: pulumi.Input<inputs.spanner.BackupScheduleSpec | undefined>;
 }

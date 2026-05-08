@@ -134,18 +134,18 @@ export interface GetAuthorityOutputArgs {
      *
      * - - -
      */
-    certificateAuthorityId?: pulumi.Input<string>;
+    certificateAuthorityId?: pulumi.Input<string | undefined>;
     /**
      * The location the certificate authority exists in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the pool the certificate authority belongs to.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

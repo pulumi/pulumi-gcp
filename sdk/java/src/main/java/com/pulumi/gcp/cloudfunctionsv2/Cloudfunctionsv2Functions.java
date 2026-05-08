@@ -34,8 +34,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -77,8 +77,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -120,8 +120,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -163,8 +163,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -206,8 +206,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -247,8 +247,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -289,8 +289,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -331,8 +331,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -373,8 +373,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -415,8 +415,8 @@ public final class Cloudfunctionsv2Functions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
      * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

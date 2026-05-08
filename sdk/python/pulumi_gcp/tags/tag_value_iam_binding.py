@@ -24,7 +24,7 @@ class TagValueIamBindingArgs:
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
                  tag_value: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['TagValueIamBindingConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['TagValueIamBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a TagValueIamBinding resource.
 
@@ -104,7 +104,7 @@ class TagValueIamBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TagValueIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['TagValueIamBindingConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -112,18 +112,18 @@ class TagValueIamBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TagValueIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['TagValueIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _TagValueIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['TagValueIamBindingConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['TagValueIamBindingConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TagValueIamBinding resources.
 
@@ -160,7 +160,7 @@ class _TagValueIamBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['TagValueIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['TagValueIamBindingConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -168,24 +168,24 @@ class _TagValueIamBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['TagValueIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['TagValueIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -203,12 +203,12 @@ class _TagValueIamBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `tags.TagValueIamBinding` can be used per role. Note that custom roles must be of the format
@@ -217,19 +217,19 @@ class _TagValueIamBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
 
@@ -239,10 +239,10 @@ class TagValueIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['TagValueIamBindingConditionArgs', 'TagValueIamBindingConditionArgsDict']]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['TagValueIamBindingConditionArgs', 'TagValueIamBindingConditionArgsDict']]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Tags TagValue. Each of these resources serves a different use case:
@@ -790,10 +790,10 @@ class TagValueIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['TagValueIamBindingConditionArgs', 'TagValueIamBindingConditionArgsDict']]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['TagValueIamBindingConditionArgs', 'TagValueIamBindingConditionArgsDict']]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -824,11 +824,11 @@ class TagValueIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['TagValueIamBindingConditionArgs', 'TagValueIamBindingConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'TagValueIamBinding':
+            condition: pulumi.Input[Optional[Union['TagValueIamBindingConditionArgs', 'TagValueIamBindingConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'TagValueIamBinding':
         """
         Get an existing TagValueIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

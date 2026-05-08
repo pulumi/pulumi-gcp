@@ -330,11 +330,11 @@ export interface IAMPolicyState {
     /**
      * (Computed) The etag of the folder's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
@@ -345,7 +345,7 @@ export interface IAMPolicyState {
      * Deleting this removes all policies from the folder, locking out users without
      * folder-level access.
      */
-    policyData?: pulumi.Input<string>;
+    policyData?: pulumi.Input<string | undefined>;
 }
 
 /**

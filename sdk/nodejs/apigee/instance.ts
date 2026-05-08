@@ -351,31 +351,31 @@ export interface InstanceState {
      * Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
      * Structure is documented below.
      */
-    accessLoggingConfig?: pulumi.Input<inputs.apigee.InstanceAccessLoggingConfig>;
+    accessLoggingConfig?: pulumi.Input<inputs.apigee.InstanceAccessLoggingConfig | undefined>;
     /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
      * side that can privately connect to the service attachment. It is an optional field
      * which the customers can provide during the instance creation. By default, the customer
      * project associated with the Apigee organization will be included to the list.
      */
-    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      */
-    diskEncryptionKeyName?: pulumi.Input<string>;
+    diskEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * Display name of the instance.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * IP range represents the customer-provided CIDR block of length 22 that will be used for
      * the Apigee instance creation. This optional range, if provided, should be freely
@@ -385,35 +385,35 @@ export interface InstanceState {
      * for configuring their firewall needs to allow traffic from Apigee.
      * Input format: "a.b.c.d/22"
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * Required. Compute Engine location where the instance resides.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Resource ID of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The size of the CIDR block range that will be reserved by the instance. For valid values,
      * see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
      */
-    peeringCidrRange?: pulumi.Input<string>;
+    peeringCidrRange?: pulumi.Input<string | undefined>;
     /**
      * Output only. Port number of the exposed Apigee endpoint.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Output only. Resource name of the service attachment created for the instance in
      * the format: projects/*&#47;regions/*&#47;serviceAttachments/* Apigee customers can privately
      * forward traffic to this service attachment using the PSC endpoints.
      */
-    serviceAttachment?: pulumi.Input<string>;
+    serviceAttachment?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -425,27 +425,27 @@ export interface InstanceArgs {
      * Apigee customers can enable access logging to ship the access logs to their own project's cloud logging.
      * Structure is documented below.
      */
-    accessLoggingConfig?: pulumi.Input<inputs.apigee.InstanceAccessLoggingConfig>;
+    accessLoggingConfig?: pulumi.Input<inputs.apigee.InstanceAccessLoggingConfig | undefined>;
     /**
      * Optional. Customer accept list represents the list of projects (id/number) on customer
      * side that can privately connect to the service attachment. It is an optional field
      * which the customers can provide during the instance creation. By default, the customer
      * project associated with the Apigee organization will be included to the list.
      */
-    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[]>;
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only.
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      */
-    diskEncryptionKeyName?: pulumi.Input<string>;
+    diskEncryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * Display name of the instance.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * IP range represents the customer-provided CIDR block of length 22 that will be used for
      * the Apigee instance creation. This optional range, if provided, should be freely
@@ -455,7 +455,7 @@ export interface InstanceArgs {
      * for configuring their firewall needs to allow traffic from Apigee.
      * Input format: "a.b.c.d/22"
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * Required. Compute Engine location where the instance resides.
      */
@@ -463,7 +463,7 @@ export interface InstanceArgs {
     /**
      * Resource ID of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
@@ -473,5 +473,5 @@ export interface InstanceArgs {
      * The size of the CIDR block range that will be reserved by the instance. For valid values,
      * see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
      */
-    peeringCidrRange?: pulumi.Input<string>;
+    peeringCidrRange?: pulumi.Input<string | undefined>;
 }

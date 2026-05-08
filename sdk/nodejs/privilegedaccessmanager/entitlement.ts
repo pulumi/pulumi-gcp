@@ -252,71 +252,71 @@ export interface EntitlementState {
      * AdditionalNotificationTargets includes email addresses to be notified.
      * Structure is documented below.
      */
-    additionalNotificationTargets?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets>;
+    additionalNotificationTargets?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets | undefined>;
     /**
      * The approvals needed before access will be granted to a requester.
      * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
      * Structure is documented below.
      */
-    approvalWorkflow?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementApprovalWorkflow>;
+    approvalWorkflow?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementApprovalWorkflow | undefined>;
     /**
      * Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Who can create Grants using Entitlement. This list should contain at most one entry
      * Structure is documented below.
      */
-    eligibleUsers?: pulumi.Input<pulumi.Input<inputs.privilegedaccessmanager.EntitlementEligibleUser>[]>;
+    eligibleUsers?: pulumi.Input<pulumi.Input<inputs.privilegedaccessmanager.EntitlementEligibleUser>[] | undefined>;
     /**
      * The ID to use for this Entitlement. This will become the last part of the resource name.
      * This value should be 4-63 characters, and valid characters are "[a-z]", "[0-9]", and "-". The first character should be from [a-z].
      * This value should be unique among all other Entitlements under the specified `parent`.
      */
-    entitlementId?: pulumi.Input<string>;
+    entitlementId?: pulumi.Input<string | undefined>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The region of the Entitlement resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The maximum amount of time for which access would be granted for a request.
      * A requester can choose to ask for access for less than this duration but never more.
      * Format: calculate the time in seconds and concatenate it with 's' i.e. 2 hours = "7200s", 45 minutes = "2700s"
      */
-    maxRequestDuration?: pulumi.Input<string>;
+    maxRequestDuration?: pulumi.Input<string | undefined>;
     /**
      * Output Only. The entitlement's name follows a hierarchical structure, comprising the organization, folder, or project, alongside the region and a unique entitlement ID.
      * Formats: organizations/{organization-number}/locations/{region}/entitlements/{entitlement-id}, folders/{folder-number}/locations/{region}/entitlements/{entitlement-id}, and projects/{project-id|project-number}/locations/{region}/entitlements/{entitlement-id}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Privileged access that this service can be used to gate.
      * Structure is documented below.
      */
-    privilegedAccess?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementPrivilegedAccess>;
+    privilegedAccess?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementPrivilegedAccess | undefined>;
     /**
      * Defines the ways in which a requester should provide the justification while requesting for access.
      * Structure is documented below.
      */
-    requesterJustificationConfig?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementRequesterJustificationConfig>;
+    requesterJustificationConfig?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementRequesterJustificationConfig | undefined>;
     /**
      * Output only. The current state of the Entitlement.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -327,13 +327,13 @@ export interface EntitlementArgs {
      * AdditionalNotificationTargets includes email addresses to be notified.
      * Structure is documented below.
      */
-    additionalNotificationTargets?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets>;
+    additionalNotificationTargets?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementAdditionalNotificationTargets | undefined>;
     /**
      * The approvals needed before access will be granted to a requester.
      * No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
      * Structure is documented below.
      */
-    approvalWorkflow?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementApprovalWorkflow>;
+    approvalWorkflow?: pulumi.Input<inputs.privilegedaccessmanager.EntitlementApprovalWorkflow | undefined>;
     /**
      * Who can create Grants using Entitlement. This list should contain at most one entry
      * Structure is documented below.

@@ -217,33 +217,33 @@ export interface WorkforcePoolState {
      * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
      * Structure is documented below.
      */
-    accessRestrictions?: pulumi.Input<inputs.iam.WorkforcePoolAccessRestrictions>;
+    accessRestrictions?: pulumi.Input<inputs.iam.WorkforcePoolAccessRestrictions | undefined>;
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
      * or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. The resource name of the pool.
      * Format: `locations/{location}/workforcePools/{workforcePoolId}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Duration that the Google Cloud access tokens, console sign-in sessions,
      * and `gcloud` sign-in sessions from this pool are valid.
@@ -251,7 +251,7 @@ export interface WorkforcePoolState {
      * If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
      * A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * Output only. The state of the pool.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -264,13 +264,13 @@ export interface WorkforcePoolState {
      * existing tokens to access resources. If the pool is undeleted, existing
      * tokens grant access again.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
      * digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
-    workforcePoolId?: pulumi.Input<string>;
+    workforcePoolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -282,20 +282,20 @@ export interface WorkforcePoolArgs {
      * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
      * Structure is documented below.
      */
-    accessRestrictions?: pulumi.Input<inputs.iam.WorkforcePoolAccessRestrictions>;
+    accessRestrictions?: pulumi.Input<inputs.iam.WorkforcePoolAccessRestrictions | undefined>;
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
      * or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource.
      */
@@ -311,7 +311,7 @@ export interface WorkforcePoolArgs {
      * If `sessionDuration` is not configured, minted credentials have a default duration of one hour (3600s).
      * A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: "`3.5s`".
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
      * digits, or hyphens. It must start with a letter, and cannot have a trailing hyphen.

@@ -474,88 +474,88 @@ export interface GuardrailState {
      * Action that is taken when a certain precondition is met.
      * Structure is documented below.
      */
-    action?: pulumi.Input<inputs.ces.GuardrailAction>;
+    action?: pulumi.Input<inputs.ces.GuardrailAction | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    app?: pulumi.Input<string>;
+    app?: pulumi.Input<string | undefined>;
     /**
      * Guardrail that blocks the conversation based on the code callbacks
      * provided.
      * Structure is documented below.
      */
-    codeCallback?: pulumi.Input<inputs.ces.GuardrailCodeCallback>;
+    codeCallback?: pulumi.Input<inputs.ces.GuardrailCodeCallback | undefined>;
     /**
      * Guardrail that bans certain content from being used in the conversation.
      * Structure is documented below.
      */
-    contentFilter?: pulumi.Input<inputs.ces.GuardrailContentFilter>;
+    contentFilter?: pulumi.Input<inputs.ces.GuardrailContentFilter | undefined>;
     /**
      * Timestamp when the guardrail was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the guardrail.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the guardrail.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the guardrail is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the guardrail, which will become the final component of
      * the guardrail's resource name. If not provided, a unique ID will be
      * automatically assigned for the guardrail.
      */
-    guardrailId?: pulumi.Input<string>;
+    guardrailId?: pulumi.Input<string | undefined>;
     /**
      * Guardrail that blocks the conversation if the LLM response is considered
      * violating the policy based on the LLM classification.
      * Structure is documented below.
      */
-    llmPolicy?: pulumi.Input<inputs.ces.GuardrailLlmPolicy>;
+    llmPolicy?: pulumi.Input<inputs.ces.GuardrailLlmPolicy | undefined>;
     /**
      * Guardrail that blocks the conversation if the input is considered unsafe
      * based on the LLM classification.
      * Structure is documented below.
      */
-    llmPromptSecurity?: pulumi.Input<inputs.ces.GuardrailLlmPromptSecurity>;
+    llmPromptSecurity?: pulumi.Input<inputs.ces.GuardrailLlmPromptSecurity | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Model safety settings overrides. When this is set, it will override the
      * default settings and trigger the guardrail if the response is considered
      * unsafe.
      * Structure is documented below.
      */
-    modelSafety?: pulumi.Input<inputs.ces.GuardrailModelSafety>;
+    modelSafety?: pulumi.Input<inputs.ces.GuardrailModelSafety | undefined>;
     /**
      * Identifier. The unique identifier of the guardrail.
      * Format:
      * `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the guardrail was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -566,7 +566,7 @@ export interface GuardrailArgs {
      * Action that is taken when a certain precondition is met.
      * Structure is documented below.
      */
-    action?: pulumi.Input<inputs.ces.GuardrailAction>;
+    action?: pulumi.Input<inputs.ces.GuardrailAction | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -576,16 +576,16 @@ export interface GuardrailArgs {
      * provided.
      * Structure is documented below.
      */
-    codeCallback?: pulumi.Input<inputs.ces.GuardrailCodeCallback>;
+    codeCallback?: pulumi.Input<inputs.ces.GuardrailCodeCallback | undefined>;
     /**
      * Guardrail that bans certain content from being used in the conversation.
      * Structure is documented below.
      */
-    contentFilter?: pulumi.Input<inputs.ces.GuardrailContentFilter>;
+    contentFilter?: pulumi.Input<inputs.ces.GuardrailContentFilter | undefined>;
     /**
      * Description of the guardrail.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the guardrail.
      */
@@ -593,7 +593,7 @@ export interface GuardrailArgs {
     /**
      * Whether the guardrail is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID to use for the guardrail, which will become the final component of
      * the guardrail's resource name. If not provided, a unique ID will be
@@ -605,13 +605,13 @@ export interface GuardrailArgs {
      * violating the policy based on the LLM classification.
      * Structure is documented below.
      */
-    llmPolicy?: pulumi.Input<inputs.ces.GuardrailLlmPolicy>;
+    llmPolicy?: pulumi.Input<inputs.ces.GuardrailLlmPolicy | undefined>;
     /**
      * Guardrail that blocks the conversation if the input is considered unsafe
      * based on the LLM classification.
      * Structure is documented below.
      */
-    llmPromptSecurity?: pulumi.Input<inputs.ces.GuardrailLlmPromptSecurity>;
+    llmPromptSecurity?: pulumi.Input<inputs.ces.GuardrailLlmPromptSecurity | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -622,10 +622,10 @@ export interface GuardrailArgs {
      * unsafe.
      * Structure is documented below.
      */
-    modelSafety?: pulumi.Input<inputs.ces.GuardrailModelSafety>;
+    modelSafety?: pulumi.Input<inputs.ces.GuardrailModelSafety | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

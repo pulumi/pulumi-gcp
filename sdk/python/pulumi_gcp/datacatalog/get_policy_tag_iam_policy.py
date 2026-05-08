@@ -110,7 +110,7 @@ def get_policy_tag_iam_policy(policy_tag: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         policy_tag=pulumi.get(__ret__, 'policy_tag'))
-def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
+def get_policy_tag_iam_policy_output(policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyTagIamPolicyResult]:
     """
     Retrieves the current IAM policy data for policytag

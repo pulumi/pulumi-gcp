@@ -406,20 +406,20 @@ export interface ManagedFolderIamBindingState {
     /**
      * The name of the bucket that contains the managed folder. Used to find the parent resource to bind the IAM policy to
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.storage.ManagedFolderIamBindingCondition>;
+    condition?: pulumi.Input<inputs.storage.ManagedFolderIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */
-    managedFolder?: pulumi.Input<string>;
+    managedFolder?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -433,13 +433,13 @@ export interface ManagedFolderIamBindingState {
      * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
      * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.storage.ManagedFolderIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -454,7 +454,7 @@ export interface ManagedFolderIamBindingArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.storage.ManagedFolderIamBindingCondition>;
+    condition?: pulumi.Input<inputs.storage.ManagedFolderIamBindingCondition | undefined>;
     /**
      * Used to find the parent resource to bind the IAM policy to
      */

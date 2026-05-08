@@ -27,7 +27,7 @@ class FrameworkDeploymentArgs:
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
                  target_resource_config: pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FrameworkDeployment resource.
 
@@ -136,35 +136,35 @@ class FrameworkDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User provided description of the Framework deployment
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _FrameworkDeploymentState:
     def __init__(__self__, *,
-                 cloud_control_deployment_references: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlDeploymentReferenceArgs']]]] = None,
-                 cloud_control_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]]] = None,
-                 computed_target_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework: Optional[pulumi.Input['FrameworkDeploymentFrameworkArgs']] = None,
-                 framework_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_resource_config: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs']] = None,
-                 target_resource_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_control_deployment_references: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlDeploymentReferenceArgs']]]] = None,
+                 cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]]] = None,
+                 computed_target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework: pulumi.Input[Optional['FrameworkDeploymentFrameworkArgs']] = None,
+                 framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_resource_config: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigArgs']] = None,
+                 target_resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FrameworkDeployment resources.
 
@@ -254,7 +254,7 @@ class _FrameworkDeploymentState:
 
     @_builtins.property
     @pulumi.getter(name="cloudControlDeploymentReferences")
-    def cloud_control_deployment_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlDeploymentReferenceArgs']]]]:
+    def cloud_control_deployment_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlDeploymentReferenceArgs']]]]:
         """
         The references to the cloud control deployments. It has all the
         CloudControlDeployments which are either directly added in the framework or
@@ -276,12 +276,12 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "cloud_control_deployment_references")
 
     @cloud_control_deployment_references.setter
-    def cloud_control_deployment_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlDeploymentReferenceArgs']]]]):
+    def cloud_control_deployment_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlDeploymentReferenceArgs']]]]):
         pulumi.set(self, "cloud_control_deployment_references", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudControlMetadatas")
-    def cloud_control_metadatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]]]:
+    def cloud_control_metadatas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]]]:
         """
         Deployment mode and parameters for each of the Cloud Controls in
         the framework. Every Cloud Control in the framework must have a
@@ -291,12 +291,12 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "cloud_control_metadatas")
 
     @cloud_control_metadatas.setter
-    def cloud_control_metadatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]]]):
+    def cloud_control_metadatas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataArgs']]]]):
         pulumi.set(self, "cloud_control_metadatas", value)
 
     @_builtins.property
     @pulumi.getter(name="computedTargetResource")
-    def computed_target_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computed_target_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource on which the Framework is deployed based on the provided
         TargetResourceConfig in the following format:
@@ -305,24 +305,24 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "computed_target_resource")
 
     @computed_target_resource.setter
-    def computed_target_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computed_target_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computed_target_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentState")
-    def deployment_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment state of the framework.
         Possible values:
@@ -337,24 +337,24 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "deployment_state")
 
     @deployment_state.setter
-    def deployment_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User provided description of the Framework deployment
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         To prevent concurrent updates from overwriting each other, always provide
         the `etag` when you update a FrameworkDeployment. You can also
@@ -365,12 +365,12 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def framework(self) -> Optional[pulumi.Input['FrameworkDeploymentFrameworkArgs']]:
+    def framework(self) -> pulumi.Input[Optional['FrameworkDeploymentFrameworkArgs']]:
         """
         FrameworkReference contains the reference of a framework.
         Structure is documented below.
@@ -378,12 +378,12 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "framework")
 
     @framework.setter
-    def framework(self, value: Optional[pulumi.Input['FrameworkDeploymentFrameworkArgs']]):
+    def framework(self, value: pulumi.Input[Optional['FrameworkDeploymentFrameworkArgs']]):
         pulumi.set(self, "framework", value)
 
     @_builtins.property
     @pulumi.getter(name="frameworkDeploymentId")
-    def framework_deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def framework_deployment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User provided identifier. It should be unique in scope of a parent.
         This is optional and if not provided, a random UUID will be generated.
@@ -391,24 +391,24 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "framework_deployment_id")
 
     @framework_deployment_id.setter
-    def framework_deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def framework_deployment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "framework_deployment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. FrameworkDeployment name in the following format:
         organizations/{organization}/locations/{location}/frameworkDeployments/{framework_deployment_id}
@@ -416,24 +416,24 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResourceConfig")
-    def target_resource_config(self) -> Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs']]:
+    def target_resource_config(self) -> pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigArgs']]:
         """
         TargetResourceConfig contains either the name of the target_resource or
         contains the config to create a new target_resource.
@@ -442,31 +442,31 @@ class _FrameworkDeploymentState:
         return pulumi.get(self, "target_resource_config")
 
     @target_resource_config.setter
-    def target_resource_config(self, value: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigArgs']]):
+    def target_resource_config(self, value: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigArgs']]):
         pulumi.set(self, "target_resource_config", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResourceDisplayName")
-    def target_resource_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_resource_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the target resource.
         """
         return pulumi.get(self, "target_resource_display_name")
 
     @target_resource_display_name.setter
-    def target_resource_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_resource_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_resource_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time at which the resource last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -476,13 +476,13 @@ class FrameworkDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_control_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework: Optional[pulumi.Input[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
-                 framework_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_resource_config: Optional[pulumi.Input[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
+                 cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework: pulumi.Input[Optional[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
+                 framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_resource_config: pulumi.Input[Optional[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
                  __props__=None):
         """
         Framework deployments represent the assignment of a framework to a target resource. Supported target resources are organizations, folders, and projects.
@@ -570,13 +570,13 @@ class FrameworkDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_control_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework: Optional[pulumi.Input[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
-                 framework_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_resource_config: Optional[pulumi.Input[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
+                 cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework: pulumi.Input[Optional[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
+                 framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_resource_config: pulumi.Input[Optional[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,21 +623,21 @@ class FrameworkDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_control_deployment_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlDeploymentReferenceArgs', 'FrameworkDeploymentCloudControlDeploymentReferenceArgsDict']]]]] = None,
-            cloud_control_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
-            computed_target_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_state: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            framework: Optional[pulumi.Input[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
-            framework_deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            target_resource_config: Optional[pulumi.Input[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
-            target_resource_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'FrameworkDeployment':
+            cloud_control_deployment_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlDeploymentReferenceArgs', 'FrameworkDeploymentCloudControlDeploymentReferenceArgsDict']]]]] = None,
+            cloud_control_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkDeploymentCloudControlMetadataArgs', 'FrameworkDeploymentCloudControlMetadataArgsDict']]]]] = None,
+            computed_target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_state: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            framework: pulumi.Input[Optional[Union['FrameworkDeploymentFrameworkArgs', 'FrameworkDeploymentFrameworkArgsDict']]] = None,
+            framework_deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            target_resource_config: pulumi.Input[Optional[Union['FrameworkDeploymentTargetResourceConfigArgs', 'FrameworkDeploymentTargetResourceConfigArgsDict']]] = None,
+            target_resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'FrameworkDeployment':
         """
         Get an existing FrameworkDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

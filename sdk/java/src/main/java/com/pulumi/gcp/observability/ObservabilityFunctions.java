@@ -46,8 +46,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetFolderSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetFolderSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -150,8 +150,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetFolderSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -202,8 +202,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetFolderSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -254,8 +254,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetFolderSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -306,8 +306,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetOrganizationSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -358,8 +358,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetOrganizationSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -410,8 +410,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetOrganizationSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -462,8 +462,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetOrganizationSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -514,8 +514,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetOrganizationSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -566,8 +566,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetProjectSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -618,8 +618,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetProjectSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -670,8 +670,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetProjectSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -722,8 +722,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetProjectSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -774,8 +774,8 @@ public final class ObservabilityFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.observability.ObservabilityFunctions;
      * import com.pulumi.gcp.observability.inputs.GetProjectSettingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -89,7 +89,7 @@ export interface GetUpgradesOutputArgs {
     /**
      * The resource name of the specific Upgrade to retrieve. If provided, the 'upgrades' list will contain only this upgrade.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the private cloud for which upgrades will be listed. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */

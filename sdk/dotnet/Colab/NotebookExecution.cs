@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Colab
     ///         Location = "us-central1",
     ///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
     ///         {
-    ///             Content = Std.Index.Base64encode.Invoke(new()
+    ///             Content = Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = @"    {
     ///       \""cells\"": [
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Colab
     ///         Location = "us-central1",
     ///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
     ///         {
-    ///             Content = Std.Index.Base64encode.Invoke(new()
+    ///             Content = Std.Base64encode.Invoke(new()
     ///             {
     ///                 Input = @"    {
     ///       \""cells\"": [

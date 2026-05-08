@@ -161,42 +161,42 @@ export interface KeystoresAliasesPkcs12State {
     /**
      * Alias Name
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesPkcs12CertsInfo>[]>;
+    certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesPkcs12CertsInfo>[] | undefined>;
     /**
      * Environment associated with the alias
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * PKCS12 file content
      *
      * - - -
      */
-    file?: pulumi.Input<string>;
+    file?: pulumi.Input<string | undefined>;
     /**
      * Hash of the pkcs file
      */
-    filehash?: pulumi.Input<string>;
+    filehash?: pulumi.Input<string | undefined>;
     /**
      * Keystore Name
      */
-    keystore?: pulumi.Input<string>;
+    keystore?: pulumi.Input<string | undefined>;
     /**
      * Organization ID associated with the alias, without organization/ prefix
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Password for the PKCS12 file if it's encrypted
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Optional.Type of Alias
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,5 +232,5 @@ export interface KeystoresAliasesPkcs12Args {
     /**
      * Password for the PKCS12 file if it's encrypted
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
 }

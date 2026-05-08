@@ -714,7 +714,7 @@ export interface InstanceState {
     /**
      * Time the Instance was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the instance. Setting `ABANDON` allows the resource
      * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -725,72 +725,72 @@ export interface InstanceState {
      * * PREVENT
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of hostnames for this instance.
      * Structure is documented below.
      */
-    hostConfigs?: pulumi.Input<pulumi.Input<inputs.securesourcemanager.InstanceHostConfig>[]>;
+    hostConfigs?: pulumi.Input<pulumi.Input<inputs.securesourcemanager.InstanceHostConfig>[] | undefined>;
     /**
      * The name for the Instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the Instance.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the Instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Private settings for private instance.
      * Structure is documented below.
      */
-    privateConfig?: pulumi.Input<inputs.securesourcemanager.InstancePrivateConfig>;
+    privateConfig?: pulumi.Input<inputs.securesourcemanager.InstancePrivateConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The current state of the Instance.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Provides information about the current instance state.
      */
-    stateNote?: pulumi.Input<string>;
+    stateNote?: pulumi.Input<string | undefined>;
     /**
      * Time the Instance was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Workforce Identity Federation to support third party identity provider.
      * If unset, defaults to the Google OIDC IdP.
      * Structure is documented below.
      */
-    workforceIdentityFederationConfig?: pulumi.Input<inputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig>;
+    workforceIdentityFederationConfig?: pulumi.Input<inputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig | undefined>;
 }
 
 /**
@@ -807,7 +807,7 @@ export interface InstanceArgs {
      * * PREVENT
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name for the Instance.
      */
@@ -815,14 +815,14 @@ export interface InstanceArgs {
     /**
      * Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Labels as key value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the Instance.
      */
@@ -831,16 +831,16 @@ export interface InstanceArgs {
      * Private settings for private instance.
      * Structure is documented below.
      */
-    privateConfig?: pulumi.Input<inputs.securesourcemanager.InstancePrivateConfig>;
+    privateConfig?: pulumi.Input<inputs.securesourcemanager.InstancePrivateConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Workforce Identity Federation to support third party identity provider.
      * If unset, defaults to the Google OIDC IdP.
      * Structure is documented below.
      */
-    workforceIdentityFederationConfig?: pulumi.Input<inputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig>;
+    workforceIdentityFederationConfig?: pulumi.Input<inputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig | undefined>;
 }

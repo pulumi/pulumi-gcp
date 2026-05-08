@@ -535,41 +535,41 @@ export interface BareMetalAdminClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A human readable description of this Bare Metal Admin Cluster.
      */
-    bareMetalVersion?: pulumi.Input<string>;
+    bareMetalVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Admin Cluster's observability infrastructure.
      * Structure is documented below.
      */
-    clusterOperations?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterClusterOperations>;
+    clusterOperations?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterClusterOperations | undefined>;
     /**
      * Specifies the control plane configuration.
      * Structure is documented below.
      */
-    controlPlane?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterControlPlane | undefined>;
     /**
      * The time the cluster was created, in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The time the cluster was deleted, in RFC3339 text format.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * A human readable description of this Bare Metal Admin Cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The IP address name of Bare Metal Admin Cluster's API server.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
@@ -577,7 +577,7 @@ export interface BareMetalAdminClusterState {
      * Allows clients to perform consistent read-modify-writes
      * through optimistic concurrency control.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -587,12 +587,12 @@ export interface BareMetalAdminClusterState {
      * more details on Anthos multi-cluster capabilities using Fleets.
      * Structure is documented below.
      */
-    fleets?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterFleet>[]>;
+    fleets?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterFleet>[] | undefined>;
     /**
      * Specifies the load balancer configuration.
      * Structure is documented below.
      */
-    loadBalancer?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterLoadBalancer | undefined>;
     /**
      * The object name of the Bare Metal Admin Cluster custom resource on the
      * associated admin cluster. This field is used to support conflicting
@@ -605,83 +605,83 @@ export interface BareMetalAdminClusterState {
      * kubectl and should expect to see the local name when viewing admin
      * cluster controller logs.
      */
-    localName?: pulumi.Input<string>;
+    localName?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies the workload node configurations.
      * Structure is documented below.
      */
-    maintenanceConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterMaintenanceConfig>;
+    maintenanceConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterMaintenanceConfig | undefined>;
     /**
      * The bare metal admin cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNetworkConfig | undefined>;
     /**
      * Specifies the node access related settings for the bare metal user cluster.
      * Structure is documented below.
      */
-    nodeAccessConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeAccessConfig>;
+    nodeAccessConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeAccessConfig | undefined>;
     /**
      * Specifies the workload node configurations.
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the cluster proxy configuration.
      * Structure is documented below.
      */
-    proxy?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterProxy>;
+    proxy?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterProxy | undefined>;
     /**
      * If set, there are currently changes in flight to the Bare Metal Admin Cluster.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
      * Structure is documented below.
      */
-    securityConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterSecurityConfig>;
+    securityConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterSecurityConfig | undefined>;
     /**
      * (Output)
      * The lifecycle state of the condition.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Specifies the detailed validation check status
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterStatus>[] | undefined>;
     /**
      * Specifies the cluster storage configuration.
      * Structure is documented below.
      */
-    storage?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterStorage>;
+    storage?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterStorage | undefined>;
     /**
      * The unique identifier of the Bare Metal Admin Cluster.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The time the cluster was last updated, in RFC3339 text format.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies the security related settings for the Bare Metal Admin Cluster.
      * Structure is documented below.
      */
-    validationChecks?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterValidationCheck>[]>;
+    validationChecks?: pulumi.Input<pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterValidationCheck>[] | undefined>;
 }
 
 /**
@@ -701,30 +701,30 @@ export interface BareMetalAdminClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A human readable description of this Bare Metal Admin Cluster.
      */
-    bareMetalVersion?: pulumi.Input<string>;
+    bareMetalVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Admin Cluster's observability infrastructure.
      * Structure is documented below.
      */
-    clusterOperations?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterClusterOperations>;
+    clusterOperations?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterClusterOperations | undefined>;
     /**
      * Specifies the control plane configuration.
      * Structure is documented below.
      */
-    controlPlane?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterControlPlane | undefined>;
     /**
      * A human readable description of this Bare Metal Admin Cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the load balancer configuration.
      * Structure is documented below.
      */
-    loadBalancer?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterLoadBalancer>;
+    loadBalancer?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterLoadBalancer | undefined>;
     /**
      * The location of the resource.
      */
@@ -733,44 +733,44 @@ export interface BareMetalAdminClusterArgs {
      * Specifies the workload node configurations.
      * Structure is documented below.
      */
-    maintenanceConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterMaintenanceConfig>;
+    maintenanceConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterMaintenanceConfig | undefined>;
     /**
      * The bare metal admin cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNetworkConfig | undefined>;
     /**
      * Specifies the node access related settings for the bare metal user cluster.
      * Structure is documented below.
      */
-    nodeAccessConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeAccessConfig>;
+    nodeAccessConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeAccessConfig | undefined>;
     /**
      * Specifies the workload node configurations.
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNodeConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the cluster proxy configuration.
      * Structure is documented below.
      */
-    proxy?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterProxy>;
+    proxy?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterProxy | undefined>;
     /**
      * Specifies the security related settings for the Bare Metal User Cluster.
      * Structure is documented below.
      */
-    securityConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterSecurityConfig>;
+    securityConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterSecurityConfig | undefined>;
     /**
      * Specifies the cluster storage configuration.
      * Structure is documented below.
      */
-    storage?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterStorage>;
+    storage?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterStorage | undefined>;
 }

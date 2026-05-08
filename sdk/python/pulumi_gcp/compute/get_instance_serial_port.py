@@ -155,13 +155,9 @@ def get_instance_serial_port(instance: Optional[_builtins.str] = None,
                 "storage-ro",
             ],
         })
-    serial = pulumi.Output.all(
-        name=windows.name,
-        zone=windows.zone
-    ).apply(lambda resolved_outputs: gcp.compute.get_instance_serial_port_output(instance=resolved_outputs['name'],
-        zone=resolved_outputs['zone'],
-        port=4))
-
+    serial = gcp.compute.get_instance_serial_port_output(instance=windows.name,
+        zone=windows.zone,
+        port=4)
     pulumi.export("serialOut", serial.contents)
     ```
 
@@ -190,10 +186,10 @@ def get_instance_serial_port(instance: Optional[_builtins.str] = None,
         port=pulumi.get(__ret__, 'port'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_instance_serial_port_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
-                                    port: Optional[pulumi.Input[_builtins.int]] = None,
-                                    project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_serial_port_output(instance: pulumi.Input[Optional[_builtins.str]] = None,
+                                    port: pulumi.Input[Optional[_builtins.int]] = None,
+                                    project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceSerialPortResult]:
     """
     Get the serial port output from a Compute Instance. For more information see
@@ -248,13 +244,9 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[_builtins.st
                 "storage-ro",
             ],
         })
-    serial = pulumi.Output.all(
-        name=windows.name,
-        zone=windows.zone
-    ).apply(lambda resolved_outputs: gcp.compute.get_instance_serial_port_output(instance=resolved_outputs['name'],
-        zone=resolved_outputs['zone'],
-        port=4))
-
+    serial = gcp.compute.get_instance_serial_port_output(instance=windows.name,
+        zone=windows.zone,
+        port=4)
     pulumi.export("serialOut", serial.contents)
     ```
 

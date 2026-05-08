@@ -499,51 +499,51 @@ export interface InstanceState {
      * An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
      * The milliseconds portion (".SSS") is optional.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Email address of entity that sent original CreateInstance request.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Optional. If true, the workbench instance will not register with the proxy.
      */
-    disableProxyAccess?: pulumi.Input<boolean>;
+    disableProxyAccess?: pulumi.Input<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Flag to enable managed end user credentials for the instance.
      */
-    enableManagedEuc?: pulumi.Input<boolean>;
+    enableManagedEuc?: pulumi.Input<boolean | undefined>;
     /**
      * Flag that specifies that a notebook can be accessed with third party
      * identity provider.
      */
-    enableThirdPartyIdentity?: pulumi.Input<boolean>;
+    enableThirdPartyIdentity?: pulumi.Input<boolean | undefined>;
     /**
      * The definition of how to configure a VM instance outside of Resources and Identity.
      * Structure is documented below.
      */
-    gceSetup?: pulumi.Input<inputs.workbench.InstanceGceSetup>;
+    gceSetup?: pulumi.Input<inputs.workbench.InstanceGceSetup | undefined>;
     /**
      * 'Output only. Additional information about instance health. Example:
      * healthInfo": { "dockerProxyAgentStatus": "1", "dockerStatus": "1", "jupyterlabApiStatus":
      * "-1", "jupyterlabStatus": "-1", "updated": "2020-10-18 09:40:03.573409" }'
      */
-    healthInfos?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceHealthInfo>[]>;
+    healthInfos?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceHealthInfo>[] | undefined>;
     /**
      * Output only. Instance health_state.
      */
-    healthState?: pulumi.Input<string>;
+    healthState?: pulumi.Input<string | undefined>;
     /**
      * Required. User-defined unique ID of this instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * 'Optional. Input only. The owner of this instance after creation. Format:
      * `alias@example.com` Currently supports one owner only. If not specified, all of
@@ -551,7 +551,7 @@ export interface InstanceState {
      * If specified, sets the access mode to `Single user`. For more details, see
      * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
      */
-    instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optional. Labels to apply to this instance. These can be later modified
      * by the UpdateInstance method.
@@ -559,44 +559,44 @@ export interface InstanceState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. The proxy endpoint that is used to access the Jupyter notebook.
      */
-    proxyUri?: pulumi.Input<string>;
+    proxyUri?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Output)
      * Output only. The state of this instance upgrade history entry.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
      * The milliseconds portion (".SSS") is optional.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The upgrade history of this instance.
      * Structure is documented below.
      */
-    upgradeHistories?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceUpgradeHistory>[]>;
+    upgradeHistories?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceUpgradeHistory>[] | undefined>;
 }
 
 /**
@@ -606,29 +606,29 @@ export interface InstanceArgs {
     /**
      * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Optional. If true, the workbench instance will not register with the proxy.
      */
-    disableProxyAccess?: pulumi.Input<boolean>;
+    disableProxyAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to enable managed end user credentials for the instance.
      */
-    enableManagedEuc?: pulumi.Input<boolean>;
+    enableManagedEuc?: pulumi.Input<boolean | undefined>;
     /**
      * Flag that specifies that a notebook can be accessed with third party
      * identity provider.
      */
-    enableThirdPartyIdentity?: pulumi.Input<boolean>;
+    enableThirdPartyIdentity?: pulumi.Input<boolean | undefined>;
     /**
      * The definition of how to configure a VM instance outside of Resources and Identity.
      * Structure is documented below.
      */
-    gceSetup?: pulumi.Input<inputs.workbench.InstanceGceSetup>;
+    gceSetup?: pulumi.Input<inputs.workbench.InstanceGceSetup | undefined>;
     /**
      * Required. User-defined unique ID of this instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * 'Optional. Input only. The owner of this instance after creation. Format:
      * `alias@example.com` Currently supports one owner only. If not specified, all of
@@ -636,7 +636,7 @@ export interface InstanceArgs {
      * If specified, sets the access mode to `Single user`. For more details, see
      * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
      */
-    instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceOwners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Optional. Labels to apply to this instance. These can be later modified
      * by the UpdateInstance method.
@@ -644,7 +644,7 @@ export interface InstanceArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
@@ -652,10 +652,10 @@ export interface InstanceArgs {
     /**
      * The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

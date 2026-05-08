@@ -250,60 +250,60 @@ export interface ConfigState {
     /**
      * List of domains authorized for OAuth redirects.
      */
-    authorizedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      */
-    autodeleteAnonymousUsers?: pulumi.Input<boolean>;
+    autodeleteAnonymousUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration related to blocking functions.
      * Structure is documented below.
      */
-    blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions>;
+    blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions | undefined>;
     /**
      * Options related to how clients making requests on behalf of a project should be configured.
      * Structure is documented below.
      */
-    client?: pulumi.Input<inputs.identityplatform.ConfigClient>;
+    client?: pulumi.Input<inputs.identityplatform.ConfigClient | undefined>;
     /**
      * Options related to how clients making requests on behalf of a project should be configured.
      * Structure is documented below.
      */
-    mfa?: pulumi.Input<inputs.identityplatform.ConfigMfa>;
+    mfa?: pulumi.Input<inputs.identityplatform.ConfigMfa | undefined>;
     /**
      * Configuration related to monitoring project activity.
      * Structure is documented below.
      */
-    monitoring?: pulumi.Input<inputs.identityplatform.ConfigMonitoring>;
+    monitoring?: pulumi.Input<inputs.identityplatform.ConfigMonitoring | undefined>;
     /**
      * Configuration related to multi-tenant functionality.
      * Structure is documented below.
      */
-    multiTenant?: pulumi.Input<inputs.identityplatform.ConfigMultiTenant>;
+    multiTenant?: pulumi.Input<inputs.identityplatform.ConfigMultiTenant | undefined>;
     /**
      * The name of the Config resource
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration related to quotas.
      * Structure is documented below.
      */
-    quota?: pulumi.Input<inputs.identityplatform.ConfigQuota>;
+    quota?: pulumi.Input<inputs.identityplatform.ConfigQuota | undefined>;
     /**
      * Configuration related to local sign in methods.
      * Structure is documented below.
      */
-    signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn>;
+    signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn | undefined>;
     /**
      * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
      * Structure is documented below.
      */
-    smsRegionConfig?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfig>;
+    smsRegionConfig?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfig | undefined>;
 }
 
 /**
@@ -313,54 +313,54 @@ export interface ConfigArgs {
     /**
      * List of domains authorized for OAuth redirects.
      */
-    authorizedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      */
-    autodeleteAnonymousUsers?: pulumi.Input<boolean>;
+    autodeleteAnonymousUsers?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration related to blocking functions.
      * Structure is documented below.
      */
-    blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions>;
+    blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions | undefined>;
     /**
      * Options related to how clients making requests on behalf of a project should be configured.
      * Structure is documented below.
      */
-    client?: pulumi.Input<inputs.identityplatform.ConfigClient>;
+    client?: pulumi.Input<inputs.identityplatform.ConfigClient | undefined>;
     /**
      * Options related to how clients making requests on behalf of a project should be configured.
      * Structure is documented below.
      */
-    mfa?: pulumi.Input<inputs.identityplatform.ConfigMfa>;
+    mfa?: pulumi.Input<inputs.identityplatform.ConfigMfa | undefined>;
     /**
      * Configuration related to monitoring project activity.
      * Structure is documented below.
      */
-    monitoring?: pulumi.Input<inputs.identityplatform.ConfigMonitoring>;
+    monitoring?: pulumi.Input<inputs.identityplatform.ConfigMonitoring | undefined>;
     /**
      * Configuration related to multi-tenant functionality.
      * Structure is documented below.
      */
-    multiTenant?: pulumi.Input<inputs.identityplatform.ConfigMultiTenant>;
+    multiTenant?: pulumi.Input<inputs.identityplatform.ConfigMultiTenant | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration related to quotas.
      * Structure is documented below.
      */
-    quota?: pulumi.Input<inputs.identityplatform.ConfigQuota>;
+    quota?: pulumi.Input<inputs.identityplatform.ConfigQuota | undefined>;
     /**
      * Configuration related to local sign in methods.
      * Structure is documented below.
      */
-    signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn>;
+    signIn?: pulumi.Input<inputs.identityplatform.ConfigSignIn | undefined>;
     /**
      * Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
      * Structure is documented below.
      */
-    smsRegionConfig?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfig>;
+    smsRegionConfig?: pulumi.Input<inputs.identityplatform.ConfigSmsRegionConfig | undefined>;
 }

@@ -26,17 +26,21 @@ namespace Pulumi.Gcp.Compute
         ///     var available = Gcp.Compute.GetRegions.Invoke();
         /// 
         ///     var cluster = new List&lt;Gcp.Compute.Subnetwork&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length; rangeIndex++)
+        ///     available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length().Apply(rangeBody =&gt;
         ///     {
-        ///         var range = new { Value = rangeIndex };
-        ///         cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+        ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
-        ///             Name = "my-network",
-        ///             IpCidrRange = $"10.36.{range.Value}.0/24",
-        ///             Network = "my-network",
-        ///             Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
-        ///         }));
-        ///     }
+        ///             var range = new { Value = rangeIndex };
+        ///             cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+        ///             {
+        ///                 Name = "my-network",
+        ///                 IpCidrRange = $"10.36.{range.Value}.0/24",
+        ///                 Network = "my-network",
+        ///                 Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
+        ///             }));
+        ///         }
+        ///         return 0;
+        ///     });
         /// });
         /// ```
         /// </summary>
@@ -58,17 +62,21 @@ namespace Pulumi.Gcp.Compute
         ///     var available = Gcp.Compute.GetRegions.Invoke();
         /// 
         ///     var cluster = new List&lt;Gcp.Compute.Subnetwork&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length; rangeIndex++)
+        ///     available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length().Apply(rangeBody =&gt;
         ///     {
-        ///         var range = new { Value = rangeIndex };
-        ///         cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+        ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
-        ///             Name = "my-network",
-        ///             IpCidrRange = $"10.36.{range.Value}.0/24",
-        ///             Network = "my-network",
-        ///             Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
-        ///         }));
-        ///     }
+        ///             var range = new { Value = rangeIndex };
+        ///             cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+        ///             {
+        ///                 Name = "my-network",
+        ///                 IpCidrRange = $"10.36.{range.Value}.0/24",
+        ///                 Network = "my-network",
+        ///                 Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
+        ///             }));
+        ///         }
+        ///         return 0;
+        ///     });
         /// });
         /// ```
         /// </summary>
@@ -90,17 +98,21 @@ namespace Pulumi.Gcp.Compute
         ///     var available = Gcp.Compute.GetRegions.Invoke();
         /// 
         ///     var cluster = new List&lt;Gcp.Compute.Subnetwork&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length; rangeIndex++)
+        ///     available.Apply(getRegionsResult =&gt; getRegionsResult.Names).Length().Apply(rangeBody =&gt;
         ///     {
-        ///         var range = new { Value = rangeIndex };
-        ///         cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+        ///         for (var rangeIndex = 0; rangeIndex &lt; rangeBody; rangeIndex++)
         ///         {
-        ///             Name = "my-network",
-        ///             IpCidrRange = $"10.36.{range.Value}.0/24",
-        ///             Network = "my-network",
-        ///             Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
-        ///         }));
-        ///     }
+        ///             var range = new { Value = rangeIndex };
+        ///             cluster.Add(new Gcp.Compute.Subnetwork($"cluster-{range.Value}", new()
+        ///             {
+        ///                 Name = "my-network",
+        ///                 IpCidrRange = $"10.36.{range.Value}.0/24",
+        ///                 Network = "my-network",
+        ///                 Region = available.Apply(getRegionsResult =&gt; getRegionsResult.Names)[range.Value],
+        ///             }));
+        ///         }
+        ///         return 0;
+        ///     });
         /// });
         /// ```
         /// </summary>

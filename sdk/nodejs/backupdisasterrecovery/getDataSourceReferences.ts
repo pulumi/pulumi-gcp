@@ -71,11 +71,11 @@ export interface GetDataSourceReferencesOutputArgs {
     /**
      * - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resourceType` is deprecated and will be removed in a future major release.
      *
      * @deprecated `resourceType` is deprecated and will be removed in a future major release.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }

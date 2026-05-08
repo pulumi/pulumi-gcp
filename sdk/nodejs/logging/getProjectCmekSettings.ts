@@ -131,7 +131,7 @@ export interface GetProjectCmekSettingsOutputArgs {
      * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
      * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project.
      */

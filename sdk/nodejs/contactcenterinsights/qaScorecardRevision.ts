@@ -161,44 +161,44 @@ export interface QaScorecardRevisionState {
     /**
      * Alternative IDs for this revision of the scorecard, e.g., `latest`.
      */
-    alternateIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Output)
      * The time at which this scorecard was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Identifier. The scorecard name.
      * Format:
      * projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    qaScorecard?: pulumi.Input<string>;
+    qaScorecard?: pulumi.Input<string | undefined>;
     /**
      * A unique ID for the new QaScorecardRevision. This ID will become the final
      * component of the QaScorecardRevision's resource name.
      * If no ID is specified this resource will get the latest revision on the given scorecard.
      */
-    qaScorecardRevisionId?: pulumi.Input<string>;
+    qaScorecardRevisionId?: pulumi.Input<string | undefined>;
     /**
      * A QaScorecard represents a collection of questions to be scored during
      * analysis.
      * Structure is documented below.
      */
-    snapshots?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.QaScorecardRevisionSnapshot>[]>;
+    snapshots?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.QaScorecardRevisionSnapshot>[] | undefined>;
     /**
      * State of the scorecard revision, indicating whether it's ready to
      * be used in analysis.
@@ -210,7 +210,7 @@ export interface QaScorecardRevisionState {
      * DELETING
      * TRAINING_CANCELLED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,7 +225,7 @@ export interface QaScorecardRevisionArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -235,5 +235,5 @@ export interface QaScorecardRevisionArgs {
      * component of the QaScorecardRevision's resource name.
      * If no ID is specified this resource will get the latest revision on the given scorecard.
      */
-    qaScorecardRevisionId?: pulumi.Input<string>;
+    qaScorecardRevisionId?: pulumi.Input<string | undefined>;
 }

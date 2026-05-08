@@ -20,10 +20,10 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str],
-                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_dependent_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Service resource.
 
@@ -66,7 +66,7 @@ class ServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
-    def check_if_service_has_usage_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_if_service_has_usage_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Beta
         If `true`, the usage of the service to be disabled will be checked and an error
@@ -75,12 +75,12 @@ class ServiceArgs:
         return pulumi.get(self, "check_if_service_has_usage_on_destroy")
 
     @check_if_service_has_usage_on_destroy.setter
-    def check_if_service_has_usage_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_if_service_has_usage_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_if_service_has_usage_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableDependentServices")
-    def disable_dependent_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_dependent_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
@@ -90,12 +90,12 @@ class ServiceArgs:
         return pulumi.get(self, "disable_dependent_services")
 
     @disable_dependent_services.setter
-    def disable_dependent_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_dependent_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_dependent_services", value)
 
     @_builtins.property
     @pulumi.getter(name="disableOnDestroy")
-    def disable_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, disable the service when the
         Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
@@ -105,12 +105,12 @@ class ServiceArgs:
         return pulumi.get(self, "disable_on_destroy")
 
     @disable_on_destroy.setter
-    def disable_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID. If not provided, the provider project
         is used.
@@ -118,18 +118,18 @@ class ServiceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
-                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_dependent_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
 
@@ -161,7 +161,7 @@ class _ServiceState:
 
     @_builtins.property
     @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
-    def check_if_service_has_usage_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_if_service_has_usage_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Beta
         If `true`, the usage of the service to be disabled will be checked and an error
@@ -170,12 +170,12 @@ class _ServiceState:
         return pulumi.get(self, "check_if_service_has_usage_on_destroy")
 
     @check_if_service_has_usage_on_destroy.setter
-    def check_if_service_has_usage_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_if_service_has_usage_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_if_service_has_usage_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableDependentServices")
-    def disable_dependent_services(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_dependent_services(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, services that are enabled
         and which depend on this service should also be disabled when this service is
@@ -185,12 +185,12 @@ class _ServiceState:
         return pulumi.get(self, "disable_dependent_services")
 
     @disable_dependent_services.setter
-    def disable_dependent_services(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_dependent_services(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_dependent_services", value)
 
     @_builtins.property
     @pulumi.getter(name="disableOnDestroy")
-    def disable_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, disable the service when the
         Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
@@ -200,12 +200,12 @@ class _ServiceState:
         return pulumi.get(self, "disable_on_destroy")
 
     @disable_on_destroy.setter
-    def disable_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID. If not provided, the provider project
         is used.
@@ -213,19 +213,19 @@ class _ServiceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service to enable.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
@@ -235,11 +235,11 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_dependent_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows management of a single API service for a Google Cloud project.
@@ -373,11 +373,11 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_if_service_has_usage_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_dependent_services: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -404,11 +404,11 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            check_if_service_has_usage_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_dependent_services: Optional[pulumi.Input[_builtins.bool]] = None,
-            disable_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None) -> 'Service':
+            check_if_service_has_usage_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_dependent_services: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

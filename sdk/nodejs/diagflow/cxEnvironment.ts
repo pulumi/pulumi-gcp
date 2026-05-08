@@ -173,29 +173,29 @@ export interface CxEnvironmentState {
     /**
      * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Agent to create an Environment for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
      * Structure is documented below.
      */
-    versionConfigs?: pulumi.Input<pulumi.Input<inputs.diagflow.CxEnvironmentVersionConfig>[]>;
+    versionConfigs?: pulumi.Input<pulumi.Input<inputs.diagflow.CxEnvironmentVersionConfig>[] | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface CxEnvironmentArgs {
     /**
      * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
@@ -214,7 +214,7 @@ export interface CxEnvironmentArgs {
      * The Agent to create an Environment for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
      * Structure is documented below.

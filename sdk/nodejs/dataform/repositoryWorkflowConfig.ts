@@ -241,42 +241,42 @@ export interface RepositoryWorkflowConfigState {
     /**
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
-    cronSchedule?: pulumi.Input<string>;
+    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.
      */
-    invocationConfig?: pulumi.Input<inputs.dataform.RepositoryWorkflowConfigInvocationConfig>;
+    invocationConfig?: pulumi.Input<inputs.dataform.RepositoryWorkflowConfigInvocationConfig | undefined>;
     /**
      * The workflow's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Records of the 10 most recent scheduled execution attempts, ordered in in descending order of executionTime. Updated whenever automatic creation of a workflow invocation is triggered by cronSchedule.
      * Structure is documented below.
      */
-    recentScheduledExecutionRecords?: pulumi.Input<pulumi.Input<inputs.dataform.RepositoryWorkflowConfigRecentScheduledExecutionRecord>[]>;
+    recentScheduledExecutionRecords?: pulumi.Input<pulumi.Input<inputs.dataform.RepositoryWorkflowConfigRecentScheduledExecutionRecord>[] | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      */
-    releaseConfig?: pulumi.Input<string>;
+    releaseConfig?: pulumi.Input<string | undefined>;
     /**
      * A reference to the Dataform repository
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -286,25 +286,25 @@ export interface RepositoryWorkflowConfigArgs {
     /**
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
-    cronSchedule?: pulumi.Input<string>;
+    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.
      */
-    invocationConfig?: pulumi.Input<inputs.dataform.RepositoryWorkflowConfigInvocationConfig>;
+    invocationConfig?: pulumi.Input<inputs.dataform.RepositoryWorkflowConfigInvocationConfig | undefined>;
     /**
      * The workflow's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;releaseConfigs/*.
      */
@@ -312,9 +312,9 @@ export interface RepositoryWorkflowConfigArgs {
     /**
      * A reference to the Dataform repository
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

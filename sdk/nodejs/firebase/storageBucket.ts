@@ -128,16 +128,16 @@ export interface StorageBucketState {
     /**
      * Required. Immutable. The ID of the underlying Google Cloud Storage bucket
      */
-    bucketId?: pulumi.Input<string>;
+    bucketId?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,10 +147,10 @@ export interface StorageBucketArgs {
     /**
      * Required. Immutable. The ID of the underlying Google Cloud Storage bucket
      */
-    bucketId?: pulumi.Input<string>;
+    bucketId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

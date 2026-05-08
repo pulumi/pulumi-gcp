@@ -356,28 +356,28 @@ export interface WorkloadIdentityPoolState {
      * 50 AttestationRules can be set.
      * Structure is documented below.
      */
-    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolAttestationRule>[]>;
+    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolAttestationRule>[] | undefined>;
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
      * existing tokens to access resources. If the pool is re-enabled, existing tokens grant
      * access again.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A display name for the pool. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
      * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
      * required for issuance and rotation of mTLS workload certificates.
      * Structure is documented below.
      */
-    inlineCertificateIssuanceConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineCertificateIssuanceConfig>;
+    inlineCertificateIssuanceConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineCertificateIssuanceConfig | undefined>;
     /**
      * Represents config to add additional trusted trust domains. Defines configuration for extending
      * trust to additional trust domains. By establishing trust with another domain, the current
@@ -386,7 +386,7 @@ export interface WorkloadIdentityPoolState {
      * configuration.
      * Structure is documented below.
      */
-    inlineTrustConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineTrustConfig>;
+    inlineTrustConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineTrustConfig | undefined>;
     /**
      * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
@@ -413,17 +413,17 @@ export interface WorkloadIdentityPoolState {
      * * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
      * Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the pool as
      * `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The state of the pool.
      * * `STATE_UNSPECIFIED`: State unspecified.
@@ -435,13 +435,13 @@ export interface WorkloadIdentityPoolState {
      * use existing tokens to access resources. If the pool is undeleted, existing tokens grant
      * access again.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      */
-    workloadIdentityPoolId?: pulumi.Input<string>;
+    workloadIdentityPoolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -454,28 +454,28 @@ export interface WorkloadIdentityPoolArgs {
      * 50 AttestationRules can be set.
      * Structure is documented below.
      */
-    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolAttestationRule>[]>;
+    attestationRules?: pulumi.Input<pulumi.Input<inputs.iam.WorkloadIdentityPoolAttestationRule>[] | undefined>;
     /**
      * A description of the pool. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
      * existing tokens to access resources. If the pool is re-enabled, existing tokens grant
      * access again.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A display name for the pool. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Represents configuration for generating mutual TLS (mTLS) certificates for the identities
      * within this pool. Defines the Certificate Authority (CA) pool resources and configurations
      * required for issuance and rotation of mTLS workload certificates.
      * Structure is documented below.
      */
-    inlineCertificateIssuanceConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineCertificateIssuanceConfig>;
+    inlineCertificateIssuanceConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineCertificateIssuanceConfig | undefined>;
     /**
      * Represents config to add additional trusted trust domains. Defines configuration for extending
      * trust to additional trust domains. By establishing trust with another domain, the current
@@ -484,7 +484,7 @@ export interface WorkloadIdentityPoolArgs {
      * configuration.
      * Structure is documented below.
      */
-    inlineTrustConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineTrustConfig>;
+    inlineTrustConfig?: pulumi.Input<inputs.iam.WorkloadIdentityPoolInlineTrustConfig | undefined>;
     /**
      * The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
      * are in `FEDERATION_ONLY` mode.
@@ -511,12 +511,12 @@ export interface WorkloadIdentityPoolArgs {
      * * `spiffe://<trust-domain>/resources/<resource-scope>/<resource-name>`
      * Possible values are: `FEDERATION_ONLY`, `TRUST_DOMAIN`, `SYSTEM_TRUST_DOMAIN`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix

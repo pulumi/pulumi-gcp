@@ -19,16 +19,16 @@ __all__ = ['GlobalAddressArgs', 'GlobalAddress']
 @pulumi.input_type
 class GlobalAddressArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalAddress resource.
 
@@ -91,7 +91,7 @@ class GlobalAddressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address or beginning of the address range represented by this
         resource. This can be supplied as an input to reserve a specific
@@ -100,12 +100,12 @@ class GlobalAddressArgs:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
@@ -116,24 +116,24 @@ class GlobalAddressArgs:
         return pulumi.get(self, "address_type")
 
     @address_type.setter
-    def address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP Version that will be used by this address. The default value is `IPV4`.
         Possible values are: `IPV4`, `IPV6`.
@@ -141,12 +141,12 @@ class GlobalAddressArgs:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
 
@@ -156,12 +156,12 @@ class GlobalAddressArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -174,12 +174,12 @@ class GlobalAddressArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the network in which to reserve the IP range. The IP range
         must be in RFC1918 space. The network cannot be deleted if there are
@@ -189,12 +189,12 @@ class GlobalAddressArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prefix length of the IP range. If not present, it means the
         address field is a single IP address.
@@ -204,12 +204,12 @@ class GlobalAddressArgs:
         return pulumi.get(self, "prefix_length")
 
     @prefix_length.setter
-    def prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -217,12 +217,12 @@ class GlobalAddressArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purpose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
@@ -231,28 +231,28 @@ class GlobalAddressArgs:
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purpose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purpose", value)
 
 
 @pulumi.input_type
 class _GlobalAddressState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalAddress resources.
 
@@ -332,7 +332,7 @@ class _GlobalAddressState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address or beginning of the address range represented by this
         resource. This can be supplied as an input to reserve a specific
@@ -341,12 +341,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
@@ -357,48 +357,48 @@ class _GlobalAddressState:
         return pulumi.get(self, "address_type")
 
     @address_type.setter
-    def address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_type", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP Version that will be used by this address. The default value is `IPV4`.
         Possible values are: `IPV4`, `IPV6`.
@@ -406,12 +406,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource.  Used
         internally during updates.
@@ -419,12 +419,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this address.  A list of key->value pairs.
 
@@ -434,12 +434,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -452,12 +452,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the network in which to reserve the IP range. The IP range
         must be in RFC1918 space. The network cannot be deleted if there are
@@ -467,12 +467,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prefix length of the IP range. If not present, it means the
         address field is a single IP address.
@@ -482,12 +482,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "prefix_length")
 
     @prefix_length.setter
-    def prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -495,12 +495,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -508,12 +508,12 @@ class _GlobalAddressState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purpose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
@@ -522,19 +522,19 @@ class _GlobalAddressState:
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purpose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purpose", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
 
@@ -544,16 +544,16 @@ class GlobalAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a Global Address resource. Global addresses are used for
@@ -722,16 +722,16 @@ class GlobalAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -768,21 +768,21 @@ class GlobalAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            address_type: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            purpose: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalAddress':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalAddress':
         """
         Get an existing GlobalAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

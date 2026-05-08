@@ -21,11 +21,11 @@ __all__ = ['CustomServiceArgs', 'CustomService']
 @pulumi.input_type
 class CustomServiceArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry: pulumi.Input[Optional['CustomServiceTelemetryArgs']] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CustomService resource.
 
@@ -56,19 +56,19 @@ class CustomServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name used for UI elements listing this Service.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -76,12 +76,12 @@ class CustomServiceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional service ID to use. If not given, the server will generate a
         service ID.
@@ -89,12 +89,12 @@ class CustomServiceArgs:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def telemetry(self) -> Optional[pulumi.Input['CustomServiceTelemetryArgs']]:
+    def telemetry(self) -> pulumi.Input[Optional['CustomServiceTelemetryArgs']]:
         """
         Configuration for how to query telemetry on a Service.
         Structure is documented below.
@@ -102,12 +102,12 @@ class CustomServiceArgs:
         return pulumi.get(self, "telemetry")
 
     @telemetry.setter
-    def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
+    def telemetry(self, value: pulumi.Input[Optional['CustomServiceTelemetryArgs']]):
         pulumi.set(self, "telemetry", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels which have been used to annotate the service. Label keys must start
         with a letter. Label keys and values may contain lowercase letters,
@@ -119,19 +119,19 @@ class CustomServiceArgs:
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
 @pulumi.input_type
 class _CustomServiceState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input['CustomServiceTelemetryArgs']] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry: pulumi.Input[Optional['CustomServiceTelemetryArgs']] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CustomService resources.
 
@@ -166,19 +166,19 @@ class _CustomServiceState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name used for UI elements listing this Service.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource name for this service. The syntax is:
         projects/[PROJECT_ID]/services/[SERVICE_ID].
@@ -186,12 +186,12 @@ class _CustomServiceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -199,12 +199,12 @@ class _CustomServiceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional service ID to use. If not given, the server will generate a
         service ID.
@@ -212,12 +212,12 @@ class _CustomServiceState:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def telemetry(self) -> Optional[pulumi.Input['CustomServiceTelemetryArgs']]:
+    def telemetry(self) -> pulumi.Input[Optional['CustomServiceTelemetryArgs']]:
         """
         Configuration for how to query telemetry on a Service.
         Structure is documented below.
@@ -225,12 +225,12 @@ class _CustomServiceState:
         return pulumi.get(self, "telemetry")
 
     @telemetry.setter
-    def telemetry(self, value: Optional[pulumi.Input['CustomServiceTelemetryArgs']]):
+    def telemetry(self, value: pulumi.Input[Optional['CustomServiceTelemetryArgs']]):
         pulumi.set(self, "telemetry", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels which have been used to annotate the service. Label keys must start
         with a letter. Label keys and values may contain lowercase letters,
@@ -242,7 +242,7 @@ class _CustomServiceState:
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
@@ -252,11 +252,11 @@ class CustomService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A Service is a discrete, autonomous, and network-accessible unit,
@@ -397,11 +397,11 @@ class CustomService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry: Optional[pulumi.Input[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -427,12 +427,12 @@ class CustomService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            telemetry: Optional[pulumi.Input[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
-            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CustomService':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            telemetry: pulumi.Input[Optional[Union['CustomServiceTelemetryArgs', 'CustomServiceTelemetryArgsDict']]] = None,
+            user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CustomService':
         """
         Get an existing CustomService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Location = "global",
     ///         TemplateId = "file-template",
-    ///         TemplateString = Std.Index.File.Invoke(new()
+    ///         TemplateString = Std.File.Invoke(new()
     ///         {
     ///             Input = "test-fixtures/hello_world.prompt",
     ///         }).Apply(invoke =&gt; invoke.Result),

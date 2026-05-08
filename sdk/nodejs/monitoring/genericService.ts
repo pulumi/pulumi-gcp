@@ -177,31 +177,31 @@ export interface GenericServiceState {
      * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
      * Structure is documented below.
      */
-    basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService>;
+    basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService | undefined>;
     /**
      * Name used for UI elements listing this Service.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The full resource name for this service. The syntax is:
      * projects/[PROJECT_ID]/services/[SERVICE_ID].
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * Configuration for how to query telemetry on a Service.
      * Structure is documented below.
      */
-    telemetries?: pulumi.Input<pulumi.Input<inputs.monitoring.GenericServiceTelemetry>[]>;
+    telemetries?: pulumi.Input<pulumi.Input<inputs.monitoring.GenericServiceTelemetry>[] | undefined>;
     /**
      * Labels which have been used to annotate the service. Label keys must start
      * with a letter. Label keys and values may contain lowercase letters,
@@ -210,7 +210,7 @@ export interface GenericServiceState {
      * label entries may be stored. For labels which do not have a semantic value,
      * the empty string may be supplied for the label value.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -223,16 +223,16 @@ export interface GenericServiceArgs {
      * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
      * Structure is documented below.
      */
-    basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService>;
+    basicService?: pulumi.Input<inputs.monitoring.GenericServiceBasicService | undefined>;
     /**
      * Name used for UI elements listing this Service.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An optional service ID to use. If not given, the server will generate a
      * service ID.
@@ -246,5 +246,5 @@ export interface GenericServiceArgs {
      * label entries may be stored. For labels which do not have a semantic value,
      * the empty string may be supplied for the label value.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

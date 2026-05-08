@@ -126,8 +126,8 @@ def get_consent_store_iam_policy(consent_store_id: Optional[_builtins.str] = Non
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        dataset: Optional[pulumi.Input[_builtins.str]] = None,
+def get_consent_store_iam_policy_output(consent_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        dataset: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsentStoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for consentstore

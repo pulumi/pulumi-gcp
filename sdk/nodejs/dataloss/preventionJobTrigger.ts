@@ -728,54 +728,54 @@ export interface PreventionJobTriggerState {
     /**
      * The creation timestamp of an inspectTemplate. Set by the server.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of the job trigger.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User set display name of the job trigger.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Controls what and how to inspect for findings.
      * Structure is documented below.
      */
-    inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob>;
+    inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob | undefined>;
     /**
      * The timestamp of the last time this trigger executed.
      */
-    lastRunTime?: pulumi.Input<string>;
+    lastRunTime?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the job trigger. Set by the server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the trigger, either in the format `projects/{{project}}`
      * or `projects/{{project}}/locations/{{location}}`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Whether the trigger is currently active.
      * Default value is `HEALTHY`.
      * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+.
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string | undefined>;
     /**
      * What event needs to occur for a new job to be started.
      * Structure is documented below.
      */
-    triggers?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionJobTriggerTrigger>[]>;
+    triggers?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionJobTriggerTrigger>[] | undefined>;
     /**
      * The last update timestamp of an inspectTemplate. Set by the server.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -785,16 +785,16 @@ export interface PreventionJobTriggerArgs {
     /**
      * A description of the job trigger.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User set display name of the job trigger.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Controls what and how to inspect for findings.
      * Structure is documented below.
      */
-    inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob>;
+    inspectJob?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJob | undefined>;
     /**
      * The parent of the trigger, either in the format `projects/{{project}}`
      * or `projects/{{project}}/locations/{{location}}`
@@ -805,13 +805,13 @@ export interface PreventionJobTriggerArgs {
      * Default value is `HEALTHY`.
      * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+.
      * The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string | undefined>;
     /**
      * What event needs to occur for a new job to be started.
      * Structure is documented below.

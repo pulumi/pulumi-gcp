@@ -227,15 +227,15 @@ export interface AccessApprovalSettingsState {
      * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      */
-    activeKeyVersion?: pulumi.Input<string>;
+    activeKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
      */
-    ancestorHasActiveKeyVersion?: pulumi.Input<boolean>;
+    ancestorHasActiveKeyVersion?: pulumi.Input<boolean | undefined>;
     /**
      * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      */
-    enrolledAncestor?: pulumi.Input<boolean>;
+    enrolledAncestor?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required
@@ -243,28 +243,28 @@ export interface AccessApprovalSettingsState {
      * A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
      * Structure is documented below.
      */
-    enrolledServices?: pulumi.Input<pulumi.Input<inputs.folder.AccessApprovalSettingsEnrolledService>[]>;
+    enrolledServices?: pulumi.Input<pulumi.Input<inputs.folder.AccessApprovalSettingsEnrolledService>[] | undefined>;
     /**
      * ID of the folder of the access approval settings.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
      * configured on this Folder (e.g. it doesn't exist or the Access Approval service account doesn't have the
      * correct permissions on it, etc.) This key version is not necessarily the effective key version at this level,
      * as key versions are inherited top-down.
      */
-    invalidKeyVersion?: pulumi.Input<boolean>;
+    invalidKeyVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of email addresses to which notifications relating to approval requests should be sent.
      * Notifications relating to a resource will be sent to all emails in the settings of ancestor
      * resources of that resource. A maximum of 50 email addresses are allowed.
      */
-    notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -276,7 +276,7 @@ export interface AccessApprovalSettingsArgs {
      * Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      */
-    activeKeyVersion?: pulumi.Input<string>;
+    activeKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * A list of Google Cloud Services for which the given resource has Access Approval enrolled.
      * Access requests for the resource given by name against any of these services contained here will be required
@@ -294,5 +294,5 @@ export interface AccessApprovalSettingsArgs {
      * Notifications relating to a resource will be sent to all emails in the settings of ancestor
      * resources of that resource. A maximum of 50 email addresses are allowed.
      */
-    notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

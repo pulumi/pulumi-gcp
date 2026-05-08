@@ -153,9 +153,9 @@ def get_discovered_service(location: Optional[_builtins.str] = None,
         service_properties=pulumi.get(__ret__, 'service_properties'),
         service_references=pulumi.get(__ret__, 'service_references'),
         service_uri=pulumi.get(__ret__, 'service_uri'))
-def get_discovered_service_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  service_uri: Optional[pulumi.Input[_builtins.str]] = None,
+def get_discovered_service_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  service_uri: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiscoveredServiceResult]:
     """
     Get information about a discovered service from its uri.

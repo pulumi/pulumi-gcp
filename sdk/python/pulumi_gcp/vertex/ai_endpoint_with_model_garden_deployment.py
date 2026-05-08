@@ -22,12 +22,12 @@ __all__ = ['AiEndpointWithModelGardenDeploymentArgs', 'AiEndpointWithModelGarden
 class AiEndpointWithModelGardenDeploymentArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 deploy_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs']] = None,
-                 endpoint_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']] = None,
-                 hugging_face_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 publisher_model_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 deploy_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']] = None,
+                 endpoint_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']] = None,
+                 hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiEndpointWithModelGardenDeployment resource.
 
@@ -75,7 +75,7 @@ class AiEndpointWithModelGardenDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter(name="deployConfig")
-    def deploy_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]:
+    def deploy_config(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]:
         """
         The deploy config to use for the deployment.
         Structure is documented below.
@@ -83,12 +83,12 @@ class AiEndpointWithModelGardenDeploymentArgs:
         return pulumi.get(self, "deploy_config")
 
     @deploy_config.setter
-    def deploy_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]):
+    def deploy_config(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]):
         pulumi.set(self, "deploy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]:
+    def endpoint_config(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]:
         """
         The endpoint config to use for the deployment.
         Structure is documented below.
@@ -96,12 +96,12 @@ class AiEndpointWithModelGardenDeploymentArgs:
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]):
+    def endpoint_config(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]):
         pulumi.set(self, "endpoint_config", value)
 
     @_builtins.property
     @pulumi.getter(name="huggingFaceModelId")
-    def hugging_face_model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hugging_face_model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Hugging Face model to deploy.
         Format: Hugging Face model ID like `google/gemma-2-2b-it`.
@@ -109,12 +109,12 @@ class AiEndpointWithModelGardenDeploymentArgs:
         return pulumi.get(self, "hugging_face_model_id")
 
     @hugging_face_model_id.setter
-    def hugging_face_model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hugging_face_model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hugging_face_model_id", value)
 
     @_builtins.property
     @pulumi.getter(name="modelConfig")
-    def model_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigArgs']]:
+    def model_config(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigArgs']]:
         """
         The model config to use for the deployment.
         Structure is documented below.
@@ -122,12 +122,12 @@ class AiEndpointWithModelGardenDeploymentArgs:
         return pulumi.get(self, "model_config")
 
     @model_config.setter
-    def model_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigArgs']]):
+    def model_config(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigArgs']]):
         pulumi.set(self, "model_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -135,12 +135,12 @@ class AiEndpointWithModelGardenDeploymentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publisherModelName")
-    def publisher_model_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def publisher_model_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Model Garden model to deploy.
         Format:
@@ -150,23 +150,23 @@ class AiEndpointWithModelGardenDeploymentArgs:
         return pulumi.get(self, "publisher_model_name")
 
     @publisher_model_name.setter
-    def publisher_model_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def publisher_model_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "publisher_model_name", value)
 
 
 @pulumi.input_type
 class _AiEndpointWithModelGardenDeploymentState:
     def __init__(__self__, *,
-                 deploy_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs']] = None,
-                 deployed_model_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployed_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']] = None,
-                 hugging_face_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 publisher_model_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 deploy_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']] = None,
+                 deployed_model_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployed_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']] = None,
+                 hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiEndpointWithModelGardenDeployment resources.
 
@@ -215,7 +215,7 @@ class _AiEndpointWithModelGardenDeploymentState:
 
     @_builtins.property
     @pulumi.getter(name="deployConfig")
-    def deploy_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]:
+    def deploy_config(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]:
         """
         The deploy config to use for the deployment.
         Structure is documented below.
@@ -223,12 +223,12 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "deploy_config")
 
     @deploy_config.setter
-    def deploy_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]):
+    def deploy_config(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']]):
         pulumi.set(self, "deploy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedModelDisplayName")
-    def deployed_model_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployed_model_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The display name assigned to the model deployed to the endpoint.
         This is not required to delete the resource but is used for debug logging.
@@ -236,12 +236,12 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "deployed_model_display_name")
 
     @deployed_model_display_name.setter
-    def deployed_model_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployed_model_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployed_model_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedModelId")
-    def deployed_model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployed_model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The unique numeric ID that Vertex AI assigns to the model at the time it is deployed to the endpoint.
         It is required to undeploy the model from the endpoint during resource deletion as described in
@@ -250,24 +250,24 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "deployed_model_id")
 
     @deployed_model_id.setter
-    def deployed_model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployed_model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployed_model_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `endpoint`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]:
+    def endpoint_config(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]:
         """
         The endpoint config to use for the deployment.
         Structure is documented below.
@@ -275,12 +275,12 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]):
+    def endpoint_config(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']]):
         pulumi.set(self, "endpoint_config", value)
 
     @_builtins.property
     @pulumi.getter(name="huggingFaceModelId")
-    def hugging_face_model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hugging_face_model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Hugging Face model to deploy.
         Format: Hugging Face model ID like `google/gemma-2-2b-it`.
@@ -288,24 +288,24 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "hugging_face_model_id")
 
     @hugging_face_model_id.setter
-    def hugging_face_model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hugging_face_model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hugging_face_model_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="modelConfig")
-    def model_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigArgs']]:
+    def model_config(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigArgs']]:
         """
         The model config to use for the deployment.
         Structure is documented below.
@@ -313,12 +313,12 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "model_config")
 
     @model_config.setter
-    def model_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigArgs']]):
+    def model_config(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigArgs']]):
         pulumi.set(self, "model_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -326,12 +326,12 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publisherModelName")
-    def publisher_model_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def publisher_model_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Model Garden model to deploy.
         Format:
@@ -341,7 +341,7 @@ class _AiEndpointWithModelGardenDeploymentState:
         return pulumi.get(self, "publisher_model_name")
 
     @publisher_model_name.setter
-    def publisher_model_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def publisher_model_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "publisher_model_name", value)
 
 
@@ -351,13 +351,13 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deploy_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
-                 endpoint_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
-                 hugging_face_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 publisher_model_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
+                 endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
+                 hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create an Endpoint and deploy a Model Garden model to it.
@@ -860,13 +860,13 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deploy_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
-                 endpoint_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
-                 hugging_face_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 publisher_model_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
+                 endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
+                 hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -898,16 +898,16 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deploy_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
-            deployed_model_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            deployed_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
-            hugging_face_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            model_config: Optional[pulumi.Input[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            publisher_model_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiEndpointWithModelGardenDeployment':
+            deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
+            deployed_model_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
+            hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            model_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentModelConfigArgs', 'AiEndpointWithModelGardenDeploymentModelConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            publisher_model_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiEndpointWithModelGardenDeployment':
         """
         Get an existing AiEndpointWithModelGardenDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

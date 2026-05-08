@@ -148,12 +148,12 @@ class ApplicationIapArgsDict(TypedDict):
     OAuth2 client secret to use for the authentication flow.
     The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
     (default is false)
     """
-    oauth2_client_secret_sha256: NotRequired[pulumi.Input[_builtins.str]]
+    oauth2_client_secret_sha256: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hex-encoded SHA-256 hash of the client secret.
     """
@@ -163,8 +163,8 @@ class ApplicationIapArgs:
     def __init__(__self__, *,
                  oauth2_client_id: pulumi.Input[_builtins.str],
                  oauth2_client_secret: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oauth2_client_secret_sha256: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oauth2_client_secret_sha256: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] oauth2_client_id: OAuth2 client ID to use for the authentication flow.
         :param pulumi.Input[_builtins.str] oauth2_client_secret: OAuth2 client secret to use for the authentication flow.
@@ -207,7 +207,7 @@ class ApplicationIapArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
         (default is false)
@@ -215,33 +215,33 @@ class ApplicationIapArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientSecretSha256")
-    def oauth2_client_secret_sha256(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_client_secret_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hex-encoded SHA-256 hash of the client secret.
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
 
     @oauth2_client_secret_sha256.setter
-    def oauth2_client_secret_sha256(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_client_secret_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_client_secret_sha256", value)
 
 
 class ApplicationUrlDispatchRuleArgsDict(TypedDict):
-    domain: NotRequired[pulumi.Input[_builtins.str]]
-    path: NotRequired[pulumi.Input[_builtins.str]]
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ApplicationUrlDispatchRuleArgs:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if path is not None:
@@ -251,29 +251,29 @@ class ApplicationUrlDispatchRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
@@ -288,7 +288,7 @@ class ApplicationUrlDispatchRulesDispatchRuleArgsDict(TypedDict):
     Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
     The sum of the lengths of the domain and path may not exceed 100 characters.
     """
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
     Defaults to matching all domains: "*".
@@ -299,7 +299,7 @@ class ApplicationUrlDispatchRulesDispatchRuleArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 domain: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
                The sum of the lengths of the domain and path may not exceed 100 characters.
@@ -341,7 +341,7 @@ class ApplicationUrlDispatchRulesDispatchRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".
         Defaults to matching all domains: "*".
@@ -349,20 +349,20 @@ class ApplicationUrlDispatchRulesDispatchRuleArgs:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
 
 class DomainMappingResourceRecordArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
     """
-    rrdata: NotRequired[pulumi.Input[_builtins.str]]
+    rrdata: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource record type. Example: `AAAA`.
     Possible values are: `A`, `AAAA`, `CNAME`.
@@ -371,9 +371,9 @@ class DomainMappingResourceRecordArgsDict(TypedDict):
 @pulumi.input_type
 class DomainMappingResourceRecordArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rrdata: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rrdata: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param pulumi.Input[_builtins.str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
@@ -389,31 +389,31 @@ class DomainMappingResourceRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rrdata(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rrdata(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
         """
         return pulumi.get(self, "rrdata")
 
     @rrdata.setter
-    def rrdata(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rrdata(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rrdata", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource record type. Example: `AAAA`.
         Possible values are: `A`, `AAAA`, `CNAME`.
@@ -421,7 +421,7 @@ class DomainMappingResourceRecordArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -432,7 +432,7 @@ class DomainMappingSslSettingsArgsDict(TypedDict):
     If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
     Possible values are: `AUTOMATIC`, `MANUAL`.
     """
-    certificate_id: NotRequired[pulumi.Input[_builtins.str]]
+    certificate_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
     remove SSL support.
@@ -441,7 +441,7 @@ class DomainMappingSslSettingsArgsDict(TypedDict):
     authorized to administer the `AuthorizedCertificate` resource to manually map it to a DomainMapping resource.
     Example: 12345.
     """
-    pending_managed_certificate_id: NotRequired[pulumi.Input[_builtins.str]]
+    pending_managed_certificate_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
@@ -455,8 +455,8 @@ class DomainMappingSslSettingsArgsDict(TypedDict):
 class DomainMappingSslSettingsArgs:
     def __init__(__self__, *,
                  ssl_management_type: pulumi.Input[_builtins.str],
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pending_managed_certificate_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pending_managed_certificate_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ssl_management_type: SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
                If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
@@ -496,7 +496,7 @@ class DomainMappingSslSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
         remove SSL support.
@@ -508,12 +508,12 @@ class DomainMappingSslSettingsArgs:
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingManagedCertificateId")
-    def pending_managed_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pending_managed_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         ID of the managed `AuthorizedCertificate` resource currently being provisioned, if applicable. Until the new
@@ -525,7 +525,7 @@ class DomainMappingSslSettingsArgs:
         return pulumi.get(self, "pending_managed_certificate_id")
 
     @pending_managed_certificate_id.setter
-    def pending_managed_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pending_managed_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pending_managed_certificate_id", value)
 
 
@@ -534,7 +534,7 @@ class EngineSplitTrafficSplitArgsDict(TypedDict):
     """
     Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
     """
-    shard_by: NotRequired[pulumi.Input[_builtins.str]]
+    shard_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
     Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
@@ -544,7 +544,7 @@ class EngineSplitTrafficSplitArgsDict(TypedDict):
 class EngineSplitTrafficSplitArgs:
     def __init__(__self__, *,
                  allocations: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
-                 shard_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 shard_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] allocations: Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
         :param pulumi.Input[_builtins.str] shard_by: Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
@@ -568,7 +568,7 @@ class EngineSplitTrafficSplitArgs:
 
     @_builtins.property
     @pulumi.getter(name="shardBy")
-    def shard_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shard_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
         Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
@@ -576,7 +576,7 @@ class EngineSplitTrafficSplitArgs:
         return pulumi.get(self, "shard_by")
 
     @shard_by.setter
-    def shard_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shard_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shard_by", value)
 
 
@@ -585,24 +585,24 @@ class FlexibleAppVersionApiConfigArgsDict(TypedDict):
     """
     Path to the script from the application root directory.
     """
-    auth_fail_action: NotRequired[pulumi.Input[_builtins.str]]
+    auth_fail_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Action to take when users access resources that require authentication.
     Default value is `AUTH_FAIL_ACTION_REDIRECT`.
     Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
     """
-    login: NotRequired[pulumi.Input[_builtins.str]]
+    login: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Level of login required to access this resource.
     Default value is `LOGIN_OPTIONAL`.
     Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
     """
-    security_level: NotRequired[pulumi.Input[_builtins.str]]
+    security_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security (HTTPS) enforcement for this URL.
     Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL to serve the endpoint at.
     """
@@ -611,10 +611,10 @@ class FlexibleAppVersionApiConfigArgsDict(TypedDict):
 class FlexibleAppVersionApiConfigArgs:
     def __init__(__self__, *,
                  script: pulumi.Input[_builtins.str],
-                 auth_fail_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 login: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_fail_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 login: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] script: Path to the script from the application root directory.
         :param pulumi.Input[_builtins.str] auth_fail_action: Action to take when users access resources that require authentication.
@@ -651,7 +651,7 @@ class FlexibleAppVersionApiConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="authFailAction")
-    def auth_fail_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_fail_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action to take when users access resources that require authentication.
         Default value is `AUTH_FAIL_ACTION_REDIRECT`.
@@ -660,12 +660,12 @@ class FlexibleAppVersionApiConfigArgs:
         return pulumi.get(self, "auth_fail_action")
 
     @auth_fail_action.setter
-    def auth_fail_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_fail_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_fail_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Level of login required to access this resource.
         Default value is `LOGIN_OPTIONAL`.
@@ -674,12 +674,12 @@ class FlexibleAppVersionApiConfigArgs:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter(name="securityLevel")
-    def security_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security (HTTPS) enforcement for this URL.
         Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
@@ -687,19 +687,19 @@ class FlexibleAppVersionApiConfigArgs:
         return pulumi.get(self, "security_level")
 
     @security_level.setter
-    def security_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to serve the endpoint at.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -709,52 +709,52 @@ class FlexibleAppVersionAutomaticScalingArgsDict(TypedDict):
     Target scaling by CPU usage.
     Structure is documented below.
     """
-    cool_down_period: NotRequired[pulumi.Input[_builtins.str]]
+    cool_down_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time period that the Autoscaler should wait before it starts collecting information from a new instance.
     This prevents the autoscaler from collecting information when the instance is initializing,
     during which the collected usage would not be reliable. Default: 120s
     """
-    disk_utilization: NotRequired[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict']]
+    disk_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]]
     """
     Target scaling by disk usage.
     Structure is documented below.
     """
-    max_concurrent_requests: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_requests: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
     Defaults to a runtime-specific value.
     """
-    max_idle_instances: NotRequired[pulumi.Input[_builtins.int]]
+    max_idle_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of idle instances that should be maintained for this version.
     """
-    max_pending_latency: NotRequired[pulumi.Input[_builtins.str]]
+    max_pending_latency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
     """
-    max_total_instances: NotRequired[pulumi.Input[_builtins.int]]
+    max_total_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of instances that should be started to handle requests for this version. Default: 20
     """
-    min_idle_instances: NotRequired[pulumi.Input[_builtins.int]]
+    min_idle_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
     """
-    min_pending_latency: NotRequired[pulumi.Input[_builtins.str]]
+    min_pending_latency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
     """
-    min_total_instances: NotRequired[pulumi.Input[_builtins.int]]
+    min_total_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of running instances that should be maintained for this version. Default: 2
     """
-    network_utilization: NotRequired[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict']]
+    network_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]]
     """
     Target scaling by network usage.
     Structure is documented below.
     """
-    request_utilization: NotRequired[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict']]
+    request_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]]
     """
     Target scaling by request utilization.
     Structure is documented below.
@@ -764,17 +764,17 @@ class FlexibleAppVersionAutomaticScalingArgsDict(TypedDict):
 class FlexibleAppVersionAutomaticScalingArgs:
     def __init__(__self__, *,
                  cpu_utilization: pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs'],
-                 cool_down_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']] = None,
-                 max_concurrent_requests: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pending_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_total_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_pending_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_total_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']] = None,
-                 request_utilization: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']] = None):
+                 cool_down_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_utilization: pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']] = None,
+                 max_concurrent_requests: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pending_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_total_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_pending_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_total_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_utilization: pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']] = None,
+                 request_utilization: pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']] = None):
         """
         :param pulumi.Input['FlexibleAppVersionAutomaticScalingCpuUtilizationArgs'] cpu_utilization: Target scaling by CPU usage.
                Structure is documented below.
@@ -835,7 +835,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
 
     @_builtins.property
     @pulumi.getter(name="coolDownPeriod")
-    def cool_down_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cool_down_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period that the Autoscaler should wait before it starts collecting information from a new instance.
         This prevents the autoscaler from collecting information when the instance is initializing,
@@ -844,12 +844,12 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "cool_down_period")
 
     @cool_down_period.setter
-    def cool_down_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cool_down_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cool_down_period", value)
 
     @_builtins.property
     @pulumi.getter(name="diskUtilization")
-    def disk_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]:
+    def disk_utilization(self) -> pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]:
         """
         Target scaling by disk usage.
         Structure is documented below.
@@ -857,12 +857,12 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "disk_utilization")
 
     @disk_utilization.setter
-    def disk_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]):
+    def disk_utilization(self, value: pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]):
         pulumi.set(self, "disk_utilization", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentRequests")
-    def max_concurrent_requests(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_requests(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
         Defaults to a runtime-specific value.
@@ -870,84 +870,84 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "max_concurrent_requests")
 
     @max_concurrent_requests.setter
-    def max_concurrent_requests(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_requests(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_requests", value)
 
     @_builtins.property
     @pulumi.getter(name="maxIdleInstances")
-    def max_idle_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_idle_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of idle instances that should be maintained for this version.
         """
         return pulumi.get(self, "max_idle_instances")
 
     @max_idle_instances.setter
-    def max_idle_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_idle_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_idle_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPendingLatency")
-    def max_pending_latency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_pending_latency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
         """
         return pulumi.get(self, "max_pending_latency")
 
     @max_pending_latency.setter
-    def max_pending_latency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_pending_latency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_pending_latency", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTotalInstances")
-    def max_total_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_total_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of instances that should be started to handle requests for this version. Default: 20
         """
         return pulumi.get(self, "max_total_instances")
 
     @max_total_instances.setter
-    def max_total_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_total_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_total_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="minIdleInstances")
-    def min_idle_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_idle_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         """
         return pulumi.get(self, "min_idle_instances")
 
     @min_idle_instances.setter
-    def min_idle_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_idle_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_idle_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="minPendingLatency")
-    def min_pending_latency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_pending_latency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
         """
         return pulumi.get(self, "min_pending_latency")
 
     @min_pending_latency.setter
-    def min_pending_latency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_pending_latency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_pending_latency", value)
 
     @_builtins.property
     @pulumi.getter(name="minTotalInstances")
-    def min_total_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_total_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of running instances that should be maintained for this version. Default: 2
         """
         return pulumi.get(self, "min_total_instances")
 
     @min_total_instances.setter
-    def min_total_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_total_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_total_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="networkUtilization")
-    def network_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]:
+    def network_utilization(self) -> pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]:
         """
         Target scaling by network usage.
         Structure is documented below.
@@ -955,12 +955,12 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "network_utilization")
 
     @network_utilization.setter
-    def network_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]):
+    def network_utilization(self, value: pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]):
         pulumi.set(self, "network_utilization", value)
 
     @_builtins.property
     @pulumi.getter(name="requestUtilization")
-    def request_utilization(self) -> Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]:
+    def request_utilization(self) -> pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]:
         """
         Target scaling by request utilization.
         Structure is documented below.
@@ -968,7 +968,7 @@ class FlexibleAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "request_utilization")
 
     @request_utilization.setter
-    def request_utilization(self, value: Optional[pulumi.Input['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]):
+    def request_utilization(self, value: pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]):
         pulumi.set(self, "request_utilization", value)
 
 
@@ -977,7 +977,7 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgsDict(TypedDict):
     """
     Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
     """
-    aggregation_window_length: NotRequired[pulumi.Input[_builtins.str]]
+    aggregation_window_length: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Period of time over which CPU utilization is calculated.
     """
@@ -986,7 +986,7 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgsDict(TypedDict):
 class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
     def __init__(__self__, *,
                  target_utilization: pulumi.Input[_builtins.float],
-                 aggregation_window_length: Optional[pulumi.Input[_builtins.str]] = None):
+                 aggregation_window_length: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] target_utilization: Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
         :param pulumi.Input[_builtins.str] aggregation_window_length: Period of time over which CPU utilization is calculated.
@@ -1009,31 +1009,31 @@ class FlexibleAppVersionAutomaticScalingCpuUtilizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="aggregationWindowLength")
-    def aggregation_window_length(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aggregation_window_length(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Period of time over which CPU utilization is calculated.
         """
         return pulumi.get(self, "aggregation_window_length")
 
     @aggregation_window_length.setter
-    def aggregation_window_length(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aggregation_window_length(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aggregation_window_length", value)
 
 
 class FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict(TypedDict):
-    target_read_bytes_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_read_bytes_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target bytes read per second.
     """
-    target_read_ops_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_read_ops_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target ops read per seconds.
     """
-    target_write_bytes_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_write_bytes_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target bytes written per second.
     """
-    target_write_ops_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_write_ops_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target ops written per second.
     """
@@ -1041,10 +1041,10 @@ class FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
     def __init__(__self__, *,
-                 target_read_bytes_per_second: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_read_ops_per_second: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_write_bytes_per_second: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_write_ops_per_second: Optional[pulumi.Input[_builtins.int]] = None):
+                 target_read_bytes_per_second: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_read_ops_per_second: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_write_bytes_per_second: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_write_ops_per_second: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] target_read_bytes_per_second: Target bytes read per second.
         :param pulumi.Input[_builtins.int] target_read_ops_per_second: Target ops read per seconds.
@@ -1062,67 +1062,67 @@ class FlexibleAppVersionAutomaticScalingDiskUtilizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="targetReadBytesPerSecond")
-    def target_read_bytes_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_read_bytes_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target bytes read per second.
         """
         return pulumi.get(self, "target_read_bytes_per_second")
 
     @target_read_bytes_per_second.setter
-    def target_read_bytes_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_read_bytes_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_read_bytes_per_second", value)
 
     @_builtins.property
     @pulumi.getter(name="targetReadOpsPerSecond")
-    def target_read_ops_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_read_ops_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target ops read per seconds.
         """
         return pulumi.get(self, "target_read_ops_per_second")
 
     @target_read_ops_per_second.setter
-    def target_read_ops_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_read_ops_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_read_ops_per_second", value)
 
     @_builtins.property
     @pulumi.getter(name="targetWriteBytesPerSecond")
-    def target_write_bytes_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_write_bytes_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target bytes written per second.
         """
         return pulumi.get(self, "target_write_bytes_per_second")
 
     @target_write_bytes_per_second.setter
-    def target_write_bytes_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_write_bytes_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_write_bytes_per_second", value)
 
     @_builtins.property
     @pulumi.getter(name="targetWriteOpsPerSecond")
-    def target_write_ops_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_write_ops_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target ops written per second.
         """
         return pulumi.get(self, "target_write_ops_per_second")
 
     @target_write_ops_per_second.setter
-    def target_write_ops_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_write_ops_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_write_ops_per_second", value)
 
 
 class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict(TypedDict):
-    target_received_bytes_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_received_bytes_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target bytes received per second.
     """
-    target_received_packets_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_received_packets_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target packets received per second.
     """
-    target_sent_bytes_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_sent_bytes_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target bytes sent per second.
     """
-    target_sent_packets_per_second: NotRequired[pulumi.Input[_builtins.int]]
+    target_sent_packets_per_second: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target packets sent per second.
     """
@@ -1130,10 +1130,10 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
     def __init__(__self__, *,
-                 target_received_bytes_per_second: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_received_packets_per_second: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_sent_bytes_per_second: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_sent_packets_per_second: Optional[pulumi.Input[_builtins.int]] = None):
+                 target_received_bytes_per_second: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_received_packets_per_second: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_sent_bytes_per_second: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_sent_packets_per_second: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] target_received_bytes_per_second: Target bytes received per second.
         :param pulumi.Input[_builtins.int] target_received_packets_per_second: Target packets received per second.
@@ -1151,59 +1151,59 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="targetReceivedBytesPerSecond")
-    def target_received_bytes_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_received_bytes_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target bytes received per second.
         """
         return pulumi.get(self, "target_received_bytes_per_second")
 
     @target_received_bytes_per_second.setter
-    def target_received_bytes_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_received_bytes_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_received_bytes_per_second", value)
 
     @_builtins.property
     @pulumi.getter(name="targetReceivedPacketsPerSecond")
-    def target_received_packets_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_received_packets_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target packets received per second.
         """
         return pulumi.get(self, "target_received_packets_per_second")
 
     @target_received_packets_per_second.setter
-    def target_received_packets_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_received_packets_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_received_packets_per_second", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSentBytesPerSecond")
-    def target_sent_bytes_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_sent_bytes_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target bytes sent per second.
         """
         return pulumi.get(self, "target_sent_bytes_per_second")
 
     @target_sent_bytes_per_second.setter
-    def target_sent_bytes_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_sent_bytes_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_sent_bytes_per_second", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSentPacketsPerSecond")
-    def target_sent_packets_per_second(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_sent_packets_per_second(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target packets sent per second.
         """
         return pulumi.get(self, "target_sent_packets_per_second")
 
     @target_sent_packets_per_second.setter
-    def target_sent_packets_per_second(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_sent_packets_per_second(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_sent_packets_per_second", value)
 
 
 class FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict(TypedDict):
-    target_concurrent_requests: NotRequired[pulumi.Input[_builtins.float]]
+    target_concurrent_requests: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Target number of concurrent requests.
     """
-    target_request_count_per_second: NotRequired[pulumi.Input[_builtins.str]]
+    target_request_count_per_second: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Target requests per second.
     """
@@ -1211,8 +1211,8 @@ class FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
     def __init__(__self__, *,
-                 target_concurrent_requests: Optional[pulumi.Input[_builtins.float]] = None,
-                 target_request_count_per_second: Optional[pulumi.Input[_builtins.str]] = None):
+                 target_concurrent_requests: pulumi.Input[Optional[_builtins.float]] = None,
+                 target_request_count_per_second: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] target_concurrent_requests: Target number of concurrent requests.
         :param pulumi.Input[_builtins.str] target_request_count_per_second: Target requests per second.
@@ -1224,47 +1224,47 @@ class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="targetConcurrentRequests")
-    def target_concurrent_requests(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def target_concurrent_requests(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Target number of concurrent requests.
         """
         return pulumi.get(self, "target_concurrent_requests")
 
     @target_concurrent_requests.setter
-    def target_concurrent_requests(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def target_concurrent_requests(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "target_concurrent_requests", value)
 
     @_builtins.property
     @pulumi.getter(name="targetRequestCountPerSecond")
-    def target_request_count_per_second(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_request_count_per_second(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target requests per second.
         """
         return pulumi.get(self, "target_request_count_per_second")
 
     @target_request_count_per_second.setter
-    def target_request_count_per_second(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_request_count_per_second(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_request_count_per_second", value)
 
 
 class FlexibleAppVersionDeploymentArgsDict(TypedDict):
-    cloud_build_options: NotRequired[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict']]
+    cloud_build_options: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]]
     """
     Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
     Structure is documented below.
     """
-    container: NotRequired[pulumi.Input['FlexibleAppVersionDeploymentContainerArgsDict']]
+    container: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentContainerArgs']]]
     """
     The Docker image for the container that runs the version.
     Structure is documented below.
     """
-    files: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgsDict']]]]
+    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]]
     """
     Manifest of the files stored in Google Cloud Storage that are included as part of this version.
     All files must be readable using the credentials supplied with this call.
     Structure is documented below.
     """
-    zip: NotRequired[pulumi.Input['FlexibleAppVersionDeploymentZipArgsDict']]
+    zip: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentZipArgs']]]
     """
     Zip File
     Structure is documented below.
@@ -1273,10 +1273,10 @@ class FlexibleAppVersionDeploymentArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionDeploymentArgs:
     def __init__(__self__, *,
-                 cloud_build_options: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']] = None,
-                 container: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']] = None,
-                 files: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]] = None,
-                 zip: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']] = None):
+                 cloud_build_options: pulumi.Input[Optional['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']] = None,
+                 container: pulumi.Input[Optional['FlexibleAppVersionDeploymentContainerArgs']] = None,
+                 files: pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]] = None,
+                 zip: pulumi.Input[Optional['FlexibleAppVersionDeploymentZipArgs']] = None):
         """
         :param pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs'] cloud_build_options: Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
                Structure is documented below.
@@ -1299,7 +1299,7 @@ class FlexibleAppVersionDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudBuildOptions")
-    def cloud_build_options(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]:
+    def cloud_build_options(self) -> pulumi.Input[Optional['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]:
         """
         Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
         Structure is documented below.
@@ -1307,12 +1307,12 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "cloud_build_options")
 
     @cloud_build_options.setter
-    def cloud_build_options(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]):
+    def cloud_build_options(self, value: pulumi.Input[Optional['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]):
         pulumi.set(self, "cloud_build_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']]:
+    def container(self) -> pulumi.Input[Optional['FlexibleAppVersionDeploymentContainerArgs']]:
         """
         The Docker image for the container that runs the version.
         Structure is documented below.
@@ -1320,12 +1320,12 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentContainerArgs']]):
+    def container(self, value: pulumi.Input[Optional['FlexibleAppVersionDeploymentContainerArgs']]):
         pulumi.set(self, "container", value)
 
     @_builtins.property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]:
+    def files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version.
         All files must be readable using the credentials supplied with this call.
@@ -1334,12 +1334,12 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]):
+    def files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]):
         pulumi.set(self, "files", value)
 
     @_builtins.property
     @pulumi.getter
-    def zip(self) -> Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']]:
+    def zip(self) -> pulumi.Input[Optional['FlexibleAppVersionDeploymentZipArgs']]:
         """
         Zip File
         Structure is documented below.
@@ -1347,7 +1347,7 @@ class FlexibleAppVersionDeploymentArgs:
         return pulumi.get(self, "zip")
 
     @zip.setter
-    def zip(self, value: Optional[pulumi.Input['FlexibleAppVersionDeploymentZipArgs']]):
+    def zip(self, value: pulumi.Input[Optional['FlexibleAppVersionDeploymentZipArgs']]):
         pulumi.set(self, "zip", value)
 
 
@@ -1356,7 +1356,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict(TypedDict):
     """
     Path to the yaml file used in deployment, used to determine runtime configuration details.
     """
-    cloud_build_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_build_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -1366,7 +1366,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict(TypedDict):
 class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
     def __init__(__self__, *,
                  app_yaml_path: pulumi.Input[_builtins.str],
-                 cloud_build_timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_build_timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] app_yaml_path: Path to the yaml file used in deployment, used to determine runtime configuration details.
         :param pulumi.Input[_builtins.str] cloud_build_timeout: The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
@@ -1390,7 +1390,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudBuildTimeout")
-    def cloud_build_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_build_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -1398,7 +1398,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptionsArgs:
         return pulumi.get(self, "cloud_build_timeout")
 
     @cloud_build_timeout.setter
-    def cloud_build_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_build_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_build_timeout", value)
 
 
@@ -1442,7 +1442,7 @@ class FlexibleAppVersionDeploymentFileArgsDict(TypedDict):
     """
     Source URL
     """
-    sha1_sum: NotRequired[pulumi.Input[_builtins.str]]
+    sha1_sum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA1 checksum of the file
     """
@@ -1452,7 +1452,7 @@ class FlexibleAppVersionDeploymentFileArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  source_url: pulumi.Input[_builtins.str],
-                 sha1_sum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha1_sum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] source_url: Source URL
@@ -1489,14 +1489,14 @@ class FlexibleAppVersionDeploymentFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha1Sum")
-    def sha1_sum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha1_sum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA1 checksum of the file
         """
         return pulumi.get(self, "sha1_sum")
 
     @sha1_sum.setter
-    def sha1_sum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha1_sum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha1_sum", value)
 
 
@@ -1505,7 +1505,7 @@ class FlexibleAppVersionDeploymentZipArgsDict(TypedDict):
     """
     Source URL
     """
-    files_count: NotRequired[pulumi.Input[_builtins.int]]
+    files_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     files count
     """
@@ -1514,7 +1514,7 @@ class FlexibleAppVersionDeploymentZipArgsDict(TypedDict):
 class FlexibleAppVersionDeploymentZipArgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[_builtins.str],
-                 files_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 files_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] source_url: Source URL
         :param pulumi.Input[_builtins.int] files_count: files count
@@ -1537,14 +1537,14 @@ class FlexibleAppVersionDeploymentZipArgs:
 
     @_builtins.property
     @pulumi.getter(name="filesCount")
-    def files_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def files_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         files count
         """
         return pulumi.get(self, "files_count")
 
     @files_count.setter
-    def files_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def files_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "files_count", value)
 
 
@@ -1554,7 +1554,7 @@ class FlexibleAppVersionEndpointsApiServiceArgsDict(TypedDict):
     Endpoints service name which is the name of the "service" resource in the Service Management API.
     For example "myapi.endpoints.myproject.cloud.goog"
     """
-    config_id: NotRequired[pulumi.Input[_builtins.str]]
+    config_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
     By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
@@ -1563,11 +1563,11 @@ class FlexibleAppVersionEndpointsApiServiceArgsDict(TypedDict):
     Endpoints also has a rollout strategy called "MANAGED". When using this, Endpoints fetches the latest configuration and does not need
     the configuration ID. In this case, configId must be omitted.
     """
-    disable_trace_sampling: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_trace_sampling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable or disable trace sampling. By default, this is set to false for enabled.
     """
-    rollout_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    rollout_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
     Default value is `FIXED`.
@@ -1578,9 +1578,9 @@ class FlexibleAppVersionEndpointsApiServiceArgsDict(TypedDict):
 class FlexibleAppVersionEndpointsApiServiceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_trace_sampling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rollout_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_trace_sampling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rollout_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Endpoints service name which is the name of the "service" resource in the Service Management API.
                For example "myapi.endpoints.myproject.cloud.goog"
@@ -1618,7 +1618,7 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".
         By default, the rollout strategy for Endpoints is "FIXED". This means that Endpoints starts up with a particular configuration ID.
@@ -1630,24 +1630,24 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="disableTraceSampling")
-    def disable_trace_sampling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_trace_sampling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable trace sampling. By default, this is set to false for enabled.
         """
         return pulumi.get(self, "disable_trace_sampling")
 
     @disable_trace_sampling.setter
-    def disable_trace_sampling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_trace_sampling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_trace_sampling", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutStrategy")
-    def rollout_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
         Default value is `FIXED`.
@@ -1656,7 +1656,7 @@ class FlexibleAppVersionEndpointsApiServiceArgs:
         return pulumi.get(self, "rollout_strategy")
 
     @rollout_strategy.setter
-    def rollout_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_strategy", value)
 
 
@@ -1689,11 +1689,11 @@ class FlexibleAppVersionEntrypointArgs:
 
 
 class FlexibleAppVersionFlexibleRuntimeSettingsArgsDict(TypedDict):
-    operating_system: NotRequired[pulumi.Input[_builtins.str]]
+    operating_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Operating System of the application runtime.
     """
-    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    runtime_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The runtime version of an App Engine flexible application.
     """
@@ -1701,8 +1701,8 @@ class FlexibleAppVersionFlexibleRuntimeSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionFlexibleRuntimeSettingsArgs:
     def __init__(__self__, *,
-                 operating_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 operating_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] operating_system: Operating System of the application runtime.
         :param pulumi.Input[_builtins.str] runtime_version: The runtime version of an App Engine flexible application.
@@ -1714,63 +1714,63 @@ class FlexibleAppVersionFlexibleRuntimeSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operating_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operating System of the application runtime.
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operating_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeVersion")
-    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The runtime version of an App Engine flexible application.
         """
         return pulumi.get(self, "runtime_version")
 
     @runtime_version.setter
-    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_version", value)
 
 
 class FlexibleAppVersionHandlerArgsDict(TypedDict):
-    auth_fail_action: NotRequired[pulumi.Input[_builtins.str]]
+    auth_fail_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Actions to take when the user is not logged in.
     Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
     """
-    login: NotRequired[pulumi.Input[_builtins.str]]
+    login: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Methods to restrict access to a URL based on login status.
     Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
     """
-    redirect_http_response_code: NotRequired[pulumi.Input[_builtins.str]]
+    redirect_http_response_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     30x code to use when performing redirects for the secure field.
     Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
     """
-    script: NotRequired[pulumi.Input['FlexibleAppVersionHandlerScriptArgsDict']]
+    script: NotRequired[pulumi.Input[Optional['FlexibleAppVersionHandlerScriptArgs']]]
     """
     Executes a script to handle the requests that match this URL pattern.
     Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
     Structure is documented below.
     """
-    security_level: NotRequired[pulumi.Input[_builtins.str]]
+    security_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security (HTTPS) enforcement for this URL.
     Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
     """
-    static_files: NotRequired[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgsDict']]
+    static_files: NotRequired[pulumi.Input[Optional['FlexibleAppVersionHandlerStaticFilesArgs']]]
     """
     Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
     Static file handlers describe which files in the application directory are static files, and which URLs serve them.
     Structure is documented below.
     """
-    url_regex: NotRequired[pulumi.Input[_builtins.str]]
+    url_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
     All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -1779,13 +1779,13 @@ class FlexibleAppVersionHandlerArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionHandlerArgs:
     def __init__(__self__, *,
-                 auth_fail_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 login: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_http_response_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']] = None,
-                 security_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_files: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']] = None,
-                 url_regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_fail_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 login: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_http_response_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional['FlexibleAppVersionHandlerScriptArgs']] = None,
+                 security_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_files: pulumi.Input[Optional['FlexibleAppVersionHandlerStaticFilesArgs']] = None,
+                 url_regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_fail_action: Actions to take when the user is not logged in.
                Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
@@ -1821,7 +1821,7 @@ class FlexibleAppVersionHandlerArgs:
 
     @_builtins.property
     @pulumi.getter(name="authFailAction")
-    def auth_fail_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_fail_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions to take when the user is not logged in.
         Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
@@ -1829,12 +1829,12 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "auth_fail_action")
 
     @auth_fail_action.setter
-    def auth_fail_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_fail_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_fail_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Methods to restrict access to a URL based on login status.
         Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
@@ -1842,12 +1842,12 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectHttpResponseCode")
-    def redirect_http_response_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_http_response_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         30x code to use when performing redirects for the secure field.
         Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
@@ -1855,12 +1855,12 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "redirect_http_response_code")
 
     @redirect_http_response_code.setter
-    def redirect_http_response_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_http_response_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_http_response_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']]:
+    def script(self) -> pulumi.Input[Optional['FlexibleAppVersionHandlerScriptArgs']]:
         """
         Executes a script to handle the requests that match this URL pattern.
         Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
@@ -1869,12 +1869,12 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input['FlexibleAppVersionHandlerScriptArgs']]):
+    def script(self, value: pulumi.Input[Optional['FlexibleAppVersionHandlerScriptArgs']]):
         pulumi.set(self, "script", value)
 
     @_builtins.property
     @pulumi.getter(name="securityLevel")
-    def security_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security (HTTPS) enforcement for this URL.
         Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
@@ -1882,12 +1882,12 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "security_level")
 
     @security_level.setter
-    def security_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_level", value)
 
     @_builtins.property
     @pulumi.getter(name="staticFiles")
-    def static_files(self) -> Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']]:
+    def static_files(self) -> pulumi.Input[Optional['FlexibleAppVersionHandlerStaticFilesArgs']]:
         """
         Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
         Static file handlers describe which files in the application directory are static files, and which URLs serve them.
@@ -1896,12 +1896,12 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "static_files")
 
     @static_files.setter
-    def static_files(self, value: Optional[pulumi.Input['FlexibleAppVersionHandlerStaticFilesArgs']]):
+    def static_files(self, value: pulumi.Input[Optional['FlexibleAppVersionHandlerStaticFilesArgs']]):
         pulumi.set(self, "static_files", value)
 
     @_builtins.property
     @pulumi.getter(name="urlRegex")
-    def url_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
         All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -1909,7 +1909,7 @@ class FlexibleAppVersionHandlerArgs:
         return pulumi.get(self, "url_regex")
 
     @url_regex.setter
-    def url_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_regex", value)
 
 
@@ -1942,38 +1942,38 @@ class FlexibleAppVersionHandlerScriptArgs:
 
 
 class FlexibleAppVersionHandlerStaticFilesArgsDict(TypedDict):
-    application_readable: NotRequired[pulumi.Input[_builtins.bool]]
+    application_readable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether files should also be uploaded as code data. By default, files declared in static file handlers are
     uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
     uploads are charged against both your code and static data storage resource quotas.
     """
-    expiration: NotRequired[pulumi.Input[_builtins.str]]
+    expiration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time a static file served by this handler should be cached by web proxies and browsers.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
     Default is '0s'
     """
-    http_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     HTTP headers to use for all responses from these URLs.
     An object containing a list of "key:value" value pairs.".
     """
-    mime_type: NotRequired[pulumi.Input[_builtins.str]]
+    mime_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     MIME type used to serve all files served by this handler.
     Defaults to file-specific MIME types, which are derived from each file's filename extension.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to the static files matched by the URL pattern, from the application root directory.
     The path can refer to text matched in groupings in the URL pattern.
     """
-    require_matching_file: NotRequired[pulumi.Input[_builtins.bool]]
+    require_matching_file: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this handler should match the request if the file referenced by the handler does not exist.
     """
-    upload_path_regex: NotRequired[pulumi.Input[_builtins.str]]
+    upload_path_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Regular expression that matches the file paths for all files that should be referenced by this handler.
     """
@@ -1981,13 +1981,13 @@ class FlexibleAppVersionHandlerStaticFilesArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionHandlerStaticFilesArgs:
     def __init__(__self__, *,
-                 application_readable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_matching_file: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upload_path_regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_readable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_matching_file: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upload_path_regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] application_readable: Whether files should also be uploaded as code data. By default, files declared in static file handlers are
                uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
@@ -2021,7 +2021,7 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationReadable")
-    def application_readable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def application_readable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether files should also be uploaded as code data. By default, files declared in static file handlers are
         uploaded as static data and are only served to end users; they cannot be read by the application. If enabled,
@@ -2030,12 +2030,12 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "application_readable")
 
     @application_readable.setter
-    def application_readable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def application_readable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "application_readable", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time a static file served by this handler should be cached by web proxies and browsers.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
@@ -2044,12 +2044,12 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         HTTP headers to use for all responses from these URLs.
         An object containing a list of "key:value" value pairs.".
@@ -2057,12 +2057,12 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="mimeType")
-    def mime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MIME type used to serve all files served by this handler.
         Defaults to file-specific MIME types, which are derived from each file's filename extension.
@@ -2070,12 +2070,12 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "mime_type")
 
     @mime_type.setter
-    def mime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mime_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the static files matched by the URL pattern, from the application root directory.
         The path can refer to text matched in groupings in the URL pattern.
@@ -2083,31 +2083,31 @@ class FlexibleAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="requireMatchingFile")
-    def require_matching_file(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_matching_file(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this handler should match the request if the file referenced by the handler does not exist.
         """
         return pulumi.get(self, "require_matching_file")
 
     @require_matching_file.setter
-    def require_matching_file(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_matching_file(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_matching_file", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadPathRegex")
-    def upload_path_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_path_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression that matches the file paths for all files that should be referenced by this handler.
         """
         return pulumi.get(self, "upload_path_regex")
 
     @upload_path_regex.setter
-    def upload_path_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_path_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_path_regex", value)
 
 
@@ -2116,27 +2116,27 @@ class FlexibleAppVersionLivenessCheckArgsDict(TypedDict):
     """
     The request path.
     """
-    check_interval: NotRequired[pulumi.Input[_builtins.str]]
+    check_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Interval between health checks.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
     """
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
     """
-    initial_delay: NotRequired[pulumi.Input[_builtins.str]]
+    initial_delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The initial delay before starting to execute the checks. Default: "300s"
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Number of consecutive successful checks required before considering the VM healthy. Default: 2.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time before the check is considered failed. Default: "4s"
     """
@@ -2145,12 +2145,12 @@ class FlexibleAppVersionLivenessCheckArgsDict(TypedDict):
 class FlexibleAppVersionLivenessCheckArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 check_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_delay: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_delay: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The request path.
         :param pulumi.Input[_builtins.str] check_interval: Interval between health checks.
@@ -2188,74 +2188,74 @@ class FlexibleAppVersionLivenessCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkInterval")
-    def check_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Interval between health checks.
         """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
-    def check_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelay")
-    def initial_delay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The initial delay before starting to execute the checks. Default: "300s"
         """
         return pulumi.get(self, "initial_delay")
 
     @initial_delay.setter
-    def initial_delay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_delay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Number of consecutive successful checks required before considering the VM healthy. Default: 2.
         """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time before the check is considered failed. Default: "4s"
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -2298,25 +2298,25 @@ class FlexibleAppVersionNetworkArgsDict(TypedDict):
     """
     Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
     """
-    forwarded_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    forwarded_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of ports, or port pairs, to forward from the virtual machine to the application container.
     """
-    instance_ip_mode: NotRequired[pulumi.Input[_builtins.str]]
+    instance_ip_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Beta)
     Prevent instances from receiving an ephemeral external IP address.
     Possible values are: `EXTERNAL`, `INTERNAL`.
     """
-    instance_tag: NotRequired[pulumi.Input[_builtins.str]]
+    instance_tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tag to apply to the instance during creation.
     """
-    session_affinity: NotRequired[pulumi.Input[_builtins.bool]]
+    session_affinity: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable session affinity.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
     If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
@@ -2329,11 +2329,11 @@ class FlexibleAppVersionNetworkArgsDict(TypedDict):
 class FlexibleAppVersionNetworkArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_ip_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 forwarded_ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_ip_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] forwarded_ports: List of ports, or port pairs, to forward from the virtual machine to the application container.
@@ -2374,19 +2374,19 @@ class FlexibleAppVersionNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="forwardedPorts")
-    def forwarded_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def forwarded_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of ports, or port pairs, to forward from the virtual machine to the application container.
         """
         return pulumi.get(self, "forwarded_ports")
 
     @forwarded_ports.setter
-    def forwarded_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def forwarded_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "forwarded_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIpMode")
-    def instance_ip_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_ip_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         Prevent instances from receiving an ephemeral external IP address.
@@ -2395,36 +2395,36 @@ class FlexibleAppVersionNetworkArgs:
         return pulumi.get(self, "instance_ip_mode")
 
     @instance_ip_mode.setter
-    def instance_ip_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_ip_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_ip_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTag")
-    def instance_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tag to apply to the instance during creation.
         """
         return pulumi.get(self, "instance_tag")
 
     @instance_tag.setter
-    def instance_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable session affinity.
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
         If the network that the instance is being created in is a Legacy network, then the IP address is allocated from the IPv4Range.
@@ -2435,7 +2435,7 @@ class FlexibleAppVersionNetworkArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
@@ -2444,28 +2444,28 @@ class FlexibleAppVersionReadinessCheckArgsDict(TypedDict):
     """
     The request path.
     """
-    app_start_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    app_start_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A maximum time limit on application initialization, measured from moment the application successfully
     replies to a healthcheck until it is ready to serve traffic. Default: "300s"
     """
-    check_interval: NotRequired[pulumi.Input[_builtins.str]]
+    check_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Interval between health checks.  Default: "5s".
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Number of consecutive failed checks required before removing traffic. Default: 2.
     """
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Number of consecutive successful checks required before receiving traffic. Default: 2.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time before the check is considered failed. Default: "4s"
     """
@@ -2474,12 +2474,12 @@ class FlexibleAppVersionReadinessCheckArgsDict(TypedDict):
 class FlexibleAppVersionReadinessCheckArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 app_start_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.float]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_start_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The request path.
         :param pulumi.Input[_builtins.str] app_start_timeout: A maximum time limit on application initialization, measured from moment the application successfully
@@ -2518,7 +2518,7 @@ class FlexibleAppVersionReadinessCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="appStartTimeout")
-    def app_start_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_start_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A maximum time limit on application initialization, measured from moment the application successfully
         replies to a healthcheck until it is ready to serve traffic. Default: "300s"
@@ -2526,84 +2526,84 @@ class FlexibleAppVersionReadinessCheckArgs:
         return pulumi.get(self, "app_start_timeout")
 
     @app_start_timeout.setter
-    def app_start_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_start_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_start_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="checkInterval")
-    def check_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Interval between health checks.  Default: "5s".
         """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
-    def check_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Number of consecutive failed checks required before removing traffic. Default: 2.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Number of consecutive successful checks required before receiving traffic. Default: 2.
         """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time before the check is considered failed. Default: "4s"
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
 
 class FlexibleAppVersionResourcesArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[_builtins.int]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of CPU cores needed.
     """
-    disk_gb: NotRequired[pulumi.Input[_builtins.int]]
+    disk_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Disk size (GB) needed.
     """
-    memory_gb: NotRequired[pulumi.Input[_builtins.float]]
+    memory_gb: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Memory (GB) needed.
     """
-    volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgsDict']]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]]
     """
     List of ports, or port pairs, to forward from the virtual machine to the application container.
     Structure is documented below.
@@ -2612,10 +2612,10 @@ class FlexibleAppVersionResourcesArgsDict(TypedDict):
 @pulumi.input_type
 class FlexibleAppVersionResourcesArgs:
     def __init__(__self__, *,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_gb: Optional[pulumi.Input[_builtins.float]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]] = None):
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_gb: pulumi.Input[Optional[_builtins.float]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.int] cpu: Number of CPU cores needed.
         :param pulumi.Input[_builtins.int] disk_gb: Disk size (GB) needed.
@@ -2634,43 +2634,43 @@ class FlexibleAppVersionResourcesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of CPU cores needed.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="diskGb")
-    def disk_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Disk size (GB) needed.
         """
         return pulumi.get(self, "disk_gb")
 
     @disk_gb.setter
-    def disk_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryGb")
-    def memory_gb(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory_gb(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Memory (GB) needed.
         """
         return pulumi.get(self, "memory_gb")
 
     @memory_gb.setter
-    def memory_gb(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory_gb(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory_gb", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]:
         """
         List of ports, or port pairs, to forward from the virtual machine to the application container.
         Structure is documented below.
@@ -2678,7 +2678,7 @@ class FlexibleAppVersionResourcesArgs:
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
@@ -2777,7 +2777,7 @@ class FlexibleAppVersionVpcAccessConnectorArgs:
 
 
 class ServiceNetworkSettingsNetworkSettingsArgsDict(TypedDict):
-    ingress_traffic_allowed: NotRequired[pulumi.Input[_builtins.str]]
+    ingress_traffic_allowed: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ingress settings for version or service.
     Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
@@ -2787,7 +2787,7 @@ class ServiceNetworkSettingsNetworkSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceNetworkSettingsNetworkSettingsArgs:
     def __init__(__self__, *,
-                 ingress_traffic_allowed: Optional[pulumi.Input[_builtins.str]] = None):
+                 ingress_traffic_allowed: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ingress_traffic_allowed: The ingress settings for version or service.
                Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
@@ -2798,7 +2798,7 @@ class ServiceNetworkSettingsNetworkSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="ingressTrafficAllowed")
-    def ingress_traffic_allowed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_traffic_allowed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ingress settings for version or service.
         Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
@@ -2807,35 +2807,35 @@ class ServiceNetworkSettingsNetworkSettingsArgs:
         return pulumi.get(self, "ingress_traffic_allowed")
 
     @ingress_traffic_allowed.setter
-    def ingress_traffic_allowed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_traffic_allowed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_traffic_allowed", value)
 
 
 class StandardAppVersionAutomaticScalingArgsDict(TypedDict):
-    max_concurrent_requests: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_requests: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
     Defaults to a runtime-specific value.
     """
-    max_idle_instances: NotRequired[pulumi.Input[_builtins.int]]
+    max_idle_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of idle instances that should be maintained for this version.
     """
-    max_pending_latency: NotRequired[pulumi.Input[_builtins.str]]
+    max_pending_latency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    min_idle_instances: NotRequired[pulumi.Input[_builtins.int]]
+    min_idle_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
     """
-    min_pending_latency: NotRequired[pulumi.Input[_builtins.str]]
+    min_pending_latency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    standard_scheduler_settings: NotRequired[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict']]
+    standard_scheduler_settings: NotRequired[pulumi.Input[Optional['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]]
     """
     Scheduler settings for standard environment.
     Structure is documented below.
@@ -2844,12 +2844,12 @@ class StandardAppVersionAutomaticScalingArgsDict(TypedDict):
 @pulumi.input_type
 class StandardAppVersionAutomaticScalingArgs:
     def __init__(__self__, *,
-                 max_concurrent_requests: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pending_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_idle_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_pending_latency: Optional[pulumi.Input[_builtins.str]] = None,
-                 standard_scheduler_settings: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']] = None):
+                 max_concurrent_requests: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_pending_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_idle_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_pending_latency: pulumi.Input[Optional[_builtins.str]] = None,
+                 standard_scheduler_settings: pulumi.Input[Optional['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] max_concurrent_requests: Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
                Defaults to a runtime-specific value.
@@ -2877,7 +2877,7 @@ class StandardAppVersionAutomaticScalingArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentRequests")
-    def max_concurrent_requests(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_requests(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of concurrent requests an automatic scaling instance can accept before the scheduler spawns a new instance.
         Defaults to a runtime-specific value.
@@ -2885,24 +2885,24 @@ class StandardAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "max_concurrent_requests")
 
     @max_concurrent_requests.setter
-    def max_concurrent_requests(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_requests(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_requests", value)
 
     @_builtins.property
     @pulumi.getter(name="maxIdleInstances")
-    def max_idle_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_idle_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of idle instances that should be maintained for this version.
         """
         return pulumi.get(self, "max_idle_instances")
 
     @max_idle_instances.setter
-    def max_idle_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_idle_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_idle_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPendingLatency")
-    def max_pending_latency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_pending_latency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum amount of time that a request should wait in the pending queue before starting a new instance to handle it.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -2910,24 +2910,24 @@ class StandardAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "max_pending_latency")
 
     @max_pending_latency.setter
-    def max_pending_latency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_pending_latency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_pending_latency", value)
 
     @_builtins.property
     @pulumi.getter(name="minIdleInstances")
-    def min_idle_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_idle_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of idle instances that should be maintained for this version. Only applicable for the default version of a service.
         """
         return pulumi.get(self, "min_idle_instances")
 
     @min_idle_instances.setter
-    def min_idle_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_idle_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_idle_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="minPendingLatency")
-    def min_pending_latency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_pending_latency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -2935,12 +2935,12 @@ class StandardAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "min_pending_latency")
 
     @min_pending_latency.setter
-    def min_pending_latency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_pending_latency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_pending_latency", value)
 
     @_builtins.property
     @pulumi.getter(name="standardSchedulerSettings")
-    def standard_scheduler_settings(self) -> Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]:
+    def standard_scheduler_settings(self) -> pulumi.Input[Optional['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]:
         """
         Scheduler settings for standard environment.
         Structure is documented below.
@@ -2948,25 +2948,25 @@ class StandardAppVersionAutomaticScalingArgs:
         return pulumi.get(self, "standard_scheduler_settings")
 
     @standard_scheduler_settings.setter
-    def standard_scheduler_settings(self, value: Optional[pulumi.Input['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]):
+    def standard_scheduler_settings(self, value: pulumi.Input[Optional['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]):
         pulumi.set(self, "standard_scheduler_settings", value)
 
 
 class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict(TypedDict):
-    max_instances: NotRequired[pulumi.Input[_builtins.int]]
+    max_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
     **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
     """
-    min_instances: NotRequired[pulumi.Input[_builtins.int]]
+    min_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
     """
-    target_cpu_utilization: NotRequired[pulumi.Input[_builtins.float]]
+    target_cpu_utilization: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
     """
-    target_throughput_utilization: NotRequired[pulumi.Input[_builtins.float]]
+    target_throughput_utilization: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
     """
@@ -2974,10 +2974,10 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict(TypedD
 @pulumi.input_type
 class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
     def __init__(__self__, *,
-                 max_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_cpu_utilization: Optional[pulumi.Input[_builtins.float]] = None,
-                 target_throughput_utilization: Optional[pulumi.Input[_builtins.float]] = None):
+                 max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_cpu_utilization: pulumi.Input[Optional[_builtins.float]] = None,
+                 target_throughput_utilization: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.int] max_instances: Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
                **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
@@ -2996,7 +2996,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of instances to run for this version. Set to zero to disable maxInstances configuration.
         **Note:** Starting from March 2025, App Engine sets the maxInstances default for standard environment deployments to 20. This change doesn't impact existing apps. To override the default, specify a new value between 0 and 2147483647, and deploy a new version or redeploy over an existing version. To disable the maxInstances default configuration setting, specify the maximum permitted value 2147483647.
@@ -3004,43 +3004,43 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs:
         return pulumi.get(self, "max_instances")
 
     @max_instances.setter
-    def max_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstances")
-    def min_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
         """
         return pulumi.get(self, "min_instances")
 
     @min_instances.setter
-    def min_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="targetCpuUtilization")
-    def target_cpu_utilization(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def target_cpu_utilization(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         """
         return pulumi.get(self, "target_cpu_utilization")
 
     @target_cpu_utilization.setter
-    def target_cpu_utilization(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def target_cpu_utilization(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "target_cpu_utilization", value)
 
     @_builtins.property
     @pulumi.getter(name="targetThroughputUtilization")
-    def target_throughput_utilization(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def target_throughput_utilization(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
         """
         return pulumi.get(self, "target_throughput_utilization")
 
     @target_throughput_utilization.setter
-    def target_throughput_utilization(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def target_throughput_utilization(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "target_throughput_utilization", value)
 
 
@@ -3049,7 +3049,7 @@ class StandardAppVersionBasicScalingArgsDict(TypedDict):
     """
     Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
     """
-    idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    idle_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Duration of time after the last request that an instance must wait before the instance is shut down.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
@@ -3059,7 +3059,7 @@ class StandardAppVersionBasicScalingArgsDict(TypedDict):
 class StandardAppVersionBasicScalingArgs:
     def __init__(__self__, *,
                  max_instances: pulumi.Input[_builtins.int],
-                 idle_timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 idle_timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] max_instances: Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
         :param pulumi.Input[_builtins.str] idle_timeout: Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -3083,7 +3083,7 @@ class StandardAppVersionBasicScalingArgs:
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration of time after the last request that an instance must wait before the instance is shut down.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
@@ -3091,18 +3091,18 @@ class StandardAppVersionBasicScalingArgs:
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idle_timeout", value)
 
 
 class StandardAppVersionDeploymentArgsDict(TypedDict):
-    files: NotRequired[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgsDict']]]]
+    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]]
     """
     Manifest of the files stored in Google Cloud Storage that are included as part of this version.
     All files must be readable using the credentials supplied with this call.
     Structure is documented below.
     """
-    zip: NotRequired[pulumi.Input['StandardAppVersionDeploymentZipArgsDict']]
+    zip: NotRequired[pulumi.Input[Optional['StandardAppVersionDeploymentZipArgs']]]
     """
     Zip File
     Structure is documented below.
@@ -3111,8 +3111,8 @@ class StandardAppVersionDeploymentArgsDict(TypedDict):
 @pulumi.input_type
 class StandardAppVersionDeploymentArgs:
     def __init__(__self__, *,
-                 files: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]] = None,
-                 zip: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']] = None):
+                 files: pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]] = None,
+                 zip: pulumi.Input[Optional['StandardAppVersionDeploymentZipArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]] files: Manifest of the files stored in Google Cloud Storage that are included as part of this version.
                All files must be readable using the credentials supplied with this call.
@@ -3127,7 +3127,7 @@ class StandardAppVersionDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]:
+    def files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]:
         """
         Manifest of the files stored in Google Cloud Storage that are included as part of this version.
         All files must be readable using the credentials supplied with this call.
@@ -3136,12 +3136,12 @@ class StandardAppVersionDeploymentArgs:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]):
+    def files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]):
         pulumi.set(self, "files", value)
 
     @_builtins.property
     @pulumi.getter
-    def zip(self) -> Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']]:
+    def zip(self) -> pulumi.Input[Optional['StandardAppVersionDeploymentZipArgs']]:
         """
         Zip File
         Structure is documented below.
@@ -3149,7 +3149,7 @@ class StandardAppVersionDeploymentArgs:
         return pulumi.get(self, "zip")
 
     @zip.setter
-    def zip(self, value: Optional[pulumi.Input['StandardAppVersionDeploymentZipArgs']]):
+    def zip(self, value: pulumi.Input[Optional['StandardAppVersionDeploymentZipArgs']]):
         pulumi.set(self, "zip", value)
 
 
@@ -3162,7 +3162,7 @@ class StandardAppVersionDeploymentFileArgsDict(TypedDict):
     """
     Source URL
     """
-    sha1_sum: NotRequired[pulumi.Input[_builtins.str]]
+    sha1_sum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SHA1 checksum of the file
     """
@@ -3172,7 +3172,7 @@ class StandardAppVersionDeploymentFileArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  source_url: pulumi.Input[_builtins.str],
-                 sha1_sum: Optional[pulumi.Input[_builtins.str]] = None):
+                 sha1_sum: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] source_url: Source URL
@@ -3209,14 +3209,14 @@ class StandardAppVersionDeploymentFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="sha1Sum")
-    def sha1_sum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha1_sum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA1 checksum of the file
         """
         return pulumi.get(self, "sha1_sum")
 
     @sha1_sum.setter
-    def sha1_sum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha1_sum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha1_sum", value)
 
 
@@ -3225,7 +3225,7 @@ class StandardAppVersionDeploymentZipArgsDict(TypedDict):
     """
     Source URL
     """
-    files_count: NotRequired[pulumi.Input[_builtins.int]]
+    files_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     files count
     """
@@ -3234,7 +3234,7 @@ class StandardAppVersionDeploymentZipArgsDict(TypedDict):
 class StandardAppVersionDeploymentZipArgs:
     def __init__(__self__, *,
                  source_url: pulumi.Input[_builtins.str],
-                 files_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 files_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] source_url: Source URL
         :param pulumi.Input[_builtins.int] files_count: files count
@@ -3257,14 +3257,14 @@ class StandardAppVersionDeploymentZipArgs:
 
     @_builtins.property
     @pulumi.getter(name="filesCount")
-    def files_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def files_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         files count
         """
         return pulumi.get(self, "files_count")
 
     @files_count.setter
-    def files_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def files_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "files_count", value)
 
 
@@ -3297,38 +3297,38 @@ class StandardAppVersionEntrypointArgs:
 
 
 class StandardAppVersionHandlerArgsDict(TypedDict):
-    auth_fail_action: NotRequired[pulumi.Input[_builtins.str]]
+    auth_fail_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Actions to take when the user is not logged in.
     Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
     """
-    login: NotRequired[pulumi.Input[_builtins.str]]
+    login: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Methods to restrict access to a URL based on login status.
     Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
     """
-    redirect_http_response_code: NotRequired[pulumi.Input[_builtins.str]]
+    redirect_http_response_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     30x code to use when performing redirects for the secure field.
     Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
     """
-    script: NotRequired[pulumi.Input['StandardAppVersionHandlerScriptArgsDict']]
+    script: NotRequired[pulumi.Input[Optional['StandardAppVersionHandlerScriptArgs']]]
     """
     Executes a script to handle the requests that match this URL pattern.
     Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
     Structure is documented below.
     """
-    security_level: NotRequired[pulumi.Input[_builtins.str]]
+    security_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security (HTTPS) enforcement for this URL.
     Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
     """
-    static_files: NotRequired[pulumi.Input['StandardAppVersionHandlerStaticFilesArgsDict']]
+    static_files: NotRequired[pulumi.Input[Optional['StandardAppVersionHandlerStaticFilesArgs']]]
     """
     Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
     Structure is documented below.
     """
-    url_regex: NotRequired[pulumi.Input[_builtins.str]]
+    url_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
     All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -3337,13 +3337,13 @@ class StandardAppVersionHandlerArgsDict(TypedDict):
 @pulumi.input_type
 class StandardAppVersionHandlerArgs:
     def __init__(__self__, *,
-                 auth_fail_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 login: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_http_response_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input['StandardAppVersionHandlerScriptArgs']] = None,
-                 security_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_files: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']] = None,
-                 url_regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_fail_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 login: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_http_response_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional['StandardAppVersionHandlerScriptArgs']] = None,
+                 security_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_files: pulumi.Input[Optional['StandardAppVersionHandlerStaticFilesArgs']] = None,
+                 url_regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_fail_action: Actions to take when the user is not logged in.
                Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
@@ -3378,7 +3378,7 @@ class StandardAppVersionHandlerArgs:
 
     @_builtins.property
     @pulumi.getter(name="authFailAction")
-    def auth_fail_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_fail_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Actions to take when the user is not logged in.
         Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
@@ -3386,12 +3386,12 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "auth_fail_action")
 
     @auth_fail_action.setter
-    def auth_fail_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_fail_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_fail_action", value)
 
     @_builtins.property
     @pulumi.getter
-    def login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Methods to restrict access to a URL based on login status.
         Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
@@ -3399,12 +3399,12 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "login")
 
     @login.setter
-    def login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectHttpResponseCode")
-    def redirect_http_response_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_http_response_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         30x code to use when performing redirects for the secure field.
         Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
@@ -3412,12 +3412,12 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "redirect_http_response_code")
 
     @redirect_http_response_code.setter
-    def redirect_http_response_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_http_response_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_http_response_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input['StandardAppVersionHandlerScriptArgs']]:
+    def script(self) -> pulumi.Input[Optional['StandardAppVersionHandlerScriptArgs']]:
         """
         Executes a script to handle the requests that match this URL pattern.
         Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
@@ -3426,12 +3426,12 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input['StandardAppVersionHandlerScriptArgs']]):
+    def script(self, value: pulumi.Input[Optional['StandardAppVersionHandlerScriptArgs']]):
         pulumi.set(self, "script", value)
 
     @_builtins.property
     @pulumi.getter(name="securityLevel")
-    def security_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security (HTTPS) enforcement for this URL.
         Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
@@ -3439,12 +3439,12 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "security_level")
 
     @security_level.setter
-    def security_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_level", value)
 
     @_builtins.property
     @pulumi.getter(name="staticFiles")
-    def static_files(self) -> Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']]:
+    def static_files(self) -> pulumi.Input[Optional['StandardAppVersionHandlerStaticFilesArgs']]:
         """
         Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
         Structure is documented below.
@@ -3452,12 +3452,12 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "static_files")
 
     @static_files.setter
-    def static_files(self, value: Optional[pulumi.Input['StandardAppVersionHandlerStaticFilesArgs']]):
+    def static_files(self, value: pulumi.Input[Optional['StandardAppVersionHandlerStaticFilesArgs']]):
         pulumi.set(self, "static_files", value)
 
     @_builtins.property
     @pulumi.getter(name="urlRegex")
-    def url_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
         All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -3465,7 +3465,7 @@ class StandardAppVersionHandlerArgs:
         return pulumi.get(self, "url_regex")
 
     @url_regex.setter
-    def url_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_regex", value)
 
 
@@ -3498,36 +3498,36 @@ class StandardAppVersionHandlerScriptArgs:
 
 
 class StandardAppVersionHandlerStaticFilesArgsDict(TypedDict):
-    application_readable: NotRequired[pulumi.Input[_builtins.bool]]
+    application_readable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
     static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
     against both your code and static data storage resource quotas.
     """
-    expiration: NotRequired[pulumi.Input[_builtins.str]]
+    expiration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time a static file served by this handler should be cached by web proxies and browsers.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
     """
-    http_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     HTTP headers to use for all responses from these URLs.
     An object containing a list of "key:value" value pairs.".
     """
-    mime_type: NotRequired[pulumi.Input[_builtins.str]]
+    mime_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     MIME type used to serve all files served by this handler.
     Defaults to file-specific MIME types, which are derived from each file's filename extension.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
     """
-    require_matching_file: NotRequired[pulumi.Input[_builtins.bool]]
+    require_matching_file: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this handler should match the request if the file referenced by the handler does not exist.
     """
-    upload_path_regex: NotRequired[pulumi.Input[_builtins.str]]
+    upload_path_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Regular expression that matches the file paths for all files that should be referenced by this handler.
     """
@@ -3535,13 +3535,13 @@ class StandardAppVersionHandlerStaticFilesArgsDict(TypedDict):
 @pulumi.input_type
 class StandardAppVersionHandlerStaticFilesArgs:
     def __init__(__self__, *,
-                 application_readable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 require_matching_file: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upload_path_regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_readable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 require_matching_file: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upload_path_regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] application_readable: Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
                static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
@@ -3573,7 +3573,7 @@ class StandardAppVersionHandlerStaticFilesArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationReadable")
-    def application_readable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def application_readable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as
         static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged
@@ -3582,12 +3582,12 @@ class StandardAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "application_readable")
 
     @application_readable.setter
-    def application_readable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def application_readable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "application_readable", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time a static file served by this handler should be cached by web proxies and browsers.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example "3.5s".
@@ -3595,12 +3595,12 @@ class StandardAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         HTTP headers to use for all responses from these URLs.
         An object containing a list of "key:value" value pairs.".
@@ -3608,12 +3608,12 @@ class StandardAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="mimeType")
-    def mime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MIME type used to serve all files served by this handler.
         Defaults to file-specific MIME types, which are derived from each file's filename extension.
@@ -3621,52 +3621,52 @@ class StandardAppVersionHandlerStaticFilesArgs:
         return pulumi.get(self, "mime_type")
 
     @mime_type.setter
-    def mime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mime_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="requireMatchingFile")
-    def require_matching_file(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_matching_file(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this handler should match the request if the file referenced by the handler does not exist.
         """
         return pulumi.get(self, "require_matching_file")
 
     @require_matching_file.setter
-    def require_matching_file(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_matching_file(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_matching_file", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadPathRegex")
-    def upload_path_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_path_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression that matches the file paths for all files that should be referenced by this handler.
         """
         return pulumi.get(self, "upload_path_regex")
 
     @upload_path_regex.setter
-    def upload_path_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_path_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_path_regex", value)
 
 
 class StandardAppVersionLibraryArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the library. Example "django".
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version of the library to select, or "latest".
     """
@@ -3674,8 +3674,8 @@ class StandardAppVersionLibraryArgsDict(TypedDict):
 @pulumi.input_type
 class StandardAppVersionLibraryArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the library. Example "django".
         :param pulumi.Input[_builtins.str] version: Version of the library to select, or "latest".
@@ -3687,26 +3687,26 @@ class StandardAppVersionLibraryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the library. Example "django".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of the library to select, or "latest".
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -3749,7 +3749,7 @@ class StandardAppVersionVpcAccessConnectorArgsDict(TypedDict):
     """
     Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
     """
-    egress_setting: NotRequired[pulumi.Input[_builtins.str]]
+    egress_setting: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The egress setting for the connector, controlling what traffic is diverted through it.
     """
@@ -3758,7 +3758,7 @@ class StandardAppVersionVpcAccessConnectorArgsDict(TypedDict):
 class StandardAppVersionVpcAccessConnectorArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 egress_setting: Optional[pulumi.Input[_builtins.str]] = None):
+                 egress_setting: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[_builtins.str] egress_setting: The egress setting for the connector, controlling what traffic is diverted through it.
@@ -3781,14 +3781,14 @@ class StandardAppVersionVpcAccessConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="egressSetting")
-    def egress_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egress_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The egress setting for the connector, controlling what traffic is diverted through it.
         """
         return pulumi.get(self, "egress_setting")
 
     @egress_setting.setter
-    def egress_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egress_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egress_setting", value)
 
 

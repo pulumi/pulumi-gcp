@@ -139,9 +139,9 @@ def get_certificate_template_iam_policy(certificate_template: Optional[_builtins
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_certificate_template_iam_policy_output(certificate_template: Optional[pulumi.Input[_builtins.str]] = None,
-                                               location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_certificate_template_iam_policy_output(certificate_template: pulumi.Input[Optional[_builtins.str]] = None,
+                                               location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateTemplateIamPolicyResult]:
     """
     Retrieves the current IAM policy data for certificatetemplate

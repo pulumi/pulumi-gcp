@@ -244,67 +244,67 @@ export interface GatewaySecurityPolicyRuleState {
     /**
      * CEL expression for matching on L7/application level criteria.
      */
-    applicationMatcher?: pulumi.Input<string>;
+    applicationMatcher?: pulumi.Input<string | undefined>;
     /**
      * Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
      * Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
      */
-    basicProfile?: pulumi.Input<string>;
+    basicProfile?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the rule is enforced.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the gatewat security policy this rule belongs to.
      */
-    gatewaySecurityPolicy?: pulumi.Input<string>;
+    gatewaySecurityPolicy?: pulumi.Input<string | undefined>;
     /**
      * The location of the gateway security policy.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
      * rule should match the pattern: (^a-z?$).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the rule. Lower number corresponds to higher precedence.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * CEL expression for matching on session criteria.
      */
-    sessionMatcher?: pulumi.Input<string>;
+    sessionMatcher?: pulumi.Input<string | undefined>;
     /**
      * Flag to enable TLS inspection of traffic matching on. Can only be true if the
      * parent GatewaySecurityPolicy references a TLSInspectionConfig.
      */
-    tlsInspectionEnabled?: pulumi.Input<boolean>;
+    tlsInspectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -314,7 +314,7 @@ export interface GatewaySecurityPolicyRuleArgs {
     /**
      * CEL expression for matching on L7/application level criteria.
      */
-    applicationMatcher?: pulumi.Input<string>;
+    applicationMatcher?: pulumi.Input<string | undefined>;
     /**
      * Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
      * Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
@@ -323,7 +323,7 @@ export interface GatewaySecurityPolicyRuleArgs {
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the rule is enforced.
      */
@@ -340,7 +340,7 @@ export interface GatewaySecurityPolicyRuleArgs {
      * Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
      * rule should match the pattern: (^a-z?$).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Priority of the rule. Lower number corresponds to higher precedence.
      */
@@ -349,7 +349,7 @@ export interface GatewaySecurityPolicyRuleArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * CEL expression for matching on session criteria.
      */
@@ -358,5 +358,5 @@ export interface GatewaySecurityPolicyRuleArgs {
      * Flag to enable TLS inspection of traffic matching on. Can only be true if the
      * parent GatewaySecurityPolicy references a TLSInspectionConfig.
      */
-    tlsInspectionEnabled?: pulumi.Input<boolean>;
+    tlsInspectionEnabled?: pulumi.Input<boolean | undefined>;
 }

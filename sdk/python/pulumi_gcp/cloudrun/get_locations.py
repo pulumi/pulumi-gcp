@@ -103,7 +103,7 @@ def get_locations(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         locations=pulumi.get(__ret__, 'locations'),
         project=pulumi.get(__ret__, 'project'))
-def get_locations_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_locations_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLocationsResult]:
     """
     Get Cloud Run locations available for a project.

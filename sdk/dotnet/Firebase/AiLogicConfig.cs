@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     ///     // It takes a while for permissions to propagate
     ///     // If your Terraform setup has a retry mechanism, this wait is unnecessary
-    ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
+    ///     var wait30s = new Time.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Firebase
     /// 
     ///     // It takes a while for permissions to propagate
     ///     // If your Terraform setup has a retry mechanism, this wait is unnecessary
-    ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
+    ///     var wait30s = new Time.Sleep("wait_30s", new()
     ///     {
     ///         CreateDuration = "30s",
     ///     }, new CustomResourceOptions

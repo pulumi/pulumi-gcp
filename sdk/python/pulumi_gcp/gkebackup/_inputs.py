@@ -88,43 +88,43 @@ __all__ = [
 ]
 
 class BackupPlanBackupConfigArgsDict(TypedDict):
-    all_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
+    all_namespaces: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If True, include all namespaced resources.
     """
-    encryption_key: NotRequired[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgsDict']]
+    encryption_key: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigEncryptionKeyArgs']]]
     """
     This defines a customer managed encryption key that will be used to encrypt the "config"
     portion (the Kubernetes resources) of Backups created via this plan.
     Structure is documented below.
     """
-    include_secrets: NotRequired[pulumi.Input[_builtins.bool]]
+    include_secrets: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag specifies whether Kubernetes Secret resources should be included
     when they fall into the scope of Backups.
     """
-    include_volume_data: NotRequired[pulumi.Input[_builtins.bool]]
+    include_volume_data: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag specifies whether volume data should be backed up when PVCs are
     included in the scope of a Backup.
     """
-    permissive_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    permissive_mode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag specifies whether Backups will not fail when
     Backup for GKE detects Kubernetes configuration that is
     non-standard or requires additional setup to restore.
     """
-    selected_applications: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgsDict']]
+    selected_applications: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedApplicationsArgs']]]
     """
     A list of namespaced Kubernetes Resources.
     Structure is documented below.
     """
-    selected_namespace_labels: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsArgsDict']]
+    selected_namespace_labels: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']]]
     """
     If set, include just the resources in the listed namespace Labels.
     Structure is documented below.
     """
-    selected_namespaces: NotRequired[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgsDict']]
+    selected_namespaces: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespacesArgs']]]
     """
     If set, include just the resources in the listed namespaces.
     Structure is documented below.
@@ -133,14 +133,14 @@ class BackupPlanBackupConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BackupPlanBackupConfigArgs:
     def __init__(__self__, *,
-                 all_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs']] = None,
-                 include_secrets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 include_volume_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permissive_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 selected_applications: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']] = None,
-                 selected_namespace_labels: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']] = None,
-                 selected_namespaces: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']] = None):
+                 all_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional['BackupPlanBackupConfigEncryptionKeyArgs']] = None,
+                 include_secrets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_volume_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permissive_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selected_applications: pulumi.Input[Optional['BackupPlanBackupConfigSelectedApplicationsArgs']] = None,
+                 selected_namespace_labels: pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']] = None,
+                 selected_namespaces: pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespacesArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] all_namespaces: If True, include all namespaced resources.
         :param pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs'] encryption_key: This defines a customer managed encryption key that will be used to encrypt the "config"
@@ -179,19 +179,19 @@ class BackupPlanBackupConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allNamespaces")
-    def all_namespaces(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_namespaces(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If True, include all namespaced resources.
         """
         return pulumi.get(self, "all_namespaces")
 
     @all_namespaces.setter
-    def all_namespaces(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_namespaces(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs']]:
+    def encryption_key(self) -> pulumi.Input[Optional['BackupPlanBackupConfigEncryptionKeyArgs']]:
         """
         This defines a customer managed encryption key that will be used to encrypt the "config"
         portion (the Kubernetes resources) of Backups created via this plan.
@@ -200,12 +200,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input['BackupPlanBackupConfigEncryptionKeyArgs']]):
+    def encryption_key(self, value: pulumi.Input[Optional['BackupPlanBackupConfigEncryptionKeyArgs']]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="includeSecrets")
-    def include_secrets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_secrets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag specifies whether Kubernetes Secret resources should be included
         when they fall into the scope of Backups.
@@ -213,12 +213,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "include_secrets")
 
     @include_secrets.setter
-    def include_secrets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_secrets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_secrets", value)
 
     @_builtins.property
     @pulumi.getter(name="includeVolumeData")
-    def include_volume_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_volume_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag specifies whether volume data should be backed up when PVCs are
         included in the scope of a Backup.
@@ -226,12 +226,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "include_volume_data")
 
     @include_volume_data.setter
-    def include_volume_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_volume_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_volume_data", value)
 
     @_builtins.property
     @pulumi.getter(name="permissiveMode")
-    def permissive_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permissive_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag specifies whether Backups will not fail when
         Backup for GKE detects Kubernetes configuration that is
@@ -240,12 +240,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "permissive_mode")
 
     @permissive_mode.setter
-    def permissive_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permissive_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permissive_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedApplications")
-    def selected_applications(self) -> Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']]:
+    def selected_applications(self) -> pulumi.Input[Optional['BackupPlanBackupConfigSelectedApplicationsArgs']]:
         """
         A list of namespaced Kubernetes Resources.
         Structure is documented below.
@@ -253,12 +253,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "selected_applications")
 
     @selected_applications.setter
-    def selected_applications(self, value: Optional[pulumi.Input['BackupPlanBackupConfigSelectedApplicationsArgs']]):
+    def selected_applications(self, value: pulumi.Input[Optional['BackupPlanBackupConfigSelectedApplicationsArgs']]):
         pulumi.set(self, "selected_applications", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedNamespaceLabels")
-    def selected_namespace_labels(self) -> Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']]:
+    def selected_namespace_labels(self) -> pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']]:
         """
         If set, include just the resources in the listed namespace Labels.
         Structure is documented below.
@@ -266,12 +266,12 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "selected_namespace_labels")
 
     @selected_namespace_labels.setter
-    def selected_namespace_labels(self, value: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']]):
+    def selected_namespace_labels(self, value: pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']]):
         pulumi.set(self, "selected_namespace_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedNamespaces")
-    def selected_namespaces(self) -> Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']]:
+    def selected_namespaces(self) -> pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespacesArgs']]:
         """
         If set, include just the resources in the listed namespaces.
         Structure is documented below.
@@ -279,7 +279,7 @@ class BackupPlanBackupConfigArgs:
         return pulumi.get(self, "selected_namespaces")
 
     @selected_namespaces.setter
-    def selected_namespaces(self, value: Optional[pulumi.Input['BackupPlanBackupConfigSelectedNamespacesArgs']]):
+    def selected_namespaces(self, value: pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespacesArgs']]):
         pulumi.set(self, "selected_namespaces", value)
 
 
@@ -496,7 +496,7 @@ class BackupPlanBackupConfigSelectedNamespacesArgs:
 
 
 class BackupPlanBackupScheduleArgsDict(TypedDict):
-    cron_schedule: NotRequired[pulumi.Input[_builtins.str]]
+    cron_schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A standard cron string that defines a repeating schedule for
     creating Backups via this BackupPlan.
@@ -504,11 +504,11 @@ class BackupPlanBackupScheduleArgsDict(TypedDict):
     schedule can be defined for a BackupPlan.
     If this is defined, then backupRetainDays must also be defined.
     """
-    paused: NotRequired[pulumi.Input[_builtins.bool]]
+    paused: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag denotes whether automatic Backup creation is paused for this BackupPlan.
     """
-    rpo_config: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgsDict']]
+    rpo_config: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigArgs']]]
     """
     Defines the RPO schedule configuration for this BackupPlan. This is mutually
     exclusive with the cronSchedule field since at most one schedule can be defined
@@ -519,9 +519,9 @@ class BackupPlanBackupScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class BackupPlanBackupScheduleArgs:
     def __init__(__self__, *,
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rpo_config: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgs']] = None):
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rpo_config: pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] cron_schedule: A standard cron string that defines a repeating schedule for
                creating Backups via this BackupPlan.
@@ -543,7 +543,7 @@ class BackupPlanBackupScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A standard cron string that defines a repeating schedule for
         creating Backups via this BackupPlan.
@@ -554,24 +554,24 @@ class BackupPlanBackupScheduleArgs:
         return pulumi.get(self, "cron_schedule")
 
     @cron_schedule.setter
-    def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag denotes whether automatic Backup creation is paused for this BackupPlan.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="rpoConfig")
-    def rpo_config(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgs']]:
+    def rpo_config(self) -> pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigArgs']]:
         """
         Defines the RPO schedule configuration for this BackupPlan. This is mutually
         exclusive with the cronSchedule field since at most one schedule can be defined
@@ -581,7 +581,7 @@ class BackupPlanBackupScheduleArgs:
         return pulumi.get(self, "rpo_config")
 
     @rpo_config.setter
-    def rpo_config(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigArgs']]):
+    def rpo_config(self, value: pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigArgs']]):
         pulumi.set(self, "rpo_config", value)
 
 
@@ -592,7 +592,7 @@ class BackupPlanBackupScheduleRpoConfigArgsDict(TypedDict):
     maximum data loss in time that is acceptable for this BackupPlan. This must be
     at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
     """
-    exclusion_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict']]]]
+    exclusion_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]]
     """
     User specified time windows during which backup can NOT happen for this BackupPlan.
     Backups should start and finish outside of any given exclusion window. Note: backup
@@ -608,7 +608,7 @@ class BackupPlanBackupScheduleRpoConfigArgsDict(TypedDict):
 class BackupPlanBackupScheduleRpoConfigArgs:
     def __init__(__self__, *,
                  target_rpo_minutes: pulumi.Input[_builtins.int],
-                 exclusion_windows: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]] = None):
+                 exclusion_windows: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.int] target_rpo_minutes: Defines the target RPO for the BackupPlan in minutes, which means the target
                maximum data loss in time that is acceptable for this BackupPlan. This must be
@@ -642,7 +642,7 @@ class BackupPlanBackupScheduleRpoConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="exclusionWindows")
-    def exclusion_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]:
+    def exclusion_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]:
         """
         User specified time windows during which backup can NOT happen for this BackupPlan.
         Backups should start and finish outside of any given exclusion window. Note: backup
@@ -656,7 +656,7 @@ class BackupPlanBackupScheduleRpoConfigArgs:
         return pulumi.get(self, "exclusion_windows")
 
     @exclusion_windows.setter
-    def exclusion_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]):
+    def exclusion_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]):
         pulumi.set(self, "exclusion_windows", value)
 
 
@@ -677,19 +677,19 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict(TypedDict):
     Specifies the start time of the window using time of the day in UTC.
     Structure is documented below.
     """
-    daily: NotRequired[pulumi.Input[_builtins.bool]]
+    daily: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The exclusion window occurs every day if set to "True".
     Specifying this field to "False" is an error.
     Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
     """
-    days_of_week: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict']]
+    days_of_week: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]]
     """
     The exclusion window occurs on these days of each week in UTC.
     Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
     Structure is documented below.
     """
-    single_occurrence_date: NotRequired[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict']]
+    single_occurrence_date: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]]
     """
     No recurrence. The exclusion window occurs only once and on this date in UTC.
     Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
@@ -701,9 +701,9 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
     def __init__(__self__, *,
                  duration: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs'],
-                 daily: Optional[pulumi.Input[_builtins.bool]] = None,
-                 days_of_week: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']] = None,
-                 single_occurrence_date: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']] = None):
+                 daily: pulumi.Input[Optional[_builtins.bool]] = None,
+                 days_of_week: pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']] = None,
+                 single_occurrence_date: pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] duration: Specifies duration of the window in seconds with up to nine fractional digits,
                terminated by 's'. Example: "3.5s". Restrictions for duration based on the
@@ -768,7 +768,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def daily(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daily(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The exclusion window occurs every day if set to "True".
         Specifying this field to "False" is an error.
@@ -777,12 +777,12 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
         return pulumi.get(self, "daily")
 
     @daily.setter
-    def daily(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daily(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daily", value)
 
     @_builtins.property
     @pulumi.getter(name="daysOfWeek")
-    def days_of_week(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]:
+    def days_of_week(self) -> pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]:
         """
         The exclusion window occurs on these days of each week in UTC.
         Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
@@ -791,12 +791,12 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
         return pulumi.get(self, "days_of_week")
 
     @days_of_week.setter
-    def days_of_week(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]):
+    def days_of_week(self, value: pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]):
         pulumi.set(self, "days_of_week", value)
 
     @_builtins.property
     @pulumi.getter(name="singleOccurrenceDate")
-    def single_occurrence_date(self) -> Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]:
+    def single_occurrence_date(self) -> pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]:
         """
         No recurrence. The exclusion window occurs only once and on this date in UTC.
         Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
@@ -805,12 +805,12 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgs:
         return pulumi.get(self, "single_occurrence_date")
 
     @single_occurrence_date.setter
-    def single_occurrence_date(self, value: Optional[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]):
+    def single_occurrence_date(self, value: pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]):
         pulumi.set(self, "single_occurrence_date", value)
 
 
 class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict(TypedDict):
-    days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    days_of_weeks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of days of week.
     Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -819,7 +819,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict(TypedDi
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs:
     def __init__(__self__, *,
-                 days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 days_of_weeks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] days_of_weeks: A list of days of week.
                Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -829,7 +829,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs:
 
     @_builtins.property
     @pulumi.getter(name="daysOfWeeks")
-    def days_of_weeks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def days_of_weeks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of days of week.
         Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -837,20 +837,20 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs:
         return pulumi.get(self, "days_of_weeks")
 
     @days_of_weeks.setter
-    def days_of_weeks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def days_of_weeks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "days_of_weeks", value)
 
 
 class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict(TypedDict):
-    day: NotRequired[pulumi.Input[_builtins.int]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Day of a month.
     """
-    month: NotRequired[pulumi.Input[_builtins.int]]
+    month: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Month of a year.
     """
-    year: NotRequired[pulumi.Input[_builtins.int]]
+    year: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Year of the date.
     """
@@ -858,9 +858,9 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDi
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs:
     def __init__(__self__, *,
-                 day: Optional[pulumi.Input[_builtins.int]] = None,
-                 month: Optional[pulumi.Input[_builtins.int]] = None,
-                 year: Optional[pulumi.Input[_builtins.int]] = None):
+                 day: pulumi.Input[Optional[_builtins.int]] = None,
+                 month: pulumi.Input[Optional[_builtins.int]] = None,
+                 year: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] day: Day of a month.
         :param pulumi.Input[_builtins.int] month: Month of a year.
@@ -875,55 +875,55 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Day of a month.
         """
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day", value)
 
     @_builtins.property
     @pulumi.getter
-    def month(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def month(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Month of a year.
         """
         return pulumi.get(self, "month")
 
     @month.setter
-    def month(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def month(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "month", value)
 
     @_builtins.property
     @pulumi.getter
-    def year(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def year(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Year of the date.
         """
         return pulumi.get(self, "year")
 
     @year.setter
-    def year(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def year(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "year", value)
 
 
 class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time.
     """
@@ -931,10 +931,10 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgsDict(TypedDic
 @pulumi.input_type
 class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format.
         :param pulumi.Input[_builtins.int] minutes: Minutes of hour of day.
@@ -952,64 +952,64 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format.
         """
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time.
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class BackupPlanIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class BackupPlanIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1035,25 +1035,25 @@ class BackupPlanIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class BackupPlanIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class BackupPlanIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1079,16 +1079,16 @@ class BackupPlanIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class BackupPlanRetentionPolicyArgsDict(TypedDict):
-    backup_delete_lock_days: NotRequired[pulumi.Input[_builtins.int]]
+    backup_delete_lock_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum age for a Backup created via this BackupPlan (in days).
     Must be an integer value between 0-90 (inclusive).
@@ -1097,7 +1097,7 @@ class BackupPlanRetentionPolicyArgsDict(TypedDict):
     Updating this field of a BackupPlan does not affect existing Backups.
     Backups created after a successful update will inherit this new value.
     """
-    backup_retain_days: NotRequired[pulumi.Input[_builtins.int]]
+    backup_retain_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The default maximum age of a Backup created via this BackupPlan.
     This field MUST be an integer value >= 0 and <= 365. If specified,
@@ -1112,7 +1112,7 @@ class BackupPlanRetentionPolicyArgsDict(TypedDict):
     If rpo_config is defined, then this must be
     <= 360 * targetRpoMinutes/(1440minutes/day)
     """
-    locked: NotRequired[pulumi.Input[_builtins.bool]]
+    locked: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     This flag denotes whether the retention policy of this BackupPlan is locked.
     If set to True, no further update is allowed on this policy, including
@@ -1122,9 +1122,9 @@ class BackupPlanRetentionPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class BackupPlanRetentionPolicyArgs:
     def __init__(__self__, *,
-                 backup_delete_lock_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retain_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backup_delete_lock_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retain_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] backup_delete_lock_days: Minimum age for a Backup created via this BackupPlan (in days).
                Must be an integer value between 0-90 (inclusive).
@@ -1157,7 +1157,7 @@ class BackupPlanRetentionPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupDeleteLockDays")
-    def backup_delete_lock_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_delete_lock_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum age for a Backup created via this BackupPlan (in days).
         Must be an integer value between 0-90 (inclusive).
@@ -1169,12 +1169,12 @@ class BackupPlanRetentionPolicyArgs:
         return pulumi.get(self, "backup_delete_lock_days")
 
     @backup_delete_lock_days.setter
-    def backup_delete_lock_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_delete_lock_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_delete_lock_days", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetainDays")
-    def backup_retain_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_retain_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default maximum age of a Backup created via this BackupPlan.
         This field MUST be an integer value >= 0 and <= 365. If specified,
@@ -1192,12 +1192,12 @@ class BackupPlanRetentionPolicyArgs:
         return pulumi.get(self, "backup_retain_days")
 
     @backup_retain_days.setter
-    def backup_retain_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_retain_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_retain_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This flag denotes whether the retention policy of this BackupPlan is locked.
         If set to True, no further update is allowed on this policy, including
@@ -1206,21 +1206,21 @@ class BackupPlanRetentionPolicyArgs:
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
 
 class RestorePlanIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RestorePlanIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1246,25 +1246,25 @@ class RestorePlanIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RestorePlanIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class RestorePlanIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1290,21 +1290,21 @@ class RestorePlanIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class RestorePlanRestoreConfigArgsDict(TypedDict):
-    all_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
+    all_namespaces: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If True, restore all namespaced resources in the Backup.
     Setting this field to False will result in an error.
     """
-    cluster_resource_conflict_policy: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_resource_conflict_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines the behavior for handling the situation where cluster-scoped resources
     being restored already exist in the target cluster.
@@ -1314,18 +1314,18 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
     for more information on each policy option.
     Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
     """
-    cluster_resource_restore_scope: NotRequired[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict']]
+    cluster_resource_restore_scope: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]]
     """
     Identifies the cluster-scoped resources to restore from the Backup.
     Structure is documented below.
     """
-    excluded_namespaces: NotRequired[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgsDict']]
+    excluded_namespaces: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigExcludedNamespacesArgs']]]
     """
     A list of selected namespaces excluded from restoration.
     All namespaces except those in this list will be restored.
     Structure is documented below.
     """
-    namespaced_resource_restore_mode: NotRequired[pulumi.Input[_builtins.str]]
+    namespaced_resource_restore_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines the behavior for handling the situation where sets of namespaced resources
     being restored already exist in the target cluster.
@@ -1335,30 +1335,30 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
     for more information on each mode.
     Possible values are: `DELETE_AND_RESTORE`, `FAIL_ON_CONFLICT`, `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT`, `MERGE_REPLACE_ON_CONFLICT`.
     """
-    no_namespaces: NotRequired[pulumi.Input[_builtins.bool]]
+    no_namespaces: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Do not restore any namespaced resources if set to "True".
     Specifying this field to "False" is not allowed.
     """
-    restore_order: NotRequired[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgsDict']]
+    restore_order: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigRestoreOrderArgs']]]
     """
     It contains custom ordering to use on a Restore.
     Structure is documented below.
     """
-    selected_applications: NotRequired[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgsDict']]
+    selected_applications: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigSelectedApplicationsArgs']]]
     """
     A list of selected ProtectedApplications to restore.
     The listed ProtectedApplications and all the resources
     to which they refer will be restored.
     Structure is documented below.
     """
-    selected_namespaces: NotRequired[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgsDict']]
+    selected_namespaces: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigSelectedNamespacesArgs']]]
     """
     A list of selected namespaces to restore from the Backup.
     The listed Namespaces and all resources contained in them will be restored.
     Structure is documented below.
     """
-    transformation_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgsDict']]]]
+    transformation_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]]
     """
     A list of transformation rules to be applied against Kubernetes
     resources as they are selected for restoration from a Backup.
@@ -1367,7 +1367,7 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
     rules. An empty list means no transformation will occur.
     Structure is documented below.
     """
-    volume_data_restore_policy: NotRequired[pulumi.Input[_builtins.str]]
+    volume_data_restore_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the mechanism to be used to restore volume data.
     This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
@@ -1377,7 +1377,7 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
     for more information on each policy option.
     Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
     """
-    volume_data_restore_policy_bindings: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict']]]]
+    volume_data_restore_policy_bindings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]]
     """
     A table that binds volumes by their scope to a restore policy. Bindings
     must have a unique scope. Any volumes not scoped in the bindings are
@@ -1388,18 +1388,18 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
 @pulumi.input_type
 class RestorePlanRestoreConfigArgs:
     def __init__(__self__, *,
-                 all_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_resource_conflict_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_resource_restore_scope: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']] = None,
-                 excluded_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']] = None,
-                 namespaced_resource_restore_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_namespaces: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restore_order: Optional[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgs']] = None,
-                 selected_applications: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']] = None,
-                 selected_namespaces: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']] = None,
-                 transformation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]] = None,
-                 volume_data_restore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_data_restore_policy_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]] = None):
+                 all_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_resource_conflict_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_resource_restore_scope: pulumi.Input[Optional['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']] = None,
+                 excluded_namespaces: pulumi.Input[Optional['RestorePlanRestoreConfigExcludedNamespacesArgs']] = None,
+                 namespaced_resource_restore_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_namespaces: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restore_order: pulumi.Input[Optional['RestorePlanRestoreConfigRestoreOrderArgs']] = None,
+                 selected_applications: pulumi.Input[Optional['RestorePlanRestoreConfigSelectedApplicationsArgs']] = None,
+                 selected_namespaces: pulumi.Input[Optional['RestorePlanRestoreConfigSelectedNamespacesArgs']] = None,
+                 transformation_rules: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]] = None,
+                 volume_data_restore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_data_restore_policy_bindings: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all_namespaces: If True, restore all namespaced resources in the Backup.
                Setting this field to False will result in an error.
@@ -1478,7 +1478,7 @@ class RestorePlanRestoreConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allNamespaces")
-    def all_namespaces(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_namespaces(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If True, restore all namespaced resources in the Backup.
         Setting this field to False will result in an error.
@@ -1486,12 +1486,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "all_namespaces")
 
     @all_namespaces.setter
-    def all_namespaces(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_namespaces(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterResourceConflictPolicy")
-    def cluster_resource_conflict_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_resource_conflict_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the behavior for handling the situation where cluster-scoped resources
         being restored already exist in the target cluster.
@@ -1504,12 +1504,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "cluster_resource_conflict_policy")
 
     @cluster_resource_conflict_policy.setter
-    def cluster_resource_conflict_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_resource_conflict_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_resource_conflict_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterResourceRestoreScope")
-    def cluster_resource_restore_scope(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]:
+    def cluster_resource_restore_scope(self) -> pulumi.Input[Optional['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]:
         """
         Identifies the cluster-scoped resources to restore from the Backup.
         Structure is documented below.
@@ -1517,12 +1517,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "cluster_resource_restore_scope")
 
     @cluster_resource_restore_scope.setter
-    def cluster_resource_restore_scope(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]):
+    def cluster_resource_restore_scope(self, value: pulumi.Input[Optional['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]):
         pulumi.set(self, "cluster_resource_restore_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedNamespaces")
-    def excluded_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']]:
+    def excluded_namespaces(self) -> pulumi.Input[Optional['RestorePlanRestoreConfigExcludedNamespacesArgs']]:
         """
         A list of selected namespaces excluded from restoration.
         All namespaces except those in this list will be restored.
@@ -1531,12 +1531,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "excluded_namespaces")
 
     @excluded_namespaces.setter
-    def excluded_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigExcludedNamespacesArgs']]):
+    def excluded_namespaces(self, value: pulumi.Input[Optional['RestorePlanRestoreConfigExcludedNamespacesArgs']]):
         pulumi.set(self, "excluded_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="namespacedResourceRestoreMode")
-    def namespaced_resource_restore_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespaced_resource_restore_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the behavior for handling the situation where sets of namespaced resources
         being restored already exist in the target cluster.
@@ -1549,12 +1549,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "namespaced_resource_restore_mode")
 
     @namespaced_resource_restore_mode.setter
-    def namespaced_resource_restore_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespaced_resource_restore_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespaced_resource_restore_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="noNamespaces")
-    def no_namespaces(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_namespaces(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Do not restore any namespaced resources if set to "True".
         Specifying this field to "False" is not allowed.
@@ -1562,12 +1562,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "no_namespaces")
 
     @no_namespaces.setter
-    def no_namespaces(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_namespaces(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreOrder")
-    def restore_order(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgs']]:
+    def restore_order(self) -> pulumi.Input[Optional['RestorePlanRestoreConfigRestoreOrderArgs']]:
         """
         It contains custom ordering to use on a Restore.
         Structure is documented below.
@@ -1575,12 +1575,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "restore_order")
 
     @restore_order.setter
-    def restore_order(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigRestoreOrderArgs']]):
+    def restore_order(self, value: pulumi.Input[Optional['RestorePlanRestoreConfigRestoreOrderArgs']]):
         pulumi.set(self, "restore_order", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedApplications")
-    def selected_applications(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']]:
+    def selected_applications(self) -> pulumi.Input[Optional['RestorePlanRestoreConfigSelectedApplicationsArgs']]:
         """
         A list of selected ProtectedApplications to restore.
         The listed ProtectedApplications and all the resources
@@ -1590,12 +1590,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "selected_applications")
 
     @selected_applications.setter
-    def selected_applications(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedApplicationsArgs']]):
+    def selected_applications(self, value: pulumi.Input[Optional['RestorePlanRestoreConfigSelectedApplicationsArgs']]):
         pulumi.set(self, "selected_applications", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedNamespaces")
-    def selected_namespaces(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']]:
+    def selected_namespaces(self) -> pulumi.Input[Optional['RestorePlanRestoreConfigSelectedNamespacesArgs']]:
         """
         A list of selected namespaces to restore from the Backup.
         The listed Namespaces and all resources contained in them will be restored.
@@ -1604,12 +1604,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "selected_namespaces")
 
     @selected_namespaces.setter
-    def selected_namespaces(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigSelectedNamespacesArgs']]):
+    def selected_namespaces(self, value: pulumi.Input[Optional['RestorePlanRestoreConfigSelectedNamespacesArgs']]):
         pulumi.set(self, "selected_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationRules")
-    def transformation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]:
+    def transformation_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]:
         """
         A list of transformation rules to be applied against Kubernetes
         resources as they are selected for restoration from a Backup.
@@ -1621,12 +1621,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "transformation_rules")
 
     @transformation_rules.setter
-    def transformation_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]):
+    def transformation_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]):
         pulumi.set(self, "transformation_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeDataRestorePolicy")
-    def volume_data_restore_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_data_restore_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the mechanism to be used to restore volume data.
         This should be set to a value other than `NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED`
@@ -1639,12 +1639,12 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "volume_data_restore_policy")
 
     @volume_data_restore_policy.setter
-    def volume_data_restore_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_data_restore_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_data_restore_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeDataRestorePolicyBindings")
-    def volume_data_restore_policy_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]:
+    def volume_data_restore_policy_bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]:
         """
         A table that binds volumes by their scope to a restore policy. Bindings
         must have a unique scope. Any volumes not scoped in the bindings are
@@ -1654,17 +1654,17 @@ class RestorePlanRestoreConfigArgs:
         return pulumi.get(self, "volume_data_restore_policy_bindings")
 
     @volume_data_restore_policy_bindings.setter
-    def volume_data_restore_policy_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]):
+    def volume_data_restore_policy_bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]):
         pulumi.set(self, "volume_data_restore_policy_bindings", value)
 
 
 class RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict(TypedDict):
-    all_group_kinds: NotRequired[pulumi.Input[_builtins.bool]]
+    all_group_kinds: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If True, all valid cluster-scoped resources will be restored.
     Mutually exclusive to any other field in `clusterResourceRestoreScope`.
     """
-    excluded_group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict']]]]
+    excluded_group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]]
     """
     A list of cluster-scoped resource group kinds to NOT restore from the backup.
     If specified, all valid cluster-scoped resources will be restored except
@@ -1672,12 +1672,12 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict(TypedDict):
     Mutually exclusive to any other field in `clusterResourceRestoreScope`.
     Structure is documented below.
     """
-    no_group_kinds: NotRequired[pulumi.Input[_builtins.bool]]
+    no_group_kinds: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If True, no cluster-scoped resources will be restored.
     Mutually exclusive to any other field in `clusterResourceRestoreScope`.
     """
-    selected_group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict']]]]
+    selected_group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]]
     """
     A list of cluster-scoped resource group kinds to restore from the backup.
     If specified, only the selected resources will be restored.
@@ -1688,10 +1688,10 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict(TypedDict):
 @pulumi.input_type
 class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
     def __init__(__self__, *,
-                 all_group_kinds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 excluded_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]] = None,
-                 no_group_kinds: Optional[pulumi.Input[_builtins.bool]] = None,
-                 selected_group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]] = None):
+                 all_group_kinds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 excluded_group_kinds: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]] = None,
+                 no_group_kinds: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selected_group_kinds: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] all_group_kinds: If True, all valid cluster-scoped resources will be restored.
                Mutually exclusive to any other field in `clusterResourceRestoreScope`.
@@ -1718,7 +1718,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="allGroupKinds")
-    def all_group_kinds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_group_kinds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If True, all valid cluster-scoped resources will be restored.
         Mutually exclusive to any other field in `clusterResourceRestoreScope`.
@@ -1726,12 +1726,12 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
         return pulumi.get(self, "all_group_kinds")
 
     @all_group_kinds.setter
-    def all_group_kinds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_group_kinds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_group_kinds", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedGroupKinds")
-    def excluded_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]:
+    def excluded_group_kinds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]:
         """
         A list of cluster-scoped resource group kinds to NOT restore from the backup.
         If specified, all valid cluster-scoped resources will be restored except
@@ -1742,12 +1742,12 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
         return pulumi.get(self, "excluded_group_kinds")
 
     @excluded_group_kinds.setter
-    def excluded_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]):
+    def excluded_group_kinds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]):
         pulumi.set(self, "excluded_group_kinds", value)
 
     @_builtins.property
     @pulumi.getter(name="noGroupKinds")
-    def no_group_kinds(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_group_kinds(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If True, no cluster-scoped resources will be restored.
         Mutually exclusive to any other field in `clusterResourceRestoreScope`.
@@ -1755,12 +1755,12 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
         return pulumi.get(self, "no_group_kinds")
 
     @no_group_kinds.setter
-    def no_group_kinds(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_group_kinds(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_group_kinds", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedGroupKinds")
-    def selected_group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]:
+    def selected_group_kinds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]:
         """
         A list of cluster-scoped resource group kinds to restore from the backup.
         If specified, only the selected resources will be restored.
@@ -1770,18 +1770,18 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgs:
         return pulumi.get(self, "selected_group_kinds")
 
     @selected_group_kinds.setter
-    def selected_group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]):
+    def selected_group_kinds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]):
         pulumi.set(self, "selected_group_kinds", value)
 
 
 class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict(TypedDict):
-    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Group string of a Kubernetes resource, e.g.
     "apiextensions.k8s.io", "storage.k8s.io", etc.
     Use empty string for core group.
     """
-    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    resource_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kind of a Kubernetes resource, e.g.
     "CustomResourceDefinition", "StorageClass", etc.
@@ -1790,8 +1790,8 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDi
 @pulumi.input_type
 class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
     def __init__(__self__, *,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_group: API Group string of a Kubernetes resource, e.g.
                "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -1806,7 +1806,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Group string of a Kubernetes resource, e.g.
         "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -1815,12 +1815,12 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceKind")
-    def resource_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
@@ -1828,18 +1828,18 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs:
         return pulumi.get(self, "resource_kind")
 
     @resource_kind.setter
-    def resource_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_kind", value)
 
 
 class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict(TypedDict):
-    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Group string of a Kubernetes resource, e.g.
     "apiextensions.k8s.io", "storage.k8s.io", etc.
     Use empty string for core group.
     """
-    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    resource_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kind of a Kubernetes resource, e.g.
     "CustomResourceDefinition", "StorageClass", etc.
@@ -1848,8 +1848,8 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDi
 @pulumi.input_type
 class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
     def __init__(__self__, *,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_group: API Group string of a Kubernetes resource, e.g.
                "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -1864,7 +1864,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Group string of a Kubernetes resource, e.g.
         "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -1873,12 +1873,12 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceKind")
-    def resource_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
@@ -1886,7 +1886,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs:
         return pulumi.get(self, "resource_kind")
 
     @resource_kind.setter
-    def resource_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_kind", value)
 
 
@@ -2015,13 +2015,13 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs:
 
 
 class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict(TypedDict):
-    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Group of a Kubernetes resource, e.g.
     "apiextensions.k8s.io", "storage.k8s.io", etc.
     Use empty string for core group.
     """
-    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    resource_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kind of a Kubernetes resource, e.g.
     "CustomResourceDefinition", "StorageClass", etc.
@@ -2030,8 +2030,8 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgsDict(T
 @pulumi.input_type
 class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
     def __init__(__self__, *,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_group: API Group of a Kubernetes resource, e.g.
                "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -2046,7 +2046,7 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Group of a Kubernetes resource, e.g.
         "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -2055,12 +2055,12 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceKind")
-    def resource_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
@@ -2068,18 +2068,18 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs:
         return pulumi.get(self, "resource_kind")
 
     @resource_kind.setter
-    def resource_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_kind", value)
 
 
 class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgsDict(TypedDict):
-    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Group of a Kubernetes resource, e.g.
     "apiextensions.k8s.io", "storage.k8s.io", etc.
     Use empty string for core group.
     """
-    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    resource_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kind of a Kubernetes resource, e.g.
     "CustomResourceDefinition", "StorageClass", etc.
@@ -2088,8 +2088,8 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgsDict(
 @pulumi.input_type
 class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs:
     def __init__(__self__, *,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_group: API Group of a Kubernetes resource, e.g.
                "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -2104,7 +2104,7 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Group of a Kubernetes resource, e.g.
         "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -2113,12 +2113,12 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs:
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceKind")
-    def resource_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
@@ -2126,7 +2126,7 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs:
         return pulumi.get(self, "resource_kind")
 
     @resource_kind.setter
-    def resource_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_kind", value)
 
 
@@ -2245,12 +2245,12 @@ class RestorePlanRestoreConfigTransformationRuleArgsDict(TypedDict):
     the first operation could affect the outcome of the second operation.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description is a user specified string description
     of the transformation rule.
     """
-    resource_filter: NotRequired[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict']]
+    resource_filter: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]]
     """
     This field is used to specify a set of fields that should be used to
     determine which resources in backup should be acted upon by the
@@ -2263,8 +2263,8 @@ class RestorePlanRestoreConfigTransformationRuleArgsDict(TypedDict):
 class RestorePlanRestoreConfigTransformationRuleArgs:
     def __init__(__self__, *,
                  field_actions: pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_filter: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_filter: pulumi.Input[Optional['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleFieldActionArgs']]] field_actions: A list of transformation rule actions to take against candidate
                resources. Actions are executed in order defined - this order
@@ -2303,7 +2303,7 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description is a user specified string description
         of the transformation rule.
@@ -2311,12 +2311,12 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceFilter")
-    def resource_filter(self) -> Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]:
+    def resource_filter(self) -> pulumi.Input[Optional['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]:
         """
         This field is used to specify a set of fields that should be used to
         determine which resources in backup should be acted upon by the
@@ -2327,7 +2327,7 @@ class RestorePlanRestoreConfigTransformationRuleArgs:
         return pulumi.get(self, "resource_filter")
 
     @resource_filter.setter
-    def resource_filter(self, value: Optional[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]):
+    def resource_filter(self, value: pulumi.Input[Optional['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]):
         pulumi.set(self, "resource_filter", value)
 
 
@@ -2337,17 +2337,17 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgsDict(TypedDict):
     Specifies the operation to perform.
     Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
     """
-    from_path: NotRequired[pulumi.Input[_builtins.str]]
+    from_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string containing a JSON Pointer value that references the
     location in the target document to move the value from.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string containing a JSON-Pointer value that references a
     location within the target document where the operation is performed.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that specifies the desired value in string format
     to use for transformation.
@@ -2357,9 +2357,9 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgsDict(TypedDict):
 class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
     def __init__(__self__, *,
                  op: pulumi.Input[_builtins.str],
-                 from_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 from_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] op: Specifies the operation to perform.
                Possible values are: `REMOVE`, `MOVE`, `COPY`, `ADD`, `TEST`, `REPLACE`.
@@ -2393,7 +2393,7 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="fromPath")
-    def from_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def from_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string containing a JSON Pointer value that references the
         location in the target document to move the value from.
@@ -2401,12 +2401,12 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
         return pulumi.get(self, "from_path")
 
     @from_path.setter
-    def from_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def from_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "from_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string containing a JSON-Pointer value that references a
         location within the target document where the operation is performed.
@@ -2414,12 +2414,12 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that specifies the desired value in string format
         to use for transformation.
@@ -2427,12 +2427,12 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict(TypedDict):
-    group_kinds: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict']]]]
+    group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]]
     """
     (Filtering parameter) Any resource subject to transformation must
     belong to one of the listed "types". If this field is not provided,
@@ -2441,14 +2441,14 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict(TypedDict
     will be candidates for transformation).
     Structure is documented below.
     """
-    json_path: NotRequired[pulumi.Input[_builtins.str]]
+    json_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This is a JSONPath expression that matches specific fields of
     candidate resources and it operates as a filtering parameter
     (resources that are not matched with this expression will not
     be candidates for transformation).
     """
-    namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    namespaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Filtering parameter) Any resource subject to transformation must
     be contained within one of the listed Kubernetes Namespace in the
@@ -2462,9 +2462,9 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict(TypedDict
 @pulumi.input_type
 class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
     def __init__(__self__, *,
-                 group_kinds: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]] = None,
-                 json_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 group_kinds: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]] = None,
+                 json_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]] group_kinds: (Filtering parameter) Any resource subject to transformation must
                belong to one of the listed "types". If this field is not provided,
@@ -2493,7 +2493,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupKinds")
-    def group_kinds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]:
+    def group_kinds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]:
         """
         (Filtering parameter) Any resource subject to transformation must
         belong to one of the listed "types". If this field is not provided,
@@ -2505,12 +2505,12 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
         return pulumi.get(self, "group_kinds")
 
     @group_kinds.setter
-    def group_kinds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]):
+    def group_kinds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]):
         pulumi.set(self, "group_kinds", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonPath")
-    def json_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is a JSONPath expression that matches specific fields of
         candidate resources and it operates as a filtering parameter
@@ -2520,12 +2520,12 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
         return pulumi.get(self, "json_path")
 
     @json_path.setter
-    def json_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Filtering parameter) Any resource subject to transformation must
         be contained within one of the listed Kubernetes Namespace in the
@@ -2538,18 +2538,18 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterArgs:
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "namespaces", value)
 
 
 class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict(TypedDict):
-    resource_group: NotRequired[pulumi.Input[_builtins.str]]
+    resource_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Group string of a Kubernetes resource, e.g.
     "apiextensions.k8s.io", "storage.k8s.io", etc.
     Use empty string for core group.
     """
-    resource_kind: NotRequired[pulumi.Input[_builtins.str]]
+    resource_kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Kind of a Kubernetes resource, e.g.
     "CustomResourceDefinition", "StorageClass", etc.
@@ -2558,8 +2558,8 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict(
 @pulumi.input_type
 class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
     def __init__(__self__, *,
-                 resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_group: API Group string of a Kubernetes resource, e.g.
                "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -2574,7 +2574,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Group string of a Kubernetes resource, e.g.
         "apiextensions.k8s.io", "storage.k8s.io", etc.
@@ -2583,12 +2583,12 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceKind")
-    def resource_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of a Kubernetes resource, e.g.
         "CustomResourceDefinition", "StorageClass", etc.
@@ -2596,7 +2596,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs:
         return pulumi.get(self, "resource_kind")
 
     @resource_kind.setter
-    def resource_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_kind", value)
 
 

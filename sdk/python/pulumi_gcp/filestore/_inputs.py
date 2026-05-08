@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 class InstanceDirectoryServicesArgsDict(TypedDict):
-    ldap: NotRequired[pulumi.Input['InstanceDirectoryServicesLdapArgsDict']]
+    ldap: NotRequired[pulumi.Input[Optional['InstanceDirectoryServicesLdapArgs']]]
     """
     Configuration for LDAP servers.
     Structure is documented below.
@@ -53,7 +53,7 @@ class InstanceDirectoryServicesArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceDirectoryServicesArgs:
     def __init__(__self__, *,
-                 ldap: Optional[pulumi.Input['InstanceDirectoryServicesLdapArgs']] = None):
+                 ldap: pulumi.Input[Optional['InstanceDirectoryServicesLdapArgs']] = None):
         """
         :param pulumi.Input['InstanceDirectoryServicesLdapArgs'] ldap: Configuration for LDAP servers.
                Structure is documented below.
@@ -63,7 +63,7 @@ class InstanceDirectoryServicesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ldap(self) -> Optional[pulumi.Input['InstanceDirectoryServicesLdapArgs']]:
+    def ldap(self) -> pulumi.Input[Optional['InstanceDirectoryServicesLdapArgs']]:
         """
         Configuration for LDAP servers.
         Structure is documented below.
@@ -71,7 +71,7 @@ class InstanceDirectoryServicesArgs:
         return pulumi.get(self, "ldap")
 
     @ldap.setter
-    def ldap(self, value: Optional[pulumi.Input['InstanceDirectoryServicesLdapArgs']]):
+    def ldap(self, value: pulumi.Input[Optional['InstanceDirectoryServicesLdapArgs']]):
         pulumi.set(self, "ldap", value)
 
 
@@ -89,13 +89,13 @@ class InstanceDirectoryServicesLdapArgsDict(TypedDict):
     All servers names must be in the same format: either all DNS names or all
     IP addresses.
     """
-    groups_ou: NotRequired[pulumi.Input[_builtins.str]]
+    groups_ou: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The groups Organizational Unit (OU) is optional. This parameter is a hint
     to allow faster lookup in the LDAP namespace. In case that this parameter
     is not provided, Filestore instance will query the whole LDAP namespace.
     """
-    users_ou: NotRequired[pulumi.Input[_builtins.str]]
+    users_ou: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The users Organizational Unit (OU) is optional. This parameter is a hint
     to allow faster lookup in the LDAP namespace. In case that this parameter
@@ -107,8 +107,8 @@ class InstanceDirectoryServicesLdapArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
                  servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 groups_ou: Optional[pulumi.Input[_builtins.str]] = None,
-                 users_ou: Optional[pulumi.Input[_builtins.str]] = None):
+                 groups_ou: pulumi.Input[Optional[_builtins.str]] = None,
+                 users_ou: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The LDAP domain name in the format of `my-domain.com`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The servers names are used for specifying the LDAP servers names.
@@ -162,7 +162,7 @@ class InstanceDirectoryServicesLdapArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupsOu")
-    def groups_ou(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def groups_ou(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The groups Organizational Unit (OU) is optional. This parameter is a hint
         to allow faster lookup in the LDAP namespace. In case that this parameter
@@ -171,12 +171,12 @@ class InstanceDirectoryServicesLdapArgs:
         return pulumi.get(self, "groups_ou")
 
     @groups_ou.setter
-    def groups_ou(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def groups_ou(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "groups_ou", value)
 
     @_builtins.property
     @pulumi.getter(name="usersOu")
-    def users_ou(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def users_ou(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The users Organizational Unit (OU) is optional. This parameter is a hint
         to allow faster lookup in the LDAP namespace. In case that this parameter
@@ -185,17 +185,17 @@ class InstanceDirectoryServicesLdapArgs:
         return pulumi.get(self, "users_ou")
 
     @users_ou.setter
-    def users_ou(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def users_ou(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "users_ou", value)
 
 
 class InstanceEffectiveReplicationArgsDict(TypedDict):
-    replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgsDict']]]]
+    replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]]
     """
     The replication role.
     Structure is documented below.
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The replication role.
@@ -204,8 +204,8 @@ class InstanceEffectiveReplicationArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceEffectiveReplicationArgs:
     def __init__(__self__, *,
-                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 replicas: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]] replicas: The replication role.
                Structure is documented below.
@@ -219,7 +219,7 @@ class InstanceEffectiveReplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]:
+    def replicas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]:
         """
         The replication role.
         Structure is documented below.
@@ -227,12 +227,12 @@ class InstanceEffectiveReplicationArgs:
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]):
+    def replicas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The replication role.
@@ -240,28 +240,28 @@ class InstanceEffectiveReplicationArgs:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
 class InstanceEffectiveReplicationReplicaArgsDict(TypedDict):
-    last_active_sync_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_active_sync_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
     Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
     """
-    peer_instance: NotRequired[pulumi.Input[_builtins.str]]
+    peer_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The peer instance.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The replica state
     """
-    state_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    state_reasons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Output only. Additional information about the replication state, if available.
@@ -270,10 +270,10 @@ class InstanceEffectiveReplicationReplicaArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceEffectiveReplicationReplicaArgs:
     def __init__(__self__, *,
-                 last_active_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 last_active_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] last_active_sync_time: (Output)
                Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
@@ -296,7 +296,7 @@ class InstanceEffectiveReplicationReplicaArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastActiveSyncTime")
-    def last_active_sync_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_active_sync_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
@@ -306,24 +306,24 @@ class InstanceEffectiveReplicationReplicaArgs:
         return pulumi.get(self, "last_active_sync_time")
 
     @last_active_sync_time.setter
-    def last_active_sync_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_active_sync_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_active_sync_time", value)
 
     @_builtins.property
     @pulumi.getter(name="peerInstance")
-    def peer_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The peer instance.
         """
         return pulumi.get(self, "peer_instance")
 
     @peer_instance.setter
-    def peer_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The replica state
@@ -331,12 +331,12 @@ class InstanceEffectiveReplicationReplicaArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateReasons")
-    def state_reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def state_reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Output only. Additional information about the replication state, if available.
@@ -344,7 +344,7 @@ class InstanceEffectiveReplicationReplicaArgs:
         return pulumi.get(self, "state_reasons")
 
     @state_reasons.setter
-    def state_reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def state_reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "state_reasons", value)
 
 
@@ -358,18 +358,18 @@ class InstanceFileSharesArgsDict(TypedDict):
     """
     The name of the fileshare (16 characters or less)
     """
-    nfs_export_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgsDict']]]]
+    nfs_export_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]]
     """
     Nfs Export Options. There is a limit of 10 export options per file share.
     Structure is documented below.
     """
-    source_backup: NotRequired[pulumi.Input[_builtins.str]]
+    source_backup: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the backup, in the format
     projects/{projectId}/locations/{locationId}/backups/{backupId},
     that this file share has been restored from.
     """
-    source_backupdr_backup: NotRequired[pulumi.Input[_builtins.str]]
+    source_backupdr_backup: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the BackupDR backup, in the format
     `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
@@ -381,9 +381,9 @@ class InstanceFileSharesArgs:
     def __init__(__self__, *,
                  capacity_gb: pulumi.Input[_builtins.int],
                  name: pulumi.Input[_builtins.str],
-                 nfs_export_options: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]] = None,
-                 source_backup: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_backupdr_backup: Optional[pulumi.Input[_builtins.str]] = None):
+                 nfs_export_options: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]] = None,
+                 source_backup: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_backupdr_backup: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] capacity_gb: File share capacity in GiB. This must be at least 1024 GiB
                for the standard tier, or 2560 GiB for the premium tier.
@@ -433,7 +433,7 @@ class InstanceFileSharesArgs:
 
     @_builtins.property
     @pulumi.getter(name="nfsExportOptions")
-    def nfs_export_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]:
+    def nfs_export_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]:
         """
         Nfs Export Options. There is a limit of 10 export options per file share.
         Structure is documented below.
@@ -441,12 +441,12 @@ class InstanceFileSharesArgs:
         return pulumi.get(self, "nfs_export_options")
 
     @nfs_export_options.setter
-    def nfs_export_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]):
+    def nfs_export_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]):
         pulumi.set(self, "nfs_export_options", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceBackup")
-    def source_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_backup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the backup, in the format
         projects/{projectId}/locations/{locationId}/backups/{backupId},
@@ -455,12 +455,12 @@ class InstanceFileSharesArgs:
         return pulumi.get(self, "source_backup")
 
     @source_backup.setter
-    def source_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_backup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceBackupdrBackup")
-    def source_backupdr_backup(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_backupdr_backup(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the BackupDR backup, in the format
         `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
@@ -469,42 +469,42 @@ class InstanceFileSharesArgs:
         return pulumi.get(self, "source_backupdr_backup")
 
     @source_backupdr_backup.setter
-    def source_backupdr_backup(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_backupdr_backup(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_backupdr_backup", value)
 
 
 class InstanceFileSharesNfsExportOptionArgsDict(TypedDict):
-    access_mode: NotRequired[pulumi.Input[_builtins.str]]
+    access_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Either READ_ONLY, for allowing only read requests on the exported directory,
     or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
     Default value is `READ_WRITE`.
     Possible values are: `READ_ONLY`, `READ_WRITE`.
     """
-    anon_gid: NotRequired[pulumi.Input[_builtins.int]]
+    anon_gid: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     An integer representing the anonymous group id with a default value of 65534.
     Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
     if this field is specified for other squashMode settings.
     """
-    anon_uid: NotRequired[pulumi.Input[_builtins.int]]
+    anon_uid: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     An integer representing the anonymous user id with a default value of 65534.
     Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
     if this field is specified for other squashMode settings.
     """
-    ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
     Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
     The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source VPC network for `ip_ranges`.
     Required for instances using Private Service Connect, optional otherwise.
     """
-    squash_mode: NotRequired[pulumi.Input[_builtins.str]]
+    squash_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
     for not allowing root access. The default is NO_ROOT_SQUASH.
@@ -515,12 +515,12 @@ class InstanceFileSharesNfsExportOptionArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceFileSharesNfsExportOptionArgs:
     def __init__(__self__, *,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 anon_gid: Optional[pulumi.Input[_builtins.int]] = None,
-                 anon_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 squash_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 anon_gid: pulumi.Input[Optional[_builtins.int]] = None,
+                 anon_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 squash_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_mode: Either READ_ONLY, for allowing only read requests on the exported directory,
                or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
@@ -557,7 +557,7 @@ class InstanceFileSharesNfsExportOptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either READ_ONLY, for allowing only read requests on the exported directory,
         or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
@@ -567,12 +567,12 @@ class InstanceFileSharesNfsExportOptionArgs:
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="anonGid")
-    def anon_gid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def anon_gid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer representing the anonymous group id with a default value of 65534.
         Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -581,12 +581,12 @@ class InstanceFileSharesNfsExportOptionArgs:
         return pulumi.get(self, "anon_gid")
 
     @anon_gid.setter
-    def anon_gid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def anon_gid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "anon_gid", value)
 
     @_builtins.property
     @pulumi.getter(name="anonUid")
-    def anon_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def anon_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer representing the anonymous user id with a default value of 65534.
         Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -595,12 +595,12 @@ class InstanceFileSharesNfsExportOptionArgs:
         return pulumi.get(self, "anon_uid")
 
     @anon_uid.setter
-    def anon_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def anon_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "anon_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
         Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
@@ -609,12 +609,12 @@ class InstanceFileSharesNfsExportOptionArgs:
         return pulumi.get(self, "ip_ranges")
 
     @ip_ranges.setter
-    def ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source VPC network for `ip_ranges`.
         Required for instances using Private Service Connect, optional otherwise.
@@ -622,12 +622,12 @@ class InstanceFileSharesNfsExportOptionArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="squashMode")
-    def squash_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def squash_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
         for not allowing root access. The default is NO_ROOT_SQUASH.
@@ -637,17 +637,17 @@ class InstanceFileSharesNfsExportOptionArgs:
         return pulumi.get(self, "squash_mode")
 
     @squash_mode.setter
-    def squash_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def squash_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "squash_mode", value)
 
 
 class InstanceInitialReplicationArgsDict(TypedDict):
-    replicas: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgsDict']]]]
+    replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]]
     """
     The replication role.
     Structure is documented below.
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The replication role.
     Default value is `STANDBY`.
@@ -657,8 +657,8 @@ class InstanceInitialReplicationArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceInitialReplicationArgs:
     def __init__(__self__, *,
-                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 replicas: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]] replicas: The replication role.
                Structure is documented below.
@@ -673,7 +673,7 @@ class InstanceInitialReplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]:
+    def replicas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]:
         """
         The replication role.
         Structure is documented below.
@@ -681,12 +681,12 @@ class InstanceInitialReplicationArgs:
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]):
+    def replicas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The replication role.
         Default value is `STANDBY`.
@@ -695,7 +695,7 @@ class InstanceInitialReplicationArgs:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -739,7 +739,7 @@ class InstanceNetworkArgsDict(TypedDict):
     The name of the GCE VPC network to which the
     instance is connected.
     """
-    connect_mode: NotRequired[pulumi.Input[_builtins.str]]
+    connect_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network connect mode of the Filestore instance.
     If not provided, the connect mode defaults to
@@ -747,18 +747,18 @@ class InstanceNetworkArgsDict(TypedDict):
     Default value is `DIRECT_PEERING`.
     Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
     """
-    ip_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ip_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     A list of IPv4 or IPv6 addresses.
     """
-    psc_config: NotRequired[pulumi.Input['InstanceNetworkPscConfigArgsDict']]
+    psc_config: NotRequired[pulumi.Input[Optional['InstanceNetworkPscConfigArgs']]]
     """
     Private Service Connect configuration.
     Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
     Structure is documented below.
     """
-    reserved_ip_range: NotRequired[pulumi.Input[_builtins.str]]
+    reserved_ip_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A /29 CIDR block that identifies the range of IP
     addresses reserved for this instance.
@@ -769,10 +769,10 @@ class InstanceNetworkArgs:
     def __init__(__self__, *,
                  modes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  network: pulumi.Input[_builtins.str],
-                 connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 psc_config: Optional[pulumi.Input['InstanceNetworkPscConfigArgs']] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 psc_config: pulumi.Input[Optional['InstanceNetworkPscConfigArgs']] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] modes: IP versions for which the instance has
                IP addresses assigned.
@@ -832,7 +832,7 @@ class InstanceNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectMode")
-    def connect_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network connect mode of the Filestore instance.
         If not provided, the connect mode defaults to
@@ -843,12 +843,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "connect_mode")
 
     @connect_mode.setter
-    def connect_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         A list of IPv4 or IPv6 addresses.
@@ -856,12 +856,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter
-    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConfig")
-    def psc_config(self) -> Optional[pulumi.Input['InstanceNetworkPscConfigArgs']]:
+    def psc_config(self) -> pulumi.Input[Optional['InstanceNetworkPscConfigArgs']]:
         """
         Private Service Connect configuration.
         Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
@@ -870,12 +870,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "psc_config")
 
     @psc_config.setter
-    def psc_config(self, value: Optional[pulumi.Input['InstanceNetworkPscConfigArgs']]):
+    def psc_config(self, value: pulumi.Input[Optional['InstanceNetworkPscConfigArgs']]):
         pulumi.set(self, "psc_config", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A /29 CIDR block that identifies the range of IP
         addresses reserved for this instance.
@@ -883,12 +883,12 @@ class InstanceNetworkArgs:
         return pulumi.get(self, "reserved_ip_range")
 
     @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_ip_range", value)
 
 
 class InstanceNetworkPscConfigArgsDict(TypedDict):
-    endpoint_project: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Consumer service project in which the Private Service Connect endpoint
     would be set up. This is optional, and only relevant in case the network
@@ -899,7 +899,7 @@ class InstanceNetworkPscConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceNetworkPscConfigArgs:
     def __init__(__self__, *,
-                 endpoint_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint_project: Consumer service project in which the Private Service Connect endpoint
                would be set up. This is optional, and only relevant in case the network
@@ -911,7 +911,7 @@ class InstanceNetworkPscConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointProject")
-    def endpoint_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Consumer service project in which the Private Service Connect endpoint
         would be set up. This is optional, and only relevant in case the network
@@ -921,19 +921,19 @@ class InstanceNetworkPscConfigArgs:
         return pulumi.get(self, "endpoint_project")
 
     @endpoint_project.setter
-    def endpoint_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_project", value)
 
 
 class InstancePerformanceConfigArgsDict(TypedDict):
-    fixed_iops: NotRequired[pulumi.Input['InstancePerformanceConfigFixedIopsArgsDict']]
+    fixed_iops: NotRequired[pulumi.Input[Optional['InstancePerformanceConfigFixedIopsArgs']]]
     """
     The instance will have a fixed provisioned IOPS value,
     which will remain constant regardless of instance
     capacity.
     Structure is documented below.
     """
-    iops_per_tb: NotRequired[pulumi.Input['InstancePerformanceConfigIopsPerTbArgsDict']]
+    iops_per_tb: NotRequired[pulumi.Input[Optional['InstancePerformanceConfigIopsPerTbArgs']]]
     """
     The instance provisioned IOPS will change dynamically
     based on the capacity of the instance.
@@ -943,8 +943,8 @@ class InstancePerformanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePerformanceConfigArgs:
     def __init__(__self__, *,
-                 fixed_iops: Optional[pulumi.Input['InstancePerformanceConfigFixedIopsArgs']] = None,
-                 iops_per_tb: Optional[pulumi.Input['InstancePerformanceConfigIopsPerTbArgs']] = None):
+                 fixed_iops: pulumi.Input[Optional['InstancePerformanceConfigFixedIopsArgs']] = None,
+                 iops_per_tb: pulumi.Input[Optional['InstancePerformanceConfigIopsPerTbArgs']] = None):
         """
         :param pulumi.Input['InstancePerformanceConfigFixedIopsArgs'] fixed_iops: The instance will have a fixed provisioned IOPS value,
                which will remain constant regardless of instance
@@ -961,7 +961,7 @@ class InstancePerformanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="fixedIops")
-    def fixed_iops(self) -> Optional[pulumi.Input['InstancePerformanceConfigFixedIopsArgs']]:
+    def fixed_iops(self) -> pulumi.Input[Optional['InstancePerformanceConfigFixedIopsArgs']]:
         """
         The instance will have a fixed provisioned IOPS value,
         which will remain constant regardless of instance
@@ -971,12 +971,12 @@ class InstancePerformanceConfigArgs:
         return pulumi.get(self, "fixed_iops")
 
     @fixed_iops.setter
-    def fixed_iops(self, value: Optional[pulumi.Input['InstancePerformanceConfigFixedIopsArgs']]):
+    def fixed_iops(self, value: pulumi.Input[Optional['InstancePerformanceConfigFixedIopsArgs']]):
         pulumi.set(self, "fixed_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="iopsPerTb")
-    def iops_per_tb(self) -> Optional[pulumi.Input['InstancePerformanceConfigIopsPerTbArgs']]:
+    def iops_per_tb(self) -> pulumi.Input[Optional['InstancePerformanceConfigIopsPerTbArgs']]:
         """
         The instance provisioned IOPS will change dynamically
         based on the capacity of the instance.
@@ -985,12 +985,12 @@ class InstancePerformanceConfigArgs:
         return pulumi.get(self, "iops_per_tb")
 
     @iops_per_tb.setter
-    def iops_per_tb(self, value: Optional[pulumi.Input['InstancePerformanceConfigIopsPerTbArgs']]):
+    def iops_per_tb(self, value: pulumi.Input[Optional['InstancePerformanceConfigIopsPerTbArgs']]):
         pulumi.set(self, "iops_per_tb", value)
 
 
 class InstancePerformanceConfigFixedIopsArgsDict(TypedDict):
-    max_iops: NotRequired[pulumi.Input[_builtins.int]]
+    max_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of IOPS to provision for the instance.
     max_iops must be in multiple of 1000.
@@ -999,7 +999,7 @@ class InstancePerformanceConfigFixedIopsArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePerformanceConfigFixedIopsArgs:
     def __init__(__self__, *,
-                 max_iops: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_iops: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_iops: The number of IOPS to provision for the instance.
                max_iops must be in multiple of 1000.
@@ -1009,7 +1009,7 @@ class InstancePerformanceConfigFixedIopsArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxIops")
-    def max_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IOPS to provision for the instance.
         max_iops must be in multiple of 1000.
@@ -1017,12 +1017,12 @@ class InstancePerformanceConfigFixedIopsArgs:
         return pulumi.get(self, "max_iops")
 
     @max_iops.setter
-    def max_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_iops", value)
 
 
 class InstancePerformanceConfigIopsPerTbArgsDict(TypedDict):
-    max_iops_per_tb: NotRequired[pulumi.Input[_builtins.int]]
+    max_iops_per_tb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The instance max IOPS will be calculated by multiplying
     the capacity of the instance (TB) by max_iops_per_tb,
@@ -1034,7 +1034,7 @@ class InstancePerformanceConfigIopsPerTbArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePerformanceConfigIopsPerTbArgs:
     def __init__(__self__, *,
-                 max_iops_per_tb: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_iops_per_tb: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_iops_per_tb: The instance max IOPS will be calculated by multiplying
                the capacity of the instance (TB) by max_iops_per_tb,
@@ -1047,7 +1047,7 @@ class InstancePerformanceConfigIopsPerTbArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxIopsPerTb")
-    def max_iops_per_tb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_iops_per_tb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The instance max IOPS will be calculated by multiplying
         the capacity of the instance (TB) by max_iops_per_tb,
@@ -1058,7 +1058,7 @@ class InstancePerformanceConfigIopsPerTbArgs:
         return pulumi.get(self, "max_iops_per_tb")
 
     @max_iops_per_tb.setter
-    def max_iops_per_tb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_iops_per_tb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_iops_per_tb", value)
 
 

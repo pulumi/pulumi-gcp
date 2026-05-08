@@ -91,8 +91,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -155,8 +155,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -219,8 +219,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -283,8 +283,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -347,8 +347,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.cloudrunv2.Service;
      * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
      * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -405,8 +405,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -448,8 +448,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -534,8 +534,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -577,8 +577,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetDockerImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -734,8 +734,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -768,8 +768,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
      * import com.pulumi.gcp.artifactregistry.Repository;
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -825,8 +825,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -859,8 +859,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
      * import com.pulumi.gcp.artifactregistry.Repository;
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -916,8 +916,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -950,8 +950,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
      * import com.pulumi.gcp.artifactregistry.Repository;
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1007,8 +1007,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1041,8 +1041,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
      * import com.pulumi.gcp.artifactregistry.Repository;
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1098,8 +1098,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1132,8 +1132,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
      * import com.pulumi.gcp.artifactregistry.Repository;
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1189,8 +1189,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1223,8 +1223,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
      * import com.pulumi.gcp.artifactregistry.Repository;
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1280,8 +1280,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1314,8 +1314,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.inputs.GetLocationsArgs;
      * import com.pulumi.gcp.artifactregistry.Repository;
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1412,8 +1412,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1455,8 +1455,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1498,8 +1498,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1541,8 +1541,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1584,8 +1584,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetMavenArtifactsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1627,8 +1627,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1683,8 +1683,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1739,8 +1739,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1795,8 +1795,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1851,8 +1851,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1907,8 +1907,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1950,8 +1950,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1993,8 +1993,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2036,8 +2036,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2079,8 +2079,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetNpmPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2120,8 +2120,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.google.ArtifactRegistryPackage;
      * import com.pulumi.google.ArtifactRegistryPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2161,8 +2161,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.google.ArtifactRegistryPackage;
      * import com.pulumi.google.ArtifactRegistryPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2202,8 +2202,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.google.ArtifactRegistryPackage;
      * import com.pulumi.google.ArtifactRegistryPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2243,8 +2243,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.google.ArtifactRegistryPackage;
      * import com.pulumi.google.ArtifactRegistryPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2284,8 +2284,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.google.ArtifactRegistryPackage;
      * import com.pulumi.google.ArtifactRegistryPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2327,8 +2327,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2370,8 +2370,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2413,8 +2413,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2456,8 +2456,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2499,8 +2499,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2542,8 +2542,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2598,8 +2598,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2654,8 +2654,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2710,8 +2710,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2766,8 +2766,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2822,8 +2822,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2865,8 +2865,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2908,8 +2908,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2951,8 +2951,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2994,8 +2994,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetPythonPackagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3035,8 +3035,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3076,8 +3076,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3117,8 +3117,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3158,8 +3158,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3199,8 +3199,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3242,8 +3242,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3285,8 +3285,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3328,8 +3328,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3371,8 +3371,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3414,8 +3414,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3455,8 +3455,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3497,8 +3497,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3539,8 +3539,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3581,8 +3581,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3623,8 +3623,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3712,8 +3712,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3756,8 +3756,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3800,8 +3800,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3844,8 +3844,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3888,8 +3888,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3977,8 +3977,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4021,8 +4021,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4065,8 +4065,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4109,8 +4109,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4153,8 +4153,8 @@ public final class ArtifactregistryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
      * import com.pulumi.gcp.artifactregistry.inputs.GetVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

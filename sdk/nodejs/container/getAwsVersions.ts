@@ -95,10 +95,10 @@ export interface GetAwsVersionsOutputArgs {
     /**
      * The location to list versions for.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
      * Defaults to the project that the provider is authenticated with.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

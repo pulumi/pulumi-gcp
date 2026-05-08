@@ -104,7 +104,7 @@ def get_group_lookup(group_key: Optional[Union['GetGroupLookupGroupKeyArgs', 'Ge
         group_key=pulumi.get(__ret__, 'group_key'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_group_lookup_output(group_key: Optional[pulumi.Input[Union['GetGroupLookupGroupKeyArgs', 'GetGroupLookupGroupKeyArgsDict']]] = None,
+def get_group_lookup_output(group_key: pulumi.Input[Optional[Union['GetGroupLookupGroupKeyArgs', 'GetGroupLookupGroupKeyArgsDict']]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupLookupResult]:
     """
     Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group's email.

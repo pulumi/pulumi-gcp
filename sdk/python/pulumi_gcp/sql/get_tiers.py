@@ -102,7 +102,7 @@ def get_tiers(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         tiers=pulumi.get(__ret__, 'tiers'))
-def get_tiers_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_tiers_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTiersResult]:
     """
     Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the

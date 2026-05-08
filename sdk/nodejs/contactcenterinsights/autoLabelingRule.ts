@@ -175,7 +175,7 @@ export interface AutoLabelingRuleState {
     /**
      * Whether the rule is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * A unique ID for the new AutoLabelingRule. This ID will become the final
      * component of the AutoLabelingRule's resource name. If no ID is specified,
@@ -183,52 +183,52 @@ export interface AutoLabelingRuleState {
      * This value should be 4-64 characters and must match the regular
      * expression `^[A-Za-z0-9]{4,64}$`.
      */
-    autoLabelingRuleId?: pulumi.Input<string>;
+    autoLabelingRuleId?: pulumi.Input<string | undefined>;
     /**
      * Conditions to apply for auto-labeling the label_key.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.AutoLabelingRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.AutoLabelingRuleCondition>[] | undefined>;
     /**
      * The time at which this rule was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display Name of the auto labeling rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The label key.
      */
-    labelKey?: pulumi.Input<string>;
+    labelKey?: pulumi.Input<string | undefined>;
     /**
      * The type of the label key.
      * Possible values are: `LABEL_KEY_TYPE_UNSPECIFIED`, `LABEL_KEY_TYPE_CUSTOM`.
      */
-    labelKeyType?: pulumi.Input<string>;
+    labelKeyType?: pulumi.Input<string | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the auto labeling rule.
      * Format:
      * projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The most recent time at which this rule was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface AutoLabelingRuleArgs {
     /**
      * Whether the rule is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * A unique ID for the new AutoLabelingRule. This ID will become the final
      * component of the AutoLabelingRule's resource name. If no ID is specified,
@@ -246,29 +246,29 @@ export interface AutoLabelingRuleArgs {
      * This value should be 4-64 characters and must match the regular
      * expression `^[A-Za-z0-9]{4,64}$`.
      */
-    autoLabelingRuleId?: pulumi.Input<string>;
+    autoLabelingRuleId?: pulumi.Input<string | undefined>;
     /**
      * Conditions to apply for auto-labeling the label_key.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.AutoLabelingRuleCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.contactcenterinsights.AutoLabelingRuleCondition>[] | undefined>;
     /**
      * The description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display Name of the auto labeling rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The label key.
      */
-    labelKey?: pulumi.Input<string>;
+    labelKey?: pulumi.Input<string | undefined>;
     /**
      * The type of the label key.
      * Possible values are: `LABEL_KEY_TYPE_UNSPECIFIED`, `LABEL_KEY_TYPE_CUSTOM`.
      */
-    labelKeyType?: pulumi.Input<string>;
+    labelKeyType?: pulumi.Input<string | undefined>;
     /**
      * Location of the resource.
      */
@@ -277,5 +277,5 @@ export interface AutoLabelingRuleArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

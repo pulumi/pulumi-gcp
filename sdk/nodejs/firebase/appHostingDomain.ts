@@ -240,63 +240,63 @@ export interface AppHostingDomainState {
     /**
      * The ID of the Backend that this Domain is associated with
      */
-    backend?: pulumi.Input<string>;
+    backend?: pulumi.Input<string | undefined>;
     /**
      * Time at which the domain was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The status of a custom domain's linkage to the Backend.
      * Structure is documented below.
      */
-    customDomainStatuses?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatus>[]>;
+    customDomainStatuses?: pulumi.Input<pulumi.Input<inputs.firebase.AppHostingDomainCustomDomainStatus>[] | undefined>;
     /**
      * Time at which the domain was deleted.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Id of the domain to create.
      * Must be a valid domain name, such as "foo.com"
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location of the Backend that this Domain is associated with
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the domain, e.g.
      * `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Time at which a soft-deleted domain will be purged, rendering in
      * permanently deleted.
      */
-    purgeTime?: pulumi.Input<string>;
+    purgeTime?: pulumi.Input<string | undefined>;
     /**
      * The serving behavior of the domain. If specified, the domain will
      * serve content other than its Backend's live content.
      * Structure is documented below.
      */
-    serve?: pulumi.Input<inputs.firebase.AppHostingDomainServe>;
+    serve?: pulumi.Input<inputs.firebase.AppHostingDomainServe | undefined>;
     /**
      * System-assigned, unique identifier.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time at which the domain was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -320,11 +320,11 @@ export interface AppHostingDomainArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The serving behavior of the domain. If specified, the domain will
      * serve content other than its Backend's live content.
      * Structure is documented below.
      */
-    serve?: pulumi.Input<inputs.firebase.AppHostingDomainServe>;
+    serve?: pulumi.Input<inputs.firebase.AppHostingDomainServe | undefined>;
 }

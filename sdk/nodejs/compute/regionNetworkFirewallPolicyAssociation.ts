@@ -190,33 +190,33 @@ export interface RegionNetworkFirewallPolicyAssociationState {
     /**
      * The target that the firewall policy is attached to.
      */
-    attachmentTarget?: pulumi.Input<string>;
+    attachmentTarget?: pulumi.Input<string | undefined>;
     /**
      * The firewall policy of the resource.
      */
-    firewallPolicy?: pulumi.Input<string>;
+    firewallPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * An integer indicating the priority of an association.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The location of this resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The short name of the firewall policy of the association.
      */
-    shortName?: pulumi.Input<string>;
+    shortName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,19 +234,19 @@ export interface RegionNetworkFirewallPolicyAssociationArgs {
     /**
      * The name for an association.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * An integer indicating the priority of an association.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The location of this resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

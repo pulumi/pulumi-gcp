@@ -108,8 +108,8 @@ def get_databases(instance: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         instance=pulumi.get(__ret__, 'instance'),
         project=pulumi.get(__ret__, 'project'))
-def get_databases_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_databases_output(instance: pulumi.Input[Optional[_builtins.str]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasesResult]:
     """
     Use this data source to get information about a list of databases in a Cloud SQL instance.

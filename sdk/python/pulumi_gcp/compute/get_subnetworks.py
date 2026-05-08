@@ -129,9 +129,9 @@ def get_subnetworks(filter: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         subnetworks=pulumi.get(__ret__, 'subnetworks'))
-def get_subnetworks_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_subnetworks_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetworksResult]:
     """
     Get subnetworks within GCE.

@@ -254,45 +254,45 @@ export interface AuthzPolicyState {
      * 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
      * Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
      * Structure is documented below.
      */
-    customProvider?: pulumi.Input<inputs.networksecurity.AuthzPolicyCustomProvider>;
+    customProvider?: pulumi.Input<inputs.networksecurity.AuthzPolicyCustomProvider | undefined>;
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
      * Limited to 5 rules.
      * Structure is documented below.
      */
-    httpRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRule>[]>;
+    httpRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRule>[] | undefined>;
     /**
      * Set of labels associated with the AuthzExtension resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Name of the AuthzPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
      * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
@@ -302,26 +302,26 @@ export interface AuthzPolicyState {
      * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
      * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
      */
-    policyProfile?: pulumi.Input<string>;
+    policyProfile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the set of resources to which this policy should be applied to.
      * Structure is documented below.
      */
-    target?: pulumi.Input<inputs.networksecurity.AuthzPolicyTarget>;
+    target?: pulumi.Input<inputs.networksecurity.AuthzPolicyTarget | undefined>;
     /**
      * The timestamp when the resource was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -344,24 +344,24 @@ export interface AuthzPolicyArgs {
      * Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
      * Structure is documented below.
      */
-    customProvider?: pulumi.Input<inputs.networksecurity.AuthzPolicyCustomProvider>;
+    customProvider?: pulumi.Input<inputs.networksecurity.AuthzPolicyCustomProvider | undefined>;
     /**
      * A human-readable description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
      * Limited to 5 rules.
      * Structure is documented below.
      */
-    httpRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRule>[]>;
+    httpRules?: pulumi.Input<pulumi.Input<inputs.networksecurity.AuthzPolicyHttpRule>[] | undefined>;
     /**
      * Set of labels associated with the AuthzExtension resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the resource.
      */
@@ -369,7 +369,7 @@ export interface AuthzPolicyArgs {
     /**
      * Identifier. Name of the AuthzPolicy resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
      * authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
@@ -379,12 +379,12 @@ export interface AuthzPolicyArgs {
      * RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
      * Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
      */
-    policyProfile?: pulumi.Input<string>;
+    policyProfile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the set of resources to which this policy should be applied to.
      * Structure is documented below.

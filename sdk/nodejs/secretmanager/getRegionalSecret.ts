@@ -111,7 +111,7 @@ export interface GetRegionalSecretOutputArgs {
     /**
      * The ID of the project in which the resource belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the regional secret.
      */

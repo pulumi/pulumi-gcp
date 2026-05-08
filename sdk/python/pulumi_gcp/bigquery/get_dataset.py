@@ -321,8 +321,8 @@ def get_dataset(dataset_id: Optional[_builtins.str] = None,
         resource_tags=pulumi.get(__ret__, 'resource_tags'),
         self_link=pulumi.get(__ret__, 'self_link'),
         storage_billing_model=pulumi.get(__ret__, 'storage_billing_model'))
-def get_dataset_output(dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dataset_output(dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatasetResult]:
     """
     Get information about a BigQuery dataset. For more information see

@@ -305,11 +305,11 @@ export interface InstanceState {
      * The full name of the GCE network to connect the instance to.  If not provided,
      * 'default' will be used.
      */
-    authorizedNetwork?: pulumi.Input<string>;
+    authorizedNetwork?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the instance.
      * When a `terraform destroy` or `pulumi up` would delete the instance,
@@ -318,50 +318,50 @@ export interface InstanceState {
      * or `terraform destroy` that would delete the instance will fail.
      * When the field is set to false, deleting the instance is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Endpoint for Discovery API
      */
-    discoveryEndpoint?: pulumi.Input<string>;
+    discoveryEndpoint?: pulumi.Input<string | undefined>;
     /**
      * A user-visible name for the instance.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Maintenance policy for an instance.
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy | undefined>;
     /**
      * Output only. Published maintenance schedule.
      * Structure is documented below.
      */
-    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMaintenanceSchedule>[]>;
+    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMaintenanceSchedule>[] | undefined>;
     /**
      * The full version of memcached server running on this instance.
      */
-    memcacheFullVersion?: pulumi.Input<string>;
+    memcacheFullVersion?: pulumi.Input<string | undefined>;
     /**
      * Additional information about the instance state, if available.
      * Structure is documented below.
      */
-    memcacheNodes?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMemcacheNode>[]>;
+    memcacheNodes?: pulumi.Input<pulumi.Input<inputs.memcache.InstanceMemcacheNode>[] | undefined>;
     /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.
      */
-    memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
+    memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters | undefined>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used.
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -369,45 +369,45 @@ export interface InstanceState {
      * Default value is `MEMCACHE_1_5`.
      * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
      */
-    memcacheVersion?: pulumi.Input<string>;
+    memcacheVersion?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration for memcache nodes.
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.memcache.InstanceNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.memcache.InstanceNodeConfig | undefined>;
     /**
      * Number of nodes in the memcache instance.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Contains the name of allocated IP address ranges associated with
      * the private service access connection for example, "test-default"
      * associated with IP range 10.0.0.0/29.
      */
-    reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -418,7 +418,7 @@ export interface InstanceArgs {
      * The full name of the GCE network to connect the instance to.  If not provided,
      * 'default' will be used.
      */
-    authorizedNetwork?: pulumi.Input<string>;
+    authorizedNetwork?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the instance.
      * When a `terraform destroy` or `pulumi up` would delete the instance,
@@ -427,28 +427,28 @@ export interface InstanceArgs {
      * or `terraform destroy` that would delete the instance will fail.
      * When the field is set to false, deleting the instance is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * A user-visible name for the instance.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user-provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Maintenance policy for an instance.
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.memcache.InstanceMaintenancePolicy | undefined>;
     /**
      * User-specified parameters for this memcache instance.
      * Structure is documented below.
      */
-    memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters>;
+    memcacheParameters?: pulumi.Input<inputs.memcache.InstanceMemcacheParameters | undefined>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used.
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
@@ -456,11 +456,11 @@ export interface InstanceArgs {
      * Default value is `MEMCACHE_1_5`.
      * Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
      */
-    memcacheVersion?: pulumi.Input<string>;
+    memcacheVersion?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration for memcache nodes.
      * Structure is documented below.
@@ -474,20 +474,20 @@ export interface InstanceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Contains the name of allocated IP address ranges associated with
      * the private service access connection for example, "test-default"
      * associated with IP range 10.0.0.0/29.
      */
-    reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

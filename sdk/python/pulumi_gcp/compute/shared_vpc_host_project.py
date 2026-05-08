@@ -43,7 +43,7 @@ class SharedVPCHostProjectArgs:
 @pulumi.input_type
 class _SharedVPCHostProjectState:
     def __init__(__self__, *,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedVPCHostProject resources.
 
@@ -54,14 +54,14 @@ class _SharedVPCHostProjectState:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that will serve as a Shared VPC host project
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -71,7 +71,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Enables the Google Compute Engine
@@ -178,7 +178,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -201,7 +201,7 @@ class SharedVPCHostProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'SharedVPCHostProject':
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'SharedVPCHostProject':
         """
         Get an existing SharedVPCHostProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

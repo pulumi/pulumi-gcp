@@ -22,7 +22,7 @@ __all__ = ['ServicePerimetersArgs', 'ServicePerimeters']
 class ServicePerimetersArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
+                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
         """
         The set of arguments for constructing a ServicePerimeters resource.
 
@@ -50,7 +50,7 @@ class ServicePerimetersArgs:
 
     @_builtins.property
     @pulumi.getter(name="servicePerimeters")
-    def service_perimeters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]:
+    def service_perimeters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]:
         """
         The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
         Structure is documented below.
@@ -58,15 +58,15 @@ class ServicePerimetersArgs:
         return pulumi.get(self, "service_perimeters")
 
     @service_perimeters.setter
-    def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
+    def service_perimeters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
         pulumi.set(self, "service_perimeters", value)
 
 
 @pulumi.input_type
 class _ServicePerimetersState:
     def __init__(__self__, *,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeters resources.
 
@@ -82,7 +82,7 @@ class _ServicePerimetersState:
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AccessPolicy this ServicePerimeter lives in.
         Format: accessPolicies/{policy_id}
@@ -90,12 +90,12 @@ class _ServicePerimetersState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePerimeters")
-    def service_perimeters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]:
+    def service_perimeters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]:
         """
         The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
         Structure is documented below.
@@ -103,7 +103,7 @@ class _ServicePerimetersState:
         return pulumi.get(self, "service_perimeters")
 
     @service_perimeters.setter
-    def service_perimeters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
+    def service_perimeters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]]]):
         pulumi.set(self, "service_perimeters", value)
 
 
@@ -113,8 +113,8 @@ class ServicePerimeters(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
                  __props__=None):
         """
         Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
@@ -298,8 +298,8 @@ class ServicePerimeters(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -323,8 +323,8 @@ class ServicePerimeters(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            service_perimeters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None) -> 'ServicePerimeters':
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            service_perimeters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePerimetersServicePerimeterArgs', 'ServicePerimetersServicePerimeterArgsDict']]]]] = None) -> 'ServicePerimeters':
         """
         Get an existing ServicePerimeters resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

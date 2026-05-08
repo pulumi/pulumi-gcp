@@ -20,24 +20,24 @@ __all__ = ['GatewayArgs', 'Gateway']
 class GatewayArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 envoy_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 envoy_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
 
@@ -143,7 +143,7 @@ class GatewayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
         When no address is provided, an IP from the subnetwork is allocated.
@@ -153,12 +153,12 @@ class GatewayArgs:
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="allPorts")
-    def all_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_ports(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configures this gateway to ​listen on all ports.
         By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
@@ -168,12 +168,12 @@ class GatewayArgs:
         return pulumi.get(self, "all_ports")
 
     @all_ports.setter
-    def all_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")
-    def certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificate_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
         This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -181,12 +181,12 @@ class GatewayArgs:
         return pulumi.get(self, "certificate_urls")
 
     @certificate_urls.setter
-    def certificate_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificate_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificate_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteSwgAutogenRouterOnDestroy")
-    def delete_swg_autogen_router_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_swg_autogen_router_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
         If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
@@ -194,24 +194,24 @@ class GatewayArgs:
         return pulumi.get(self, "delete_swg_autogen_router_on_destroy")
 
     @delete_swg_autogen_router_on_destroy.setter
-    def delete_swg_autogen_router_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_swg_autogen_router_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_swg_autogen_router_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="envoyHeaders")
-    def envoy_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def envoy_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines if envoy will insert internal debug headers into upstream requests.
         Other Envoy headers may still be injected.
@@ -221,12 +221,12 @@ class GatewayArgs:
         return pulumi.get(self, "envoy_headers")
 
     @envoy_headers.setter
-    def envoy_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def envoy_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "envoy_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewaySecurityPolicy")
-    def gateway_security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
         For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
@@ -235,12 +235,12 @@ class GatewayArgs:
         return pulumi.get(self, "gateway_security_policy")
 
     @gateway_security_policy.setter
-    def gateway_security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP Version that will be used by this gateway.
         Possible values are: `IPV4`, `IPV6`.
@@ -248,12 +248,12 @@ class GatewayArgs:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the Gateway resource.
 
@@ -263,12 +263,12 @@ class GatewayArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the gateway.
         The default value is `global`.
@@ -276,24 +276,24 @@ class GatewayArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Gateway resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name identifying the VPC network that is using this configuration.
         For example: 'projects/*/global/networks/network-1'.
@@ -302,12 +302,12 @@ class GatewayArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
         The proxy binds to the specified ports.
@@ -316,12 +316,12 @@ class GatewayArgs:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -329,12 +329,12 @@ class GatewayArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="routingMode")
-    def routing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
         Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
@@ -342,12 +342,12 @@ class GatewayArgs:
         return pulumi.get(self, "routing_mode")
 
     @routing_mode.setter
-    def routing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routing_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. Scope determines how configuration across multiple Gateway instances are merged.
         The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
@@ -356,24 +356,24 @@ class GatewayArgs:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="serverTlsPolicy")
-    def server_tls_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_tls_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         """
         return pulumi.get(self, "server_tls_policy")
 
     @server_tls_policy.setter
-    def server_tls_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_tls_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_tls_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name identifying the subnetwork in which this SWG is allocated.
         For example: projects/*/regions/us-central1/subnetworks/network-1.
@@ -382,37 +382,37 @@ class GatewayArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 envoy_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 envoy_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
 
@@ -522,7 +522,7 @@ class _GatewayState:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Zero or one IPv4 or IPv6 address on which the Gateway will receive the traffic.
         When no address is provided, an IP from the subnetwork is allocated.
@@ -532,12 +532,12 @@ class _GatewayState:
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="allPorts")
-    def all_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_ports(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Configures this gateway to ​listen on all ports.
         By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
@@ -547,12 +547,12 @@ class _GatewayState:
         return pulumi.get(self, "all_ports")
 
     @all_ports.setter
-    def all_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")
-    def certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificate_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
         This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -560,24 +560,24 @@ class _GatewayState:
         return pulumi.get(self, "certificate_urls")
 
     @certificate_urls.setter
-    def certificate_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificate_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificate_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteSwgAutogenRouterOnDestroy")
-    def delete_swg_autogen_router_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_swg_autogen_router_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
         If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
@@ -585,36 +585,36 @@ class _GatewayState:
         return pulumi.get(self, "delete_swg_autogen_router_on_destroy")
 
     @delete_swg_autogen_router_on_destroy.setter
-    def delete_swg_autogen_router_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_swg_autogen_router_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_swg_autogen_router_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="envoyHeaders")
-    def envoy_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def envoy_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines if envoy will insert internal debug headers into upstream requests.
         Other Envoy headers may still be injected.
@@ -624,12 +624,12 @@ class _GatewayState:
         return pulumi.get(self, "envoy_headers")
 
     @envoy_headers.setter
-    def envoy_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def envoy_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "envoy_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewaySecurityPolicy")
-    def gateway_security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
         For example: 'projects/*/locations/*/gatewaySecurityPolicies/swg-policy'.
@@ -638,12 +638,12 @@ class _GatewayState:
         return pulumi.get(self, "gateway_security_policy")
 
     @gateway_security_policy.setter
-    def gateway_security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP Version that will be used by this gateway.
         Possible values are: `IPV4`, `IPV6`.
@@ -651,12 +651,12 @@ class _GatewayState:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the Gateway resource.
 
@@ -666,12 +666,12 @@ class _GatewayState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the gateway.
         The default value is `global`.
@@ -679,24 +679,24 @@ class _GatewayState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Gateway resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name identifying the VPC network that is using this configuration.
         For example: 'projects/*/global/networks/network-1'.
@@ -705,12 +705,12 @@ class _GatewayState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         One or more port numbers (1-65535), on which the Gateway will receive traffic.
         The proxy binds to the specified ports.
@@ -719,12 +719,12 @@ class _GatewayState:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -732,12 +732,12 @@ class _GatewayState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -745,12 +745,12 @@ class _GatewayState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="routingMode")
-    def routing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routing_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
         Possible values are: `NEXT_HOP_ROUTING_MODE`, `EXPLICIT_ROUTING_MODE`.
@@ -758,12 +758,12 @@ class _GatewayState:
         return pulumi.get(self, "routing_mode")
 
     @routing_mode.setter
-    def routing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routing_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routing_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. Scope determines how configuration across multiple Gateway instances are merged.
         The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer.
@@ -772,36 +772,36 @@ class _GatewayState:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL of this resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="serverTlsPolicy")
-    def server_tls_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_tls_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         """
         return pulumi.get(self, "server_tls_policy")
 
     @server_tls_policy.setter
-    def server_tls_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_tls_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_tls_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name identifying the subnetwork in which this SWG is allocated.
         For example: projects/*/regions/us-central1/subnetworks/network-1.
@@ -810,12 +810,12 @@ class _GatewayState:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The type of the customer managed gateway.
         Possible values are: `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
@@ -823,19 +823,19 @@ class _GatewayState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -845,25 +845,25 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 envoy_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 envoy_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Gateway represents the configuration for a proxy, typically a load balancer.
@@ -1307,25 +1307,25 @@ class Gateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 envoy_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 envoy_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1373,30 +1373,30 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            all_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-            certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            envoy_headers: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway_security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            routing_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            server_tls_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Gateway':
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            envoy_headers: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            routing_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            server_tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Gateway':
         """
         Get an existing Gateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -147,28 +147,28 @@ export interface DocumentAiProcessorState {
     /**
      * The display name. Must be unique.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the processor.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,7 +182,7 @@ export interface DocumentAiProcessorArgs {
     /**
      * The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource.
      */
@@ -191,7 +191,7 @@ export interface DocumentAiProcessorArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of processor. For possible types see the [official list](https://cloud.google.com/document-ai/docs/reference/rest/v1/projects.locations/fetchProcessorTypes#google.cloud.documentai.v1.DocumentProcessorService.FetchProcessorTypes)
      */

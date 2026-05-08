@@ -196,9 +196,9 @@ def get_network(location: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),
         vpc_networks=pulumi.get(__ret__, 'vpc_networks'))
-def get_network_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_network_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     Use this data source to get details about a VMwareEngine network resource.

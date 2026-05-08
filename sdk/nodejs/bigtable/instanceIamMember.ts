@@ -226,17 +226,17 @@ export interface InstanceIamMemberState {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.bigtable.InstanceIamMemberCondition>;
+    condition?: pulumi.Input<inputs.bigtable.InstanceIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the instances's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      *
      * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -247,18 +247,18 @@ export interface InstanceIamMemberState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The project in which the instance belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -268,7 +268,7 @@ export interface InstanceIamMemberArgs {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.bigtable.InstanceIamMemberCondition>;
+    condition?: pulumi.Input<inputs.bigtable.InstanceIamMemberCondition | undefined>;
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      *
@@ -290,7 +290,7 @@ export interface InstanceIamMemberArgs {
      * The project in which the instance belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format

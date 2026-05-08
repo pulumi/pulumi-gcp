@@ -246,40 +246,40 @@ export interface GatewaySecurityPolicyState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      */
-    tlsInspectionPolicy?: pulumi.Input<string>;
+    tlsInspectionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -289,24 +289,24 @@ export interface GatewaySecurityPolicyArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location of the gateway security policy.
      * The default value is `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      */
-    tlsInspectionPolicy?: pulumi.Input<string>;
+    tlsInspectionPolicy?: pulumi.Input<string | undefined>;
 }

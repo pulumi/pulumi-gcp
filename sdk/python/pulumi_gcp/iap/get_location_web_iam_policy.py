@@ -127,8 +127,8 @@ def get_location_web_iam_policy(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_location_web_iam_policy_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_location_web_iam_policy_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLocationWebIamPolicyResult]:
     """
     Retrieves the current IAM policy data for locationweb

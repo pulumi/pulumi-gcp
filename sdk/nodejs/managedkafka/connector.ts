@@ -226,37 +226,37 @@ export interface ConnectorState {
     /**
      * Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
      */
-    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The connect cluster name.
      */
-    connectCluster?: pulumi.Input<string>;
+    connectCluster?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
     /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the connector. The `connector` segment is used when connecting directly to the connect cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/connectClusters/CONNECT_CLUSTER/connectors/CONNECTOR_ID`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The current state of the connect. Possible values: `STATE_UNSPECIFIED`, `UNASSIGNED`, `RUNNING`, `PAUSED`, `FAILED`, `RESTARTING`, and `STOPPED`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
      * Structure is documented below.
      */
-    taskRestartPolicy?: pulumi.Input<inputs.managedkafka.ConnectorTaskRestartPolicy>;
+    taskRestartPolicy?: pulumi.Input<inputs.managedkafka.ConnectorTaskRestartPolicy | undefined>;
 }
 
 /**
@@ -266,7 +266,7 @@ export interface ConnectorArgs {
     /**
      * Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
      */
-    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The connect cluster name.
      */
@@ -283,10 +283,10 @@ export interface ConnectorArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
      * Structure is documented below.
      */
-    taskRestartPolicy?: pulumi.Input<inputs.managedkafka.ConnectorTaskRestartPolicy>;
+    taskRestartPolicy?: pulumi.Input<inputs.managedkafka.ConnectorTaskRestartPolicy | undefined>;
 }

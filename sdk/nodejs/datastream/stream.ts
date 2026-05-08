@@ -574,7 +574,7 @@ import * as utilities from "../utilities";
  *     databaseVersion: "MYSQL_8_0",
  *     region: "us-central1",
  *     rootPassword: "<%= ctx[:vars]['mysql_root_password'] %>",
- *     deletionProtection: "<%= ctx[:vars]['deletion_protection'] %>",
+ *     deletionProtection: "<%= ctx[:vars]['deletion_protection'] %>" === "true",
  *     settings: {
  *         tier: "db-custom-2-4096",
  *         ipConfiguration: {
@@ -1516,82 +1516,82 @@ export interface StreamState {
      * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
      * Structure is documented below.
      */
-    backfillAll?: pulumi.Input<inputs.datastream.StreamBackfillAll>;
+    backfillAll?: pulumi.Input<inputs.datastream.StreamBackfillAll | undefined>;
     /**
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
-    backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone>;
+    backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone | undefined>;
     /**
      * Create the stream without validating it.
      */
-    createWithoutValidation?: pulumi.Input<boolean>;
+    createWithoutValidation?: pulumi.Input<boolean | undefined>;
     /**
      * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
      * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
-    customerManagedEncryptionKey?: pulumi.Input<string>;
+    customerManagedEncryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
      * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
      * the stream from a `RUNNING` state.
      * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Destination connection profile configuration.
      * Structure is documented below.
      */
-    destinationConfig?: pulumi.Input<inputs.datastream.StreamDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.datastream.StreamDestinationConfig | undefined>;
     /**
      * Display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location this stream is located in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The stream's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Rule sets to apply to the stream.
      * Structure is documented below.
      */
-    ruleSets?: pulumi.Input<pulumi.Input<inputs.datastream.StreamRuleSet>[]>;
+    ruleSets?: pulumi.Input<pulumi.Input<inputs.datastream.StreamRuleSet>[] | undefined>;
     /**
      * Source connection profile configuration.
      * Structure is documented below.
      */
-    sourceConfig?: pulumi.Input<inputs.datastream.StreamSourceConfig>;
+    sourceConfig?: pulumi.Input<inputs.datastream.StreamSourceConfig | undefined>;
     /**
      * The state of the stream.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The stream identifier.
      */
-    streamId?: pulumi.Input<string>;
+    streamId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1602,27 +1602,27 @@ export interface StreamArgs {
      * Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
      * Structure is documented below.
      */
-    backfillAll?: pulumi.Input<inputs.datastream.StreamBackfillAll>;
+    backfillAll?: pulumi.Input<inputs.datastream.StreamBackfillAll | undefined>;
     /**
      * Backfill strategy to disable automatic backfill for the Stream's objects.
      */
-    backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone>;
+    backfillNone?: pulumi.Input<inputs.datastream.StreamBackfillNone | undefined>;
     /**
      * Create the stream without validating it.
      */
-    createWithoutValidation?: pulumi.Input<boolean>;
+    createWithoutValidation?: pulumi.Input<boolean | undefined>;
     /**
      * A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
      * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
-    customerManagedEncryptionKey?: pulumi.Input<string>;
+    customerManagedEncryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
      * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
      * the stream from a `RUNNING` state.
      * Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Destination connection profile configuration.
      * Structure is documented below.
@@ -1637,7 +1637,7 @@ export interface StreamArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the location this stream is located in.
      */
@@ -1646,12 +1646,12 @@ export interface StreamArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rule sets to apply to the stream.
      * Structure is documented below.
      */
-    ruleSets?: pulumi.Input<pulumi.Input<inputs.datastream.StreamRuleSet>[]>;
+    ruleSets?: pulumi.Input<pulumi.Input<inputs.datastream.StreamRuleSet>[] | undefined>;
     /**
      * Source connection profile configuration.
      * Structure is documented below.

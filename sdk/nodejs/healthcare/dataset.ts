@@ -179,30 +179,30 @@ export interface DatasetState {
      * A nested object resource.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec | undefined>;
     /**
      * The location for the Dataset.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the Dataset.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified name of this dataset
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
      * "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
      * (e.g., HL7 messages) where no explicit timezone is specified.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -213,7 +213,7 @@ export interface DatasetArgs {
      * A nested object resource.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec | undefined>;
     /**
      * The location for the Dataset.
      */
@@ -221,16 +221,16 @@ export interface DatasetArgs {
     /**
      * The resource name for the Dataset.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
      * "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
      * (e.g., HL7 messages) where no explicit timezone is specified.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

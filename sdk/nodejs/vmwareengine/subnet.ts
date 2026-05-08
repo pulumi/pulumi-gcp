@@ -216,62 +216,62 @@ export interface SubnetState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * DHCP address ranges.
      * Structure is documented below.
      */
-    dhcpAddressRanges?: pulumi.Input<pulumi.Input<inputs.vmwareengine.SubnetDhcpAddressRange>[]>;
+    dhcpAddressRanges?: pulumi.Input<pulumi.Input<inputs.vmwareengine.SubnetDhcpAddressRange>[] | undefined>;
     /**
      * The canonical identifier of the logical router that this subnet is attached to.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the gateway of this subnet. Must fall within the IP prefix defined above.
      */
-    gatewayIp?: pulumi.Input<string>;
+    gatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The IP address range of the subnet in CIDR format.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the private cloud to create a new subnet in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Whether the NSX-T configuration in the backend follows the standard configuration supported by Google Cloud.
      * If false, the subnet cannot be modified through Google Cloud, only through NSX-T directly.
      */
-    standardConfig?: pulumi.Input<boolean>;
+    standardConfig?: pulumi.Input<boolean | undefined>;
     /**
      * State of the subnet.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The type of the subnet.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * VLAN ID of the VLAN on which the subnet is configured.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -286,7 +286,7 @@ export interface SubnetArgs {
      * The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
      * where n ranges from 1 to 5.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the private cloud to create a new subnet in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.

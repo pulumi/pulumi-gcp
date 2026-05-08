@@ -171,41 +171,41 @@ export interface TraceScopeState {
     /**
      * The creation timestamp of the trace scope.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Describes this trace scope.
      * The maximum length of the description is 8000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * GCP region the TraceScope is stored in. Only `global` is supported.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the trace scope.
      * For example:
      * projects/my-project/locations/global/traceScopes/my-trace-scope
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`
      * A trace scope can include a maximum of 20 projects.
      */
-    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A client-assigned identifier for the trace scope.
      */
-    traceScopeId?: pulumi.Input<string>;
+    traceScopeId?: pulumi.Input<string | undefined>;
     /**
      * The last update timestamp of the trace scope.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface TraceScopeArgs {
      * Describes this trace scope.
      * The maximum length of the description is 8000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * GCP region the TraceScope is stored in. Only `global` is supported.
      */
@@ -225,7 +225,7 @@ export interface TraceScopeArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`

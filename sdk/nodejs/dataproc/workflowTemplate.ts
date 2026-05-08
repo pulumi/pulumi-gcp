@@ -311,64 +311,64 @@ export interface WorkflowTemplateState {
     /**
      * Output only. The time template was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
-    dagTimeout?: pulumi.Input<string>;
+    dagTimeout?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      */
-    encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig | undefined>;
     /**
      * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      */
-    jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[]>;
+    jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateJob>[] | undefined>;
     /**
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[] | undefined>;
     /**
      * (Required) WorkflowTemplate scheduling information.
      */
-    placement?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement>;
+    placement?: pulumi.Input<inputs.dataproc.WorkflowTemplatePlacement | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The time template was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The current version of this workflow template.
      *
      * @deprecated version is not useful as a configurable field, and will be removed in the future.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -378,11 +378,11 @@ export interface WorkflowTemplateArgs {
     /**
      * Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
      */
-    dagTimeout?: pulumi.Input<string>;
+    dagTimeout?: pulumi.Input<string | undefined>;
     /**
      * Encryption settings for encrypting workflow template job arguments. Structure is documented below
      */
-    encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.dataproc.WorkflowTemplateEncryptionConfig | undefined>;
     /**
      * (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
      */
@@ -393,7 +393,7 @@ export interface WorkflowTemplateArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -401,11 +401,11 @@ export interface WorkflowTemplateArgs {
     /**
      * (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.WorkflowTemplateParameter>[] | undefined>;
     /**
      * (Required) WorkflowTemplate scheduling information.
      */
@@ -413,11 +413,11 @@ export interface WorkflowTemplateArgs {
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. The current version of this workflow template.
      *
      * @deprecated version is not useful as a configurable field, and will be removed in the future.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }

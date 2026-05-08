@@ -34,8 +34,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -78,8 +78,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -122,8 +122,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -166,8 +166,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -210,8 +210,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetInstanceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -254,8 +254,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetRuntimeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -298,8 +298,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetRuntimeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -342,8 +342,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetRuntimeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -386,8 +386,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetRuntimeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -430,8 +430,8 @@ public final class NotebooksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.notebooks.NotebooksFunctions;
      * import com.pulumi.gcp.notebooks.inputs.GetRuntimeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

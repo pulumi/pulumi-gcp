@@ -242,10 +242,10 @@ def get_region_network_endpoint_group(name: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         serverless_deployments=pulumi.get(__ret__, 'serverless_deployments'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'))
-def get_region_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             self_link: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_region_network_endpoint_group_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             self_link: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionNetworkEndpointGroupResult]:
     """
     Use this data source to access a Region Network Endpoint Group's attributes.

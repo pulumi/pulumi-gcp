@@ -25,12 +25,12 @@ class NodePoolArgs:
                  location: pulumi.Input[_builtins.str],
                  node_count: pulumi.Input[_builtins.int],
                  node_location: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_disk_encryption: Optional[pulumi.Input['NodePoolLocalDiskEncryptionArgs']] = None,
-                 machine_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_disk_encryption: pulumi.Input[Optional['NodePoolLocalDiskEncryptionArgs']] = None,
+                 machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional['NodePoolNodeConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodePool resource.
 
@@ -119,7 +119,7 @@ class NodePoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels associated with this resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -128,12 +128,12 @@ class NodePoolArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="localDiskEncryption")
-    def local_disk_encryption(self) -> Optional[pulumi.Input['NodePoolLocalDiskEncryptionArgs']]:
+    def local_disk_encryption(self) -> pulumi.Input[Optional['NodePoolLocalDiskEncryptionArgs']]:
         """
         Local disk encryption options. This field is only used when enabling CMEK support.
         Structure is documented below.
@@ -141,12 +141,12 @@ class NodePoolArgs:
         return pulumi.get(self, "local_disk_encryption")
 
     @local_disk_encryption.setter
-    def local_disk_encryption(self, value: Optional[pulumi.Input['NodePoolLocalDiskEncryptionArgs']]):
+    def local_disk_encryption(self, value: pulumi.Input[Optional['NodePoolLocalDiskEncryptionArgs']]):
         pulumi.set(self, "local_disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="machineFilter")
-    def machine_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only machines matching this filter will be allowed to join the node pool.
         The filtering language accepts strings like "name=<name>", and is
@@ -155,24 +155,24 @@ class NodePoolArgs:
         return pulumi.get(self, "machine_filter")
 
     @machine_filter.setter
-    def machine_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the node pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
+    def node_config(self) -> pulumi.Input[Optional['NodePoolNodeConfigArgs']]:
         """
         Configuration for each node in the NodePool
         Structure is documented below.
@@ -180,12 +180,12 @@ class NodePoolArgs:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigArgs']]):
+    def node_config(self, value: pulumi.Input[Optional['NodePoolNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -193,28 +193,28 @@ class NodePoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _NodePoolState:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_disk_encryption: Optional[pulumi.Input['NodePoolLocalDiskEncryptionArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input['NodePoolNodeConfigArgs']] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_disk_encryption: pulumi.Input[Optional['NodePoolLocalDiskEncryptionArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional['NodePoolNodeConfigArgs']] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodePool resources.
 
@@ -275,43 +275,43 @@ class _NodePoolState:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the target Distributed Cloud Edge Cluster.
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the node pool was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels associated with this resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -320,12 +320,12 @@ class _NodePoolState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="localDiskEncryption")
-    def local_disk_encryption(self) -> Optional[pulumi.Input['NodePoolLocalDiskEncryptionArgs']]:
+    def local_disk_encryption(self) -> pulumi.Input[Optional['NodePoolLocalDiskEncryptionArgs']]:
         """
         Local disk encryption options. This field is only used when enabling CMEK support.
         Structure is documented below.
@@ -333,24 +333,24 @@ class _NodePoolState:
         return pulumi.get(self, "local_disk_encryption")
 
     @local_disk_encryption.setter
-    def local_disk_encryption(self, value: Optional[pulumi.Input['NodePoolLocalDiskEncryptionArgs']]):
+    def local_disk_encryption(self, value: pulumi.Input[Optional['NodePoolLocalDiskEncryptionArgs']]):
         pulumi.set(self, "local_disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="machineFilter")
-    def machine_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only machines matching this filter will be allowed to join the node pool.
         The filtering language accepts strings like "name=<name>", and is
@@ -359,24 +359,24 @@ class _NodePoolState:
         return pulumi.get(self, "machine_filter")
 
     @machine_filter.setter
-    def machine_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the node pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigArgs']]:
+    def node_config(self) -> pulumi.Input[Optional['NodePoolNodeConfigArgs']]:
         """
         Configuration for each node in the NodePool
         Structure is documented below.
@@ -384,48 +384,48 @@ class _NodePoolState:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigArgs']]):
+    def node_config(self, value: pulumi.Input[Optional['NodePoolNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes in the pool.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeLocation")
-    def node_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
         """
         return pulumi.get(self, "node_location")
 
     @node_location.setter
-    def node_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_location", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeVersion")
-    def node_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lowest release version among all worker nodes.
         """
         return pulumi.get(self, "node_version")
 
     @node_version.setter
-    def node_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -433,12 +433,12 @@ class _NodePoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -446,19 +446,19 @@ class _NodePoolState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the node pool was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -468,16 +468,16 @@ class NodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_disk_encryption: Optional[pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         "A set of Kubernetes nodes in a cluster with common configuration and specification."
@@ -654,16 +654,16 @@ class NodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_disk_encryption: Optional[pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -708,21 +708,21 @@ class NodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            local_disk_encryption: Optional[pulumi.Input[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_config: Optional[pulumi.Input[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            node_location: Optional[pulumi.Input[_builtins.str]] = None,
-            node_version: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'NodePool':
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_disk_encryption: pulumi.Input[Optional[Union['NodePoolLocalDiskEncryptionArgs', 'NodePoolLocalDiskEncryptionArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_config: pulumi.Input[Optional[Union['NodePoolNodeConfigArgs', 'NodePoolNodeConfigArgsDict']]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            node_location: pulumi.Input[Optional[_builtins.str]] = None,
+            node_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'NodePool':
         """
         Get an existing NodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

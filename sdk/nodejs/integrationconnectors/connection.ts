@@ -550,133 +550,133 @@ export interface ConnectionState {
      * authConfig for the connection.
      * Structure is documented below.
      */
-    authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfig>;
+    authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfig | undefined>;
     /**
      * Config Variables for the connection.
      * Structure is documented below.
      */
-    configVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionConfigVariable>[]>;
+    configVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionConfigVariable>[] | undefined>;
     /**
      * Connection revision. This field is only updated when the connection is created or updated by User.
      */
-    connectionRevision?: pulumi.Input<string>;
+    connectionRevision?: pulumi.Input<string | undefined>;
     /**
      * connectorVersion of the Connector.
      */
-    connectorVersion?: pulumi.Input<string>;
+    connectorVersion?: pulumi.Input<string | undefined>;
     /**
      * This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
      * Structure is documented below.
      */
-    connectorVersionInfraConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionConnectorVersionInfraConfig>[]>;
+    connectorVersionInfraConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionConnectorVersionInfraConfig>[] | undefined>;
     /**
      * Flag to mark the version indicating the launch stage.
      */
-    connectorVersionLaunchStage?: pulumi.Input<string>;
+    connectorVersionLaunchStage?: pulumi.Input<string | undefined>;
     /**
      * Time the Namespace was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * An arbitrary description for the Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Define the Connectors target endpoint.
      * Structure is documented below.
      */
-    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionDestinationConfig>[]>;
+    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionDestinationConfig>[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Eventing Configuration of a connection
      * Structure is documented below.
      */
-    eventingConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfig>;
+    eventingConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfig | undefined>;
     /**
      * Eventing enablement type. Will be nil if eventing is not enabled.
      * Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
      */
-    eventingEnablementType?: pulumi.Input<string>;
+    eventingEnablementType?: pulumi.Input<string | undefined>;
     /**
      * Eventing Runtime Data.
      * Structure is documented below.
      */
-    eventingRuntimeDatas?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionEventingRuntimeData>[]>;
+    eventingRuntimeDatas?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionEventingRuntimeData>[] | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location in which Connection needs to be created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Determines whether or no a connection is locked. If locked, a reason must be specified.
      * Structure is documented below.
      */
-    lockConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLockConfig>;
+    lockConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLockConfig | undefined>;
     /**
      * Log configuration for the connection.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLogConfig>;
+    logConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLogConfig | undefined>;
     /**
      * Name of Connection needs to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node configuration for the connection.
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionNodeConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Service account needed for runtime plane to access Google Cloud resources.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
      * e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
      */
-    serviceDirectory?: pulumi.Input<string>;
+    serviceDirectory?: pulumi.Input<string | undefined>;
     /**
      * SSL Configuration of a connection
      * Structure is documented below.
      */
-    sslConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfig>;
+    sslConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfig | undefined>;
     /**
      * (Output)
      * Current status of eventing.
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionStatus>[] | undefined>;
     /**
      * This subscription type enum states the subscription type of the project.
      */
-    subscriptionType?: pulumi.Input<string>;
+    subscriptionType?: pulumi.Input<string | undefined>;
     /**
      * Suspended indicates if a user has suspended a connection or not.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * Time the Namespace was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -687,12 +687,12 @@ export interface ConnectionArgs {
      * authConfig for the connection.
      * Structure is documented below.
      */
-    authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfig>;
+    authConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionAuthConfig | undefined>;
     /**
      * Config Variables for the connection.
      * Structure is documented below.
      */
-    configVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionConfigVariable>[]>;
+    configVariables?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionConfigVariable>[] | undefined>;
     /**
      * connectorVersion of the Connector.
      */
@@ -700,29 +700,29 @@ export interface ConnectionArgs {
     /**
      * An arbitrary description for the Connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Define the Connectors target endpoint.
      * Structure is documented below.
      */
-    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionDestinationConfig>[]>;
+    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.integrationconnectors.ConnectionDestinationConfig>[] | undefined>;
     /**
      * Eventing Configuration of a connection
      * Structure is documented below.
      */
-    eventingConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfig>;
+    eventingConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionEventingConfig | undefined>;
     /**
      * Eventing enablement type. Will be nil if eventing is not enabled.
      * Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
      */
-    eventingEnablementType?: pulumi.Input<string>;
+    eventingEnablementType?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location in which Connection needs to be created.
      */
@@ -731,37 +731,37 @@ export interface ConnectionArgs {
      * Determines whether or no a connection is locked. If locked, a reason must be specified.
      * Structure is documented below.
      */
-    lockConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLockConfig>;
+    lockConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLockConfig | undefined>;
     /**
      * Log configuration for the connection.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLogConfig>;
+    logConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionLogConfig | undefined>;
     /**
      * Name of Connection needs to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node configuration for the connection.
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionNodeConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service account needed for runtime plane to access Google Cloud resources.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * SSL Configuration of a connection
      * Structure is documented below.
      */
-    sslConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfig>;
+    sslConfig?: pulumi.Input<inputs.integrationconnectors.ConnectionSslConfig | undefined>;
     /**
      * Suspended indicates if a user has suspended a connection or not.
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
 }

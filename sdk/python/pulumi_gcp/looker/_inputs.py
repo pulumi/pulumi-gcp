@@ -50,7 +50,7 @@ __all__ = [
 ]
 
 class InstanceAdminSettingsArgsDict(TypedDict):
-    allowed_email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_email_domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Email domain allowlist for the instance.
     Define the email domains to which your users can deliver Looker (Google Cloud core) content.
@@ -62,7 +62,7 @@ class InstanceAdminSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceAdminSettingsArgs:
     def __init__(__self__, *,
-                 allowed_email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_email_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_email_domains: Email domain allowlist for the instance.
                Define the email domains to which your users can deliver Looker (Google Cloud core) content.
@@ -75,7 +75,7 @@ class InstanceAdminSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedEmailDomains")
-    def allowed_email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_email_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Email domain allowlist for the instance.
         Define the email domains to which your users can deliver Looker (Google Cloud core) content.
@@ -86,17 +86,17 @@ class InstanceAdminSettingsArgs:
         return pulumi.get(self, "allowed_email_domains")
 
     @allowed_email_domains.setter
-    def allowed_email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_email_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_email_domains", value)
 
 
 class InstanceControlledEgressConfigArgsDict(TypedDict):
-    egress_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    egress_fqdns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of fully qualified domain names to be added to the allowlist for
     outbound traffic.
     """
-    marketplace_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    marketplace_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the Looker Marketplace is enabled.
     """
@@ -104,8 +104,8 @@ class InstanceControlledEgressConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceControlledEgressConfigArgs:
     def __init__(__self__, *,
-                 egress_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 marketplace_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 egress_fqdns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 marketplace_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_fqdns: List of fully qualified domain names to be added to the allowlist for
                outbound traffic.
@@ -118,7 +118,7 @@ class InstanceControlledEgressConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="egressFqdns")
-    def egress_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def egress_fqdns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of fully qualified domain names to be added to the allowlist for
         outbound traffic.
@@ -126,28 +126,28 @@ class InstanceControlledEgressConfigArgs:
         return pulumi.get(self, "egress_fqdns")
 
     @egress_fqdns.setter
-    def egress_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def egress_fqdns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "egress_fqdns", value)
 
     @_builtins.property
     @pulumi.getter(name="marketplaceEnabled")
-    def marketplace_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def marketplace_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Looker Marketplace is enabled.
         """
         return pulumi.get(self, "marketplace_enabled")
 
     @marketplace_enabled.setter
-    def marketplace_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def marketplace_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "marketplace_enabled", value)
 
 
 class InstanceCustomDomainArgsDict(TypedDict):
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain name
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Status of the custom domain.
@@ -156,8 +156,8 @@ class InstanceCustomDomainArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceCustomDomainArgs:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: Domain name
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -170,19 +170,19 @@ class InstanceCustomDomainArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Status of the custom domain.
@@ -190,7 +190,7 @@ class InstanceCustomDomainArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -270,17 +270,17 @@ class InstanceDenyMaintenancePeriodArgs:
 
 
 class InstanceDenyMaintenancePeriodEndDateArgsDict(TypedDict):
-    day: NotRequired[pulumi.Input[_builtins.int]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
     to specify a year by itself or a year and month where the day isn't significant.
     """
-    month: NotRequired[pulumi.Input[_builtins.int]]
+    month: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Month of a year. Must be from 1 to 12, or 0 to specify a year without a
     month and day.
     """
-    year: NotRequired[pulumi.Input[_builtins.int]]
+    year: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Year of the date. Must be from 1 to 9999, or 0 to specify a date without
     a year.
@@ -289,9 +289,9 @@ class InstanceDenyMaintenancePeriodEndDateArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceDenyMaintenancePeriodEndDateArgs:
     def __init__(__self__, *,
-                 day: Optional[pulumi.Input[_builtins.int]] = None,
-                 month: Optional[pulumi.Input[_builtins.int]] = None,
-                 year: Optional[pulumi.Input[_builtins.int]] = None):
+                 day: pulumi.Input[Optional[_builtins.int]] = None,
+                 month: pulumi.Input[Optional[_builtins.int]] = None,
+                 year: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
                to specify a year by itself or a year and month where the day isn't significant.
@@ -309,7 +309,7 @@ class InstanceDenyMaintenancePeriodEndDateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
         to specify a year by itself or a year and month where the day isn't significant.
@@ -317,12 +317,12 @@ class InstanceDenyMaintenancePeriodEndDateArgs:
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day", value)
 
     @_builtins.property
     @pulumi.getter
-    def month(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def month(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Month of a year. Must be from 1 to 12, or 0 to specify a year without a
         month and day.
@@ -330,12 +330,12 @@ class InstanceDenyMaintenancePeriodEndDateArgs:
         return pulumi.get(self, "month")
 
     @month.setter
-    def month(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def month(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "month", value)
 
     @_builtins.property
     @pulumi.getter
-    def year(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def year(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without
         a year.
@@ -343,22 +343,22 @@ class InstanceDenyMaintenancePeriodEndDateArgs:
         return pulumi.get(self, "year")
 
     @year.setter
-    def year(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def year(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "year", value)
 
 
 class InstanceDenyMaintenancePeriodStartDateArgsDict(TypedDict):
-    day: NotRequired[pulumi.Input[_builtins.int]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
     to specify a year by itself or a year and month where the day isn't significant.
     """
-    month: NotRequired[pulumi.Input[_builtins.int]]
+    month: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Month of a year. Must be from 1 to 12, or 0 to specify a year without a
     month and day.
     """
-    year: NotRequired[pulumi.Input[_builtins.int]]
+    year: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Year of the date. Must be from 1 to 9999, or 0 to specify a date without
     a year.
@@ -367,9 +367,9 @@ class InstanceDenyMaintenancePeriodStartDateArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceDenyMaintenancePeriodStartDateArgs:
     def __init__(__self__, *,
-                 day: Optional[pulumi.Input[_builtins.int]] = None,
-                 month: Optional[pulumi.Input[_builtins.int]] = None,
-                 year: Optional[pulumi.Input[_builtins.int]] = None):
+                 day: pulumi.Input[Optional[_builtins.int]] = None,
+                 month: pulumi.Input[Optional[_builtins.int]] = None,
+                 year: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
                to specify a year by itself or a year and month where the day isn't significant.
@@ -387,7 +387,7 @@ class InstanceDenyMaintenancePeriodStartDateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
         to specify a year by itself or a year and month where the day isn't significant.
@@ -395,12 +395,12 @@ class InstanceDenyMaintenancePeriodStartDateArgs:
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day", value)
 
     @_builtins.property
     @pulumi.getter
-    def month(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def month(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Month of a year. Must be from 1 to 12, or 0 to specify a year without a
         month and day.
@@ -408,12 +408,12 @@ class InstanceDenyMaintenancePeriodStartDateArgs:
         return pulumi.get(self, "month")
 
     @month.setter
-    def month(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def month(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "month", value)
 
     @_builtins.property
     @pulumi.getter
-    def year(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def year(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without
         a year.
@@ -421,24 +421,24 @@ class InstanceDenyMaintenancePeriodStartDateArgs:
         return pulumi.get(self, "year")
 
     @year.setter
-    def year(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def year(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "year", value)
 
 
 class InstanceDenyMaintenancePeriodTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59.
     """
@@ -446,10 +446,10 @@ class InstanceDenyMaintenancePeriodTimeArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceDenyMaintenancePeriodTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
         :param pulumi.Input[_builtins.int] minutes: Minutes of hour of day. Must be from 0 to 59.
@@ -467,64 +467,64 @@ class InstanceDenyMaintenancePeriodTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         """
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59.
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class InstanceEncryptionConfigArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the customer managed encryption key (CMEK) in KMS.
     """
-    kms_key_name_version: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Full name and version of the CMEK key currently in use to encrypt Looker data.
     """
-    kms_key_state: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Status of the customer managed encryption key (CMEK) in KMS.
@@ -533,9 +533,9 @@ class InstanceEncryptionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceEncryptionConfigArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: Name of the customer managed encryption key (CMEK) in KMS.
         :param pulumi.Input[_builtins.str] kms_key_name_version: (Output)
@@ -552,19 +552,19 @@ class InstanceEncryptionConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the customer managed encryption key (CMEK) in KMS.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyNameVersion")
-    def kms_key_name_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Full name and version of the CMEK key currently in use to encrypt Looker data.
@@ -572,12 +572,12 @@ class InstanceEncryptionConfigArgs:
         return pulumi.get(self, "kms_key_name_version")
 
     @kms_key_name_version.setter
-    def kms_key_name_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name_version", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyState")
-    def kms_key_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Status of the customer managed encryption key (CMEK) in KMS.
@@ -585,7 +585,7 @@ class InstanceEncryptionConfigArgs:
         return pulumi.get(self, "kms_key_state")
 
     @kms_key_state.setter
-    def kms_key_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_state", value)
 
 
@@ -664,19 +664,19 @@ class InstanceMaintenanceWindowArgs:
 
 
 class InstanceMaintenanceWindowStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59.
     """
@@ -684,10 +684,10 @@ class InstanceMaintenanceWindowStartTimeArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMaintenanceWindowStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
         :param pulumi.Input[_builtins.int] minutes: Minutes of hour of day. Must be from 0 to 59.
@@ -705,50 +705,50 @@ class InstanceMaintenanceWindowStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         """
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59.
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
@@ -878,19 +878,19 @@ class InstancePeriodicExportConfigArgs:
 
 
 class InstancePeriodicExportConfigStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59.
     """
@@ -898,10 +898,10 @@ class InstancePeriodicExportConfigStartTimeArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePeriodicExportConfigStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
         :param pulumi.Input[_builtins.int] minutes: Minutes of hour of day. Must be from 0 to 59.
@@ -919,64 +919,64 @@ class InstancePeriodicExportConfigStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         """
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59.
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class InstancePscConfigArgsDict(TypedDict):
-    allowed_vpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_vpcs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of VPCs that are allowed ingress into the Looker instance.
     """
-    looker_service_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
+    looker_service_attachment_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     URI of the Looker service attachment.
     """
-    service_attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgsDict']]]]
+    service_attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]]
     """
     List of egress service attachment configurations.
     Structure is documented below.
@@ -985,9 +985,9 @@ class InstancePscConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePscConfigArgs:
     def __init__(__self__, *,
-                 allowed_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 looker_service_attachment_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]] = None):
+                 allowed_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 looker_service_attachment_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachments: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_vpcs: List of VPCs that are allowed ingress into the Looker instance.
         :param pulumi.Input[_builtins.str] looker_service_attachment_uri: (Output)
@@ -1004,19 +1004,19 @@ class InstancePscConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedVpcs")
-    def allowed_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of VPCs that are allowed ingress into the Looker instance.
         """
         return pulumi.get(self, "allowed_vpcs")
 
     @allowed_vpcs.setter
-    def allowed_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_vpcs", value)
 
     @_builtins.property
     @pulumi.getter(name="lookerServiceAttachmentUri")
-    def looker_service_attachment_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def looker_service_attachment_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         URI of the Looker service attachment.
@@ -1024,12 +1024,12 @@ class InstancePscConfigArgs:
         return pulumi.get(self, "looker_service_attachment_uri")
 
     @looker_service_attachment_uri.setter
-    def looker_service_attachment_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def looker_service_attachment_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "looker_service_attachment_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachments")
-    def service_attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]:
+    def service_attachments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]:
         """
         List of egress service attachment configurations.
         Structure is documented below.
@@ -1037,21 +1037,21 @@ class InstancePscConfigArgs:
         return pulumi.get(self, "service_attachments")
 
     @service_attachments.setter
-    def service_attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]):
+    def service_attachments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]):
         pulumi.set(self, "service_attachments", value)
 
 
 class InstancePscConfigServiceAttachmentArgsDict(TypedDict):
-    connection_status: NotRequired[pulumi.Input[_builtins.str]]
+    connection_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Status of the service attachment connection.
     """
-    local_fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    local_fqdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified domain name that will be used in the private DNS record created for the service attachment.
     """
-    target_service_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
+    target_service_attachment_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI of the service attachment to connect to.
     """
@@ -1059,9 +1059,9 @@ class InstancePscConfigServiceAttachmentArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePscConfigServiceAttachmentArgs:
     def __init__(__self__, *,
-                 connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_service_attachment_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_service_attachment_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_status: (Output)
                Status of the service attachment connection.
@@ -1077,7 +1077,7 @@ class InstancePscConfigServiceAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionStatus")
-    def connection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Status of the service attachment connection.
@@ -1085,44 +1085,44 @@ class InstancePscConfigServiceAttachmentArgs:
         return pulumi.get(self, "connection_status")
 
     @connection_status.setter
-    def connection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_status", value)
 
     @_builtins.property
     @pulumi.getter(name="localFqdn")
-    def local_fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified domain name that will be used in the private DNS record created for the service attachment.
         """
         return pulumi.get(self, "local_fqdn")
 
     @local_fqdn.setter
-    def local_fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_fqdn", value)
 
     @_builtins.property
     @pulumi.getter(name="targetServiceAttachmentUri")
-    def target_service_attachment_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_service_attachment_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI of the service attachment to connect to.
         """
         return pulumi.get(self, "target_service_attachment_uri")
 
     @target_service_attachment_uri.setter
-    def target_service_attachment_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_service_attachment_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_service_attachment_uri", value)
 
 
 class InstanceUserMetadataArgsDict(TypedDict):
-    additional_developer_user_count: NotRequired[pulumi.Input[_builtins.int]]
+    additional_developer_user_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of additional Developer Users to allocate to the Looker Instance.
     """
-    additional_standard_user_count: NotRequired[pulumi.Input[_builtins.int]]
+    additional_standard_user_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of additional Standard Users to allocate to the Looker Instance.
     """
-    additional_viewer_user_count: NotRequired[pulumi.Input[_builtins.int]]
+    additional_viewer_user_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of additional Viewer Users to allocate to the Looker Instance.
     """
@@ -1130,9 +1130,9 @@ class InstanceUserMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceUserMetadataArgs:
     def __init__(__self__, *,
-                 additional_developer_user_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 additional_standard_user_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 additional_viewer_user_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 additional_developer_user_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 additional_standard_user_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 additional_viewer_user_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] additional_developer_user_count: Number of additional Developer Users to allocate to the Looker Instance.
         :param pulumi.Input[_builtins.int] additional_standard_user_count: Number of additional Standard Users to allocate to the Looker Instance.
@@ -1147,38 +1147,38 @@ class InstanceUserMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalDeveloperUserCount")
-    def additional_developer_user_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def additional_developer_user_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of additional Developer Users to allocate to the Looker Instance.
         """
         return pulumi.get(self, "additional_developer_user_count")
 
     @additional_developer_user_count.setter
-    def additional_developer_user_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def additional_developer_user_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "additional_developer_user_count", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalStandardUserCount")
-    def additional_standard_user_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def additional_standard_user_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of additional Standard Users to allocate to the Looker Instance.
         """
         return pulumi.get(self, "additional_standard_user_count")
 
     @additional_standard_user_count.setter
-    def additional_standard_user_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def additional_standard_user_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "additional_standard_user_count", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalViewerUserCount")
-    def additional_viewer_user_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def additional_viewer_user_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of additional Viewer Users to allocate to the Looker Instance.
         """
         return pulumi.get(self, "additional_viewer_user_count")
 
     @additional_viewer_user_count.setter
-    def additional_viewer_user_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def additional_viewer_user_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "additional_viewer_user_count", value)
 
 

@@ -230,64 +230,64 @@ export interface ExtensionsInstanceState {
      * The current Config of the Extension Instance.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.firebase.ExtensionsInstanceConfig>;
+    config?: pulumi.Input<inputs.firebase.ExtensionsInstanceConfig | undefined>;
     /**
      * The time at which the Extension Instance was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * If this Instance has `state: ERRORED`, the error messages
      * will be found here.
      * Structure is documented below.
      */
-    errorStatuses?: pulumi.Input<pulumi.Input<inputs.firebase.ExtensionsInstanceErrorStatus>[]>;
+    errorStatuses?: pulumi.Input<pulumi.Input<inputs.firebase.ExtensionsInstanceErrorStatus>[] | undefined>;
     /**
      * A weak etag that is computed by the server based on other configuration
      * values and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Extension Instance, which will become the final
      * component of the instance's name.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the last operation that acted on this Extension
      * Instance
      */
-    lastOperationName?: pulumi.Input<string>;
+    lastOperationName?: pulumi.Input<string | undefined>;
     /**
      * The type of the last operation that acted on the Extension Instance.
      */
-    lastOperationType?: pulumi.Input<string>;
+    lastOperationType?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified resource name of the Extension Instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Data set by the extension instance at runtime.
      * Structure is documented below.
      */
-    runtimeDatas?: pulumi.Input<pulumi.Input<inputs.firebase.ExtensionsInstanceRuntimeData>[]>;
+    runtimeDatas?: pulumi.Input<pulumi.Input<inputs.firebase.ExtensionsInstanceRuntimeData>[] | undefined>;
     /**
      * The email of the service account to be used at runtime by compute resources
      * created for the operation of the Extension instance.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * The processing state of the extension instance.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The time at which the Extension Instance was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -308,5 +308,5 @@ export interface ExtensionsInstanceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

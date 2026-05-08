@@ -295,69 +295,69 @@ export interface ExternalAccessRuleState {
      * The action that the external access rule performs.
      * Possible values are: `ALLOW`, `DENY`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Creation time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for the external access rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If destination ranges are specified, the external access rule applies only to
      * traffic that has a destination IP address in these ranges.
      * Structure is documented below.
      */
-    destinationIpRanges?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ExternalAccessRuleDestinationIpRange>[]>;
+    destinationIpRanges?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ExternalAccessRuleDestinationIpRange>[] | undefined>;
     /**
      * A list of destination ports to which the external access rule applies.
      */
-    destinationPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationPorts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IP protocol to which the external access rule applies.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the external access rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the network policy.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-west1-a/networkPolicies/my-policy
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * External access rule priority, which determines the external access rule to use when multiple rules apply.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * If source ranges are specified, the external access rule applies only to
      * traffic that has a source IP address in these ranges.
      * Structure is documented below.
      */
-    sourceIpRanges?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ExternalAccessRuleSourceIpRange>[]>;
+    sourceIpRanges?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ExternalAccessRuleSourceIpRange>[] | undefined>;
     /**
      * A list of source ports to which the external access rule applies.
      */
-    sourcePorts?: pulumi.Input<pulumi.Input<string>[]>;
+    sourcePorts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * State of the Cluster.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -372,7 +372,7 @@ export interface ExternalAccessRuleArgs {
     /**
      * User-provided description for the external access rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If destination ranges are specified, the external access rule applies only to
      * traffic that has a destination IP address in these ranges.
@@ -390,7 +390,7 @@ export interface ExternalAccessRuleArgs {
     /**
      * The ID of the external access rule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the network policy.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.

@@ -447,37 +447,37 @@ export interface UnitOperationState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A set of conditions which indicate the various conditions this resource can
      * have.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitOperationCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.saasruntime.UnitOperationCondition>[] | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Deprovision is the unit operation that deprovision the underlying
      * resources represented by a Unit. Can only execute if the Unit is currently
      * provisioned.
      */
-    deprovision?: pulumi.Input<inputs.saasruntime.UnitOperationDeprovision>;
+    deprovision?: pulumi.Input<inputs.saasruntime.UnitOperationDeprovision | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The engine state for on-going
      * deployment engine operation(s).
      * This field is opaque for external usage.
      */
-    engineState?: pulumi.Input<string>;
+    engineState?: pulumi.Input<string | undefined>;
     /**
      * Possible values:
      * NOT_APPLICABLE
@@ -486,47 +486,47 @@ export interface UnitOperationState {
      * IGNORABLE
      * STANDARD
      */
-    errorCategory?: pulumi.Input<string>;
+    errorCategory?: pulumi.Input<string | undefined>;
     /**
      * An opaque value that uniquely identifies a version or
      * generation of a resource. It can be used to confirm that the client
      * and server agree on the ordering of a resource being written.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name (full URI of the resource) following the standard naming
      * scheme:
      * "projects/{project}/locations/{location}/unitOperations/{unitOperation}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Provision is the unit operation that provision the underlying resources
      * represented by a Unit. Can only execute if the Unit is not currently
      * provisioned.
      * Structure is documented below.
      */
-    provision?: pulumi.Input<inputs.saasruntime.UnitOperationProvision>;
+    provision?: pulumi.Input<inputs.saasruntime.UnitOperationProvision | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * UnitOperationState describes the current state of the unit operation.
      * Possible values:
@@ -538,7 +538,7 @@ export interface UnitOperationState {
      * UNIT_OPERATION_STATE_FAILED
      * UNIT_OPERATION_STATE_CANCELLED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the resource. UID is unique in the time
      * and space for this resource within the scope of the service. It is
@@ -546,33 +546,33 @@ export interface UnitOperationState {
      * and must not be changed. UID is used to uniquely identify resources
      * with resource name reuses. This should be a UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The Unit a given UnitOperation will act upon.
      */
-    unit?: pulumi.Input<string>;
+    unit?: pulumi.Input<string | undefined>;
     /**
      * The ID value for the new unit operation.
      */
-    unitOperationId?: pulumi.Input<string>;
+    unitOperationId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was last updated. Any
      * change to the resource made by users must refresh this value.
      * Changes to a resource made by the service should refresh this value.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Upgrade is the unit operation that upgrades a provisioned unit, which may
      * also include the underlying resources represented by a Unit. Can only execute
      * if the Unit is currently provisioned.
      * Structure is documented below.
      */
-    upgrade?: pulumi.Input<inputs.saasruntime.UnitOperationUpgrade>;
+    upgrade?: pulumi.Input<inputs.saasruntime.UnitOperationUpgrade | undefined>;
     /**
      * If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
      * before completing the apply.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -587,20 +587,20 @@ export interface UnitOperationArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Deprovision is the unit operation that deprovision the underlying
      * resources represented by a Unit. Can only execute if the Unit is currently
      * provisioned.
      */
-    deprovision?: pulumi.Input<inputs.saasruntime.UnitOperationDeprovision>;
+    deprovision?: pulumi.Input<inputs.saasruntime.UnitOperationDeprovision | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -609,14 +609,14 @@ export interface UnitOperationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Provision is the unit operation that provision the underlying resources
      * represented by a Unit. Can only execute if the Unit is not currently
      * provisioned.
      * Structure is documented below.
      */
-    provision?: pulumi.Input<inputs.saasruntime.UnitOperationProvision>;
+    provision?: pulumi.Input<inputs.saasruntime.UnitOperationProvision | undefined>;
     /**
      * The Unit a given UnitOperation will act upon.
      */
@@ -631,10 +631,10 @@ export interface UnitOperationArgs {
      * if the Unit is currently provisioned.
      * Structure is documented below.
      */
-    upgrade?: pulumi.Input<inputs.saasruntime.UnitOperationUpgrade>;
+    upgrade?: pulumi.Input<inputs.saasruntime.UnitOperationUpgrade | undefined>;
     /**
      * If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
      * before completing the apply.
      */
-    waitForCompletion?: pulumi.Input<boolean>;
+    waitForCompletion?: pulumi.Input<boolean | undefined>;
 }

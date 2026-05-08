@@ -198,48 +198,48 @@ export interface HostingChannelState {
     /**
      * Required. Immutable. A unique ID within the site that identifies the channel.
      */
-    channelId?: pulumi.Input<string>;
+    channelId?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time at which the channel will be automatically deleted. If null, the channel
      * will not be automatically deleted. This field is present in the output whether it's
      * set directly or via the `ttl` field.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Text labels used for extra metadata and/or filtering
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The fully-qualified resource name for the channel, in the format:
      * sites/SITE_ID/channels/CHANNEL_ID
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
-    retainedReleaseCount?: pulumi.Input<number>;
+    retainedReleaseCount?: pulumi.Input<number | undefined>;
     /**
      * Required. The ID of the site in which to create this channel.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Input only. A time-to-live for this channel. Sets `expireTime` to the provided
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by 's'. Example: "86400s" (one day).
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -255,18 +255,18 @@ export interface HostingChannelArgs {
      * will not be automatically deleted. This field is present in the output whether it's
      * set directly or via the `ttl` field.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Text labels used for extra metadata and/or filtering
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of previous releases to retain on the channel for rollback or other
      * purposes. Must be a number between 1-100. Defaults to 10 for new channels.
      */
-    retainedReleaseCount?: pulumi.Input<number>;
+    retainedReleaseCount?: pulumi.Input<number | undefined>;
     /**
      * Required. The ID of the site in which to create this channel.
      */
@@ -276,5 +276,5 @@ export interface HostingChannelArgs {
      * duration past the time of the request. A duration in seconds with up to nine fractional
      * digits, terminated by 's'. Example: "86400s" (one day).
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }

@@ -123,7 +123,7 @@ def get_admin_sdk_config(project: Optional[_builtins.str] = None,
         location_id=pulumi.get(__ret__, 'location_id'),
         project=pulumi.get(__ret__, 'project'),
         storage_bucket=pulumi.get(__ret__, 'storage_bucket'))
-def get_admin_sdk_config_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_admin_sdk_config_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAdminSdkConfigResult]:
     """
     A Google Cloud Firebase Admin SDK configuration

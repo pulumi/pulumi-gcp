@@ -315,11 +315,11 @@ export interface TargetHttpProxyState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
      * This field will be ignored when inserting a TargetHttpProxy. An up-to-date fingerprint must be provided in order to
@@ -327,7 +327,7 @@ export interface TargetHttpProxyState {
      * To see the latest fingerprint, make a get() request to retrieve the TargetHttpProxy.
      * A base64-encoded string.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -339,7 +339,7 @@ export interface TargetHttpProxyState {
      * maximum allowed value is 600 seconds. For Global external HTTP(S) load
      * balancer (classic), this option is not available publicly.
      */
-    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
+    httpKeepAliveTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -349,30 +349,30 @@ export interface TargetHttpProxyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    proxyId?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<number | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      */
-    urlMap?: pulumi.Input<string>;
+    urlMap?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -382,7 +382,7 @@ export interface TargetHttpProxyArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -394,7 +394,7 @@ export interface TargetHttpProxyArgs {
      * maximum allowed value is 600 seconds. For Global external HTTP(S) load
      * balancer (classic), this option is not available publicly.
      */
-    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
+    httpKeepAliveTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -404,17 +404,17 @@ export interface TargetHttpProxyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * This field only applies when the forwarding rule that references
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    proxyBind?: pulumi.Input<boolean>;
+    proxyBind?: pulumi.Input<boolean | undefined>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.

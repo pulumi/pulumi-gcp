@@ -563,64 +563,64 @@ export interface AiFeatureOnlineStoreFeatureviewState {
      * Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
      * Structure is documented below.
      */
-    bigQuerySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySource>;
+    bigQuerySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySource | undefined>;
     /**
      * The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the FeatureOnlineStore to use for the featureview.
      */
-    featureOnlineStore?: pulumi.Input<string>;
+    featureOnlineStore?: pulumi.Input<string | undefined>;
     /**
      * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
      * Structure is documented below.
      */
-    featureRegistrySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>;
+    featureRegistrySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource | undefined>;
     /**
      * A set of key/value label pairs to assign to this FeatureView.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
      * Structure is documented below.
      */
-    syncConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig>;
+    syncConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig | undefined>;
     /**
      * The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      */
-    vectorSearchConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig>;
+    vectorSearchConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig | undefined>;
 }
 
 /**
@@ -631,7 +631,7 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
      * Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
      * Structure is documented below.
      */
-    bigQuerySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySource>;
+    bigQuerySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewBigQuerySource | undefined>;
     /**
      * The name of the FeatureOnlineStore to use for the featureview.
      */
@@ -640,36 +640,36 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
      * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
      * Structure is documented below.
      */
-    featureRegistrySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>;
+    featureRegistrySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource | undefined>;
     /**
      * A set of key/value label pairs to assign to this FeatureView.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region for the resource. It should be the same as the featureonlinestore region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
      * Structure is documented below.
      */
-    syncConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig>;
+    syncConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig | undefined>;
     /**
      * (Optional, Beta)
      * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
      * Structure is documented below.
      */
-    vectorSearchConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig>;
+    vectorSearchConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig | undefined>;
 }

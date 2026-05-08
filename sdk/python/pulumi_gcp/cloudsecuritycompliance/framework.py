@@ -24,9 +24,9 @@ class FrameworkArgs:
                  framework_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
-                 cloud_control_details: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Framework resource.
 
@@ -91,7 +91,7 @@ class FrameworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudControlDetails")
-    def cloud_control_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]:
+    def cloud_control_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]:
         """
         The details of the cloud controls directly added without any grouping in
         the framework.
@@ -100,50 +100,50 @@ class FrameworkArgs:
         return pulumi.get(self, "cloud_control_details")
 
     @cloud_control_details.setter
-    def cloud_control_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]):
+    def cloud_control_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]):
         pulumi.set(self, "cloud_control_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the framework. The maximum length is 2000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the framework. The maximum length is 200 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type
 class _FrameworkState:
     def __init__(__self__, *,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_control_details: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 major_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 supported_enforcement_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 supported_target_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 major_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 supported_enforcement_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 supported_target_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Framework resources.
 
@@ -199,19 +199,19 @@ class _FrameworkState:
 
     @_builtins.property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The category of the framework.
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "categories", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudControlDetails")
-    def cloud_control_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]:
+    def cloud_control_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]:
         """
         The details of the cloud controls directly added without any grouping in
         the framework.
@@ -220,36 +220,36 @@ class _FrameworkState:
         return pulumi.get(self, "cloud_control_details")
 
     @cloud_control_details.setter
-    def cloud_control_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]):
+    def cloud_control_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailArgs']]]]):
         pulumi.set(self, "cloud_control_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the framework. The maximum length is 2000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the framework. The maximum length is 200 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="frameworkId")
-    def framework_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def framework_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the framework.
         This is not the full name of the framework.
@@ -258,36 +258,36 @@ class _FrameworkState:
         return pulumi.get(self, "framework_id")
 
     @framework_id.setter
-    def framework_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def framework_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "framework_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="majorRevisionId")
-    def major_revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def major_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Major revision of the framework incremented in ascending order.
         """
         return pulumi.get(self, "major_revision_id")
 
     @major_revision_id.setter
-    def major_revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def major_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "major_revision_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The name of the framework.
         Format:
@@ -296,60 +296,60 @@ class _FrameworkState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedCloudProviders")
-    def supported_cloud_providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_cloud_providers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         cloud providers supported
         """
         return pulumi.get(self, "supported_cloud_providers")
 
     @supported_cloud_providers.setter
-    def supported_cloud_providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_cloud_providers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_cloud_providers", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedEnforcementModes")
-    def supported_enforcement_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_enforcement_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The supported enforcement modes of the framework.
         """
         return pulumi.get(self, "supported_enforcement_modes")
 
     @supported_enforcement_modes.setter
-    def supported_enforcement_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_enforcement_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_enforcement_modes", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedTargetResourceTypes")
-    def supported_target_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_target_resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         target resource types supported by the Framework.
         """
         return pulumi.get(self, "supported_target_resource_types")
 
     @supported_target_resource_types.setter
-    def supported_target_resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_target_resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_target_resource_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the framework. The default is TYPE_CUSTOM.
         Possible values:
@@ -359,7 +359,7 @@ class _FrameworkState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -369,12 +369,12 @@ class Framework(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_control_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Frameworks allow you to monitor and enforce compliance and security requirements. Manage compliance by assigning built-in or custom frameworks to resources.
@@ -439,7 +439,7 @@ class Framework(pulumi.CustomResource):
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
-                            "number_value": 1,
+                            "number_value": float(1),
                         },
                     }],
                 },
@@ -543,7 +543,7 @@ class Framework(pulumi.CustomResource):
                     "parameters": [{
                         "name": "location",
                         "parameter_value": {
-                            "number_value": 1,
+                            "number_value": float(1),
                         },
                     }],
                 },
@@ -580,12 +580,12 @@ class Framework(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_control_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 framework_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 framework_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -624,19 +624,19 @@ class Framework(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cloud_control_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            framework_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            major_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            supported_enforcement_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            supported_target_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Framework':
+            categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_control_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FrameworkCloudControlDetailArgs', 'FrameworkCloudControlDetailArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            framework_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            major_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supported_enforcement_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supported_target_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Framework':
         """
         Get an existing Framework resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

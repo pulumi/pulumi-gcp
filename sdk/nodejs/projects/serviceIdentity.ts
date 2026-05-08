@@ -132,22 +132,22 @@ export interface ServiceIdentityState {
     /**
      * The email address of the Google managed service account.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service to generate identity for.
      *
      * - - -
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,7 +158,7 @@ export interface ServiceIdentityArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service to generate identity for.
      *

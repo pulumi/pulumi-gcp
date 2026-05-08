@@ -40,17 +40,17 @@ class FolderFeedConditionArgsDict(TypedDict):
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression. This is a longer text which describes the expression,
     e.g. when hovered over it in a UI.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file
     name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     This can be used e.g. in UIs which allow to enter the expression.
@@ -60,9 +60,9 @@ class FolderFeedConditionArgsDict(TypedDict):
 class FolderFeedConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression. This is a longer text which describes the expression,
@@ -94,7 +94,7 @@ class FolderFeedConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression. This is a longer text which describes the expression,
         e.g. when hovered over it in a UI.
@@ -102,12 +102,12 @@ class FolderFeedConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file
         name and a position in the file.
@@ -115,12 +115,12 @@ class FolderFeedConditionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         This can be used e.g. in UIs which allow to enter the expression.
@@ -128,7 +128,7 @@ class FolderFeedConditionArgs:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -196,17 +196,17 @@ class OrganizationFeedConditionArgsDict(TypedDict):
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression. This is a longer text which describes the expression,
     e.g. when hovered over it in a UI.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file
     name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     This can be used e.g. in UIs which allow to enter the expression.
@@ -216,9 +216,9 @@ class OrganizationFeedConditionArgsDict(TypedDict):
 class OrganizationFeedConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression. This is a longer text which describes the expression,
@@ -250,7 +250,7 @@ class OrganizationFeedConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression. This is a longer text which describes the expression,
         e.g. when hovered over it in a UI.
@@ -258,12 +258,12 @@ class OrganizationFeedConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file
         name and a position in the file.
@@ -271,12 +271,12 @@ class OrganizationFeedConditionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         This can be used e.g. in UIs which allow to enter the expression.
@@ -284,7 +284,7 @@ class OrganizationFeedConditionArgs:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -352,17 +352,17 @@ class ProjectFeedConditionArgsDict(TypedDict):
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression. This is a longer text which describes the expression,
     e.g. when hovered over it in a UI.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file
     name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     This can be used e.g. in UIs which allow to enter the expression.
@@ -372,9 +372,9 @@ class ProjectFeedConditionArgsDict(TypedDict):
 class ProjectFeedConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression. This is a longer text which describes the expression,
@@ -406,7 +406,7 @@ class ProjectFeedConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression. This is a longer text which describes the expression,
         e.g. when hovered over it in a UI.
@@ -414,12 +414,12 @@ class ProjectFeedConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file
         name and a position in the file.
@@ -427,12 +427,12 @@ class ProjectFeedConditionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         This can be used e.g. in UIs which allow to enter the expression.
@@ -440,7 +440,7 @@ class ProjectFeedConditionArgs:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 

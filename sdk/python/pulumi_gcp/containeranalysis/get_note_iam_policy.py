@@ -125,8 +125,8 @@ def get_note_iam_policy(note: Optional[_builtins.str] = None,
         note=pulumi.get(__ret__, 'note'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_note_iam_policy_output(note: Optional[pulumi.Input[_builtins.str]] = None,
-                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_note_iam_policy_output(note: pulumi.Input[Optional[_builtins.str]] = None,
+                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNoteIamPolicyResult]:
     """
     Retrieves the current IAM policy data for note

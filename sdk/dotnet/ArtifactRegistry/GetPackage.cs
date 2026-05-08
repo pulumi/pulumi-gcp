@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myPackage = new Google.Index.ArtifactRegistryPackage("my_package", new()
+        ///     var myPackage = new Google.ArtifactRegistryPackage("my_package", new()
         ///     {
         ///         Location = "us-west1",
         ///         RepositoryId = "my-repository",
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myPackage = new Google.Index.ArtifactRegistryPackage("my_package", new()
+        ///     var myPackage = new Google.ArtifactRegistryPackage("my_package", new()
         ///     {
         ///         Location = "us-west1",
         ///         RepositoryId = "my-repository",
@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myPackage = new Google.Index.ArtifactRegistryPackage("my_package", new()
+        ///     var myPackage = new Google.ArtifactRegistryPackage("my_package", new()
         ///     {
         ///         Location = "us-west1",
         ///         RepositoryId = "my-repository",

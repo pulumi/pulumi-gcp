@@ -182,39 +182,39 @@ export interface UserStoreState {
      * If the default license config doesn't have remaining license seats left,
      * new users will not be assigned with license.
      */
-    defaultLicenseConfig?: pulumi.Input<string>;
+    defaultLicenseConfig?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable automatic license update for users with expired licenses
      * in this user store. If enabled, users with expired licenses will
      * automatically be updated to the default subscription if there are
      * remaining license seats.
      */
-    enableExpiredLicenseAutoUpdate?: pulumi.Input<boolean>;
+    enableExpiredLicenseAutoUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable automatic license registration for new users created in
      * this user store. If enabled, new users will automatically register under
      * the default subscription.
      */
-    enableLicenseAutoRegister?: pulumi.Input<boolean>;
+    enableLicenseAutoRegister?: pulumi.Input<boolean | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the user store. Values are of the format
      * `projects/{project}/locations/{location}/userStores/{user_store_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user store. Currently only accepts "defaultUserStore".
      */
-    userStoreId?: pulumi.Input<string>;
+    userStoreId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -230,20 +230,20 @@ export interface UserStoreArgs {
      * If the default license config doesn't have remaining license seats left,
      * new users will not be assigned with license.
      */
-    defaultLicenseConfig?: pulumi.Input<string>;
+    defaultLicenseConfig?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable automatic license update for users with expired licenses
      * in this user store. If enabled, users with expired licenses will
      * automatically be updated to the default subscription if there are
      * remaining license seats.
      */
-    enableExpiredLicenseAutoUpdate?: pulumi.Input<boolean>;
+    enableExpiredLicenseAutoUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable automatic license registration for new users created in
      * this user store. If enabled, new users will automatically register under
      * the default subscription.
      */
-    enableLicenseAutoRegister?: pulumi.Input<boolean>;
+    enableLicenseAutoRegister?: pulumi.Input<boolean | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -253,9 +253,9 @@ export interface UserStoreArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user store. Currently only accepts "defaultUserStore".
      */
-    userStoreId?: pulumi.Input<string>;
+    userStoreId?: pulumi.Input<string | undefined>;
 }

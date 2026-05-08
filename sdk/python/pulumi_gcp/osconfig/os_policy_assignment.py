@@ -25,10 +25,10 @@ class OsPolicyAssignmentArgs:
                  location: pulumi.Input[_builtins.str],
                  os_policies: pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]],
                  rollout: pulumi.Input['OsPolicyAssignmentRolloutArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_await_rollout: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a OsPolicyAssignment resource.
 
@@ -116,72 +116,72 @@ class OsPolicyAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="skipAwaitRollout")
-    def skip_await_rollout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_await_rollout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to skip awaiting rollout during resource creation and update.
         """
         return pulumi.get(self, "skip_await_rollout")
 
     @skip_await_rollout.setter
-    def skip_await_rollout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_await_rollout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_await_rollout", value)
 
 
 @pulumi.input_type
 class _OsPolicyAssignmentState:
     def __init__(__self__, *,
-                 baseline: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deleted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_filter: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 revision_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']] = None,
-                 rollout_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_await_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_filter: pulumi.Input[Optional['OsPolicyAssignmentInstanceFilterArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_policies: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout: pulumi.Input[Optional['OsPolicyAssignmentRolloutArgs']] = None,
+                 rollout_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OsPolicyAssignment resources.
 
@@ -252,7 +252,7 @@ class _OsPolicyAssignmentState:
 
     @_builtins.property
     @pulumi.getter
-    def baseline(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def baseline(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicates that this revision has been successfully
         rolled out in this zone and new VMs will be assigned OS policies from this
@@ -262,12 +262,12 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "baseline")
 
     @baseline.setter
-    def baseline(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def baseline(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "baseline", value)
 
     @_builtins.property
     @pulumi.getter
-    def deleted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deleted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicates that this revision deletes the OS policy
         assignment.
@@ -275,24 +275,24 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "deleted")
 
     @deleted.setter
-    def deleted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deleted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deleted", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The etag for this OS policy assignment. If this is provided on
         update, it must match the server's etag.
@@ -300,12 +300,12 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceFilter")
-    def instance_filter(self) -> Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']]:
+    def instance_filter(self) -> pulumi.Input[Optional['OsPolicyAssignmentInstanceFilterArgs']]:
         """
         Filter to select VMs. Structure is
         documented below.
@@ -313,36 +313,36 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "instance_filter")
 
     @instance_filter.setter
-    def instance_filter(self, value: Optional[pulumi.Input['OsPolicyAssignmentInstanceFilterArgs']]):
+    def instance_filter(self, value: pulumi.Input[Optional['OsPolicyAssignmentInstanceFilterArgs']]):
         pulumi.set(self, "instance_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="osPolicies")
-    def os_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]]:
+    def os_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]]:
         """
         List of OS policies to be applied to the VMs.
         Structure is documented below.
@@ -350,24 +350,24 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "os_policies")
 
     @os_policies.setter
-    def os_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]]):
+    def os_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]]]):
         pulumi.set(self, "os_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Indicates that reconciliation is in progress
         for the revision. This value is `true` when the `rollout_state` is one of:
@@ -375,12 +375,12 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionCreateTime")
-    def revision_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp that the revision was
         created.
@@ -388,12 +388,12 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "revision_create_time")
 
     @revision_create_time.setter
-    def revision_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The assignment revision ID A new revision is
         committed whenever a rollout is triggered for a OS policy assignment
@@ -401,12 +401,12 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "revision_id")
 
     @revision_id.setter
-    def revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rollout(self) -> Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']]:
+    def rollout(self) -> pulumi.Input[Optional['OsPolicyAssignmentRolloutArgs']]:
         """
         Rollout to deploy the OS policy assignment. A rollout
         is triggered in the following situations: 1) OSPolicyAssignment is created.
@@ -417,36 +417,36 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "rollout")
 
     @rollout.setter
-    def rollout(self, value: Optional[pulumi.Input['OsPolicyAssignmentRolloutArgs']]):
+    def rollout(self, value: pulumi.Input[Optional['OsPolicyAssignmentRolloutArgs']]):
         pulumi.set(self, "rollout", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutState")
-    def rollout_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rollout_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. OS policy assignment rollout state
         """
         return pulumi.get(self, "rollout_state")
 
     @rollout_state.setter
-    def rollout_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rollout_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rollout_state", value)
 
     @_builtins.property
     @pulumi.getter(name="skipAwaitRollout")
-    def skip_await_rollout(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_await_rollout(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to skip awaiting rollout during resource creation and update.
         """
         return pulumi.get(self, "skip_await_rollout")
 
     @skip_await_rollout.setter
-    def skip_await_rollout(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_await_rollout(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_await_rollout", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Server generated unique id for the OS policy assignment
         resource.
@@ -454,7 +454,7 @@ class _OsPolicyAssignmentState:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -464,14 +464,14 @@ class OsPolicyAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_filter: Optional[pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout: Optional[pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
-                 skip_await_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
+                 skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         OS policy assignment is an API resource that is used to apply a set of OS
@@ -751,14 +751,14 @@ class OsPolicyAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_filter: Optional[pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout: Optional[pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
-                 skip_await_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
+                 skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -802,22 +802,22 @@ class OsPolicyAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            baseline: Optional[pulumi.Input[_builtins.bool]] = None,
-            deleted: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_filter: Optional[pulumi.Input[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            os_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            revision_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rollout: Optional[pulumi.Input[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
-            rollout_state: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_await_rollout: Optional[pulumi.Input[_builtins.bool]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'OsPolicyAssignment':
+            baseline: pulumi.Input[Optional[_builtins.bool]] = None,
+            deleted: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_filter: pulumi.Input[Optional[Union['OsPolicyAssignmentInstanceFilterArgs', 'OsPolicyAssignmentInstanceFilterArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            os_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OsPolicyAssignmentOsPolicyArgs', 'OsPolicyAssignmentOsPolicyArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            revision_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout: pulumi.Input[Optional[Union['OsPolicyAssignmentRolloutArgs', 'OsPolicyAssignmentRolloutArgsDict']]] = None,
+            rollout_state: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_await_rollout: pulumi.Input[Optional[_builtins.bool]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'OsPolicyAssignment':
         """
         Get an existing OsPolicyAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -473,9 +473,9 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         subscription_type=pulumi.get(__ret__, 'subscription_type'),
         trial_metadatas=pulumi.get(__ret__, 'trial_metadatas'),
         uid=pulumi.get(__ret__, 'uid'))
-def get_cluster_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cluster_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to get information about the available cluster. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters).

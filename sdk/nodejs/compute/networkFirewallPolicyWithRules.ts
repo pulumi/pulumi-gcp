@@ -300,15 +300,15 @@ export interface NetworkFirewallPolicyWithRulesState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of the resource. This field is used internally during updates of this resource.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * User-provided name of the Network firewall policy.
      * The name should be unique in the project in which the firewall policy is created.
@@ -317,45 +317,45 @@ export interface NetworkFirewallPolicyWithRulesState {
      * which means the first character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    networkFirewallPolicyId?: pulumi.Input<string>;
+    networkFirewallPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Policy type is used to determine which resources (networks) the policy can be associated with.
      * A policy can be associated with a network only if the network has the matching policyType in its network profile.
      * Different policy types may support some of the Firewall Rules features.
      * Possible values are: `VPC_POLICY`.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * A list of firewall policy pre-defined rules.
      * Structure is documented below.
      */
-    predefinedRules?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesPredefinedRule>[]>;
+    predefinedRules?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesPredefinedRule>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
-    ruleTupleCount?: pulumi.Input<number>;
+    ruleTupleCount?: pulumi.Input<number | undefined>;
     /**
      * A list of firewall policy rules.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesRule>[] | undefined>;
     /**
      * Server-defined URL for the resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -365,7 +365,7 @@ export interface NetworkFirewallPolicyWithRulesArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User-provided name of the Network firewall policy.
      * The name should be unique in the project in which the firewall policy is created.
@@ -374,19 +374,19 @@ export interface NetworkFirewallPolicyWithRulesArgs {
      * which means the first character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Policy type is used to determine which resources (networks) the policy can be associated with.
      * A policy can be associated with a network only if the network has the matching policyType in its network profile.
      * Different policy types may support some of the Firewall Rules features.
      * Possible values are: `VPC_POLICY`.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of firewall policy rules.
      * Structure is documented below.

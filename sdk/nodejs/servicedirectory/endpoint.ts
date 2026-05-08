@@ -196,37 +196,37 @@ export interface EndpointState {
     /**
      * IPv4 or IPv6 address of the endpoint.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * Metadata for the endpoint. This data can be consumed
      * by service clients. The entire metadata dictionary may contain
      * up to 512 characters, spread across all key-value pairs.
      * Metadata that goes beyond any these limits will be rejected.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the endpoint in the format
      * `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*&#47;endpoints/*`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Port that the endpoint is running on, must be in the
      * range of [0, 65535]. If unspecified, the default is 0.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The resource name of the service that this endpoint provides.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface EndpointArgs {
     /**
      * IPv4 or IPv6 address of the endpoint.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
@@ -248,16 +248,16 @@ export interface EndpointArgs {
      * up to 512 characters, spread across all key-value pairs.
      * Metadata that goes beyond any these limits will be rejected.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Port that the endpoint is running on, must be in the
      * range of [0, 65535]. If unspecified, the default is 0.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The resource name of the service that this endpoint provides.
      */

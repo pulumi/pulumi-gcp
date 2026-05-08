@@ -94,5 +94,5 @@ export interface GetInstanceIamPolicyOutputArgs {
      * The project in which the instance belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

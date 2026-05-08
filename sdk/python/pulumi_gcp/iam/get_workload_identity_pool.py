@@ -196,8 +196,8 @@ def get_workload_identity_pool(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         state=pulumi.get(__ret__, 'state'),
         workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'))
-def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      workload_identity_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workload_identity_pool_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      workload_identity_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkloadIdentityPoolResult]:
     """
     Get a IAM workload identity pool from Google Cloud by its id.

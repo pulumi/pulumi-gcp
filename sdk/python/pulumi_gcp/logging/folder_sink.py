@@ -23,14 +23,14 @@ class FolderSinkArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[_builtins.str],
                  folder: pulumi.Input[_builtins.str],
-                 bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 intercept_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 bigquery_options: pulumi.Input[Optional['FolderSinkBigqueryOptionsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderSink resource.
 
@@ -112,55 +112,55 @@ class FolderSinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]:
+    def bigquery_options(self) -> pulumi.Input[Optional['FolderSinkBigqueryOptionsArgs']]:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
         return pulumi.get(self, "bigquery_options")
 
     @bigquery_options.setter
-    def bigquery_options(self, value: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]):
+    def bigquery_options(self, value: pulumi.Input[Optional['FolderSinkBigqueryOptionsArgs']]):
         pulumi.set(self, "bigquery_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of this sink. The maximum length of the description is 8000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to True, then this sink is disabled and it does not export any log entries.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]:
+    def exclusions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]:
         """
         Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
-    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]):
+    def exclusions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]):
         pulumi.set(self, "exclusions", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filter to apply when exporting logs. Only log entries that match the filter are exported.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -169,12 +169,12 @@ class FolderSinkArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="includeChildren")
-    def include_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_children(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to include children folders in the sink export. If true, logs
         associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
@@ -182,12 +182,12 @@ class FolderSinkArgs:
         return pulumi.get(self, "include_children")
 
     @include_children.setter
-    def include_children(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_children(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_children", value)
 
     @_builtins.property
     @pulumi.getter(name="interceptChildren")
-    def intercept_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def intercept_children(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to intercept logs from child projects. If true, matching logs will not
         match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
@@ -195,36 +195,36 @@ class FolderSinkArgs:
         return pulumi.get(self, "intercept_children")
 
     @intercept_children.setter
-    def intercept_children(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def intercept_children(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "intercept_children", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the logging sink.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _FolderSinkState:
     def __init__(__self__, *,
-                 bigquery_options: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 intercept_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 writer_identity: Optional[pulumi.Input[_builtins.str]] = None):
+                 bigquery_options: pulumi.Input[Optional['FolderSinkBigqueryOptionsArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 writer_identity: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FolderSink resources.
 
@@ -279,31 +279,31 @@ class _FolderSinkState:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryOptions")
-    def bigquery_options(self) -> Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]:
+    def bigquery_options(self) -> pulumi.Input[Optional['FolderSinkBigqueryOptionsArgs']]:
         """
         Options that affect sinks exporting data to BigQuery. Structure documented below.
         """
         return pulumi.get(self, "bigquery_options")
 
     @bigquery_options.setter
-    def bigquery_options(self, value: Optional[pulumi.Input['FolderSinkBigqueryOptionsArgs']]):
+    def bigquery_options(self, value: pulumi.Input[Optional['FolderSinkBigqueryOptionsArgs']]):
         pulumi.set(self, "bigquery_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of this sink. The maximum length of the description is 8000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 
@@ -318,36 +318,36 @@ class _FolderSinkState:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to True, then this sink is disabled and it does not export any log entries.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]:
+    def exclusions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]:
         """
         Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         """
         return pulumi.get(self, "exclusions")
 
     @exclusions.setter
-    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]):
+    def exclusions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FolderSinkExclusionArgs']]]]):
         pulumi.set(self, "exclusions", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filter to apply when exporting logs. Only log entries that match the filter are exported.
         See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -356,12 +356,12 @@ class _FolderSinkState:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The folder to be exported to the sink. Note that either `[FOLDER_ID]` or `folders/[FOLDER_ID]` is
         accepted.
@@ -369,12 +369,12 @@ class _FolderSinkState:
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="includeChildren")
-    def include_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_children(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to include children folders in the sink export. If true, logs
         associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
@@ -382,12 +382,12 @@ class _FolderSinkState:
         return pulumi.get(self, "include_children")
 
     @include_children.setter
-    def include_children(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_children(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_children", value)
 
     @_builtins.property
     @pulumi.getter(name="interceptChildren")
-    def intercept_children(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def intercept_children(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to intercept logs from child projects. If true, matching logs will not
         match with sinks in child resources, except _Required sinks. This sink will be visible to child resources when listing sinks.
@@ -395,24 +395,24 @@ class _FolderSinkState:
         return pulumi.get(self, "intercept_children")
 
     @intercept_children.setter
-    def intercept_children(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def intercept_children(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "intercept_children", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the logging sink.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="writerIdentity")
-    def writer_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def writer_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identity associated with this sink. This identity must be granted write access to the
         configured `destination`.
@@ -420,7 +420,7 @@ class _FolderSinkState:
         return pulumi.get(self, "writer_identity")
 
     @writer_identity.setter
-    def writer_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def writer_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "writer_identity", value)
 
 
@@ -430,16 +430,16 @@ class FolderSink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[Union['FolderSinkBigqueryOptionsArgs', 'FolderSinkBigqueryOptionsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FolderSinkExclusionArgs', 'FolderSinkExclusionArgsDict']]]]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 intercept_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigquery_options: pulumi.Input[Optional[Union['FolderSinkBigqueryOptionsArgs', 'FolderSinkBigqueryOptionsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderSinkExclusionArgs', 'FolderSinkExclusionArgsDict']]]]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a folder-level logging sink. For more information see:
@@ -574,16 +574,16 @@ class FolderSink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_options: Optional[pulumi.Input[Union['FolderSinkBigqueryOptionsArgs', 'FolderSinkBigqueryOptionsArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FolderSinkExclusionArgs', 'FolderSinkExclusionArgsDict']]]]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 include_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 intercept_children: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigquery_options: pulumi.Input[Optional[Union['FolderSinkBigqueryOptionsArgs', 'FolderSinkBigqueryOptionsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderSinkExclusionArgs', 'FolderSinkExclusionArgsDict']]]]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -618,17 +618,17 @@ class FolderSink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_options: Optional[pulumi.Input[Union['FolderSinkBigqueryOptionsArgs', 'FolderSinkBigqueryOptionsArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FolderSinkExclusionArgs', 'FolderSinkExclusionArgsDict']]]]] = None,
-            filter: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            include_children: Optional[pulumi.Input[_builtins.bool]] = None,
-            intercept_children: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            writer_identity: Optional[pulumi.Input[_builtins.str]] = None) -> 'FolderSink':
+            bigquery_options: pulumi.Input[Optional[Union['FolderSinkBigqueryOptionsArgs', 'FolderSinkBigqueryOptionsArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclusions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FolderSinkExclusionArgs', 'FolderSinkExclusionArgsDict']]]]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            include_children: pulumi.Input[Optional[_builtins.bool]] = None,
+            intercept_children: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            writer_identity: pulumi.Input[Optional[_builtins.str]] = None) -> 'FolderSink':
         """
         Get an existing FolderSink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,9 +24,9 @@ class GroupArgs:
                  group_key: pulumi.Input['GroupGroupKeyArgs'],
                  labels: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
                  parent: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_group_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_group_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
 
@@ -107,7 +107,7 @@ class GroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An extended description to help users determine the purpose of a Group.
         Must not be longer than 4,096 characters.
@@ -115,24 +115,24 @@ class GroupArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Group.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="initialGroupConfig")
-    def initial_group_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_group_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The initial configuration options for creating a Group.
         See the
@@ -144,23 +144,23 @@ class GroupArgs:
         return pulumi.get(self, "initial_group_config")
 
     @initial_group_config.setter
-    def initial_group_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_group_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_group_config", value)
 
 
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
-                 additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_key: Optional[pulumi.Input['GroupGroupKeyArgs']] = None,
-                 initial_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 additional_group_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_key: pulumi.Input[Optional['GroupGroupKeyArgs']] = None,
+                 initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
 
@@ -214,7 +214,7 @@ class _GroupState:
 
     @_builtins.property
     @pulumi.getter(name="additionalGroupKeys")
-    def additional_group_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]]:
+    def additional_group_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]]:
         """
         Additional group keys associated with the Group
         Structure is documented below.
@@ -222,24 +222,24 @@ class _GroupState:
         return pulumi.get(self, "additional_group_keys")
 
     @additional_group_keys.setter
-    def additional_group_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]]):
+    def additional_group_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupAdditionalGroupKeyArgs']]]]):
         pulumi.set(self, "additional_group_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the Group was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An extended description to help users determine the purpose of a Group.
         Must not be longer than 4,096 characters.
@@ -247,24 +247,24 @@ class _GroupState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Group.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupKey")
-    def group_key(self) -> Optional[pulumi.Input['GroupGroupKeyArgs']]:
+    def group_key(self) -> pulumi.Input[Optional['GroupGroupKeyArgs']]:
         """
         EntityKey of the Group.
         Structure is documented below.
@@ -272,12 +272,12 @@ class _GroupState:
         return pulumi.get(self, "group_key")
 
     @group_key.setter
-    def group_key(self, value: Optional[pulumi.Input['GroupGroupKeyArgs']]):
+    def group_key(self, value: pulumi.Input[Optional['GroupGroupKeyArgs']]):
         pulumi.set(self, "group_key", value)
 
     @_builtins.property
     @pulumi.getter(name="initialGroupConfig")
-    def initial_group_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_group_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The initial configuration options for creating a Group.
         See the
@@ -289,12 +289,12 @@ class _GroupState:
         return pulumi.get(self, "initial_group_config")
 
     @initial_group_config.setter
-    def initial_group_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_group_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_group_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
         Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -305,12 +305,12 @@ class _GroupState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of the Group in the format: groups/{group_id}, where group_id
         is the unique ID assigned to the Group.
@@ -318,12 +318,12 @@ class _GroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the entity under which this Group resides in the
         Cloud Identity resource hierarchy.
@@ -333,19 +333,19 @@ class _GroupState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the Group was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -355,12 +355,12 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_key: Optional[pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
-                 initial_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
+                 initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Cloud Identity resource representing a Group.
@@ -502,12 +502,12 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_key: Optional[pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
-                 initial_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
+                 initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -543,16 +543,16 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_key: Optional[pulumi.Input[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
-            initial_group_config: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Group':
+            additional_group_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupAdditionalGroupKeyArgs', 'GroupAdditionalGroupKeyArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_key: pulumi.Input[Optional[Union['GroupGroupKeyArgs', 'GroupGroupKeyArgsDict']]] = None,
+            initial_group_config: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

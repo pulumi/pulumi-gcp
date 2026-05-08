@@ -21,17 +21,17 @@ __all__ = ['ConfigArgs', 'Config']
 @pulumi.input_type
 class ConfigArgs:
     def __init__(__self__, *,
-                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autodelete_anonymous_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
-                 client: Optional[pulumi.Input['ConfigClientArgs']] = None,
-                 mfa: Optional[pulumi.Input['ConfigMfaArgs']] = None,
-                 monitoring: Optional[pulumi.Input['ConfigMonitoringArgs']] = None,
-                 multi_tenant: Optional[pulumi.Input['ConfigMultiTenantArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
-                 sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-                 sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
+                 authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 blocking_functions: pulumi.Input[Optional['ConfigBlockingFunctionsArgs']] = None,
+                 client: pulumi.Input[Optional['ConfigClientArgs']] = None,
+                 mfa: pulumi.Input[Optional['ConfigMfaArgs']] = None,
+                 monitoring: pulumi.Input[Optional['ConfigMonitoringArgs']] = None,
+                 multi_tenant: pulumi.Input[Optional['ConfigMultiTenantArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional['ConfigQuotaArgs']] = None,
+                 sign_in: pulumi.Input[Optional['ConfigSignInArgs']] = None,
+                 sms_region_config: pulumi.Input[Optional['ConfigSmsRegionConfigArgs']] = None):
         """
         The set of arguments for constructing a Config resource.
 
@@ -81,31 +81,31 @@ class ConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizedDomains")
-    def authorized_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of domains authorized for OAuth redirects.
         """
         return pulumi.get(self, "authorized_domains")
 
     @authorized_domains.setter
-    def authorized_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="autodeleteAnonymousUsers")
-    def autodelete_anonymous_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autodelete_anonymous_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether anonymous users will be auto-deleted after a period of 30 days
         """
         return pulumi.get(self, "autodelete_anonymous_users")
 
     @autodelete_anonymous_users.setter
-    def autodelete_anonymous_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autodelete_anonymous_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autodelete_anonymous_users", value)
 
     @_builtins.property
     @pulumi.getter(name="blockingFunctions")
-    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]:
+    def blocking_functions(self) -> pulumi.Input[Optional['ConfigBlockingFunctionsArgs']]:
         """
         Configuration related to blocking functions.
         Structure is documented below.
@@ -113,12 +113,12 @@ class ConfigArgs:
         return pulumi.get(self, "blocking_functions")
 
     @blocking_functions.setter
-    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
+    def blocking_functions(self, value: pulumi.Input[Optional['ConfigBlockingFunctionsArgs']]):
         pulumi.set(self, "blocking_functions", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input['ConfigClientArgs']]:
+    def client(self) -> pulumi.Input[Optional['ConfigClientArgs']]:
         """
         Options related to how clients making requests on behalf of a project should be configured.
         Structure is documented below.
@@ -126,12 +126,12 @@ class ConfigArgs:
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input['ConfigClientArgs']]):
+    def client(self, value: pulumi.Input[Optional['ConfigClientArgs']]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter
-    def mfa(self) -> Optional[pulumi.Input['ConfigMfaArgs']]:
+    def mfa(self) -> pulumi.Input[Optional['ConfigMfaArgs']]:
         """
         Options related to how clients making requests on behalf of a project should be configured.
         Structure is documented below.
@@ -139,12 +139,12 @@ class ConfigArgs:
         return pulumi.get(self, "mfa")
 
     @mfa.setter
-    def mfa(self, value: Optional[pulumi.Input['ConfigMfaArgs']]):
+    def mfa(self, value: pulumi.Input[Optional['ConfigMfaArgs']]):
         pulumi.set(self, "mfa", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input['ConfigMonitoringArgs']]:
+    def monitoring(self) -> pulumi.Input[Optional['ConfigMonitoringArgs']]:
         """
         Configuration related to monitoring project activity.
         Structure is documented below.
@@ -152,12 +152,12 @@ class ConfigArgs:
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input['ConfigMonitoringArgs']]):
+    def monitoring(self, value: pulumi.Input[Optional['ConfigMonitoringArgs']]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="multiTenant")
-    def multi_tenant(self) -> Optional[pulumi.Input['ConfigMultiTenantArgs']]:
+    def multi_tenant(self) -> pulumi.Input[Optional['ConfigMultiTenantArgs']]:
         """
         Configuration related to multi-tenant functionality.
         Structure is documented below.
@@ -165,12 +165,12 @@ class ConfigArgs:
         return pulumi.get(self, "multi_tenant")
 
     @multi_tenant.setter
-    def multi_tenant(self, value: Optional[pulumi.Input['ConfigMultiTenantArgs']]):
+    def multi_tenant(self, value: pulumi.Input[Optional['ConfigMultiTenantArgs']]):
         pulumi.set(self, "multi_tenant", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -178,12 +178,12 @@ class ConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArgs']]:
+    def quota(self) -> pulumi.Input[Optional['ConfigQuotaArgs']]:
         """
         Configuration related to quotas.
         Structure is documented below.
@@ -191,12 +191,12 @@ class ConfigArgs:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
+    def quota(self, value: pulumi.Input[Optional['ConfigQuotaArgs']]):
         pulumi.set(self, "quota", value)
 
     @_builtins.property
     @pulumi.getter(name="signIn")
-    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArgs']]:
+    def sign_in(self) -> pulumi.Input[Optional['ConfigSignInArgs']]:
         """
         Configuration related to local sign in methods.
         Structure is documented below.
@@ -204,12 +204,12 @@ class ConfigArgs:
         return pulumi.get(self, "sign_in")
 
     @sign_in.setter
-    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArgs']]):
+    def sign_in(self, value: pulumi.Input[Optional['ConfigSignInArgs']]):
         pulumi.set(self, "sign_in", value)
 
     @_builtins.property
     @pulumi.getter(name="smsRegionConfig")
-    def sms_region_config(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]:
+    def sms_region_config(self) -> pulumi.Input[Optional['ConfigSmsRegionConfigArgs']]:
         """
         Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
         Structure is documented below.
@@ -217,25 +217,25 @@ class ConfigArgs:
         return pulumi.get(self, "sms_region_config")
 
     @sms_region_config.setter
-    def sms_region_config(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]):
+    def sms_region_config(self, value: pulumi.Input[Optional['ConfigSmsRegionConfigArgs']]):
         pulumi.set(self, "sms_region_config", value)
 
 
 @pulumi.input_type
 class _ConfigState:
     def __init__(__self__, *,
-                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autodelete_anonymous_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
-                 client: Optional[pulumi.Input['ConfigClientArgs']] = None,
-                 mfa: Optional[pulumi.Input['ConfigMfaArgs']] = None,
-                 monitoring: Optional[pulumi.Input['ConfigMonitoringArgs']] = None,
-                 multi_tenant: Optional[pulumi.Input['ConfigMultiTenantArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
-                 sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
-                 sms_region_config: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']] = None):
+                 authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 blocking_functions: pulumi.Input[Optional['ConfigBlockingFunctionsArgs']] = None,
+                 client: pulumi.Input[Optional['ConfigClientArgs']] = None,
+                 mfa: pulumi.Input[Optional['ConfigMfaArgs']] = None,
+                 monitoring: pulumi.Input[Optional['ConfigMonitoringArgs']] = None,
+                 multi_tenant: pulumi.Input[Optional['ConfigMultiTenantArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional['ConfigQuotaArgs']] = None,
+                 sign_in: pulumi.Input[Optional['ConfigSignInArgs']] = None,
+                 sms_region_config: pulumi.Input[Optional['ConfigSmsRegionConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Config resources.
 
@@ -288,31 +288,31 @@ class _ConfigState:
 
     @_builtins.property
     @pulumi.getter(name="authorizedDomains")
-    def authorized_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of domains authorized for OAuth redirects.
         """
         return pulumi.get(self, "authorized_domains")
 
     @authorized_domains.setter
-    def authorized_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="autodeleteAnonymousUsers")
-    def autodelete_anonymous_users(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autodelete_anonymous_users(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether anonymous users will be auto-deleted after a period of 30 days
         """
         return pulumi.get(self, "autodelete_anonymous_users")
 
     @autodelete_anonymous_users.setter
-    def autodelete_anonymous_users(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autodelete_anonymous_users(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autodelete_anonymous_users", value)
 
     @_builtins.property
     @pulumi.getter(name="blockingFunctions")
-    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]:
+    def blocking_functions(self) -> pulumi.Input[Optional['ConfigBlockingFunctionsArgs']]:
         """
         Configuration related to blocking functions.
         Structure is documented below.
@@ -320,12 +320,12 @@ class _ConfigState:
         return pulumi.get(self, "blocking_functions")
 
     @blocking_functions.setter
-    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
+    def blocking_functions(self, value: pulumi.Input[Optional['ConfigBlockingFunctionsArgs']]):
         pulumi.set(self, "blocking_functions", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input['ConfigClientArgs']]:
+    def client(self) -> pulumi.Input[Optional['ConfigClientArgs']]:
         """
         Options related to how clients making requests on behalf of a project should be configured.
         Structure is documented below.
@@ -333,12 +333,12 @@ class _ConfigState:
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input['ConfigClientArgs']]):
+    def client(self, value: pulumi.Input[Optional['ConfigClientArgs']]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter
-    def mfa(self) -> Optional[pulumi.Input['ConfigMfaArgs']]:
+    def mfa(self) -> pulumi.Input[Optional['ConfigMfaArgs']]:
         """
         Options related to how clients making requests on behalf of a project should be configured.
         Structure is documented below.
@@ -346,12 +346,12 @@ class _ConfigState:
         return pulumi.get(self, "mfa")
 
     @mfa.setter
-    def mfa(self, value: Optional[pulumi.Input['ConfigMfaArgs']]):
+    def mfa(self, value: pulumi.Input[Optional['ConfigMfaArgs']]):
         pulumi.set(self, "mfa", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input['ConfigMonitoringArgs']]:
+    def monitoring(self) -> pulumi.Input[Optional['ConfigMonitoringArgs']]:
         """
         Configuration related to monitoring project activity.
         Structure is documented below.
@@ -359,12 +359,12 @@ class _ConfigState:
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input['ConfigMonitoringArgs']]):
+    def monitoring(self, value: pulumi.Input[Optional['ConfigMonitoringArgs']]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="multiTenant")
-    def multi_tenant(self) -> Optional[pulumi.Input['ConfigMultiTenantArgs']]:
+    def multi_tenant(self) -> pulumi.Input[Optional['ConfigMultiTenantArgs']]:
         """
         Configuration related to multi-tenant functionality.
         Structure is documented below.
@@ -372,24 +372,24 @@ class _ConfigState:
         return pulumi.get(self, "multi_tenant")
 
     @multi_tenant.setter
-    def multi_tenant(self, value: Optional[pulumi.Input['ConfigMultiTenantArgs']]):
+    def multi_tenant(self, value: pulumi.Input[Optional['ConfigMultiTenantArgs']]):
         pulumi.set(self, "multi_tenant", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Config resource
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -397,12 +397,12 @@ class _ConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArgs']]:
+    def quota(self) -> pulumi.Input[Optional['ConfigQuotaArgs']]:
         """
         Configuration related to quotas.
         Structure is documented below.
@@ -410,12 +410,12 @@ class _ConfigState:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
+    def quota(self, value: pulumi.Input[Optional['ConfigQuotaArgs']]):
         pulumi.set(self, "quota", value)
 
     @_builtins.property
     @pulumi.getter(name="signIn")
-    def sign_in(self) -> Optional[pulumi.Input['ConfigSignInArgs']]:
+    def sign_in(self) -> pulumi.Input[Optional['ConfigSignInArgs']]:
         """
         Configuration related to local sign in methods.
         Structure is documented below.
@@ -423,12 +423,12 @@ class _ConfigState:
         return pulumi.get(self, "sign_in")
 
     @sign_in.setter
-    def sign_in(self, value: Optional[pulumi.Input['ConfigSignInArgs']]):
+    def sign_in(self, value: pulumi.Input[Optional['ConfigSignInArgs']]):
         pulumi.set(self, "sign_in", value)
 
     @_builtins.property
     @pulumi.getter(name="smsRegionConfig")
-    def sms_region_config(self) -> Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]:
+    def sms_region_config(self) -> pulumi.Input[Optional['ConfigSmsRegionConfigArgs']]:
         """
         Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
         Structure is documented below.
@@ -436,7 +436,7 @@ class _ConfigState:
         return pulumi.get(self, "sms_region_config")
 
     @sms_region_config.setter
-    def sms_region_config(self, value: Optional[pulumi.Input['ConfigSmsRegionConfigArgs']]):
+    def sms_region_config(self, value: pulumi.Input[Optional['ConfigSmsRegionConfigArgs']]):
         pulumi.set(self, "sms_region_config", value)
 
 
@@ -446,17 +446,17 @@ class Config(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autodelete_anonymous_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 blocking_functions: Optional[pulumi.Input[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
-                 client: Optional[pulumi.Input[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
-                 mfa: Optional[pulumi.Input[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
-                 monitoring: Optional[pulumi.Input[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
-                 multi_tenant: Optional[pulumi.Input[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
-                 sign_in: Optional[pulumi.Input[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
-                 sms_region_config: Optional[pulumi.Input[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None,
+                 authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
+                 client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
+                 mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
+                 monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
+                 multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
+                 sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
+                 sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None,
                  __props__=None):
         """
         Identity Platform configuration for a Cloud project. Identity Platform is an
@@ -710,17 +710,17 @@ class Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 autodelete_anonymous_users: Optional[pulumi.Input[_builtins.bool]] = None,
-                 blocking_functions: Optional[pulumi.Input[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
-                 client: Optional[pulumi.Input[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
-                 mfa: Optional[pulumi.Input[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
-                 monitoring: Optional[pulumi.Input[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
-                 multi_tenant: Optional[pulumi.Input[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
-                 sign_in: Optional[pulumi.Input[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
-                 sms_region_config: Optional[pulumi.Input[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None,
+                 authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
+                 blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
+                 client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
+                 mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
+                 monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
+                 multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
+                 sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
+                 sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -752,18 +752,18 @@ class Config(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            autodelete_anonymous_users: Optional[pulumi.Input[_builtins.bool]] = None,
-            blocking_functions: Optional[pulumi.Input[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
-            client: Optional[pulumi.Input[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
-            mfa: Optional[pulumi.Input[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
-            monitoring: Optional[pulumi.Input[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
-            multi_tenant: Optional[pulumi.Input[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            quota: Optional[pulumi.Input[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
-            sign_in: Optional[pulumi.Input[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
-            sms_region_config: Optional[pulumi.Input[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None) -> 'Config':
+            authorized_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            autodelete_anonymous_users: pulumi.Input[Optional[_builtins.bool]] = None,
+            blocking_functions: pulumi.Input[Optional[Union['ConfigBlockingFunctionsArgs', 'ConfigBlockingFunctionsArgsDict']]] = None,
+            client: pulumi.Input[Optional[Union['ConfigClientArgs', 'ConfigClientArgsDict']]] = None,
+            mfa: pulumi.Input[Optional[Union['ConfigMfaArgs', 'ConfigMfaArgsDict']]] = None,
+            monitoring: pulumi.Input[Optional[Union['ConfigMonitoringArgs', 'ConfigMonitoringArgsDict']]] = None,
+            multi_tenant: pulumi.Input[Optional[Union['ConfigMultiTenantArgs', 'ConfigMultiTenantArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[Union['ConfigQuotaArgs', 'ConfigQuotaArgsDict']]] = None,
+            sign_in: pulumi.Input[Optional[Union['ConfigSignInArgs', 'ConfigSignInArgsDict']]] = None,
+            sms_region_config: pulumi.Input[Optional[Union['ConfigSmsRegionConfigArgs', 'ConfigSmsRegionConfigArgsDict']]] = None) -> 'Config':
         """
         Get an existing Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

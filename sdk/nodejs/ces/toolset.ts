@@ -727,68 +727,68 @@ export interface ToolsetState {
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    app?: pulumi.Input<string>;
+    app?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the toolset was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the toolset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the toolset. Must be unique within the same app.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ETag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Possible values:
      * SYNCHRONOUS
      * ASYNCHRONOUS
      */
-    executionType?: pulumi.Input<string>;
+    executionType?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * A toolset that contains a list of tools that are offered by the MCP
      * server.
      * Structure is documented below.
      */
-    mcpToolset?: pulumi.Input<inputs.ces.ToolsetMcpToolset>;
+    mcpToolset?: pulumi.Input<inputs.ces.ToolsetMcpToolset | undefined>;
     /**
      * Identifier. The unique identifier of the toolset.
      * Format:
      * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A toolset that contains a list of tools that are defined by an OpenAPI
      * schema.
      * Structure is documented below.
      */
-    openApiToolset?: pulumi.Input<inputs.ces.ToolsetOpenApiToolset>;
+    openApiToolset?: pulumi.Input<inputs.ces.ToolsetOpenApiToolset | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the toolset, which will become the final component of
      * the toolset's resource name. If not provided, a unique ID will be
      * automatically assigned for the toolset.
      */
-    toolsetId?: pulumi.Input<string>;
+    toolsetId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the toolset was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -802,17 +802,17 @@ export interface ToolsetArgs {
     /**
      * The description of the toolset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the toolset. Must be unique within the same app.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Possible values:
      * SYNCHRONOUS
      * ASYNCHRONOUS
      */
-    executionType?: pulumi.Input<string>;
+    executionType?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -822,18 +822,18 @@ export interface ToolsetArgs {
      * server.
      * Structure is documented below.
      */
-    mcpToolset?: pulumi.Input<inputs.ces.ToolsetMcpToolset>;
+    mcpToolset?: pulumi.Input<inputs.ces.ToolsetMcpToolset | undefined>;
     /**
      * A toolset that contains a list of tools that are defined by an OpenAPI
      * schema.
      * Structure is documented below.
      */
-    openApiToolset?: pulumi.Input<inputs.ces.ToolsetOpenApiToolset>;
+    openApiToolset?: pulumi.Input<inputs.ces.ToolsetOpenApiToolset | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the toolset, which will become the final component of
      * the toolset's resource name. If not provided, a unique ID will be

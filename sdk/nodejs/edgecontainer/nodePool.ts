@@ -243,71 +243,71 @@ export interface NodePoolState {
     /**
      * The name of the target Distributed Cloud Edge Cluster.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * The time when the node pool was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels associated with this resource.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Local disk encryption options. This field is only used when enabling CMEK support.
      * Structure is documented below.
      */
-    localDiskEncryption?: pulumi.Input<inputs.edgecontainer.NodePoolLocalDiskEncryption>;
+    localDiskEncryption?: pulumi.Input<inputs.edgecontainer.NodePoolLocalDiskEncryption | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Only machines matching this filter will be allowed to join the node pool.
      * The filtering language accepts strings like "name=<name>", and is
      * documented in more detail in [AIP-160](https://google.aip.dev/160).
      */
-    machineFilter?: pulumi.Input<string>;
+    machineFilter?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the node pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration for each node in the NodePool
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.edgecontainer.NodePoolNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.edgecontainer.NodePoolNodeConfig | undefined>;
     /**
      * The number of nodes in the pool.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
      */
-    nodeLocation?: pulumi.Input<string>;
+    nodeLocation?: pulumi.Input<string | undefined>;
     /**
      * The lowest release version among all worker nodes.
      */
-    nodeVersion?: pulumi.Input<string>;
+    nodeVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time when the node pool was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,12 +323,12 @@ export interface NodePoolArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Local disk encryption options. This field is only used when enabling CMEK support.
      * Structure is documented below.
      */
-    localDiskEncryption?: pulumi.Input<inputs.edgecontainer.NodePoolLocalDiskEncryption>;
+    localDiskEncryption?: pulumi.Input<inputs.edgecontainer.NodePoolLocalDiskEncryption | undefined>;
     /**
      * The location of the resource.
      */
@@ -338,16 +338,16 @@ export interface NodePoolArgs {
      * The filtering language accepts strings like "name=<name>", and is
      * documented in more detail in [AIP-160](https://google.aip.dev/160).
      */
-    machineFilter?: pulumi.Input<string>;
+    machineFilter?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the node pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration for each node in the NodePool
      * Structure is documented below.
      */
-    nodeConfig?: pulumi.Input<inputs.edgecontainer.NodePoolNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.edgecontainer.NodePoolNodeConfig | undefined>;
     /**
      * The number of nodes in the pool.
      */
@@ -360,5 +360,5 @@ export interface NodePoolArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

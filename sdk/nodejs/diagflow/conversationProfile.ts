@@ -274,83 +274,83 @@ export interface ConversationProfileState {
      * Configuration for an automated agent to use with this profile
      * Structure is documented below.
      */
-    automatedAgentConfig?: pulumi.Input<inputs.diagflow.ConversationProfileAutomatedAgentConfig>;
+    automatedAgentConfig?: pulumi.Input<inputs.diagflow.ConversationProfileAutomatedAgentConfig | undefined>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for connecting to a live agent
      * Structure is documented below.
      */
-    humanAgentAssistantConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentAssistantConfig>;
+    humanAgentAssistantConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentAssistantConfig | undefined>;
     /**
      * Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
      * Structure is documented below.
      */
-    humanAgentHandoffConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentHandoffConfig>;
+    humanAgentHandoffConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentHandoffConfig | undefined>;
     /**
      * Language code for the conversation profile. This should be a BCP-47 language tag.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * desc
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Defines logging behavior for conversation lifecycle events.
      * Structure is documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.diagflow.ConversationProfileLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.diagflow.ConversationProfileLoggingConfig | undefined>;
     /**
      * name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
      * Structure is documented below.
      */
-    newMessageEventNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewMessageEventNotificationConfig>;
+    newMessageEventNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewMessageEventNotificationConfig | undefined>;
     /**
      * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
      * Structure is documented below.
      */
-    newRecognitionResultNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewRecognitionResultNotificationConfig>;
+    newRecognitionResultNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewRecognitionResultNotificationConfig | undefined>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
      * Structure is documented below.
      */
-    notificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNotificationConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the CX SecuritySettings reference for the agent.
      */
-    securitySettings?: pulumi.Input<string>;
+    securitySettings?: pulumi.Input<string | undefined>;
     /**
      * Settings for speech transcription.
      * Structure is documented below.
      */
-    sttConfig?: pulumi.Input<inputs.diagflow.ConversationProfileSttConfig>;
+    sttConfig?: pulumi.Input<inputs.diagflow.ConversationProfileSttConfig | undefined>;
     /**
      * The time zone of this conversational profile.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
      * Structure is documented below.
      */
-    ttsConfig?: pulumi.Input<inputs.diagflow.ConversationProfileTtsConfig>;
+    ttsConfig?: pulumi.Input<inputs.diagflow.ConversationProfileTtsConfig | undefined>;
     /**
      * (Optional, Beta)
      * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
      */
-    useBidiStreaming?: pulumi.Input<boolean>;
+    useBidiStreaming?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -361,7 +361,7 @@ export interface ConversationProfileArgs {
      * Configuration for an automated agent to use with this profile
      * Structure is documented below.
      */
-    automatedAgentConfig?: pulumi.Input<inputs.diagflow.ConversationProfileAutomatedAgentConfig>;
+    automatedAgentConfig?: pulumi.Input<inputs.diagflow.ConversationProfileAutomatedAgentConfig | undefined>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
@@ -370,16 +370,16 @@ export interface ConversationProfileArgs {
      * Configuration for connecting to a live agent
      * Structure is documented below.
      */
-    humanAgentAssistantConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentAssistantConfig>;
+    humanAgentAssistantConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentAssistantConfig | undefined>;
     /**
      * Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
      * Structure is documented below.
      */
-    humanAgentHandoffConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentHandoffConfig>;
+    humanAgentHandoffConfig?: pulumi.Input<inputs.diagflow.ConversationProfileHumanAgentHandoffConfig | undefined>;
     /**
      * Language code for the conversation profile. This should be a BCP-47 language tag.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * desc
      */
@@ -388,50 +388,50 @@ export interface ConversationProfileArgs {
      * Defines logging behavior for conversation lifecycle events.
      * Structure is documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.diagflow.ConversationProfileLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.diagflow.ConversationProfileLoggingConfig | undefined>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
      * Structure is documented below.
      */
-    newMessageEventNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewMessageEventNotificationConfig>;
+    newMessageEventNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewMessageEventNotificationConfig | undefined>;
     /**
      * Optional. Configuration for publishing transcription intermediate results. Event will be sent in format of ConversationEvent. If configured, the following information will be populated as ConversationEvent Pub/Sub message attributes: - "participantId" - "participantRole" - "messageId"
      * Structure is documented below.
      */
-    newRecognitionResultNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewRecognitionResultNotificationConfig>;
+    newRecognitionResultNotificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNewRecognitionResultNotificationConfig | undefined>;
     /**
      * Pub/Sub topic on which to publish new agent assistant events.
      * Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
      * Structure is documented below.
      */
-    notificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.diagflow.ConversationProfileNotificationConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the CX SecuritySettings reference for the agent.
      */
-    securitySettings?: pulumi.Input<string>;
+    securitySettings?: pulumi.Input<string | undefined>;
     /**
      * Settings for speech transcription.
      * Structure is documented below.
      */
-    sttConfig?: pulumi.Input<inputs.diagflow.ConversationProfileSttConfig>;
+    sttConfig?: pulumi.Input<inputs.diagflow.ConversationProfileSttConfig | undefined>;
     /**
      * The time zone of this conversational profile.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Text-to-Speech synthesization. If agent defines synthesization options as well, agent settings overrides the option here.
      * Structure is documented below.
      */
-    ttsConfig?: pulumi.Input<inputs.diagflow.ConversationProfileTtsConfig>;
+    ttsConfig?: pulumi.Input<inputs.diagflow.ConversationProfileTtsConfig | undefined>;
     /**
      * (Optional, Beta)
      * Optional. Whether to use the bidi streaming API in telephony integration for the conversation profile.
      */
-    useBidiStreaming?: pulumi.Input<boolean>;
+    useBidiStreaming?: pulumi.Input<boolean | undefined>;
 }

@@ -811,44 +811,44 @@ export interface InstanceState {
      * AUTH_DISABLED
      * IAM_AUTH
      */
-    authorizationMode?: pulumi.Input<string>;
+    authorizationMode?: pulumi.Input<string | undefined>;
     /**
      * The automated backup config for a instance.
      * Structure is documented below.
      */
-    automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig>;
+    automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig | undefined>;
     /**
      * This field is used to determine the available maintenance versions for the self service update.
      */
-    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
      */
-    backupCollection?: pulumi.Input<string>;
+    backupCollection?: pulumi.Input<string | undefined>;
     /**
      * Output only. Creation timestamp of the instance.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Cross instance replication config
      * Structure is documented below.
      */
-    crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig>;
+    crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig | undefined>;
     /**
      * Optional. If set to true deletion of the instance will fail.
      */
-    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
      */
-    desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[]>;
+    desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[] | undefined>;
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
      *
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      */
-    desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
+    desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[] | undefined>;
     /**
      * (Deprecated)
      * Deprecated. Output only. Endpoints clients can connect to the instance through.
@@ -856,33 +856,33 @@ export interface InstanceState {
      *
      * @deprecated This field is deprecated. As a result it will not be populated if the connections are created using `desiredAutoCreatedEndpoints` parameter or `gcp.memorystore.InstanceDesiredUserCreatedEndpoints` resource. Instead of this parameter, for discovery, use `endpoints.connections.pscConnection` and `endpoints.connections.pscAutoConnection` with `connectionType` CONNECTION_TYPE_DISCOVERY.
      */
-    discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDiscoveryEndpoint>[]>;
+    discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDiscoveryEndpoint>[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This field represents the actual maintenance version of the cluster.
      */
-    effectiveMaintenanceVersion?: pulumi.Input<string>;
+    effectiveMaintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * Endpoints for the instance.
      * Structure is documented below.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceEndpoint>[] | undefined>;
     /**
      * Optional. User-provided engine configurations for the instance.
      */
-    engineConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    engineConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Engine version of the instance.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * GCS source for the instance.
      * Structure is documented below.
      */
-    gcsSource?: pulumi.Input<inputs.memorystore.InstanceGcsSource>;
+    gcsSource?: pulumi.Input<inputs.memorystore.InstanceGcsSource | undefined>;
     /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance's resource name.
@@ -893,46 +893,46 @@ export interface InstanceState {
      * * Must not end with a hyphen
      * * Must be unique within a location
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy | undefined>;
     /**
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceMaintenanceSchedule>[]>;
+    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceMaintenanceSchedule>[] | undefined>;
     /**
      * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
      * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
      */
-    maintenanceVersion?: pulumi.Input<string>;
+    maintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * Managed backup source for the instance.
      * Structure is documented below.
      */
-    managedBackupSource?: pulumi.Input<inputs.memorystore.InstanceManagedBackupSource>;
+    managedBackupSource?: pulumi.Input<inputs.memorystore.InstanceManagedBackupSource | undefined>;
     /**
      * Instance's Certificate Authority. This field will only be populated if instance's transitEncryptionMode is SERVER_AUTHENTICATION
      * Structure is documented below.
      */
-    managedServerCas?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceManagedServerCa>[]>;
+    managedServerCas?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceManagedServerCa>[] | undefined>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
@@ -940,17 +940,17 @@ export interface InstanceState {
      * CLUSTER_DISABLED
      * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Unique name of the instance.
      * Format: projects/{project}/locations/{location}/instances/{instance}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Represents configuration for nodes of the instance.
      * Structure is documented below.
      */
-    nodeConfigs?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceNodeConfig>[]>;
+    nodeConfigs?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceNodeConfig>[] | undefined>;
     /**
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
@@ -959,22 +959,22 @@ export interface InstanceState {
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Represents persistence configuration for a instance.
      * Structure is documented below.
      */
-    persistenceConfig?: pulumi.Input<inputs.memorystore.InstancePersistenceConfig>;
+    persistenceConfig?: pulumi.Input<inputs.memorystore.InstancePersistenceConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration of a service attachment of the cluster, for creating PSC connections.
      * Structure is documented below.
      */
-    pscAttachmentDetails?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAttachmentDetail>[]>;
+    pscAttachmentDetails?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAttachmentDetail>[] | undefined>;
     /**
      * (Deprecated)
      * Output only. User inputs and resource details of the auto-created PSC connections.
@@ -982,32 +982,32 @@ export interface InstanceState {
      *
      * @deprecated `pscAutoConnections` is deprecated  Use `endpoints.connections.pscAutoConnections` instead.
      */
-    pscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAutoConnection>[]>;
+    pscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstancePscAutoConnection>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
      */
-    replicaCount?: pulumi.Input<number>;
+    replicaCount?: pulumi.Input<number | undefined>;
     /**
      * The serverCaMode for the TLS enabled Memorystore instance.
      * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
      * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
      */
-    serverCaMode?: pulumi.Input<string>;
+    serverCaMode?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
      * as the server_ca_mode.
      * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
      */
-    serverCaPool?: pulumi.Input<string>;
+    serverCaPool?: pulumi.Input<string | undefined>;
     /**
      * Required. Number of shards for the instance.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
     /**
      * Output only. Current state of the instance.
      * Possible values:
@@ -1016,32 +1016,32 @@ export interface InstanceState {
      * UPDATING
      * DELETING
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Additional information about the state of the instance.
      * Structure is documented below.
      */
-    stateInfos?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceStateInfo>[]>;
+    stateInfos?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceStateInfo>[] | undefined>;
     /**
      * Optional. Immutable. In-transit encryption mode of the instance.
      * Possible values:
      * TRANSIT_ENCRYPTION_DISABLED
      * SERVER_AUTHENTICATION
      */
-    transitEncryptionMode?: pulumi.Input<string>;
+    transitEncryptionMode?: pulumi.Input<string | undefined>;
     /**
      * Output only. System assigned, unique identifier for the instance.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. Latest update timestamp of the instance.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Zone distribution configuration for allocation of instance resources.
      * Structure is documented below.
      */
-    zoneDistributionConfig?: pulumi.Input<inputs.memorystore.InstanceZoneDistributionConfig>;
+    zoneDistributionConfig?: pulumi.Input<inputs.memorystore.InstanceZoneDistributionConfig | undefined>;
 }
 
 /**
@@ -1053,44 +1053,44 @@ export interface InstanceArgs {
      * AUTH_DISABLED
      * IAM_AUTH
      */
-    authorizationMode?: pulumi.Input<string>;
+    authorizationMode?: pulumi.Input<string | undefined>;
     /**
      * The automated backup config for a instance.
      * Structure is documented below.
      */
-    automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig>;
+    automatedBackupConfig?: pulumi.Input<inputs.memorystore.InstanceAutomatedBackupConfig | undefined>;
     /**
      * Cross instance replication config
      * Structure is documented below.
      */
-    crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig>;
+    crossInstanceReplicationConfig?: pulumi.Input<inputs.memorystore.InstanceCrossInstanceReplicationConfig | undefined>;
     /**
      * Optional. If set to true deletion of the instance will fail.
      */
-    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Immutable. User inputs for the auto-created endpoints connections.
      */
-    desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[]>;
+    desiredAutoCreatedEndpoints?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredAutoCreatedEndpoint>[] | undefined>;
     /**
      * `desiredPscAutoConnections` is deprecated  Use `desiredAutoCreatedEndpoints` instead `pulumi import` will only work with desiredAutoCreatedEndpoints`.
      *
      * @deprecated `desiredPscAutoConnections` is deprecated. Use `desiredAutoCreatedEndpoints` instead. `terraform import` will only work with desiredAutoCreatedEndpoints`.
      */
-    desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[]>;
+    desiredPscAutoConnections?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceDesiredPscAutoConnection>[] | undefined>;
     /**
      * Optional. User-provided engine configurations for the instance.
      */
-    engineConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    engineConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Engine version of the instance.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * GCS source for the instance.
      * Structure is documented below.
      */
-    gcsSource?: pulumi.Input<inputs.memorystore.InstanceGcsSource>;
+    gcsSource?: pulumi.Input<inputs.memorystore.InstanceGcsSource | undefined>;
     /**
      * Required. The ID to use for the instance, which will become the final component of
      * the instance's resource name.
@@ -1105,13 +1105,13 @@ export interface InstanceArgs {
     /**
      * The KMS key used to encrypt the at-rest data of the cluster
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Optional. Labels to represent user-provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
      */
@@ -1120,17 +1120,17 @@ export interface InstanceArgs {
      * Maintenance policy for a cluster
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.memorystore.InstanceMaintenancePolicy | undefined>;
     /**
      * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
      * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
      */
-    maintenanceVersion?: pulumi.Input<string>;
+    maintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * Managed backup source for the instance.
      * Structure is documented below.
      */
-    managedBackupSource?: pulumi.Input<inputs.memorystore.InstanceManagedBackupSource>;
+    managedBackupSource?: pulumi.Input<inputs.memorystore.InstanceManagedBackupSource | undefined>;
     /**
      * Optional. cluster or cluster-disabled.
      * Possible values:
@@ -1138,7 +1138,7 @@ export interface InstanceArgs {
      * CLUSTER_DISABLED
      * Possible values are: `CLUSTER`, `CLUSTER_DISABLED`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Optional. Machine type for individual nodes of the instance.
      * Possible values:
@@ -1147,33 +1147,33 @@ export interface InstanceArgs {
      * HIGHMEM_XLARGE
      * STANDARD_SMALL
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Represents persistence configuration for a instance.
      * Structure is documented below.
      */
-    persistenceConfig?: pulumi.Input<inputs.memorystore.InstancePersistenceConfig>;
+    persistenceConfig?: pulumi.Input<inputs.memorystore.InstancePersistenceConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Optional. Number of replica nodes per shard. If omitted the default is 0 replicas.
      */
-    replicaCount?: pulumi.Input<number>;
+    replicaCount?: pulumi.Input<number | undefined>;
     /**
      * The serverCaMode for the TLS enabled Memorystore instance.
      * If not provided, GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
      * Possible values are: `GOOGLE_MANAGED_PER_INSTANCE_CA`, `GOOGLE_MANAGED_SHARED_CA`, `CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
      */
-    serverCaMode?: pulumi.Input<string>;
+    serverCaMode?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the server CA pool for an instance with CUSTOMER_MANAGED_CAS_CA
      * as the server_ca_mode.
      * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
      */
-    serverCaPool?: pulumi.Input<string>;
+    serverCaPool?: pulumi.Input<string | undefined>;
     /**
      * Required. Number of shards for the instance.
      */
@@ -1184,10 +1184,10 @@ export interface InstanceArgs {
      * TRANSIT_ENCRYPTION_DISABLED
      * SERVER_AUTHENTICATION
      */
-    transitEncryptionMode?: pulumi.Input<string>;
+    transitEncryptionMode?: pulumi.Input<string | undefined>;
     /**
      * Zone distribution configuration for allocation of instance resources.
      * Structure is documented below.
      */
-    zoneDistributionConfig?: pulumi.Input<inputs.memorystore.InstanceZoneDistributionConfig>;
+    zoneDistributionConfig?: pulumi.Input<inputs.memorystore.InstanceZoneDistributionConfig | undefined>;
 }

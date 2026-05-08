@@ -21,11 +21,11 @@ __all__ = ['AiMetadataStoreArgs', 'AiMetadataStore']
 @pulumi.input_type
 class AiMetadataStoreArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiMetadataStoreEncryptionSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiMetadataStore resource.
 
@@ -50,19 +50,19 @@ class AiMetadataStoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the MetadataStore.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiMetadataStoreEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         Structure is documented below.
@@ -70,24 +70,24 @@ class AiMetadataStoreArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiMetadataStoreEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -95,33 +95,33 @@ class AiMetadataStoreArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Metadata Store. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AiMetadataStoreState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiMetadataStoreEncryptionSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiMetadataStore resources.
 
@@ -156,31 +156,31 @@ class _AiMetadataStoreState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the MetadataStore.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiMetadataStoreEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
         Structure is documented below.
@@ -188,24 +188,24 @@ class _AiMetadataStoreState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiMetadataStoreEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiMetadataStoreEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -213,24 +213,24 @@ class _AiMetadataStoreState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Metadata Store. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]]:
         """
         State information of the MetadataStore.
         Structure is documented below.
@@ -238,19 +238,19 @@ class _AiMetadataStoreState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiMetadataStoreStateArgs']]]]):
         pulumi.set(self, "states", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -260,11 +260,11 @@ class AiMetadataStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Instance of a metadata store. Contains a set of metadata that can be queried.
@@ -387,11 +387,11 @@ class AiMetadataStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -419,14 +419,14 @@ class AiMetadataStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiMetadataStoreStateArgs', 'AiMetadataStoreStateArgsDict']]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiMetadataStore':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiMetadataStoreEncryptionSpecArgs', 'AiMetadataStoreEncryptionSpecArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiMetadataStoreStateArgs', 'AiMetadataStoreStateArgsDict']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiMetadataStore':
         """
         Get an existing AiMetadataStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

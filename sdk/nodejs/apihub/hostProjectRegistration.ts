@@ -172,35 +172,35 @@ export interface HostProjectRegistrationState {
     /**
      * Output only. The time at which the host project registration was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".
      * As input, project name with either project id or number are accepted.
      * As output, this field will contain project number.
      */
-    gcpProject?: pulumi.Input<string>;
+    gcpProject?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID to use for the Host Project Registration, which will become the
      * final component of the host project registration's resource name. The ID
      * must be the same as the Google cloud project specified in the
      * host_project_registration.gcp_project field.
      */
-    hostProjectRegistrationId?: pulumi.Input<string>;
+    hostProjectRegistrationId?: pulumi.Input<string | undefined>;
     /**
      * Part of `parent`. See documentation of `projectsId`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the host project registration.
      * Format:
      * "projects/{project}/locations/{location}/hostProjectRegistrations/{host_project_registration}".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,5 +228,5 @@ export interface HostProjectRegistrationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

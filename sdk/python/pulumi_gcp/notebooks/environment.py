@@ -22,13 +22,13 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 container_image: Optional[pulumi.Input['EnvironmentContainerImageArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None):
+                 container_image: pulumi.Input[Optional['EnvironmentContainerImageArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional['EnvironmentVmImageArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -76,7 +76,7 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['EnvironmentContainerImageArgs']]:
+    def container_image(self) -> pulumi.Input[Optional['EnvironmentContainerImageArgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -84,36 +84,36 @@ class EnvironmentArgs:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['EnvironmentContainerImageArgs']]):
+    def container_image(self, value: pulumi.Input[Optional['EnvironmentContainerImageArgs']]):
         pulumi.set(self, "container_image", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A brief description of this environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of this environment for the UI.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the Environment instance.
         Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -121,12 +121,12 @@ class EnvironmentArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a Bash script that automatically runs after a notebook instance fully boots up.
         The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
@@ -134,12 +134,12 @@ class EnvironmentArgs:
         return pulumi.get(self, "post_startup_script")
 
     @post_startup_script.setter
-    def post_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -147,12 +147,12 @@ class EnvironmentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['EnvironmentVmImageArgs']]:
+    def vm_image(self) -> pulumi.Input[Optional['EnvironmentVmImageArgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -160,22 +160,22 @@ class EnvironmentArgs:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['EnvironmentVmImageArgs']]):
+    def vm_image(self, value: pulumi.Input[Optional['EnvironmentVmImageArgs']]):
         pulumi.set(self, "vm_image", value)
 
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
-                 container_image: Optional[pulumi.Input['EnvironmentContainerImageArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input['EnvironmentVmImageArgs']] = None):
+                 container_image: pulumi.Input[Optional['EnvironmentContainerImageArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional['EnvironmentVmImageArgs']] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
@@ -215,7 +215,7 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="containerImage")
-    def container_image(self) -> Optional[pulumi.Input['EnvironmentContainerImageArgs']]:
+    def container_image(self) -> pulumi.Input[Optional['EnvironmentContainerImageArgs']]:
         """
         Use a container image to start the notebook instance.
         Structure is documented below.
@@ -223,60 +223,60 @@ class _EnvironmentState:
         return pulumi.get(self, "container_image")
 
     @container_image.setter
-    def container_image(self, value: Optional[pulumi.Input['EnvironmentContainerImageArgs']]):
+    def container_image(self, value: pulumi.Input[Optional['EnvironmentContainerImageArgs']]):
         pulumi.set(self, "container_image", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A brief description of this environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of this environment for the UI.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the machine resides.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the Environment instance.
         Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -284,12 +284,12 @@ class _EnvironmentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="postStartupScript")
-    def post_startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a Bash script that automatically runs after a notebook instance fully boots up.
         The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
@@ -297,12 +297,12 @@ class _EnvironmentState:
         return pulumi.get(self, "post_startup_script")
 
     @post_startup_script.setter
-    def post_startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_startup_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -310,12 +310,12 @@ class _EnvironmentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="vmImage")
-    def vm_image(self) -> Optional[pulumi.Input['EnvironmentVmImageArgs']]:
+    def vm_image(self) -> pulumi.Input[Optional['EnvironmentVmImageArgs']]:
         """
         Use a Compute Engine VM image to start the notebook instance.
         Structure is documented below.
@@ -323,7 +323,7 @@ class _EnvironmentState:
         return pulumi.get(self, "vm_image")
 
     @vm_image.setter
-    def vm_image(self, value: Optional[pulumi.Input['EnvironmentVmImageArgs']]):
+    def vm_image(self, value: pulumi.Input[Optional['EnvironmentVmImageArgs']]):
         pulumi.set(self, "vm_image", value)
 
 
@@ -333,14 +333,14 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: Optional[pulumi.Input[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None,
+                 container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None,
                  __props__=None):
         """
         > **Warning:** `notebooks.Environment` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
@@ -467,14 +467,14 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_image: Optional[pulumi.Input[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_image: Optional[pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None,
+                 container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -505,15 +505,15 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_image: Optional[pulumi.Input[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            post_startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_image: Optional[pulumi.Input[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None) -> 'Environment':
+            container_image: pulumi.Input[Optional[Union['EnvironmentContainerImageArgs', 'EnvironmentContainerImageArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            post_startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_image: pulumi.Input[Optional[Union['EnvironmentVmImageArgs', 'EnvironmentVmImageArgsDict']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

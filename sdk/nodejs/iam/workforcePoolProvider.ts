@@ -739,7 +739,7 @@ export interface WorkforcePoolProviderState {
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
      */
-    attributeCondition?: pulumi.Input<string>;
+    attributeCondition?: pulumi.Input<string | undefined>;
     /**
      * Maps attributes from the authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -784,24 +784,24 @@ export interface WorkforcePoolProviderState {
      * An object containing a list of `"key": value` pairs.
      * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
-    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
      */
-    detailedAuditLogging?: pulumi.Input<boolean>;
+    detailedAuditLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * The configuration for OAuth 2.0 client used to get the extended group
@@ -820,7 +820,7 @@ export interface WorkforcePoolProviderState {
      *
      * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      */
-    extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client>;
+    extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client | undefined>;
     /**
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can't get the desired claims
@@ -828,32 +828,32 @@ export interface WorkforcePoolProviderState {
      * supported with SAML and OIDC protocol.
      * Structure is documented below.
      */
-    extraAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client>;
+    extraAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client | undefined>;
     /**
      * The location for the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. The resource name of the provider.
      * Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Represents an OpenId Connect 1.0 identity provider.
      * Structure is documented below.
      */
-    oidc?: pulumi.Input<inputs.iam.WorkforcePoolProviderOidc>;
+    oidc?: pulumi.Input<inputs.iam.WorkforcePoolProviderOidc | undefined>;
     /**
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
-    providerId?: pulumi.Input<string>;
+    providerId?: pulumi.Input<string | undefined>;
     /**
      * Represents a SAML identity provider.
      * Structure is documented below.
      */
-    saml?: pulumi.Input<inputs.iam.WorkforcePoolProviderSaml>;
+    saml?: pulumi.Input<inputs.iam.WorkforcePoolProviderSaml | undefined>;
     /**
      * Agentspace only. Specifies whether the workforce identity pool
      * provider uses SCIM-managed groups instead of the `google.groups`
@@ -866,7 +866,7 @@ export interface WorkforcePoolProviderState {
      * attribute mapping for authorization checks
      * Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
      */
-    scimUsage?: pulumi.Input<string>;
+    scimUsage?: pulumi.Input<string | undefined>;
     /**
      * The current state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -875,14 +875,14 @@ export interface WorkforcePoolProviderState {
      * deleted after approximately 30 days. You can restore a soft-deleted provider using
      * [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name.
      * The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
      * It must start with a letter, and cannot have a trailing hyphen.
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      */
-    workforcePoolId?: pulumi.Input<string>;
+    workforcePoolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -896,7 +896,7 @@ export interface WorkforcePoolProviderArgs {
      * The expression must output a boolean representing whether to allow the federation.
      * The following keywords may be referenced in the expressions:
      */
-    attributeCondition?: pulumi.Input<string>;
+    attributeCondition?: pulumi.Input<string | undefined>;
     /**
      * Maps attributes from the authentication credentials issued by an external identity provider
      * to Google Cloud attributes, such as `subject` and `segment`.
@@ -941,24 +941,24 @@ export interface WorkforcePoolProviderArgs {
      * An object containing a list of `"key": value` pairs.
      * Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
-    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
      */
-    detailedAuditLogging?: pulumi.Input<boolean>;
+    detailedAuditLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
      * However, existing tokens still grant access.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * A user-specified display name for the provider. Cannot exceed 32 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * The configuration for OAuth 2.0 client used to get the extended group
@@ -977,7 +977,7 @@ export interface WorkforcePoolProviderArgs {
      *
      * @deprecated `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
      */
-    extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client>;
+    extendedAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtendedAttributesOauth2Client | undefined>;
     /**
      * The configuration for OAuth 2.0 client used to get the additional user
      * attributes. This should be used when users can't get the desired claims
@@ -985,7 +985,7 @@ export interface WorkforcePoolProviderArgs {
      * supported with SAML and OIDC protocol.
      * Structure is documented below.
      */
-    extraAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client>;
+    extraAttributesOauth2Client?: pulumi.Input<inputs.iam.WorkforcePoolProviderExtraAttributesOauth2Client | undefined>;
     /**
      * The location for the resource.
      */
@@ -994,7 +994,7 @@ export interface WorkforcePoolProviderArgs {
      * Represents an OpenId Connect 1.0 identity provider.
      * Structure is documented below.
      */
-    oidc?: pulumi.Input<inputs.iam.WorkforcePoolProviderOidc>;
+    oidc?: pulumi.Input<inputs.iam.WorkforcePoolProviderOidc | undefined>;
     /**
      * The ID for the provider, which becomes the final component of the resource name.
      * This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -1005,7 +1005,7 @@ export interface WorkforcePoolProviderArgs {
      * Represents a SAML identity provider.
      * Structure is documented below.
      */
-    saml?: pulumi.Input<inputs.iam.WorkforcePoolProviderSaml>;
+    saml?: pulumi.Input<inputs.iam.WorkforcePoolProviderSaml | undefined>;
     /**
      * Agentspace only. Specifies whether the workforce identity pool
      * provider uses SCIM-managed groups instead of the `google.groups`
@@ -1018,7 +1018,7 @@ export interface WorkforcePoolProviderArgs {
      * attribute mapping for authorization checks
      * Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
      */
-    scimUsage?: pulumi.Input<string>;
+    scimUsage?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the pool, which becomes the final component of the resource name.
      * The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.

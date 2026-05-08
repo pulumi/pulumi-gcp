@@ -22,23 +22,23 @@ __all__ = ['SubscriptionArgs', 'Subscription']
 class SubscriptionArgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[_builtins.str],
-                 ack_deadline_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
-                 cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
-                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
-                 enable_exactly_once_delivery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_message_ordering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 message_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
-                 retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 bigquery_config: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']] = None,
+                 cloud_storage_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']] = None,
+                 dead_letter_policy: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']] = None,
+                 enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration_policy: pulumi.Input[Optional['SubscriptionExpirationPolicyArgs']] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_config: pulumi.Input[Optional['SubscriptionPushConfigArgs']] = None,
+                 retain_acked_messages: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retry_policy: pulumi.Input[Optional['SubscriptionRetryPolicyArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Subscription resource.
 
@@ -188,7 +188,7 @@ class SubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="ackDeadlineSeconds")
-    def ack_deadline_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ack_deadline_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This value is the maximum time after a subscriber receives a message
         before the subscriber should acknowledge the message. After message
@@ -209,12 +209,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "ack_deadline_seconds")
 
     @ack_deadline_seconds.setter
-    def ack_deadline_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ack_deadline_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ack_deadline_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryConfig")
-    def bigquery_config(self) -> Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]:
+    def bigquery_config(self) -> pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']]:
         """
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -224,12 +224,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "bigquery_config")
 
     @bigquery_config.setter
-    def bigquery_config(self, value: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]):
+    def bigquery_config(self, value: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']]):
         pulumi.set(self, "bigquery_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageConfig")
-    def cloud_storage_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]:
+    def cloud_storage_config(self) -> pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']]:
         """
         If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -239,12 +239,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "cloud_storage_config")
 
     @cloud_storage_config.setter
-    def cloud_storage_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]):
+    def cloud_storage_config(self, value: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']]):
         pulumi.set(self, "cloud_storage_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterPolicy")
-    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]:
+    def dead_letter_policy(self) -> pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']]:
         """
         A policy that specifies the conditions for dead lettering messages in
         this subscription. If dead_letter_policy is not set, dead lettering
@@ -258,12 +258,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "dead_letter_policy")
 
     @dead_letter_policy.setter
-    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]):
+    def dead_letter_policy(self, value: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']]):
         pulumi.set(self, "dead_letter_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableExactlyOnceDelivery")
-    def enable_exactly_once_delivery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_exactly_once_delivery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, Pub/Sub provides the following guarantees for the delivery
         of a message with a given value of messageId on this Subscriptions':
@@ -275,12 +275,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "enable_exactly_once_delivery")
 
     @enable_exactly_once_delivery.setter
-    def enable_exactly_once_delivery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_exactly_once_delivery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_exactly_once_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="enableMessageOrdering")
-    def enable_message_ordering(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_message_ordering(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
         the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
@@ -289,12 +289,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "enable_message_ordering")
 
     @enable_message_ordering.setter
-    def enable_message_ordering(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_message_ordering(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_message_ordering", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationPolicy")
-    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]:
+    def expiration_policy(self) -> pulumi.Input[Optional['SubscriptionExpirationPolicyArgs']]:
         """
         A policy that specifies the conditions for this subscription's expiration.
         A subscription is considered active as long as any connected subscriber
@@ -308,12 +308,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "expiration_policy")
 
     @expiration_policy.setter
-    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]):
+    def expiration_policy(self, value: pulumi.Input[Optional['SubscriptionExpirationPolicyArgs']]):
         pulumi.set(self, "expiration_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription only delivers the messages that match the filter.
         Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
@@ -323,12 +323,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to this Subscription.
 
@@ -338,12 +338,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="messageRetentionDuration")
-    def message_retention_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_retention_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How long to retain unacknowledged messages in the subscription's
         backlog, from the moment a message is published. If
@@ -357,12 +357,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "message_retention_duration")
 
     @message_retention_duration.setter
-    def message_retention_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_retention_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_retention_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="messageTransforms")
-    def message_transforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]:
+    def message_transforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]:
         """
         Transforms to be applied to messages published to the topic. Transforms are applied in the
         order specified.
@@ -371,24 +371,24 @@ class SubscriptionArgs:
         return pulumi.get(self, "message_transforms")
 
     @message_transforms.setter
-    def message_transforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]):
+    def message_transforms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]):
         pulumi.set(self, "message_transforms", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the subscription.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -396,12 +396,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pushConfig")
-    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArgs']]:
+    def push_config(self) -> pulumi.Input[Optional['SubscriptionPushConfigArgs']]:
         """
         If push delivery is used with this subscription, this field is used to
         configure it. An empty pushConfig signifies that the subscriber will
@@ -411,12 +411,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "push_config")
 
     @push_config.setter
-    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArgs']]):
+    def push_config(self, value: pulumi.Input[Optional['SubscriptionPushConfigArgs']]):
         pulumi.set(self, "push_config", value)
 
     @_builtins.property
     @pulumi.getter(name="retainAckedMessages")
-    def retain_acked_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_acked_messages(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to retain acknowledged messages. If `true`, then
         messages are not expunged from the subscription's backlog, even if
@@ -426,12 +426,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "retain_acked_messages")
 
     @retain_acked_messages.setter
-    def retain_acked_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_acked_messages(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_acked_messages", value)
 
     @_builtins.property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]:
+    def retry_policy(self) -> pulumi.Input[Optional['SubscriptionRetryPolicyArgs']]:
         """
         A policy that specifies how Pub/Sub retries message delivery for this subscription.
         If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
@@ -441,12 +441,12 @@ class SubscriptionArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
+    def retry_policy(self, value: pulumi.Input[Optional['SubscriptionRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Input only. Resource manager tags to be bound to the subscription. Tag
         keys and values have the same definition as resource manager tags. Keys
@@ -460,33 +460,33 @@ class SubscriptionArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _SubscriptionState:
     def __init__(__self__, *,
-                 ack_deadline_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 bigquery_config: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']] = None,
-                 cloud_storage_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']] = None,
-                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_exactly_once_delivery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_message_ordering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 message_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
-                 retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 bigquery_config: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']] = None,
+                 cloud_storage_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']] = None,
+                 dead_letter_policy: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration_policy: pulumi.Input[Optional['SubscriptionExpirationPolicyArgs']] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 push_config: pulumi.Input[Optional['SubscriptionPushConfigArgs']] = None,
+                 retain_acked_messages: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retry_policy: pulumi.Input[Optional['SubscriptionRetryPolicyArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subscription resources.
 
@@ -630,7 +630,7 @@ class _SubscriptionState:
 
     @_builtins.property
     @pulumi.getter(name="ackDeadlineSeconds")
-    def ack_deadline_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ack_deadline_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This value is the maximum time after a subscriber receives a message
         before the subscriber should acknowledge the message. After message
@@ -651,12 +651,12 @@ class _SubscriptionState:
         return pulumi.get(self, "ack_deadline_seconds")
 
     @ack_deadline_seconds.setter
-    def ack_deadline_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ack_deadline_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ack_deadline_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="bigqueryConfig")
-    def bigquery_config(self) -> Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]:
+    def bigquery_config(self) -> pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']]:
         """
         If delivery to BigQuery is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -666,12 +666,12 @@ class _SubscriptionState:
         return pulumi.get(self, "bigquery_config")
 
     @bigquery_config.setter
-    def bigquery_config(self, value: Optional[pulumi.Input['SubscriptionBigqueryConfigArgs']]):
+    def bigquery_config(self, value: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']]):
         pulumi.set(self, "bigquery_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageConfig")
-    def cloud_storage_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]:
+    def cloud_storage_config(self) -> pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']]:
         """
         If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
         Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
@@ -681,12 +681,12 @@ class _SubscriptionState:
         return pulumi.get(self, "cloud_storage_config")
 
     @cloud_storage_config.setter
-    def cloud_storage_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigArgs']]):
+    def cloud_storage_config(self, value: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']]):
         pulumi.set(self, "cloud_storage_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deadLetterPolicy")
-    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]:
+    def dead_letter_policy(self) -> pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']]:
         """
         A policy that specifies the conditions for dead lettering messages in
         this subscription. If dead_letter_policy is not set, dead lettering
@@ -700,24 +700,24 @@ class _SubscriptionState:
         return pulumi.get(self, "dead_letter_policy")
 
     @dead_letter_policy.setter
-    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]):
+    def dead_letter_policy(self, value: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']]):
         pulumi.set(self, "dead_letter_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableExactlyOnceDelivery")
-    def enable_exactly_once_delivery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_exactly_once_delivery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, Pub/Sub provides the following guarantees for the delivery
         of a message with a given value of messageId on this Subscriptions':
@@ -729,12 +729,12 @@ class _SubscriptionState:
         return pulumi.get(self, "enable_exactly_once_delivery")
 
     @enable_exactly_once_delivery.setter
-    def enable_exactly_once_delivery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_exactly_once_delivery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_exactly_once_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="enableMessageOrdering")
-    def enable_message_ordering(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_message_ordering(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
         the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
@@ -743,12 +743,12 @@ class _SubscriptionState:
         return pulumi.get(self, "enable_message_ordering")
 
     @enable_message_ordering.setter
-    def enable_message_ordering(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_message_ordering(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_message_ordering", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationPolicy")
-    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]:
+    def expiration_policy(self) -> pulumi.Input[Optional['SubscriptionExpirationPolicyArgs']]:
         """
         A policy that specifies the conditions for this subscription's expiration.
         A subscription is considered active as long as any connected subscriber
@@ -762,12 +762,12 @@ class _SubscriptionState:
         return pulumi.get(self, "expiration_policy")
 
     @expiration_policy.setter
-    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]):
+    def expiration_policy(self, value: pulumi.Input[Optional['SubscriptionExpirationPolicyArgs']]):
         pulumi.set(self, "expiration_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription only delivers the messages that match the filter.
         Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
@@ -777,12 +777,12 @@ class _SubscriptionState:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value label pairs to assign to this Subscription.
 
@@ -792,12 +792,12 @@ class _SubscriptionState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="messageRetentionDuration")
-    def message_retention_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_retention_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How long to retain unacknowledged messages in the subscription's
         backlog, from the moment a message is published. If
@@ -811,12 +811,12 @@ class _SubscriptionState:
         return pulumi.get(self, "message_retention_duration")
 
     @message_retention_duration.setter
-    def message_retention_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_retention_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_retention_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="messageTransforms")
-    def message_transforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]:
+    def message_transforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]:
         """
         Transforms to be applied to messages published to the topic. Transforms are applied in the
         order specified.
@@ -825,24 +825,24 @@ class _SubscriptionState:
         return pulumi.get(self, "message_transforms")
 
     @message_transforms.setter
-    def message_transforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]):
+    def message_transforms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SubscriptionMessageTransformArgs']]]]):
         pulumi.set(self, "message_transforms", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the subscription.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -850,12 +850,12 @@ class _SubscriptionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -863,12 +863,12 @@ class _SubscriptionState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="pushConfig")
-    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArgs']]:
+    def push_config(self) -> pulumi.Input[Optional['SubscriptionPushConfigArgs']]:
         """
         If push delivery is used with this subscription, this field is used to
         configure it. An empty pushConfig signifies that the subscriber will
@@ -878,12 +878,12 @@ class _SubscriptionState:
         return pulumi.get(self, "push_config")
 
     @push_config.setter
-    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArgs']]):
+    def push_config(self, value: pulumi.Input[Optional['SubscriptionPushConfigArgs']]):
         pulumi.set(self, "push_config", value)
 
     @_builtins.property
     @pulumi.getter(name="retainAckedMessages")
-    def retain_acked_messages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_acked_messages(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to retain acknowledged messages. If `true`, then
         messages are not expunged from the subscription's backlog, even if
@@ -893,12 +893,12 @@ class _SubscriptionState:
         return pulumi.get(self, "retain_acked_messages")
 
     @retain_acked_messages.setter
-    def retain_acked_messages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_acked_messages(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_acked_messages", value)
 
     @_builtins.property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]:
+    def retry_policy(self) -> pulumi.Input[Optional['SubscriptionRetryPolicyArgs']]:
         """
         A policy that specifies how Pub/Sub retries message delivery for this subscription.
         If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
@@ -908,12 +908,12 @@ class _SubscriptionState:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
+    def retry_policy(self, value: pulumi.Input[Optional['SubscriptionRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Input only. Resource manager tags to be bound to the subscription. Tag
         keys and values have the same definition as resource manager tags. Keys
@@ -927,12 +927,12 @@ class _SubscriptionState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
         (as in the id property of a google_pubsub_topic), or just a topic name if
@@ -941,7 +941,7 @@ class _SubscriptionState:
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 
@@ -951,24 +951,24 @@ class Subscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ack_deadline_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 bigquery_config: Optional[pulumi.Input[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
-                 cloud_storage_config: Optional[pulumi.Input[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
-                 dead_letter_policy: Optional[pulumi.Input[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
-                 enable_exactly_once_delivery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_message_ordering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration_policy: Optional[pulumi.Input[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 message_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
-                 retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retry_policy: Optional[pulumi.Input[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
+                 cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
+                 dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
+                 enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration_policy: pulumi.Input[Optional[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_config: pulumi.Input[Optional[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
+                 retain_acked_messages: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A named resource representing the stream of messages from a single,
@@ -2075,24 +2075,24 @@ class Subscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ack_deadline_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 bigquery_config: Optional[pulumi.Input[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
-                 cloud_storage_config: Optional[pulumi.Input[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
-                 dead_letter_policy: Optional[pulumi.Input[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
-                 enable_exactly_once_delivery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_message_ordering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expiration_policy: Optional[pulumi.Input[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 message_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
-                 retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retry_policy: Optional[pulumi.Input[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
+                 cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
+                 dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
+                 enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expiration_policy: pulumi.Input[Optional[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_config: pulumi.Input[Optional[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
+                 retain_acked_messages: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2136,26 +2136,26 @@ class Subscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ack_deadline_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            bigquery_config: Optional[pulumi.Input[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
-            cloud_storage_config: Optional[pulumi.Input[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
-            dead_letter_policy: Optional[pulumi.Input[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_exactly_once_delivery: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_message_ordering: Optional[pulumi.Input[_builtins.bool]] = None,
-            expiration_policy: Optional[pulumi.Input[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
-            filter: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            message_retention_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            message_transforms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            push_config: Optional[pulumi.Input[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
-            retain_acked_messages: Optional[pulumi.Input[_builtins.bool]] = None,
-            retry_policy: Optional[pulumi.Input[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            topic: Optional[pulumi.Input[_builtins.str]] = None) -> 'Subscription':
+            ack_deadline_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
+            cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
+            dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiration_policy: pulumi.Input[Optional[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            message_retention_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            message_transforms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubscriptionMessageTransformArgs', 'SubscriptionMessageTransformArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            push_config: pulumi.Input[Optional[Union['SubscriptionPushConfigArgs', 'SubscriptionPushConfigArgsDict']]] = None,
+            retain_acked_messages: pulumi.Input[Optional[_builtins.bool]] = None,
+            retry_policy: pulumi.Input[Optional[Union['SubscriptionRetryPolicyArgs', 'SubscriptionRetryPolicyArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None) -> 'Subscription':
         """
         Get an existing Subscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

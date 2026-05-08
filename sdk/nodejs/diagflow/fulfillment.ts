@@ -156,31 +156,31 @@ export interface FulfillmentState {
     /**
      * The human-readable name of the fulfillment, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether fulfillment is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The field defines whether the fulfillment is enabled for certain features.
      * Structure is documented below.
      */
-    features?: pulumi.Input<pulumi.Input<inputs.diagflow.FulfillmentFeature>[]>;
+    features?: pulumi.Input<pulumi.Input<inputs.diagflow.FulfillmentFeature>[] | undefined>;
     /**
      * Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
      * Structure is documented below.
      */
-    genericWebService?: pulumi.Input<inputs.diagflow.FulfillmentGenericWebService>;
+    genericWebService?: pulumi.Input<inputs.diagflow.FulfillmentGenericWebService | undefined>;
     /**
      * The unique identifier of the fulfillment.
      * Format: projects/<Project ID>/agent/fulfillment - projects/<Project ID>/locations/<Location ID>/agent/fulfillment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,20 +194,20 @@ export interface FulfillmentArgs {
     /**
      * Whether fulfillment is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The field defines whether the fulfillment is enabled for certain features.
      * Structure is documented below.
      */
-    features?: pulumi.Input<pulumi.Input<inputs.diagflow.FulfillmentFeature>[]>;
+    features?: pulumi.Input<pulumi.Input<inputs.diagflow.FulfillmentFeature>[] | undefined>;
     /**
      * Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
      * Structure is documented below.
      */
-    genericWebService?: pulumi.Input<inputs.diagflow.FulfillmentGenericWebService>;
+    genericWebService?: pulumi.Input<inputs.diagflow.FulfillmentGenericWebService | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

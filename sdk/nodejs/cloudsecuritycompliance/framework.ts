@@ -244,64 +244,64 @@ export interface FrameworkState {
     /**
      * The category of the framework.
      */
-    categories?: pulumi.Input<pulumi.Input<string>[]>;
+    categories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The details of the cloud controls directly added without any grouping in
      * the framework.
      * Structure is documented below.
      */
-    cloudControlDetails?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkCloudControlDetail>[]>;
+    cloudControlDetails?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkCloudControlDetail>[] | undefined>;
     /**
      * The description of the framework. The maximum length is 2000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the framework. The maximum length is 200 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the framework.
      * This is not the full name of the framework.
      * This is the last part of the full name of the framework.
      */
-    frameworkId?: pulumi.Input<string>;
+    frameworkId?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Major revision of the framework incremented in ascending order.
      */
-    majorRevisionId?: pulumi.Input<string>;
+    majorRevisionId?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the framework.
      * Format:
      * organizations/{organization}/locations/{{location}}/frameworks/{framework_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * cloud providers supported
      */
-    supportedCloudProviders?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedCloudProviders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The supported enforcement modes of the framework.
      */
-    supportedEnforcementModes?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedEnforcementModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * target resource types supported by the Framework.
      */
-    supportedTargetResourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedTargetResourceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the framework. The default is TYPE_CUSTOM.
      * Possible values:
      * BUILT_IN
      * CUSTOM
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -313,15 +313,15 @@ export interface FrameworkArgs {
      * the framework.
      * Structure is documented below.
      */
-    cloudControlDetails?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkCloudControlDetail>[]>;
+    cloudControlDetails?: pulumi.Input<pulumi.Input<inputs.cloudsecuritycompliance.FrameworkCloudControlDetail>[] | undefined>;
     /**
      * The description of the framework. The maximum length is 2000 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the framework. The maximum length is 200 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the framework.
      * This is not the full name of the framework.

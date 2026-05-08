@@ -457,21 +457,21 @@ export interface RouteState {
     /**
      * Structure is documented below.
      */
-    asPaths?: pulumi.Input<pulumi.Input<inputs.compute.RouteAsPath>[]>;
+    asPaths?: pulumi.Input<pulumi.Input<inputs.compute.RouteAsPath>[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property
      * when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination range of outgoing packets that this route applies to.
      * Only IPv4 is supported.
      */
-    destRange?: pulumi.Input<string>;
+    destRange?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -481,11 +481,11 @@ export interface RouteState {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network that this route applies to.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * URL to a gateway that should handle matching packets.
      * Currently, you can only specify the internet gateway, using a full or
@@ -495,11 +495,11 @@ export interface RouteState {
      * * `global/gateways/default-internet-gateway`
      * * The string `default-internet-gateway`.
      */
-    nextHopGateway?: pulumi.Input<string>;
+    nextHopGateway?: pulumi.Input<string | undefined>;
     /**
      * The hub network that should handle matching packets, which should conform to RFC1035.
      */
-    nextHopHub?: pulumi.Input<string>;
+    nextHopHub?: pulumi.Input<string | undefined>;
     /**
      * The IP address or URL to a forwarding rule of type
      * loadBalancingScheme=INTERNAL that should handle matching
@@ -515,7 +515,7 @@ export interface RouteState {
      * Note that this can only be used when the destinationRange is
      * a public (non-RFC 1918) IP CIDR range.
      */
-    nextHopIlb?: pulumi.Input<string>;
+    nextHopIlb?: pulumi.Input<string | undefined>;
     /**
      * URL to an instance that should handle matching packets.
      * You can specify this as a full or partial URL. For example:
@@ -524,47 +524,47 @@ export interface RouteState {
      * * `zones/zone/instances/instance`
      * * Just the instance name, with the zone in `nextHopInstanceZone`.
      */
-    nextHopInstance?: pulumi.Input<string>;
+    nextHopInstance?: pulumi.Input<string | undefined>;
     /**
      * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
      * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      */
-    nextHopInstanceZone?: pulumi.Input<string>;
+    nextHopInstanceZone?: pulumi.Input<string | undefined>;
     /**
      * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
      */
-    nextHopInterRegionCost?: pulumi.Input<string>;
+    nextHopInterRegionCost?: pulumi.Input<string | undefined>;
     /**
      * Network IP address of an instance that should handle matching packets.
      */
-    nextHopIp?: pulumi.Input<string>;
+    nextHopIp?: pulumi.Input<string | undefined>;
     /**
      * Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
      */
-    nextHopMed?: pulumi.Input<string>;
+    nextHopMed?: pulumi.Input<string | undefined>;
     /**
      * URL to a Network that should handle matching packets.
      */
-    nextHopNetwork?: pulumi.Input<string>;
+    nextHopNetwork?: pulumi.Input<string | undefined>;
     /**
      * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
      */
-    nextHopOrigin?: pulumi.Input<string>;
+    nextHopOrigin?: pulumi.Input<string | undefined>;
     /**
      * The network peering name that should handle matching packets, which should conform to RFC1035.
      */
-    nextHopPeering?: pulumi.Input<string>;
+    nextHopPeering?: pulumi.Input<string | undefined>;
     /**
      * URL to a VpnTunnel that should handle matching packets.
      */
-    nextHopVpnTunnel?: pulumi.Input<string>;
+    nextHopVpnTunnel?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RouteParams>;
+    params?: pulumi.Input<inputs.compute.RouteParams | undefined>;
     /**
      * The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
@@ -572,18 +572,18 @@ export interface RouteState {
      * lowest-numbered priority value wins.
      * Default value is 1000. Valid range is 0 through 65535.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The status of the route, which can be one of the following values:
      * - 'ACTIVE' for an active route
      * - 'INACTIVE' for an inactive route
      */
-    routeStatus?: pulumi.Input<string>;
+    routeStatus?: pulumi.Input<string | undefined>;
     /**
      * The type of this route, which can be one of the following values:
      * - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers
@@ -591,20 +591,20 @@ export interface RouteState {
      * - 'BGP' for a route learned from a BGP peer of this router
      * - 'STATIC' for a static route
      */
-    routeType?: pulumi.Input<string>;
+    routeType?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * A list of instance tags to which this route applies.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      * Structure is documented below.
      */
-    warnings?: pulumi.Input<pulumi.Input<inputs.compute.RouteWarning>[]>;
+    warnings?: pulumi.Input<pulumi.Input<inputs.compute.RouteWarning>[] | undefined>;
 }
 
 /**
@@ -615,7 +615,7 @@ export interface RouteArgs {
      * An optional description of this resource. Provide this property
      * when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination range of outgoing packets that this route applies to.
      * Only IPv4 is supported.
@@ -630,7 +630,7 @@ export interface RouteArgs {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network that this route applies to.
      */
@@ -644,7 +644,7 @@ export interface RouteArgs {
      * * `global/gateways/default-internet-gateway`
      * * The string `default-internet-gateway`.
      */
-    nextHopGateway?: pulumi.Input<string>;
+    nextHopGateway?: pulumi.Input<string | undefined>;
     /**
      * The IP address or URL to a forwarding rule of type
      * loadBalancingScheme=INTERNAL that should handle matching
@@ -660,7 +660,7 @@ export interface RouteArgs {
      * Note that this can only be used when the destinationRange is
      * a public (non-RFC 1918) IP CIDR range.
      */
-    nextHopIlb?: pulumi.Input<string>;
+    nextHopIlb?: pulumi.Input<string | undefined>;
     /**
      * URL to an instance that should handle matching packets.
      * You can specify this as a full or partial URL. For example:
@@ -669,27 +669,27 @@ export interface RouteArgs {
      * * `zones/zone/instances/instance`
      * * Just the instance name, with the zone in `nextHopInstanceZone`.
      */
-    nextHopInstance?: pulumi.Input<string>;
+    nextHopInstance?: pulumi.Input<string | undefined>;
     /**
      * (Optional when `nextHopInstance` is
      * specified)  The zone of the instance specified in
      * `nextHopInstance`.  Omit if `nextHopInstance` is specified as
      * a URL.
      */
-    nextHopInstanceZone?: pulumi.Input<string>;
+    nextHopInstanceZone?: pulumi.Input<string | undefined>;
     /**
      * Network IP address of an instance that should handle matching packets.
      */
-    nextHopIp?: pulumi.Input<string>;
+    nextHopIp?: pulumi.Input<string | undefined>;
     /**
      * URL to a VpnTunnel that should handle matching packets.
      */
-    nextHopVpnTunnel?: pulumi.Input<string>;
+    nextHopVpnTunnel?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.RouteParams>;
+    params?: pulumi.Input<inputs.compute.RouteParams | undefined>;
     /**
      * The priority of this route. Priority is used to break ties in cases
      * where there is more than one matching route of equal prefix length.
@@ -697,14 +697,14 @@ export interface RouteArgs {
      * lowest-numbered priority value wins.
      * Default value is 1000. Valid range is 0 through 65535.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of instance tags to which this route applies.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -60,7 +60,7 @@ export function getStoragePoolTypesOutput(args: GetStoragePoolTypesOutputArgs, o
  * A collection of arguments for invoking getStoragePoolTypes.
  */
 export interface GetStoragePoolTypesOutputArgs {
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     storagePoolType: pulumi.Input<string>;
     zone: pulumi.Input<string>;
 }

@@ -91,5 +91,5 @@ export interface GetProjectOutputArgs {
     /**
      * The project ID. If it is not provided, the provider project is used.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

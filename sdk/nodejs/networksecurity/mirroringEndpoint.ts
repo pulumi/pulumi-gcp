@@ -230,60 +230,60 @@ export interface MirroringEndpointState {
      * The timestamp when the resource was created.
      * See https://google.aip.dev/148#timestamps.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the endpoint.
      * Used as additional context for the endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cloud location of the endpoint, e.g. `us-central1-a` or `asia-south1-b`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The endpoint group that this endpoint belongs to.
      * Format is:
      * `projects/{project}/locations/{location}/mirroringEndpointGroups/{mirroringEndpointGroup}`
      */
-    mirroringEndpointGroup?: pulumi.Input<string>;
+    mirroringEndpointGroup?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the new endpoint, which will become the final
      * component of the endpoint's resource name.
      */
-    mirroringEndpointId?: pulumi.Input<string>;
+    mirroringEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The resource name of this endpoint, for example:
      * `projects/123456789/locations/us-central1-a/mirroringEndpoints/my-endpoint`.
      * See https://google.aip.dev/122 for more details.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The current state of the resource does not match the user's intended state,
      * and the system is working to reconcile them. This part of the normal
      * operation (e.g. linking a new association to the parent group).
      * See https://google.aip.dev/128.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * The current state of the endpoint.
      * See https://google.aip.dev/216.
@@ -295,12 +295,12 @@ export interface MirroringEndpointState {
      * DELETE_FAILED
      * OUT_OF_SYNC
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was most recently updated.
      * See https://google.aip.dev/148#timestamps.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -311,13 +311,13 @@ export interface MirroringEndpointArgs {
      * User-provided description of the endpoint.
      * Used as additional context for the endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Labels are key/value pairs that help to organize and filter resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The cloud location of the endpoint, e.g. `us-central1-a` or `asia-south1-b`.
      */
@@ -337,5 +337,5 @@ export interface MirroringEndpointArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

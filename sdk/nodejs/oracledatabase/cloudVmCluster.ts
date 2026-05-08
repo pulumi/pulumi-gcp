@@ -387,69 +387,69 @@ export interface CloudVmClusterState {
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    backupOdbSubnet?: pulumi.Input<string>;
+    backupOdbSubnet?: pulumi.Input<string | undefined>;
     /**
      * CIDR range of the backup subnet.
      */
-    backupSubnetCidr?: pulumi.Input<string>;
+    backupSubnetCidr?: pulumi.Input<string | undefined>;
     /**
      * Network settings. CIDR to use for cluster IP allocation.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VM Cluster to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      */
-    cloudVmClusterId?: pulumi.Input<string>;
+    cloudVmClusterId?: pulumi.Input<string | undefined>;
     /**
      * The date and time that the VM cluster was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Exadata Infrastructure resource on which VM cluster
      * resource is created, in the following format:
      * projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
      */
-    exadataInfrastructure?: pulumi.Input<string>;
+    exadataInfrastructure?: pulumi.Input<string | undefined>;
     /**
      * GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
      * of Exadata infrastructure.
      */
-    gcpOracleZone?: pulumi.Input<string>;
+    gcpOracleZone?: pulumi.Input<string | undefined>;
     /**
      * Labels or tags associated with the VM Cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the VM Cluster resource with the format:
      * projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC network.
      * Format: projects/{project}/global/networks/{network}
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbNetwork associated with the VM Cluster.
      * Format:
@@ -457,28 +457,28 @@ export interface CloudVmClusterState {
      * It is optional but if specified, this should match the parent ODBNetwork of
      * the odbSubnet and backup_odb_subnet.
      */
-    odbNetwork?: pulumi.Input<string>;
+    odbNetwork?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbSubnet associated with the VM Cluster for
      * IP allocation. Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    odbSubnet?: pulumi.Input<string>;
+    odbSubnet?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Various properties and settings associated with Exadata VM cluster.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.oracledatabase.CloudVmClusterProperties>;
+    properties?: pulumi.Input<inputs.oracledatabase.CloudVmClusterProperties | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -490,15 +490,15 @@ export interface CloudVmClusterArgs {
      * Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    backupOdbSubnet?: pulumi.Input<string>;
+    backupOdbSubnet?: pulumi.Input<string | undefined>;
     /**
      * CIDR range of the backup subnet.
      */
-    backupSubnetCidr?: pulumi.Input<string>;
+    backupSubnetCidr?: pulumi.Input<string | undefined>;
     /**
      * Network settings. CIDR to use for cluster IP allocation.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VM Cluster to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
@@ -509,11 +509,11 @@ export interface CloudVmClusterArgs {
     /**
      * Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Exadata Infrastructure resource on which VM cluster
      * resource is created, in the following format:
@@ -525,7 +525,7 @@ export interface CloudVmClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
      */
@@ -534,7 +534,7 @@ export interface CloudVmClusterArgs {
      * The name of the VPC network.
      * Format: projects/{project}/global/networks/{network}
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbNetwork associated with the VM Cluster.
      * Format:
@@ -542,21 +542,21 @@ export interface CloudVmClusterArgs {
      * It is optional but if specified, this should match the parent ODBNetwork of
      * the odbSubnet and backup_odb_subnet.
      */
-    odbNetwork?: pulumi.Input<string>;
+    odbNetwork?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbSubnet associated with the VM Cluster for
      * IP allocation. Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    odbSubnet?: pulumi.Input<string>;
+    odbSubnet?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Various properties and settings associated with Exadata VM cluster.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.oracledatabase.CloudVmClusterProperties>;
+    properties?: pulumi.Input<inputs.oracledatabase.CloudVmClusterProperties | undefined>;
 }

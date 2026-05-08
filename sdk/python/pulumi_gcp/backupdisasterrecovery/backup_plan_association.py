@@ -26,7 +26,7 @@ class BackupPlanAssociationArgs:
                  location: pulumi.Input[_builtins.str],
                  resource: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPlanAssociation resource.
 
@@ -118,7 +118,7 @@ class BackupPlanAssociationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -126,24 +126,24 @@ class BackupPlanAssociationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _BackupPlanAssociationState:
     def __init__(__self__, *,
-                 backup_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_plan_association_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules_config_infos: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules_config_infos: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BackupPlanAssociation resources.
 
@@ -191,7 +191,7 @@ class _BackupPlanAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="backupPlan")
-    def backup_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The BP with which resource needs to be created
         Note:
@@ -202,72 +202,72 @@ class _BackupPlanAssociationState:
         return pulumi.get(self, "backup_plan")
 
     @backup_plan.setter
-    def backup_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPlanAssociationId")
-    def backup_plan_association_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_plan_association_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of backupplan association
         """
         return pulumi.get(self, "backup_plan_association_id")
 
     @backup_plan_association_id.setter
-    def backup_plan_association_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_plan_association_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_plan_association_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the instance was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSource")
-    def data_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of data source which will be used as storage location for backups taken
         """
         return pulumi.get(self, "data_source")
 
     @data_source.setter
-    def data_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the backupplan association
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of backup plan association resource created
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -275,24 +275,24 @@ class _BackupPlanAssociationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource for which BPA needs to be created
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type of workload on which backupplan is applied.
         Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
@@ -300,12 +300,12 @@ class _BackupPlanAssociationState:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="rulesConfigInfos")
-    def rules_config_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]]]:
+    def rules_config_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]]]:
         """
         Message for rules config info
         Structure is documented below.
@@ -313,19 +313,19 @@ class _BackupPlanAssociationState:
         return pulumi.get(self, "rules_config_infos")
 
     @rules_config_infos.setter
-    def rules_config_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]]]):
+    def rules_config_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoArgs']]]]):
         pulumi.set(self, "rules_config_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the instance was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -335,12 +335,12 @@ class BackupPlanAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_plan_association_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Backup and DR BackupPlanAssociation.
@@ -656,12 +656,12 @@ class BackupPlanAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_plan_association_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -702,17 +702,17 @@ class BackupPlanAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_plan: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_plan_association_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            resource: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            rules_config_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict']]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'BackupPlanAssociation':
+            backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_plan_association_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rules_config_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BackupPlanAssociationRulesConfigInfoArgs', 'BackupPlanAssociationRulesConfigInfoArgsDict']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BackupPlanAssociation':
         """
         Get an existing BackupPlanAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

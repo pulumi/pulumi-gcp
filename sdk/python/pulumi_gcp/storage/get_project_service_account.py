@@ -181,8 +181,8 @@ def get_project_service_account(project: Optional[_builtins.str] = None,
         member=pulumi.get(__ret__, 'member'),
         project=pulumi.get(__ret__, 'project'),
         user_project=pulumi.get(__ret__, 'user_project'))
-def get_project_service_account_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       user_project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_project_service_account_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       user_project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectServiceAccountResult]:
     """
     Get the email address of a project's unique [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts).

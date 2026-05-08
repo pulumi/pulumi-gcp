@@ -24,8 +24,8 @@ class OccurenceArgs:
                  attestation: pulumi.Input['OccurenceAttestationArgs'],
                  note_name: pulumi.Input[_builtins.str],
                  resource_uri: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Occurence resource.
 
@@ -106,7 +106,7 @@ class OccurenceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -114,34 +114,34 @@ class OccurenceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of actions that can be taken to remedy the note.
         """
         return pulumi.get(self, "remediation")
 
     @remediation.setter
-    def remediation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation", value)
 
 
 @pulumi.input_type
 class _OccurenceState:
     def __init__(__self__, *,
-                 attestation: Optional[pulumi.Input['OccurenceAttestationArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 attestation: pulumi.Input[Optional['OccurenceAttestationArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Occurence resources.
 
@@ -191,7 +191,7 @@ class _OccurenceState:
 
     @_builtins.property
     @pulumi.getter
-    def attestation(self) -> Optional[pulumi.Input['OccurenceAttestationArgs']]:
+    def attestation(self) -> pulumi.Input[Optional['OccurenceAttestationArgs']]:
         """
         Occurrence that represents a single "attestation". The authenticity
         of an attestation can be verified using the attached signature.
@@ -206,24 +206,24 @@ class _OccurenceState:
         return pulumi.get(self, "attestation")
 
     @attestation.setter
-    def attestation(self, value: Optional[pulumi.Input['OccurenceAttestationArgs']]):
+    def attestation(self, value: pulumi.Input[Optional['OccurenceAttestationArgs']]):
         pulumi.set(self, "attestation", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the repository was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The note kind which explicitly denotes which of the occurrence
         details are specified. This field can be used as a filter in list
@@ -232,24 +232,24 @@ class _OccurenceState:
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the occurrence.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noteName")
-    def note_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The analysis note associated with this occurrence, in the form of
         projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
@@ -258,12 +258,12 @@ class _OccurenceState:
         return pulumi.get(self, "note_name")
 
     @note_name.setter
-    def note_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -271,24 +271,24 @@ class _OccurenceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def remediation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of actions that can be taken to remedy the note.
         """
         return pulumi.get(self, "remediation")
 
     @remediation.setter
-    def remediation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceUri")
-    def resource_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. A URI that represents the resource for which
         the occurrence applies. For example,
@@ -297,19 +297,19 @@ class _OccurenceState:
         return pulumi.get(self, "resource_uri")
 
     @resource_uri.setter
-    def resource_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the repository was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -319,11 +319,11 @@ class Occurence(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
-                 note_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+                 note_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An occurrence is an instance of a Note, or type of analysis that
@@ -511,11 +511,11 @@ class Occurence(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation: Optional[pulumi.Input[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
-                 note_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+                 note_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,15 +550,15 @@ class Occurence(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation: Optional[pulumi.Input[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            note_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            remediation: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Occurence':
+            attestation: pulumi.Input[Optional[Union['OccurenceAttestationArgs', 'OccurenceAttestationArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            note_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Occurence':
         """
         Get an existing Occurence resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -25,20 +25,20 @@ class InterconnectArgs:
                  link_type: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  requested_link_count: pulumi.Input[_builtins.int],
-                 aai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 application_aware_interconnect: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']] = None,
-                 customer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 macsec: Optional[pulumi.Input['InterconnectMacsecArgs']] = None,
-                 macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['InterconnectParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 application_aware_interconnect: pulumi.Input[Optional['InterconnectApplicationAwareInterconnectArgs']] = None,
+                 customer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 macsec: pulumi.Input[Optional['InterconnectMacsecArgs']] = None,
+                 macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['InterconnectParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Interconnect resource.
 
@@ -196,7 +196,7 @@ class InterconnectArgs:
 
     @_builtins.property
     @pulumi.getter(name="aaiEnabled")
-    def aai_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def aai_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
@@ -204,12 +204,12 @@ class InterconnectArgs:
         return pulumi.get(self, "aai_enabled")
 
     @aai_enabled.setter
-    def aai_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def aai_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "aai_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
-    def admin_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative status of the interconnect. When this is set to true, the Interconnect is
         functional and can carry traffic. When set to false, no packets can be carried over the
@@ -218,12 +218,12 @@ class InterconnectArgs:
         return pulumi.get(self, "admin_enabled")
 
     @admin_enabled.setter
-    def admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationAwareInterconnect")
-    def application_aware_interconnect(self) -> Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']]:
+    def application_aware_interconnect(self) -> pulumi.Input[Optional['InterconnectApplicationAwareInterconnectArgs']]:
         """
         (Optional, Beta)
         Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -233,12 +233,12 @@ class InterconnectArgs:
         return pulumi.get(self, "application_aware_interconnect")
 
     @application_aware_interconnect.setter
-    def application_aware_interconnect(self, value: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']]):
+    def application_aware_interconnect(self, value: pulumi.Input[Optional['InterconnectApplicationAwareInterconnectArgs']]):
         pulumi.set(self, "application_aware_interconnect", value)
 
     @_builtins.property
     @pulumi.getter(name="customerName")
-    def customer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer name, to put in the Letter of Authorization as the party authorized to request a
         crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
@@ -247,24 +247,24 @@ class InterconnectArgs:
         return pulumi.get(self, "customer_name")
 
     @customer_name.setter
-    def customer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels
         method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -275,12 +275,12 @@ class InterconnectArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def macsec(self) -> Optional[pulumi.Input['InterconnectMacsecArgs']]:
+    def macsec(self) -> pulumi.Input[Optional['InterconnectMacsecArgs']]:
         """
         Configuration that enables Media Access Control security (MACsec) on the Cloud
         Interconnect connection between Google and your on-premises router.
@@ -289,12 +289,12 @@ class InterconnectArgs:
         return pulumi.get(self, "macsec")
 
     @macsec.setter
-    def macsec(self, value: Optional[pulumi.Input['InterconnectMacsecArgs']]):
+    def macsec(self, value: pulumi.Input[Optional['InterconnectMacsecArgs']]):
         pulumi.set(self, "macsec", value)
 
     @_builtins.property
     @pulumi.getter(name="macsecEnabled")
-    def macsec_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def macsec_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable MACsec on this Interconnect connection.
         MACsec enablement fails if the MACsec object is not specified.
@@ -302,12 +302,12 @@ class InterconnectArgs:
         return pulumi.get(self, "macsec_enabled")
 
     @macsec_enabled.setter
-    def macsec_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def macsec_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "macsec_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be
         1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -318,12 +318,12 @@ class InterconnectArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nocContactEmail")
-    def noc_contact_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def noc_contact_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address to contact the customer NOC for operations and maintenance notifications
         regarding this Interconnect. If specified, this will be used for notifications in addition to
@@ -334,12 +334,12 @@ class InterconnectArgs:
         return pulumi.get(self, "noc_contact_email")
 
     @noc_contact_email.setter
-    def noc_contact_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def noc_contact_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "noc_contact_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['InterconnectParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['InterconnectParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -347,12 +347,12 @@ class InterconnectArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['InterconnectParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['InterconnectParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -360,12 +360,12 @@ class InterconnectArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteLocation")
-    def remote_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
         of Google's network that the interconnect is connected to.
@@ -373,12 +373,12 @@ class InterconnectArgs:
         return pulumi.get(self, "remote_location")
 
     @remote_location.setter
-    def remote_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_location", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedFeatures")
-    def requested_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def requested_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
         Possible values include:
@@ -391,48 +391,48 @@ class InterconnectArgs:
         return pulumi.get(self, "requested_features")
 
     @requested_features.setter
-    def requested_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def requested_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "requested_features", value)
 
 
 @pulumi.input_type
 class _InterconnectState:
     def __init__(__self__, *,
-                 aai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 application_aware_interconnect: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']] = None,
-                 available_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 expected_outages: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]] = None,
-                 google_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interconnect_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 interconnect_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 macsec: Optional[pulumi.Input['InterconnectMacsecArgs']] = None,
-                 macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 operational_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['InterconnectParamsArgs']] = None,
-                 peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_link_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 remote_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 requested_link_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 satisfies_pzs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 wire_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 application_aware_interconnect: pulumi.Input[Optional['InterconnectApplicationAwareInterconnectArgs']] = None,
+                 available_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 circuit_infos: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 expected_outages: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]] = None,
+                 google_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect_attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 interconnect_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 interconnect_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 macsec: pulumi.Input[Optional['InterconnectMacsecArgs']] = None,
+                 macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 operational_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['InterconnectParamsArgs']] = None,
+                 peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_link_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 remote_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 requested_link_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 wire_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Interconnect resources.
 
@@ -617,7 +617,7 @@ class _InterconnectState:
 
     @_builtins.property
     @pulumi.getter(name="aaiEnabled")
-    def aai_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def aai_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
@@ -625,12 +625,12 @@ class _InterconnectState:
         return pulumi.get(self, "aai_enabled")
 
     @aai_enabled.setter
-    def aai_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def aai_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "aai_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
-    def admin_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Administrative status of the interconnect. When this is set to true, the Interconnect is
         functional and can carry traffic. When set to false, no packets can be carried over the
@@ -639,12 +639,12 @@ class _InterconnectState:
         return pulumi.get(self, "admin_enabled")
 
     @admin_enabled.setter
-    def admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationAwareInterconnect")
-    def application_aware_interconnect(self) -> Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']]:
+    def application_aware_interconnect(self) -> pulumi.Input[Optional['InterconnectApplicationAwareInterconnectArgs']]:
         """
         (Optional, Beta)
         Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -654,12 +654,12 @@ class _InterconnectState:
         return pulumi.get(self, "application_aware_interconnect")
 
     @application_aware_interconnect.setter
-    def application_aware_interconnect(self, value: Optional[pulumi.Input['InterconnectApplicationAwareInterconnectArgs']]):
+    def application_aware_interconnect(self, value: pulumi.Input[Optional['InterconnectApplicationAwareInterconnectArgs']]):
         pulumi.set(self, "application_aware_interconnect", value)
 
     @_builtins.property
     @pulumi.getter(name="availableFeatures")
-    def available_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def available_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
         Possible values include:
@@ -671,12 +671,12 @@ class _InterconnectState:
         return pulumi.get(self, "available_features")
 
     @available_features.setter
-    def available_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def available_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "available_features", value)
 
     @_builtins.property
     @pulumi.getter(name="circuitInfos")
-    def circuit_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]]:
+    def circuit_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]]:
         """
         A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         Structure is documented below.
@@ -684,24 +684,24 @@ class _InterconnectState:
         return pulumi.get(self, "circuit_infos")
 
     @circuit_infos.setter
-    def circuit_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]]):
+    def circuit_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectCircuitInfoArgs']]]]):
         pulumi.set(self, "circuit_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="customerName")
-    def customer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer name, to put in the Letter of Authorization as the party authorized to request a
         crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
@@ -710,36 +710,36 @@ class _InterconnectState:
         return pulumi.get(self, "customer_name")
 
     @customer_name.setter
-    def customer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedOutages")
-    def expected_outages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]]:
+    def expected_outages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]]:
         """
         A list of outages expected for this Interconnect.
         Structure is documented below.
@@ -747,12 +747,12 @@ class _InterconnectState:
         return pulumi.get(self, "expected_outages")
 
     @expected_outages.setter
-    def expected_outages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]]):
+    def expected_outages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]]):
         pulumi.set(self, "expected_outages", value)
 
     @_builtins.property
     @pulumi.getter(name="googleIpAddress")
-    def google_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address configured on the Google side of the Interconnect link.
         This can be used only for ping tests.
@@ -760,12 +760,12 @@ class _InterconnectState:
         return pulumi.get(self, "google_ip_address")
 
     @google_ip_address.setter
-    def google_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="googleReferenceId")
-    def google_reference_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_reference_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google reference ID to be used when raising support tickets with Google or otherwise to debug
         backend connectivity issues.
@@ -773,24 +773,24 @@ class _InterconnectState:
         return pulumi.get(self, "google_reference_id")
 
     @google_reference_id.setter
-    def google_reference_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_reference_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_reference_id", value)
 
     @_builtins.property
     @pulumi.getter(name="interconnectAttachments")
-    def interconnect_attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def interconnect_attachments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
         """
         return pulumi.get(self, "interconnect_attachments")
 
     @interconnect_attachments.setter
-    def interconnect_attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def interconnect_attachments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "interconnect_attachments", value)
 
     @_builtins.property
     @pulumi.getter(name="interconnectGroups")
-    def interconnect_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def interconnect_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs of InterconnectGroups that include this Interconnect.
         Order is arbitrary and items are unique.
@@ -798,12 +798,12 @@ class _InterconnectState:
         return pulumi.get(self, "interconnect_groups")
 
     @interconnect_groups.setter
-    def interconnect_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def interconnect_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "interconnect_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="interconnectType")
-    def interconnect_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interconnect_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         Can take one of the following values:
@@ -814,12 +814,12 @@ class _InterconnectState:
         return pulumi.get(self, "interconnect_type")
 
     @interconnect_type.setter
-    def interconnect_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interconnect_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interconnect_type", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
         of the labels set used for optimistic locking. The fingerprint is initially generated by
@@ -830,12 +830,12 @@ class _InterconnectState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels
         method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -846,12 +846,12 @@ class _InterconnectState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of link requested. Note that this field indicates the speed of each of the links in the
         bundle, not the speed of the entire bundle. Can take one of the following values:
@@ -863,12 +863,12 @@ class _InterconnectState:
         return pulumi.get(self, "link_type")
 
     @link_type.setter
-    def link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         Specifies the location inside Google's Networks.
@@ -876,12 +876,12 @@ class _InterconnectState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def macsec(self) -> Optional[pulumi.Input['InterconnectMacsecArgs']]:
+    def macsec(self) -> pulumi.Input[Optional['InterconnectMacsecArgs']]:
         """
         Configuration that enables Media Access Control security (MACsec) on the Cloud
         Interconnect connection between Google and your on-premises router.
@@ -890,12 +890,12 @@ class _InterconnectState:
         return pulumi.get(self, "macsec")
 
     @macsec.setter
-    def macsec(self, value: Optional[pulumi.Input['InterconnectMacsecArgs']]):
+    def macsec(self, value: pulumi.Input[Optional['InterconnectMacsecArgs']]):
         pulumi.set(self, "macsec", value)
 
     @_builtins.property
     @pulumi.getter(name="macsecEnabled")
-    def macsec_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def macsec_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable MACsec on this Interconnect connection.
         MACsec enablement fails if the MACsec object is not specified.
@@ -903,12 +903,12 @@ class _InterconnectState:
         return pulumi.get(self, "macsec_enabled")
 
     @macsec_enabled.setter
-    def macsec_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def macsec_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "macsec_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be
         1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -919,12 +919,12 @@ class _InterconnectState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nocContactEmail")
-    def noc_contact_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def noc_contact_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address to contact the customer NOC for operations and maintenance notifications
         regarding this Interconnect. If specified, this will be used for notifications in addition to
@@ -935,12 +935,12 @@ class _InterconnectState:
         return pulumi.get(self, "noc_contact_email")
 
     @noc_contact_email.setter
-    def noc_contact_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def noc_contact_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "noc_contact_email", value)
 
     @_builtins.property
     @pulumi.getter(name="operationalStatus")
-    def operational_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operational_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of this Interconnect's functionality, which can take one of the following:
         - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
@@ -953,12 +953,12 @@ class _InterconnectState:
         return pulumi.get(self, "operational_status")
 
     @operational_status.setter
-    def operational_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operational_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operational_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['InterconnectParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['InterconnectParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -966,12 +966,12 @@ class _InterconnectState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['InterconnectParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['InterconnectParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address configured on the customer side of the Interconnect link.
         The customer should configure this IP address during turnup when prompted by Google NOC.
@@ -980,12 +980,12 @@ class _InterconnectState:
         return pulumi.get(self, "peer_ip_address")
 
     @peer_ip_address.setter
-    def peer_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -993,24 +993,24 @@ class _InterconnectState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedLinkCount")
-    def provisioned_link_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_link_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of links actually provisioned in this interconnect.
         """
         return pulumi.get(self, "provisioned_link_count")
 
     @provisioned_link_count.setter
-    def provisioned_link_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_link_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_link_count", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1018,12 +1018,12 @@ class _InterconnectState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteLocation")
-    def remote_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
         of Google's network that the interconnect is connected to.
@@ -1031,12 +1031,12 @@ class _InterconnectState:
         return pulumi.get(self, "remote_location")
 
     @remote_location.setter
-    def remote_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_location", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedFeatures")
-    def requested_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def requested_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
         Possible values include:
@@ -1049,36 +1049,36 @@ class _InterconnectState:
         return pulumi.get(self, "requested_features")
 
     @requested_features.setter
-    def requested_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def requested_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "requested_features", value)
 
     @_builtins.property
     @pulumi.getter(name="requestedLinkCount")
-    def requested_link_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def requested_link_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target number of physical links in the link bundle, as requested by the customer.
         """
         return pulumi.get(self, "requested_link_count")
 
     @requested_link_count.setter
-    def requested_link_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def requested_link_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "requested_link_count", value)
 
     @_builtins.property
     @pulumi.getter(name="satisfiesPzs")
-    def satisfies_pzs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def satisfies_pzs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 
     @satisfies_pzs.setter
-    def satisfies_pzs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def satisfies_pzs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "satisfies_pzs", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of this notification. Note that the versions of this enum prefixed with "NS_" have
@@ -1092,19 +1092,19 @@ class _InterconnectState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="wireGroups")
-    def wire_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def wire_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
         """
         return pulumi.get(self, "wire_groups")
 
     @wire_groups.setter
-    def wire_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def wire_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "wire_groups", value)
 
 
@@ -1114,24 +1114,24 @@ class Interconnect(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 application_aware_interconnect: Optional[pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
-                 customer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
-                 macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 requested_link_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
+                 customer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
+                 macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 requested_link_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Represents an Interconnect resource. The Interconnect resource is a dedicated connection between
@@ -1307,24 +1307,24 @@ class Interconnect(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 application_aware_interconnect: Optional[pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
-                 customer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
-                 macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 requested_link_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
+                 customer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
+                 macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 requested_link_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1389,41 +1389,41 @@ class Interconnect(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aai_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            application_aware_interconnect: Optional[pulumi.Input[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
-            available_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            circuit_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict']]]]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            customer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            expected_outages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]]] = None,
-            google_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            google_reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-            interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            interconnect_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            interconnect_type: Optional[pulumi.Input[_builtins.str]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            link_type: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            macsec: Optional[pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
-            macsec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            noc_contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-            operational_status: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
-            peer_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_link_count: Optional[pulumi.Input[_builtins.int]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            remote_location: Optional[pulumi.Input[_builtins.str]] = None,
-            requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            requested_link_count: Optional[pulumi.Input[_builtins.int]] = None,
-            satisfies_pzs: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            wire_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Interconnect':
+            aai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            application_aware_interconnect: pulumi.Input[Optional[Union['InterconnectApplicationAwareInterconnectArgs', 'InterconnectApplicationAwareInterconnectArgsDict']]] = None,
+            available_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            circuit_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectCircuitInfoArgs', 'InterconnectCircuitInfoArgsDict']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            expected_outages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]]] = None,
+            google_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            interconnect_attachments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            interconnect_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            interconnect_type: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            macsec: pulumi.Input[Optional[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']]] = None,
+            macsec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            noc_contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+            operational_status: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['InterconnectParamsArgs', 'InterconnectParamsArgsDict']]] = None,
+            peer_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_link_count: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            remote_location: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            requested_link_count: pulumi.Input[Optional[_builtins.int]] = None,
+            satisfies_pzs: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            wire_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Interconnect':
         """
         Get an existing Interconnect resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -195,7 +195,7 @@ export interface AuthorizedOrgsDescState {
      * "ASSET_TYPE_CREDENTIAL_STRENGTH".
      * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      */
-    assetType?: pulumi.Input<string>;
+    assetType?: pulumi.Input<string | undefined>;
     /**
      * The direction of the authorization relationship between this organization
      * and the organizations listed in the "orgs" field. The valid values for this
@@ -213,16 +213,16 @@ export interface AuthorizedOrgsDescState {
      * "AuthorizedOrgsDesc" resource.
      * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      */
-    authorizationDirection?: pulumi.Input<string>;
+    authorizationDirection?: pulumi.Input<string | undefined>;
     /**
      * A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
      * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      */
-    authorizationType?: pulumi.Input<string>;
+    authorizationType?: pulumi.Input<string | undefined>;
     /**
      * Time the AuthorizedOrgsDesc was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Resource name for the `AuthorizedOrgsDesc`. Format:
      * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -230,21 +230,21 @@ export interface AuthorizedOrgsDescState {
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of organization ids in this AuthorizedOrgsDesc.
      * Format: `organizations/<org_number>`
      * Example: `organizations/123456`
      */
-    orgs?: pulumi.Input<pulumi.Input<string>[]>;
+    orgs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Time the AuthorizedOrgsDesc was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,7 +257,7 @@ export interface AuthorizedOrgsDescArgs {
      * "ASSET_TYPE_CREDENTIAL_STRENGTH".
      * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      */
-    assetType?: pulumi.Input<string>;
+    assetType?: pulumi.Input<string | undefined>;
     /**
      * The direction of the authorization relationship between this organization
      * and the organizations listed in the "orgs" field. The valid values for this
@@ -275,12 +275,12 @@ export interface AuthorizedOrgsDescArgs {
      * "AuthorizedOrgsDesc" resource.
      * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      */
-    authorizationDirection?: pulumi.Input<string>;
+    authorizationDirection?: pulumi.Input<string | undefined>;
     /**
      * A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
      * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      */
-    authorizationType?: pulumi.Input<string>;
+    authorizationType?: pulumi.Input<string | undefined>;
     /**
      * Resource name for the `AuthorizedOrgsDesc`. Format:
      * `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -288,13 +288,13 @@ export interface AuthorizedOrgsDescArgs {
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of organization ids in this AuthorizedOrgsDesc.
      * Format: `organizations/<org_number>`
      * Example: `organizations/123456`
      */
-    orgs?: pulumi.Input<pulumi.Input<string>[]>;
+    orgs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
      */

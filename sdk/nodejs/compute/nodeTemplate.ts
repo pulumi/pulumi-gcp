@@ -263,41 +263,41 @@ export interface NodeTemplateState {
      * node template
      * Structure is documented below.
      */
-    accelerators?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateAccelerator>[]>;
+    accelerators?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateAccelerator>[] | undefined>;
     /**
      * CPU overcommit.
      * Default value is `NONE`.
      * Possible values are: `ENABLED`, `NONE`.
      */
-    cpuOvercommitType?: pulumi.Input<string>;
+    cpuOvercommitType?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of the type, size and count of disks attached to the
      * node template
      * Structure is documented below.
      */
-    disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[]>;
+    disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[] | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Labels to use for node affinity, which will be used in
      * instance scheduling.
      */
-    nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Node type to use for nodes group that are created from this template.
      * Only one of nodeTypeFlexibility and nodeType can be specified.
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Flexible properties for the desired node type. Node groups that
      * use this node template will create nodes of a type that matches
@@ -305,27 +305,27 @@ export interface NodeTemplateState {
      * be specified.
      * Structure is documented below.
      */
-    nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
+    nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where nodes using the node template will be created.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The server binding policy for nodes using this template. Determines
      * where the nodes should restart following a maintenance event.
      * Structure is documented below.
      */
-    serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding>;
+    serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding | undefined>;
 }
 
 /**
@@ -337,37 +337,37 @@ export interface NodeTemplateArgs {
      * node template
      * Structure is documented below.
      */
-    accelerators?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateAccelerator>[]>;
+    accelerators?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateAccelerator>[] | undefined>;
     /**
      * CPU overcommit.
      * Default value is `NONE`.
      * Possible values are: `ENABLED`, `NONE`.
      */
-    cpuOvercommitType?: pulumi.Input<string>;
+    cpuOvercommitType?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * List of the type, size and count of disks attached to the
      * node template
      * Structure is documented below.
      */
-    disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[]>;
+    disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[] | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Labels to use for node affinity, which will be used in
      * instance scheduling.
      */
-    nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    nodeAffinityLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Node type to use for nodes group that are created from this template.
      * Only one of nodeTypeFlexibility and nodeType can be specified.
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Flexible properties for the desired node type. Node groups that
      * use this node template will create nodes of a type that matches
@@ -375,21 +375,21 @@ export interface NodeTemplateArgs {
      * be specified.
      * Structure is documented below.
      */
-    nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility>;
+    nodeTypeFlexibility?: pulumi.Input<inputs.compute.NodeTemplateNodeTypeFlexibility | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where nodes using the node template will be created.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The server binding policy for nodes using this template. Determines
      * where the nodes should restart following a maintenance event.
      * Structure is documented below.
      */
-    serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding>;
+    serverBinding?: pulumi.Input<inputs.compute.NodeTemplateServerBinding | undefined>;
 }

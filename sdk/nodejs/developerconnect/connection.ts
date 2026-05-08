@@ -615,127 +615,127 @@ export interface ConnectionState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for connections to an instance of Bitbucket Cloud.
      * Structure is documented below.
      */
-    bitbucketCloudConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfig>;
+    bitbucketCloudConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfig | undefined>;
     /**
      * Configuration for connections to an instance of Bitbucket Data Center.
      * Structure is documented below.
      */
-    bitbucketDataCenterConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfig>;
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfig | undefined>;
     /**
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
      * connectionId from the methodSignature of Create RPC
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * Output only. [Output only] Create timestamp
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The crypto key configuration. This field is used by the Customer-managed
      * encryption keys (CMEK) feature.
      * Structure is documented below.
      */
-    cryptoKeyConfig?: pulumi.Input<inputs.developerconnect.ConnectionCryptoKeyConfig>;
+    cryptoKeyConfig?: pulumi.Input<inputs.developerconnect.ConnectionCryptoKeyConfig | undefined>;
     /**
      * Output only. [Output only] Delete timestamp
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. If disabled is set to true, functionality is disabled for this connection.
      * Repository based API methods and webhooks processing for repositories in
      * this connection will be disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configuration for connections to github.com.
      * Structure is documented below.
      */
-    githubConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfig>;
+    githubConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
      * Structure is documented below.
      */
-    githubEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubEnterpriseConfig>;
+    githubEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to gitlab.com.
      * Structure is documented below.
      */
-    gitlabConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabConfig>;
+    gitlabConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitLab Enterprise.
      * Structure is documented below.
      */
-    gitlabEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfig>;
+    gitlabEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to an HTTP service provider.
      * Structure is documented below.
      */
-    httpConfig?: pulumi.Input<inputs.developerconnect.ConnectionHttpConfig>;
+    httpConfig?: pulumi.Input<inputs.developerconnect.ConnectionHttpConfig | undefined>;
     /**
      * Describes stage and necessary actions to be taken by the
      * user to complete the installation. Used for GitHub and GitHub Enterprise
      * based connections.
      * Structure is documented below.
      */
-    installationStates?: pulumi.Input<pulumi.Input<inputs.developerconnect.ConnectionInstallationState>[]>;
+    installationStates?: pulumi.Input<pulumi.Input<inputs.developerconnect.ConnectionInstallationState>[] | undefined>;
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the connection, in the format
      * `projects/{project}/locations/{location}/connections/{connection_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Set to true when the connection is being set up or updated in the
      * background.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. A system-assigned unique identifier for a the GitRepositoryLink.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. [Output only] Update timestamp
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -747,17 +747,17 @@ export interface ConnectionArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for connections to an instance of Bitbucket Cloud.
      * Structure is documented below.
      */
-    bitbucketCloudConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfig>;
+    bitbucketCloudConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketCloudConfig | undefined>;
     /**
      * Configuration for connections to an instance of Bitbucket Data Center.
      * Structure is documented below.
      */
-    bitbucketDataCenterConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfig>;
+    bitbucketDataCenterConfig?: pulumi.Input<inputs.developerconnect.ConnectionBitbucketDataCenterConfig | undefined>;
     /**
      * Required. Id of the requesting object
      * If auto-generating Id server-side, remove this field and
@@ -769,50 +769,50 @@ export interface ConnectionArgs {
      * encryption keys (CMEK) feature.
      * Structure is documented below.
      */
-    cryptoKeyConfig?: pulumi.Input<inputs.developerconnect.ConnectionCryptoKeyConfig>;
+    cryptoKeyConfig?: pulumi.Input<inputs.developerconnect.ConnectionCryptoKeyConfig | undefined>;
     /**
      * Optional. If disabled is set to true, functionality is disabled for this connection.
      * Repository based API methods and webhooks processing for repositories in
      * this connection will be disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Optional. This checksum is computed by the server based on the value of other
      * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configuration for connections to github.com.
      * Structure is documented below.
      */
-    githubConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfig>;
+    githubConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
      * Structure is documented below.
      */
-    githubEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubEnterpriseConfig>;
+    githubEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to gitlab.com.
      * Structure is documented below.
      */
-    gitlabConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabConfig>;
+    gitlabConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitLab Enterprise.
      * Structure is documented below.
      */
-    gitlabEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfig>;
+    gitlabEnterpriseConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to an HTTP service provider.
      * Structure is documented below.
      */
-    httpConfig?: pulumi.Input<inputs.developerconnect.ConnectionHttpConfig>;
+    httpConfig?: pulumi.Input<inputs.developerconnect.ConnectionHttpConfig | undefined>;
     /**
      * Optional. Labels as key value pairs
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -821,5 +821,5 @@ export interface ConnectionArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -55,7 +55,7 @@ class BackupScheduleDailyRecurrenceArgs:
 
 
 class BackupScheduleWeeklyRecurrenceArgsDict(TypedDict):
-    day: NotRequired[pulumi.Input[_builtins.str]]
+    day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The day of week to run.
     Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -64,7 +64,7 @@ class BackupScheduleWeeklyRecurrenceArgsDict(TypedDict):
 @pulumi.input_type
 class BackupScheduleWeeklyRecurrenceArgs:
     def __init__(__self__, *,
-                 day: Optional[pulumi.Input[_builtins.str]] = None):
+                 day: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] day: The day of week to run.
                Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -74,7 +74,7 @@ class BackupScheduleWeeklyRecurrenceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def day(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def day(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The day of week to run.
         Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -82,7 +82,7 @@ class BackupScheduleWeeklyRecurrenceArgs:
         return pulumi.get(self, "day")
 
     @day.setter
-    def day(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def day(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "day", value)
 
 
@@ -101,7 +101,7 @@ class DatabaseCmekConfigArgsDict(TypedDict):
     How to retrieve this resource ID is listed at
     https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
     """
-    active_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    active_key_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
@@ -115,7 +115,7 @@ class DatabaseCmekConfigArgsDict(TypedDict):
 class DatabaseCmekConfigArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 active_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 active_key_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The resource ID of a Cloud KMS key. If set, the database created will
                be a Customer-managed Encryption Key (CMEK) database encrypted with
@@ -163,7 +163,7 @@ class DatabaseCmekConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="activeKeyVersions")
-    def active_key_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def active_key_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
@@ -175,12 +175,12 @@ class DatabaseCmekConfigArgs:
         return pulumi.get(self, "active_key_versions")
 
     @active_key_versions.setter
-    def active_key_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def active_key_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "active_key_versions", value)
 
 
 class FieldIndexConfigArgsDict(TypedDict):
-    indexes: NotRequired[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgsDict']]]]
+    indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]]
     """
     The indexes to configure on the field. Order or array contains must be specified.
     Structure is documented below.
@@ -189,7 +189,7 @@ class FieldIndexConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FieldIndexConfigArgs:
     def __init__(__self__, *,
-                 indexes: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]] = None):
+                 indexes: pulumi.Input[Optional[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]] indexes: The indexes to configure on the field. Order or array contains must be specified.
                Structure is documented below.
@@ -199,7 +199,7 @@ class FieldIndexConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]:
+    def indexes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]:
         """
         The indexes to configure on the field. Order or array contains must be specified.
         Structure is documented below.
@@ -207,24 +207,24 @@ class FieldIndexConfigArgs:
         return pulumi.get(self, "indexes")
 
     @indexes.setter
-    def indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]):
+    def indexes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]):
         pulumi.set(self, "indexes", value)
 
 
 class FieldIndexConfigIndexArgsDict(TypedDict):
-    array_config: NotRequired[pulumi.Input[_builtins.str]]
+    array_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
     be specified.
     Possible values are: `CONTAINS`.
     """
-    order: NotRequired[pulumi.Input[_builtins.str]]
+    order: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
     Only one of `order` and `arrayConfig` can be specified.
     Possible values are: `ASCENDING`, `DESCENDING`.
     """
-    query_scope: NotRequired[pulumi.Input[_builtins.str]]
+    query_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The scope at which a query is run. Collection scoped queries require you specify
     the collection at query time. Collection group scope allows queries across all
@@ -236,9 +236,9 @@ class FieldIndexConfigIndexArgsDict(TypedDict):
 @pulumi.input_type
 class FieldIndexConfigIndexArgs:
     def __init__(__self__, *,
-                 array_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 array_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] array_config: Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
                be specified.
@@ -261,7 +261,7 @@ class FieldIndexConfigIndexArgs:
 
     @_builtins.property
     @pulumi.getter(name="arrayConfig")
-    def array_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def array_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
         be specified.
@@ -270,12 +270,12 @@ class FieldIndexConfigIndexArgs:
         return pulumi.get(self, "array_config")
 
     @array_config.setter
-    def array_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def array_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "array_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
         Only one of `order` and `arrayConfig` can be specified.
@@ -284,12 +284,12 @@ class FieldIndexConfigIndexArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="queryScope")
-    def query_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope at which a query is run. Collection scoped queries require you specify
         the collection at query time. Collection group scope allows queries across all
@@ -300,12 +300,12 @@ class FieldIndexConfigIndexArgs:
         return pulumi.get(self, "query_scope")
 
     @query_scope.setter
-    def query_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_scope", value)
 
 
 class FieldTtlConfigArgsDict(TypedDict):
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The state of TTL (time-to-live) configuration for documents that have this Field set.
@@ -314,7 +314,7 @@ class FieldTtlConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FieldTtlConfigArgs:
     def __init__(__self__, *,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] state: (Output)
                The state of TTL (time-to-live) configuration for documents that have this Field set.
@@ -324,7 +324,7 @@ class FieldTtlConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The state of TTL (time-to-live) configuration for documents that have this Field set.
@@ -332,34 +332,34 @@ class FieldTtlConfigArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class IndexFieldArgsDict(TypedDict):
-    array_config: NotRequired[pulumi.Input[_builtins.str]]
+    array_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
     `vectorConfig` can be specified.
     Possible values are: `CONTAINS`.
     """
-    field_path: NotRequired[pulumi.Input[_builtins.str]]
+    field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the field.
     """
-    order: NotRequired[pulumi.Input[_builtins.str]]
+    order: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
     Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
     Possible values are: `ASCENDING`, `DESCENDING`.
     """
-    search_config: NotRequired[pulumi.Input['IndexFieldSearchConfigArgsDict']]
+    search_config: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigArgs']]]
     """
     Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
     `vectorConfig` can be specified.
     Structure is documented below.
     """
-    vector_config: NotRequired[pulumi.Input['IndexFieldVectorConfigArgsDict']]
+    vector_config: NotRequired[pulumi.Input[Optional['IndexFieldVectorConfigArgs']]]
     """
     Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
     `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
@@ -369,11 +369,11 @@ class IndexFieldArgsDict(TypedDict):
 @pulumi.input_type
 class IndexFieldArgs:
     def __init__(__self__, *,
-                 array_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 field_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_config: Optional[pulumi.Input['IndexFieldSearchConfigArgs']] = None,
-                 vector_config: Optional[pulumi.Input['IndexFieldVectorConfigArgs']] = None):
+                 array_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 field_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_config: pulumi.Input[Optional['IndexFieldSearchConfigArgs']] = None,
+                 vector_config: pulumi.Input[Optional['IndexFieldVectorConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] array_config: Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
                `vectorConfig` can be specified.
@@ -402,7 +402,7 @@ class IndexFieldArgs:
 
     @_builtins.property
     @pulumi.getter(name="arrayConfig")
-    def array_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def array_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates that this field supports operations on arrayValues. Only one of `order`, `arrayConfig`, `searchConfig` and
         `vectorConfig` can be specified.
@@ -411,24 +411,24 @@ class IndexFieldArgs:
         return pulumi.get(self, "array_config")
 
     @array_config.setter
-    def array_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def array_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "array_config", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldPath")
-    def field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the field.
         """
         return pulumi.get(self, "field_path")
 
     @field_path.setter
-    def field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
         Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
@@ -437,12 +437,12 @@ class IndexFieldArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="searchConfig")
-    def search_config(self) -> Optional[pulumi.Input['IndexFieldSearchConfigArgs']]:
+    def search_config(self) -> pulumi.Input[Optional['IndexFieldSearchConfigArgs']]:
         """
         Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
         `vectorConfig` can be specified.
@@ -451,12 +451,12 @@ class IndexFieldArgs:
         return pulumi.get(self, "search_config")
 
     @search_config.setter
-    def search_config(self, value: Optional[pulumi.Input['IndexFieldSearchConfigArgs']]):
+    def search_config(self, value: pulumi.Input[Optional['IndexFieldSearchConfigArgs']]):
         pulumi.set(self, "search_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vectorConfig")
-    def vector_config(self) -> Optional[pulumi.Input['IndexFieldVectorConfigArgs']]:
+    def vector_config(self) -> pulumi.Input[Optional['IndexFieldVectorConfigArgs']]:
         """
         Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
         `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
@@ -465,17 +465,17 @@ class IndexFieldArgs:
         return pulumi.get(self, "vector_config")
 
     @vector_config.setter
-    def vector_config(self, value: Optional[pulumi.Input['IndexFieldVectorConfigArgs']]):
+    def vector_config(self, value: pulumi.Input[Optional['IndexFieldVectorConfigArgs']]):
         pulumi.set(self, "vector_config", value)
 
 
 class IndexFieldSearchConfigArgsDict(TypedDict):
-    geo_spec: NotRequired[pulumi.Input['IndexFieldSearchConfigGeoSpecArgsDict']]
+    geo_spec: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigGeoSpecArgs']]]
     """
     The specification for building a geo search index for a field.
     Structure is documented below.
     """
-    text_spec: NotRequired[pulumi.Input['IndexFieldSearchConfigTextSpecArgsDict']]
+    text_spec: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigTextSpecArgs']]]
     """
     The specification for building a text search index for a field.
     Structure is documented below.
@@ -484,8 +484,8 @@ class IndexFieldSearchConfigArgsDict(TypedDict):
 @pulumi.input_type
 class IndexFieldSearchConfigArgs:
     def __init__(__self__, *,
-                 geo_spec: Optional[pulumi.Input['IndexFieldSearchConfigGeoSpecArgs']] = None,
-                 text_spec: Optional[pulumi.Input['IndexFieldSearchConfigTextSpecArgs']] = None):
+                 geo_spec: pulumi.Input[Optional['IndexFieldSearchConfigGeoSpecArgs']] = None,
+                 text_spec: pulumi.Input[Optional['IndexFieldSearchConfigTextSpecArgs']] = None):
         """
         :param pulumi.Input['IndexFieldSearchConfigGeoSpecArgs'] geo_spec: The specification for building a geo search index for a field.
                Structure is documented below.
@@ -499,7 +499,7 @@ class IndexFieldSearchConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="geoSpec")
-    def geo_spec(self) -> Optional[pulumi.Input['IndexFieldSearchConfigGeoSpecArgs']]:
+    def geo_spec(self) -> pulumi.Input[Optional['IndexFieldSearchConfigGeoSpecArgs']]:
         """
         The specification for building a geo search index for a field.
         Structure is documented below.
@@ -507,12 +507,12 @@ class IndexFieldSearchConfigArgs:
         return pulumi.get(self, "geo_spec")
 
     @geo_spec.setter
-    def geo_spec(self, value: Optional[pulumi.Input['IndexFieldSearchConfigGeoSpecArgs']]):
+    def geo_spec(self, value: pulumi.Input[Optional['IndexFieldSearchConfigGeoSpecArgs']]):
         pulumi.set(self, "geo_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="textSpec")
-    def text_spec(self) -> Optional[pulumi.Input['IndexFieldSearchConfigTextSpecArgs']]:
+    def text_spec(self) -> pulumi.Input[Optional['IndexFieldSearchConfigTextSpecArgs']]:
         """
         The specification for building a text search index for a field.
         Structure is documented below.
@@ -520,7 +520,7 @@ class IndexFieldSearchConfigArgs:
         return pulumi.get(self, "text_spec")
 
     @text_spec.setter
-    def text_spec(self, value: Optional[pulumi.Input['IndexFieldSearchConfigTextSpecArgs']]):
+    def text_spec(self, value: pulumi.Input[Optional['IndexFieldSearchConfigTextSpecArgs']]):
         pulumi.set(self, "text_spec", value)
 
 
@@ -587,11 +587,11 @@ class IndexFieldSearchConfigTextSpecArgs:
 
 
 class IndexFieldSearchConfigTextSpecIndexSpecArgsDict(TypedDict):
-    index_type: NotRequired[pulumi.Input[_builtins.str]]
+    index_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Ways to index the text field value.
     """
-    match_type: NotRequired[pulumi.Input[_builtins.str]]
+    match_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     How to match the text field value.
     """
@@ -599,8 +599,8 @@ class IndexFieldSearchConfigTextSpecIndexSpecArgsDict(TypedDict):
 @pulumi.input_type
 class IndexFieldSearchConfigTextSpecIndexSpecArgs:
     def __init__(__self__, *,
-                 index_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 index_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] index_type: Ways to index the text field value.
         :param pulumi.Input[_builtins.str] match_type: How to match the text field value.
@@ -612,36 +612,36 @@ class IndexFieldSearchConfigTextSpecIndexSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="indexType")
-    def index_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ways to index the text field value.
         """
         return pulumi.get(self, "index_type")
 
     @index_type.setter
-    def index_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_type", value)
 
     @_builtins.property
     @pulumi.getter(name="matchType")
-    def match_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to match the text field value.
         """
         return pulumi.get(self, "match_type")
 
     @match_type.setter
-    def match_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_type", value)
 
 
 class IndexFieldVectorConfigArgsDict(TypedDict):
-    dimension: NotRequired[pulumi.Input[_builtins.int]]
+    dimension: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The resulting index will only include vectors of this dimension, and can be used for vector search
     with the same dimension.
     """
-    flat: NotRequired[pulumi.Input['IndexFieldVectorConfigFlatArgsDict']]
+    flat: NotRequired[pulumi.Input[Optional['IndexFieldVectorConfigFlatArgs']]]
     """
     Indicates the vector index is a flat index.
     """
@@ -649,8 +649,8 @@ class IndexFieldVectorConfigArgsDict(TypedDict):
 @pulumi.input_type
 class IndexFieldVectorConfigArgs:
     def __init__(__self__, *,
-                 dimension: Optional[pulumi.Input[_builtins.int]] = None,
-                 flat: Optional[pulumi.Input['IndexFieldVectorConfigFlatArgs']] = None):
+                 dimension: pulumi.Input[Optional[_builtins.int]] = None,
+                 flat: pulumi.Input[Optional['IndexFieldVectorConfigFlatArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] dimension: The resulting index will only include vectors of this dimension, and can be used for vector search
                with the same dimension.
@@ -663,7 +663,7 @@ class IndexFieldVectorConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dimension(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dimension(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The resulting index will only include vectors of this dimension, and can be used for vector search
         with the same dimension.
@@ -671,19 +671,19 @@ class IndexFieldVectorConfigArgs:
         return pulumi.get(self, "dimension")
 
     @dimension.setter
-    def dimension(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dimension(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dimension", value)
 
     @_builtins.property
     @pulumi.getter
-    def flat(self) -> Optional[pulumi.Input['IndexFieldVectorConfigFlatArgs']]:
+    def flat(self) -> pulumi.Input[Optional['IndexFieldVectorConfigFlatArgs']]:
         """
         Indicates the vector index is a flat index.
         """
         return pulumi.get(self, "flat")
 
     @flat.setter
-    def flat(self, value: Optional[pulumi.Input['IndexFieldVectorConfigFlatArgs']]):
+    def flat(self, value: pulumi.Input[Optional['IndexFieldVectorConfigFlatArgs']]):
         pulumi.set(self, "flat", value)
 
 
@@ -697,7 +697,7 @@ class IndexFieldVectorConfigFlatArgs:
 
 
 class UserCredsResourceIdentityArgsDict(TypedDict):
-    principal: NotRequired[pulumi.Input[_builtins.str]]
+    principal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The principal identifier string.
@@ -707,7 +707,7 @@ class UserCredsResourceIdentityArgsDict(TypedDict):
 @pulumi.input_type
 class UserCredsResourceIdentityArgs:
     def __init__(__self__, *,
-                 principal: Optional[pulumi.Input[_builtins.str]] = None):
+                 principal: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] principal: (Output)
                The principal identifier string.
@@ -718,7 +718,7 @@ class UserCredsResourceIdentityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The principal identifier string.
@@ -727,7 +727,7 @@ class UserCredsResourceIdentityArgs:
         return pulumi.get(self, "principal")
 
     @principal.setter
-    def principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal", value)
 
 

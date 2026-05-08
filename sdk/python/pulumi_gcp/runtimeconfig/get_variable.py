@@ -150,9 +150,9 @@ def get_variable(name: Optional[_builtins.str] = None,
         text=pulumi.get(__ret__, 'text'),
         update_time=pulumi.get(__ret__, 'update_time'),
         value=pulumi.get(__ret__, 'value'))
-def get_variable_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                        parent: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_variable_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                        parent: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVariableResult]:
     """
     To get more information about RuntimeConfigs, see:

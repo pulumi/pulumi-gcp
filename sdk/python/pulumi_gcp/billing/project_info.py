@@ -20,7 +20,7 @@ __all__ = ['ProjectInfoArgs', 'ProjectInfo']
 class ProjectInfoArgs:
     def __init__(__self__, *,
                  billing_account: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectInfo resource.
 
@@ -50,7 +50,7 @@ class ProjectInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -58,15 +58,15 @@ class ProjectInfoArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ProjectInfoState:
     def __init__(__self__, *,
-                 billing_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectInfo resources.
 
@@ -83,7 +83,7 @@ class _ProjectInfoState:
 
     @_builtins.property
     @pulumi.getter(name="billingAccount")
-    def billing_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the billing account associated with the project, if
         any. Set to empty string to disable billing for the project.
@@ -92,12 +92,12 @@ class _ProjectInfoState:
         return pulumi.get(self, "billing_account")
 
     @billing_account.setter
-    def billing_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -105,7 +105,7 @@ class _ProjectInfoState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -115,8 +115,8 @@ class ProjectInfo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Billing information for a project.
@@ -231,8 +231,8 @@ class ProjectInfo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,8 +256,8 @@ class ProjectInfo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            billing_account: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectInfo':
+            billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectInfo':
         """
         Get an existing ProjectInfo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

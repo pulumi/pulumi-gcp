@@ -91,5 +91,5 @@ export interface GetTiersOutputArgs {
     /**
      * The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

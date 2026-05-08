@@ -22,11 +22,11 @@ __all__ = ['PolicyArgs', 'Policy']
 class PolicyArgs:
     def __init__(__self__, *,
                  default_admission_rule: pulumi.Input['PolicyDefaultAdmissionRuleArgs'],
-                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
-                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_policy_evaluation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
+                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
 
@@ -83,7 +83,7 @@ class PolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="admissionWhitelistPatterns")
-    def admission_whitelist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]:
+    def admission_whitelist_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]:
         """
         A whitelist of image patterns to exclude from admission rules. If an
         image's name matches a whitelist pattern, the image's admission
@@ -93,12 +93,12 @@ class PolicyArgs:
         return pulumi.get(self, "admission_whitelist_patterns")
 
     @admission_whitelist_patterns.setter
-    def admission_whitelist_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]):
+    def admission_whitelist_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]):
         pulumi.set(self, "admission_whitelist_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAdmissionRules")
-    def cluster_admission_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]:
+    def cluster_admission_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]:
         """
         Per-cluster admission rules. An admission rule specifies either that
         all container images used in a pod creation request must be attested
@@ -114,24 +114,24 @@ class PolicyArgs:
         return pulumi.get(self, "cluster_admission_rules")
 
     @cluster_admission_rules.setter
-    def cluster_admission_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]):
+    def cluster_admission_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]):
         pulumi.set(self, "cluster_admission_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive comment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="globalPolicyEvaluationMode")
-    def global_policy_evaluation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_policy_evaluation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the evaluation of a Google-maintained global admission policy
         for common system-level images. Images not covered by the global
@@ -141,12 +141,12 @@ class PolicyArgs:
         return pulumi.get(self, "global_policy_evaluation_mode")
 
     @global_policy_evaluation_mode.setter
-    def global_policy_evaluation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_policy_evaluation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_policy_evaluation_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -154,19 +154,19 @@ class PolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
-                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
-                 default_admission_rule: Optional[pulumi.Input['PolicyDefaultAdmissionRuleArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_policy_evaluation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]] = None,
+                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]] = None,
+                 default_admission_rule: pulumi.Input[Optional['PolicyDefaultAdmissionRuleArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -210,7 +210,7 @@ class _PolicyState:
 
     @_builtins.property
     @pulumi.getter(name="admissionWhitelistPatterns")
-    def admission_whitelist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]:
+    def admission_whitelist_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]:
         """
         A whitelist of image patterns to exclude from admission rules. If an
         image's name matches a whitelist pattern, the image's admission
@@ -220,12 +220,12 @@ class _PolicyState:
         return pulumi.get(self, "admission_whitelist_patterns")
 
     @admission_whitelist_patterns.setter
-    def admission_whitelist_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]):
+    def admission_whitelist_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyAdmissionWhitelistPatternArgs']]]]):
         pulumi.set(self, "admission_whitelist_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAdmissionRules")
-    def cluster_admission_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]:
+    def cluster_admission_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]:
         """
         Per-cluster admission rules. An admission rule specifies either that
         all container images used in a pod creation request must be attested
@@ -241,12 +241,12 @@ class _PolicyState:
         return pulumi.get(self, "cluster_admission_rules")
 
     @cluster_admission_rules.setter
-    def cluster_admission_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]):
+    def cluster_admission_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyClusterAdmissionRuleArgs']]]]):
         pulumi.set(self, "cluster_admission_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultAdmissionRule")
-    def default_admission_rule(self) -> Optional[pulumi.Input['PolicyDefaultAdmissionRuleArgs']]:
+    def default_admission_rule(self) -> pulumi.Input[Optional['PolicyDefaultAdmissionRuleArgs']]:
         """
         Default admission rule for a cluster without a per-cluster admission
         rule.
@@ -255,24 +255,24 @@ class _PolicyState:
         return pulumi.get(self, "default_admission_rule")
 
     @default_admission_rule.setter
-    def default_admission_rule(self, value: Optional[pulumi.Input['PolicyDefaultAdmissionRuleArgs']]):
+    def default_admission_rule(self, value: pulumi.Input[Optional['PolicyDefaultAdmissionRuleArgs']]):
         pulumi.set(self, "default_admission_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive comment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="globalPolicyEvaluationMode")
-    def global_policy_evaluation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_policy_evaluation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the evaluation of a Google-maintained global admission policy
         for common system-level images. Images not covered by the global
@@ -282,12 +282,12 @@ class _PolicyState:
         return pulumi.get(self, "global_policy_evaluation_mode")
 
     @global_policy_evaluation_mode.setter
-    def global_policy_evaluation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_policy_evaluation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_policy_evaluation_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -295,7 +295,7 @@ class _PolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -305,12 +305,12 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
-                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
-                 default_admission_rule: Optional[pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_policy_evaluation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
+                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
+                 default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A policy for container image binary authorization.
@@ -532,12 +532,12 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
-                 cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
-                 default_admission_rule: Optional[pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_policy_evaluation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
+                 cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
+                 default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -565,12 +565,12 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admission_whitelist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
-            cluster_admission_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
-            default_admission_rule: Optional[pulumi.Input[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            global_policy_evaluation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'Policy':
+            admission_whitelist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyAdmissionWhitelistPatternArgs', 'PolicyAdmissionWhitelistPatternArgsDict']]]]] = None,
+            cluster_admission_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyClusterAdmissionRuleArgs', 'PolicyClusterAdmissionRuleArgsDict']]]]] = None,
+            default_admission_rule: pulumi.Input[Optional[Union['PolicyDefaultAdmissionRuleArgs', 'PolicyDefaultAdmissionRuleArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            global_policy_evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

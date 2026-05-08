@@ -270,18 +270,18 @@ export interface GCPolicyState {
     /**
      * The name of the column family.
      */
-    columnFamily?: pulumi.Input<string>;
+    columnFamily?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the GC policy.
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      *
      * Possible values are: `ABANDON`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      */
-    gcRules?: pulumi.Input<string>;
+    gcRules?: pulumi.Input<string | undefined>;
     /**
      * Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -289,31 +289,31 @@ export interface GCPolicyState {
      *
      * -----
      */
-    ignoreWarnings?: pulumi.Input<boolean>;
+    ignoreWarnings?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Bigtable instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * GC policy that applies to all cells older than the given age.
      */
-    maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge>;
+    maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge | undefined>;
     /**
      * GC policy that applies to all versions of a cell except for the most recent.
      */
-    maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[]>;
+    maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[] | undefined>;
     /**
      * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the table.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -330,11 +330,11 @@ export interface GCPolicyArgs {
      *
      * Possible values are: `ABANDON`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
      */
-    gcRules?: pulumi.Input<string>;
+    gcRules?: pulumi.Input<string | undefined>;
     /**
      * Boolean for whether to allow ignoring warnings when updating the gc policy.
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -342,7 +342,7 @@ export interface GCPolicyArgs {
      *
      * -----
      */
-    ignoreWarnings?: pulumi.Input<boolean>;
+    ignoreWarnings?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Bigtable instance.
      */
@@ -350,19 +350,19 @@ export interface GCPolicyArgs {
     /**
      * GC policy that applies to all cells older than the given age.
      */
-    maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge>;
+    maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge | undefined>;
     /**
      * GC policy that applies to all versions of a cell except for the most recent.
      */
-    maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[]>;
+    maxVersions?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxVersion>[] | undefined>;
     /**
      * If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the table.
      */

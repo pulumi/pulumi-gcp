@@ -218,7 +218,7 @@ export interface DatabaseState {
      * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
-    databaseDialect?: pulumi.Input<string>;
+    databaseDialect?: pulumi.Input<string | undefined>;
     /**
      * An optional list of DDL statements to run inside the database. Statements can create
      * tables, indexes, etc.
@@ -229,17 +229,17 @@ export interface DatabaseState {
      * newly appended DDL statements can be executed in an update. However, modifications
      * to prior statements will create a plan that marks the resource for recreation.
      */
-    ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    ddls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default time zone for the database. The default time zone must be a valid name
      * from the tz database. Default value is "America/Los_angeles".
      */
-    defaultTimeZone?: pulumi.Input<string>;
+    defaultTimeZone?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether drop protection is enabled for this database. Defaults to false.
      * Drop protection is different from
@@ -249,30 +249,30 @@ export interface DatabaseState {
      * (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
      * "deletionProtection" attribute does not provide protection against the deletion of the parent instance.
      */
-    enableDropProtection?: pulumi.Input<boolean>;
+    enableDropProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Encryption configuration for the database
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig | undefined>;
     /**
      * The instance to create the database on.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier for the database, which cannot be changed after the
      * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * An explanation of the status of the database.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The retention period for the database. The retention period must be between 1 hour
      * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
@@ -280,7 +280,7 @@ export interface DatabaseState {
      * If this property is used, you must avoid adding new DDL statements to `ddl` that
      * update the database's version_retention_period.
      */
-    versionRetentionPeriod?: pulumi.Input<string>;
+    versionRetentionPeriod?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -292,7 +292,7 @@ export interface DatabaseArgs {
      * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
      * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
-    databaseDialect?: pulumi.Input<string>;
+    databaseDialect?: pulumi.Input<string | undefined>;
     /**
      * An optional list of DDL statements to run inside the database. Statements can create
      * tables, indexes, etc.
@@ -303,17 +303,17 @@ export interface DatabaseArgs {
      * newly appended DDL statements can be executed in an update. However, modifications
      * to prior statements will create a plan that marks the resource for recreation.
      */
-    ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    ddls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default time zone for the database. The default time zone must be a valid name
      * from the tz database. Default value is "America/Los_angeles".
      */
-    defaultTimeZone?: pulumi.Input<string>;
+    defaultTimeZone?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether drop protection is enabled for this database. Defaults to false.
      * Drop protection is different from
@@ -323,12 +323,12 @@ export interface DatabaseArgs {
      * (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the database.
      * "deletionProtection" attribute does not provide protection against the deletion of the parent instance.
      */
-    enableDropProtection?: pulumi.Input<boolean>;
+    enableDropProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Encryption configuration for the database
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.spanner.DatabaseEncryptionConfig | undefined>;
     /**
      * The instance to create the database on.
      */
@@ -337,12 +337,12 @@ export interface DatabaseArgs {
      * A unique identifier for the database, which cannot be changed after the
      * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The retention period for the database. The retention period must be between 1 hour
      * and 7 days, and can be specified in days, hours, minutes, or seconds. For example,
@@ -350,5 +350,5 @@ export interface DatabaseArgs {
      * If this property is used, you must avoid adding new DDL statements to `ddl` that
      * update the database's version_retention_period.
      */
-    versionRetentionPeriod?: pulumi.Input<string>;
+    versionRetentionPeriod?: pulumi.Input<string | undefined>;
 }

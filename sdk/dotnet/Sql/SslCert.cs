@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });

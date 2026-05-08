@@ -249,11 +249,11 @@ def get_notification_channel(display_name: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         user_labels=pulumi.get(__ret__, 'user_labels'),
         verification_status=pulumi.get(__ret__, 'verification_status'))
-def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    labels: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                                    project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    user_labels: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_notification_channel_output(display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    labels: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                                    project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    user_labels: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationChannelResult]:
     """
     A NotificationChannel is a medium through which an alert is delivered

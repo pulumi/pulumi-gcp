@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.ParameterManager
     ///     {
     ///         Parameter = parameter_basic.Id,
     ///         ParameterVersionId = "parameter_version",
-    ///         ParameterData = Std.Index.File.Invoke(new()
+    ///         ParameterData = Std.File.Invoke(new()
     ///         {
     ///             Input = "parameter-json-data.json",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.ParameterManager
     ///     {
     ///         Parameter = parameter_basic.Id,
     ///         ParameterVersionId = "parameter_version",
-    ///         ParameterData = Std.Index.File.Invoke(new()
+    ///         ParameterData = Std.File.Invoke(new()
     ///         {
     ///             Input = "parameter-yaml-data.yaml",
     ///         }).Apply(invoke =&gt; invoke.Result),

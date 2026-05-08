@@ -189,9 +189,9 @@ def get_kms_secret_asymmetric(ciphertext: Optional[_builtins.str] = None,
         crypto_key_version=pulumi.get(__ret__, 'crypto_key_version'),
         id=pulumi.get(__ret__, 'id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[_builtins.str]] = None,
-                                     crc32: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     crypto_key_version: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kms_secret_asymmetric_output(ciphertext: pulumi.Input[Optional[_builtins.str]] = None,
+                                     crc32: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     crypto_key_version: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSSecretAsymmetricResult]:
     """
     This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key

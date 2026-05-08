@@ -269,56 +269,56 @@ export interface RolloutKindState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The configuration for error budget. If the number of failed units exceeds
      * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
      * Structure is documented below.
      */
-    errorBudget?: pulumi.Input<inputs.saasruntime.RolloutKindErrorBudget>;
+    errorBudget?: pulumi.Input<inputs.saasruntime.RolloutKindErrorBudget | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name (full URI of the resource) following the standard naming
      * scheme:
      * "projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID value for the new rollout kind.
      */
-    rolloutKindId?: pulumi.Input<string>;
+    rolloutKindId?: pulumi.Input<string | undefined>;
     /**
      * The strategy used for executing a Rollout. This is a required field.
      * There are two supported values strategies which are used to control a rollout.
@@ -327,7 +327,7 @@ export interface RolloutKindState {
      * A rollout with one of these simple strategies will rollout across
      * all locations defined in the associated UnitKind's Saas Locations.
      */
-    rolloutOrchestrationStrategy?: pulumi.Input<string>;
+    rolloutOrchestrationStrategy?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the resource. UID is unique in the time
      * and space for this resource within the scope of the service. It is
@@ -335,25 +335,25 @@ export interface RolloutKindState {
      * and must not be changed. UID is used to uniquely identify resources
      * with resource name reuses. This should be a UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * CEL(https://github.com/google/cel-spec) formatted filter string against
      * Unit. The filter will be applied to determine the eligible unit population.
      * This filter can only reduce, but not expand the scope of the rollout.
      */
-    unitFilter?: pulumi.Input<string>;
+    unitFilter?: pulumi.Input<string | undefined>;
     /**
      * UnitKind that this rollout kind corresponds to. Rollouts stemming from this
      * rollout kind will target the units of this unit kind. In other words, this
      * defines the population of target units to be upgraded by rollouts.
      */
-    unitKind?: pulumi.Input<string>;
+    unitKind?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was last updated. Any
      * change to the resource made by users must refresh this value.
      * Changes to a resource made by the service should refresh this value.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The config for updating the unit kind. By default, the unit kind will be
      * updated on the rollout start.
@@ -362,7 +362,7 @@ export interface RolloutKindState {
      * UPDATE_UNIT_KIND_STRATEGY_NEVER
      * Possible values are: `UPDATE_UNIT_KIND_STRATEGY_ON_START`, `UPDATE_UNIT_KIND_STRATEGY_NEVER`.
      */
-    updateUnitKindStrategy?: pulumi.Input<string>;
+    updateUnitKindStrategy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -377,20 +377,20 @@ export interface RolloutKindArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The configuration for error budget. If the number of failed units exceeds
      * max(allowed_count, allowedRatio * total_units), the rollout will be paused.
      * Structure is documented below.
      */
-    errorBudget?: pulumi.Input<inputs.saasruntime.RolloutKindErrorBudget>;
+    errorBudget?: pulumi.Input<inputs.saasruntime.RolloutKindErrorBudget | undefined>;
     /**
      * The labels on the resource, which can be used for categorization.
      * similar to Kubernetes resource labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -399,7 +399,7 @@ export interface RolloutKindArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID value for the new rollout kind.
      */
@@ -412,13 +412,13 @@ export interface RolloutKindArgs {
      * A rollout with one of these simple strategies will rollout across
      * all locations defined in the associated UnitKind's Saas Locations.
      */
-    rolloutOrchestrationStrategy?: pulumi.Input<string>;
+    rolloutOrchestrationStrategy?: pulumi.Input<string | undefined>;
     /**
      * CEL(https://github.com/google/cel-spec) formatted filter string against
      * Unit. The filter will be applied to determine the eligible unit population.
      * This filter can only reduce, but not expand the scope of the rollout.
      */
-    unitFilter?: pulumi.Input<string>;
+    unitFilter?: pulumi.Input<string | undefined>;
     /**
      * UnitKind that this rollout kind corresponds to. Rollouts stemming from this
      * rollout kind will target the units of this unit kind. In other words, this
@@ -433,5 +433,5 @@ export interface RolloutKindArgs {
      * UPDATE_UNIT_KIND_STRATEGY_NEVER
      * Possible values are: `UPDATE_UNIT_KIND_STRATEGY_ON_START`, `UPDATE_UNIT_KIND_STRATEGY_NEVER`.
      */
-    updateUnitKindStrategy?: pulumi.Input<string>;
+    updateUnitKindStrategy?: pulumi.Input<string | undefined>;
 }

@@ -153,11 +153,11 @@ def get_registry_image(digest: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         tag=pulumi.get(__ret__, 'tag'))
-def get_registry_image_output(digest: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              name: Optional[pulumi.Input[_builtins.str]] = None,
-                              project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              tag: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_registry_image_output(digest: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              name: pulumi.Input[Optional[_builtins.str]] = None,
+                              project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              tag: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryImageResult]:
     """
     > **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.

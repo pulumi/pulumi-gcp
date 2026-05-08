@@ -592,125 +592,125 @@ export interface AppState {
      * the app's resource name. If not provided, a unique ID will be
      * automatically assigned for the app.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Configuration for how the input and output audio should be processed and
      * delivered.
      * Structure is documented below.
      */
-    audioProcessingConfig?: pulumi.Input<inputs.ces.AppAudioProcessingConfig>;
+    audioProcessingConfig?: pulumi.Input<inputs.ces.AppAudioProcessingConfig | undefined>;
     /**
      * The default client certificate settings for the app.
      * Structure is documented below.
      */
-    clientCertificateSettings?: pulumi.Input<inputs.ces.AppClientCertificateSettings>;
+    clientCertificateSettings?: pulumi.Input<inputs.ces.AppClientCertificateSettings | undefined>;
     /**
      * Timestamp when the app was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Data store related settings for the app.
      * Structure is documented below.
      */
-    dataStoreSettings?: pulumi.Input<inputs.ces.AppDataStoreSettings>;
+    dataStoreSettings?: pulumi.Input<inputs.ces.AppDataStoreSettings | undefined>;
     /**
      * A ChannelProfile configures the agent's behavior for a specific communication
      * channel, such as web UI or telephony.
      * Structure is documented below.
      */
-    defaultChannelProfile?: pulumi.Input<inputs.ces.AppDefaultChannelProfile>;
+    defaultChannelProfile?: pulumi.Input<inputs.ces.AppDefaultChannelProfile | undefined>;
     /**
      * Number of deployments in the app.
      */
-    deploymentCount?: pulumi.Input<number>;
+    deploymentCount?: pulumi.Input<number | undefined>;
     /**
      * Human-readable description of the app.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the app.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Threshold settings for metrics in an Evaluation.
      * Structure is documented below.
      */
-    evaluationMetricsThresholds?: pulumi.Input<inputs.ces.AppEvaluationMetricsThresholds>;
+    evaluationMetricsThresholds?: pulumi.Input<inputs.ces.AppEvaluationMetricsThresholds | undefined>;
     /**
      * Instructions for all the agents in the app.
      * You can use this instruction to set up a stable identity or personality
      * across all the agents.
      */
-    globalInstruction?: pulumi.Input<string>;
+    globalInstruction?: pulumi.Input<string | undefined>;
     /**
      * List of guardrails for the app.
      * Format:
      * `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
      */
-    guardrails?: pulumi.Input<pulumi.Input<string>[]>;
+    guardrails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Language settings of the app.
      * Structure is documented below.
      */
-    languageSettings?: pulumi.Input<inputs.ces.AppLanguageSettings>;
+    languageSettings?: pulumi.Input<inputs.ces.AppLanguageSettings | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Settings to describe the logging behaviors for the app.
      * Structure is documented below.
      */
-    loggingSettings?: pulumi.Input<inputs.ces.AppLoggingSettings>;
+    loggingSettings?: pulumi.Input<inputs.ces.AppLoggingSettings | undefined>;
     /**
      * Metadata about the app. This field can be used to store additional
      * information relevant to the app's details or intended usages.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Model settings contains various configurations for the LLM model.
      * Structure is documented below.
      */
-    modelSettings?: pulumi.Input<inputs.ces.AppModelSettings>;
+    modelSettings?: pulumi.Input<inputs.ces.AppModelSettings | undefined>;
     /**
      * Identifier. The unique identifier of the app.
      * Format: `projects/{project}/locations/{location}/apps/{app}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the app is pinned in the app list.
      */
-    pinned?: pulumi.Input<boolean>;
+    pinned?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The root agent is the entry point of the app.
      * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
      */
-    rootAgent?: pulumi.Input<string>;
+    rootAgent?: pulumi.Input<string | undefined>;
     /**
      * TimeZone settings of the app.
      * Structure is documented below.
      */
-    timeZoneSettings?: pulumi.Input<inputs.ces.AppTimeZoneSettings>;
+    timeZoneSettings?: pulumi.Input<inputs.ces.AppTimeZoneSettings | undefined>;
     /**
      * Timestamp when the app was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The declarations of the variables.
      * Structure is documented below.
      */
-    variableDeclarations?: pulumi.Input<pulumi.Input<inputs.ces.AppVariableDeclaration>[]>;
+    variableDeclarations?: pulumi.Input<pulumi.Input<inputs.ces.AppVariableDeclaration>[] | undefined>;
 }
 
 /**
@@ -728,27 +728,27 @@ export interface AppArgs {
      * delivered.
      * Structure is documented below.
      */
-    audioProcessingConfig?: pulumi.Input<inputs.ces.AppAudioProcessingConfig>;
+    audioProcessingConfig?: pulumi.Input<inputs.ces.AppAudioProcessingConfig | undefined>;
     /**
      * The default client certificate settings for the app.
      * Structure is documented below.
      */
-    clientCertificateSettings?: pulumi.Input<inputs.ces.AppClientCertificateSettings>;
+    clientCertificateSettings?: pulumi.Input<inputs.ces.AppClientCertificateSettings | undefined>;
     /**
      * Data store related settings for the app.
      * Structure is documented below.
      */
-    dataStoreSettings?: pulumi.Input<inputs.ces.AppDataStoreSettings>;
+    dataStoreSettings?: pulumi.Input<inputs.ces.AppDataStoreSettings | undefined>;
     /**
      * A ChannelProfile configures the agent's behavior for a specific communication
      * channel, such as web UI or telephony.
      * Structure is documented below.
      */
-    defaultChannelProfile?: pulumi.Input<inputs.ces.AppDefaultChannelProfile>;
+    defaultChannelProfile?: pulumi.Input<inputs.ces.AppDefaultChannelProfile | undefined>;
     /**
      * Human-readable description of the app.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the app.
      */
@@ -757,24 +757,24 @@ export interface AppArgs {
      * Threshold settings for metrics in an Evaluation.
      * Structure is documented below.
      */
-    evaluationMetricsThresholds?: pulumi.Input<inputs.ces.AppEvaluationMetricsThresholds>;
+    evaluationMetricsThresholds?: pulumi.Input<inputs.ces.AppEvaluationMetricsThresholds | undefined>;
     /**
      * Instructions for all the agents in the app.
      * You can use this instruction to set up a stable identity or personality
      * across all the agents.
      */
-    globalInstruction?: pulumi.Input<string>;
+    globalInstruction?: pulumi.Input<string | undefined>;
     /**
      * List of guardrails for the app.
      * Format:
      * `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
      */
-    guardrails?: pulumi.Input<pulumi.Input<string>[]>;
+    guardrails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Language settings of the app.
      * Structure is documented below.
      */
-    languageSettings?: pulumi.Input<inputs.ces.AppLanguageSettings>;
+    languageSettings?: pulumi.Input<inputs.ces.AppLanguageSettings | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -783,39 +783,39 @@ export interface AppArgs {
      * Settings to describe the logging behaviors for the app.
      * Structure is documented below.
      */
-    loggingSettings?: pulumi.Input<inputs.ces.AppLoggingSettings>;
+    loggingSettings?: pulumi.Input<inputs.ces.AppLoggingSettings | undefined>;
     /**
      * Metadata about the app. This field can be used to store additional
      * information relevant to the app's details or intended usages.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Model settings contains various configurations for the LLM model.
      * Structure is documented below.
      */
-    modelSettings?: pulumi.Input<inputs.ces.AppModelSettings>;
+    modelSettings?: pulumi.Input<inputs.ces.AppModelSettings | undefined>;
     /**
      * Whether the app is pinned in the app list.
      */
-    pinned?: pulumi.Input<boolean>;
+    pinned?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The root agent is the entry point of the app.
      * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
      */
-    rootAgent?: pulumi.Input<string>;
+    rootAgent?: pulumi.Input<string | undefined>;
     /**
      * TimeZone settings of the app.
      * Structure is documented below.
      */
-    timeZoneSettings?: pulumi.Input<inputs.ces.AppTimeZoneSettings>;
+    timeZoneSettings?: pulumi.Input<inputs.ces.AppTimeZoneSettings | undefined>;
     /**
      * The declarations of the variables.
      * Structure is documented below.
      */
-    variableDeclarations?: pulumi.Input<pulumi.Input<inputs.ces.AppVariableDeclaration>[]>;
+    variableDeclarations?: pulumi.Input<pulumi.Input<inputs.ces.AppVariableDeclaration>[] | undefined>;
 }

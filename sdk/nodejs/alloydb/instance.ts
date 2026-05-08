@@ -443,13 +443,13 @@ export interface InstanceState {
      * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
      * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
      */
-    activationPolicy?: pulumi.Input<string>;
+    activationPolicy?: pulumi.Input<string | undefined>;
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
      * Note that primary and read instances can have different availability types.
@@ -459,50 +459,50 @@ export interface InstanceState {
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
-    availabilityType?: pulumi.Input<string>;
+    availabilityType?: pulumi.Input<string | undefined>;
     /**
      * Client connection specific configurations.
      * Structure is documented below.
      */
-    clientConnectionConfig?: pulumi.Input<inputs.alloydb.InstanceClientConnectionConfig>;
+    clientConnectionConfig?: pulumi.Input<inputs.alloydb.InstanceClientConnectionConfig | undefined>;
     /**
      * Identifies the alloydb cluster. Must be in the format
      * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Managed Connection Pool.
      * Structure is documented below.
      */
-    connectionPoolConfig?: pulumi.Input<inputs.alloydb.InstanceConnectionPoolConfig>;
+    connectionPoolConfig?: pulumi.Input<inputs.alloydb.InstanceConnectionPoolConfig | undefined>;
     /**
      * Time the Instance was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      */
-    databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-settable and human-readable display name for the Instance.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
-    gceZone?: pulumi.Input<string>;
+    gceZone?: pulumi.Input<string | undefined>;
     /**
      * The ID of the alloydb instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the instance.
      * If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
@@ -513,85 +513,85 @@ export interface InstanceState {
      * Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
      * Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The IP address for the Instance. This is the connection endpoint for an end-user application.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels for the alloydb instance.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configurations for the machines that host the underlying database engine.
      * Structure is documented below.
      */
-    machineConfig?: pulumi.Input<inputs.alloydb.InstanceMachineConfig>;
+    machineConfig?: pulumi.Input<inputs.alloydb.InstanceMachineConfig | undefined>;
     /**
      * The name of the instance resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Instance level network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig | undefined>;
     /**
      * (Optional, Beta)
      * Configuration for enhanced query insights.
      * Structure is documented below.
      */
-    observabilityConfig?: pulumi.Input<inputs.alloydb.InstanceObservabilityConfig>;
+    observabilityConfig?: pulumi.Input<inputs.alloydb.InstanceObservabilityConfig | undefined>;
     /**
      * The outbound public IP addresses for the instance. This is available ONLY when
      * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
      * for outbound connections.
      */
-    outboundPublicIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    outboundPublicIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      */
-    pscInstanceConfig?: pulumi.Input<inputs.alloydb.InstancePscInstanceConfig>;
+    pscInstanceConfig?: pulumi.Input<inputs.alloydb.InstancePscInstanceConfig | undefined>;
     /**
      * The public IP addresses for the Instance. This is available ONLY when
      * networkConfig.enablePublicIp is set to true. This is the connection
      * endpoint for an end-user application.
      */
-    publicIpAddress?: pulumi.Input<string>;
+    publicIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration for query insights.
      * Structure is documented below.
      */
-    queryInsightsConfig?: pulumi.Input<inputs.alloydb.InstanceQueryInsightsConfig>;
+    queryInsightsConfig?: pulumi.Input<inputs.alloydb.InstanceQueryInsightsConfig | undefined>;
     /**
      * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      */
-    readPoolConfig?: pulumi.Input<inputs.alloydb.InstanceReadPoolConfig>;
+    readPoolConfig?: pulumi.Input<inputs.alloydb.InstanceReadPoolConfig | undefined>;
     /**
      * Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * The current state of the alloydb instance.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The system-generated UID of the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time the Instance was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -609,13 +609,13 @@ export interface InstanceArgs {
      * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
      * Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
      */
-    activationPolicy?: pulumi.Input<string>;
+    activationPolicy?: pulumi.Input<string | undefined>;
     /**
      * Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
      * Note that primary and read instances can have different availability types.
@@ -625,12 +625,12 @@ export interface InstanceArgs {
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
-    availabilityType?: pulumi.Input<string>;
+    availabilityType?: pulumi.Input<string | undefined>;
     /**
      * Client connection specific configurations.
      * Structure is documented below.
      */
-    clientConnectionConfig?: pulumi.Input<inputs.alloydb.InstanceClientConnectionConfig>;
+    clientConnectionConfig?: pulumi.Input<inputs.alloydb.InstanceClientConnectionConfig | undefined>;
     /**
      * Identifies the alloydb cluster. Must be in the format
      * 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -640,19 +640,19 @@ export interface InstanceArgs {
      * Configuration for Managed Connection Pool.
      * Structure is documented below.
      */
-    connectionPoolConfig?: pulumi.Input<inputs.alloydb.InstanceConnectionPoolConfig>;
+    connectionPoolConfig?: pulumi.Input<inputs.alloydb.InstanceConnectionPoolConfig | undefined>;
     /**
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      */
-    databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-settable and human-readable display name for the Instance.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
      */
-    gceZone?: pulumi.Input<string>;
+    gceZone?: pulumi.Input<string | undefined>;
     /**
      * The ID of the alloydb instance.
      */
@@ -673,36 +673,36 @@ export interface InstanceArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configurations for the machines that host the underlying database engine.
      * Structure is documented below.
      */
-    machineConfig?: pulumi.Input<inputs.alloydb.InstanceMachineConfig>;
+    machineConfig?: pulumi.Input<inputs.alloydb.InstanceMachineConfig | undefined>;
     /**
      * Instance level network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.alloydb.InstanceNetworkConfig | undefined>;
     /**
      * (Optional, Beta)
      * Configuration for enhanced query insights.
      * Structure is documented below.
      */
-    observabilityConfig?: pulumi.Input<inputs.alloydb.InstanceObservabilityConfig>;
+    observabilityConfig?: pulumi.Input<inputs.alloydb.InstanceObservabilityConfig | undefined>;
     /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      */
-    pscInstanceConfig?: pulumi.Input<inputs.alloydb.InstancePscInstanceConfig>;
+    pscInstanceConfig?: pulumi.Input<inputs.alloydb.InstancePscInstanceConfig | undefined>;
     /**
      * Configuration for query insights.
      * Structure is documented below.
      */
-    queryInsightsConfig?: pulumi.Input<inputs.alloydb.InstanceQueryInsightsConfig>;
+    queryInsightsConfig?: pulumi.Input<inputs.alloydb.InstanceQueryInsightsConfig | undefined>;
     /**
      * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      */
-    readPoolConfig?: pulumi.Input<inputs.alloydb.InstanceReadPoolConfig>;
+    readPoolConfig?: pulumi.Input<inputs.alloydb.InstanceReadPoolConfig | undefined>;
 }

@@ -22,12 +22,12 @@ __all__ = ['EnvironmentArgs', 'Environment']
 class EnvironmentArgs:
     def __init__(__self__, *,
                  environmentid: pulumi.Input[_builtins.str],
-                 agent_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fulfillment: Optional[pulumi.Input['EnvironmentFulfillmentArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input['EnvironmentTextToSpeechSettingsArgs']] = None):
+                 agent_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fulfillment: pulumi.Input[Optional['EnvironmentFulfillmentArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 text_to_speech_settings: pulumi.Input[Optional['EnvironmentTextToSpeechSettingsArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -72,7 +72,7 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="agentVersion")
-    def agent_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent version loaded into this environment. Supported formats:
         - projects/<Project ID>/agent/versions/<Version ID>
@@ -81,24 +81,24 @@ class EnvironmentArgs:
         return pulumi.get(self, "agent_version")
 
     @agent_version.setter
-    def agent_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The developer-provided description for this environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fulfillment(self) -> Optional[pulumi.Input['EnvironmentFulfillmentArgs']]:
+    def fulfillment(self) -> pulumi.Input[Optional['EnvironmentFulfillmentArgs']]:
         """
         desc
         Structure is documented below.
@@ -106,24 +106,24 @@ class EnvironmentArgs:
         return pulumi.get(self, "fulfillment")
 
     @fulfillment.setter
-    def fulfillment(self, value: Optional[pulumi.Input['EnvironmentFulfillmentArgs']]):
+    def fulfillment(self, value: pulumi.Input[Optional['EnvironmentFulfillmentArgs']]):
         pulumi.set(self, "fulfillment", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -131,12 +131,12 @@ class EnvironmentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="textToSpeechSettings")
-    def text_to_speech_settings(self) -> Optional[pulumi.Input['EnvironmentTextToSpeechSettingsArgs']]:
+    def text_to_speech_settings(self) -> pulumi.Input[Optional['EnvironmentTextToSpeechSettingsArgs']]:
         """
         Text to speech settings for this environment.
         Structure is documented below.
@@ -144,22 +144,22 @@ class EnvironmentArgs:
         return pulumi.get(self, "text_to_speech_settings")
 
     @text_to_speech_settings.setter
-    def text_to_speech_settings(self, value: Optional[pulumi.Input['EnvironmentTextToSpeechSettingsArgs']]):
+    def text_to_speech_settings(self, value: pulumi.Input[Optional['EnvironmentTextToSpeechSettingsArgs']]):
         pulumi.set(self, "text_to_speech_settings", value)
 
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
-                 agent_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environmentid: Optional[pulumi.Input[_builtins.str]] = None,
-                 fulfillment: Optional[pulumi.Input['EnvironmentFulfillmentArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input['EnvironmentTextToSpeechSettingsArgs']] = None):
+                 agent_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environmentid: pulumi.Input[Optional[_builtins.str]] = None,
+                 fulfillment: pulumi.Input[Optional['EnvironmentFulfillmentArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 text_to_speech_settings: pulumi.Input[Optional['EnvironmentTextToSpeechSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
@@ -199,7 +199,7 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="agentVersion")
-    def agent_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent version loaded into this environment. Supported formats:
         - projects/<Project ID>/agent/versions/<Version ID>
@@ -208,36 +208,36 @@ class _EnvironmentState:
         return pulumi.get(self, "agent_version")
 
     @agent_version.setter
-    def agent_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The developer-provided description for this environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def environmentid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environmentid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required)
         """
         return pulumi.get(self, "environmentid")
 
     @environmentid.setter
-    def environmentid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environmentid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environmentid", value)
 
     @_builtins.property
     @pulumi.getter
-    def fulfillment(self) -> Optional[pulumi.Input['EnvironmentFulfillmentArgs']]:
+    def fulfillment(self) -> pulumi.Input[Optional['EnvironmentFulfillmentArgs']]:
         """
         desc
         Structure is documented below.
@@ -245,36 +245,36 @@ class _EnvironmentState:
         return pulumi.get(self, "fulfillment")
 
     @fulfillment.setter
-    def fulfillment(self, value: Optional[pulumi.Input['EnvironmentFulfillmentArgs']]):
+    def fulfillment(self, value: pulumi.Input[Optional['EnvironmentFulfillmentArgs']]):
         pulumi.set(self, "fulfillment", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of this agent environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -282,24 +282,24 @@ class _EnvironmentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of this environment.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="textToSpeechSettings")
-    def text_to_speech_settings(self) -> Optional[pulumi.Input['EnvironmentTextToSpeechSettingsArgs']]:
+    def text_to_speech_settings(self) -> pulumi.Input[Optional['EnvironmentTextToSpeechSettingsArgs']]:
         """
         Text to speech settings for this environment.
         Structure is documented below.
@@ -307,7 +307,7 @@ class _EnvironmentState:
         return pulumi.get(self, "text_to_speech_settings")
 
     @text_to_speech_settings.setter
-    def text_to_speech_settings(self, value: Optional[pulumi.Input['EnvironmentTextToSpeechSettingsArgs']]):
+    def text_to_speech_settings(self, value: pulumi.Input[Optional['EnvironmentTextToSpeechSettingsArgs']]):
         pulumi.set(self, "text_to_speech_settings", value)
 
 
@@ -317,13 +317,13 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environmentid: Optional[pulumi.Input[_builtins.str]] = None,
-                 fulfillment: Optional[pulumi.Input[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None,
+                 agent_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environmentid: pulumi.Input[Optional[_builtins.str]] = None,
+                 fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Represents an environment for an agent. You can create multiple versions of your agent and publish them to separate environments.
@@ -497,13 +497,13 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environmentid: Optional[pulumi.Input[_builtins.str]] = None,
-                 fulfillment: Optional[pulumi.Input[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 text_to_speech_settings: Optional[pulumi.Input[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None,
+                 agent_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environmentid: pulumi.Input[Optional[_builtins.str]] = None,
+                 fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -534,15 +534,15 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_version: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            environmentid: Optional[pulumi.Input[_builtins.str]] = None,
-            fulfillment: Optional[pulumi.Input[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            text_to_speech_settings: Optional[pulumi.Input[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None) -> 'Environment':
+            agent_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environmentid: pulumi.Input[Optional[_builtins.str]] = None,
+            fulfillment: pulumi.Input[Optional[Union['EnvironmentFulfillmentArgs', 'EnvironmentFulfillmentArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            text_to_speech_settings: pulumi.Input[Optional[Union['EnvironmentTextToSpeechSettingsArgs', 'EnvironmentTextToSpeechSettingsArgsDict']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

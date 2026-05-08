@@ -23,19 +23,19 @@ class ConnectionArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bitbucket_cloud_config: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']] = None,
-                 bitbucket_data_center_config: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']] = None,
-                 crypto_key_config: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
-                 github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
-                 gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
-                 gitlab_enterprise_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']] = None,
-                 http_config: Optional[pulumi.Input['ConnectionHttpConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bitbucket_cloud_config: pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']] = None,
+                 bitbucket_data_center_config: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']] = None,
+                 crypto_key_config: pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 github_config: pulumi.Input[Optional['ConnectionGithubConfigArgs']] = None,
+                 github_enterprise_config: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigArgs']] = None,
+                 gitlab_config: pulumi.Input[Optional['ConnectionGitlabConfigArgs']] = None,
+                 gitlab_enterprise_config: pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigArgs']] = None,
+                 http_config: pulumi.Input[Optional['ConnectionHttpConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -132,7 +132,7 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -141,12 +141,12 @@ class ConnectionArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="bitbucketCloudConfig")
-    def bitbucket_cloud_config(self) -> Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]:
+    def bitbucket_cloud_config(self) -> pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']]:
         """
         Configuration for connections to an instance of Bitbucket Cloud.
         Structure is documented below.
@@ -154,12 +154,12 @@ class ConnectionArgs:
         return pulumi.get(self, "bitbucket_cloud_config")
 
     @bitbucket_cloud_config.setter
-    def bitbucket_cloud_config(self, value: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]):
+    def bitbucket_cloud_config(self, value: pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']]):
         pulumi.set(self, "bitbucket_cloud_config", value)
 
     @_builtins.property
     @pulumi.getter(name="bitbucketDataCenterConfig")
-    def bitbucket_data_center_config(self) -> Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]:
+    def bitbucket_data_center_config(self) -> pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']]:
         """
         Configuration for connections to an instance of Bitbucket Data Center.
         Structure is documented below.
@@ -167,12 +167,12 @@ class ConnectionArgs:
         return pulumi.get(self, "bitbucket_data_center_config")
 
     @bitbucket_data_center_config.setter
-    def bitbucket_data_center_config(self, value: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]):
+    def bitbucket_data_center_config(self, value: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']]):
         pulumi.set(self, "bitbucket_data_center_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoKeyConfig")
-    def crypto_key_config(self) -> Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]:
+    def crypto_key_config(self) -> pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']]:
         """
         The crypto key configuration. This field is used by the Customer-managed
         encryption keys (CMEK) feature.
@@ -181,12 +181,12 @@ class ConnectionArgs:
         return pulumi.get(self, "crypto_key_config")
 
     @crypto_key_config.setter
-    def crypto_key_config(self, value: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]):
+    def crypto_key_config(self, value: pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']]):
         pulumi.set(self, "crypto_key_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If disabled is set to true, functionality is disabled for this connection.
         Repository based API methods and webhooks processing for repositories in
@@ -195,12 +195,12 @@ class ConnectionArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -209,12 +209,12 @@ class ConnectionArgs:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="githubConfig")
-    def github_config(self) -> Optional[pulumi.Input['ConnectionGithubConfigArgs']]:
+    def github_config(self) -> pulumi.Input[Optional['ConnectionGithubConfigArgs']]:
         """
         Configuration for connections to github.com.
         Structure is documented below.
@@ -222,12 +222,12 @@ class ConnectionArgs:
         return pulumi.get(self, "github_config")
 
     @github_config.setter
-    def github_config(self, value: Optional[pulumi.Input['ConnectionGithubConfigArgs']]):
+    def github_config(self, value: pulumi.Input[Optional['ConnectionGithubConfigArgs']]):
         pulumi.set(self, "github_config", value)
 
     @_builtins.property
     @pulumi.getter(name="githubEnterpriseConfig")
-    def github_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]:
+    def github_enterprise_config(self) -> pulumi.Input[Optional['ConnectionGithubEnterpriseConfigArgs']]:
         """
         Configuration for connections to an instance of GitHub Enterprise.
         Structure is documented below.
@@ -235,12 +235,12 @@ class ConnectionArgs:
         return pulumi.get(self, "github_enterprise_config")
 
     @github_enterprise_config.setter
-    def github_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]):
+    def github_enterprise_config(self, value: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigArgs']]):
         pulumi.set(self, "github_enterprise_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabConfig")
-    def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
+    def gitlab_config(self) -> pulumi.Input[Optional['ConnectionGitlabConfigArgs']]:
         """
         Configuration for connections to gitlab.com.
         Structure is documented below.
@@ -248,12 +248,12 @@ class ConnectionArgs:
         return pulumi.get(self, "gitlab_config")
 
     @gitlab_config.setter
-    def gitlab_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigArgs']]):
+    def gitlab_config(self, value: pulumi.Input[Optional['ConnectionGitlabConfigArgs']]):
         pulumi.set(self, "gitlab_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabEnterpriseConfig")
-    def gitlab_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]:
+    def gitlab_enterprise_config(self) -> pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigArgs']]:
         """
         Configuration for connections to an instance of GitLab Enterprise.
         Structure is documented below.
@@ -261,12 +261,12 @@ class ConnectionArgs:
         return pulumi.get(self, "gitlab_enterprise_config")
 
     @gitlab_enterprise_config.setter
-    def gitlab_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]):
+    def gitlab_enterprise_config(self, value: pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigArgs']]):
         pulumi.set(self, "gitlab_enterprise_config", value)
 
     @_builtins.property
     @pulumi.getter(name="httpConfig")
-    def http_config(self) -> Optional[pulumi.Input['ConnectionHttpConfigArgs']]:
+    def http_config(self) -> pulumi.Input[Optional['ConnectionHttpConfigArgs']]:
         """
         Configuration for connections to an HTTP service provider.
         Structure is documented below.
@@ -274,12 +274,12 @@ class ConnectionArgs:
         return pulumi.get(self, "http_config")
 
     @http_config.setter
-    def http_config(self, value: Optional[pulumi.Input['ConnectionHttpConfigArgs']]):
+    def http_config(self, value: pulumi.Input[Optional['ConnectionHttpConfigArgs']]):
         pulumi.set(self, "http_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -288,12 +288,12 @@ class ConnectionArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -301,38 +301,38 @@ class ConnectionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bitbucket_cloud_config: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']] = None,
-                 bitbucket_data_center_config: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_key_config: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
-                 github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
-                 gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
-                 gitlab_enterprise_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']] = None,
-                 http_config: Optional[pulumi.Input['ConnectionHttpConfigArgs']] = None,
-                 installation_states: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bitbucket_cloud_config: pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']] = None,
+                 bitbucket_data_center_config: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_key_config: pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 github_config: pulumi.Input[Optional['ConnectionGithubConfigArgs']] = None,
+                 github_enterprise_config: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigArgs']] = None,
+                 gitlab_config: pulumi.Input[Optional['ConnectionGitlabConfigArgs']] = None,
+                 gitlab_enterprise_config: pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigArgs']] = None,
+                 http_config: pulumi.Input[Optional['ConnectionHttpConfigArgs']] = None,
+                 installation_states: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
@@ -441,7 +441,7 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -450,12 +450,12 @@ class _ConnectionState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="bitbucketCloudConfig")
-    def bitbucket_cloud_config(self) -> Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]:
+    def bitbucket_cloud_config(self) -> pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']]:
         """
         Configuration for connections to an instance of Bitbucket Cloud.
         Structure is documented below.
@@ -463,12 +463,12 @@ class _ConnectionState:
         return pulumi.get(self, "bitbucket_cloud_config")
 
     @bitbucket_cloud_config.setter
-    def bitbucket_cloud_config(self, value: Optional[pulumi.Input['ConnectionBitbucketCloudConfigArgs']]):
+    def bitbucket_cloud_config(self, value: pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']]):
         pulumi.set(self, "bitbucket_cloud_config", value)
 
     @_builtins.property
     @pulumi.getter(name="bitbucketDataCenterConfig")
-    def bitbucket_data_center_config(self) -> Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]:
+    def bitbucket_data_center_config(self) -> pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']]:
         """
         Configuration for connections to an instance of Bitbucket Data Center.
         Structure is documented below.
@@ -476,12 +476,12 @@ class _ConnectionState:
         return pulumi.get(self, "bitbucket_data_center_config")
 
     @bitbucket_data_center_config.setter
-    def bitbucket_data_center_config(self, value: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigArgs']]):
+    def bitbucket_data_center_config(self, value: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']]):
         pulumi.set(self, "bitbucket_data_center_config", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Id of the requesting object
         If auto-generating Id server-side, remove this field and
@@ -490,24 +490,24 @@ class _ConnectionState:
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. [Output only] Create timestamp
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="cryptoKeyConfig")
-    def crypto_key_config(self) -> Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]:
+    def crypto_key_config(self) -> pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']]:
         """
         The crypto key configuration. This field is used by the Customer-managed
         encryption keys (CMEK) feature.
@@ -516,24 +516,24 @@ class _ConnectionState:
         return pulumi.get(self, "crypto_key_config")
 
     @crypto_key_config.setter
-    def crypto_key_config(self, value: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]):
+    def crypto_key_config(self, value: pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']]):
         pulumi.set(self, "crypto_key_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. [Output only] Delete timestamp
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If disabled is set to true, functionality is disabled for this connection.
         Repository based API methods and webhooks processing for repositories in
@@ -542,36 +542,36 @@ class _ConnectionState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -580,12 +580,12 @@ class _ConnectionState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="githubConfig")
-    def github_config(self) -> Optional[pulumi.Input['ConnectionGithubConfigArgs']]:
+    def github_config(self) -> pulumi.Input[Optional['ConnectionGithubConfigArgs']]:
         """
         Configuration for connections to github.com.
         Structure is documented below.
@@ -593,12 +593,12 @@ class _ConnectionState:
         return pulumi.get(self, "github_config")
 
     @github_config.setter
-    def github_config(self, value: Optional[pulumi.Input['ConnectionGithubConfigArgs']]):
+    def github_config(self, value: pulumi.Input[Optional['ConnectionGithubConfigArgs']]):
         pulumi.set(self, "github_config", value)
 
     @_builtins.property
     @pulumi.getter(name="githubEnterpriseConfig")
-    def github_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]:
+    def github_enterprise_config(self) -> pulumi.Input[Optional['ConnectionGithubEnterpriseConfigArgs']]:
         """
         Configuration for connections to an instance of GitHub Enterprise.
         Structure is documented below.
@@ -606,12 +606,12 @@ class _ConnectionState:
         return pulumi.get(self, "github_enterprise_config")
 
     @github_enterprise_config.setter
-    def github_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]):
+    def github_enterprise_config(self, value: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigArgs']]):
         pulumi.set(self, "github_enterprise_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabConfig")
-    def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
+    def gitlab_config(self) -> pulumi.Input[Optional['ConnectionGitlabConfigArgs']]:
         """
         Configuration for connections to gitlab.com.
         Structure is documented below.
@@ -619,12 +619,12 @@ class _ConnectionState:
         return pulumi.get(self, "gitlab_config")
 
     @gitlab_config.setter
-    def gitlab_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigArgs']]):
+    def gitlab_config(self, value: pulumi.Input[Optional['ConnectionGitlabConfigArgs']]):
         pulumi.set(self, "gitlab_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gitlabEnterpriseConfig")
-    def gitlab_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]:
+    def gitlab_enterprise_config(self) -> pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigArgs']]:
         """
         Configuration for connections to an instance of GitLab Enterprise.
         Structure is documented below.
@@ -632,12 +632,12 @@ class _ConnectionState:
         return pulumi.get(self, "gitlab_enterprise_config")
 
     @gitlab_enterprise_config.setter
-    def gitlab_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]):
+    def gitlab_enterprise_config(self, value: pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigArgs']]):
         pulumi.set(self, "gitlab_enterprise_config", value)
 
     @_builtins.property
     @pulumi.getter(name="httpConfig")
-    def http_config(self) -> Optional[pulumi.Input['ConnectionHttpConfigArgs']]:
+    def http_config(self) -> pulumi.Input[Optional['ConnectionHttpConfigArgs']]:
         """
         Configuration for connections to an HTTP service provider.
         Structure is documented below.
@@ -645,12 +645,12 @@ class _ConnectionState:
         return pulumi.get(self, "http_config")
 
     @http_config.setter
-    def http_config(self, value: Optional[pulumi.Input['ConnectionHttpConfigArgs']]):
+    def http_config(self, value: pulumi.Input[Optional['ConnectionHttpConfigArgs']]):
         pulumi.set(self, "http_config", value)
 
     @_builtins.property
     @pulumi.getter(name="installationStates")
-    def installation_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]:
+    def installation_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]:
         """
         Describes stage and necessary actions to be taken by the
         user to complete the installation. Used for GitHub and GitHub Enterprise
@@ -660,12 +660,12 @@ class _ConnectionState:
         return pulumi.get(self, "installation_states")
 
     @installation_states.setter
-    def installation_states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]):
+    def installation_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]):
         pulumi.set(self, "installation_states", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels as key value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -674,24 +674,24 @@ class _ConnectionState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the connection, in the format
         `projects/{project}/locations/{location}/connections/{connection_id}`.
@@ -699,12 +699,12 @@ class _ConnectionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -712,12 +712,12 @@ class _ConnectionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -725,12 +725,12 @@ class _ConnectionState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. Set to true when the connection is being set up or updated in the
         background.
@@ -738,31 +738,31 @@ class _ConnectionState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. A system-assigned unique identifier for a the GitRepositoryLink.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. [Output only] Update timestamp
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -772,21 +772,21 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bitbucket_cloud_config: Optional[pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
-                 bitbucket_data_center_config: Optional[pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
-                 github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
-                 gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
-                 gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
-                 http_config: Optional[pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
+                 bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_key_config: pulumi.Input[Optional[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+                 github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+                 gitlab_enterprise_config: pulumi.Input[Optional[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
+                 http_config: pulumi.Input[Optional[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
@@ -1501,21 +1501,21 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bitbucket_cloud_config: Optional[pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
-                 bitbucket_data_center_config: Optional[pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
-                 github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
-                 gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
-                 gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
-                 http_config: Optional[pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
+                 bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 crypto_key_config: pulumi.Input[Optional[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+                 github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+                 gitlab_enterprise_config: pulumi.Input[Optional[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
+                 http_config: pulumi.Input[Optional[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1566,31 +1566,31 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            bitbucket_cloud_config: Optional[pulumi.Input[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
-            bitbucket_data_center_config: Optional[pulumi.Input[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
-            connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
-            github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
-            gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
-            gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
-            http_config: Optional[pulumi.Input[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
-            installation_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Connection':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bitbucket_cloud_config: pulumi.Input[Optional[Union['ConnectionBitbucketCloudConfigArgs', 'ConnectionBitbucketCloudConfigArgsDict']]] = None,
+            bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            crypto_key_config: pulumi.Input[Optional[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+            github_enterprise_config: pulumi.Input[Optional[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+            gitlab_config: pulumi.Input[Optional[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+            gitlab_enterprise_config: pulumi.Input[Optional[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
+            http_config: pulumi.Input[Optional[Union['ConnectionHttpConfigArgs', 'ConnectionHttpConfigArgsDict']]] = None,
+            installation_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

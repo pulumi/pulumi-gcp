@@ -156,30 +156,30 @@ class CloudControlParameterSpecArgsDict(TypedDict):
     NUMBER
     ONEOF
     """
-    default_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueArgsDict']]
+    default_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueArgs']]]
     """
     Possible parameter value types.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the parameter. The maximum length is 2000 characters.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the parameter. The maximum length is 200 characters.
     """
-    sub_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgsDict']]]]
+    sub_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]]]
     """
     The parameter spec of the cloud control.
     Structure is documented below.
     """
-    substitution_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgsDict']]]]
+    substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]]]
     """
     List of parameter substitutions.
     Structure is documented below.
     """
-    validation: NotRequired[pulumi.Input['CloudControlParameterSpecValidationArgsDict']]
+    validation: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationArgs']]]
     """
     Validation of the parameter.
     Structure is documented below.
@@ -191,12 +191,12 @@ class CloudControlParameterSpecArgs:
                  is_required: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
                  value_type: pulumi.Input[_builtins.str],
-                 default_value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]] = None,
-                 substitution_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]] = None,
-                 validation: Optional[pulumi.Input['CloudControlParameterSpecValidationArgs']] = None):
+                 default_value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]] = None,
+                 substitution_rules: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]] = None,
+                 validation: pulumi.Input[Optional['CloudControlParameterSpecValidationArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] is_required: if the parameter is required
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
@@ -278,7 +278,7 @@ class CloudControlParameterSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultValue")
-    def default_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecDefaultValueArgs']]:
+    def default_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecDefaultValueArgs']]:
         """
         Possible parameter value types.
         Structure is documented below.
@@ -286,36 +286,36 @@ class CloudControlParameterSpecArgs:
         return pulumi.get(self, "default_value")
 
     @default_value.setter
-    def default_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueArgs']]):
+    def default_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueArgs']]):
         pulumi.set(self, "default_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the parameter. The maximum length is 2000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the parameter. The maximum length is 200 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="subParameters")
-    def sub_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]]:
+    def sub_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]]:
         """
         The parameter spec of the cloud control.
         Structure is documented below.
@@ -323,12 +323,12 @@ class CloudControlParameterSpecArgs:
         return pulumi.get(self, "sub_parameters")
 
     @sub_parameters.setter
-    def sub_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]]):
+    def sub_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]]):
         pulumi.set(self, "sub_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="substitutionRules")
-    def substitution_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]]:
+    def substitution_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]]:
         """
         List of parameter substitutions.
         Structure is documented below.
@@ -336,12 +336,12 @@ class CloudControlParameterSpecArgs:
         return pulumi.get(self, "substitution_rules")
 
     @substitution_rules.setter
-    def substitution_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]]):
+    def substitution_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]]):
         pulumi.set(self, "substitution_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def validation(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationArgs']]:
+    def validation(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationArgs']]:
         """
         Validation of the parameter.
         Structure is documented below.
@@ -349,30 +349,30 @@ class CloudControlParameterSpecArgs:
         return pulumi.get(self, "validation")
 
     @validation.setter
-    def validation(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationArgs']]):
+    def validation(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationArgs']]):
         pulumi.set(self, "validation", value)
 
 
 class CloudControlParameterSpecDefaultValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueArgsDict']]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueArgs']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -380,11 +380,11 @@ class CloudControlParameterSpecDefaultValueArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 oneof_value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueArgs']] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueArgs']] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -407,31 +407,31 @@ class CloudControlParameterSpecDefaultValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="oneofValue")
-    def oneof_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueArgs']]:
+    def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueArgs']]:
         """
         Sub-parameter values.
         Structure is documented below.
@@ -439,12 +439,12 @@ class CloudControlParameterSpecDefaultValueArgs:
         return pulumi.get(self, "oneof_value")
 
     @oneof_value.setter
-    def oneof_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueArgs']]):
+    def oneof_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueArgs']]):
         pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecDefaultValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecDefaultValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -452,28 +452,28 @@ class CloudControlParameterSpecDefaultValueArgs:
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class CloudControlParameterSpecDefaultValueOneofValueArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict']]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -482,8 +482,8 @@ class CloudControlParameterSpecDefaultValueOneofValueArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueOneofValueArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs'] parameter_value: The value of the parameter.
@@ -496,19 +496,19 @@ class CloudControlParameterSpecDefaultValueOneofValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']]:
+    def parameter_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']]:
         """
         The value of the parameter.
         Structure is documented below.
@@ -516,25 +516,25 @@ class CloudControlParameterSpecDefaultValueOneofValueArgs:
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']]):
+    def parameter_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']]):
         pulumi.set(self, "parameter_value", value)
 
 
 class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -542,10 +542,10 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict(Type
 @pulumi.input_type
 class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -564,31 +564,31 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -596,19 +596,19 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs:
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -687,25 +687,25 @@ class CloudControlParameterSpecSubParameterArgsDict(TypedDict):
     NUMBER
     ONEOF
     """
-    default_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueArgsDict']]
+    default_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueArgs']]]
     """
     Possible parameter value types.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the parameter. The maximum length is 2000 characters.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the parameter. The maximum length is 200 characters.
     """
-    substitution_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict']]]]
+    substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]]]
     """
     List of parameter substitutions.
     Structure is documented below.
     """
-    validation: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationArgsDict']]
+    validation: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationArgs']]]
     """
     Validation of the parameter.
     Structure is documented below.
@@ -717,11 +717,11 @@ class CloudControlParameterSpecSubParameterArgs:
                  is_required: pulumi.Input[_builtins.bool],
                  name: pulumi.Input[_builtins.str],
                  value_type: pulumi.Input[_builtins.str],
-                 default_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 substitution_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]] = None,
-                 validation: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationArgs']] = None):
+                 default_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 substitution_rules: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]] = None,
+                 validation: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] is_required: if the parameter is required
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
@@ -799,7 +799,7 @@ class CloudControlParameterSpecSubParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultValue")
-    def default_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueArgs']]:
+    def default_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueArgs']]:
         """
         Possible parameter value types.
         Structure is documented below.
@@ -807,36 +807,36 @@ class CloudControlParameterSpecSubParameterArgs:
         return pulumi.get(self, "default_value")
 
     @default_value.setter
-    def default_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueArgs']]):
+    def default_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueArgs']]):
         pulumi.set(self, "default_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the parameter. The maximum length is 2000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the parameter. The maximum length is 200 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="substitutionRules")
-    def substitution_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]]:
+    def substitution_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]]:
         """
         List of parameter substitutions.
         Structure is documented below.
@@ -844,12 +844,12 @@ class CloudControlParameterSpecSubParameterArgs:
         return pulumi.get(self, "substitution_rules")
 
     @substitution_rules.setter
-    def substitution_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]]):
+    def substitution_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]]):
         pulumi.set(self, "substitution_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def validation(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationArgs']]:
+    def validation(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationArgs']]:
         """
         Validation of the parameter.
         Structure is documented below.
@@ -857,30 +857,30 @@ class CloudControlParameterSpecSubParameterArgs:
         return pulumi.get(self, "validation")
 
     @validation.setter
-    def validation(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationArgs']]):
+    def validation(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationArgs']]):
         pulumi.set(self, "validation", value)
 
 
 class CloudControlParameterSpecSubParameterDefaultValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict']]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -888,11 +888,11 @@ class CloudControlParameterSpecSubParameterDefaultValueArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 oneof_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -915,31 +915,31 @@ class CloudControlParameterSpecSubParameterDefaultValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="oneofValue")
-    def oneof_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']]:
+    def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']]:
         """
         Sub-parameter values.
         Structure is documented below.
@@ -947,12 +947,12 @@ class CloudControlParameterSpecSubParameterDefaultValueArgs:
         return pulumi.get(self, "oneof_value")
 
     @oneof_value.setter
-    def oneof_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']]):
+    def oneof_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']]):
         pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -960,28 +960,28 @@ class CloudControlParameterSpecSubParameterDefaultValueArgs:
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict']]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -990,8 +990,8 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict(TypedD
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs'] parameter_value: The value of the parameter.
@@ -1004,19 +1004,19 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']]:
+    def parameter_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']]:
         """
         The value of the parameter.
         Structure is documented below.
@@ -1024,25 +1024,25 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs:
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']]):
+    def parameter_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']]):
         pulumi.set(self, "parameter_value", value)
 
 
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -1050,10 +1050,10 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -1072,31 +1072,31 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -1104,19 +1104,19 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -1177,12 +1177,12 @@ class CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs:
 
 
 class CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict(TypedDict):
-    attribute_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict']]
+    attribute_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']]]
     """
     Attribute at the given path is substituted entirely.
     Structure is documented below.
     """
-    placeholder_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]
+    placeholder_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']]]
     """
     Placeholder is substituted in the rendered string.
     Structure is documented below.
@@ -1191,8 +1191,8 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterSubstitutionRuleArgs:
     def __init__(__self__, *,
-                 attribute_substitution_rule: Optional[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']] = None,
-                 placeholder_substitution_rule: Optional[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']] = None):
+                 attribute_substitution_rule: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']] = None,
+                 placeholder_substitution_rule: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']] = None):
         """
         :param pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs'] attribute_substitution_rule: Attribute at the given path is substituted entirely.
                Structure is documented below.
@@ -1206,7 +1206,7 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="attributeSubstitutionRule")
-    def attribute_substitution_rule(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']]:
+    def attribute_substitution_rule(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']]:
         """
         Attribute at the given path is substituted entirely.
         Structure is documented below.
@@ -1214,12 +1214,12 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleArgs:
         return pulumi.get(self, "attribute_substitution_rule")
 
     @attribute_substitution_rule.setter
-    def attribute_substitution_rule(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']]):
+    def attribute_substitution_rule(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']]):
         pulumi.set(self, "attribute_substitution_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="placeholderSubstitutionRule")
-    def placeholder_substitution_rule(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']]:
+    def placeholder_substitution_rule(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']]:
         """
         Placeholder is substituted in the rendered string.
         Structure is documented below.
@@ -1227,12 +1227,12 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleArgs:
         return pulumi.get(self, "placeholder_substitution_rule")
 
     @placeholder_substitution_rule.setter
-    def placeholder_substitution_rule(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']]):
+    def placeholder_substitution_rule(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']]):
         pulumi.set(self, "placeholder_substitution_rule", value)
 
 
 class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict(TypedDict):
-    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified proto attribute path (in dot notation).
     Example: rules[0].cel_expression.resource_types_values
@@ -1241,7 +1241,7 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitution
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs:
     def __init__(__self__, *,
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None):
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: Fully qualified proto attribute path (in dot notation).
                Example: rules[0].cel_expression.resource_types_values
@@ -1251,7 +1251,7 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitution
 
     @_builtins.property
     @pulumi.getter
-    def attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified proto attribute path (in dot notation).
         Example: rules[0].cel_expression.resource_types_values
@@ -1259,12 +1259,12 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitution
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute", value)
 
 
 class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict(TypedDict):
-    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified proto attribute path (e.g., dot notation)
     """
@@ -1272,7 +1272,7 @@ class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstituti
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs:
     def __init__(__self__, *,
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None):
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: Fully qualified proto attribute path (e.g., dot notation)
         """
@@ -1281,29 +1281,29 @@ class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstituti
 
     @_builtins.property
     @pulumi.getter
-    def attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified proto attribute path (e.g., dot notation)
         """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute", value)
 
 
 class CloudControlParameterSpecSubParameterValidationArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesArgsDict']]
+    allowed_values: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']]]
     """
     Allowed set of values for the parameter.
     Structure is documented below.
     """
-    int_range: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationIntRangeArgsDict']]
+    int_range: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationIntRangeArgs']]]
     """
     Number range for number parameters.
     Structure is documented below.
     """
-    regexp_pattern: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationRegexpPatternArgsDict']]
+    regexp_pattern: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']]]
     """
     Regular Expression Validator for parameter values.
     Structure is documented below.
@@ -1312,9 +1312,9 @@ class CloudControlParameterSpecSubParameterValidationArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationArgs:
     def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']] = None,
-                 int_range: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationIntRangeArgs']] = None,
-                 regexp_pattern: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']] = None):
+                 allowed_values: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']] = None,
+                 int_range: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationIntRangeArgs']] = None,
+                 regexp_pattern: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']] = None):
         """
         :param pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs'] allowed_values: Allowed set of values for the parameter.
                Structure is documented below.
@@ -1332,7 +1332,7 @@ class CloudControlParameterSpecSubParameterValidationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']]:
+    def allowed_values(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']]:
         """
         Allowed set of values for the parameter.
         Structure is documented below.
@@ -1340,12 +1340,12 @@ class CloudControlParameterSpecSubParameterValidationArgs:
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']]):
+    def allowed_values(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']]):
         pulumi.set(self, "allowed_values", value)
 
     @_builtins.property
     @pulumi.getter(name="intRange")
-    def int_range(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationIntRangeArgs']]:
+    def int_range(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationIntRangeArgs']]:
         """
         Number range for number parameters.
         Structure is documented below.
@@ -1353,12 +1353,12 @@ class CloudControlParameterSpecSubParameterValidationArgs:
         return pulumi.get(self, "int_range")
 
     @int_range.setter
-    def int_range(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationIntRangeArgs']]):
+    def int_range(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationIntRangeArgs']]):
         pulumi.set(self, "int_range", value)
 
     @_builtins.property
     @pulumi.getter(name="regexpPattern")
-    def regexp_pattern(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']]:
+    def regexp_pattern(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']]:
         """
         Regular Expression Validator for parameter values.
         Structure is documented below.
@@ -1366,7 +1366,7 @@ class CloudControlParameterSpecSubParameterValidationArgs:
         return pulumi.get(self, "regexp_pattern")
 
     @regexp_pattern.setter
-    def regexp_pattern(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']]):
+    def regexp_pattern(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']]):
         pulumi.set(self, "regexp_pattern", value)
 
 
@@ -1402,25 +1402,25 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesArgs:
 
 
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict']]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -1428,11 +1428,11 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict(
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 oneof_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -1455,31 +1455,31 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="oneofValue")
-    def oneof_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']]:
+    def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']]:
         """
         Sub-parameter values.
         Structure is documented below.
@@ -1487,12 +1487,12 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs:
         return pulumi.get(self, "oneof_value")
 
     @oneof_value.setter
-    def oneof_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']]):
+    def oneof_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']]):
         pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -1500,28 +1500,28 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgs:
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict']]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -1530,8 +1530,8 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs'] parameter_value: The value of the parameter.
@@ -1544,19 +1544,19 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']]:
+    def parameter_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']]:
         """
         The value of the parameter.
         Structure is documented below.
@@ -1564,25 +1564,25 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']]):
+    def parameter_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']]):
         pulumi.set(self, "parameter_value", value)
 
 
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -1590,10 +1590,10 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
 @pulumi.input_type
 class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -1612,31 +1612,31 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -1644,19 +1644,19 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -1792,12 +1792,12 @@ class CloudControlParameterSpecSubParameterValidationRegexpPatternArgs:
 
 
 class CloudControlParameterSpecSubstitutionRuleArgsDict(TypedDict):
-    attribute_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict']]
+    attribute_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']]]
     """
     Attribute at the given path is substituted entirely.
     Structure is documented below.
     """
-    placeholder_substitution_rule: NotRequired[pulumi.Input['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]
+    placeholder_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']]]
     """
     Placeholder is substituted in the rendered string.
     Structure is documented below.
@@ -1806,8 +1806,8 @@ class CloudControlParameterSpecSubstitutionRuleArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecSubstitutionRuleArgs:
     def __init__(__self__, *,
-                 attribute_substitution_rule: Optional[pulumi.Input['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']] = None,
-                 placeholder_substitution_rule: Optional[pulumi.Input['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']] = None):
+                 attribute_substitution_rule: pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']] = None,
+                 placeholder_substitution_rule: pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']] = None):
         """
         :param pulumi.Input['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs'] attribute_substitution_rule: Attribute at the given path is substituted entirely.
                Structure is documented below.
@@ -1821,7 +1821,7 @@ class CloudControlParameterSpecSubstitutionRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="attributeSubstitutionRule")
-    def attribute_substitution_rule(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']]:
+    def attribute_substitution_rule(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']]:
         """
         Attribute at the given path is substituted entirely.
         Structure is documented below.
@@ -1829,12 +1829,12 @@ class CloudControlParameterSpecSubstitutionRuleArgs:
         return pulumi.get(self, "attribute_substitution_rule")
 
     @attribute_substitution_rule.setter
-    def attribute_substitution_rule(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']]):
+    def attribute_substitution_rule(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']]):
         pulumi.set(self, "attribute_substitution_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="placeholderSubstitutionRule")
-    def placeholder_substitution_rule(self) -> Optional[pulumi.Input['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']]:
+    def placeholder_substitution_rule(self) -> pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']]:
         """
         Placeholder is substituted in the rendered string.
         Structure is documented below.
@@ -1842,12 +1842,12 @@ class CloudControlParameterSpecSubstitutionRuleArgs:
         return pulumi.get(self, "placeholder_substitution_rule")
 
     @placeholder_substitution_rule.setter
-    def placeholder_substitution_rule(self, value: Optional[pulumi.Input['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']]):
+    def placeholder_substitution_rule(self, value: pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']]):
         pulumi.set(self, "placeholder_substitution_rule", value)
 
 
 class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict(TypedDict):
-    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified proto attribute path (in dot notation).
     Example: rules[0].cel_expression.resource_types_values
@@ -1856,7 +1856,7 @@ class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict
 @pulumi.input_type
 class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs:
     def __init__(__self__, *,
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None):
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: Fully qualified proto attribute path (in dot notation).
                Example: rules[0].cel_expression.resource_types_values
@@ -1866,7 +1866,7 @@ class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified proto attribute path (in dot notation).
         Example: rules[0].cel_expression.resource_types_values
@@ -1874,12 +1874,12 @@ class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs:
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute", value)
 
 
 class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict(TypedDict):
-    attribute: NotRequired[pulumi.Input[_builtins.str]]
+    attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Fully qualified proto attribute path (e.g., dot notation)
     """
@@ -1887,7 +1887,7 @@ class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDi
 @pulumi.input_type
 class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs:
     def __init__(__self__, *,
-                 attribute: Optional[pulumi.Input[_builtins.str]] = None):
+                 attribute: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: Fully qualified proto attribute path (e.g., dot notation)
         """
@@ -1896,29 +1896,29 @@ class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fully qualified proto attribute path (e.g., dot notation)
         """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attribute", value)
 
 
 class CloudControlParameterSpecValidationArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesArgsDict']]
+    allowed_values: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesArgs']]]
     """
     Allowed set of values for the parameter.
     Structure is documented below.
     """
-    int_range: NotRequired[pulumi.Input['CloudControlParameterSpecValidationIntRangeArgsDict']]
+    int_range: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationIntRangeArgs']]]
     """
     Number range for number parameters.
     Structure is documented below.
     """
-    regexp_pattern: NotRequired[pulumi.Input['CloudControlParameterSpecValidationRegexpPatternArgsDict']]
+    regexp_pattern: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationRegexpPatternArgs']]]
     """
     Regular Expression Validator for parameter values.
     Structure is documented below.
@@ -1927,9 +1927,9 @@ class CloudControlParameterSpecValidationArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecValidationArgs:
     def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesArgs']] = None,
-                 int_range: Optional[pulumi.Input['CloudControlParameterSpecValidationIntRangeArgs']] = None,
-                 regexp_pattern: Optional[pulumi.Input['CloudControlParameterSpecValidationRegexpPatternArgs']] = None):
+                 allowed_values: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesArgs']] = None,
+                 int_range: pulumi.Input[Optional['CloudControlParameterSpecValidationIntRangeArgs']] = None,
+                 regexp_pattern: pulumi.Input[Optional['CloudControlParameterSpecValidationRegexpPatternArgs']] = None):
         """
         :param pulumi.Input['CloudControlParameterSpecValidationAllowedValuesArgs'] allowed_values: Allowed set of values for the parameter.
                Structure is documented below.
@@ -1947,7 +1947,7 @@ class CloudControlParameterSpecValidationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesArgs']]:
+    def allowed_values(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesArgs']]:
         """
         Allowed set of values for the parameter.
         Structure is documented below.
@@ -1955,12 +1955,12 @@ class CloudControlParameterSpecValidationArgs:
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesArgs']]):
+    def allowed_values(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesArgs']]):
         pulumi.set(self, "allowed_values", value)
 
     @_builtins.property
     @pulumi.getter(name="intRange")
-    def int_range(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationIntRangeArgs']]:
+    def int_range(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationIntRangeArgs']]:
         """
         Number range for number parameters.
         Structure is documented below.
@@ -1968,12 +1968,12 @@ class CloudControlParameterSpecValidationArgs:
         return pulumi.get(self, "int_range")
 
     @int_range.setter
-    def int_range(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationIntRangeArgs']]):
+    def int_range(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationIntRangeArgs']]):
         pulumi.set(self, "int_range", value)
 
     @_builtins.property
     @pulumi.getter(name="regexpPattern")
-    def regexp_pattern(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationRegexpPatternArgs']]:
+    def regexp_pattern(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationRegexpPatternArgs']]:
         """
         Regular Expression Validator for parameter values.
         Structure is documented below.
@@ -1981,7 +1981,7 @@ class CloudControlParameterSpecValidationArgs:
         return pulumi.get(self, "regexp_pattern")
 
     @regexp_pattern.setter
-    def regexp_pattern(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationRegexpPatternArgs']]):
+    def regexp_pattern(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationRegexpPatternArgs']]):
         pulumi.set(self, "regexp_pattern", value)
 
 
@@ -2017,25 +2017,25 @@ class CloudControlParameterSpecValidationAllowedValuesArgs:
 
 
 class CloudControlParameterSpecValidationAllowedValuesValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict']]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -2043,11 +2043,11 @@ class CloudControlParameterSpecValidationAllowedValuesValueArgsDict(TypedDict):
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 oneof_value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -2070,31 +2070,31 @@ class CloudControlParameterSpecValidationAllowedValuesValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="oneofValue")
-    def oneof_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']]:
+    def oneof_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']]:
         """
         Sub-parameter values.
         Structure is documented below.
@@ -2102,12 +2102,12 @@ class CloudControlParameterSpecValidationAllowedValuesValueArgs:
         return pulumi.get(self, "oneof_value")
 
     @oneof_value.setter
-    def oneof_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']]):
+    def oneof_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']]):
         pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -2115,28 +2115,28 @@ class CloudControlParameterSpecValidationAllowedValuesValueArgs:
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict']]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -2145,8 +2145,8 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict(Ty
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs'] parameter_value: The value of the parameter.
@@ -2159,19 +2159,19 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']]:
+    def parameter_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']]:
         """
         The value of the parameter.
         Structure is documented below.
@@ -2179,25 +2179,25 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs:
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']]):
+    def parameter_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']]):
         pulumi.set(self, "parameter_value", value)
 
 
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -2205,10 +2205,10 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
 @pulumi.input_type
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 string_list_value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 string_list_value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -2227,31 +2227,31 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -2259,19 +2259,19 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -2411,13 +2411,13 @@ class CloudControlRuleArgsDict(TypedDict):
     """
     The functionality enabled by the Rule.
     """
-    cel_expression: NotRequired[pulumi.Input['CloudControlRuleCelExpressionArgsDict']]
+    cel_expression: NotRequired[pulumi.Input[Optional['CloudControlRuleCelExpressionArgs']]]
     """
     A [CEL
     expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the Rule. The maximum length is 2000 characters.
     """
@@ -2426,8 +2426,8 @@ class CloudControlRuleArgsDict(TypedDict):
 class CloudControlRuleArgs:
     def __init__(__self__, *,
                  rule_action_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 cel_expression: Optional[pulumi.Input['CloudControlRuleCelExpressionArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 cel_expression: pulumi.Input[Optional['CloudControlRuleCelExpressionArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] rule_action_types: The functionality enabled by the Rule.
         :param pulumi.Input['CloudControlRuleCelExpressionArgs'] cel_expression: A [CEL
@@ -2455,7 +2455,7 @@ class CloudControlRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="celExpression")
-    def cel_expression(self) -> Optional[pulumi.Input['CloudControlRuleCelExpressionArgs']]:
+    def cel_expression(self) -> pulumi.Input[Optional['CloudControlRuleCelExpressionArgs']]:
         """
         A [CEL
         expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
@@ -2464,19 +2464,19 @@ class CloudControlRuleArgs:
         return pulumi.get(self, "cel_expression")
 
     @cel_expression.setter
-    def cel_expression(self, value: Optional[pulumi.Input['CloudControlRuleCelExpressionArgs']]):
+    def cel_expression(self, value: pulumi.Input[Optional['CloudControlRuleCelExpressionArgs']]):
         pulumi.set(self, "cel_expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the Rule. The maximum length is 2000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2486,7 +2486,7 @@ class CloudControlRuleCelExpressionArgsDict(TypedDict):
     Logic expression in CEL language.
     The max length of the condition is 1000 characters.
     """
-    resource_types_values: NotRequired[pulumi.Input['CloudControlRuleCelExpressionResourceTypesValuesArgsDict']]
+    resource_types_values: NotRequired[pulumi.Input[Optional['CloudControlRuleCelExpressionResourceTypesValuesArgs']]]
     """
     A list of strings.
     Structure is documented below.
@@ -2496,7 +2496,7 @@ class CloudControlRuleCelExpressionArgsDict(TypedDict):
 class CloudControlRuleCelExpressionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 resource_types_values: Optional[pulumi.Input['CloudControlRuleCelExpressionResourceTypesValuesArgs']] = None):
+                 resource_types_values: pulumi.Input[Optional['CloudControlRuleCelExpressionResourceTypesValuesArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Logic expression in CEL language.
                The max length of the condition is 1000 characters.
@@ -2522,7 +2522,7 @@ class CloudControlRuleCelExpressionArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceTypesValues")
-    def resource_types_values(self) -> Optional[pulumi.Input['CloudControlRuleCelExpressionResourceTypesValuesArgs']]:
+    def resource_types_values(self) -> pulumi.Input[Optional['CloudControlRuleCelExpressionResourceTypesValuesArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -2530,7 +2530,7 @@ class CloudControlRuleCelExpressionArgs:
         return pulumi.get(self, "resource_types_values")
 
     @resource_types_values.setter
-    def resource_types_values(self, value: Optional[pulumi.Input['CloudControlRuleCelExpressionResourceTypesValuesArgs']]):
+    def resource_types_values(self, value: pulumi.Input[Optional['CloudControlRuleCelExpressionResourceTypesValuesArgs']]):
         pulumi.set(self, "resource_types_values", value)
 
 
@@ -2572,7 +2572,7 @@ class FrameworkCloudControlDetailArgsDict(TypedDict):
     The name of the CloudControl in the format:
     “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
     """
-    parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgsDict']]]]
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]]]
     """
     Parameters is a key-value pair that is required by the CloudControl. The
     specification of these parameters will be present in cloudcontrol.Eg: {
@@ -2585,7 +2585,7 @@ class FrameworkCloudControlDetailArgs:
     def __init__(__self__, *,
                  major_revision_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]] = None):
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] major_revision_id: Major revision of cloudcontrol
         :param pulumi.Input[_builtins.str] name: The name of the CloudControl in the format:
@@ -2627,7 +2627,7 @@ class FrameworkCloudControlDetailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]]:
         """
         Parameters is a key-value pair that is required by the CloudControl. The
         specification of these parameters will be present in cloudcontrol.Eg: {
@@ -2637,7 +2637,7 @@ class FrameworkCloudControlDetailArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -2692,25 +2692,25 @@ class FrameworkCloudControlDetailParameterArgs:
 
 
 class FrameworkCloudControlDetailParameterParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict']]
+    oneof_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -2718,11 +2718,11 @@ class FrameworkCloudControlDetailParameterParameterValueArgsDict(TypedDict):
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 oneof_value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']] = None,
-                 string_list_value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']] = None,
+                 string_list_value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -2745,31 +2745,31 @@ class FrameworkCloudControlDetailParameterParameterValueArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="oneofValue")
-    def oneof_value(self) -> Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']]:
+    def oneof_value(self) -> pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']]:
         """
         Sub-parameter values.
         Structure is documented below.
@@ -2777,12 +2777,12 @@ class FrameworkCloudControlDetailParameterParameterValueArgs:
         return pulumi.get(self, "oneof_value")
 
     @oneof_value.setter
-    def oneof_value(self, value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']]):
+    def oneof_value(self, value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']]):
         pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -2790,28 +2790,28 @@ class FrameworkCloudControlDetailParameterParameterValueArgs:
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict']]
+    parameter_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -2820,8 +2820,8 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict(Typed
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueOneofValueArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs'] parameter_value: The value of the parameter.
@@ -2834,19 +2834,19 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']]:
+    def parameter_value(self) -> pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']]:
         """
         The value of the parameter.
         Structure is documented below.
@@ -2854,25 +2854,25 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueArgs:
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']]):
+    def parameter_value(self, value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']]):
         pulumi.set(self, "parameter_value", value)
 
 
 class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -2880,10 +2880,10 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
 @pulumi.input_type
 class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 string_list_value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 string_list_value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -2902,31 +2902,31 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -2934,19 +2934,19 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -3007,7 +3007,7 @@ class FrameworkCloudControlDetailParameterParameterValueStringListValueArgs:
 
 
 class FrameworkDeploymentCloudControlDeploymentReferenceArgsDict(TypedDict):
-    cloud_control_deployment: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_control_deployment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the CloudControlDeployment. The format is:
@@ -3017,7 +3017,7 @@ class FrameworkDeploymentCloudControlDeploymentReferenceArgsDict(TypedDict):
 @pulumi.input_type
 class FrameworkDeploymentCloudControlDeploymentReferenceArgs:
     def __init__(__self__, *,
-                 cloud_control_deployment: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_control_deployment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_control_deployment: (Output)
                The name of the CloudControlDeployment. The format is:
@@ -3028,7 +3028,7 @@ class FrameworkDeploymentCloudControlDeploymentReferenceArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudControlDeployment")
-    def cloud_control_deployment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_control_deployment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the CloudControlDeployment. The format is:
@@ -3037,7 +3037,7 @@ class FrameworkDeploymentCloudControlDeploymentReferenceArgs:
         return pulumi.get(self, "cloud_control_deployment")
 
     @cloud_control_deployment.setter
-    def cloud_control_deployment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_control_deployment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_control_deployment", value)
 
 
@@ -3114,7 +3114,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict(TypedDi
     “organizations/{organization}/locations/{location}/
     cloudControls/{cloud-control}”
     """
-    parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict']]]]
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]]]
     """
     Parameters is a key-value pair that is required by the CloudControl. The
     specification of these parameters will be present in cloudcontrol.Eg: {
@@ -3127,7 +3127,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs:
     def __init__(__self__, *,
                  major_revision_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]] = None):
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] major_revision_id: Major revision of cloudcontrol
         :param pulumi.Input[_builtins.str] name: The name of the CloudControl in the format:
@@ -3171,7 +3171,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]]:
         """
         Parameters is a key-value pair that is required by the CloudControl. The
         specification of these parameters will be present in cloudcontrol.Eg: {
@@ -3181,7 +3181,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
 
@@ -3236,25 +3236,25 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs:
 
 
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict']]
+    oneof_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -3262,11 +3262,11 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 oneof_value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']] = None,
-                 string_list_value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 oneof_value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']] = None,
+                 string_list_value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -3289,31 +3289,31 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="oneofValue")
-    def oneof_value(self) -> Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']]:
+    def oneof_value(self) -> pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']]:
         """
         Sub-parameter values.
         Structure is documented below.
@@ -3321,12 +3321,12 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         return pulumi.get(self, "oneof_value")
 
     @oneof_value.setter
-    def oneof_value(self, value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']]):
+    def oneof_value(self, value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']]):
         pulumi.set(self, "oneof_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -3334,28 +3334,28 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict']]
+    parameter_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -3364,8 +3364,8 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs'] parameter_value: The value of the parameter.
@@ -3378,19 +3378,19 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']]:
+    def parameter_value(self) -> pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']]:
         """
         The value of the parameter.
         Structure is documented below.
@@ -3398,25 +3398,25 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']]):
+    def parameter_value(self, value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']]):
         pulumi.set(self, "parameter_value", value)
 
 
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Represents a boolean value.
     """
-    number_value: NotRequired[pulumi.Input[_builtins.float]]
+    number_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']]]
     """
     A list of strings.
     Structure is documented below.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents a string value.
     """
@@ -3424,10 +3424,10 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 @pulumi.input_type
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 number_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 string_list_value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 number_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 string_list_value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Represents a boolean value.
         :param pulumi.Input[_builtins.float] number_value: Represents a double value.
@@ -3446,31 +3446,31 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Represents a boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numberValue")
-    def number_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def number_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Represents a double value.
         """
         return pulumi.get(self, "number_value")
 
     @number_value.setter
-    def number_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def number_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "number_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringListValue")
-    def string_list_value(self) -> Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']]:
+    def string_list_value(self) -> pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']]:
         """
         A list of strings.
         Structure is documented below.
@@ -3478,19 +3478,19 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
         return pulumi.get(self, "string_list_value")
 
     @string_list_value.setter
-    def string_list_value(self, value: Optional[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']]):
+    def string_list_value(self, value: pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']]):
         pulumi.set(self, "string_list_value", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a string value.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
 
@@ -3601,12 +3601,12 @@ class FrameworkDeploymentFrameworkArgs:
 
 
 class FrameworkDeploymentTargetResourceConfigArgsDict(TypedDict):
-    existing_target_resource: NotRequired[pulumi.Input[_builtins.str]]
+    existing_target_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CRM node in format organizations/{organization}, folders/{folder},
     or projects/{project}
     """
-    target_resource_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict']]
+    target_resource_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']]]
     """
     TargetResourceCreationConfig contains the config to create a new resource to
     be used as the target_resource of a deployment.
@@ -3616,8 +3616,8 @@ class FrameworkDeploymentTargetResourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FrameworkDeploymentTargetResourceConfigArgs:
     def __init__(__self__, *,
-                 existing_target_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_resource_creation_config: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']] = None):
+                 existing_target_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_resource_creation_config: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] existing_target_resource: CRM node in format organizations/{organization}, folders/{folder},
                or projects/{project}
@@ -3632,7 +3632,7 @@ class FrameworkDeploymentTargetResourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="existingTargetResource")
-    def existing_target_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def existing_target_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CRM node in format organizations/{organization}, folders/{folder},
         or projects/{project}
@@ -3640,12 +3640,12 @@ class FrameworkDeploymentTargetResourceConfigArgs:
         return pulumi.get(self, "existing_target_resource")
 
     @existing_target_resource.setter
-    def existing_target_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def existing_target_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "existing_target_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="targetResourceCreationConfig")
-    def target_resource_creation_config(self) -> Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']]:
+    def target_resource_creation_config(self) -> pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']]:
         """
         TargetResourceCreationConfig contains the config to create a new resource to
         be used as the target_resource of a deployment.
@@ -3654,18 +3654,18 @@ class FrameworkDeploymentTargetResourceConfigArgs:
         return pulumi.get(self, "target_resource_creation_config")
 
     @target_resource_creation_config.setter
-    def target_resource_creation_config(self, value: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']]):
+    def target_resource_creation_config(self, value: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']]):
         pulumi.set(self, "target_resource_creation_config", value)
 
 
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict(TypedDict):
-    folder_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgsDict']]
+    folder_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']]]
     """
     FolderCreationConfig contains the config to create a new folder to be used
     as the target_resource of a deployment.
     Structure is documented below.
     """
-    project_creation_config: NotRequired[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict']]
+    project_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']]]
     """
     ProjectCreationConfig contains the config to create a new project to be used
     as the target_resource of a deployment.
@@ -3675,8 +3675,8 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDic
 @pulumi.input_type
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs:
     def __init__(__self__, *,
-                 folder_creation_config: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']] = None,
-                 project_creation_config: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']] = None):
+                 folder_creation_config: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']] = None,
+                 project_creation_config: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']] = None):
         """
         :param pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs'] folder_creation_config: FolderCreationConfig contains the config to create a new folder to be used
                as the target_resource of a deployment.
@@ -3692,7 +3692,7 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="folderCreationConfig")
-    def folder_creation_config(self) -> Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']]:
+    def folder_creation_config(self) -> pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']]:
         """
         FolderCreationConfig contains the config to create a new folder to be used
         as the target_resource of a deployment.
@@ -3701,12 +3701,12 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs:
         return pulumi.get(self, "folder_creation_config")
 
     @folder_creation_config.setter
-    def folder_creation_config(self, value: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']]):
+    def folder_creation_config(self, value: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']]):
         pulumi.set(self, "folder_creation_config", value)
 
     @_builtins.property
     @pulumi.getter(name="projectCreationConfig")
-    def project_creation_config(self) -> Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']]:
+    def project_creation_config(self) -> pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']]:
         """
         ProjectCreationConfig contains the config to create a new project to be used
         as the target_resource of a deployment.
@@ -3715,7 +3715,7 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs:
         return pulumi.get(self, "project_creation_config")
 
     @project_creation_config.setter
-    def project_creation_config(self, value: Optional[pulumi.Input['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']]):
+    def project_creation_config(self, value: pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']]):
         pulumi.set(self, "project_creation_config", value)
 
 

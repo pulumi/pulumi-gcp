@@ -354,95 +354,95 @@ export interface AzureClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      */
-    authorization?: pulumi.Input<inputs.container.AzureClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.container.AzureClusterAuthorization | undefined>;
     /**
      * The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
      */
-    azureRegion?: pulumi.Input<string>;
+    azureRegion?: pulumi.Input<string | undefined>;
     /**
      * Azure authentication configuration for management of Azure resources
      */
-    azureServicesAuthentication?: pulumi.Input<inputs.container.AzureClusterAzureServicesAuthentication>;
+    azureServicesAuthentication?: pulumi.Input<inputs.container.AzureClusterAzureServicesAuthentication | undefined>;
     /**
      * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
-    client?: pulumi.Input<string>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Configuration related to the cluster control plane.
      */
-    controlPlane?: pulumi.Input<inputs.container.AzureClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.container.AzureClusterControlPlane | undefined>;
     /**
      * Output only. The time at which this cluster was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The endpoint of the cluster's API server.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Fleet configuration.
      */
-    fleet?: pulumi.Input<inputs.container.AzureClusterFleet>;
+    fleet?: pulumi.Input<inputs.container.AzureClusterFleet | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Logging configuration.
      */
-    loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Cluster-wide networking configuration.
      */
-    networking?: pulumi.Input<inputs.container.AzureClusterNetworking>;
+    networking?: pulumi.Input<inputs.container.AzureClusterNetworking | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. If set, there are currently changes in flight to the cluster.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. A globally unique identifier for the cluster.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which this cluster was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Workload Identity settings.
      */
-    workloadIdentityConfigs?: pulumi.Input<pulumi.Input<inputs.container.AzureClusterWorkloadIdentityConfig>[]>;
+    workloadIdentityConfigs?: pulumi.Input<pulumi.Input<inputs.container.AzureClusterWorkloadIdentityConfig>[] | undefined>;
 }
 
 /**
@@ -455,7 +455,7 @@ export interface AzureClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      */
@@ -467,11 +467,11 @@ export interface AzureClusterArgs {
     /**
      * Azure authentication configuration for management of Azure resources
      */
-    azureServicesAuthentication?: pulumi.Input<inputs.container.AzureClusterAzureServicesAuthentication>;
+    azureServicesAuthentication?: pulumi.Input<inputs.container.AzureClusterAzureServicesAuthentication | undefined>;
     /**
      * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      */
-    client?: pulumi.Input<string>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Configuration related to the cluster control plane.
      */
@@ -479,7 +479,7 @@ export interface AzureClusterArgs {
     /**
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fleet configuration.
      */
@@ -491,11 +491,11 @@ export interface AzureClusterArgs {
     /**
      * Logging configuration.
      */
-    loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Cluster-wide networking configuration.
      */
@@ -503,7 +503,7 @@ export interface AzureClusterArgs {
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*&#47;resourceGroups/*`
      */

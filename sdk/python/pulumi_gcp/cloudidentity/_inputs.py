@@ -36,7 +36,7 @@ __all__ = [
 ]
 
 class GroupAdditionalGroupKeyArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The ID of the entity.
@@ -46,7 +46,7 @@ class GroupAdditionalGroupKeyArgsDict(TypedDict):
     to the Identity Source's requirements.
     Must be unique within a namespace.
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The namespace in which the entity exists.
@@ -60,8 +60,8 @@ class GroupAdditionalGroupKeyArgsDict(TypedDict):
 @pulumi.input_type
 class GroupAdditionalGroupKeyArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: (Output)
                The ID of the entity.
@@ -85,7 +85,7 @@ class GroupAdditionalGroupKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The ID of the entity.
@@ -98,12 +98,12 @@ class GroupAdditionalGroupKeyArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The namespace in which the entity exists.
@@ -116,7 +116,7 @@ class GroupAdditionalGroupKeyArgs:
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
 
@@ -130,7 +130,7 @@ class GroupGroupKeyArgsDict(TypedDict):
     to the Identity Source's requirements.
     Must be unique within a namespace.
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The namespace in which the entity exists.
     If not specified, the EntityKey represents a Google-managed entity
@@ -144,7 +144,7 @@ class GroupGroupKeyArgsDict(TypedDict):
 class GroupGroupKeyArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the entity.
                For Google-managed entities, the id must be the email address of an existing
@@ -182,7 +182,7 @@ class GroupGroupKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace in which the entity exists.
         If not specified, the EntityKey represents a Google-managed entity
@@ -194,7 +194,7 @@ class GroupGroupKeyArgs:
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
 
@@ -208,7 +208,7 @@ class GroupMembershipMemberKeyArgsDict(TypedDict):
     to the Identity Source's requirements.
     Must be unique within a namespace.
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The namespace in which the entity exists.
     If not specified, the EntityKey represents a Google-managed entity
@@ -222,7 +222,7 @@ class GroupMembershipMemberKeyArgsDict(TypedDict):
 class GroupMembershipMemberKeyArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the entity.
                For Google-managed entities, the id must be the email address of an existing
@@ -260,7 +260,7 @@ class GroupMembershipMemberKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace in which the entity exists.
         If not specified, the EntityKey represents a Google-managed entity
@@ -272,7 +272,7 @@ class GroupMembershipMemberKeyArgs:
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
 
@@ -286,7 +286,7 @@ class GroupMembershipPreferredMemberKeyArgsDict(TypedDict):
     to the Identity Source's requirements.
     Must be unique within a namespace.
     """
-    namespace: NotRequired[pulumi.Input[_builtins.str]]
+    namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The namespace in which the entity exists.
     If not specified, the EntityKey represents a Google-managed entity
@@ -300,7 +300,7 @@ class GroupMembershipPreferredMemberKeyArgsDict(TypedDict):
 class GroupMembershipPreferredMemberKeyArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the entity.
                For Google-managed entities, the id must be the email address of an existing
@@ -338,7 +338,7 @@ class GroupMembershipPreferredMemberKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace in which the entity exists.
         If not specified, the EntityKey represents a Google-managed entity
@@ -350,7 +350,7 @@ class GroupMembershipPreferredMemberKeyArgs:
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
 
@@ -360,7 +360,7 @@ class GroupMembershipRoleArgsDict(TypedDict):
     The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
     Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
     """
-    expiry_detail: NotRequired[pulumi.Input['GroupMembershipRoleExpiryDetailArgsDict']]
+    expiry_detail: NotRequired[pulumi.Input[Optional['GroupMembershipRoleExpiryDetailArgs']]]
     """
     The MembershipRole expiry details, only supported for MEMBER role.
     Other roles cannot be accompanied with MEMBER role having expiry.
@@ -371,7 +371,7 @@ class GroupMembershipRoleArgsDict(TypedDict):
 class GroupMembershipRoleArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 expiry_detail: Optional[pulumi.Input['GroupMembershipRoleExpiryDetailArgs']] = None):
+                 expiry_detail: pulumi.Input[Optional['GroupMembershipRoleExpiryDetailArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
                Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
@@ -398,7 +398,7 @@ class GroupMembershipRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="expiryDetail")
-    def expiry_detail(self) -> Optional[pulumi.Input['GroupMembershipRoleExpiryDetailArgs']]:
+    def expiry_detail(self) -> pulumi.Input[Optional['GroupMembershipRoleExpiryDetailArgs']]:
         """
         The MembershipRole expiry details, only supported for MEMBER role.
         Other roles cannot be accompanied with MEMBER role having expiry.
@@ -407,7 +407,7 @@ class GroupMembershipRoleArgs:
         return pulumi.get(self, "expiry_detail")
 
     @expiry_detail.setter
-    def expiry_detail(self, value: Optional[pulumi.Input['GroupMembershipRoleExpiryDetailArgs']]):
+    def expiry_detail(self, value: pulumi.Input[Optional['GroupMembershipRoleExpiryDetailArgs']]):
         pulumi.set(self, "expiry_detail", value)
 
 
@@ -453,15 +453,15 @@ class PolicyPolicyQueryArgsDict(TypedDict):
     """
     The OrgUnit the query applies to.
     """
-    group: NotRequired[pulumi.Input[_builtins.str]]
+    group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The group that the query applies to.
     """
-    query: NotRequired[pulumi.Input[_builtins.str]]
+    query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CEL query that defines which entities the Policy applies to.
     """
-    sort_order: NotRequired[pulumi.Input[_builtins.int]]
+    sort_order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Decimal sort order of this PolicyQuery.
@@ -471,9 +471,9 @@ class PolicyPolicyQueryArgsDict(TypedDict):
 class PolicyPolicyQueryArgs:
     def __init__(__self__, *,
                  org_unit: pulumi.Input[_builtins.str],
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 sort_order: Optional[pulumi.Input[_builtins.int]] = None):
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 sort_order: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] org_unit: The OrgUnit the query applies to.
         :param pulumi.Input[_builtins.str] group: The group that the query applies to.
@@ -503,31 +503,31 @@ class PolicyPolicyQueryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group that the query applies to.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CEL query that defines which entities the Policy applies to.
         """
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter(name="sortOrder")
-    def sort_order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sort_order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Decimal sort order of this PolicyQuery.
@@ -535,7 +535,7 @@ class PolicyPolicyQueryArgs:
         return pulumi.get(self, "sort_order")
 
     @sort_order.setter
-    def sort_order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sort_order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sort_order", value)
 
 

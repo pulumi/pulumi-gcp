@@ -133,15 +133,15 @@ export interface IamMemberRemoveState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The project id of the target project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The target role that should be removed.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**

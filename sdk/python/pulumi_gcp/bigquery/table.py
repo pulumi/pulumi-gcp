@@ -23,31 +23,31 @@ class TableArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[_builtins.str],
                  table_id: pulumi.Input[_builtins.str],
-                 biglake_configuration: Optional[pulumi.Input['TableBiglakeConfigurationArgs']] = None,
-                 clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_catalog_table_options: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']] = None,
-                 external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_auto_generated_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
-                 max_staleness: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
-                 require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_foreign_type_info: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']] = None,
-                 table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
-                 table_metadata_view: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
-                 time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
-                 view: Optional[pulumi.Input['TableViewArgs']] = None):
+                 biglake_configuration: pulumi.Input[Optional['TableBiglakeConfigurationArgs']] = None,
+                 clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional['TableEncryptionConfigurationArgs']] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_catalog_table_options: pulumi.Input[Optional['TableExternalCatalogTableOptionsArgs']] = None,
+                 external_data_configuration: pulumi.Input[Optional['TableExternalDataConfigurationArgs']] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_auto_generated_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_schema_changes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 materialized_view: pulumi.Input[Optional['TableMaterializedViewArgs']] = None,
+                 max_staleness: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 range_partitioning: pulumi.Input[Optional['TableRangePartitioningArgs']] = None,
+                 require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_foreign_type_info: pulumi.Input[Optional['TableSchemaForeignTypeInfoArgs']] = None,
+                 table_constraints: pulumi.Input[Optional['TableTableConstraintsArgs']] = None,
+                 table_metadata_view: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_replication_info: pulumi.Input[Optional['TableTableReplicationInfoArgs']] = None,
+                 time_partitioning: pulumi.Input[Optional['TableTimePartitioningArgs']] = None,
+                 view: pulumi.Input[Optional['TableViewArgs']] = None):
         """
         The set of arguments for constructing a Table resource.
 
@@ -201,19 +201,19 @@ class TableArgs:
 
     @_builtins.property
     @pulumi.getter(name="biglakeConfiguration")
-    def biglake_configuration(self) -> Optional[pulumi.Input['TableBiglakeConfigurationArgs']]:
+    def biglake_configuration(self) -> pulumi.Input[Optional['TableBiglakeConfigurationArgs']]:
         """
         Specifies the configuration of a BigLake managed table. Structure is documented below
         """
         return pulumi.get(self, "biglake_configuration")
 
     @biglake_configuration.setter
-    def biglake_configuration(self, value: Optional[pulumi.Input['TableBiglakeConfigurationArgs']]):
+    def biglake_configuration(self, value: pulumi.Input[Optional['TableBiglakeConfigurationArgs']]):
         pulumi.set(self, "biglake_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def clusterings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def clusterings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies column names to use for data clustering.
         Up to four top-level columns are allowed, and should be specified in
@@ -222,12 +222,12 @@ class TableArgs:
         return pulumi.get(self, "clusterings")
 
     @clusterings.setter
-    def clusterings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def clusterings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "clusterings", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -235,24 +235,24 @@ class TableArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfiguration")
-    def encryption_configuration(self) -> Optional[pulumi.Input['TableEncryptionConfigurationArgs']]:
+    def encryption_configuration(self) -> pulumi.Input[Optional['TableEncryptionConfigurationArgs']]:
         """
         Specifies how the table should be encrypted.
         If left blank, the table will be encrypted with a Google-managed key; that process
@@ -261,12 +261,12 @@ class TableArgs:
         return pulumi.get(self, "encryption_configuration")
 
     @encryption_configuration.setter
-    def encryption_configuration(self, value: Optional[pulumi.Input['TableEncryptionConfigurationArgs']]):
+    def encryption_configuration(self, value: pulumi.Input[Optional['TableEncryptionConfigurationArgs']]):
         pulumi.set(self, "encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when this table expires, in
         milliseconds since the epoch. If not present, the table will persist
@@ -276,12 +276,12 @@ class TableArgs:
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="externalCatalogTableOptions")
-    def external_catalog_table_options(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]:
+    def external_catalog_table_options(self) -> pulumi.Input[Optional['TableExternalCatalogTableOptionsArgs']]:
         """
         Options defining open source
         compatible table. Structure is documented below.
@@ -289,12 +289,12 @@ class TableArgs:
         return pulumi.get(self, "external_catalog_table_options")
 
     @external_catalog_table_options.setter
-    def external_catalog_table_options(self, value: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]):
+    def external_catalog_table_options(self, value: pulumi.Input[Optional['TableExternalCatalogTableOptionsArgs']]):
         pulumi.set(self, "external_catalog_table_options", value)
 
     @_builtins.property
     @pulumi.getter(name="externalDataConfiguration")
-    def external_data_configuration(self) -> Optional[pulumi.Input['TableExternalDataConfigurationArgs']]:
+    def external_data_configuration(self) -> pulumi.Input[Optional['TableExternalDataConfigurationArgs']]:
         """
         Describes the data format,
         location, and other properties of a table stored outside of BigQuery.
@@ -304,36 +304,36 @@ class TableArgs:
         return pulumi.get(self, "external_data_configuration")
 
     @external_data_configuration.setter
-    def external_data_configuration(self, value: Optional[pulumi.Input['TableExternalDataConfigurationArgs']]):
+    def external_data_configuration(self, value: pulumi.Input[Optional['TableExternalDataConfigurationArgs']]):
         pulumi.set(self, "external_data_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def friendly_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive name for the table.
         """
         return pulumi.get(self, "friendly_name")
 
     @friendly_name.setter
-    def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def friendly_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreAutoGeneratedSchema")
-    def ignore_auto_generated_schema(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_auto_generated_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Terraform will prevent columns added by the server(e.g. hive partitioned columns) in schema from showing diff.
         """
         return pulumi.get(self, "ignore_auto_generated_schema")
 
     @ignore_auto_generated_schema.setter
-    def ignore_auto_generated_schema(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_auto_generated_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_auto_generated_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreSchemaChanges")
-    def ignore_schema_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignore_schema_changes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of fields which would act non-authoritative for each column in schema.
         **NOTE:** Right now only `dataPolicies` field is supported(others might be supported in the future). It means that any `dataPolicies` updated outside terraform will be ignored if this option is used.
@@ -344,12 +344,12 @@ class TableArgs:
         return pulumi.get(self, "ignore_schema_changes")
 
     @ignore_schema_changes.setter
-    def ignore_schema_changes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignore_schema_changes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignore_schema_changes", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of labels to assign to the resource.
 
@@ -359,12 +359,12 @@ class TableArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="materializedView")
-    def materialized_view(self) -> Optional[pulumi.Input['TableMaterializedViewArgs']]:
+    def materialized_view(self) -> pulumi.Input[Optional['TableMaterializedViewArgs']]:
         """
         If specified, configures this table as a materialized view.
         Structure is documented below.
@@ -372,12 +372,12 @@ class TableArgs:
         return pulumi.get(self, "materialized_view")
 
     @materialized_view.setter
-    def materialized_view(self, value: Optional[pulumi.Input['TableMaterializedViewArgs']]):
+    def materialized_view(self, value: pulumi.Input[Optional['TableMaterializedViewArgs']]):
         pulumi.set(self, "materialized_view", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStaleness")
-    def max_staleness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_staleness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum staleness of data that could be
         returned when the table (or stale MV) is queried. Staleness encoded as a
@@ -387,12 +387,12 @@ class TableArgs:
         return pulumi.get(self, "max_staleness")
 
     @max_staleness.setter
-    def max_staleness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_staleness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_staleness", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -400,12 +400,12 @@ class TableArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rangePartitioning")
-    def range_partitioning(self) -> Optional[pulumi.Input['TableRangePartitioningArgs']]:
+    def range_partitioning(self) -> pulumi.Input[Optional['TableRangePartitioningArgs']]:
         """
         If specified, configures range-based
         partitioning for this table. Structure is documented below.
@@ -413,12 +413,12 @@ class TableArgs:
         return pulumi.get(self, "range_partitioning")
 
     @range_partitioning.setter
-    def range_partitioning(self, value: Optional[pulumi.Input['TableRangePartitioningArgs']]):
+    def range_partitioning(self, value: pulumi.Input[Optional['TableRangePartitioningArgs']]):
         pulumi.set(self, "range_partitioning", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePartitionFilter")
-    def require_partition_filter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_partition_filter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, queries over this table
         require a partition filter that can be used for partition elimination to be
@@ -427,12 +427,12 @@ class TableArgs:
         return pulumi.get(self, "require_partition_filter")
 
     @require_partition_filter.setter
-    def require_partition_filter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_partition_filter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_partition_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTags")
-    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags attached to this table. Tag keys are
         globally unique. Tag key is expected to be in the namespaced format, for
@@ -444,24 +444,24 @@ class TableArgs:
         return pulumi.get(self, "resource_tags")
 
     @resource_tags.setter
-    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaForeignTypeInfo")
-    def schema_foreign_type_info(self) -> Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]:
+    def schema_foreign_type_info(self) -> pulumi.Input[Optional['TableSchemaForeignTypeInfoArgs']]:
         """
         Specifies metadata of the foreign data
         type definition in field schema. Structure is documented below.
@@ -469,12 +469,12 @@ class TableArgs:
         return pulumi.get(self, "schema_foreign_type_info")
 
     @schema_foreign_type_info.setter
-    def schema_foreign_type_info(self, value: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]):
+    def schema_foreign_type_info(self, value: pulumi.Input[Optional['TableSchemaForeignTypeInfoArgs']]):
         pulumi.set(self, "schema_foreign_type_info", value)
 
     @_builtins.property
     @pulumi.getter(name="tableConstraints")
-    def table_constraints(self) -> Optional[pulumi.Input['TableTableConstraintsArgs']]:
+    def table_constraints(self) -> pulumi.Input[Optional['TableTableConstraintsArgs']]:
         """
         Defines the primary key and foreign keys. 
         Structure is documented below.
@@ -482,24 +482,24 @@ class TableArgs:
         return pulumi.get(self, "table_constraints")
 
     @table_constraints.setter
-    def table_constraints(self, value: Optional[pulumi.Input['TableTableConstraintsArgs']]):
+    def table_constraints(self, value: pulumi.Input[Optional['TableTableConstraintsArgs']]):
         pulumi.set(self, "table_constraints", value)
 
     @_builtins.property
     @pulumi.getter(name="tableMetadataView")
-    def table_metadata_view(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_metadata_view(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         """
         return pulumi.get(self, "table_metadata_view")
 
     @table_metadata_view.setter
-    def table_metadata_view(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_metadata_view(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_metadata_view", value)
 
     @_builtins.property
     @pulumi.getter(name="tableReplicationInfo")
-    def table_replication_info(self) -> Optional[pulumi.Input['TableTableReplicationInfoArgs']]:
+    def table_replication_info(self) -> pulumi.Input[Optional['TableTableReplicationInfoArgs']]:
         """
         Replication info of a table created
         using "AS REPLICA" DDL like:
@@ -509,12 +509,12 @@ class TableArgs:
         return pulumi.get(self, "table_replication_info")
 
     @table_replication_info.setter
-    def table_replication_info(self, value: Optional[pulumi.Input['TableTableReplicationInfoArgs']]):
+    def table_replication_info(self, value: pulumi.Input[Optional['TableTableReplicationInfoArgs']]):
         pulumi.set(self, "table_replication_info", value)
 
     @_builtins.property
     @pulumi.getter(name="timePartitioning")
-    def time_partitioning(self) -> Optional[pulumi.Input['TableTimePartitioningArgs']]:
+    def time_partitioning(self) -> pulumi.Input[Optional['TableTimePartitioningArgs']]:
         """
         If specified, configures time-based
         partitioning for this table. Structure is documented below.
@@ -522,12 +522,12 @@ class TableArgs:
         return pulumi.get(self, "time_partitioning")
 
     @time_partitioning.setter
-    def time_partitioning(self, value: Optional[pulumi.Input['TableTimePartitioningArgs']]):
+    def time_partitioning(self, value: pulumi.Input[Optional['TableTimePartitioningArgs']]):
         pulumi.set(self, "time_partitioning", value)
 
     @_builtins.property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input['TableViewArgs']]:
+    def view(self) -> pulumi.Input[Optional['TableViewArgs']]:
         """
         If specified, configures this table as a view.
         Structure is documented below.
@@ -535,52 +535,52 @@ class TableArgs:
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input['TableViewArgs']]):
+    def view(self, value: pulumi.Input[Optional['TableViewArgs']]):
         pulumi.set(self, "view", value)
 
 
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
-                 biglake_configuration: Optional[pulumi.Input['TableBiglakeConfigurationArgs']] = None,
-                 clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_catalog_table_options: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']] = None,
-                 external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 generated_schema_columns: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_auto_generated_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
-                 max_staleness: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_long_term_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_rows: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
-                 require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_foreign_type_info: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_metadata_view: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
-                 time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input['TableViewArgs']] = None):
+                 biglake_configuration: pulumi.Input[Optional['TableBiglakeConfigurationArgs']] = None,
+                 clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_configuration: pulumi.Input[Optional['TableEncryptionConfigurationArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_catalog_table_options: pulumi.Input[Optional['TableExternalCatalogTableOptionsArgs']] = None,
+                 external_data_configuration: pulumi.Input[Optional['TableExternalDataConfigurationArgs']] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 generated_schema_columns: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_auto_generated_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_schema_changes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 materialized_view: pulumi.Input[Optional['TableMaterializedViewArgs']] = None,
+                 max_staleness: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_long_term_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_rows: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 range_partitioning: pulumi.Input[Optional['TableRangePartitioningArgs']] = None,
+                 require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_foreign_type_info: pulumi.Input[Optional['TableSchemaForeignTypeInfoArgs']] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_constraints: pulumi.Input[Optional['TableTableConstraintsArgs']] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_metadata_view: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_replication_info: pulumi.Input[Optional['TableTableReplicationInfoArgs']] = None,
+                 time_partitioning: pulumi.Input[Optional['TableTimePartitioningArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional['TableViewArgs']] = None):
         """
         Input properties used for looking up and filtering Table resources.
 
@@ -762,19 +762,19 @@ class _TableState:
 
     @_builtins.property
     @pulumi.getter(name="biglakeConfiguration")
-    def biglake_configuration(self) -> Optional[pulumi.Input['TableBiglakeConfigurationArgs']]:
+    def biglake_configuration(self) -> pulumi.Input[Optional['TableBiglakeConfigurationArgs']]:
         """
         Specifies the configuration of a BigLake managed table. Structure is documented below
         """
         return pulumi.get(self, "biglake_configuration")
 
     @biglake_configuration.setter
-    def biglake_configuration(self, value: Optional[pulumi.Input['TableBiglakeConfigurationArgs']]):
+    def biglake_configuration(self, value: pulumi.Input[Optional['TableBiglakeConfigurationArgs']]):
         pulumi.set(self, "biglake_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def clusterings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def clusterings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies column names to use for data clustering.
         Up to four top-level columns are allowed, and should be specified in
@@ -783,24 +783,24 @@ class _TableState:
         return pulumi.get(self, "clusterings")
 
     @clusterings.setter
-    def clusterings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def clusterings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "clusterings", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when this table was created, in milliseconds since the epoch.
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataset ID to create the table in.
         Changing this forces a new resource to be created.
@@ -808,12 +808,12 @@ class _TableState:
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         in state, a `=destroy` or `=update` that would delete the instance will fail.
@@ -821,24 +821,24 @@ class _TableState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 
@@ -861,12 +861,12 @@ class _TableState:
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfiguration")
-    def encryption_configuration(self) -> Optional[pulumi.Input['TableEncryptionConfigurationArgs']]:
+    def encryption_configuration(self) -> pulumi.Input[Optional['TableEncryptionConfigurationArgs']]:
         """
         Specifies how the table should be encrypted.
         If left blank, the table will be encrypted with a Google-managed key; that process
@@ -875,24 +875,24 @@ class _TableState:
         return pulumi.get(self, "encryption_configuration")
 
     @encryption_configuration.setter
-    def encryption_configuration(self, value: Optional[pulumi.Input['TableEncryptionConfigurationArgs']]):
+    def encryption_configuration(self, value: pulumi.Input[Optional['TableEncryptionConfigurationArgs']]):
         pulumi.set(self, "encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A hash of the resource.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when this table expires, in
         milliseconds since the epoch. If not present, the table will persist
@@ -902,12 +902,12 @@ class _TableState:
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="externalCatalogTableOptions")
-    def external_catalog_table_options(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]:
+    def external_catalog_table_options(self) -> pulumi.Input[Optional['TableExternalCatalogTableOptionsArgs']]:
         """
         Options defining open source
         compatible table. Structure is documented below.
@@ -915,12 +915,12 @@ class _TableState:
         return pulumi.get(self, "external_catalog_table_options")
 
     @external_catalog_table_options.setter
-    def external_catalog_table_options(self, value: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]):
+    def external_catalog_table_options(self, value: pulumi.Input[Optional['TableExternalCatalogTableOptionsArgs']]):
         pulumi.set(self, "external_catalog_table_options", value)
 
     @_builtins.property
     @pulumi.getter(name="externalDataConfiguration")
-    def external_data_configuration(self) -> Optional[pulumi.Input['TableExternalDataConfigurationArgs']]:
+    def external_data_configuration(self) -> pulumi.Input[Optional['TableExternalDataConfigurationArgs']]:
         """
         Describes the data format,
         location, and other properties of a table stored outside of BigQuery.
@@ -930,48 +930,48 @@ class _TableState:
         return pulumi.get(self, "external_data_configuration")
 
     @external_data_configuration.setter
-    def external_data_configuration(self, value: Optional[pulumi.Input['TableExternalDataConfigurationArgs']]):
+    def external_data_configuration(self, value: pulumi.Input[Optional['TableExternalDataConfigurationArgs']]):
         pulumi.set(self, "external_data_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="friendlyName")
-    def friendly_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def friendly_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A descriptive name for the table.
         """
         return pulumi.get(self, "friendly_name")
 
     @friendly_name.setter
-    def friendly_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def friendly_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "friendly_name", value)
 
     @_builtins.property
     @pulumi.getter(name="generatedSchemaColumns")
-    def generated_schema_columns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generated_schema_columns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output-only) A list of autogenerated schema fields.
         """
         return pulumi.get(self, "generated_schema_columns")
 
     @generated_schema_columns.setter
-    def generated_schema_columns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generated_schema_columns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generated_schema_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreAutoGeneratedSchema")
-    def ignore_auto_generated_schema(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_auto_generated_schema(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Terraform will prevent columns added by the server(e.g. hive partitioned columns) in schema from showing diff.
         """
         return pulumi.get(self, "ignore_auto_generated_schema")
 
     @ignore_auto_generated_schema.setter
-    def ignore_auto_generated_schema(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_auto_generated_schema(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_auto_generated_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreSchemaChanges")
-    def ignore_schema_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignore_schema_changes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of fields which would act non-authoritative for each column in schema.
         **NOTE:** Right now only `dataPolicies` field is supported(others might be supported in the future). It means that any `dataPolicies` updated outside terraform will be ignored if this option is used.
@@ -982,12 +982,12 @@ class _TableState:
         return pulumi.get(self, "ignore_schema_changes")
 
     @ignore_schema_changes.setter
-    def ignore_schema_changes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignore_schema_changes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignore_schema_changes", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of labels to assign to the resource.
 
@@ -997,36 +997,36 @@ class _TableState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when this table was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the table resides. This value is inherited from the dataset.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="materializedView")
-    def materialized_view(self) -> Optional[pulumi.Input['TableMaterializedViewArgs']]:
+    def materialized_view(self) -> pulumi.Input[Optional['TableMaterializedViewArgs']]:
         """
         If specified, configures this table as a materialized view.
         Structure is documented below.
@@ -1034,12 +1034,12 @@ class _TableState:
         return pulumi.get(self, "materialized_view")
 
     @materialized_view.setter
-    def materialized_view(self, value: Optional[pulumi.Input['TableMaterializedViewArgs']]):
+    def materialized_view(self, value: pulumi.Input[Optional['TableMaterializedViewArgs']]):
         pulumi.set(self, "materialized_view", value)
 
     @_builtins.property
     @pulumi.getter(name="maxStaleness")
-    def max_staleness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_staleness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum staleness of data that could be
         returned when the table (or stale MV) is queried. Staleness encoded as a
@@ -1049,48 +1049,48 @@ class _TableState:
         return pulumi.get(self, "max_staleness")
 
     @max_staleness.setter
-    def max_staleness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_staleness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_staleness", value)
 
     @_builtins.property
     @pulumi.getter(name="numBytes")
-    def num_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of this table in bytes, excluding any data in the streaming buffer.
         """
         return pulumi.get(self, "num_bytes")
 
     @num_bytes.setter
-    def num_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="numLongTermBytes")
-    def num_long_term_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_long_term_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of bytes in the table that are considered "long-term storage".
         """
         return pulumi.get(self, "num_long_term_bytes")
 
     @num_long_term_bytes.setter
-    def num_long_term_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_long_term_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_long_term_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="numRows")
-    def num_rows(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_rows(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of rows of data in this table, excluding any data in the streaming buffer.
         """
         return pulumi.get(self, "num_rows")
 
     @num_rows.setter
-    def num_rows(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_rows(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_rows", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -1098,24 +1098,24 @@ class _TableState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="rangePartitioning")
-    def range_partitioning(self) -> Optional[pulumi.Input['TableRangePartitioningArgs']]:
+    def range_partitioning(self) -> pulumi.Input[Optional['TableRangePartitioningArgs']]:
         """
         If specified, configures range-based
         partitioning for this table. Structure is documented below.
@@ -1123,12 +1123,12 @@ class _TableState:
         return pulumi.get(self, "range_partitioning")
 
     @range_partitioning.setter
-    def range_partitioning(self, value: Optional[pulumi.Input['TableRangePartitioningArgs']]):
+    def range_partitioning(self, value: pulumi.Input[Optional['TableRangePartitioningArgs']]):
         pulumi.set(self, "range_partitioning", value)
 
     @_builtins.property
     @pulumi.getter(name="requirePartitionFilter")
-    def require_partition_filter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def require_partition_filter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, queries over this table
         require a partition filter that can be used for partition elimination to be
@@ -1137,12 +1137,12 @@ class _TableState:
         return pulumi.get(self, "require_partition_filter")
 
     @require_partition_filter.setter
-    def require_partition_filter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def require_partition_filter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "require_partition_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTags")
-    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags attached to this table. Tag keys are
         globally unique. Tag key is expected to be in the namespaced format, for
@@ -1154,24 +1154,24 @@ class _TableState:
         return pulumi.get(self, "resource_tags")
 
     @resource_tags.setter
-    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A JSON schema for the table.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaForeignTypeInfo")
-    def schema_foreign_type_info(self) -> Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]:
+    def schema_foreign_type_info(self) -> pulumi.Input[Optional['TableSchemaForeignTypeInfoArgs']]:
         """
         Specifies metadata of the foreign data
         type definition in field schema. Structure is documented below.
@@ -1179,24 +1179,24 @@ class _TableState:
         return pulumi.get(self, "schema_foreign_type_info")
 
     @schema_foreign_type_info.setter
-    def schema_foreign_type_info(self, value: Optional[pulumi.Input['TableSchemaForeignTypeInfoArgs']]):
+    def schema_foreign_type_info(self, value: pulumi.Input[Optional['TableSchemaForeignTypeInfoArgs']]):
         pulumi.set(self, "schema_foreign_type_info", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="tableConstraints")
-    def table_constraints(self) -> Optional[pulumi.Input['TableTableConstraintsArgs']]:
+    def table_constraints(self) -> pulumi.Input[Optional['TableTableConstraintsArgs']]:
         """
         Defines the primary key and foreign keys. 
         Structure is documented below.
@@ -1204,12 +1204,12 @@ class _TableState:
         return pulumi.get(self, "table_constraints")
 
     @table_constraints.setter
-    def table_constraints(self, value: Optional[pulumi.Input['TableTableConstraintsArgs']]):
+    def table_constraints(self, value: pulumi.Input[Optional['TableTableConstraintsArgs']]):
         pulumi.set(self, "table_constraints", value)
 
     @_builtins.property
     @pulumi.getter(name="tableId")
-    def table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique ID for the resource.
         Changing this forces a new resource to be created.
@@ -1217,24 +1217,24 @@ class _TableState:
         return pulumi.get(self, "table_id")
 
     @table_id.setter
-    def table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tableMetadataView")
-    def table_metadata_view(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_metadata_view(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         """
         return pulumi.get(self, "table_metadata_view")
 
     @table_metadata_view.setter
-    def table_metadata_view(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_metadata_view(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_metadata_view", value)
 
     @_builtins.property
     @pulumi.getter(name="tableReplicationInfo")
-    def table_replication_info(self) -> Optional[pulumi.Input['TableTableReplicationInfoArgs']]:
+    def table_replication_info(self) -> pulumi.Input[Optional['TableTableReplicationInfoArgs']]:
         """
         Replication info of a table created
         using "AS REPLICA" DDL like:
@@ -1244,12 +1244,12 @@ class _TableState:
         return pulumi.get(self, "table_replication_info")
 
     @table_replication_info.setter
-    def table_replication_info(self, value: Optional[pulumi.Input['TableTableReplicationInfoArgs']]):
+    def table_replication_info(self, value: pulumi.Input[Optional['TableTableReplicationInfoArgs']]):
         pulumi.set(self, "table_replication_info", value)
 
     @_builtins.property
     @pulumi.getter(name="timePartitioning")
-    def time_partitioning(self) -> Optional[pulumi.Input['TableTimePartitioningArgs']]:
+    def time_partitioning(self) -> pulumi.Input[Optional['TableTimePartitioningArgs']]:
         """
         If specified, configures time-based
         partitioning for this table. Structure is documented below.
@@ -1257,24 +1257,24 @@ class _TableState:
         return pulumi.get(self, "time_partitioning")
 
     @time_partitioning.setter
-    def time_partitioning(self, value: Optional[pulumi.Input['TableTimePartitioningArgs']]):
+    def time_partitioning(self, value: pulumi.Input[Optional['TableTimePartitioningArgs']]):
         pulumi.set(self, "time_partitioning", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the table type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input['TableViewArgs']]:
+    def view(self) -> pulumi.Input[Optional['TableViewArgs']]:
         """
         If specified, configures this table as a view.
         Structure is documented below.
@@ -1282,7 +1282,7 @@ class _TableState:
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input['TableViewArgs']]):
+    def view(self, value: pulumi.Input[Optional['TableViewArgs']]):
         pulumi.set(self, "view", value)
 
 
@@ -1292,33 +1292,33 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biglake_configuration: Optional[pulumi.Input[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
-                 clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
-                 external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_auto_generated_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
-                 max_staleness: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 range_partitioning: Optional[pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
-                 require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
-                 table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_metadata_view: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
-                 time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
-                 view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
+                 biglake_configuration: pulumi.Input[Optional[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
+                 clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_catalog_table_options: pulumi.Input[Optional[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
+                 external_data_configuration: pulumi.Input[Optional[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_auto_generated_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_schema_changes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 materialized_view: pulumi.Input[Optional[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
+                 max_staleness: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 range_partitioning: pulumi.Input[Optional[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
+                 require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_foreign_type_info: pulumi.Input[Optional[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
+                 table_constraints: pulumi.Input[Optional[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_metadata_view: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_replication_info: pulumi.Input[Optional[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
+                 time_partitioning: pulumi.Input[Optional[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
+                 view: pulumi.Input[Optional[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
                  __props__=None):
         """
         Creates a table resource in a dataset for Google BigQuery. For more information see
@@ -1568,33 +1568,33 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biglake_configuration: Optional[pulumi.Input[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
-                 clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
-                 external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
-                 friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_auto_generated_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
-                 max_staleness: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 range_partitioning: Optional[pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
-                 require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
-                 table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_metadata_view: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
-                 time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
-                 view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
+                 biglake_configuration: pulumi.Input[Optional[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
+                 clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 external_catalog_table_options: pulumi.Input[Optional[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
+                 external_data_configuration: pulumi.Input[Optional[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
+                 friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_auto_generated_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_schema_changes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 materialized_view: pulumi.Input[Optional[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
+                 max_staleness: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 range_partitioning: pulumi.Input[Optional[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
+                 require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_foreign_type_info: pulumi.Input[Optional[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
+                 table_constraints: pulumi.Input[Optional[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_metadata_view: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_replication_info: pulumi.Input[Optional[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
+                 time_partitioning: pulumi.Input[Optional[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
+                 view: pulumi.Input[Optional[Union['TableViewArgs', 'TableViewArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1659,45 +1659,45 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            biglake_configuration: Optional[pulumi.Input[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
-            clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-            external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
-            external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
-            friendly_name: Optional[pulumi.Input[_builtins.str]] = None,
-            generated_schema_columns: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_auto_generated_schema: Optional[pulumi.Input[_builtins.bool]] = None,
-            ignore_schema_changes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.int]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            materialized_view: Optional[pulumi.Input[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
-            max_staleness: Optional[pulumi.Input[_builtins.str]] = None,
-            num_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            num_long_term_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            num_rows: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            range_partitioning: Optional[pulumi.Input[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
-            require_partition_filter: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            schema_foreign_type_info: Optional[pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            table_constraints: Optional[pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
-            table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            table_metadata_view: Optional[pulumi.Input[_builtins.str]] = None,
-            table_replication_info: Optional[pulumi.Input[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
-            time_partitioning: Optional[pulumi.Input[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            view: Optional[pulumi.Input[Union['TableViewArgs', 'TableViewArgsDict']]] = None) -> 'Table':
+            biglake_configuration: pulumi.Input[Optional[Union['TableBiglakeConfigurationArgs', 'TableBiglakeConfigurationArgsDict']]] = None,
+            clusterings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_configuration: pulumi.Input[Optional[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+            external_catalog_table_options: pulumi.Input[Optional[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
+            external_data_configuration: pulumi.Input[Optional[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
+            friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+            generated_schema_columns: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_auto_generated_schema: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_schema_changes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.int]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            materialized_view: pulumi.Input[Optional[Union['TableMaterializedViewArgs', 'TableMaterializedViewArgsDict']]] = None,
+            max_staleness: pulumi.Input[Optional[_builtins.str]] = None,
+            num_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            num_long_term_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            num_rows: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            range_partitioning: pulumi.Input[Optional[Union['TableRangePartitioningArgs', 'TableRangePartitioningArgsDict']]] = None,
+            require_partition_filter: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            schema_foreign_type_info: pulumi.Input[Optional[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            table_constraints: pulumi.Input[Optional[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']]] = None,
+            table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            table_metadata_view: pulumi.Input[Optional[_builtins.str]] = None,
+            table_replication_info: pulumi.Input[Optional[Union['TableTableReplicationInfoArgs', 'TableTableReplicationInfoArgsDict']]] = None,
+            time_partitioning: pulumi.Input[Optional[Union['TableTimePartitioningArgs', 'TableTimePartitioningArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            view: pulumi.Input[Optional[Union['TableViewArgs', 'TableViewArgsDict']]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

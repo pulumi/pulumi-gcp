@@ -168,11 +168,11 @@ def get_ai_reasoning_engine_query(class_method: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         reasoning_engine_id=pulumi.get(__ret__, 'reasoning_engine_id'),
         region=pulumi.get(__ret__, 'region'))
-def get_ai_reasoning_engine_query_output(class_method: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         input: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         reasoning_engine_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                         region: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ai_reasoning_engine_query_output(class_method: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         input: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         reasoning_engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                         region: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiReasoningEngineQueryResult]:
     """
     Get the output of a query sent to a Vertex AI Reasoning Engine agent.

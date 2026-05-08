@@ -464,12 +464,12 @@ export interface RouterNatState {
      * project-level default tier is used.
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    autoNetworkTier?: pulumi.Input<string>;
+    autoNetworkTier?: pulumi.Input<string | undefined>;
     /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
-    drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    drainNatIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable Dynamic Port Allocation.
      * If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
@@ -478,60 +478,60 @@ export interface RouterNatState {
      * If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
      * Mutually exclusive with enableEndpointIndependentMapping.
      */
-    enableDynamicPortAllocation?: pulumi.Input<boolean>;
+    enableDynamicPortAllocation?: pulumi.Input<boolean | undefined>;
     /**
      * Enable endpoint independent mapping.
      * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      */
-    enableEndpointIndependentMapping?: pulumi.Input<boolean>;
+    enableEndpointIndependentMapping?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the endpoint Types supported by the NAT Gateway.
      * Supported values include:
      * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
      * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
      */
-    endpointTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    endpointTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
-    icmpIdleTimeoutSec?: pulumi.Input<number>;
+    icmpIdleTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
      * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
      */
-    initialNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    initialNatIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for logging on NAT
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig | undefined>;
     /**
      * Maximum number of ports allocated to a VM from this NAT.
      * This field can only be set when enableDynamicPortAllocation is enabled.
      */
-    maxPortsPerVm?: pulumi.Input<number>;
+    maxPortsPerVm?: pulumi.Input<number | undefined>;
     /**
      * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      */
-    minPortsPerVm?: pulumi.Input<number>;
+    minPortsPerVm?: pulumi.Input<number | undefined>;
     /**
      * Name of the NAT service. The name must be 1-63 characters long and
      * comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
      * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
      * Structure is documented below.
      */
-    nat64Subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatNat64Subnetwork>[]>;
+    nat64Subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatNat64Subnetwork>[] | undefined>;
     /**
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
-    natIpAllocateOption?: pulumi.Input<string>;
+    natIpAllocateOption?: pulumi.Input<string | undefined>;
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
@@ -539,25 +539,25 @@ export interface RouterNatState {
      * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
      * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      */
-    natIps?: pulumi.Input<pulumi.Input<string>[]>;
+    natIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router and NAT reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
      */
-    router?: pulumi.Input<string>;
+    router?: pulumi.Input<string | undefined>;
     /**
      * A list of rules associated with this NAT.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatRule>[] | undefined>;
     /**
      * How NAT should be configured per Subnetwork.
      * If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -571,7 +571,7 @@ export interface RouterNatState {
      * other RouterNat section in any Router for this network in this region.
      * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
-    sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
+    sourceSubnetworkIpRangesToNat?: pulumi.Input<string | undefined>;
     /**
      * Specify the Nat option for NAT64, which can take one of the following values:
      * ALL_IPV6_SUBNETWORKS: All of the IP ranges in every Subnetwork are allowed to Nat.
@@ -580,28 +580,28 @@ export interface RouterNatState {
      * Other Router.Nat sections can still be present to enable NAT44 only.
      * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
      */
-    sourceSubnetworkIpRangesToNat64?: pulumi.Input<string>;
+    sourceSubnetworkIpRangesToNat64?: pulumi.Input<string | undefined>;
     /**
      * One or more subnetwork NAT configurations. Only used if
      * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
      * Structure is documented below.
      */
-    subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[]>;
+    subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[] | undefined>;
     /**
      * Timeout (in seconds) for TCP established connections.
      * Defaults to 1200s if not set.
      */
-    tcpEstablishedIdleTimeoutSec?: pulumi.Input<number>;
+    tcpEstablishedIdleTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
      * Defaults to 120s if not set.
      */
-    tcpTimeWaitTimeoutSec?: pulumi.Input<number>;
+    tcpTimeWaitTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.
      */
-    tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
+    tcpTransitoryIdleTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
@@ -610,11 +610,11 @@ export interface RouterNatState {
      * Default value is `PUBLIC`.
      * Possible values are: `PUBLIC`, `PRIVATE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      */
-    udpIdleTimeoutSec?: pulumi.Input<number>;
+    udpIdleTimeoutSec?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -627,12 +627,12 @@ export interface RouterNatArgs {
      * project-level default tier is used.
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    autoNetworkTier?: pulumi.Input<string>;
+    autoNetworkTier?: pulumi.Input<string | undefined>;
     /**
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
-    drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    drainNatIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable Dynamic Port Allocation.
      * If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
@@ -641,60 +641,60 @@ export interface RouterNatArgs {
      * If maxPortsPerVm is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
      * Mutually exclusive with enableEndpointIndependentMapping.
      */
-    enableDynamicPortAllocation?: pulumi.Input<boolean>;
+    enableDynamicPortAllocation?: pulumi.Input<boolean | undefined>;
     /**
      * Enable endpoint independent mapping.
      * For more information see the [official documentation](https://docs.cloud.google.com/nat/docs/public-nat#specs-rfcs).
      */
-    enableEndpointIndependentMapping?: pulumi.Input<boolean>;
+    enableEndpointIndependentMapping?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the endpoint Types supported by the NAT Gateway.
      * Supported values include:
      * `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
      * `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
      */
-    endpointTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    endpointTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
-    icmpIdleTimeoutSec?: pulumi.Input<number>;
+    icmpIdleTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
      * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
      */
-    initialNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    initialNatIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for logging on NAT
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.RouterNatLogConfig | undefined>;
     /**
      * Maximum number of ports allocated to a VM from this NAT.
      * This field can only be set when enableDynamicPortAllocation is enabled.
      */
-    maxPortsPerVm?: pulumi.Input<number>;
+    maxPortsPerVm?: pulumi.Input<number | undefined>;
     /**
      * Minimum number of ports allocated to a VM from this NAT. Defaults to 64 for static port allocation and 32 dynamic port allocation if not set.
      */
-    minPortsPerVm?: pulumi.Input<number>;
+    minPortsPerVm?: pulumi.Input<number | undefined>;
     /**
      * Name of the NAT service. The name must be 1-63 characters long and
      * comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
      * Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
      * Structure is documented below.
      */
-    nat64Subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatNat64Subnetwork>[]>;
+    nat64Subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatNat64Subnetwork>[] | undefined>;
     /**
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
      * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
-    natIpAllocateOption?: pulumi.Input<string>;
+    natIpAllocateOption?: pulumi.Input<string | undefined>;
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
@@ -702,16 +702,16 @@ export interface RouterNatArgs {
      * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
      * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      */
-    natIps?: pulumi.Input<pulumi.Input<string>[]>;
+    natIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router and NAT reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
      */
@@ -720,7 +720,7 @@ export interface RouterNatArgs {
      * A list of rules associated with this NAT.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatRule>[] | undefined>;
     /**
      * How NAT should be configured per Subnetwork.
      * If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -743,28 +743,28 @@ export interface RouterNatArgs {
      * Other Router.Nat sections can still be present to enable NAT44 only.
      * Possible values are: `ALL_IPV6_SUBNETWORKS`, `LIST_OF_IPV6_SUBNETWORKS`.
      */
-    sourceSubnetworkIpRangesToNat64?: pulumi.Input<string>;
+    sourceSubnetworkIpRangesToNat64?: pulumi.Input<string | undefined>;
     /**
      * One or more subnetwork NAT configurations. Only used if
      * `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
      * Structure is documented below.
      */
-    subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[]>;
+    subnetworks?: pulumi.Input<pulumi.Input<inputs.compute.RouterNatSubnetwork>[] | undefined>;
     /**
      * Timeout (in seconds) for TCP established connections.
      * Defaults to 1200s if not set.
      */
-    tcpEstablishedIdleTimeoutSec?: pulumi.Input<number>;
+    tcpEstablishedIdleTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Timeout (in seconds) for TCP connections that are in TIME_WAIT state.
      * Defaults to 120s if not set.
      */
-    tcpTimeWaitTimeoutSec?: pulumi.Input<number>;
+    tcpTimeWaitTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Timeout (in seconds) for TCP transitory connections.
      * Defaults to 30s if not set.
      */
-    tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
+    tcpTransitoryIdleTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
@@ -773,9 +773,9 @@ export interface RouterNatArgs {
      * Default value is `PUBLIC`.
      * Possible values are: `PUBLIC`, `PRIVATE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
      */
-    udpIdleTimeoutSec?: pulumi.Input<number>;
+    udpIdleTimeoutSec?: pulumi.Input<number | undefined>;
 }

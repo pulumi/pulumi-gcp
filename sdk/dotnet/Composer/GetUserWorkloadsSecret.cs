@@ -49,11 +49,11 @@ namespace Pulumi.Gcp.Composer
         ///         Name = "example-secret",
         ///         Data = 
         ///         {
-        ///             { "username", Std.Index.Base64encode.Invoke(new()
+        ///             { "username", Std.Base64encode.Invoke(new()
         ///             {
         ///                 Input = "username",
         ///             }).Apply(invoke =&gt; invoke.Result) },
-        ///             { "password", Std.Index.Base64encode.Invoke(new()
+        ///             { "password", Std.Base64encode.Invoke(new()
         ///             {
         ///                 Input = "password",
         ///             }).Apply(invoke =&gt; invoke.Result) },
@@ -114,11 +114,11 @@ namespace Pulumi.Gcp.Composer
         ///         Name = "example-secret",
         ///         Data = 
         ///         {
-        ///             { "username", Std.Index.Base64encode.Invoke(new()
+        ///             { "username", Std.Base64encode.Invoke(new()
         ///             {
         ///                 Input = "username",
         ///             }).Apply(invoke =&gt; invoke.Result) },
-        ///             { "password", Std.Index.Base64encode.Invoke(new()
+        ///             { "password", Std.Base64encode.Invoke(new()
         ///             {
         ///                 Input = "password",
         ///             }).Apply(invoke =&gt; invoke.Result) },
@@ -179,11 +179,11 @@ namespace Pulumi.Gcp.Composer
         ///         Name = "example-secret",
         ///         Data = 
         ///         {
-        ///             { "username", Std.Index.Base64encode.Invoke(new()
+        ///             { "username", Std.Base64encode.Invoke(new()
         ///             {
         ///                 Input = "username",
         ///             }).Apply(invoke =&gt; invoke.Result) },
-        ///             { "password", Std.Index.Base64encode.Invoke(new()
+        ///             { "password", Std.Base64encode.Invoke(new()
         ///             {
         ///                 Input = "password",
         ///             }).Apply(invoke =&gt; invoke.Result) },

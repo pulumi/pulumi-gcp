@@ -162,49 +162,49 @@ export interface AccountState {
      * must be 6-30 characters long, and match the regular expression `a-z`
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
-    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
      * Must be set after creation to disable a service account.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The e-mail address of the service account. This value
      * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
      * that would grant the service account privileges.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
      */
-    member?: pulumi.Input<string>;
+    member?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified name of the service account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the service account.
      */
-    uniqueId?: pulumi.Input<string>;
+    uniqueId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,29 +217,29 @@ export interface AccountArgs {
      * must be 6-30 characters long, and match the regular expression `a-z`
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
-    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
      * Must be set after creation to disable a service account.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The display name for the service account.
      * Can be updated without creating a new resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

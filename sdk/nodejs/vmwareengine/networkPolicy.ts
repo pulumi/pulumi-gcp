@@ -232,64 +232,64 @@ export interface NetworkPolicyState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this network policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * IP address range in CIDR notation used to create internet access and external IP access.
      * An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
      * prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
      */
-    edgeServicesCidr?: pulumi.Input<string>;
+    edgeServicesCidr?: pulumi.Input<string | undefined>;
     /**
      * Network service that allows External IP addresses to be assigned to VMware workloads.
      * This service can only be enabled when internetAccess is also enabled.
      * Structure is documented below.
      */
-    externalIp?: pulumi.Input<inputs.vmwareengine.NetworkPolicyExternalIp>;
+    externalIp?: pulumi.Input<inputs.vmwareengine.NetworkPolicyExternalIp | undefined>;
     /**
      * Network service that allows VMware workloads to access the internet.
      * Structure is documented below.
      */
-    internetAccess?: pulumi.Input<inputs.vmwareengine.NetworkPolicyInternetAccess>;
+    internetAccess?: pulumi.Input<inputs.vmwareengine.NetworkPolicyInternetAccess | undefined>;
     /**
      * The resource name of the location (region) to create the new network policy in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
      * For example: projects/my-project/locations/us-central1
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Network Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last updated time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the VMware Engine network. Specify the name in the following form:
      * projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
      * can either be a project number or a project ID.
      */
-    vmwareEngineNetwork?: pulumi.Input<string>;
+    vmwareEngineNetwork?: pulumi.Input<string | undefined>;
     /**
      * The canonical name of the VMware Engine network in the form:
      * projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
      */
-    vmwareEngineNetworkCanonical?: pulumi.Input<string>;
+    vmwareEngineNetworkCanonical?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -299,7 +299,7 @@ export interface NetworkPolicyArgs {
     /**
      * User-provided description for this network policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * IP address range in CIDR notation used to create internet access and external IP access.
      * An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
@@ -311,12 +311,12 @@ export interface NetworkPolicyArgs {
      * This service can only be enabled when internetAccess is also enabled.
      * Structure is documented below.
      */
-    externalIp?: pulumi.Input<inputs.vmwareengine.NetworkPolicyExternalIp>;
+    externalIp?: pulumi.Input<inputs.vmwareengine.NetworkPolicyExternalIp | undefined>;
     /**
      * Network service that allows VMware workloads to access the internet.
      * Structure is documented below.
      */
-    internetAccess?: pulumi.Input<inputs.vmwareengine.NetworkPolicyInternetAccess>;
+    internetAccess?: pulumi.Input<inputs.vmwareengine.NetworkPolicyInternetAccess | undefined>;
     /**
      * The resource name of the location (region) to create the new network policy in.
      * Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
@@ -326,12 +326,12 @@ export interface NetworkPolicyArgs {
     /**
      * The ID of the Network Policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the VMware Engine network. Specify the name in the following form:
      * projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}

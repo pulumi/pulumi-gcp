@@ -204,54 +204,54 @@ export interface LicenseConfigState {
     /**
      * Whether the license config should be auto renewed when it reaches the end date.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The planned end date.
      * Structure is documented below.
      */
-    endDate?: pulumi.Input<inputs.discoveryengine.LicenseConfigEndDate>;
+    endDate?: pulumi.Input<inputs.discoveryengine.LicenseConfigEndDate | undefined>;
     /**
      * Whether the license config is for free trial.
      */
-    freeTrial?: pulumi.Input<boolean>;
+    freeTrial?: pulumi.Input<boolean | undefined>;
     /**
      * The unique id of the license config.
      */
-    licenseConfigId?: pulumi.Input<string>;
+    licenseConfigId?: pulumi.Input<string | undefined>;
     /**
      * Number of licenses purchased.
      */
-    licenseCount?: pulumi.Input<number>;
+    licenseCount?: pulumi.Input<number | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the license config. Values are of the format
      * `projects/{project}/locations/{location}/licenseConfigs/{license_config}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The start date.
      * Structure is documented below.
      */
-    startDate?: pulumi.Input<inputs.discoveryengine.LicenseConfigStartDate>;
+    startDate?: pulumi.Input<inputs.discoveryengine.LicenseConfigStartDate | undefined>;
     /**
      * Subscription term.
      * Possible values are: `SUBSCRIPTION_TERM_UNSPECIFIED`, `SUBSCRIPTION_TERM_ONE_MONTH`, `SUBSCRIPTION_TERM_ONE_YEAR`, `SUBSCRIPTION_TERM_THREE_YEARS`, `SUBSCRIPTION_TERM_THREE_MONTHS`, `SUBSCRIPTION_TERM_FOURTEEN_DAYS`, `SUBSCRIPTION_TERM_CUSTOM`.
      */
-    subscriptionTerm?: pulumi.Input<string>;
+    subscriptionTerm?: pulumi.Input<string | undefined>;
     /**
      * Subscription tier information for the license config.
      * Possible values are: `SUBSCRIPTION_TIER_UNSPECIFIED`, `SUBSCRIPTION_TIER_SEARCH`, `SUBSCRIPTION_TIER_SEARCH_AND_ASSISTANT`, `SUBSCRIPTION_TIER_NOTEBOOK_LM`, `SUBSCRIPTION_TIER_FRONTLINE_WORKER`, `SUBSCRIPTION_TIER_AGENTSPACE_STARTER`, `SUBSCRIPTION_TIER_AGENTSPACE_BUSINESS`, `SUBSCRIPTION_TIER_ENTERPRISE`, `SUBSCRIPTION_TIER_EDU`, `SUBSCRIPTION_TIER_EDU_PRO`.
      */
-    subscriptionTier?: pulumi.Input<string>;
+    subscriptionTier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -261,16 +261,16 @@ export interface LicenseConfigArgs {
     /**
      * Whether the license config should be auto renewed when it reaches the end date.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The planned end date.
      * Structure is documented below.
      */
-    endDate?: pulumi.Input<inputs.discoveryengine.LicenseConfigEndDate>;
+    endDate?: pulumi.Input<inputs.discoveryengine.LicenseConfigEndDate | undefined>;
     /**
      * Whether the license config is for free trial.
      */
-    freeTrial?: pulumi.Input<boolean>;
+    freeTrial?: pulumi.Input<boolean | undefined>;
     /**
      * The unique id of the license config.
      */
@@ -288,7 +288,7 @@ export interface LicenseConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The start date.
      * Structure is documented below.

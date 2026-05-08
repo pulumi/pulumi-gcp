@@ -721,12 +721,12 @@ export interface CertificateState {
      * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
      * should be set to `my-ca`.
      */
-    certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
      * Structure is documented below.
      */
-    certificateDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescription>[]>;
+    certificateDescriptions?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescription>[] | undefined>;
     /**
      * The resource name for a CertificateTemplate used to issue this certificate,
      * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
@@ -734,84 +734,84 @@ export interface CertificateState {
      * omitted, no template will be used. This template must be in the same location
      * as the Certificate.
      */
-    certificateTemplate?: pulumi.Input<string>;
+    certificateTemplate?: pulumi.Input<string | undefined>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.certificateauthority.CertificateConfig>;
+    config?: pulumi.Input<inputs.certificateauthority.CertificateConfig | undefined>;
     /**
      * The time that this resource was created on the server.
      * This is in RFC3339 text format.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name of the issuing CertificateAuthority in the format `projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*`.
      */
-    issuerCertificateAuthority?: pulumi.Input<string>;
+    issuerCertificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * Labels with user-defined metadata to apply to this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
      * "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
      * fractional digits, terminated by 's'. Example: "3.5s".
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string | undefined>;
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name for this Certificate.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Output only. The pem-encoded, signed X.509 certificate.
      */
-    pemCertificate?: pulumi.Input<string>;
+    pemCertificate?: pulumi.Input<string | undefined>;
     /**
      * The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
      */
-    pemCertificateChains?: pulumi.Input<pulumi.Input<string>[]>;
+    pemCertificateChains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
-    pemCsr?: pulumi.Input<string>;
+    pemCsr?: pulumi.Input<string | undefined>;
     /**
      * The name of the CaPool this Certificate belongs to.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Details regarding the revocation of this Certificate. This Certificate is
      * considered revoked if and only if this field is present.
      * Structure is documented below.
      */
-    revocationDetails?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateRevocationDetail>[]>;
+    revocationDetails?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateRevocationDetail>[] | undefined>;
     /**
      * Output only. The time at which this CertificateAuthority was updated.
      * This is in RFC3339 text format.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -824,7 +824,7 @@ export interface CertificateArgs {
      * argument `pool` should be set to `projects/my-project/locations/us-central1/caPools/my-pool`, argument `certificateAuthority`
      * should be set to `my-ca`.
      */
-    certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string | undefined>;
     /**
      * The resource name for a CertificateTemplate used to issue this certificate,
      * in the format `projects/*&#47;locations/*&#47;certificateTemplates/*`. If this is specified,
@@ -832,25 +832,25 @@ export interface CertificateArgs {
      * omitted, no template will be used. This template must be in the same location
      * as the Certificate.
      */
-    certificateTemplate?: pulumi.Input<string>;
+    certificateTemplate?: pulumi.Input<string | undefined>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.certificateauthority.CertificateConfig>;
+    config?: pulumi.Input<inputs.certificateauthority.CertificateConfig | undefined>;
     /**
      * Labels with user-defined metadata to apply to this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
      * "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
      * fractional digits, terminated by 's'. Example: "3.5s".
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string | undefined>;
     /**
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
@@ -859,11 +859,11 @@ export interface CertificateArgs {
     /**
      * The name for this Certificate.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Immutable. A pem-encoded X.509 certificate signing request (CSR).
      */
-    pemCsr?: pulumi.Input<string>;
+    pemCsr?: pulumi.Input<string | undefined>;
     /**
      * The name of the CaPool this Certificate belongs to.
      */
@@ -872,5 +872,5 @@ export interface CertificateArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

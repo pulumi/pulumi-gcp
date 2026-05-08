@@ -351,31 +351,31 @@ export interface SecretState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The time at which the Secret was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the secret. Defaults to false.
      * When the field is set to true in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the secret will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      * Only one of `expireTime` or `ttl` can be provided.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The labels assigned to this Secret.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -389,54 +389,54 @@ export interface SecretState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name of the Secret. Format:
      * `projects/{{project}}/secrets/{{secret_id}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
      * after the Secret has been created.
      * Structure is documented below.
      */
-    replication?: pulumi.Input<inputs.secretmanager.SecretReplication>;
+    replication?: pulumi.Input<inputs.secretmanager.SecretReplication | undefined>;
     /**
      * The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
      * Structure is documented below.
      */
-    rotation?: pulumi.Input<inputs.secretmanager.SecretRotation>;
+    rotation?: pulumi.Input<inputs.secretmanager.SecretRotation | undefined>;
     /**
      * This must be unique within the project.
      */
-    secretId?: pulumi.Input<string>;
+    secretId?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
      */
-    topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretTopic>[]>;
+    topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretTopic>[] | undefined>;
     /**
      * The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      * Only one of `ttl` or `expireTime` can be provided.
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
     /**
      * Mapping from version alias to version name.
      * A version alias is a string with a maximum length of 63 characters and can contain
@@ -446,7 +446,7 @@ export interface SecretState {
      * An object containing a list of "key": value pairs. Example:
      * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Secret Version TTL after destruction request.
      * This is a part of the delayed delete feature on Secret Version.
@@ -454,7 +454,7 @@ export interface SecretState {
      * on calling destroy instead the version goes to a disabled state and
      * the actual destruction happens after this TTL expires.
      */
-    versionDestroyTtl?: pulumi.Input<string>;
+    versionDestroyTtl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -476,19 +476,19 @@ export interface SecretArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the secret. Defaults to false.
      * When the field is set to true in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the secret will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      * Only one of `expireTime` or `ttl` can be provided.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The labels assigned to this Secret.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
@@ -502,12 +502,12 @@ export interface SecretArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The replication policy of the secret data attached to the Secret. It cannot be changed
      * after the Secret has been created.
@@ -518,28 +518,28 @@ export interface SecretArgs {
      * The rotation time and period for a Secret. At `nextRotationTime`, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be set to configure rotation.
      * Structure is documented below.
      */
-    rotation?: pulumi.Input<inputs.secretmanager.SecretRotation>;
+    rotation?: pulumi.Input<inputs.secretmanager.SecretRotation | undefined>;
     /**
      * This must be unique within the project.
      */
-    secretId?: pulumi.Input<string>;
+    secretId?: pulumi.Input<string | undefined>;
     /**
      * A map of resource manager tags.
      * Resource manager tag keys and values have the same definition as resource manager tags.
      * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      * Structure is documented below.
      */
-    topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretTopic>[]>;
+    topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.SecretTopic>[] | undefined>;
     /**
      * The TTL for the Secret.
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      * Only one of `ttl` or `expireTime` can be provided.
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
     /**
      * Mapping from version alias to version name.
      * A version alias is a string with a maximum length of 63 characters and can contain
@@ -549,7 +549,7 @@ export interface SecretArgs {
      * An object containing a list of "key": value pairs. Example:
      * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Secret Version TTL after destruction request.
      * This is a part of the delayed delete feature on Secret Version.
@@ -557,5 +557,5 @@ export interface SecretArgs {
      * on calling destroy instead the version goes to a disabled state and
      * the actual destruction happens after this TTL expires.
      */
-    versionDestroyTtl?: pulumi.Input<string>;
+    versionDestroyTtl?: pulumi.Input<string | undefined>;
 }

@@ -26,14 +26,14 @@ class StreamArgs:
                  location: pulumi.Input[_builtins.str],
                  source_config: pulumi.Input['StreamSourceConfigArgs'],
                  stream_id: pulumi.Input[_builtins.str],
-                 backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
-                 backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 customer_managed_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]] = None):
+                 backfill_all: pulumi.Input[Optional['StreamBackfillAllArgs']] = None,
+                 backfill_none: pulumi.Input[Optional['StreamBackfillNoneArgs']] = None,
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input['StreamRuleSetArgs']]]] = None):
         """
         The set of arguments for constructing a Stream resource.
 
@@ -148,7 +148,7 @@ class StreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="backfillAll")
-    def backfill_all(self) -> Optional[pulumi.Input['StreamBackfillAllArgs']]:
+    def backfill_all(self) -> pulumi.Input[Optional['StreamBackfillAllArgs']]:
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         Structure is documented below.
@@ -156,36 +156,36 @@ class StreamArgs:
         return pulumi.get(self, "backfill_all")
 
     @backfill_all.setter
-    def backfill_all(self, value: Optional[pulumi.Input['StreamBackfillAllArgs']]):
+    def backfill_all(self, value: pulumi.Input[Optional['StreamBackfillAllArgs']]):
         pulumi.set(self, "backfill_all", value)
 
     @_builtins.property
     @pulumi.getter(name="backfillNone")
-    def backfill_none(self) -> Optional[pulumi.Input['StreamBackfillNoneArgs']]:
+    def backfill_none(self) -> pulumi.Input[Optional['StreamBackfillNoneArgs']]:
         """
         Backfill strategy to disable automatic backfill for the Stream's objects.
         """
         return pulumi.get(self, "backfill_none")
 
     @backfill_none.setter
-    def backfill_none(self, value: Optional[pulumi.Input['StreamBackfillNoneArgs']]):
+    def backfill_none(self, value: pulumi.Input[Optional['StreamBackfillNoneArgs']]):
         pulumi.set(self, "backfill_none", value)
 
     @_builtins.property
     @pulumi.getter(name="createWithoutValidation")
-    def create_without_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_without_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Create the stream without validating it.
         """
         return pulumi.get(self, "create_without_validation")
 
     @create_without_validation.setter
-    def create_without_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedEncryptionKey")
-    def customer_managed_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
         will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
@@ -193,12 +193,12 @@ class StreamArgs:
         return pulumi.get(self, "customer_managed_encryption_key")
 
     @customer_managed_encryption_key.setter
-    def customer_managed_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Stream. Set this field to `RUNNING` to start the stream,
         `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
@@ -208,12 +208,12 @@ class StreamArgs:
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -222,12 +222,12 @@ class StreamArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -235,12 +235,12 @@ class StreamArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSets")
-    def rule_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]:
+    def rule_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamRuleSetArgs']]]]:
         """
         Rule sets to apply to the stream.
         Structure is documented below.
@@ -248,30 +248,30 @@ class StreamArgs:
         return pulumi.get(self, "rule_sets")
 
     @rule_sets.setter
-    def rule_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]):
+    def rule_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamRuleSetArgs']]]]):
         pulumi.set(self, "rule_sets", value)
 
 
 @pulumi.input_type
 class _StreamState:
     def __init__(__self__, *,
-                 backfill_all: Optional[pulumi.Input['StreamBackfillAllArgs']] = None,
-                 backfill_none: Optional[pulumi.Input['StreamBackfillNoneArgs']] = None,
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 customer_managed_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_config: Optional[pulumi.Input['StreamDestinationConfigArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]] = None,
-                 source_config: Optional[pulumi.Input['StreamSourceConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 stream_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backfill_all: pulumi.Input[Optional['StreamBackfillAllArgs']] = None,
+                 backfill_none: pulumi.Input[Optional['StreamBackfillNoneArgs']] = None,
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_config: pulumi.Input[Optional['StreamDestinationConfigArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input['StreamRuleSetArgs']]]] = None,
+                 source_config: pulumi.Input[Optional['StreamSourceConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 stream_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Stream resources.
 
@@ -342,7 +342,7 @@ class _StreamState:
 
     @_builtins.property
     @pulumi.getter(name="backfillAll")
-    def backfill_all(self) -> Optional[pulumi.Input['StreamBackfillAllArgs']]:
+    def backfill_all(self) -> pulumi.Input[Optional['StreamBackfillAllArgs']]:
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         Structure is documented below.
@@ -350,36 +350,36 @@ class _StreamState:
         return pulumi.get(self, "backfill_all")
 
     @backfill_all.setter
-    def backfill_all(self, value: Optional[pulumi.Input['StreamBackfillAllArgs']]):
+    def backfill_all(self, value: pulumi.Input[Optional['StreamBackfillAllArgs']]):
         pulumi.set(self, "backfill_all", value)
 
     @_builtins.property
     @pulumi.getter(name="backfillNone")
-    def backfill_none(self) -> Optional[pulumi.Input['StreamBackfillNoneArgs']]:
+    def backfill_none(self) -> pulumi.Input[Optional['StreamBackfillNoneArgs']]:
         """
         Backfill strategy to disable automatic backfill for the Stream's objects.
         """
         return pulumi.get(self, "backfill_none")
 
     @backfill_none.setter
-    def backfill_none(self, value: Optional[pulumi.Input['StreamBackfillNoneArgs']]):
+    def backfill_none(self, value: pulumi.Input[Optional['StreamBackfillNoneArgs']]):
         pulumi.set(self, "backfill_none", value)
 
     @_builtins.property
     @pulumi.getter(name="createWithoutValidation")
-    def create_without_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_without_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Create the stream without validating it.
         """
         return pulumi.get(self, "create_without_validation")
 
     @create_without_validation.setter
-    def create_without_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedEncryptionKey")
-    def customer_managed_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
         will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
@@ -387,12 +387,12 @@ class _StreamState:
         return pulumi.get(self, "customer_managed_encryption_key")
 
     @customer_managed_encryption_key.setter
-    def customer_managed_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Stream. Set this field to `RUNNING` to start the stream,
         `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
@@ -402,12 +402,12 @@ class _StreamState:
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfig")
-    def destination_config(self) -> Optional[pulumi.Input['StreamDestinationConfigArgs']]:
+    def destination_config(self) -> pulumi.Input[Optional['StreamDestinationConfigArgs']]:
         """
         Destination connection profile configuration.
         Structure is documented below.
@@ -415,36 +415,36 @@ class _StreamState:
         return pulumi.get(self, "destination_config")
 
     @destination_config.setter
-    def destination_config(self, value: Optional[pulumi.Input['StreamDestinationConfigArgs']]):
+    def destination_config(self, value: pulumi.Input[Optional['StreamDestinationConfigArgs']]):
         pulumi.set(self, "destination_config", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -453,36 +453,36 @@ class _StreamState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location this stream is located in.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stream's name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -490,12 +490,12 @@ class _StreamState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -503,12 +503,12 @@ class _StreamState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSets")
-    def rule_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]:
+    def rule_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StreamRuleSetArgs']]]]:
         """
         Rule sets to apply to the stream.
         Structure is documented below.
@@ -516,12 +516,12 @@ class _StreamState:
         return pulumi.get(self, "rule_sets")
 
     @rule_sets.setter
-    def rule_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StreamRuleSetArgs']]]]):
+    def rule_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StreamRuleSetArgs']]]]):
         pulumi.set(self, "rule_sets", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceConfig")
-    def source_config(self) -> Optional[pulumi.Input['StreamSourceConfigArgs']]:
+    def source_config(self) -> pulumi.Input[Optional['StreamSourceConfigArgs']]:
         """
         Source connection profile configuration.
         Structure is documented below.
@@ -529,31 +529,31 @@ class _StreamState:
         return pulumi.get(self, "source_config")
 
     @source_config.setter
-    def source_config(self, value: Optional[pulumi.Input['StreamSourceConfigArgs']]):
+    def source_config(self, value: pulumi.Input[Optional['StreamSourceConfigArgs']]):
         pulumi.set(self, "source_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the stream.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="streamId")
-    def stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stream_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stream identifier.
         """
         return pulumi.get(self, "stream_id")
 
     @stream_id.setter
-    def stream_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stream_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stream_id", value)
 
 
@@ -563,19 +563,19 @@ class Stream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_all: Optional[pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
-                 backfill_none: Optional[pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 customer_managed_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_config: Optional[pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
-                 source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
-                 stream_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backfill_all: pulumi.Input[Optional[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
+                 backfill_none: pulumi.Input[Optional[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_config: pulumi.Input[Optional[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
+                 source_config: pulumi.Input[Optional[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
+                 stream_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A resource representing streaming data from a source to a destination.
@@ -1112,7 +1112,7 @@ class Stream(pulumi.CustomResource):
             database_version="MYSQL_8_0",
             region="us-central1",
             root_password="<%= ctx[:vars]['mysql_root_password'] %>",
-            deletion_protection="<%= ctx[:vars]['deletion_protection'] %>",
+            deletion_protection="<%= ctx[:vars]['deletion_protection'] %>" == "true",
             settings={
                 "tier": "db-custom-2-4096",
                 "ip_configuration": {
@@ -2383,7 +2383,7 @@ class Stream(pulumi.CustomResource):
             database_version="MYSQL_8_0",
             region="us-central1",
             root_password="<%= ctx[:vars]['mysql_root_password'] %>",
-            deletion_protection="<%= ctx[:vars]['deletion_protection'] %>",
+            deletion_protection="<%= ctx[:vars]['deletion_protection'] %>" == "true",
             settings={
                 "tier": "db-custom-2-4096",
                 "ip_configuration": {
@@ -3101,19 +3101,19 @@ class Stream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backfill_all: Optional[pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
-                 backfill_none: Optional[pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
-                 create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 customer_managed_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_config: Optional[pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
-                 source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
-                 stream_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backfill_all: pulumi.Input[Optional[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
+                 backfill_none: pulumi.Input[Optional[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
+                 create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_config: pulumi.Input[Optional[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
+                 source_config: pulumi.Input[Optional[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
+                 stream_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -3162,23 +3162,23 @@ class Stream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backfill_all: Optional[pulumi.Input[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
-            backfill_none: Optional[pulumi.Input[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
-            create_without_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            customer_managed_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_config: Optional[pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rule_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
-            source_config: Optional[pulumi.Input[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            stream_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Stream':
+            backfill_all: pulumi.Input[Optional[Union['StreamBackfillAllArgs', 'StreamBackfillAllArgsDict']]] = None,
+            backfill_none: pulumi.Input[Optional[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
+            create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_config: pulumi.Input[Optional[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StreamRuleSetArgs', 'StreamRuleSetArgsDict']]]]] = None,
+            source_config: pulumi.Input[Optional[Union['StreamSourceConfigArgs', 'StreamSourceConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            stream_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Stream':
         """
         Get an existing Stream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

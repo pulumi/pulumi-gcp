@@ -211,9 +211,9 @@ def get_region_security_policy(name: Optional[_builtins.str] = None,
         self_link_with_policy_id=pulumi.get(__ret__, 'self_link_with_policy_id'),
         type=pulumi.get(__ret__, 'type'),
         user_defined_fields=pulumi.get(__ret__, 'user_defined_fields'))
-def get_region_security_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_region_security_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                      project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionSecurityPolicyResult]:
     """
     Use this data source to get information about a Compute Region Security Policy. For more details, see the [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSecurityPolicies).

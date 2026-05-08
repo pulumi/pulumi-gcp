@@ -21,15 +21,15 @@ __all__ = ['ResourcePolicyArgs', 'ResourcePolicy']
 @pulumi.input_type
 class ResourcePolicyArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
-                 group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
-                 instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
-                 workload_policy: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_consistency_group_policy: pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
+                 group_placement_policy: pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']] = None,
+                 instance_schedule_policy: pulumi.Input[Optional['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_schedule_policy: pulumi.Input[Optional['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
+                 workload_policy: pulumi.Input[Optional['ResourcePolicyWorkloadPolicyArgs']] = None):
         """
         The set of arguments for constructing a ResourcePolicy resource.
 
@@ -76,19 +76,19 @@ class ResourcePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskConsistencyGroupPolicy")
-    def disk_consistency_group_policy(self) -> Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]:
+    def disk_consistency_group_policy(self) -> pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']]:
         """
         Replication consistency group for asynchronous disk replication.
         Structure is documented below.
@@ -96,12 +96,12 @@ class ResourcePolicyArgs:
         return pulumi.get(self, "disk_consistency_group_policy")
 
     @disk_consistency_group_policy.setter
-    def disk_consistency_group_policy(self, value: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]):
+    def disk_consistency_group_policy(self, value: pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']]):
         pulumi.set(self, "disk_consistency_group_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="groupPlacementPolicy")
-    def group_placement_policy(self) -> Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']]:
+    def group_placement_policy(self) -> pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']]:
         """
         Resource policy for instances used for placement configuration.
         Structure is documented below.
@@ -109,12 +109,12 @@ class ResourcePolicyArgs:
         return pulumi.get(self, "group_placement_policy")
 
     @group_placement_policy.setter
-    def group_placement_policy(self, value: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']]):
+    def group_placement_policy(self, value: pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']]):
         pulumi.set(self, "group_placement_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSchedulePolicy")
-    def instance_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]:
+    def instance_schedule_policy(self) -> pulumi.Input[Optional['ResourcePolicyInstanceSchedulePolicyArgs']]:
         """
         Resource policy for scheduling instance operations.
         Structure is documented below.
@@ -122,12 +122,12 @@ class ResourcePolicyArgs:
         return pulumi.get(self, "instance_schedule_policy")
 
     @instance_schedule_policy.setter
-    def instance_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]):
+    def instance_schedule_policy(self, value: pulumi.Input[Optional['ResourcePolicyInstanceSchedulePolicyArgs']]):
         pulumi.set(self, "instance_schedule_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource, provided by the client when initially creating
         the resource. The resource name must be 1-63 characters long, and comply
@@ -140,12 +140,12 @@ class ResourcePolicyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -153,24 +153,24 @@ class ResourcePolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where resource policy resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotSchedulePolicy")
-    def snapshot_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]:
+    def snapshot_schedule_policy(self) -> pulumi.Input[Optional['ResourcePolicySnapshotSchedulePolicyArgs']]:
         """
         Policy for creating snapshots of persistent disks.
         Structure is documented below.
@@ -178,12 +178,12 @@ class ResourcePolicyArgs:
         return pulumi.get(self, "snapshot_schedule_policy")
 
     @snapshot_schedule_policy.setter
-    def snapshot_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]):
+    def snapshot_schedule_policy(self, value: pulumi.Input[Optional['ResourcePolicySnapshotSchedulePolicyArgs']]):
         pulumi.set(self, "snapshot_schedule_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadPolicy")
-    def workload_policy(self) -> Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]:
+    def workload_policy(self) -> pulumi.Input[Optional['ResourcePolicyWorkloadPolicyArgs']]:
         """
         Represents the workload policy.
         Structure is documented below.
@@ -191,23 +191,23 @@ class ResourcePolicyArgs:
         return pulumi.get(self, "workload_policy")
 
     @workload_policy.setter
-    def workload_policy(self, value: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]):
+    def workload_policy(self, value: pulumi.Input[Optional['ResourcePolicyWorkloadPolicyArgs']]):
         pulumi.set(self, "workload_policy", value)
 
 
 @pulumi.input_type
 class _ResourcePolicyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
-                 group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
-                 instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
-                 workload_policy: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_consistency_group_policy: pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
+                 group_placement_policy: pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']] = None,
+                 instance_schedule_policy: pulumi.Input[Optional['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_schedule_policy: pulumi.Input[Optional['ResourcePolicySnapshotSchedulePolicyArgs']] = None,
+                 workload_policy: pulumi.Input[Optional['ResourcePolicyWorkloadPolicyArgs']] = None):
         """
         Input properties used for looking up and filtering ResourcePolicy resources.
 
@@ -257,19 +257,19 @@ class _ResourcePolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskConsistencyGroupPolicy")
-    def disk_consistency_group_policy(self) -> Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]:
+    def disk_consistency_group_policy(self) -> pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']]:
         """
         Replication consistency group for asynchronous disk replication.
         Structure is documented below.
@@ -277,12 +277,12 @@ class _ResourcePolicyState:
         return pulumi.get(self, "disk_consistency_group_policy")
 
     @disk_consistency_group_policy.setter
-    def disk_consistency_group_policy(self, value: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]):
+    def disk_consistency_group_policy(self, value: pulumi.Input[Optional['ResourcePolicyDiskConsistencyGroupPolicyArgs']]):
         pulumi.set(self, "disk_consistency_group_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="groupPlacementPolicy")
-    def group_placement_policy(self) -> Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']]:
+    def group_placement_policy(self) -> pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']]:
         """
         Resource policy for instances used for placement configuration.
         Structure is documented below.
@@ -290,12 +290,12 @@ class _ResourcePolicyState:
         return pulumi.get(self, "group_placement_policy")
 
     @group_placement_policy.setter
-    def group_placement_policy(self, value: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']]):
+    def group_placement_policy(self, value: pulumi.Input[Optional['ResourcePolicyGroupPlacementPolicyArgs']]):
         pulumi.set(self, "group_placement_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceSchedulePolicy")
-    def instance_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]:
+    def instance_schedule_policy(self) -> pulumi.Input[Optional['ResourcePolicyInstanceSchedulePolicyArgs']]:
         """
         Resource policy for scheduling instance operations.
         Structure is documented below.
@@ -303,12 +303,12 @@ class _ResourcePolicyState:
         return pulumi.get(self, "instance_schedule_policy")
 
     @instance_schedule_policy.setter
-    def instance_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']]):
+    def instance_schedule_policy(self, value: pulumi.Input[Optional['ResourcePolicyInstanceSchedulePolicyArgs']]):
         pulumi.set(self, "instance_schedule_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource, provided by the client when initially creating
         the resource. The resource name must be 1-63 characters long, and comply
@@ -321,12 +321,12 @@ class _ResourcePolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -334,36 +334,36 @@ class _ResourcePolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where resource policy resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotSchedulePolicy")
-    def snapshot_schedule_policy(self) -> Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]:
+    def snapshot_schedule_policy(self) -> pulumi.Input[Optional['ResourcePolicySnapshotSchedulePolicyArgs']]:
         """
         Policy for creating snapshots of persistent disks.
         Structure is documented below.
@@ -371,12 +371,12 @@ class _ResourcePolicyState:
         return pulumi.get(self, "snapshot_schedule_policy")
 
     @snapshot_schedule_policy.setter
-    def snapshot_schedule_policy(self, value: Optional[pulumi.Input['ResourcePolicySnapshotSchedulePolicyArgs']]):
+    def snapshot_schedule_policy(self, value: pulumi.Input[Optional['ResourcePolicySnapshotSchedulePolicyArgs']]):
         pulumi.set(self, "snapshot_schedule_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadPolicy")
-    def workload_policy(self) -> Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]:
+    def workload_policy(self) -> pulumi.Input[Optional['ResourcePolicyWorkloadPolicyArgs']]:
         """
         Represents the workload policy.
         Structure is documented below.
@@ -384,7 +384,7 @@ class _ResourcePolicyState:
         return pulumi.get(self, "workload_policy")
 
     @workload_policy.setter
-    def workload_policy(self, value: Optional[pulumi.Input['ResourcePolicyWorkloadPolicyArgs']]):
+    def workload_policy(self, value: pulumi.Input[Optional['ResourcePolicyWorkloadPolicyArgs']]):
         pulumi.set(self, "workload_policy", value)
 
 
@@ -394,15 +394,15 @@ class ResourcePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
-                 group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
-                 instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
-                 workload_policy: Optional[pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+                 group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+                 instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
+                 workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
                  __props__=None):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
@@ -957,15 +957,15 @@ class ResourcePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
-                 group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
-                 instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
-                 workload_policy: Optional[pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+                 group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+                 instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
+                 workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -995,16 +995,16 @@ class ResourcePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_consistency_group_policy: Optional[pulumi.Input[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
-            group_placement_policy: Optional[pulumi.Input[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
-            instance_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_schedule_policy: Optional[pulumi.Input[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
-            workload_policy: Optional[pulumi.Input[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None) -> 'ResourcePolicy':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_consistency_group_policy: pulumi.Input[Optional[Union['ResourcePolicyDiskConsistencyGroupPolicyArgs', 'ResourcePolicyDiskConsistencyGroupPolicyArgsDict']]] = None,
+            group_placement_policy: pulumi.Input[Optional[Union['ResourcePolicyGroupPlacementPolicyArgs', 'ResourcePolicyGroupPlacementPolicyArgsDict']]] = None,
+            instance_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicyInstanceSchedulePolicyArgs', 'ResourcePolicyInstanceSchedulePolicyArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_schedule_policy: pulumi.Input[Optional[Union['ResourcePolicySnapshotSchedulePolicyArgs', 'ResourcePolicySnapshotSchedulePolicyArgsDict']]] = None,
+            workload_policy: pulumi.Input[Optional[Union['ResourcePolicyWorkloadPolicyArgs', 'ResourcePolicyWorkloadPolicyArgsDict']]] = None) -> 'ResourcePolicy':
         """
         Get an existing ResourcePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

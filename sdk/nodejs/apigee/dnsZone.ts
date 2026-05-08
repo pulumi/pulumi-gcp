@@ -168,30 +168,30 @@ export interface DnsZoneState {
     /**
      * Description for the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the dns zone.
      */
-    dnsZoneId?: pulumi.Input<string>;
+    dnsZoneId?: pulumi.Input<string | undefined>;
     /**
      * Doamin for the zone.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Name of the Dns Zone in the following format:
      * organizations/{organization}/dnsZones/{dnsZone}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Peering zone config
      * Structure is documented below.
      */
-    peeringConfig?: pulumi.Input<inputs.apigee.DnsZonePeeringConfig>;
+    peeringConfig?: pulumi.Input<inputs.apigee.DnsZonePeeringConfig | undefined>;
 }
 
 /**

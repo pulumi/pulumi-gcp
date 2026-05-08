@@ -83,7 +83,7 @@ class BillingAccountBucketConfigCmekSettingsArgsDict(TypedDict):
     The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
     See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
     """
-    kms_key_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CryptoKeyVersion resource name for the configured Cloud KMS key.
     KMS key name format:
@@ -92,11 +92,11 @@ class BillingAccountBucketConfigCmekSettingsArgsDict(TypedDict):
     "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
     This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
     """
-    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account associated with a project for which CMEK will apply.
     Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -107,9 +107,9 @@ class BillingAccountBucketConfigCmekSettingsArgsDict(TypedDict):
 class BillingAccountBucketConfigCmekSettingsArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
                KMS key name format:
@@ -155,7 +155,7 @@ class BillingAccountBucketConfigCmekSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersionName")
-    def kms_key_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CryptoKeyVersion resource name for the configured Cloud KMS key.
         KMS key name format:
@@ -167,24 +167,24 @@ class BillingAccountBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "kms_key_version_name")
 
     @kms_key_version_name.setter
-    def kms_key_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account associated with a project for which CMEK will apply.
         Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -193,7 +193,7 @@ class BillingAccountBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
 
@@ -294,11 +294,11 @@ class BillingAccountSinkExclusionArgsDict(TypedDict):
     """
     A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description of this exclusion.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to True, then this exclusion is disabled and it does not exclude any log entries.
     """
@@ -308,8 +308,8 @@ class BillingAccountSinkExclusionArgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -351,26 +351,26 @@ class BillingAccountSinkExclusionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of this exclusion.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
 
@@ -384,7 +384,7 @@ class FolderBucketConfigCmekSettingsArgsDict(TypedDict):
     The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
     See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
     """
-    kms_key_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CryptoKeyVersion resource name for the configured Cloud KMS key.
     KMS key name format:
@@ -393,11 +393,11 @@ class FolderBucketConfigCmekSettingsArgsDict(TypedDict):
     "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
     This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
     """
-    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account associated with a project for which CMEK will apply.
     Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -408,9 +408,9 @@ class FolderBucketConfigCmekSettingsArgsDict(TypedDict):
 class FolderBucketConfigCmekSettingsArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
                KMS key name format:
@@ -456,7 +456,7 @@ class FolderBucketConfigCmekSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersionName")
-    def kms_key_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CryptoKeyVersion resource name for the configured Cloud KMS key.
         KMS key name format:
@@ -468,24 +468,24 @@ class FolderBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "kms_key_version_name")
 
     @kms_key_version_name.setter
-    def kms_key_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account associated with a project for which CMEK will apply.
         Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -494,7 +494,7 @@ class FolderBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
 
@@ -595,11 +595,11 @@ class FolderSinkExclusionArgsDict(TypedDict):
     """
     A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description of this exclusion.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to True, then this exclusion is disabled and it does not exclude any log entries.
     """
@@ -609,8 +609,8 @@ class FolderSinkExclusionArgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -652,31 +652,31 @@ class FolderSinkExclusionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of this exclusion.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
 
 class LinkedDatasetBigqueryDatasetArgsDict(TypedDict):
-    dataset_id: NotRequired[pulumi.Input[_builtins.str]]
+    dataset_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
@@ -688,7 +688,7 @@ class LinkedDatasetBigqueryDatasetArgsDict(TypedDict):
 @pulumi.input_type
 class LinkedDatasetBigqueryDatasetArgs:
     def __init__(__self__, *,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dataset_id: (Output)
                Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
@@ -701,7 +701,7 @@ class LinkedDatasetBigqueryDatasetArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
@@ -712,7 +712,7 @@ class LinkedDatasetBigqueryDatasetArgs:
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
 
@@ -725,7 +725,7 @@ class LogViewIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -739,7 +739,7 @@ class LogViewIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -780,7 +780,7 @@ class LogViewIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -791,7 +791,7 @@ class LogViewIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -804,7 +804,7 @@ class LogViewIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -818,7 +818,7 @@ class LogViewIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -859,7 +859,7 @@ class LogViewIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -870,23 +870,23 @@ class LogViewIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class MetricBucketOptionsArgsDict(TypedDict):
-    explicit_buckets: NotRequired[pulumi.Input['MetricBucketOptionsExplicitBucketsArgsDict']]
+    explicit_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsExplicitBucketsArgs']]]
     """
     Specifies a set of buckets with arbitrary widths.
     Structure is documented below.
     """
-    exponential_buckets: NotRequired[pulumi.Input['MetricBucketOptionsExponentialBucketsArgsDict']]
+    exponential_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsExponentialBucketsArgs']]]
     """
     Specifies an exponential sequence of buckets that have a width that is proportional to the value of
     the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
     Structure is documented below.
     """
-    linear_buckets: NotRequired[pulumi.Input['MetricBucketOptionsLinearBucketsArgsDict']]
+    linear_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsLinearBucketsArgs']]]
     """
     Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
     Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
@@ -896,9 +896,9 @@ class MetricBucketOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class MetricBucketOptionsArgs:
     def __init__(__self__, *,
-                 explicit_buckets: Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArgs']] = None,
-                 exponential_buckets: Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArgs']] = None,
-                 linear_buckets: Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArgs']] = None):
+                 explicit_buckets: pulumi.Input[Optional['MetricBucketOptionsExplicitBucketsArgs']] = None,
+                 exponential_buckets: pulumi.Input[Optional['MetricBucketOptionsExponentialBucketsArgs']] = None,
+                 linear_buckets: pulumi.Input[Optional['MetricBucketOptionsLinearBucketsArgs']] = None):
         """
         :param pulumi.Input['MetricBucketOptionsExplicitBucketsArgs'] explicit_buckets: Specifies a set of buckets with arbitrary widths.
                Structure is documented below.
@@ -918,7 +918,7 @@ class MetricBucketOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="explicitBuckets")
-    def explicit_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArgs']]:
+    def explicit_buckets(self) -> pulumi.Input[Optional['MetricBucketOptionsExplicitBucketsArgs']]:
         """
         Specifies a set of buckets with arbitrary widths.
         Structure is documented below.
@@ -926,12 +926,12 @@ class MetricBucketOptionsArgs:
         return pulumi.get(self, "explicit_buckets")
 
     @explicit_buckets.setter
-    def explicit_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsExplicitBucketsArgs']]):
+    def explicit_buckets(self, value: pulumi.Input[Optional['MetricBucketOptionsExplicitBucketsArgs']]):
         pulumi.set(self, "explicit_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="exponentialBuckets")
-    def exponential_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArgs']]:
+    def exponential_buckets(self) -> pulumi.Input[Optional['MetricBucketOptionsExponentialBucketsArgs']]:
         """
         Specifies an exponential sequence of buckets that have a width that is proportional to the value of
         the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
@@ -940,12 +940,12 @@ class MetricBucketOptionsArgs:
         return pulumi.get(self, "exponential_buckets")
 
     @exponential_buckets.setter
-    def exponential_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsExponentialBucketsArgs']]):
+    def exponential_buckets(self, value: pulumi.Input[Optional['MetricBucketOptionsExponentialBucketsArgs']]):
         pulumi.set(self, "exponential_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="linearBuckets")
-    def linear_buckets(self) -> Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArgs']]:
+    def linear_buckets(self) -> pulumi.Input[Optional['MetricBucketOptionsLinearBucketsArgs']]:
         """
         Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
         Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
@@ -954,7 +954,7 @@ class MetricBucketOptionsArgs:
         return pulumi.get(self, "linear_buckets")
 
     @linear_buckets.setter
-    def linear_buckets(self, value: Optional[pulumi.Input['MetricBucketOptionsLinearBucketsArgs']]):
+    def linear_buckets(self, value: pulumi.Input[Optional['MetricBucketOptionsLinearBucketsArgs']]):
         pulumi.set(self, "linear_buckets", value)
 
 
@@ -1133,13 +1133,13 @@ class MetricMetricDescriptorArgsDict(TypedDict):
     For counter metrics, set this to INT64.
     Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A concise name for the metric, which can be displayed in user interfaces. Use sentence case
     without an ending period, for example "Request count". This field is optional but it is
     recommended to be set for any metrics associated with user-visible concepts, such as Quota.
     """
-    labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgsDict']]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]]
     """
     The set of labels that can be used to describe a specific instance of this metric type. For
     example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
@@ -1147,7 +1147,7 @@ class MetricMetricDescriptorArgsDict(TypedDict):
     or just for responses that failed.
     Structure is documented below.
     """
-    unit: NotRequired[pulumi.Input[_builtins.str]]
+    unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unit in which the metric value is reported. It is only applicable if the valueType is
     `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
@@ -1159,9 +1159,9 @@ class MetricMetricDescriptorArgs:
     def __init__(__self__, *,
                  metric_kind: pulumi.Input[_builtins.str],
                  value_type: pulumi.Input[_builtins.str],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]] = None,
-                 unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc.
                Some combinations of metricKind and valueType might not be supported.
@@ -1224,7 +1224,7 @@ class MetricMetricDescriptorArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case
         without an ending period, for example "Request count". This field is optional but it is
@@ -1233,12 +1233,12 @@ class MetricMetricDescriptorArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]:
         """
         The set of labels that can be used to describe a specific instance of this metric type. For
         example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
@@ -1249,12 +1249,12 @@ class MetricMetricDescriptorArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit in which the metric value is reported. It is only applicable if the valueType is
         `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
@@ -1263,7 +1263,7 @@ class MetricMetricDescriptorArgs:
         return pulumi.get(self, "unit")
 
     @unit.setter
-    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unit", value)
 
 
@@ -1272,11 +1272,11 @@ class MetricMetricDescriptorLabelArgsDict(TypedDict):
     """
     The label key.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human-readable description for the label.
     """
-    value_type: NotRequired[pulumi.Input[_builtins.str]]
+    value_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of data that can be assigned to the label.
     Default value is `STRING`.
@@ -1287,8 +1287,8 @@ class MetricMetricDescriptorLabelArgsDict(TypedDict):
 class MetricMetricDescriptorLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The label key.
         :param pulumi.Input[_builtins.str] description: A human-readable description for the label.
@@ -1316,19 +1316,19 @@ class MetricMetricDescriptorLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description for the label.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="valueType")
-    def value_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of data that can be assigned to the label.
         Default value is `STRING`.
@@ -1337,7 +1337,7 @@ class MetricMetricDescriptorLabelArgs:
         return pulumi.get(self, "value_type")
 
     @value_type.setter
-    def value_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_type", value)
 
 
@@ -1351,7 +1351,7 @@ class OrganizationBucketConfigCmekSettingsArgsDict(TypedDict):
     The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
     See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
     """
-    kms_key_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CryptoKeyVersion resource name for the configured Cloud KMS key.
     KMS key name format:
@@ -1360,11 +1360,11 @@ class OrganizationBucketConfigCmekSettingsArgsDict(TypedDict):
     "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
     This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
     """
-    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account associated with a project for which CMEK will apply.
     Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -1375,9 +1375,9 @@ class OrganizationBucketConfigCmekSettingsArgsDict(TypedDict):
 class OrganizationBucketConfigCmekSettingsArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
                KMS key name format:
@@ -1423,7 +1423,7 @@ class OrganizationBucketConfigCmekSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersionName")
-    def kms_key_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CryptoKeyVersion resource name for the configured Cloud KMS key.
         KMS key name format:
@@ -1435,24 +1435,24 @@ class OrganizationBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "kms_key_version_name")
 
     @kms_key_version_name.setter
-    def kms_key_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account associated with a project for which CMEK will apply.
         Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -1461,7 +1461,7 @@ class OrganizationBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
 
@@ -1562,11 +1562,11 @@ class OrganizationSinkExclusionArgsDict(TypedDict):
     """
     A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description of this exclusion.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to True, then this exclusion is disabled and it does not exclude any log entries.
     """
@@ -1576,8 +1576,8 @@ class OrganizationSinkExclusionArgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -1619,26 +1619,26 @@ class OrganizationSinkExclusionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of this exclusion.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
 
@@ -1652,7 +1652,7 @@ class ProjectBucketConfigCmekSettingsArgsDict(TypedDict):
     The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
     See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
     """
-    kms_key_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_version_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CryptoKeyVersion resource name for the configured Cloud KMS key.
     KMS key name format:
@@ -1661,11 +1661,11 @@ class ProjectBucketConfigCmekSettingsArgsDict(TypedDict):
     "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
     This is a read-only field used to convey the specific configured CryptoKeyVersion of kms_key that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource name of the CMEK settings.
     """
-    service_account_id: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service account associated with a project for which CMEK will apply.
     Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -1676,9 +1676,9 @@ class ProjectBucketConfigCmekSettingsArgsDict(TypedDict):
 class ProjectBucketConfigCmekSettingsArgs:
     def __init__(__self__, *,
                  kms_key_name: pulumi.Input[_builtins.str],
-                 kms_key_version_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_version_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The resource name for the configured Cloud KMS key.
                KMS key name format:
@@ -1724,7 +1724,7 @@ class ProjectBucketConfigCmekSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyVersionName")
-    def kms_key_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CryptoKeyVersion resource name for the configured Cloud KMS key.
         KMS key name format:
@@ -1736,24 +1736,24 @@ class ProjectBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "kms_key_version_name")
 
     @kms_key_version_name.setter
-    def kms_key_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_version_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the CMEK settings.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountId")
-    def service_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account associated with a project for which CMEK will apply.
         Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
@@ -1762,7 +1762,7 @@ class ProjectBucketConfigCmekSettingsArgs:
         return pulumi.get(self, "service_account_id")
 
     @service_account_id.setter
-    def service_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_id", value)
 
 
@@ -1863,11 +1863,11 @@ class ProjectSinkExclusionArgsDict(TypedDict):
     """
     A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description of this exclusion.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to True, then this exclusion is disabled and it does not exclude any log entries.
     """
@@ -1877,8 +1877,8 @@ class ProjectSinkExclusionArgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -1920,26 +1920,26 @@ class ProjectSinkExclusionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of this exclusion.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
 
@@ -1949,15 +1949,15 @@ class SavedQueryLoggingQueryArgsDict(TypedDict):
     An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
     is used to match log entries.
     """
-    summary_field_end: NotRequired[pulumi.Input[_builtins.int]]
+    summary_field_end: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Characters will be counted from the end of the string.
     """
-    summary_field_start: NotRequired[pulumi.Input[_builtins.int]]
+    summary_field_start: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Characters will be counted from the start of the string.
     """
-    summary_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgsDict']]]]
+    summary_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]]
     """
     The names of the fields to display in the summary.
     Structure is documented below.
@@ -1967,9 +1967,9 @@ class SavedQueryLoggingQueryArgsDict(TypedDict):
 class SavedQueryLoggingQueryArgs:
     def __init__(__self__, *,
                  filter: pulumi.Input[_builtins.str],
-                 summary_field_end: Optional[pulumi.Input[_builtins.int]] = None,
-                 summary_field_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 summary_fields: Optional[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]] = None):
+                 summary_field_end: pulumi.Input[Optional[_builtins.int]] = None,
+                 summary_field_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 summary_fields: pulumi.Input[Optional[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: An [advanced logs filter](https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
@@ -2001,31 +2001,31 @@ class SavedQueryLoggingQueryArgs:
 
     @_builtins.property
     @pulumi.getter(name="summaryFieldEnd")
-    def summary_field_end(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def summary_field_end(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Characters will be counted from the end of the string.
         """
         return pulumi.get(self, "summary_field_end")
 
     @summary_field_end.setter
-    def summary_field_end(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def summary_field_end(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "summary_field_end", value)
 
     @_builtins.property
     @pulumi.getter(name="summaryFieldStart")
-    def summary_field_start(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def summary_field_start(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Characters will be counted from the start of the string.
         """
         return pulumi.get(self, "summary_field_start")
 
     @summary_field_start.setter
-    def summary_field_start(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def summary_field_start(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "summary_field_start", value)
 
     @_builtins.property
     @pulumi.getter(name="summaryFields")
-    def summary_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]:
+    def summary_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]:
         """
         The names of the fields to display in the summary.
         Structure is documented below.
@@ -2033,12 +2033,12 @@ class SavedQueryLoggingQueryArgs:
         return pulumi.get(self, "summary_fields")
 
     @summary_fields.setter
-    def summary_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]):
+    def summary_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]):
         pulumi.set(self, "summary_fields", value)
 
 
 class SavedQueryLoggingQuerySummaryFieldArgsDict(TypedDict):
-    field: NotRequired[pulumi.Input[_builtins.str]]
+    field: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field from the LogEntry to include in the summary line.
     """
@@ -2046,7 +2046,7 @@ class SavedQueryLoggingQuerySummaryFieldArgsDict(TypedDict):
 @pulumi.input_type
 class SavedQueryLoggingQuerySummaryFieldArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[_builtins.str]] = None):
+                 field: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field: The field from the LogEntry to include in the summary line.
         """
@@ -2055,14 +2055,14 @@ class SavedQueryLoggingQuerySummaryFieldArgs:
 
     @_builtins.property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field from the LogEntry to include in the summary line.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field", value)
 
 

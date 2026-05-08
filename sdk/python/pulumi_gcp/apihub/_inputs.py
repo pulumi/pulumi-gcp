@@ -70,7 +70,7 @@ __all__ = [
 ]
 
 class ApiHubInstanceConfigArgsDict(TypedDict):
-    cmek_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    cmek_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
     The CMEK name should follow the format of
@@ -78,12 +78,12 @@ class ApiHubInstanceConfigArgsDict(TypedDict):
     where the location must match the instance location.
     If the CMEK is not provided, a GMEK will be created for the instance.
     """
-    disable_search: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_search: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. If true, the search will be disabled for the instance. The default value
     is false.
     """
-    encryption_type: NotRequired[pulumi.Input[_builtins.str]]
+    encryption_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Encryption type for the region. If the encryption type is CMEK, the
     cmek_key_name must be provided. If no encryption type is provided,
@@ -93,7 +93,7 @@ class ApiHubInstanceConfigArgsDict(TypedDict):
     GMEK
     CMEK
     """
-    vertex_location: NotRequired[pulumi.Input[_builtins.str]]
+    vertex_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The name of the Vertex AI location where the data store is stored.
     """
@@ -101,10 +101,10 @@ class ApiHubInstanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ApiHubInstanceConfigArgs:
     def __init__(__self__, *,
-                 cmek_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_search: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vertex_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 cmek_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_search: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vertex_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cmek_key_name: Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
                The CMEK name should follow the format of
@@ -133,7 +133,7 @@ class ApiHubInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="cmekKeyName")
-    def cmek_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cmek_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
         The CMEK name should follow the format of
@@ -144,12 +144,12 @@ class ApiHubInstanceConfigArgs:
         return pulumi.get(self, "cmek_key_name")
 
     @cmek_key_name.setter
-    def cmek_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cmek_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cmek_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSearch")
-    def disable_search(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_search(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If true, the search will be disabled for the instance. The default value
         is false.
@@ -157,12 +157,12 @@ class ApiHubInstanceConfigArgs:
         return pulumi.get(self, "disable_search")
 
     @disable_search.setter
-    def disable_search(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_search(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_search", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Encryption type for the region. If the encryption type is CMEK, the
         cmek_key_name must be provided. If no encryption type is provided,
@@ -175,19 +175,19 @@ class ApiHubInstanceConfigArgs:
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vertexLocation")
-    def vertex_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vertex_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The name of the Vertex AI location where the data store is stored.
         """
         return pulumi.get(self, "vertex_location")
 
     @vertex_location.setter
-    def vertex_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vertex_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vertex_location", value)
 
 
@@ -288,14 +288,14 @@ class CurationEndpointApplicationIntegrationEndpointDetailsArgs:
 
 
 class CurationPluginInstanceActionArgsDict(TypedDict):
-    action_id: NotRequired[pulumi.Input[_builtins.str]]
+    action_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The action ID that is using the curation.
     This should map to one of the action IDs specified
     in action configs in the plugin.
     """
-    plugin_instance: NotRequired[pulumi.Input[_builtins.str]]
+    plugin_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Plugin instance that is using the curation.
@@ -306,8 +306,8 @@ class CurationPluginInstanceActionArgsDict(TypedDict):
 @pulumi.input_type
 class CurationPluginInstanceActionArgs:
     def __init__(__self__, *,
-                 action_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_instance: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_instance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action_id: (Output)
                The action ID that is using the curation.
@@ -325,7 +325,7 @@ class CurationPluginInstanceActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionId")
-    def action_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The action ID that is using the curation.
@@ -335,12 +335,12 @@ class CurationPluginInstanceActionArgs:
         return pulumi.get(self, "action_id")
 
     @action_id.setter
-    def action_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginInstance")
-    def plugin_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Plugin instance that is using the curation.
@@ -350,7 +350,7 @@ class CurationPluginInstanceActionArgs:
         return pulumi.get(self, "plugin_instance")
 
     @plugin_instance.setter
-    def plugin_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_instance", value)
 
 
@@ -455,13 +455,13 @@ class PluginActionsConfigArgs:
 
 
 class PluginConfigTemplateArgsDict(TypedDict):
-    additional_config_templates: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgsDict']]]]
+    additional_config_templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]]
     """
     The list of additional configuration variables for the plugin's
     configuration.
     Structure is documented below.
     """
-    auth_config_template: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgsDict']]
+    auth_config_template: NotRequired[pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateArgs']]]
     """
     AuthConfigTemplate represents the authentication template for a plugin.
     Structure is documented below.
@@ -470,8 +470,8 @@ class PluginConfigTemplateArgsDict(TypedDict):
 @pulumi.input_type
 class PluginConfigTemplateArgs:
     def __init__(__self__, *,
-                 additional_config_templates: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]] = None,
-                 auth_config_template: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgs']] = None):
+                 additional_config_templates: pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]] = None,
+                 auth_config_template: pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]] additional_config_templates: The list of additional configuration variables for the plugin's
                configuration.
@@ -486,7 +486,7 @@ class PluginConfigTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalConfigTemplates")
-    def additional_config_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]:
+    def additional_config_templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]:
         """
         The list of additional configuration variables for the plugin's
         configuration.
@@ -495,12 +495,12 @@ class PluginConfigTemplateArgs:
         return pulumi.get(self, "additional_config_templates")
 
     @additional_config_templates.setter
-    def additional_config_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]):
+    def additional_config_templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]):
         pulumi.set(self, "additional_config_templates", value)
 
     @_builtins.property
     @pulumi.getter(name="authConfigTemplate")
-    def auth_config_template(self) -> Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgs']]:
+    def auth_config_template(self) -> pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateArgs']]:
         """
         AuthConfigTemplate represents the authentication template for a plugin.
         Structure is documented below.
@@ -508,7 +508,7 @@ class PluginConfigTemplateArgs:
         return pulumi.get(self, "auth_config_template")
 
     @auth_config_template.setter
-    def auth_config_template(self, value: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateArgs']]):
+    def auth_config_template(self, value: pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateArgs']]):
         pulumi.set(self, "auth_config_template", value)
 
 
@@ -531,26 +531,26 @@ class PluginConfigTemplateAdditionalConfigTemplateArgsDict(TypedDict):
     MULTI_STRING
     MULTI_INT
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description.
     """
-    enum_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict']]]]
+    enum_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]]
     """
     Enum options. To be populated if `ValueType` is `ENUM`.
     Structure is documented below.
     """
-    multi_select_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict']]]]
+    multi_select_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]]
     """
     Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
     Structure is documented below.
     """
-    required: NotRequired[pulumi.Input[_builtins.bool]]
+    required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Flag represents that this `ConfigVariable` must be provided for a
     PluginInstance.
     """
-    validation_regex: NotRequired[pulumi.Input[_builtins.str]]
+    validation_regex: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Regular expression in RE2 syntax used for validating the `value` of a
     `ConfigVariable`.
@@ -561,11 +561,11 @@ class PluginConfigTemplateAdditionalConfigTemplateArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
                  value_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enum_options: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]] = None,
-                 multi_select_options: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]] = None,
-                 required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validation_regex: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enum_options: pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]] = None,
+                 multi_select_options: pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]] = None,
+                 required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validation_regex: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: ID of the config variable. Must be unique within the configuration.
         :param pulumi.Input[_builtins.str] value_type: Type of the parameter: string, int, bool etc.
@@ -638,19 +638,19 @@ class PluginConfigTemplateAdditionalConfigTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enumOptions")
-    def enum_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]:
+    def enum_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]:
         """
         Enum options. To be populated if `ValueType` is `ENUM`.
         Structure is documented below.
@@ -658,12 +658,12 @@ class PluginConfigTemplateAdditionalConfigTemplateArgs:
         return pulumi.get(self, "enum_options")
 
     @enum_options.setter
-    def enum_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]):
+    def enum_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]):
         pulumi.set(self, "enum_options", value)
 
     @_builtins.property
     @pulumi.getter(name="multiSelectOptions")
-    def multi_select_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]:
+    def multi_select_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]:
         """
         Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
         Structure is documented below.
@@ -671,12 +671,12 @@ class PluginConfigTemplateAdditionalConfigTemplateArgs:
         return pulumi.get(self, "multi_select_options")
 
     @multi_select_options.setter
-    def multi_select_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]):
+    def multi_select_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]):
         pulumi.set(self, "multi_select_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag represents that this `ConfigVariable` must be provided for a
         PluginInstance.
@@ -684,12 +684,12 @@ class PluginConfigTemplateAdditionalConfigTemplateArgs:
         return pulumi.get(self, "required")
 
     @required.setter
-    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "required", value)
 
     @_builtins.property
     @pulumi.getter(name="validationRegex")
-    def validation_regex(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_regex(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression in RE2 syntax used for validating the `value` of a
         `ConfigVariable`.
@@ -697,7 +697,7 @@ class PluginConfigTemplateAdditionalConfigTemplateArgs:
         return pulumi.get(self, "validation_regex")
 
     @validation_regex.setter
-    def validation_regex(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_regex(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_regex", value)
 
 
@@ -710,7 +710,7 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict(TypedDict):
     """
     Id of the option.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the option.
     """
@@ -720,7 +720,7 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: Display name of the option.
         :param pulumi.Input[_builtins.str] id: Id of the option.
@@ -757,14 +757,14 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the option.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -777,7 +777,7 @@ class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict(Type
     """
     Id of the option.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the option.
     """
@@ -787,7 +787,7 @@ class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] display_name: Display name of the option.
         :param pulumi.Input[_builtins.str] id: Id of the option.
@@ -824,14 +824,14 @@ class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the option.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -840,7 +840,7 @@ class PluginConfigTemplateAuthConfigTemplateArgsDict(TypedDict):
     """
     The list of authentication types supported by the plugin.
     """
-    service_account: NotRequired[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict']]
+    service_account: NotRequired[pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]]
     """
     Config for Google service account authentication.
     Structure is documented below.
@@ -850,7 +850,7 @@ class PluginConfigTemplateAuthConfigTemplateArgsDict(TypedDict):
 class PluginConfigTemplateAuthConfigTemplateArgs:
     def __init__(__self__, *,
                  supported_auth_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 service_account: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']] = None):
+                 service_account: pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] supported_auth_types: The list of authentication types supported by the plugin.
         :param pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs'] service_account: Config for Google service account authentication.
@@ -874,7 +874,7 @@ class PluginConfigTemplateAuthConfigTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]:
+    def service_account(self) -> pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]:
         """
         Config for Google service account authentication.
         Structure is documented below.
@@ -882,7 +882,7 @@ class PluginConfigTemplateAuthConfigTemplateArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]):
+    def service_account(self, value: pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]):
         pulumi.set(self, "service_account", value)
 
 
@@ -921,7 +921,7 @@ class PluginConfigTemplateAuthConfigTemplateServiceAccountArgs:
 
 
 class PluginDocumentationArgsDict(TypedDict):
-    external_uri: NotRequired[pulumi.Input[_builtins.str]]
+    external_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The uri of the externally hosted documentation.
     """
@@ -929,7 +929,7 @@ class PluginDocumentationArgsDict(TypedDict):
 @pulumi.input_type
 class PluginDocumentationArgs:
     def __init__(__self__, *,
-                 external_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] external_uri: The uri of the externally hosted documentation.
         """
@@ -938,19 +938,19 @@ class PluginDocumentationArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalUri")
-    def external_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uri of the externally hosted documentation.
         """
         return pulumi.get(self, "external_uri")
 
     @external_uri.setter
-    def external_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_uri", value)
 
 
 class PluginHostingServiceArgsDict(TypedDict):
-    service_uri: NotRequired[pulumi.Input[_builtins.str]]
+    service_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI of the service implemented by the plugin developer, used to
     invoke the plugin's functionality. This information is only required for
@@ -960,7 +960,7 @@ class PluginHostingServiceArgsDict(TypedDict):
 @pulumi.input_type
 class PluginHostingServiceArgs:
     def __init__(__self__, *,
-                 service_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 service_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_uri: The URI of the service implemented by the plugin developer, used to
                invoke the plugin's functionality. This information is only required for
@@ -971,7 +971,7 @@ class PluginHostingServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceUri")
-    def service_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the service implemented by the plugin developer, used to
         invoke the plugin's functionality. This information is only required for
@@ -980,7 +980,7 @@ class PluginHostingServiceArgs:
         return pulumi.get(self, "service_uri")
 
     @service_uri.setter
-    def service_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_uri", value)
 
 
@@ -990,23 +990,23 @@ class PluginInstanceActionArgsDict(TypedDict):
     This should map to one of the action id specified
     in actions_config in the plugin.
     """
-    curation_config: NotRequired[pulumi.Input['PluginInstanceActionCurationConfigArgsDict']]
+    curation_config: NotRequired[pulumi.Input[Optional['PluginInstanceActionCurationConfigArgs']]]
     """
     The curation information for this plugin instance.
     Structure is documented below.
     """
-    hub_instance_actions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgsDict']]]]
+    hub_instance_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]]]
     """
     (Output)
     The execution status for the plugin instance.
     Structure is documented below.
     """
-    schedule_cron_expression: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_cron_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The schedule for this plugin instance action. This can only be set if the
     plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
     """
-    schedule_time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time zone for the schedule cron expression. If not provided, UTC will
     be used.
@@ -1014,7 +1014,7 @@ class PluginInstanceActionArgsDict(TypedDict):
 
     <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the plugin action in the plugin instance.
@@ -1031,11 +1031,11 @@ class PluginInstanceActionArgsDict(TypedDict):
 class PluginInstanceActionArgs:
     def __init__(__self__, *,
                  action_id: pulumi.Input[_builtins.str],
-                 curation_config: Optional[pulumi.Input['PluginInstanceActionCurationConfigArgs']] = None,
-                 hub_instance_actions: Optional[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]] = None,
-                 schedule_cron_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 curation_config: pulumi.Input[Optional['PluginInstanceActionCurationConfigArgs']] = None,
+                 hub_instance_actions: pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]] = None,
+                 schedule_cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action_id: This should map to one of the action id specified
                in actions_config in the plugin.
@@ -1088,7 +1088,7 @@ class PluginInstanceActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="curationConfig")
-    def curation_config(self) -> Optional[pulumi.Input['PluginInstanceActionCurationConfigArgs']]:
+    def curation_config(self) -> pulumi.Input[Optional['PluginInstanceActionCurationConfigArgs']]:
         """
         The curation information for this plugin instance.
         Structure is documented below.
@@ -1096,12 +1096,12 @@ class PluginInstanceActionArgs:
         return pulumi.get(self, "curation_config")
 
     @curation_config.setter
-    def curation_config(self, value: Optional[pulumi.Input['PluginInstanceActionCurationConfigArgs']]):
+    def curation_config(self, value: pulumi.Input[Optional['PluginInstanceActionCurationConfigArgs']]):
         pulumi.set(self, "curation_config", value)
 
     @_builtins.property
     @pulumi.getter(name="hubInstanceActions")
-    def hub_instance_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]]:
+    def hub_instance_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]]:
         """
         (Output)
         The execution status for the plugin instance.
@@ -1110,12 +1110,12 @@ class PluginInstanceActionArgs:
         return pulumi.get(self, "hub_instance_actions")
 
     @hub_instance_actions.setter
-    def hub_instance_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]]):
+    def hub_instance_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]]):
         pulumi.set(self, "hub_instance_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleCronExpression")
-    def schedule_cron_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_cron_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule for this plugin instance action. This can only be set if the
         plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
@@ -1123,12 +1123,12 @@ class PluginInstanceActionArgs:
         return pulumi.get(self, "schedule_cron_expression")
 
     @schedule_cron_expression.setter
-    def schedule_cron_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_cron_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_cron_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleTimeZone")
-    def schedule_time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time zone for the schedule cron expression. If not provided, UTC will
         be used.
@@ -1139,12 +1139,12 @@ class PluginInstanceActionArgs:
         return pulumi.get(self, "schedule_time_zone")
 
     @schedule_time_zone.setter
-    def schedule_time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_time_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the plugin action in the plugin instance.
@@ -1159,19 +1159,19 @@ class PluginInstanceActionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class PluginInstanceActionCurationConfigArgsDict(TypedDict):
-    curation_type: NotRequired[pulumi.Input[_builtins.str]]
+    curation_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     CURATION_TYPE_UNSPECIFIED
     DEFAULT_CURATION_FOR_API_METADATA
     CUSTOM_CURATION_FOR_API_METADATA
     """
-    custom_curation: NotRequired[pulumi.Input['PluginInstanceActionCurationConfigCustomCurationArgsDict']]
+    custom_curation: NotRequired[pulumi.Input[Optional['PluginInstanceActionCurationConfigCustomCurationArgs']]]
     """
     Custom curation information for this plugin instance.
     Structure is documented below.
@@ -1180,8 +1180,8 @@ class PluginInstanceActionCurationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class PluginInstanceActionCurationConfigArgs:
     def __init__(__self__, *,
-                 curation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_curation: Optional[pulumi.Input['PluginInstanceActionCurationConfigCustomCurationArgs']] = None):
+                 curation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_curation: pulumi.Input[Optional['PluginInstanceActionCurationConfigCustomCurationArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] curation_type: Possible values:
                CURATION_TYPE_UNSPECIFIED
@@ -1197,7 +1197,7 @@ class PluginInstanceActionCurationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="curationType")
-    def curation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def curation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         CURATION_TYPE_UNSPECIFIED
@@ -1207,12 +1207,12 @@ class PluginInstanceActionCurationConfigArgs:
         return pulumi.get(self, "curation_type")
 
     @curation_type.setter
-    def curation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def curation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "curation_type", value)
 
     @_builtins.property
     @pulumi.getter(name="customCuration")
-    def custom_curation(self) -> Optional[pulumi.Input['PluginInstanceActionCurationConfigCustomCurationArgs']]:
+    def custom_curation(self) -> pulumi.Input[Optional['PluginInstanceActionCurationConfigCustomCurationArgs']]:
         """
         Custom curation information for this plugin instance.
         Structure is documented below.
@@ -1220,7 +1220,7 @@ class PluginInstanceActionCurationConfigArgs:
         return pulumi.get(self, "custom_curation")
 
     @custom_curation.setter
-    def custom_curation(self, value: Optional[pulumi.Input['PluginInstanceActionCurationConfigCustomCurationArgs']]):
+    def custom_curation(self, value: pulumi.Input[Optional['PluginInstanceActionCurationConfigCustomCurationArgs']]):
         pulumi.set(self, "custom_curation", value)
 
 
@@ -1259,7 +1259,7 @@ class PluginInstanceActionCurationConfigCustomCurationArgs:
 
 
 class PluginInstanceActionHubInstanceActionArgsDict(TypedDict):
-    current_execution_state: NotRequired[pulumi.Input[_builtins.str]]
+    current_execution_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The current state of the execution.
     Possible values:
@@ -1267,7 +1267,7 @@ class PluginInstanceActionHubInstanceActionArgsDict(TypedDict):
     RUNNING
     NOT_RUNNING
     """
-    last_executions: NotRequired[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgsDict']]]]
+    last_executions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]]]
     """
     The result of the last execution of the plugin instance.
     """
@@ -1275,8 +1275,8 @@ class PluginInstanceActionHubInstanceActionArgsDict(TypedDict):
 @pulumi.input_type
 class PluginInstanceActionHubInstanceActionArgs:
     def __init__(__self__, *,
-                 current_execution_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_executions: Optional[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]] = None):
+                 current_execution_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_executions: pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] current_execution_state: The current state of the execution.
                Possible values:
@@ -1292,7 +1292,7 @@ class PluginInstanceActionHubInstanceActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="currentExecutionState")
-    def current_execution_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_execution_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the execution.
         Possible values:
@@ -1303,34 +1303,34 @@ class PluginInstanceActionHubInstanceActionArgs:
         return pulumi.get(self, "current_execution_state")
 
     @current_execution_state.setter
-    def current_execution_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_execution_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_execution_state", value)
 
     @_builtins.property
     @pulumi.getter(name="lastExecutions")
-    def last_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]]:
+    def last_executions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]]:
         """
         The result of the last execution of the plugin instance.
         """
         return pulumi.get(self, "last_executions")
 
     @last_executions.setter
-    def last_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]]):
+    def last_executions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]]):
         pulumi.set(self, "last_executions", value)
 
 
 class PluginInstanceActionHubInstanceActionLastExecutionArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The last execution end time of the plugin instance.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Error message describing the failure, if any, during Create, Delete or
     ApplyConfig operation corresponding to the plugin instance.This field will
     only be populated if the plugin instance is in the ERROR or FAILED state.
     """
-    result: NotRequired[pulumi.Input[_builtins.str]]
+    result: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The result of the last execution of the plugin instance.
     Possible values:
@@ -1338,7 +1338,7 @@ class PluginInstanceActionHubInstanceActionLastExecutionArgsDict(TypedDict):
     SUCCEEDED
     FAILED
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The last execution start time of the plugin instance.
     """
@@ -1346,10 +1346,10 @@ class PluginInstanceActionHubInstanceActionLastExecutionArgsDict(TypedDict):
 @pulumi.input_type
 class PluginInstanceActionHubInstanceActionLastExecutionArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 result: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 result: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: The last execution end time of the plugin instance.
         :param pulumi.Input[_builtins.str] error_message: Error message describing the failure, if any, during Create, Delete or
@@ -1373,19 +1373,19 @@ class PluginInstanceActionHubInstanceActionLastExecutionArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last execution end time of the plugin instance.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Error message describing the failure, if any, during Create, Delete or
         ApplyConfig operation corresponding to the plugin instance.This field will
@@ -1394,12 +1394,12 @@ class PluginInstanceActionHubInstanceActionLastExecutionArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
     @_builtins.property
     @pulumi.getter
-    def result(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def result(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The result of the last execution of the plugin instance.
         Possible values:
@@ -1410,19 +1410,19 @@ class PluginInstanceActionHubInstanceActionLastExecutionArgs:
         return pulumi.get(self, "result")
 
     @result.setter
-    def result(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def result(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "result", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last execution start time of the plugin instance.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -1437,23 +1437,23 @@ class PluginInstanceAuthConfigArgsDict(TypedDict):
     API_KEY
     OAUTH2_CLIENT_CREDENTIALS
     """
-    api_key_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigApiKeyConfigArgsDict']]
+    api_key_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigApiKeyConfigArgs']]]
     """
     Config for authentication with API key.
     Structure is documented below.
     """
-    google_service_account_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigGoogleServiceAccountConfigArgsDict']]
+    google_service_account_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']]]
     """
     Config for Google service account authentication.
     Structure is documented below.
     """
-    oauth2_client_credentials_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgsDict']]
+    oauth2_client_credentials_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']]]
     """
     Parameters to support Oauth 2.0 client credentials grant authentication.
     See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
     Structure is documented below.
     """
-    user_password_config: NotRequired[pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigArgsDict']]
+    user_password_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigUserPasswordConfigArgs']]]
     """
     Parameters to support Username and Password Authentication.
     Structure is documented below.
@@ -1463,10 +1463,10 @@ class PluginInstanceAuthConfigArgsDict(TypedDict):
 class PluginInstanceAuthConfigArgs:
     def __init__(__self__, *,
                  auth_type: pulumi.Input[_builtins.str],
-                 api_key_config: Optional[pulumi.Input['PluginInstanceAuthConfigApiKeyConfigArgs']] = None,
-                 google_service_account_config: Optional[pulumi.Input['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']] = None,
-                 oauth2_client_credentials_config: Optional[pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']] = None,
-                 user_password_config: Optional[pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigArgs']] = None):
+                 api_key_config: pulumi.Input[Optional['PluginInstanceAuthConfigApiKeyConfigArgs']] = None,
+                 google_service_account_config: pulumi.Input[Optional['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']] = None,
+                 oauth2_client_credentials_config: pulumi.Input[Optional['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']] = None,
+                 user_password_config: pulumi.Input[Optional['PluginInstanceAuthConfigUserPasswordConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] auth_type: Possible values:
                AUTH_TYPE_UNSPECIFIED
@@ -1515,7 +1515,7 @@ class PluginInstanceAuthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiKeyConfig")
-    def api_key_config(self) -> Optional[pulumi.Input['PluginInstanceAuthConfigApiKeyConfigArgs']]:
+    def api_key_config(self) -> pulumi.Input[Optional['PluginInstanceAuthConfigApiKeyConfigArgs']]:
         """
         Config for authentication with API key.
         Structure is documented below.
@@ -1523,12 +1523,12 @@ class PluginInstanceAuthConfigArgs:
         return pulumi.get(self, "api_key_config")
 
     @api_key_config.setter
-    def api_key_config(self, value: Optional[pulumi.Input['PluginInstanceAuthConfigApiKeyConfigArgs']]):
+    def api_key_config(self, value: pulumi.Input[Optional['PluginInstanceAuthConfigApiKeyConfigArgs']]):
         pulumi.set(self, "api_key_config", value)
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccountConfig")
-    def google_service_account_config(self) -> Optional[pulumi.Input['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']]:
+    def google_service_account_config(self) -> pulumi.Input[Optional['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']]:
         """
         Config for Google service account authentication.
         Structure is documented below.
@@ -1536,12 +1536,12 @@ class PluginInstanceAuthConfigArgs:
         return pulumi.get(self, "google_service_account_config")
 
     @google_service_account_config.setter
-    def google_service_account_config(self, value: Optional[pulumi.Input['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']]):
+    def google_service_account_config(self, value: pulumi.Input[Optional['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']]):
         pulumi.set(self, "google_service_account_config", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2ClientCredentialsConfig")
-    def oauth2_client_credentials_config(self) -> Optional[pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']]:
+    def oauth2_client_credentials_config(self) -> pulumi.Input[Optional['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']]:
         """
         Parameters to support Oauth 2.0 client credentials grant authentication.
         See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
@@ -1550,12 +1550,12 @@ class PluginInstanceAuthConfigArgs:
         return pulumi.get(self, "oauth2_client_credentials_config")
 
     @oauth2_client_credentials_config.setter
-    def oauth2_client_credentials_config(self, value: Optional[pulumi.Input['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']]):
+    def oauth2_client_credentials_config(self, value: pulumi.Input[Optional['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']]):
         pulumi.set(self, "oauth2_client_credentials_config", value)
 
     @_builtins.property
     @pulumi.getter(name="userPasswordConfig")
-    def user_password_config(self) -> Optional[pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigArgs']]:
+    def user_password_config(self) -> pulumi.Input[Optional['PluginInstanceAuthConfigUserPasswordConfigArgs']]:
         """
         Parameters to support Username and Password Authentication.
         Structure is documented below.
@@ -1563,7 +1563,7 @@ class PluginInstanceAuthConfigArgs:
         return pulumi.get(self, "user_password_config")
 
     @user_password_config.setter
-    def user_password_config(self, value: Optional[pulumi.Input['PluginInstanceAuthConfigUserPasswordConfigArgs']]):
+    def user_password_config(self, value: pulumi.Input[Optional['PluginInstanceAuthConfigUserPasswordConfigArgs']]):
         pulumi.set(self, "user_password_config", value)
 
 

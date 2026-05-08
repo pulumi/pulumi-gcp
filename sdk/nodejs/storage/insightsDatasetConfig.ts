@@ -323,52 +323,52 @@ export interface InsightsDatasetConfigState {
     /**
      * Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
      */
-    activityDataRetentionPeriodDays?: pulumi.Input<number>;
+    activityDataRetentionPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * The UTC time at which the DatasetConfig was created. This is auto-populated.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The user-defined ID of the DatasetConfig
      */
-    datasetConfigId?: pulumi.Input<string>;
+    datasetConfigId?: pulumi.Input<string | undefined>;
     /**
      * State of the DatasetConfig.
      */
-    datasetConfigState?: pulumi.Input<string>;
+    datasetConfigState?: pulumi.Input<string | undefined>;
     /**
      * An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Defined the options for excluding cloud storage buckets for the DatasetConfig.
      * Structure is documented below.
      */
-    excludeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageBuckets>;
+    excludeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageBuckets | undefined>;
     /**
      * Defines the options for excluding cloud storage locations for the DatasetConfig.
      * Structure is documented below.
      */
-    excludeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageLocations>;
+    excludeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageLocations | undefined>;
     /**
      * Identity used by DatasetConfig.
      * Structure is documented below.
      */
-    identity?: pulumi.Input<inputs.storage.InsightsDatasetConfigIdentity>;
+    identity?: pulumi.Input<inputs.storage.InsightsDatasetConfigIdentity | undefined>;
     /**
      * Defines the options for including cloud storage buckets for the DatasetConfig.
      * Structure is documented below.
      */
-    includeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageBuckets>;
+    includeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageBuckets | undefined>;
     /**
      * Defines the options for including cloud storage locations for the DatasetConfig.
      * Structure is documented below.
      */
-    includeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageLocations>;
+    includeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageLocations | undefined>;
     /**
      * If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
      */
-    includeNewlyCreatedBuckets?: pulumi.Input<boolean>;
+    includeNewlyCreatedBuckets?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean terraform only flag to link/unlink dataset.
      *
@@ -376,56 +376,56 @@ export interface InsightsDatasetConfigState {
      * > **Note** A dataset config resource can only be destroyed once it is unlinked,
      * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
      */
-    linkDataset?: pulumi.Input<boolean>;
+    linkDataset?: pulumi.Input<boolean | undefined>;
     /**
      * Details of the linked DatasetConfig.
      * Structure is documented below.
      */
-    links?: pulumi.Input<pulumi.Input<inputs.storage.InsightsDatasetConfigLink>[]>;
+    links?: pulumi.Input<pulumi.Input<inputs.storage.InsightsDatasetConfigLink>[] | undefined>;
     /**
      * The location of the DatasetConfig.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization resource ID that the source projects should belong to.
      * Projects that do not belong to the provided organization are not considered when creating the dataset.
      */
-    organizationNumber?: pulumi.Input<string>;
+    organizationNumber?: pulumi.Input<string | undefined>;
     /**
      * Defines the options for providing a source organization for the DatasetConfig.
      */
-    organizationScope?: pulumi.Input<boolean>;
+    organizationScope?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Number of days of history that must be retained.
      */
-    retentionPeriodDays?: pulumi.Input<number>;
+    retentionPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * Defines the options for providing source folders for the DatasetConfig.
      * Structure is documented below.
      */
-    sourceFolders?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceFolders>;
+    sourceFolders?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceFolders | undefined>;
     /**
      * Defines the options for providing source projects for the DatasetConfig.
      * Structure is documented below.
      */
-    sourceProjects?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceProjects>;
+    sourceProjects?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceProjects | undefined>;
     /**
      * System generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The UTC time at which the DatasetConfig was updated. This is auto-populated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -435,7 +435,7 @@ export interface InsightsDatasetConfigArgs {
     /**
      * Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
      */
-    activityDataRetentionPeriodDays?: pulumi.Input<number>;
+    activityDataRetentionPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * The user-defined ID of the DatasetConfig
      */
@@ -443,17 +443,17 @@ export interface InsightsDatasetConfigArgs {
     /**
      * An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Defined the options for excluding cloud storage buckets for the DatasetConfig.
      * Structure is documented below.
      */
-    excludeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageBuckets>;
+    excludeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageBuckets | undefined>;
     /**
      * Defines the options for excluding cloud storage locations for the DatasetConfig.
      * Structure is documented below.
      */
-    excludeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageLocations>;
+    excludeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigExcludeCloudStorageLocations | undefined>;
     /**
      * Identity used by DatasetConfig.
      * Structure is documented below.
@@ -463,16 +463,16 @@ export interface InsightsDatasetConfigArgs {
      * Defines the options for including cloud storage buckets for the DatasetConfig.
      * Structure is documented below.
      */
-    includeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageBuckets>;
+    includeCloudStorageBuckets?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageBuckets | undefined>;
     /**
      * Defines the options for including cloud storage locations for the DatasetConfig.
      * Structure is documented below.
      */
-    includeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageLocations>;
+    includeCloudStorageLocations?: pulumi.Input<inputs.storage.InsightsDatasetConfigIncludeCloudStorageLocations | undefined>;
     /**
      * If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
      */
-    includeNewlyCreatedBuckets?: pulumi.Input<boolean>;
+    includeNewlyCreatedBuckets?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean terraform only flag to link/unlink dataset.
      *
@@ -480,7 +480,7 @@ export interface InsightsDatasetConfigArgs {
      * > **Note** A dataset config resource can only be destroyed once it is unlinked,
      * so users must set this field to false to unlink the dataset and destroy the dataset config resource.
      */
-    linkDataset?: pulumi.Input<boolean>;
+    linkDataset?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the DatasetConfig.
      */
@@ -489,16 +489,16 @@ export interface InsightsDatasetConfigArgs {
      * Organization resource ID that the source projects should belong to.
      * Projects that do not belong to the provided organization are not considered when creating the dataset.
      */
-    organizationNumber?: pulumi.Input<string>;
+    organizationNumber?: pulumi.Input<string | undefined>;
     /**
      * Defines the options for providing a source organization for the DatasetConfig.
      */
-    organizationScope?: pulumi.Input<boolean>;
+    organizationScope?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Number of days of history that must be retained.
      */
@@ -507,10 +507,10 @@ export interface InsightsDatasetConfigArgs {
      * Defines the options for providing source folders for the DatasetConfig.
      * Structure is documented below.
      */
-    sourceFolders?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceFolders>;
+    sourceFolders?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceFolders | undefined>;
     /**
      * Defines the options for providing source projects for the DatasetConfig.
      * Structure is documented below.
      */
-    sourceProjects?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceProjects>;
+    sourceProjects?: pulumi.Input<inputs.storage.InsightsDatasetConfigSourceProjects | undefined>;
 }

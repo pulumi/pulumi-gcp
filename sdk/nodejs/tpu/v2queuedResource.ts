@@ -185,21 +185,21 @@ export interface V2QueuedResourceState {
     /**
      * The immutable name of the Queued Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines a TPU resource.
      * Structure is documented below.
      */
-    tpu?: pulumi.Input<inputs.tpu.V2QueuedResourceTpu>;
+    tpu?: pulumi.Input<inputs.tpu.V2QueuedResourceTpu | undefined>;
     /**
      * The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,19 +209,19 @@ export interface V2QueuedResourceArgs {
     /**
      * The immutable name of the Queued Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines a TPU resource.
      * Structure is documented below.
      */
-    tpu?: pulumi.Input<inputs.tpu.V2QueuedResourceTpu>;
+    tpu?: pulumi.Input<inputs.tpu.V2QueuedResourceTpu | undefined>;
     /**
      * The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

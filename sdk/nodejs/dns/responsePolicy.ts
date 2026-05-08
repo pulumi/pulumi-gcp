@@ -193,26 +193,26 @@ export interface ResponsePolicyState {
     /**
      * The description of the response policy, such as `My new response policy`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The list of Google Kubernetes Engine clusters that can see this zone.
      * Structure is documented below.
      */
-    gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyGkeCluster>[]>;
+    gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyGkeCluster>[] | undefined>;
     /**
      * The list of network names specifying networks to which this policy is applied.
      * Structure is documented below.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyNetwork>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
      */
-    responsePolicyName?: pulumi.Input<string>;
+    responsePolicyName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -222,22 +222,22 @@ export interface ResponsePolicyArgs {
     /**
      * The description of the response policy, such as `My new response policy`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The list of Google Kubernetes Engine clusters that can see this zone.
      * Structure is documented below.
      */
-    gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyGkeCluster>[]>;
+    gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyGkeCluster>[] | undefined>;
     /**
      * The list of network names specifying networks to which this policy is applied.
      * Structure is documented below.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.dns.ResponsePolicyNetwork>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
      */

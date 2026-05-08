@@ -280,7 +280,7 @@ __all__ = [
 ]
 
 class AiDatasetEncryptionSpecArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
     Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -289,7 +289,7 @@ class AiDatasetEncryptionSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiDatasetEncryptionSpecArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -299,7 +299,7 @@ class AiDatasetEncryptionSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
         Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -307,7 +307,7 @@ class AiDatasetEncryptionSpecArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
@@ -321,12 +321,12 @@ class AiDeploymentResourcePoolDedicatedResourcesArgsDict(TypedDict):
     """
     The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
     """
-    autoscaling_metric_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict']]]]
+    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]]
     """
     A list of the metric specifications that overrides a resource utilization metric.
     Structure is documented below.
     """
-    max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
     """
@@ -336,8 +336,8 @@ class AiDeploymentResourcePoolDedicatedResourcesArgs:
     def __init__(__self__, *,
                  machine_spec: pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs'],
                  min_replica_count: pulumi.Input[_builtins.int],
-                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]] = None,
-                 max_replica_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 autoscaling_metric_specs: pulumi.Input[Optional[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]] = None,
+                 max_replica_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs'] machine_spec: The specification of a single machine used by the prediction
                Structure is documented below.
@@ -380,7 +380,7 @@ class AiDeploymentResourcePoolDedicatedResourcesArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingMetricSpecs")
-    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]:
+    def autoscaling_metric_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]:
         """
         A list of the metric specifications that overrides a resource utilization metric.
         Structure is documented below.
@@ -388,19 +388,19 @@ class AiDeploymentResourcePoolDedicatedResourcesArgs:
         return pulumi.get(self, "autoscaling_metric_specs")
 
     @autoscaling_metric_specs.setter
-    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]):
+    def autoscaling_metric_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]):
         pulumi.set(self, "autoscaling_metric_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReplicaCount")
-    def max_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
         """
         return pulumi.get(self, "max_replica_count")
 
     @max_replica_count.setter
-    def max_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replica_count", value)
 
 
@@ -409,7 +409,7 @@ class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict(Ty
     """
     The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
     """
-    target: NotRequired[pulumi.Input[_builtins.int]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
     """
@@ -418,7 +418,7 @@ class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict(Ty
 class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs:
     def __init__(__self__, *,
                  metric_name: pulumi.Input[_builtins.str],
-                 target: Optional[pulumi.Input[_builtins.int]] = None):
+                 target: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_name: The resource metric name. Supported metrics: For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
         :param pulumi.Input[_builtins.int] target: The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
@@ -441,27 +441,27 @@ class AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target", value)
 
 
 class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgsDict(TypedDict):
-    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    accelerator_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of accelerators to attach to the machine.
     """
-    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
     """
@@ -469,9 +469,9 @@ class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs:
     def __init__(__self__, *,
-                 accelerator_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] accelerator_count: The number of accelerators to attach to the machine.
         :param pulumi.Input[_builtins.str] accelerator_type: The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
@@ -486,100 +486,100 @@ class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accelerator_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of accelerators to attach to the machine.
         """
         return pulumi.get(self, "accelerator_count")
 
     @accelerator_count.setter
-    def accelerator_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accelerator_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accelerator_count", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
         """
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class AiEndpointDeployedModelArgsDict(TypedDict):
-    automatic_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgsDict']]]]
+    automatic_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]]
     """
     (Output)
     A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
     Structure is documented below.
     """
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Timestamp when the DeployedModel was created.
     """
-    dedicated_resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgsDict']]]]
+    dedicated_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]]
     """
     (Output)
     A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
     Structure is documented below.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
     """
-    enable_access_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_access_logging: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
     """
-    enable_container_logging: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_container_logging: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
     """
-    model: NotRequired[pulumi.Input[_builtins.str]]
+    model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
     """
-    model_version_id: NotRequired[pulumi.Input[_builtins.str]]
+    model_version_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The version ID of the model that is deployed.
     """
-    private_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgsDict']]]]
+    private_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]]
     """
     (Output)
     Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
     Structure is documented below.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
     """
-    shared_resources: NotRequired[pulumi.Input[_builtins.str]]
+    shared_resources: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
@@ -588,18 +588,18 @@ class AiEndpointDeployedModelArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointDeployedModelArgs:
     def __init__(__self__, *,
-                 automatic_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_access_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_container_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_resources: Optional[pulumi.Input[_builtins.str]] = None):
+                 automatic_resources: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_resources: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_access_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_container_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_resources: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]] automatic_resources: (Output)
                A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
@@ -655,7 +655,7 @@ class AiEndpointDeployedModelArgs:
 
     @_builtins.property
     @pulumi.getter(name="automaticResources")
-    def automatic_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]:
+    def automatic_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]:
         """
         (Output)
         A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
@@ -664,12 +664,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "automatic_resources")
 
     @automatic_resources.setter
-    def automatic_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]):
+    def automatic_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]):
         pulumi.set(self, "automatic_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Timestamp when the DeployedModel was created.
@@ -677,12 +677,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedResources")
-    def dedicated_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]:
+    def dedicated_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]:
         """
         (Output)
         A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
@@ -691,24 +691,24 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "dedicated_resources")
 
     @dedicated_resources.setter
-    def dedicated_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]):
+    def dedicated_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]):
         pulumi.set(self, "dedicated_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAccessLogging")
-    def enable_access_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_access_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         These logs are like standard server access logs, containing information like timestamp and latency for each prediction request. Note that Stackdriver logs may incur a cost, especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option.
@@ -716,12 +716,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "enable_access_logging")
 
     @enable_access_logging.setter
-    def enable_access_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_access_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_access_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="enableContainerLogging")
-    def enable_container_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_container_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         If true, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Stackdriver Logging. Only supported for custom-trained Models and AutoML Tabular Models.
@@ -729,12 +729,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "enable_container_logging")
 
     @enable_container_logging.setter
-    def enable_container_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_container_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_container_logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
@@ -742,12 +742,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the Model that this is the deployment of. Note that the Model may be in a different location than the DeployedModel's Endpoint.
@@ -755,12 +755,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter(name="modelVersionId")
-    def model_version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The version ID of the model that is deployed.
@@ -768,12 +768,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "model_version_id")
 
     @model_version_id.setter
-    def model_version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_version_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateEndpoints")
-    def private_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]:
+    def private_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]:
         """
         (Output)
         Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
@@ -782,12 +782,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "private_endpoints")
 
     @private_endpoints.setter
-    def private_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]):
+    def private_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]):
         pulumi.set(self, "private_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
@@ -795,12 +795,12 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedResources")
-    def shared_resources(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_resources(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The resource name of the shared DeploymentResourcePool to deploy on. Format: projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}
@@ -808,17 +808,17 @@ class AiEndpointDeployedModelArgs:
         return pulumi.get(self, "shared_resources")
 
     @shared_resources.setter
-    def shared_resources(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_resources(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_resources", value)
 
 
 class AiEndpointDeployedModelAutomaticResourceArgsDict(TypedDict):
-    max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
     """
-    min_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
@@ -827,8 +827,8 @@ class AiEndpointDeployedModelAutomaticResourceArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointDeployedModelAutomaticResourceArgs:
     def __init__(__self__, *,
-                 max_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replica_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_replica_count: (Output)
                The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -842,7 +842,7 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxReplicaCount")
-    def max_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -850,12 +850,12 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
         return pulumi.get(self, "max_replica_count")
 
     @max_replica_count.setter
-    def max_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minReplicaCount")
-    def min_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
@@ -863,29 +863,29 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
         return pulumi.get(self, "min_replica_count")
 
     @min_replica_count.setter
-    def min_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_replica_count", value)
 
 
 class AiEndpointDeployedModelDedicatedResourceArgsDict(TypedDict):
-    autoscaling_metric_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict']]]]
+    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]]
     """
     (Output)
     The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
     Structure is documented below.
     """
-    machine_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict']]]]
+    machine_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]]
     """
     (Output)
     The specification of a single machine used by the prediction.
     Structure is documented below.
     """
-    max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
     """
-    min_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
@@ -894,10 +894,10 @@ class AiEndpointDeployedModelDedicatedResourceArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointDeployedModelDedicatedResourceArgs:
     def __init__(__self__, *,
-                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]] = None,
-                 machine_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]] = None,
-                 max_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replica_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 autoscaling_metric_specs: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]] = None,
+                 machine_specs: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]] = None,
+                 max_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]] autoscaling_metric_specs: (Output)
                The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
@@ -921,7 +921,7 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingMetricSpecs")
-    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]:
+    def autoscaling_metric_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]:
         """
         (Output)
         The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
@@ -930,12 +930,12 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         return pulumi.get(self, "autoscaling_metric_specs")
 
     @autoscaling_metric_specs.setter
-    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]):
+    def autoscaling_metric_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]):
         pulumi.set(self, "autoscaling_metric_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="machineSpecs")
-    def machine_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]:
+    def machine_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]:
         """
         (Output)
         The specification of a single machine used by the prediction.
@@ -944,12 +944,12 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         return pulumi.get(self, "machine_specs")
 
     @machine_specs.setter
-    def machine_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]):
+    def machine_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]):
         pulumi.set(self, "machine_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReplicaCount")
-    def max_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -957,12 +957,12 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         return pulumi.get(self, "max_replica_count")
 
     @max_replica_count.setter
-    def max_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minReplicaCount")
-    def min_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The minimum number of replicas this DeployedModel will be always deployed on. If traffic against it increases, it may dynamically be deployed onto more replicas up to max_replica_count, and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
@@ -970,17 +970,17 @@ class AiEndpointDeployedModelDedicatedResourceArgs:
         return pulumi.get(self, "min_replica_count")
 
     @min_replica_count.setter
-    def min_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_replica_count", value)
 
 
 class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict(TypedDict):
-    metric_name: NotRequired[pulumi.Input[_builtins.str]]
+    metric_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
     """
-    target: NotRequired[pulumi.Input[_builtins.int]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
@@ -989,8 +989,8 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict(Type
 @pulumi.input_type
 class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
     def __init__(__self__, *,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.int]] = None):
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_name: (Output)
                The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
@@ -1004,7 +1004,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The resource metric name. Supported metrics: * For Online Prediction: * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle` * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
@@ -1012,12 +1012,12 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The target resource utilization in percentage (1% - 100%) for the given metric; once the real usage deviates from the target by a certain percentage, the machine replicas change. The default value is 60 (representing 60%) if not provided.
@@ -1025,22 +1025,22 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target", value)
 
 
 class AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict(TypedDict):
-    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    accelerator_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The number of accelerators to attach to the machine.
     """
-    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
@@ -1049,9 +1049,9 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
     def __init__(__self__, *,
-                 accelerator_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] accelerator_count: (Output)
                The number of accelerators to attach to the machine.
@@ -1069,7 +1069,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accelerator_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The number of accelerators to attach to the machine.
@@ -1077,12 +1077,12 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
         return pulumi.get(self, "accelerator_count")
 
     @accelerator_count.setter
-    def accelerator_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accelerator_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accelerator_count", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
@@ -1090,12 +1090,12 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required. TODO: Try to better unify the required vs optional.
@@ -1103,27 +1103,27 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpecArgs:
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class AiEndpointDeployedModelPrivateEndpointArgsDict(TypedDict):
-    explain_http_uri: NotRequired[pulumi.Input[_builtins.str]]
+    explain_http_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Http(s) path to send explain requests.
     """
-    health_http_uri: NotRequired[pulumi.Input[_builtins.str]]
+    health_http_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Http(s) path to send health check requests.
     """
-    predict_http_uri: NotRequired[pulumi.Input[_builtins.str]]
+    predict_http_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Http(s) path to send prediction requests.
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The name of the service attachment resource. Populated if private service connect is enabled.
@@ -1132,10 +1132,10 @@ class AiEndpointDeployedModelPrivateEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointDeployedModelPrivateEndpointArgs:
     def __init__(__self__, *,
-                 explain_http_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_http_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 predict_http_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 explain_http_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_http_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 predict_http_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] explain_http_uri: (Output)
                Output only. Http(s) path to send explain requests.
@@ -1157,7 +1157,7 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="explainHttpUri")
-    def explain_http_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def explain_http_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Http(s) path to send explain requests.
@@ -1165,12 +1165,12 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
         return pulumi.get(self, "explain_http_uri")
 
     @explain_http_uri.setter
-    def explain_http_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def explain_http_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "explain_http_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="healthHttpUri")
-    def health_http_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_http_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Http(s) path to send health check requests.
@@ -1178,12 +1178,12 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
         return pulumi.get(self, "health_http_uri")
 
     @health_http_uri.setter
-    def health_http_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_http_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_http_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="predictHttpUri")
-    def predict_http_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predict_http_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Http(s) path to send prediction requests.
@@ -1191,12 +1191,12 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
         return pulumi.get(self, "predict_http_uri")
 
     @predict_http_uri.setter
-    def predict_http_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predict_http_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predict_http_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The name of the service attachment resource. Populated if private service connect is enabled.
@@ -1204,7 +1204,7 @@ class AiEndpointDeployedModelPrivateEndpointArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
@@ -1239,14 +1239,14 @@ class AiEndpointEncryptionSpecArgs:
 class AiEndpointIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiEndpointIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1272,25 +1272,25 @@ class AiEndpointIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiEndpointIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiEndpointIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1316,25 +1316,25 @@ class AiEndpointIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiEndpointPredictRequestResponseLoggingConfigArgsDict(TypedDict):
-    bigquery_destination: NotRequired[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict']]
+    bigquery_destination: NotRequired[pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]]
     """
     BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
     Structure is documented below.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If logging is enabled or not.
     """
-    sampling_rate: NotRequired[pulumi.Input[_builtins.float]]
+    sampling_rate: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Percentage of requests to be logged, expressed as a fraction in range(0,1]
     """
@@ -1342,9 +1342,9 @@ class AiEndpointPredictRequestResponseLoggingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointPredictRequestResponseLoggingConfigArgs:
     def __init__(__self__, *,
-                 bigquery_destination: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sampling_rate: Optional[pulumi.Input[_builtins.float]] = None):
+                 bigquery_destination: pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sampling_rate: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs'] bigquery_destination: BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
                Structure is documented below.
@@ -1360,7 +1360,7 @@ class AiEndpointPredictRequestResponseLoggingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDestination")
-    def bigquery_destination(self) -> Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]:
+    def bigquery_destination(self) -> pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]:
         """
         BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
         Structure is documented below.
@@ -1368,36 +1368,36 @@ class AiEndpointPredictRequestResponseLoggingConfigArgs:
         return pulumi.get(self, "bigquery_destination")
 
     @bigquery_destination.setter
-    def bigquery_destination(self, value: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]):
+    def bigquery_destination(self, value: pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]):
         pulumi.set(self, "bigquery_destination", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If logging is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="samplingRate")
-    def sampling_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def sampling_rate(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Percentage of requests to be logged, expressed as a fraction in range(0,1]
         """
         return pulumi.get(self, "sampling_rate")
 
     @sampling_rate.setter
-    def sampling_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def sampling_rate(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "sampling_rate", value)
 
 
 class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict(TypedDict):
-    output_uri: NotRequired[pulumi.Input[_builtins.str]]
+    output_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
     """
@@ -1405,7 +1405,7 @@ class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict(T
 @pulumi.input_type
 class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs:
     def __init__(__self__, *,
-                 output_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 output_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] output_uri: BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
         """
@@ -1414,14 +1414,14 @@ class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs:
 
     @_builtins.property
     @pulumi.getter(name="outputUri")
-    def output_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
         """
         return pulumi.get(self, "output_uri")
 
     @output_uri.setter
-    def output_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_uri", value)
 
 
@@ -1430,16 +1430,16 @@ class AiEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
     """
     Required. If true, expose the IndexEndpoint via private service connect.
     """
-    enable_secure_private_service_connect: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_private_service_connect: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional, Beta)
     If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
     """
-    project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    project_allowlists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Projects from which the forwarding rule will target the service attachment.
     """
-    psc_automation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict']]]]
+    psc_automation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]]
     """
     List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
     Structure is documented below.
@@ -1449,9 +1449,9 @@ class AiEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
 class AiEndpointPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
                  enable_private_service_connect: pulumi.Input[_builtins.bool],
-                 enable_secure_private_service_connect: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 psc_automation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]] = None):
+                 enable_secure_private_service_connect: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 psc_automation_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
         :param pulumi.Input[_builtins.bool] enable_secure_private_service_connect: (Optional, Beta)
@@ -1482,7 +1482,7 @@ class AiEndpointPrivateServiceConnectConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableSecurePrivateServiceConnect")
-    def enable_secure_private_service_connect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_private_service_connect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
@@ -1490,24 +1490,24 @@ class AiEndpointPrivateServiceConnectConfigArgs:
         return pulumi.get(self, "enable_secure_private_service_connect")
 
     @enable_secure_private_service_connect.setter
-    def enable_secure_private_service_connect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_private_service_connect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_private_service_connect", value)
 
     @_builtins.property
     @pulumi.getter(name="projectAllowlists")
-    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Projects from which the forwarding rule will target the service attachment.
         """
         return pulumi.get(self, "project_allowlists")
 
     @project_allowlists.setter
-    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAutomationConfigs")
-    def psc_automation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]:
+    def psc_automation_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]:
         """
         List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
         Structure is documented below.
@@ -1515,7 +1515,7 @@ class AiEndpointPrivateServiceConnectConfigArgs:
         return pulumi.get(self, "psc_automation_configs")
 
     @psc_automation_configs.setter
-    def psc_automation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]):
+    def psc_automation_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]):
         pulumi.set(self, "psc_automation_configs", value)
 
 
@@ -1528,22 +1528,22 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict(TypedDict
     """
     Project id used to create forwarding rule.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Error message if the PSC service automation failed.
     """
-    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Forwarding rule created by the PSC service automation.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     IP address rule created by the PSC service automation.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The state of the PSC service automation.
@@ -1554,10 +1554,10 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
         :param pulumi.Input[_builtins.str] project_id: Project id used to create forwarding rule.
@@ -1607,7 +1607,7 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Error message if the PSC service automation failed.
@@ -1615,12 +1615,12 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Forwarding rule created by the PSC service automation.
@@ -1628,12 +1628,12 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
         return pulumi.get(self, "forwarding_rule")
 
     @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         IP address rule created by the PSC service automation.
@@ -1641,12 +1641,12 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The state of the PSC service automation.
@@ -1654,22 +1654,22 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class AiEndpointWithModelGardenDeploymentDeployConfigArgsDict(TypedDict):
-    dedicated_resources: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict']]
+    dedicated_resources: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]]
     """
     A description of resources that are dedicated to a DeployedModel or
     DeployedIndex, and that need a higher degree of manual configuration.
     Structure is documented below.
     """
-    fast_tryout_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    fast_tryout_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, enable the QMT fast tryout feature for this model if possible.
     """
-    system_labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    system_labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     System labels for Model Garden deployments.
     These labels are managed by Google and for tracking purposes only.
@@ -1678,9 +1678,9 @@ class AiEndpointWithModelGardenDeploymentDeployConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentDeployConfigArgs:
     def __init__(__self__, *,
-                 dedicated_resources: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']] = None,
-                 fast_tryout_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 dedicated_resources: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']] = None,
+                 fast_tryout_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs'] dedicated_resources: A description of resources that are dedicated to a DeployedModel or
                DeployedIndex, and that need a higher degree of manual configuration.
@@ -1698,7 +1698,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dedicatedResources")
-    def dedicated_resources(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]:
+    def dedicated_resources(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]:
         """
         A description of resources that are dedicated to a DeployedModel or
         DeployedIndex, and that need a higher degree of manual configuration.
@@ -1707,24 +1707,24 @@ class AiEndpointWithModelGardenDeploymentDeployConfigArgs:
         return pulumi.get(self, "dedicated_resources")
 
     @dedicated_resources.setter
-    def dedicated_resources(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]):
+    def dedicated_resources(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]):
         pulumi.set(self, "dedicated_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="fastTryoutEnabled")
-    def fast_tryout_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fast_tryout_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, enable the QMT fast tryout feature for this model if possible.
         """
         return pulumi.get(self, "fast_tryout_enabled")
 
     @fast_tryout_enabled.setter
-    def fast_tryout_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fast_tryout_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fast_tryout_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="systemLabels")
-    def system_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def system_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         System labels for Model Garden deployments.
         These labels are managed by Google and for tracking purposes only.
@@ -1732,7 +1732,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigArgs:
         return pulumi.get(self, "system_labels")
 
     @system_labels.setter
-    def system_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def system_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "system_labels", value)
 
 
@@ -1749,7 +1749,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict(
     If traffic increases, it may dynamically be deployed onto more replicas,
     and as traffic decreases, some of these extra replicas may be freed.
     """
-    autoscaling_metric_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgsDict']]]]
+    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]]
     """
     The metric specifications that overrides a resource
     utilization metric (CPU utilization, accelerator's duty cycle, and so on)
@@ -1770,7 +1770,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict(
     autoscaling_metric_specs.target to `80`.
     Structure is documented below.
     """
-    max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of replicas that may be deployed on when the traffic
     against it increases. If the requested value is too large, the deployment
@@ -1784,7 +1784,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict(
     number of cores in the selected machine type) and (max_replica_count *
     number of GPUs per replica in the selected machine type).
     """
-    required_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    required_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of required available replicas for the deployment to succeed.
     This field is only needed when partial deployment/mutation is
@@ -1793,7 +1793,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict(
     the replicas will be retried. If not set, the default
     required_replica_count will be min_replica_count.
     """
-    spot: NotRequired[pulumi.Input[_builtins.bool]]
+    spot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, schedule the deployment workload on [spot
     VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
@@ -1804,10 +1804,10 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs:
     def __init__(__self__, *,
                  machine_spec: pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs'],
                  min_replica_count: pulumi.Input[_builtins.int],
-                 autoscaling_metric_specs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]] = None,
-                 max_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 required_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot: Optional[pulumi.Input[_builtins.bool]] = None):
+                 autoscaling_metric_specs: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]] = None,
+                 max_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 required_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs'] machine_spec: Specification of a single machine.
                Structure is documented below.
@@ -1894,7 +1894,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoscalingMetricSpecs")
-    def autoscaling_metric_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]:
+    def autoscaling_metric_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]:
         """
         The metric specifications that overrides a resource
         utilization metric (CPU utilization, accelerator's duty cycle, and so on)
@@ -1918,12 +1918,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs:
         return pulumi.get(self, "autoscaling_metric_specs")
 
     @autoscaling_metric_specs.setter
-    def autoscaling_metric_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]):
+    def autoscaling_metric_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]):
         pulumi.set(self, "autoscaling_metric_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReplicaCount")
-    def max_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of replicas that may be deployed on when the traffic
         against it increases. If the requested value is too large, the deployment
@@ -1940,12 +1940,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs:
         return pulumi.get(self, "max_replica_count")
 
     @max_replica_count.setter
-    def max_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredReplicaCount")
-    def required_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def required_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of required available replicas for the deployment to succeed.
         This field is only needed when partial deployment/mutation is
@@ -1957,12 +1957,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs:
         return pulumi.get(self, "required_replica_count")
 
     @required_replica_count.setter
-    def required_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def required_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "required_replica_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def spot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def spot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, schedule the deployment workload on [spot
         VMs](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms).
@@ -1970,7 +1970,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs:
         return pulumi.get(self, "spot")
 
     @spot.setter
-    def spot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def spot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "spot", value)
 
 
@@ -1983,7 +1983,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
     * `aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle`
     * `aiplatform.googleapis.com/prediction/online/cpu/utilization`
     """
-    target: NotRequired[pulumi.Input[_builtins.int]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The target resource utilization in percentage (1% - 100%) for the given
     metric; once the real usage deviates from the target by a certain
@@ -1995,7 +1995,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs:
     def __init__(__self__, *,
                  metric_name: pulumi.Input[_builtins.str],
-                 target: Optional[pulumi.Input[_builtins.int]] = None):
+                 target: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_name: The resource metric name.
                Supported metrics:
@@ -2029,7 +2029,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The target resource utilization in percentage (1% - 100%) for the given
         metric; once the real usage deviates from the target by a certain
@@ -2039,16 +2039,16 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target", value)
 
 
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgsDict(TypedDict):
-    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    accelerator_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of accelerators to attach to the machine.
     """
-    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     ACCELERATOR_TYPE_UNSPECIFIED
@@ -2069,7 +2069,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
     TPU_V4_POD
     TPU_V5_LITEPOD
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the machine.
     See the [list of machine types supported for
@@ -2080,18 +2080,18 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
     value is `n1-standard-2`. For BatchPredictionJob or as part of
     WorkerPoolSpec this field is required.
     """
-    multihost_gpu_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    multihost_gpu_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of nodes per replica for multihost GPU deployments.
     """
-    reservation_affinity: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgsDict']]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]]
     """
     A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
     DeployedModel) to draw its Compute Engine resources from a Shared
     Reservation, or exclusively from on-demand capacity.
     Structure is documented below.
     """
-    tpu_topology: NotRequired[pulumi.Input[_builtins.str]]
+    tpu_topology: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The topology of the TPUs. Corresponds to the TPU topologies available from
     GKE. (Example: tpu_topology: "2x2x1").
@@ -2100,12 +2100,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecArgs:
     def __init__(__self__, *,
-                 accelerator_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 multihost_gpu_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reservation_affinity: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']] = None,
-                 tpu_topology: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 multihost_gpu_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reservation_affinity: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']] = None,
+                 tpu_topology: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] accelerator_count: The number of accelerators to attach to the machine.
         :param pulumi.Input[_builtins.str] accelerator_type: Possible values:
@@ -2157,19 +2157,19 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accelerator_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of accelerators to attach to the machine.
         """
         return pulumi.get(self, "accelerator_count")
 
     @accelerator_count.setter
-    def accelerator_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accelerator_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accelerator_count", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         ACCELERATOR_TYPE_UNSPECIFIED
@@ -2193,12 +2193,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the machine.
         See the [list of machine types supported for
@@ -2212,24 +2212,24 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="multihostGpuNodeCount")
-    def multihost_gpu_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def multihost_gpu_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes per replica for multihost GPU deployments.
         """
         return pulumi.get(self, "multihost_gpu_node_count")
 
     @multihost_gpu_node_count.setter
-    def multihost_gpu_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def multihost_gpu_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "multihost_gpu_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationAffinity")
-    def reservation_affinity(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]:
+    def reservation_affinity(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]:
         """
         A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
         DeployedModel) to draw its Compute Engine resources from a Shared
@@ -2239,12 +2239,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
         return pulumi.get(self, "reservation_affinity")
 
     @reservation_affinity.setter
-    def reservation_affinity(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]):
+    def reservation_affinity(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]):
         pulumi.set(self, "reservation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="tpuTopology")
-    def tpu_topology(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tpu_topology(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topology of the TPUs. Corresponds to the TPU topologies available from
         GKE. (Example: tpu_topology: "2x2x1").
@@ -2252,7 +2252,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
         return pulumi.get(self, "tpu_topology")
 
     @tpu_topology.setter
-    def tpu_topology(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tpu_topology(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tpu_topology", value)
 
 
@@ -2266,13 +2266,13 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
     ANY_RESERVATION
     SPECIFIC_RESERVATION
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Corresponds to the label key of a reservation resource. To target a
     SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
     as the key and specify the name of your reservation as its value.
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Corresponds to the label values of a reservation resource. This must be the
     full resource name of the reservation or reservation block.
@@ -2282,8 +2282,8 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs:
     def __init__(__self__, *,
                  reservation_affinity_type: pulumi.Input[_builtins.str],
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] reservation_affinity_type: Specifies the reservation affinity type.
                Possible values:
@@ -2322,7 +2322,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Corresponds to the label key of a reservation resource. To target a
         SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name`
@@ -2331,12 +2331,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Corresponds to the label values of a reservation resource. This must be the
         full resource name of the reservation or reservation block.
@@ -2344,12 +2344,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 class AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict(TypedDict):
-    dedicated_endpoint_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    dedicated_endpoint_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the endpoint will be exposed through a dedicated
     DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
@@ -2358,12 +2358,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict(TypedDict):
     you won't be able to send request to the shared DNS
     {region}-aiplatform.googleapis.com. The limitations will be removed soon.
     """
-    endpoint_display_name: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint_display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-specified display name of the endpoint. If not set, a
     default name will be used.
     """
-    private_service_connect_config: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgsDict']]
+    private_service_connect_config: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]]
     """
     The configuration for Private Service Connect (PSC).
     Structure is documented below.
@@ -2372,9 +2372,9 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
     def __init__(__self__, *,
-                 dedicated_endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_service_connect_config: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']] = None):
+                 dedicated_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_service_connect_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated
                DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
@@ -2396,7 +2396,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dedicatedEndpointEnabled")
-    def dedicated_endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dedicated_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the endpoint will be exposed through a dedicated
         DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS
@@ -2408,12 +2408,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
         return pulumi.get(self, "dedicated_endpoint_enabled")
 
     @dedicated_endpoint_enabled.setter
-    def dedicated_endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dedicated_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dedicated_endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointDisplayName")
-    def endpoint_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-specified display name of the endpoint. If not set, a
         default name will be used.
@@ -2421,12 +2421,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
         return pulumi.get(self, "endpoint_display_name")
 
     @endpoint_display_name.setter
-    def endpoint_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]:
         """
         The configuration for Private Service Connect (PSC).
         Structure is documented below.
@@ -2434,7 +2434,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgs:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
 
@@ -2443,16 +2443,16 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
     """
     Required. If true, expose the IndexEndpoint via private service connect.
     """
-    project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    project_allowlists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Projects from which the forwarding rule will target the service attachment.
     """
-    psc_automation_configs: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgsDict']]
+    psc_automation_configs: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]]
     """
     PSC config that is used to automatically create PSC endpoints in the user projects.
     Structure is documented below.
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The name of the generated service attachment resource.
@@ -2463,9 +2463,9 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
 class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
                  enable_private_service_connect: pulumi.Input[_builtins.bool],
-                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 psc_automation_configs: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 psc_automation_configs: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
@@ -2497,19 +2497,19 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
 
     @_builtins.property
     @pulumi.getter(name="projectAllowlists")
-    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Projects from which the forwarding rule will target the service attachment.
         """
         return pulumi.get(self, "project_allowlists")
 
     @project_allowlists.setter
-    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAutomationConfigs")
-    def psc_automation_configs(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]:
+    def psc_automation_configs(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]:
         """
         PSC config that is used to automatically create PSC endpoints in the user projects.
         Structure is documented below.
@@ -2517,12 +2517,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
         return pulumi.get(self, "psc_automation_configs")
 
     @psc_automation_configs.setter
-    def psc_automation_configs(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]):
+    def psc_automation_configs(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]):
         pulumi.set(self, "psc_automation_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The name of the generated service attachment resource.
@@ -2531,7 +2531,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
@@ -2545,22 +2545,22 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
     """
     Required. Project id used to create forwarding rule.
     """
-    error_message: NotRequired[pulumi.Input[_builtins.str]]
+    error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Error message if the PSC service automation failed.
     """
-    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Forwarding rule created by the PSC service automation.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. IP address rule created by the PSC service automation.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The state of the PSC service automation.
@@ -2571,10 +2571,10 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 error_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 error_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: Required. The full name of the Google Compute Engine network.
                Format: projects/{project}/global/networks/{network}.
@@ -2626,7 +2626,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
 
     @_builtins.property
     @pulumi.getter(name="errorMessage")
-    def error_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Error message if the PSC service automation failed.
@@ -2634,12 +2634,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
         return pulumi.get(self, "error_message")
 
     @error_message.setter
-    def error_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_message", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Forwarding rule created by the PSC service automation.
@@ -2647,12 +2647,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
         return pulumi.get(self, "forwarding_rule")
 
     @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. IP address rule created by the PSC service automation.
@@ -2660,12 +2660,12 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The state of the PSC service automation.
@@ -2673,35 +2673,35 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigArgsDict(TypedDict):
-    accept_eula: NotRequired[pulumi.Input[_builtins.bool]]
+    accept_eula: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the user accepts the End User License Agreement (EULA)
     for the model.
     """
-    container_spec: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict']]
+    container_spec: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]]
     """
     Specification of a container for serving predictions. Some fields in this
     message correspond to fields in the [Kubernetes Container v1 core
     specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
     Structure is documented below.
     """
-    hugging_face_access_token: NotRequired[pulumi.Input[_builtins.str]]
+    hugging_face_access_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Hugging Face read access token used to access the model
     artifacts of gated models.
     """
-    hugging_face_cache_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    hugging_face_cache_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, the model will deploy with a cached version instead of directly
     downloading the model artifacts from Hugging Face. This is suitable for
     VPC-SC users with limited internet access.
     """
-    model_display_name: NotRequired[pulumi.Input[_builtins.str]]
+    model_display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-specified display name of the uploaded model. If not
     set, a default name will be used.
@@ -2710,11 +2710,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigArgs:
     def __init__(__self__, *,
-                 accept_eula: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_spec: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']] = None,
-                 hugging_face_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 hugging_face_cache_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 model_display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 accept_eula: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_spec: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']] = None,
+                 hugging_face_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 hugging_face_cache_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 model_display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] accept_eula: Whether the user accepts the End User License Agreement (EULA)
                for the model.
@@ -2743,7 +2743,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceptEula")
-    def accept_eula(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def accept_eula(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the user accepts the End User License Agreement (EULA)
         for the model.
@@ -2751,12 +2751,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgs:
         return pulumi.get(self, "accept_eula")
 
     @accept_eula.setter
-    def accept_eula(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def accept_eula(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "accept_eula", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSpec")
-    def container_spec(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]:
+    def container_spec(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]:
         """
         Specification of a container for serving predictions. Some fields in this
         message correspond to fields in the [Kubernetes Container v1 core
@@ -2766,12 +2766,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgs:
         return pulumi.get(self, "container_spec")
 
     @container_spec.setter
-    def container_spec(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]):
+    def container_spec(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]):
         pulumi.set(self, "container_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="huggingFaceAccessToken")
-    def hugging_face_access_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hugging_face_access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Hugging Face read access token used to access the model
         artifacts of gated models.
@@ -2779,12 +2779,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgs:
         return pulumi.get(self, "hugging_face_access_token")
 
     @hugging_face_access_token.setter
-    def hugging_face_access_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hugging_face_access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hugging_face_access_token", value)
 
     @_builtins.property
     @pulumi.getter(name="huggingFaceCacheEnabled")
-    def hugging_face_cache_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def hugging_face_cache_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the model will deploy with a cached version instead of directly
         downloading the model artifacts from Hugging Face. This is suitable for
@@ -2793,12 +2793,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgs:
         return pulumi.get(self, "hugging_face_cache_enabled")
 
     @hugging_face_cache_enabled.setter
-    def hugging_face_cache_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def hugging_face_cache_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "hugging_face_cache_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="modelDisplayName")
-    def model_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-specified display name of the uploaded model. If not
         set, a default name will be used.
@@ -2806,7 +2806,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgs:
         return pulumi.get(self, "model_display_name")
 
     @model_display_name.setter
-    def model_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_display_name", value)
 
 
@@ -2827,7 +2827,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     prediction](https://cloud.google.com/vertex-ai/docs/predictions/pre-built-containers)
     in this field.
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies arguments for the command that runs when the container starts.
     This overrides the container's
@@ -2861,7 +2861,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     [v1 core
     API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies the command that runs when the container starts. This overrides
     the container's
@@ -2895,12 +2895,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     [v1 core
     API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
     """
-    deployment_timeout: NotRequired[pulumi.Input[_builtins.str]]
+    deployment_timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Deployment timeout.
     Limit for deployment timeout is 2 hours.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]]
     """
     List of environment variables to set in the container. After the container
     starts running, code running in the container can read these environment
@@ -2928,7 +2928,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
     Structure is documented below.
     """
-    grpc_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDict']]]]
+    grpc_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]]
     """
     List of ports to expose from the container. Vertex AI sends gRPC
     prediction requests that it receives to the first port on this list. Vertex
@@ -2939,13 +2939,13 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     corresponds to the `ports` field of the Kubernetes Containers v1 core API.
     Structure is documented below.
     """
-    health_probe: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict']]
+    health_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]]
     """
     Probe describes a health check to be performed against a container to
     determine whether it is alive or ready to receive traffic.
     Structure is documented below.
     """
-    health_route: NotRequired[pulumi.Input[_builtins.str]]
+    health_route: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP path on the container to send health checks to. Vertex AI
     intermittently sends GET requests to this path on the container's IP
@@ -2969,13 +2969,13 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     [`AIP_DEPLOYED_MODEL_ID` environment
     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
     """
-    liveness_probe: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict']]
+    liveness_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]]
     """
     Probe describes a health check to be performed against a container to
     determine whether it is alive or ready to receive traffic.
     Structure is documented below.
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict']]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]]
     """
     List of ports to expose from the container. Vertex AI sends any
     prediction requests that it receives to the first port on this list. Vertex
@@ -2997,7 +2997,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
     Structure is documented below.
     """
-    predict_route: NotRequired[pulumi.Input[_builtins.str]]
+    predict_route: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP path on the container to send prediction requests to. Vertex AI
     forwards requests sent using
@@ -3022,12 +3022,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     as the [`AIP_DEPLOYED_MODEL_ID` environment
     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
     """
-    shared_memory_size_mb: NotRequired[pulumi.Input[_builtins.str]]
+    shared_memory_size_mb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The amount of the VM memory to reserve as the shared memory for the model
     in megabytes.
     """
-    startup_probe: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict']]
+    startup_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]]
     """
     Probe describes a health check to be performed against a container to
     determine whether it is alive or ready to receive traffic.
@@ -3038,18 +3038,18 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
     def __init__(__self__, *,
                  image_uri: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deployment_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]] = None,
-                 grpc_ports: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]] = None,
-                 health_probe: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']] = None,
-                 health_route: Optional[pulumi.Input[_builtins.str]] = None,
-                 liveness_probe: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]] = None,
-                 predict_route: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_memory_size_mb: Optional[pulumi.Input[_builtins.str]] = None,
-                 startup_probe: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deployment_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]] = None,
+                 grpc_ports: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]] = None,
+                 health_probe: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']] = None,
+                 health_route: pulumi.Input[Optional[_builtins.str]] = None,
+                 liveness_probe: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]] = None,
+                 predict_route: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_memory_size_mb: pulumi.Input[Optional[_builtins.str]] = None,
+                 startup_probe: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] image_uri: URI of the Docker image to be used as the custom container for serving
                predictions. This URI must identify an image in Artifact Registry or
@@ -3287,7 +3287,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies arguments for the command that runs when the container starts.
         This overrides the container's
@@ -3324,12 +3324,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the command that runs when the container starts. This overrides
         the container's
@@ -3366,12 +3366,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentTimeout")
-    def deployment_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment timeout.
         Limit for deployment timeout is 2 hours.
@@ -3379,12 +3379,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "deployment_timeout")
 
     @deployment_timeout.setter
-    def deployment_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]:
         """
         List of environment variables to set in the container. After the container
         starts running, code running in the container can read these environment
@@ -3415,12 +3415,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="grpcPorts")
-    def grpc_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]:
+    def grpc_ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]:
         """
         List of ports to expose from the container. Vertex AI sends gRPC
         prediction requests that it receives to the first port on this list. Vertex
@@ -3434,12 +3434,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "grpc_ports")
 
     @grpc_ports.setter
-    def grpc_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]):
+    def grpc_ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]):
         pulumi.set(self, "grpc_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="healthProbe")
-    def health_probe(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]:
+    def health_probe(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]:
         """
         Probe describes a health check to be performed against a container to
         determine whether it is alive or ready to receive traffic.
@@ -3448,12 +3448,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "health_probe")
 
     @health_probe.setter
-    def health_probe(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]):
+    def health_probe(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]):
         pulumi.set(self, "health_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="healthRoute")
-    def health_route(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_route(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP path on the container to send health checks to. Vertex AI
         intermittently sends GET requests to this path on the container's IP
@@ -3480,12 +3480,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "health_route")
 
     @health_route.setter
-    def health_route(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_route(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_route", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbe")
-    def liveness_probe(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]:
+    def liveness_probe(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]:
         """
         Probe describes a health check to be performed against a container to
         determine whether it is alive or ready to receive traffic.
@@ -3494,12 +3494,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "liveness_probe")
 
     @liveness_probe.setter
-    def liveness_probe(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]):
+    def liveness_probe(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]):
         pulumi.set(self, "liveness_probe", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]:
         """
         List of ports to expose from the container. Vertex AI sends any
         prediction requests that it receives to the first port on this list. Vertex
@@ -3524,12 +3524,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="predictRoute")
-    def predict_route(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predict_route(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP path on the container to send prediction requests to. Vertex AI
         forwards requests sent using
@@ -3557,12 +3557,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "predict_route")
 
     @predict_route.setter
-    def predict_route(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predict_route(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predict_route", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedMemorySizeMb")
-    def shared_memory_size_mb(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_memory_size_mb(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of the VM memory to reserve as the shared memory for the model
         in megabytes.
@@ -3570,12 +3570,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "shared_memory_size_mb")
 
     @shared_memory_size_mb.setter
-    def shared_memory_size_mb(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_memory_size_mb(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_memory_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
-    def startup_probe(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]:
+    def startup_probe(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]:
         """
         Probe describes a health check to be performed against a container to
         determine whether it is alive or ready to receive traffic.
@@ -3584,7 +3584,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         return pulumi.get(self, "startup_probe")
 
     @startup_probe.setter
-    def startup_probe(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]):
+    def startup_probe(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]):
         pulumi.set(self, "startup_probe", value)
 
 
@@ -3654,7 +3654,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs:
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDict(TypedDict):
-    container_port: NotRequired[pulumi.Input[_builtins.int]]
+    container_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of the port to expose on the pod's IP address.
     Must be a valid port number, between 1 and 65535 inclusive.
@@ -3663,7 +3663,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDic
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs:
     def __init__(__self__, *,
-                 container_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] container_port: The number of the port to expose on the pod's IP address.
                Must be a valid port number, between 1 and 65535 inclusive.
@@ -3673,7 +3673,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of the port to expose on the pod's IP address.
         Must be a valid port number, between 1 and 65535 inclusive.
@@ -3681,57 +3681,57 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs:
         return pulumi.get(self, "container_port")
 
     @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_port", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]]
     """
     ExecAction specifies a command to execute.
     Structure is documented below.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of consecutive failures before the probe is considered failed.
     Defaults to 3. Minimum value is 1.
     Maps to Kubernetes probe argument 'failureThreshold'.
     """
-    grpc: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]]
     """
     GrpcAction checks the health of a container using a gRPC service.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]]
     """
     HttpGetAction describes an action based on HTTP Get requests.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds to wait before starting the probe. Defaults to 0.
     Minimum value is 0.
     Maps to Kubernetes probe argument 'initialDelaySeconds'.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How often (in seconds) to perform the probe. Default to 10 seconds.
     Minimum value is 1. Must be less than timeout_seconds.
     Maps to Kubernetes probe argument 'periodSeconds'.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of consecutive successes before the probe is considered successful.
     Defaults to 1. Minimum value is 1.
     Maps to Kubernetes probe argument 'successThreshold'.
     """
-    tcp_socket: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]]
     """
     TcpSocketAction probes the health of a container by opening a TCP socket
     connection.
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after which the probe times out. Defaults to 1 second.
     Minimum value is 1. Must be greater or equal to period_seconds.
@@ -3741,15 +3741,15 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs:
     def __init__(__self__, *,
-                 exec_: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 exec_: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs'] exec_: ExecAction specifies a command to execute.
                Structure is documented below.
@@ -3797,7 +3797,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]:
         """
         ExecAction specifies a command to execute.
         Structure is documented below.
@@ -3805,12 +3805,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive failures before the probe is considered failed.
         Defaults to 3. Minimum value is 1.
@@ -3819,12 +3819,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]:
         """
         GrpcAction checks the health of a container using a gRPC service.
         Structure is documented below.
@@ -3832,12 +3832,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]:
         """
         HttpGetAction describes an action based on HTTP Get requests.
         Structure is documented below.
@@ -3845,12 +3845,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds to wait before starting the probe. Defaults to 0.
         Minimum value is 0.
@@ -3859,12 +3859,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to perform the probe. Default to 10 seconds.
         Minimum value is 1. Must be less than timeout_seconds.
@@ -3873,12 +3873,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive successes before the probe is considered successful.
         Defaults to 1. Minimum value is 1.
@@ -3887,12 +3887,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]:
         """
         TcpSocketAction probes the health of a container by opening a TCP socket
         connection.
@@ -3901,12 +3901,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after which the probe times out. Defaults to 1 second.
         Minimum value is 1. Must be greater or equal to period_seconds.
@@ -3915,12 +3915,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Command is the command line to execute inside the container, the working
     directory for the command is root ('/') in the container's filesystem.
@@ -3933,7 +3933,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the command line to execute inside the container, the working
                directory for the command is root ('/') in the container's filesystem.
@@ -3947,7 +3947,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Command is the command line to execute inside the container, the working
         directory for the command is root ('/') in the container's filesystem.
@@ -3959,16 +3959,16 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number of the gRPC service. Number must be in the range 1 to 65535.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Service is the name of the service to place in the gRPC
     HealthCheckRequest. See
@@ -3979,8 +3979,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
         :param pulumi.Input[_builtins.str] service: Service is the name of the service to place in the gRPC
@@ -3995,19 +3995,19 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number of the gRPC service. Number must be in the range 1 to 65535.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service is the name of the service to place in the gRPC
         HealthCheckRequest. See
@@ -4017,31 +4017,31 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpc
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host name to connect to, defaults to the model serving container's IP.
     You probably want to set "Host" in httpHeaders instead.
     """
-    http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgsDict']]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to access on the HTTP server.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of the port to access on the container.
     Number must be in the range 1 to 65535.
     """
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheme to use for connecting to the host.
     Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -4050,11 +4050,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_headers: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Host name to connect to, defaults to the model serving container's IP.
                You probably want to set "Host" in httpHeaders instead.
@@ -4079,7 +4079,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name to connect to, defaults to the model serving container's IP.
         You probably want to set "Host" in httpHeaders instead.
@@ -4087,12 +4087,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -4100,24 +4100,24 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to access on the HTTP server.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the port to access on the container.
         Number must be in the range 1 to 65535.
@@ -4125,12 +4125,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheme to use for connecting to the host.
         Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -4138,18 +4138,18 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field name.
     This will be canonicalized upon output, so case-variant names will be
     understood as the same header.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field value
     """
@@ -4157,8 +4157,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The header field name.
                This will be canonicalized upon output, so case-variant names will be
@@ -4172,7 +4172,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field name.
         This will be canonicalized upon output, so case-variant names will be
@@ -4181,29 +4181,29 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional: Host name to connect to, defaults to the model serving
     container's IP.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of the port to access on the container.
     Number must be in the range 1 to 65535.
@@ -4212,8 +4212,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpS
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Optional: Host name to connect to, defaults to the model serving
                container's IP.
@@ -4227,7 +4227,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpS
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional: Host name to connect to, defaults to the model serving
         container's IP.
@@ -4235,12 +4235,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpS
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the port to access on the container.
         Number must be in the range 1 to 65535.
@@ -4248,57 +4248,57 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpS
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]]
     """
     ExecAction specifies a command to execute.
     Structure is documented below.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of consecutive failures before the probe is considered failed.
     Defaults to 3. Minimum value is 1.
     Maps to Kubernetes probe argument 'failureThreshold'.
     """
-    grpc: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]]
     """
     GrpcAction checks the health of a container using a gRPC service.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]]
     """
     HttpGetAction describes an action based on HTTP Get requests.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds to wait before starting the probe. Defaults to 0.
     Minimum value is 0.
     Maps to Kubernetes probe argument 'initialDelaySeconds'.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How often (in seconds) to perform the probe. Default to 10 seconds.
     Minimum value is 1. Must be less than timeout_seconds.
     Maps to Kubernetes probe argument 'periodSeconds'.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of consecutive successes before the probe is considered successful.
     Defaults to 1. Minimum value is 1.
     Maps to Kubernetes probe argument 'successThreshold'.
     """
-    tcp_socket: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]]
     """
     TcpSocketAction probes the health of a container by opening a TCP socket
     connection.
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after which the probe times out. Defaults to 1 second.
     Minimum value is 1. Must be greater or equal to period_seconds.
@@ -4308,15 +4308,15 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs:
     def __init__(__self__, *,
-                 exec_: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 exec_: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs'] exec_: ExecAction specifies a command to execute.
                Structure is documented below.
@@ -4364,7 +4364,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]:
         """
         ExecAction specifies a command to execute.
         Structure is documented below.
@@ -4372,12 +4372,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive failures before the probe is considered failed.
         Defaults to 3. Minimum value is 1.
@@ -4386,12 +4386,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]:
         """
         GrpcAction checks the health of a container using a gRPC service.
         Structure is documented below.
@@ -4399,12 +4399,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]:
         """
         HttpGetAction describes an action based on HTTP Get requests.
         Structure is documented below.
@@ -4412,12 +4412,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds to wait before starting the probe. Defaults to 0.
         Minimum value is 0.
@@ -4426,12 +4426,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to perform the probe. Default to 10 seconds.
         Minimum value is 1. Must be less than timeout_seconds.
@@ -4440,12 +4440,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive successes before the probe is considered successful.
         Defaults to 1. Minimum value is 1.
@@ -4454,12 +4454,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]:
         """
         TcpSocketAction probes the health of a container by opening a TCP socket
         connection.
@@ -4468,12 +4468,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after which the probe times out. Defaults to 1 second.
         Minimum value is 1. Must be greater or equal to period_seconds.
@@ -4482,12 +4482,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Command is the command line to execute inside the container, the working
     directory for the command is root ('/') in the container's filesystem.
@@ -4500,7 +4500,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeEx
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the command line to execute inside the container, the working
                directory for the command is root ('/') in the container's filesystem.
@@ -4514,7 +4514,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeEx
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Command is the command line to execute inside the container, the working
         directory for the command is root ('/') in the container's filesystem.
@@ -4526,16 +4526,16 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeEx
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number of the gRPC service. Number must be in the range 1 to 65535.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Service is the name of the service to place in the gRPC
     HealthCheckRequest. See
@@ -4546,8 +4546,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGr
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
         :param pulumi.Input[_builtins.str] service: Service is the name of the service to place in the gRPC
@@ -4562,19 +4562,19 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGr
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number of the gRPC service. Number must be in the range 1 to 65535.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service is the name of the service to place in the gRPC
         HealthCheckRequest. See
@@ -4584,31 +4584,31 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGr
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host name to connect to, defaults to the model serving container's IP.
     You probably want to set "Host" in httpHeaders instead.
     """
-    http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgsDict']]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to access on the HTTP server.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of the port to access on the container.
     Number must be in the range 1 to 65535.
     """
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheme to use for connecting to the host.
     Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -4617,11 +4617,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_headers: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Host name to connect to, defaults to the model serving container's IP.
                You probably want to set "Host" in httpHeaders instead.
@@ -4646,7 +4646,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name to connect to, defaults to the model serving container's IP.
         You probably want to set "Host" in httpHeaders instead.
@@ -4654,12 +4654,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -4667,24 +4667,24 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to access on the HTTP server.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the port to access on the container.
         Number must be in the range 1 to 65535.
@@ -4692,12 +4692,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheme to use for connecting to the host.
         Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -4705,18 +4705,18 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field name.
     This will be canonicalized upon output, so case-variant names will be
     understood as the same header.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field value
     """
@@ -4724,8 +4724,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The header field name.
                This will be canonicalized upon output, so case-variant names will be
@@ -4739,7 +4739,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field name.
         This will be canonicalized upon output, so case-variant names will be
@@ -4748,29 +4748,29 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional: Host name to connect to, defaults to the model serving
     container's IP.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of the port to access on the container.
     Number must be in the range 1 to 65535.
@@ -4779,8 +4779,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTc
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Optional: Host name to connect to, defaults to the model serving
                container's IP.
@@ -4794,7 +4794,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTc
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional: Host name to connect to, defaults to the model serving
         container's IP.
@@ -4802,12 +4802,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTc
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the port to access on the container.
         Number must be in the range 1 to 65535.
@@ -4815,12 +4815,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTc
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict(TypedDict):
-    container_port: NotRequired[pulumi.Input[_builtins.int]]
+    container_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of the port to expose on the pod's IP address.
     Must be a valid port number, between 1 and 65535 inclusive.
@@ -4829,7 +4829,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict(Ty
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs:
     def __init__(__self__, *,
-                 container_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] container_port: The number of the port to expose on the pod's IP address.
                Must be a valid port number, between 1 and 65535 inclusive.
@@ -4839,7 +4839,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of the port to expose on the pod's IP address.
         Must be a valid port number, between 1 and 65535 inclusive.
@@ -4847,57 +4847,57 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs:
         return pulumi.get(self, "container_port")
 
     @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_port", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]]
     """
     ExecAction specifies a command to execute.
     Structure is documented below.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of consecutive failures before the probe is considered failed.
     Defaults to 3. Minimum value is 1.
     Maps to Kubernetes probe argument 'failureThreshold'.
     """
-    grpc: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgsDict']]
+    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]]
     """
     GrpcAction checks the health of a container using a gRPC service.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]]
     """
     HttpGetAction describes an action based on HTTP Get requests.
     Structure is documented below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds to wait before starting the probe. Defaults to 0.
     Minimum value is 0.
     Maps to Kubernetes probe argument 'initialDelaySeconds'.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     How often (in seconds) to perform the probe. Default to 10 seconds.
     Minimum value is 1. Must be less than timeout_seconds.
     Maps to Kubernetes probe argument 'periodSeconds'.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of consecutive successes before the probe is considered successful.
     Defaults to 1. Minimum value is 1.
     Maps to Kubernetes probe argument 'successThreshold'.
     """
-    tcp_socket: NotRequired[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]]
     """
     TcpSocketAction probes the health of a container by opening a TCP socket
     connection.
     Structure is documented below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of seconds after which the probe times out. Defaults to 1 second.
     Minimum value is 1. Must be greater or equal to period_seconds.
@@ -4907,15 +4907,15 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs:
     def __init__(__self__, *,
-                 exec_: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']] = None,
-                 http_get: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 exec_: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']] = None,
+                 http_get: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs'] exec_: ExecAction specifies a command to execute.
                Structure is documented below.
@@ -4963,7 +4963,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]:
         """
         ExecAction specifies a command to execute.
         Structure is documented below.
@@ -4971,12 +4971,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive failures before the probe is considered failed.
         Defaults to 3. Minimum value is 1.
@@ -4985,12 +4985,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]:
+    def grpc(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]:
         """
         GrpcAction checks the health of a container using a gRPC service.
         Structure is documented below.
@@ -4998,12 +4998,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]):
+    def grpc(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]:
         """
         HttpGetAction describes an action based on HTTP Get requests.
         Structure is documented below.
@@ -5011,12 +5011,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds to wait before starting the probe. Defaults to 0.
         Minimum value is 0.
@@ -5025,12 +5025,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to perform the probe. Default to 10 seconds.
         Minimum value is 1. Must be less than timeout_seconds.
@@ -5039,12 +5039,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive successes before the probe is considered successful.
         Defaults to 1. Minimum value is 1.
@@ -5053,12 +5053,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]:
         """
         TcpSocketAction probes the health of a container by opening a TCP socket
         connection.
@@ -5067,12 +5067,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds after which the probe times out. Defaults to 1 second.
         Minimum value is 1. Must be greater or equal to period_seconds.
@@ -5081,12 +5081,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Command is the command line to execute inside the container, the working
     directory for the command is root ('/') in the container's filesystem.
@@ -5099,7 +5099,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExe
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Command is the command line to execute inside the container, the working
                directory for the command is root ('/') in the container's filesystem.
@@ -5113,7 +5113,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExe
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Command is the command line to execute inside the container, the working
         directory for the command is root ('/') in the container's filesystem.
@@ -5125,16 +5125,16 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExe
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port number of the gRPC service. Number must be in the range 1 to 65535.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Service is the name of the service to place in the gRPC
     HealthCheckRequest. See
@@ -5145,8 +5145,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrp
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
         :param pulumi.Input[_builtins.str] service: Service is the name of the service to place in the gRPC
@@ -5161,19 +5161,19 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrp
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number of the gRPC service. Number must be in the range 1 to 65535.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service is the name of the service to place in the gRPC
         HealthCheckRequest. See
@@ -5183,31 +5183,31 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrp
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host name to connect to, defaults to the model serving container's IP.
     You probably want to set "Host" in httpHeaders instead.
     """
-    http_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict']]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path to access on the HTTP server.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of the port to access on the container.
     Number must be in the range 1 to 65535.
     """
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheme to use for connecting to the host.
     Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -5216,11 +5216,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_headers: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Host name to connect to, defaults to the model serving container's IP.
                You probably want to set "Host" in httpHeaders instead.
@@ -5245,7 +5245,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name to connect to, defaults to the model serving container's IP.
         You probably want to set "Host" in httpHeaders instead.
@@ -5253,12 +5253,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHeaders")
-    def http_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]:
+    def http_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]:
         """
         Custom headers to set in the request. HTTP allows repeated headers.
         Structure is documented below.
@@ -5266,24 +5266,24 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
         return pulumi.get(self, "http_headers")
 
     @http_headers.setter
-    def http_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]):
+    def http_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]):
         pulumi.set(self, "http_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to access on the HTTP server.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the port to access on the container.
         Number must be in the range 1 to 65535.
@@ -5291,12 +5291,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheme to use for connecting to the host.
         Defaults to HTTP. Acceptable values are "HTTP" or "HTTPS".
@@ -5304,18 +5304,18 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field name.
     This will be canonicalized upon output, so case-variant names will be
     understood as the same header.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The header field value
     """
@@ -5323,8 +5323,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The header field name.
                This will be canonicalized upon output, so case-variant names will be
@@ -5338,7 +5338,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field name.
         This will be canonicalized upon output, so case-variant names will be
@@ -5347,29 +5347,29 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The header field value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional: Host name to connect to, defaults to the model serving
     container's IP.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of the port to access on the container.
     Number must be in the range 1 to 65535.
@@ -5378,8 +5378,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
 @pulumi.input_type
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Optional: Host name to connect to, defaults to the model serving
                container's IP.
@@ -5393,7 +5393,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional: Host name to connect to, defaults to the model serving
         container's IP.
@@ -5401,12 +5401,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the port to access on the container.
         Number must be in the range 1 to 65535.
@@ -5414,7 +5414,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -5424,7 +5424,7 @@ class AiFeatureGroupBigQueryArgsDict(TypedDict):
     The BigQuery source URI that points to either a BigQuery Table or View.
     Structure is documented below.
     """
-    entity_id_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    entity_id_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Columns to construct entityId / row keys. If not provided defaults to entityId.
     """
@@ -5433,7 +5433,7 @@ class AiFeatureGroupBigQueryArgsDict(TypedDict):
 class AiFeatureGroupBigQueryArgs:
     def __init__(__self__, *,
                  big_query_source: pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgs'],
-                 entity_id_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 entity_id_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgs'] big_query_source: The BigQuery source URI that points to either a BigQuery Table or View.
                Structure is documented below.
@@ -5458,14 +5458,14 @@ class AiFeatureGroupBigQueryArgs:
 
     @_builtins.property
     @pulumi.getter(name="entityIdColumns")
-    def entity_id_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def entity_id_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Columns to construct entityId / row keys. If not provided defaults to entityId.
         """
         return pulumi.get(self, "entity_id_columns")
 
     @entity_id_columns.setter
-    def entity_id_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def entity_id_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "entity_id_columns", value)
 
 
@@ -5500,14 +5500,14 @@ class AiFeatureGroupBigQueryBigQuerySourceArgs:
 class AiFeatureGroupIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureGroupIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -5533,25 +5533,25 @@ class AiFeatureGroupIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureGroupIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureGroupIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -5577,11 +5577,11 @@ class AiFeatureGroupIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -5591,11 +5591,11 @@ class AiFeatureOnlineStoreBigtableArgsDict(TypedDict):
     Autoscaling config applied to Bigtable Instance.
     Structure is documented below.
     """
-    enable_direct_bigtable_access: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_direct_bigtable_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. If true, enable direct access to the Bigtable instance.
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The zone where the Bigtable instance will be created.
     """
@@ -5604,8 +5604,8 @@ class AiFeatureOnlineStoreBigtableArgsDict(TypedDict):
 class AiFeatureOnlineStoreBigtableArgs:
     def __init__(__self__, *,
                  auto_scaling: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs'],
-                 enable_direct_bigtable_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_direct_bigtable_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs'] auto_scaling: Autoscaling config applied to Bigtable Instance.
                Structure is documented below.
@@ -5633,26 +5633,26 @@ class AiFeatureOnlineStoreBigtableArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableDirectBigtableAccess")
-    def enable_direct_bigtable_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_direct_bigtable_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If true, enable direct access to the Bigtable instance.
         """
         return pulumi.get(self, "enable_direct_bigtable_access")
 
     @enable_direct_bigtable_access.setter
-    def enable_direct_bigtable_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_direct_bigtable_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_direct_bigtable_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone where the Bigtable instance will be created.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -5665,7 +5665,7 @@ class AiFeatureOnlineStoreBigtableAutoScalingArgsDict(TypedDict):
     """
     The minimum number of nodes to scale down to. Must be greater than or equal to 1.
     """
-    cpu_utilization_target: NotRequired[pulumi.Input[_builtins.int]]
+    cpu_utilization_target: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
     """
@@ -5675,7 +5675,7 @@ class AiFeatureOnlineStoreBigtableAutoScalingArgs:
     def __init__(__self__, *,
                  max_node_count: pulumi.Input[_builtins.int],
                  min_node_count: pulumi.Input[_builtins.int],
-                 cpu_utilization_target: Optional[pulumi.Input[_builtins.int]] = None):
+                 cpu_utilization_target: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_node_count: The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
         :param pulumi.Input[_builtins.int] min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
@@ -5712,29 +5712,29 @@ class AiFeatureOnlineStoreBigtableAutoScalingArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuUtilizationTarget")
-    def cpu_utilization_target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_utilization_target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
         """
         return pulumi.get(self, "cpu_utilization_target")
 
     @cpu_utilization_target.setter
-    def cpu_utilization_target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_utilization_target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_utilization_target", value)
 
 
 class AiFeatureOnlineStoreDedicatedServingEndpointArgsDict(TypedDict):
-    private_service_connect_config: NotRequired[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgsDict']]
+    private_service_connect_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]]
     """
     Private service connect config.
     Structure is documented below.
     """
-    public_endpoint_domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    public_endpoint_domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Domain name to use for this FeatureOnlineStore
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
@@ -5743,9 +5743,9 @@ class AiFeatureOnlineStoreDedicatedServingEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
     def __init__(__self__, *,
-                 private_service_connect_config: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']] = None,
-                 public_endpoint_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 private_service_connect_config: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']] = None,
+                 public_endpoint_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs'] private_service_connect_config: Private service connect config.
                Structure is documented below.
@@ -5763,7 +5763,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnectConfig")
-    def private_service_connect_config(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]:
+    def private_service_connect_config(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]:
         """
         Private service connect config.
         Structure is documented below.
@@ -5771,12 +5771,12 @@ class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
         return pulumi.get(self, "private_service_connect_config")
 
     @private_service_connect_config.setter
-    def private_service_connect_config(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]):
+    def private_service_connect_config(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]):
         pulumi.set(self, "private_service_connect_config", value)
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointDomainName")
-    def public_endpoint_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_endpoint_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Domain name to use for this FeatureOnlineStore
@@ -5784,12 +5784,12 @@ class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
         return pulumi.get(self, "public_endpoint_domain_name")
 
     @public_endpoint_domain_name.setter
-    def public_endpoint_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_endpoint_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_endpoint_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
@@ -5797,7 +5797,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
@@ -5806,7 +5806,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArg
     """
     If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
     """
-    project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    project_allowlists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Projects from which the forwarding rule will target the service attachment.
     """
@@ -5815,7 +5815,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArg
 class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
                  enable_private_service_connect: pulumi.Input[_builtins.bool],
-                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 project_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_service_connect: If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
@@ -5838,19 +5838,19 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArg
 
     @_builtins.property
     @pulumi.getter(name="projectAllowlists")
-    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Projects from which the forwarding rule will target the service attachment.
         """
         return pulumi.get(self, "project_allowlists")
 
     @project_allowlists.setter
-    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_allowlists", value)
 
 
 class AiFeatureOnlineStoreEmbeddingManagementArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable embedding management.
     """
@@ -5858,7 +5858,7 @@ class AiFeatureOnlineStoreEmbeddingManagementArgsDict(TypedDict):
 @pulumi.input_type
 class AiFeatureOnlineStoreEmbeddingManagementArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable embedding management.
         """
@@ -5867,14 +5867,14 @@ class AiFeatureOnlineStoreEmbeddingManagementArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable embedding management.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
@@ -5959,7 +5959,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict(TypedDict):
     List of features that need to be synced to Online Store.
     Structure is documented below.
     """
-    project_number: NotRequired[pulumi.Input[_builtins.str]]
+    project_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The project number of the parent project of the feature Groups.
     """
@@ -5968,7 +5968,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgsDict(TypedDict):
 class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs:
     def __init__(__self__, *,
                  feature_groups: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]],
-                 project_number: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_number: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]] feature_groups: List of features that need to be synced to Online Store.
                Structure is documented below.
@@ -5993,14 +5993,14 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectNumber")
-    def project_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project number of the parent project of the feature Groups.
         """
         return pulumi.get(self, "project_number")
 
     @project_number.setter
-    def project_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_number", value)
 
 
@@ -6054,14 +6054,14 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs:
 class AiFeatureOnlineStoreFeatureviewIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -6087,25 +6087,25 @@ class AiFeatureOnlineStoreFeatureviewIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureOnlineStoreFeatureviewIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -6131,20 +6131,20 @@ class AiFeatureOnlineStoreFeatureviewIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict(TypedDict):
-    continuous: NotRequired[pulumi.Input[_builtins.bool]]
+    continuous: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, syncs the FeatureView in a continuous manner to Online Store.
     """
-    cron: NotRequired[pulumi.Input[_builtins.str]]
+    cron: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
     To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
@@ -6153,8 +6153,8 @@ class AiFeatureOnlineStoreFeatureviewSyncConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
     def __init__(__self__, *,
-                 continuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cron: Optional[pulumi.Input[_builtins.str]] = None):
+                 continuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cron: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] continuous: If true, syncs the FeatureView in a continuous manner to Online Store.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -6167,19 +6167,19 @@ class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def continuous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def continuous(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, syncs the FeatureView in a continuous manner to Online Store.
         """
         return pulumi.get(self, "continuous")
 
     @continuous.setter
-    def continuous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def continuous(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "continuous", value)
 
     @_builtins.property
     @pulumi.getter
-    def cron(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
         To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
@@ -6187,7 +6187,7 @@ class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
         return pulumi.get(self, "cron")
 
     @cron.setter
-    def cron(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron", value)
 
 
@@ -6196,29 +6196,29 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict(TypedDict):
     """
     Column of embedding. This column contains the source data to create index for vector search.
     """
-    brute_force_config: NotRequired[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgsDict']]
+    brute_force_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']]]
     """
     Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
     """
-    crowding_column: NotRequired[pulumi.Input[_builtins.str]]
+    crowding_column: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
     """
-    distance_measure_type: NotRequired[pulumi.Input[_builtins.str]]
+    distance_measure_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The distance measure used in nearest neighbor search.
     For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
     Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
     """
-    embedding_dimension: NotRequired[pulumi.Input[_builtins.int]]
+    embedding_dimension: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of dimensions of the input embedding.
     """
-    filter_columns: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    filter_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Columns of features that are used to filter vector search results.
     """
-    tree_ah_config: NotRequired[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict']]
+    tree_ah_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']]]
     """
     Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
     Structure is documented below.
@@ -6228,12 +6228,12 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict(TypedDict):
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
     def __init__(__self__, *,
                  embedding_column: pulumi.Input[_builtins.str],
-                 brute_force_config: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']] = None,
-                 crowding_column: Optional[pulumi.Input[_builtins.str]] = None,
-                 distance_measure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 embedding_dimension: Optional[pulumi.Input[_builtins.int]] = None,
-                 filter_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tree_ah_config: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']] = None):
+                 brute_force_config: pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']] = None,
+                 crowding_column: pulumi.Input[Optional[_builtins.str]] = None,
+                 distance_measure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 embedding_dimension: pulumi.Input[Optional[_builtins.int]] = None,
+                 filter_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tree_ah_config: pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] embedding_column: Column of embedding. This column contains the source data to create index for vector search.
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs'] brute_force_config: Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
@@ -6274,31 +6274,31 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="bruteForceConfig")
-    def brute_force_config(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']]:
+    def brute_force_config(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']]:
         """
         Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
         """
         return pulumi.get(self, "brute_force_config")
 
     @brute_force_config.setter
-    def brute_force_config(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']]):
+    def brute_force_config(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']]):
         pulumi.set(self, "brute_force_config", value)
 
     @_builtins.property
     @pulumi.getter(name="crowdingColumn")
-    def crowding_column(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crowding_column(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
         """
         return pulumi.get(self, "crowding_column")
 
     @crowding_column.setter
-    def crowding_column(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crowding_column(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crowding_column", value)
 
     @_builtins.property
     @pulumi.getter(name="distanceMeasureType")
-    def distance_measure_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distance_measure_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The distance measure used in nearest neighbor search.
         For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
@@ -6307,36 +6307,36 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
         return pulumi.get(self, "distance_measure_type")
 
     @distance_measure_type.setter
-    def distance_measure_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distance_measure_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distance_measure_type", value)
 
     @_builtins.property
     @pulumi.getter(name="embeddingDimension")
-    def embedding_dimension(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def embedding_dimension(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of dimensions of the input embedding.
         """
         return pulumi.get(self, "embedding_dimension")
 
     @embedding_dimension.setter
-    def embedding_dimension(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def embedding_dimension(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "embedding_dimension", value)
 
     @_builtins.property
     @pulumi.getter(name="filterColumns")
-    def filter_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def filter_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Columns of features that are used to filter vector search results.
         """
         return pulumi.get(self, "filter_columns")
 
     @filter_columns.setter
-    def filter_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def filter_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "filter_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="treeAhConfig")
-    def tree_ah_config(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']]:
+    def tree_ah_config(self) -> pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']]:
         """
         Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
         Structure is documented below.
@@ -6344,7 +6344,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs:
         return pulumi.get(self, "tree_ah_config")
 
     @tree_ah_config.setter
-    def tree_ah_config(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']]):
+    def tree_ah_config(self, value: pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']]):
         pulumi.set(self, "tree_ah_config", value)
 
 
@@ -6358,7 +6358,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs:
 
 
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict(TypedDict):
-    leaf_node_embedding_count: NotRequired[pulumi.Input[_builtins.str]]
+    leaf_node_embedding_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Number of embeddings on each leaf node. The default value is 1000 if not set.
     """
@@ -6366,7 +6366,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict(Type
 @pulumi.input_type
 class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs:
     def __init__(__self__, *,
-                 leaf_node_embedding_count: Optional[pulumi.Input[_builtins.str]] = None):
+                 leaf_node_embedding_count: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
         """
@@ -6375,28 +6375,28 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="leafNodeEmbeddingCount")
-    def leaf_node_embedding_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def leaf_node_embedding_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of embeddings on each leaf node. The default value is 1000 if not set.
         """
         return pulumi.get(self, "leaf_node_embedding_count")
 
     @leaf_node_embedding_count.setter
-    def leaf_node_embedding_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def leaf_node_embedding_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "leaf_node_embedding_count", value)
 
 
 class AiFeatureOnlineStoreIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -6422,25 +6422,25 @@ class AiFeatureOnlineStoreIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureOnlineStoreIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureOnlineStoreIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -6466,11 +6466,11 @@ class AiFeatureOnlineStoreIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -6514,14 +6514,14 @@ class AiFeatureStoreEncryptionSpecArgs:
 class AiFeatureStoreEntityTypeIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureStoreEntityTypeIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -6547,25 +6547,25 @@ class AiFeatureStoreEntityTypeIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureStoreEntityTypeIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureStoreEntityTypeIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -6591,31 +6591,31 @@ class AiFeatureStoreEntityTypeIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureStoreEntityTypeMonitoringConfigArgsDict(TypedDict):
-    categorical_threshold_config: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgsDict']]
+    categorical_threshold_config: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]]
     """
     Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
     Structure is documented below.
     """
-    import_features_analysis: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict']]
+    import_features_analysis: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]]
     """
     The config for ImportFeatures Analysis Based Feature Monitoring.
     Structure is documented below.
     """
-    numerical_threshold_config: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgsDict']]
+    numerical_threshold_config: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]]
     """
     Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
     Structure is documented below.
     """
-    snapshot_analysis: NotRequired[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict']]
+    snapshot_analysis: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]]
     """
     The config for Snapshot Analysis Based Feature Monitoring.
     Structure is documented below.
@@ -6624,10 +6624,10 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigArgs:
     def __init__(__self__, *,
-                 categorical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']] = None,
-                 import_features_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']] = None,
-                 numerical_threshold_config: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']] = None,
-                 snapshot_analysis: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']] = None):
+                 categorical_threshold_config: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']] = None,
+                 import_features_analysis: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']] = None,
+                 numerical_threshold_config: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']] = None,
+                 snapshot_analysis: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']] = None):
         """
         :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs'] categorical_threshold_config: Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
                Structure is documented below.
@@ -6649,7 +6649,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="categoricalThresholdConfig")
-    def categorical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]:
+    def categorical_threshold_config(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]:
         """
         Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
         Structure is documented below.
@@ -6657,12 +6657,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "categorical_threshold_config")
 
     @categorical_threshold_config.setter
-    def categorical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]):
+    def categorical_threshold_config(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]):
         pulumi.set(self, "categorical_threshold_config", value)
 
     @_builtins.property
     @pulumi.getter(name="importFeaturesAnalysis")
-    def import_features_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]:
+    def import_features_analysis(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]:
         """
         The config for ImportFeatures Analysis Based Feature Monitoring.
         Structure is documented below.
@@ -6670,12 +6670,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "import_features_analysis")
 
     @import_features_analysis.setter
-    def import_features_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]):
+    def import_features_analysis(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]):
         pulumi.set(self, "import_features_analysis", value)
 
     @_builtins.property
     @pulumi.getter(name="numericalThresholdConfig")
-    def numerical_threshold_config(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]:
+    def numerical_threshold_config(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]:
         """
         Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
         Structure is documented below.
@@ -6683,12 +6683,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "numerical_threshold_config")
 
     @numerical_threshold_config.setter
-    def numerical_threshold_config(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]):
+    def numerical_threshold_config(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]):
         pulumi.set(self, "numerical_threshold_config", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotAnalysis")
-    def snapshot_analysis(self) -> Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]:
+    def snapshot_analysis(self) -> pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]:
         """
         The config for Snapshot Analysis Based Feature Monitoring.
         Structure is documented below.
@@ -6696,7 +6696,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigArgs:
         return pulumi.get(self, "snapshot_analysis")
 
     @snapshot_analysis.setter
-    def snapshot_analysis(self, value: Optional[pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]):
+    def snapshot_analysis(self, value: pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]):
         pulumi.set(self, "snapshot_analysis", value)
 
 
@@ -6729,14 +6729,14 @@ class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs:
 
 
 class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict(TypedDict):
-    anomaly_detection_baseline: NotRequired[pulumi.Input[_builtins.str]]
+    anomaly_detection_baseline: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
     * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
     * MOST_RECENT_SNAPSHOT_STATS: Use the statistics generated by the most recent snapshot analysis if exists.
     * PREVIOUS_IMPORT_FEATURES_STATS: Use the statistics generated by the previous import features analysis if exists.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
     * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
@@ -6747,8 +6747,8 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict(Typ
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
     def __init__(__self__, *,
-                 anomaly_detection_baseline: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 anomaly_detection_baseline: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] anomaly_detection_baseline: Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
                * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
@@ -6766,7 +6766,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionBaseline")
-    def anomaly_detection_baseline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anomaly_detection_baseline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the baseline to do anomaly detection for feature values imported by each [entityTypes.importFeatureValues][] operation. The value must be one of the values below:
         * LATEST_STATS: Choose the later one statistics generated by either most recent snapshot analysis or previous import features analysis. If non of them exists, skip anomaly detection and only generate a statistics.
@@ -6776,12 +6776,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
         return pulumi.get(self, "anomaly_detection_baseline")
 
     @anomaly_detection_baseline.setter
-    def anomaly_detection_baseline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anomaly_detection_baseline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anomaly_detection_baseline", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable / disable / inherite default hebavior for import features analysis. The value must be one of the values below:
         * DEFAULT: The default behavior of whether to enable the monitoring. EntityType-level config: disabled.
@@ -6791,7 +6791,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -6824,11 +6824,11 @@ class AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs:
 
 
 class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict(TypedDict):
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
     """
-    monitoring_interval: NotRequired[pulumi.Input[_builtins.str]]
+    monitoring_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Beta, Deprecated)
     Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
@@ -6836,12 +6836,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict(TypedDict
 
     > **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
     """
-    monitoring_interval_days: NotRequired[pulumi.Input[_builtins.int]]
+    monitoring_interval_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
     If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
     """
-    staleness_days: NotRequired[pulumi.Input[_builtins.int]]
+    staleness_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
     """
@@ -6849,10 +6849,10 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict(TypedDict
 @pulumi.input_type
 class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitoring_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_interval_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 staleness_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitoring_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_interval_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 staleness_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
         :param pulumi.Input[_builtins.str] monitoring_interval: (Optional, Beta, Deprecated)
@@ -6878,20 +6878,20 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringInterval")
     @_utilities.deprecated("""`monitoring_interval` is deprecated and will be removed in a future release.""")
-    def monitoring_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitoring_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta, Deprecated)
         Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
@@ -6902,12 +6902,12 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
         return pulumi.get(self, "monitoring_interval")
 
     @monitoring_interval.setter
-    def monitoring_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitoring_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitoring_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringIntervalDays")
-    def monitoring_interval_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitoring_interval_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
         If both FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days and [FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval][] are set when creating/updating EntityTypes/Features, FeaturestoreMonitoringConfig.SnapshotAnalysis.monitoring_interval_days will be used.
@@ -6915,33 +6915,33 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
         return pulumi.get(self, "monitoring_interval_days")
 
     @monitoring_interval_days.setter
-    def monitoring_interval_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitoring_interval_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitoring_interval_days", value)
 
     @_builtins.property
     @pulumi.getter(name="stalenessDays")
-    def staleness_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def staleness_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
         """
         return pulumi.get(self, "staleness_days")
 
     @staleness_days.setter
-    def staleness_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def staleness_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "staleness_days", value)
 
 
 class AiFeatureStoreIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureStoreIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -6967,25 +6967,25 @@ class AiFeatureStoreIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureStoreIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiFeatureStoreIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -7011,20 +7011,20 @@ class AiFeatureStoreIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiFeatureStoreOnlineServingConfigArgsDict(TypedDict):
-    fixed_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    fixed_node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
     """
-    scaling: NotRequired[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgsDict']]
+    scaling: NotRequired[pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigScalingArgs']]]
     """
     Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
     Structure is documented below.
@@ -7033,8 +7033,8 @@ class AiFeatureStoreOnlineServingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiFeatureStoreOnlineServingConfigArgs:
     def __init__(__self__, *,
-                 fixed_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs']] = None):
+                 fixed_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling: pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigScalingArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] fixed_node_count: The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
         :param pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs'] scaling: Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
@@ -7047,19 +7047,19 @@ class AiFeatureStoreOnlineServingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="fixedNodeCount")
-    def fixed_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fixed_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
         """
         return pulumi.get(self, "fixed_node_count")
 
     @fixed_node_count.setter
-    def fixed_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fixed_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fixed_node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs']]:
+    def scaling(self) -> pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigScalingArgs']]:
         """
         Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
         Structure is documented below.
@@ -7067,7 +7067,7 @@ class AiFeatureStoreOnlineServingConfigArgs:
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['AiFeatureStoreOnlineServingConfigScalingArgs']]):
+    def scaling(self, value: pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigScalingArgs']]):
         pulumi.set(self, "scaling", value)
 
 
@@ -7119,12 +7119,12 @@ class AiFeatureStoreOnlineServingConfigScalingArgs:
 
 
 class AiIndexDeployedIndexArgsDict(TypedDict):
-    deployed_index_id: NotRequired[pulumi.Input[_builtins.str]]
+    deployed_index_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The ID of the DeployedIndex in the above IndexEndpoint.
     """
-    index_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    index_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A resource name of the IndexEndpoint.
@@ -7133,8 +7133,8 @@ class AiIndexDeployedIndexArgsDict(TypedDict):
 @pulumi.input_type
 class AiIndexDeployedIndexArgs:
     def __init__(__self__, *,
-                 deployed_index_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployed_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] deployed_index_id: (Output)
                The ID of the DeployedIndex in the above IndexEndpoint.
@@ -7148,7 +7148,7 @@ class AiIndexDeployedIndexArgs:
 
     @_builtins.property
     @pulumi.getter(name="deployedIndexId")
-    def deployed_index_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployed_index_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The ID of the DeployedIndex in the above IndexEndpoint.
@@ -7156,12 +7156,12 @@ class AiIndexDeployedIndexArgs:
         return pulumi.get(self, "deployed_index_id")
 
     @deployed_index_id.setter
-    def deployed_index_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployed_index_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployed_index_id", value)
 
     @_builtins.property
     @pulumi.getter(name="indexEndpoint")
-    def index_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A resource name of the IndexEndpoint.
@@ -7169,7 +7169,7 @@ class AiIndexDeployedIndexArgs:
         return pulumi.get(self, "index_endpoint")
 
     @index_endpoint.setter
-    def index_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_endpoint", value)
 
 
@@ -7202,12 +7202,12 @@ class AiIndexEncryptionSpecArgs:
 
 
 class AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict(TypedDict):
-    max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
     The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
     """
-    min_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
     If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
@@ -7216,8 +7216,8 @@ class AiIndexEndpointDeployedIndexAutomaticResourcesArgsDict(TypedDict):
 @pulumi.input_type
 class AiIndexEndpointDeployedIndexAutomaticResourcesArgs:
     def __init__(__self__, *,
-                 max_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replica_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_replica_count: The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
                The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -7231,7 +7231,7 @@ class AiIndexEndpointDeployedIndexAutomaticResourcesArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxReplicaCount")
-    def max_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale the model to that many replicas is guaranteed (barring service outages). If traffic against the DeployedModel increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, a no upper bound for scaling under heavy traffic will be assume, though Vertex AI may be unable to scale beyond certain replica number.
@@ -7239,12 +7239,12 @@ class AiIndexEndpointDeployedIndexAutomaticResourcesArgs:
         return pulumi.get(self, "max_replica_count")
 
     @max_replica_count.setter
-    def max_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minReplicaCount")
-    def min_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
         If traffic against it increases, it may dynamically be deployed onto more replicas up to [maxReplicaCount](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/AutomaticResources#FIELDS.max_replica_count), and as traffic decreases, some of these extra replicas may be freed. If the requested value is too large, the deployment will error.
@@ -7252,7 +7252,7 @@ class AiIndexEndpointDeployedIndexAutomaticResourcesArgs:
         return pulumi.get(self, "min_replica_count")
 
     @min_replica_count.setter
-    def min_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_replica_count", value)
 
 
@@ -7266,7 +7266,7 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesArgsDict(TypedDict):
     """
     The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
     """
-    max_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
     """
@@ -7276,7 +7276,7 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesArgs:
     def __init__(__self__, *,
                  machine_spec: pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs'],
                  min_replica_count: pulumi.Input[_builtins.int],
-                 max_replica_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_replica_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs'] machine_spec: The minimum number of replicas this DeployedModel will be always deployed on.
                Structure is documented below.
@@ -7315,19 +7315,19 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxReplicaCount")
-    def max_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
         """
         return pulumi.get(self, "max_replica_count")
 
     @max_replica_count.setter
-    def max_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replica_count", value)
 
 
 class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgsDict(TypedDict):
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the machine.
     See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
@@ -7338,7 +7338,7 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgsDict(TypedDic
 @pulumi.input_type
 class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs:
     def __init__(__self__, *,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] machine_type: The type of the machine.
                See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
@@ -7350,7 +7350,7 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the machine.
         See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
@@ -7360,12 +7360,12 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs:
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict(TypedDict):
-    auth_provider: NotRequired[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict']]
+    auth_provider: NotRequired[pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]]
     """
     Defines the authentication provider that the DeployedIndex uses.
     Structure is documented below.
@@ -7374,7 +7374,7 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs:
     def __init__(__self__, *,
-                 auth_provider: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']] = None):
+                 auth_provider: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']] = None):
         """
         :param pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs'] auth_provider: Defines the authentication provider that the DeployedIndex uses.
                Structure is documented below.
@@ -7384,7 +7384,7 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="authProvider")
-    def auth_provider(self) -> Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]:
+    def auth_provider(self) -> pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]:
         """
         Defines the authentication provider that the DeployedIndex uses.
         Structure is documented below.
@@ -7392,16 +7392,16 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgs:
         return pulumi.get(self, "auth_provider")
 
     @auth_provider.setter
-    def auth_provider(self, value: Optional[pulumi.Input['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]):
+    def auth_provider(self, value: pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]):
         pulumi.set(self, "auth_provider", value)
 
 
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict(TypedDict):
-    allowed_issuers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_issuers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
     """
-    audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    audiences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
     """
@@ -7409,8 +7409,8 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict(Ty
 @pulumi.input_type
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs:
     def __init__(__self__, *,
-                 allowed_issuers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_issuers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_issuers: A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audiences: The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
@@ -7422,42 +7422,42 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedIssuers")
-    def allowed_issuers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_issuers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: service-account-name@project-id.iam.gserviceaccount.com
         """
         return pulumi.get(self, "allowed_issuers")
 
     @allowed_issuers.setter
-    def allowed_issuers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_issuers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_issuers", value)
 
     @_builtins.property
     @pulumi.getter
-    def audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of JWT audiences. that are allowed to access. A JWT containing any of these audiences will be accepted.
         """
         return pulumi.get(self, "audiences")
 
     @audiences.setter
-    def audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "audiences", value)
 
 
 class AiIndexEndpointDeployedIndexPrivateEndpointArgsDict(TypedDict):
-    match_grpc_address: NotRequired[pulumi.Input[_builtins.str]]
+    match_grpc_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The ip address used to send match gRPC requests.
     """
-    psc_automated_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict']]]]
+    psc_automated_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]]
     """
     (Output)
     PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
     Structure is documented below.
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the service attachment resource. Populated if private service connect is enabled.
@@ -7466,9 +7466,9 @@ class AiIndexEndpointDeployedIndexPrivateEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class AiIndexEndpointDeployedIndexPrivateEndpointArgs:
     def __init__(__self__, *,
-                 match_grpc_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_automated_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 match_grpc_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_automated_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] match_grpc_address: (Output)
                The ip address used to send match gRPC requests.
@@ -7487,7 +7487,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="matchGrpcAddress")
-    def match_grpc_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_grpc_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The ip address used to send match gRPC requests.
@@ -7495,12 +7495,12 @@ class AiIndexEndpointDeployedIndexPrivateEndpointArgs:
         return pulumi.get(self, "match_grpc_address")
 
     @match_grpc_address.setter
-    def match_grpc_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_grpc_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_grpc_address", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAutomatedEndpoints")
-    def psc_automated_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]:
+    def psc_automated_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]:
         """
         (Output)
         PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
@@ -7509,12 +7509,12 @@ class AiIndexEndpointDeployedIndexPrivateEndpointArgs:
         return pulumi.get(self, "psc_automated_endpoints")
 
     @psc_automated_endpoints.setter
-    def psc_automated_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]):
+    def psc_automated_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]):
         pulumi.set(self, "psc_automated_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the service attachment resource. Populated if private service connect is enabled.
@@ -7522,22 +7522,22 @@ class AiIndexEndpointDeployedIndexPrivateEndpointArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
 class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict(TypedDict):
-    match_address: NotRequired[pulumi.Input[_builtins.str]]
+    match_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     ip Address created by the automated forwarding rule.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Corresponding network in pscAutomationConfigs.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Corresponding projectId in pscAutomationConfigs
@@ -7546,9 +7546,9 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict(Ty
 @pulumi.input_type
 class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs:
     def __init__(__self__, *,
-                 match_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 match_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] match_address: (Output)
                ip Address created by the automated forwarding rule.
@@ -7566,7 +7566,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="matchAddress")
-    def match_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         ip Address created by the automated forwarding rule.
@@ -7574,12 +7574,12 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs:
         return pulumi.get(self, "match_address")
 
     @match_address.setter
-    def match_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Corresponding network in pscAutomationConfigs.
@@ -7587,12 +7587,12 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Corresponding projectId in pscAutomationConfigs
@@ -7600,7 +7600,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
@@ -7637,11 +7637,11 @@ class AiIndexEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
     """
     If set to true, the IndexEndpoint is created without private service access.
     """
-    project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    project_allowlists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of Projects from which the forwarding rule will target the service attachment.
     """
-    psc_automation_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict']]]]
+    psc_automation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]]
     """
     List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
     Structure is documented below.
@@ -7651,8 +7651,8 @@ class AiIndexEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
 class AiIndexEndpointPrivateServiceConnectConfigArgs:
     def __init__(__self__, *,
                  enable_private_service_connect: pulumi.Input[_builtins.bool],
-                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 psc_automation_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]] = None):
+                 project_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 psc_automation_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_service_connect: If set to true, the IndexEndpoint is created without private service access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
@@ -7679,19 +7679,19 @@ class AiIndexEndpointPrivateServiceConnectConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectAllowlists")
-    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Projects from which the forwarding rule will target the service attachment.
         """
         return pulumi.get(self, "project_allowlists")
 
     @project_allowlists.setter
-    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAutomationConfigs")
-    def psc_automation_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]:
+    def psc_automation_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]:
         """
         List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
         Structure is documented below.
@@ -7699,7 +7699,7 @@ class AiIndexEndpointPrivateServiceConnectConfigArgs:
         return pulumi.get(self, "psc_automation_configs")
 
     @psc_automation_configs.setter
-    def psc_automation_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]):
+    def psc_automation_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]):
         pulumi.set(self, "psc_automation_configs", value)
 
 
@@ -7751,12 +7751,12 @@ class AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
 
 
 class AiIndexIndexStatArgsDict(TypedDict):
-    shards_count: NotRequired[pulumi.Input[_builtins.int]]
+    shards_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The number of shards in the Index.
     """
-    vectors_count: NotRequired[pulumi.Input[_builtins.str]]
+    vectors_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The number of vectors in the Index.
@@ -7765,8 +7765,8 @@ class AiIndexIndexStatArgsDict(TypedDict):
 @pulumi.input_type
 class AiIndexIndexStatArgs:
     def __init__(__self__, *,
-                 shards_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 vectors_count: Optional[pulumi.Input[_builtins.str]] = None):
+                 shards_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 vectors_count: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] shards_count: (Output)
                The number of shards in the Index.
@@ -7780,7 +7780,7 @@ class AiIndexIndexStatArgs:
 
     @_builtins.property
     @pulumi.getter(name="shardsCount")
-    def shards_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shards_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The number of shards in the Index.
@@ -7788,12 +7788,12 @@ class AiIndexIndexStatArgs:
         return pulumi.get(self, "shards_count")
 
     @shards_count.setter
-    def shards_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shards_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shards_count", value)
 
     @_builtins.property
     @pulumi.getter(name="vectorsCount")
-    def vectors_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vectors_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The number of vectors in the Index.
@@ -7801,7 +7801,7 @@ class AiIndexIndexStatArgs:
         return pulumi.get(self, "vectors_count")
 
     @vectors_count.setter
-    def vectors_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vectors_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vectors_count", value)
 
 
@@ -7811,7 +7811,7 @@ class AiIndexMetadataArgsDict(TypedDict):
     The configuration of the Matching Engine Index.
     Structure is documented below.
     """
-    contents_delta_uri: NotRequired[pulumi.Input[_builtins.str]]
+    contents_delta_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Allows inserting, updating  or deleting the contents of the Matching Engine Index.
     The string must be a valid Cloud Storage directory path. If this
@@ -7820,7 +7820,7 @@ class AiIndexMetadataArgsDict(TypedDict):
     The expected structure and format of the files this URI points to is
     described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
     """
-    is_complete_overwrite: NotRequired[pulumi.Input[_builtins.bool]]
+    is_complete_overwrite: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
     then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -7830,8 +7830,8 @@ class AiIndexMetadataArgsDict(TypedDict):
 class AiIndexMetadataArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['AiIndexMetadataConfigArgs'],
-                 contents_delta_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_complete_overwrite: Optional[pulumi.Input[_builtins.bool]] = None):
+                 contents_delta_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_complete_overwrite: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input['AiIndexMetadataConfigArgs'] config: The configuration of the Matching Engine Index.
                Structure is documented below.
@@ -7865,7 +7865,7 @@ class AiIndexMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="contentsDeltaUri")
-    def contents_delta_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contents_delta_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allows inserting, updating  or deleting the contents of the Matching Engine Index.
         The string must be a valid Cloud Storage directory path. If this
@@ -7877,12 +7877,12 @@ class AiIndexMetadataArgs:
         return pulumi.get(self, "contents_delta_uri")
 
     @contents_delta_uri.setter
-    def contents_delta_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contents_delta_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contents_delta_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="isCompleteOverwrite")
-    def is_complete_overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_complete_overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
         then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -7890,7 +7890,7 @@ class AiIndexMetadataArgs:
         return pulumi.get(self, "is_complete_overwrite")
 
     @is_complete_overwrite.setter
-    def is_complete_overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_complete_overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_complete_overwrite", value)
 
 
@@ -7899,19 +7899,19 @@ class AiIndexMetadataConfigArgsDict(TypedDict):
     """
     The number of dimensions of the input vectors.
     """
-    algorithm_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgsDict']]
+    algorithm_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigArgs']]]
     """
     The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
     Structure is documented below.
     """
-    approximate_neighbors_count: NotRequired[pulumi.Input[_builtins.int]]
+    approximate_neighbors_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The default number of neighbors to find via approximate search before exact reordering is
     performed. Exact reordering is a procedure where results returned by an
     approximate search algorithm are reordered via a more expensive distance computation.
     Required if tree-AH algorithm is used.
     """
-    distance_measure_type: NotRequired[pulumi.Input[_builtins.str]]
+    distance_measure_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The distance measure used in nearest neighbor search. The value must be one of the followings:
     * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
@@ -7919,13 +7919,13 @@ class AiIndexMetadataConfigArgsDict(TypedDict):
     * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
     * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
     """
-    feature_norm_type: NotRequired[pulumi.Input[_builtins.str]]
+    feature_norm_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of normalization to be carried out on each vector. The value must be one of the followings:
     * UNIT_L2_NORM: Unit L2 normalization type
     * NONE: No normalization type is specified.
     """
-    shard_size: NotRequired[pulumi.Input[_builtins.str]]
+    shard_size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Index data is split into equal parts to be processed. These are called "shards".
     The shard size must be specified when creating an index. The value must be one of the followings:
@@ -7938,11 +7938,11 @@ class AiIndexMetadataConfigArgsDict(TypedDict):
 class AiIndexMetadataConfigArgs:
     def __init__(__self__, *,
                  dimensions: pulumi.Input[_builtins.int],
-                 algorithm_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']] = None,
-                 approximate_neighbors_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 distance_measure_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_norm_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_size: Optional[pulumi.Input[_builtins.str]] = None):
+                 algorithm_config: pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigArgs']] = None,
+                 approximate_neighbors_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 distance_measure_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_norm_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_size: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] dimensions: The number of dimensions of the input vectors.
         :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_config: The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
@@ -7991,7 +7991,7 @@ class AiIndexMetadataConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="algorithmConfig")
-    def algorithm_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']]:
+    def algorithm_config(self) -> pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigArgs']]:
         """
         The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
         Structure is documented below.
@@ -7999,12 +7999,12 @@ class AiIndexMetadataConfigArgs:
         return pulumi.get(self, "algorithm_config")
 
     @algorithm_config.setter
-    def algorithm_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']]):
+    def algorithm_config(self, value: pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigArgs']]):
         pulumi.set(self, "algorithm_config", value)
 
     @_builtins.property
     @pulumi.getter(name="approximateNeighborsCount")
-    def approximate_neighbors_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def approximate_neighbors_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default number of neighbors to find via approximate search before exact reordering is
         performed. Exact reordering is a procedure where results returned by an
@@ -8014,12 +8014,12 @@ class AiIndexMetadataConfigArgs:
         return pulumi.get(self, "approximate_neighbors_count")
 
     @approximate_neighbors_count.setter
-    def approximate_neighbors_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def approximate_neighbors_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "approximate_neighbors_count", value)
 
     @_builtins.property
     @pulumi.getter(name="distanceMeasureType")
-    def distance_measure_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distance_measure_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The distance measure used in nearest neighbor search. The value must be one of the followings:
         * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
@@ -8030,12 +8030,12 @@ class AiIndexMetadataConfigArgs:
         return pulumi.get(self, "distance_measure_type")
 
     @distance_measure_type.setter
-    def distance_measure_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distance_measure_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distance_measure_type", value)
 
     @_builtins.property
     @pulumi.getter(name="featureNormType")
-    def feature_norm_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feature_norm_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of normalization to be carried out on each vector. The value must be one of the followings:
         * UNIT_L2_NORM: Unit L2 normalization type
@@ -8044,12 +8044,12 @@ class AiIndexMetadataConfigArgs:
         return pulumi.get(self, "feature_norm_type")
 
     @feature_norm_type.setter
-    def feature_norm_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feature_norm_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feature_norm_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shardSize")
-    def shard_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shard_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Index data is split into equal parts to be processed. These are called "shards".
         The shard size must be specified when creating an index. The value must be one of the followings:
@@ -8060,17 +8060,17 @@ class AiIndexMetadataConfigArgs:
         return pulumi.get(self, "shard_size")
 
     @shard_size.setter
-    def shard_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shard_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shard_size", value)
 
 
 class AiIndexMetadataConfigAlgorithmConfigArgsDict(TypedDict):
-    brute_force_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgsDict']]
+    brute_force_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]]
     """
     Configuration options for using brute force search, which simply implements the
     standard linear search in the database for each query.
     """
-    tree_ah_config: NotRequired[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict']]
+    tree_ah_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]]
     """
     Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
     Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
@@ -8080,8 +8080,8 @@ class AiIndexMetadataConfigAlgorithmConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiIndexMetadataConfigAlgorithmConfigArgs:
     def __init__(__self__, *,
-                 brute_force_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']] = None,
-                 tree_ah_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']] = None):
+                 brute_force_config: pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']] = None,
+                 tree_ah_config: pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']] = None):
         """
         :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs'] brute_force_config: Configuration options for using brute force search, which simply implements the
                standard linear search in the database for each query.
@@ -8096,7 +8096,7 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="bruteForceConfig")
-    def brute_force_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]:
+    def brute_force_config(self) -> pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]:
         """
         Configuration options for using brute force search, which simply implements the
         standard linear search in the database for each query.
@@ -8104,12 +8104,12 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
         return pulumi.get(self, "brute_force_config")
 
     @brute_force_config.setter
-    def brute_force_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]):
+    def brute_force_config(self, value: pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]):
         pulumi.set(self, "brute_force_config", value)
 
     @_builtins.property
     @pulumi.getter(name="treeAhConfig")
-    def tree_ah_config(self) -> Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]:
+    def tree_ah_config(self) -> pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]:
         """
         Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
         Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
@@ -8118,7 +8118,7 @@ class AiIndexMetadataConfigAlgorithmConfigArgs:
         return pulumi.get(self, "tree_ah_config")
 
     @tree_ah_config.setter
-    def tree_ah_config(self, value: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]):
+    def tree_ah_config(self, value: pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]):
         pulumi.set(self, "tree_ah_config", value)
 
 
@@ -8132,11 +8132,11 @@ class AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs:
 
 
 class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict(TypedDict):
-    leaf_node_embedding_count: NotRequired[pulumi.Input[_builtins.int]]
+    leaf_node_embedding_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of embeddings on each leaf node. The default value is 1000 if not set.
     """
-    leaf_nodes_to_search_percent: NotRequired[pulumi.Input[_builtins.int]]
+    leaf_nodes_to_search_percent: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The default percentage of leaf nodes that any query may be searched. Must be in
     range 1-100, inclusive. The default value is 10 (means 10%) if not set.
@@ -8145,8 +8145,8 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
     def __init__(__self__, *,
-                 leaf_node_embedding_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 leaf_nodes_to_search_percent: Optional[pulumi.Input[_builtins.int]] = None):
+                 leaf_node_embedding_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 leaf_nodes_to_search_percent: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
         :param pulumi.Input[_builtins.int] leaf_nodes_to_search_percent: The default percentage of leaf nodes that any query may be searched. Must be in
@@ -8159,19 +8159,19 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="leafNodeEmbeddingCount")
-    def leaf_node_embedding_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def leaf_node_embedding_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of embeddings on each leaf node. The default value is 1000 if not set.
         """
         return pulumi.get(self, "leaf_node_embedding_count")
 
     @leaf_node_embedding_count.setter
-    def leaf_node_embedding_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def leaf_node_embedding_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "leaf_node_embedding_count", value)
 
     @_builtins.property
     @pulumi.getter(name="leafNodesToSearchPercent")
-    def leaf_nodes_to_search_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def leaf_nodes_to_search_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default percentage of leaf nodes that any query may be searched. Must be in
         range 1-100, inclusive. The default value is 10 (means 10%) if not set.
@@ -8179,12 +8179,12 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs:
         return pulumi.get(self, "leaf_nodes_to_search_percent")
 
     @leaf_nodes_to_search_percent.setter
-    def leaf_nodes_to_search_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def leaf_nodes_to_search_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "leaf_nodes_to_search_percent", value)
 
 
 class AiMetadataStoreEncryptionSpecArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
     Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -8193,7 +8193,7 @@ class AiMetadataStoreEncryptionSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiMetadataStoreEncryptionSpecArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
                Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -8203,7 +8203,7 @@ class AiMetadataStoreEncryptionSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
         Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
@@ -8211,12 +8211,12 @@ class AiMetadataStoreEncryptionSpecArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
 class AiMetadataStoreStateArgsDict(TypedDict):
-    disk_utilization_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    disk_utilization_bytes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The disk utilization of the MetadataStore in bytes.
@@ -8225,7 +8225,7 @@ class AiMetadataStoreStateArgsDict(TypedDict):
 @pulumi.input_type
 class AiMetadataStoreStateArgs:
     def __init__(__self__, *,
-                 disk_utilization_bytes: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_utilization_bytes: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_utilization_bytes: (Output)
                The disk utilization of the MetadataStore in bytes.
@@ -8235,7 +8235,7 @@ class AiMetadataStoreStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskUtilizationBytes")
-    def disk_utilization_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_utilization_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The disk utilization of the MetadataStore in bytes.
@@ -8243,21 +8243,21 @@ class AiMetadataStoreStateArgs:
         return pulumi.get(self, "disk_utilization_bytes")
 
     @disk_utilization_bytes.setter
-    def disk_utilization_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_utilization_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_utilization_bytes", value)
 
 
 class AiRagEngineConfigRagManagedDbConfigArgsDict(TypedDict):
-    basic: NotRequired[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgsDict']]
+    basic: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigBasicArgs']]]
     """
     Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
     NOTE: This is the default tier if not explicitly chosen.
     """
-    scaled: NotRequired[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgsDict']]
+    scaled: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigScaledArgs']]]
     """
     Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
     """
-    unprovisioned: NotRequired[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict']]
+    unprovisioned: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]]
     """
     Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
     NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
@@ -8266,9 +8266,9 @@ class AiRagEngineConfigRagManagedDbConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiRagEngineConfigRagManagedDbConfigArgs:
     def __init__(__self__, *,
-                 basic: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs']] = None,
-                 scaled: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgs']] = None,
-                 unprovisioned: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']] = None):
+                 basic: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigBasicArgs']] = None,
+                 scaled: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigScaledArgs']] = None,
+                 unprovisioned: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']] = None):
         """
         :param pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs'] basic: Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
                NOTE: This is the default tier if not explicitly chosen.
@@ -8285,7 +8285,7 @@ class AiRagEngineConfigRagManagedDbConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def basic(self) -> Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs']]:
+    def basic(self) -> pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigBasicArgs']]:
         """
         Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
         NOTE: This is the default tier if not explicitly chosen.
@@ -8293,24 +8293,24 @@ class AiRagEngineConfigRagManagedDbConfigArgs:
         return pulumi.get(self, "basic")
 
     @basic.setter
-    def basic(self, value: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigBasicArgs']]):
+    def basic(self, value: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigBasicArgs']]):
         pulumi.set(self, "basic", value)
 
     @_builtins.property
     @pulumi.getter
-    def scaled(self) -> Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgs']]:
+    def scaled(self) -> pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigScaledArgs']]:
         """
         Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
         """
         return pulumi.get(self, "scaled")
 
     @scaled.setter
-    def scaled(self, value: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigScaledArgs']]):
+    def scaled(self, value: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigScaledArgs']]):
         pulumi.set(self, "scaled", value)
 
     @_builtins.property
     @pulumi.getter
-    def unprovisioned(self) -> Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]:
+    def unprovisioned(self) -> pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]:
         """
         Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
         NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
@@ -8318,7 +8318,7 @@ class AiRagEngineConfigRagManagedDbConfigArgs:
         return pulumi.get(self, "unprovisioned")
 
     @unprovisioned.setter
-    def unprovisioned(self, value: Optional[pulumi.Input['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]):
+    def unprovisioned(self, value: pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]):
         pulumi.set(self, "unprovisioned", value)
 
 
@@ -8350,7 +8350,7 @@ class AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs:
 
 
 class AiReasoningEngineContextSpecArgsDict(TypedDict):
-    memory_bank_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgsDict']]
+    memory_bank_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgs']]]
     """
     Specification for a Memory Bank, which manages memories for the Agent Engine.
     Structure is documented below.
@@ -8359,7 +8359,7 @@ class AiReasoningEngineContextSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineContextSpecArgs:
     def __init__(__self__, *,
-                 memory_bank_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs']] = None):
+                 memory_bank_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgs']] = None):
         """
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs'] memory_bank_config: Specification for a Memory Bank, which manages memories for the Agent Engine.
                Structure is documented below.
@@ -8369,7 +8369,7 @@ class AiReasoningEngineContextSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="memoryBankConfig")
-    def memory_bank_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs']]:
+    def memory_bank_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgs']]:
         """
         Specification for a Memory Bank, which manages memories for the Agent Engine.
         Structure is documented below.
@@ -8377,26 +8377,26 @@ class AiReasoningEngineContextSpecArgs:
         return pulumi.get(self, "memory_bank_config")
 
     @memory_bank_config.setter
-    def memory_bank_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs']]):
+    def memory_bank_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgs']]):
         pulumi.set(self, "memory_bank_config", value)
 
 
 class AiReasoningEngineContextSpecMemoryBankConfigArgsDict(TypedDict):
-    disable_memory_revisions: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_memory_revisions: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, no memory revisions will be created for any requests to the Memory Bank.
     """
-    generation_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict']]
+    generation_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]]
     """
     Configuration for how to generate memories for the Memory Bank.
     Structure is documented below.
     """
-    similarity_search_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict']]
+    similarity_search_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]]
     """
     Configuration for how to perform similarity search on memories.
     Structure is documented below.
     """
-    ttl_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict']]
+    ttl_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]]
     """
     Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
     Structure is documented below.
@@ -8405,10 +8405,10 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineContextSpecMemoryBankConfigArgs:
     def __init__(__self__, *,
-                 disable_memory_revisions: Optional[pulumi.Input[_builtins.bool]] = None,
-                 generation_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']] = None,
-                 similarity_search_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']] = None,
-                 ttl_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']] = None):
+                 disable_memory_revisions: pulumi.Input[Optional[_builtins.bool]] = None,
+                 generation_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']] = None,
+                 similarity_search_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']] = None,
+                 ttl_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] disable_memory_revisions: If true, no memory revisions will be created for any requests to the Memory Bank.
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs'] generation_config: Configuration for how to generate memories for the Memory Bank.
@@ -8429,19 +8429,19 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableMemoryRevisions")
-    def disable_memory_revisions(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_memory_revisions(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, no memory revisions will be created for any requests to the Memory Bank.
         """
         return pulumi.get(self, "disable_memory_revisions")
 
     @disable_memory_revisions.setter
-    def disable_memory_revisions(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_memory_revisions(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_memory_revisions", value)
 
     @_builtins.property
     @pulumi.getter(name="generationConfig")
-    def generation_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]:
+    def generation_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]:
         """
         Configuration for how to generate memories for the Memory Bank.
         Structure is documented below.
@@ -8449,12 +8449,12 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgs:
         return pulumi.get(self, "generation_config")
 
     @generation_config.setter
-    def generation_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]):
+    def generation_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]):
         pulumi.set(self, "generation_config", value)
 
     @_builtins.property
     @pulumi.getter(name="similaritySearchConfig")
-    def similarity_search_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]:
+    def similarity_search_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]:
         """
         Configuration for how to perform similarity search on memories.
         Structure is documented below.
@@ -8462,12 +8462,12 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgs:
         return pulumi.get(self, "similarity_search_config")
 
     @similarity_search_config.setter
-    def similarity_search_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]):
+    def similarity_search_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]):
         pulumi.set(self, "similarity_search_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ttlConfig")
-    def ttl_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]:
+    def ttl_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]:
         """
         Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
         Structure is documented below.
@@ -8475,7 +8475,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgs:
         return pulumi.get(self, "ttl_config")
 
     @ttl_config.setter
-    def ttl_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]):
+    def ttl_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]):
         pulumi.set(self, "ttl_config", value)
 
 
@@ -8536,16 +8536,16 @@ class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs:
 
 
 class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict(TypedDict):
-    default_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    default_ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default TTL duration of the memories in the Memory Bank.
     """
-    granular_ttl_config: NotRequired[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgsDict']]
+    granular_ttl_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]]
     """
     The granular TTL configuration of the memories in the Memory Bank.
     Structure is documented below.
     """
-    memory_revision_default_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    memory_revision_default_ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default TTL duration of the memory revisions in the Memory Bank.
     """
@@ -8553,9 +8553,9 @@ class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs:
     def __init__(__self__, *,
-                 default_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 granular_ttl_config: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']] = None,
-                 memory_revision_default_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 granular_ttl_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']] = None,
+                 memory_revision_default_ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] default_ttl: The default TTL duration of the memories in the Memory Bank.
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs'] granular_ttl_config: The granular TTL configuration of the memories in the Memory Bank.
@@ -8571,19 +8571,19 @@ class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default TTL duration of the memories in the Memory Bank.
         """
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="granularTtlConfig")
-    def granular_ttl_config(self) -> Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]:
+    def granular_ttl_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]:
         """
         The granular TTL configuration of the memories in the Memory Bank.
         Structure is documented below.
@@ -8591,32 +8591,32 @@ class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs:
         return pulumi.get(self, "granular_ttl_config")
 
     @granular_ttl_config.setter
-    def granular_ttl_config(self, value: Optional[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]):
+    def granular_ttl_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]):
         pulumi.set(self, "granular_ttl_config", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryRevisionDefaultTtl")
-    def memory_revision_default_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_revision_default_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default TTL duration of the memory revisions in the Memory Bank.
         """
         return pulumi.get(self, "memory_revision_default_ttl")
 
     @memory_revision_default_ttl.setter
-    def memory_revision_default_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_revision_default_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_revision_default_ttl", value)
 
 
 class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgsDict(TypedDict):
-    create_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    create_ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The TTL duration for memories uploaded via CreateMemory.
     """
-    generate_created_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    generate_created_ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The TTL duration for memories newly generated via GenerateMemories.
     """
-    generate_updated_ttl: NotRequired[pulumi.Input[_builtins.str]]
+    generate_updated_ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The TTL duration for memories updated via GenerateMemories.
     """
@@ -8624,9 +8624,9 @@ class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs
 @pulumi.input_type
 class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs:
     def __init__(__self__, *,
-                 create_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_created_ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_updated_ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_created_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_updated_ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] create_ttl: The TTL duration for memories uploaded via CreateMemory.
         :param pulumi.Input[_builtins.str] generate_created_ttl: The TTL duration for memories newly generated via GenerateMemories.
@@ -8641,38 +8641,38 @@ class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs
 
     @_builtins.property
     @pulumi.getter(name="createTtl")
-    def create_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TTL duration for memories uploaded via CreateMemory.
         """
         return pulumi.get(self, "create_ttl")
 
     @create_ttl.setter
-    def create_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="generateCreatedTtl")
-    def generate_created_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generate_created_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TTL duration for memories newly generated via GenerateMemories.
         """
         return pulumi.get(self, "generate_created_ttl")
 
     @generate_created_ttl.setter
-    def generate_created_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generate_created_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generate_created_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="generateUpdatedTtl")
-    def generate_updated_ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generate_updated_ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TTL duration for memories updated via GenerateMemories.
         """
         return pulumi.get(self, "generate_updated_ttl")
 
     @generate_updated_ttl.setter
-    def generate_updated_ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generate_updated_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generate_updated_ttl", value)
 
 
@@ -8719,14 +8719,14 @@ class AiReasoningEngineEncryptionSpecArgs:
 class AiReasoningEngineIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiReasoningEngineIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -8752,25 +8752,25 @@ class AiReasoningEngineIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiReasoningEngineIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AiReasoningEngineIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -8796,40 +8796,40 @@ class AiReasoningEngineIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AiReasoningEngineSpecArgsDict(TypedDict):
-    agent_framework: NotRequired[pulumi.Input[_builtins.str]]
+    agent_framework: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The OSS agent framework used to develop the agent.
     """
-    class_methods: NotRequired[pulumi.Input[_builtins.str]]
+    class_methods: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Declarations for object class methods in OpenAPI
     specification format.
     """
-    container_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecContainerSpecArgsDict']]
+    container_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgs']]]
     """
     Deploy from a container image with a defined entrypoint and commands.
     Structure is documented below.
     """
-    deployment_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgsDict']]
+    deployment_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgs']]]
     """
     Optional. The specification of a Reasoning Engine deployment.
     Structure is documented below.
     """
-    effective_identity: NotRequired[pulumi.Input[_builtins.str]]
+    effective_identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The identity to use for the Reasoning Engine.
     """
-    identity_type: NotRequired[pulumi.Input[_builtins.str]]
+    identity_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The identity type to use for the Reasoning Engine.
     If not specified, the `service_account` field will be used if set,
@@ -8839,7 +8839,7 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
     Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
     """
-    package_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecPackageSpecArgsDict']]
+    package_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgs']]]
     """
     Optional. User provided package spec of the ReasoningEngine.
     Ignored when users directly specify a deployment image through
@@ -8847,7 +8847,7 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     field_behavior to avoid introducing breaking changes.
     Structure is documented below.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The service account that the Reasoning Engine artifact runs
     as. It should have "roles/storage.objectViewer" for reading the user
@@ -8855,7 +8855,7 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     extensions. If not specified, the Vertex AI Reasoning Engine service
     Agent in the project will be used.
     """
-    source_code_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecArgsDict']]
+    source_code_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']]]
     """
     Specification for deploying from source code.
     Structure is documented below.
@@ -8864,15 +8864,15 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecArgs:
     def __init__(__self__, *,
-                 agent_framework: Optional[pulumi.Input[_builtins.str]] = None,
-                 class_methods: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_spec: Optional[pulumi.Input['AiReasoningEngineSpecContainerSpecArgs']] = None,
-                 deployment_spec: Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgs']] = None,
-                 effective_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_spec: Optional[pulumi.Input['AiReasoningEngineSpecPackageSpecArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_code_spec: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecArgs']] = None):
+                 agent_framework: pulumi.Input[Optional[_builtins.str]] = None,
+                 class_methods: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_spec: pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgs']] = None,
+                 deployment_spec: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgs']] = None,
+                 effective_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_spec: pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_code_spec: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] agent_framework: Optional. The OSS agent framework used to develop the agent.
         :param pulumi.Input[_builtins.str] class_methods: Optional. Declarations for object class methods in OpenAPI
@@ -8924,19 +8924,19 @@ class AiReasoningEngineSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="agentFramework")
-    def agent_framework(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_framework(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The OSS agent framework used to develop the agent.
         """
         return pulumi.get(self, "agent_framework")
 
     @agent_framework.setter
-    def agent_framework(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_framework(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_framework", value)
 
     @_builtins.property
     @pulumi.getter(name="classMethods")
-    def class_methods(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def class_methods(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Declarations for object class methods in OpenAPI
         specification format.
@@ -8944,12 +8944,12 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "class_methods")
 
     @class_methods.setter
-    def class_methods(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def class_methods(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "class_methods", value)
 
     @_builtins.property
     @pulumi.getter(name="containerSpec")
-    def container_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecContainerSpecArgs']]:
+    def container_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgs']]:
         """
         Deploy from a container image with a defined entrypoint and commands.
         Structure is documented below.
@@ -8957,12 +8957,12 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "container_spec")
 
     @container_spec.setter
-    def container_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecContainerSpecArgs']]):
+    def container_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgs']]):
         pulumi.set(self, "container_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentSpec")
-    def deployment_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgs']]:
+    def deployment_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgs']]:
         """
         Optional. The specification of a Reasoning Engine deployment.
         Structure is documented below.
@@ -8970,12 +8970,12 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "deployment_spec")
 
     @deployment_spec.setter
-    def deployment_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgs']]):
+    def deployment_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgs']]):
         pulumi.set(self, "deployment_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveIdentity")
-    def effective_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The identity to use for the Reasoning Engine.
@@ -8983,12 +8983,12 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "effective_identity")
 
     @effective_identity.setter
-    def effective_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="identityType")
-    def identity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The identity type to use for the Reasoning Engine.
         If not specified, the `service_account` field will be used if set,
@@ -9001,12 +9001,12 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "identity_type")
 
     @identity_type.setter
-    def identity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity_type", value)
 
     @_builtins.property
     @pulumi.getter(name="packageSpec")
-    def package_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecPackageSpecArgs']]:
+    def package_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgs']]:
         """
         Optional. User provided package spec of the ReasoningEngine.
         Ignored when users directly specify a deployment image through
@@ -9017,12 +9017,12 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "package_spec")
 
     @package_spec.setter
-    def package_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecPackageSpecArgs']]):
+    def package_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgs']]):
         pulumi.set(self, "package_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The service account that the Reasoning Engine artifact runs
         as. It should have "roles/storage.objectViewer" for reading the user
@@ -9033,12 +9033,12 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCodeSpec")
-    def source_code_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecArgs']]:
+    def source_code_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']]:
         """
         Specification for deploying from source code.
         Structure is documented below.
@@ -9046,7 +9046,7 @@ class AiReasoningEngineSpecArgs:
         return pulumi.get(self, "source_code_spec")
 
     @source_code_spec.setter
-    def source_code_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecArgs']]):
+    def source_code_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']]):
         pulumi.set(self, "source_code_spec", value)
 
 
@@ -9085,35 +9085,35 @@ class AiReasoningEngineSpecContainerSpecArgs:
 
 
 class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
-    container_concurrency: NotRequired[pulumi.Input[_builtins.int]]
+    container_concurrency: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Concurrency for each container and agent server.
     Recommended value: 2 * cpu + 1. Defaults to 9.
     """
-    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgsDict']]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]]
     """
     Optional. Environment variables to be set with the Reasoning
     Engine deployment.
     Structure is documented below.
     """
-    max_instances: NotRequired[pulumi.Input[_builtins.int]]
+    max_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The maximum number of application instances that can be
     launched to handle increased traffic. Defaults to 100.
     Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
     range is [1, 100].
     """
-    min_instances: NotRequired[pulumi.Input[_builtins.int]]
+    min_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The minimum number of application instances that will be
     kept running at all times. Defaults to 1. Range: [0, 10].
     """
-    psc_interface_config: NotRequired[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict']]
+    psc_interface_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]]
     """
     Optional. Configuration for PSC-Interface.
     Structure is documented below.
     """
-    resource_limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    resource_limits: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Optional. Resource limits for each container.
     Only 'cpu' and 'memory' keys are supported.
@@ -9125,7 +9125,7 @@ class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
     For more information, go to
     https://cloud.google.com/run/docs/configuring/memory-limits.
     """
-    secret_envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgsDict']]]]
+    secret_envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]]]
     """
     Optional. Environment variables where the value is a secret in
     Cloud Secret Manager. To use this feature, add 'Secret Manager
@@ -9137,13 +9137,13 @@ class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecDeploymentSpecArgs:
     def __init__(__self__, *,
-                 container_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 envs: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]] = None,
-                 max_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 psc_interface_config: Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']] = None,
-                 resource_limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 secret_envs: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]] = None):
+                 container_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]] = None,
+                 max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 psc_interface_config: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']] = None,
+                 resource_limits: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 secret_envs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.int] container_concurrency: Optional. Concurrency for each container and agent server.
                Recommended value: 2 * cpu + 1. Defaults to 9.
@@ -9190,7 +9190,7 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerConcurrency")
-    def container_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Concurrency for each container and agent server.
         Recommended value: 2 * cpu + 1. Defaults to 9.
@@ -9198,12 +9198,12 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         return pulumi.get(self, "container_concurrency")
 
     @container_concurrency.setter
-    def container_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_concurrency", value)
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]:
+    def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]:
         """
         Optional. Environment variables to be set with the Reasoning
         Engine deployment.
@@ -9212,12 +9212,12 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         return pulumi.get(self, "envs")
 
     @envs.setter
-    def envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]):
+    def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]):
         pulumi.set(self, "envs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstances")
-    def max_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The maximum number of application instances that can be
         launched to handle increased traffic. Defaults to 100.
@@ -9227,12 +9227,12 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         return pulumi.get(self, "max_instances")
 
     @max_instances.setter
-    def max_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstances")
-    def min_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The minimum number of application instances that will be
         kept running at all times. Defaults to 1. Range: [0, 10].
@@ -9240,12 +9240,12 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         return pulumi.get(self, "min_instances")
 
     @min_instances.setter
-    def min_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="pscInterfaceConfig")
-    def psc_interface_config(self) -> Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]:
+    def psc_interface_config(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]:
         """
         Optional. Configuration for PSC-Interface.
         Structure is documented below.
@@ -9253,12 +9253,12 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         return pulumi.get(self, "psc_interface_config")
 
     @psc_interface_config.setter
-    def psc_interface_config(self, value: Optional[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]):
+    def psc_interface_config(self, value: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]):
         pulumi.set(self, "psc_interface_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceLimits")
-    def resource_limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_limits(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Resource limits for each container.
         Only 'cpu' and 'memory' keys are supported.
@@ -9273,12 +9273,12 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         return pulumi.get(self, "resource_limits")
 
     @resource_limits.setter
-    def resource_limits(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_limits(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_limits", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEnvs")
-    def secret_envs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]]:
+    def secret_envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]]:
         """
         Optional. Environment variables where the value is a secret in
         Cloud Secret Manager. To use this feature, add 'Secret Manager
@@ -9289,7 +9289,7 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         return pulumi.get(self, "secret_envs")
 
     @secret_envs.setter
-    def secret_envs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]]):
+    def secret_envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]]):
         pulumi.set(self, "secret_envs", value)
 
 
@@ -9365,7 +9365,7 @@ class AiReasoningEngineSpecDeploymentSpecEnvArgs:
 
 
 class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict(TypedDict):
-    dns_peering_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgsDict']]]]
+    dns_peering_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]]
     """
     Optional. DNS peering configurations.
     When specified, Vertex AI will attempt to configure DNS
@@ -9375,7 +9375,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict(TypedDict):
     service Agent on the target project.
     Structure is documented below.
     """
-    network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    network_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The name of the Compute Engine network attachment
     to attach to the resource within the region and user project.
@@ -9386,8 +9386,8 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs:
     def __init__(__self__, *,
-                 dns_peering_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]] = None,
-                 network_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 dns_peering_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]] = None,
+                 network_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]] dns_peering_configs: Optional. DNS peering configurations.
                When specified, Vertex AI will attempt to configure DNS
@@ -9408,7 +9408,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsPeeringConfigs")
-    def dns_peering_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]:
+    def dns_peering_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]:
         """
         Optional. DNS peering configurations.
         When specified, Vertex AI will attempt to configure DNS
@@ -9421,12 +9421,12 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs:
         return pulumi.get(self, "dns_peering_configs")
 
     @dns_peering_configs.setter
-    def dns_peering_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]):
+    def dns_peering_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]):
         pulumi.set(self, "dns_peering_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAttachment")
-    def network_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The name of the Compute Engine network attachment
         to attach to the resource within the region and user project.
@@ -9436,7 +9436,7 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs:
         return pulumi.get(self, "network_attachment")
 
     @network_attachment.setter
-    def network_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_attachment", value)
 
 
@@ -9586,7 +9586,7 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgsDict(TypedDict):
     The name of the secret in Cloud Secret Manager.
     Format: {secret_name}.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cloud Secret Manager secret version. Can be 'latest'
     for the latest version, an integer for a specific
@@ -9597,7 +9597,7 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgsDict(TypedDict):
 class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[_builtins.str],
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret: The name of the secret in Cloud Secret Manager.
                Format: {secret_name}.
@@ -9624,7 +9624,7 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs:
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud Secret Manager secret version. Can be 'latest'
         for the latest version, an integer for a specific
@@ -9633,26 +9633,26 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnvSecretRefArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class AiReasoningEngineSpecPackageSpecArgsDict(TypedDict):
-    dependency_files_gcs_uri: NotRequired[pulumi.Input[_builtins.str]]
+    dependency_files_gcs_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The Cloud Storage URI of the dependency files in tar.gz
     format.
     """
-    pickle_object_gcs_uri: NotRequired[pulumi.Input[_builtins.str]]
+    pickle_object_gcs_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The Cloud Storage URI of the pickled python object.
     """
-    python_version: NotRequired[pulumi.Input[_builtins.str]]
+    python_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The Python version. Currently support 3.8, 3.9, 3.10,
     3.11, 3.12, 3.13. If not specified, default value is 3.10.
     """
-    requirements_gcs_uri: NotRequired[pulumi.Input[_builtins.str]]
+    requirements_gcs_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The Cloud Storage URI of the requirements.txtfile
     """
@@ -9660,10 +9660,10 @@ class AiReasoningEngineSpecPackageSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecPackageSpecArgs:
     def __init__(__self__, *,
-                 dependency_files_gcs_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 pickle_object_gcs_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 python_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 requirements_gcs_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 dependency_files_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 pickle_object_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 python_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 requirements_gcs_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dependency_files_gcs_uri: Optional. The Cloud Storage URI of the dependency files in tar.gz
                format.
@@ -9683,7 +9683,7 @@ class AiReasoningEngineSpecPackageSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="dependencyFilesGcsUri")
-    def dependency_files_gcs_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dependency_files_gcs_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Cloud Storage URI of the dependency files in tar.gz
         format.
@@ -9691,24 +9691,24 @@ class AiReasoningEngineSpecPackageSpecArgs:
         return pulumi.get(self, "dependency_files_gcs_uri")
 
     @dependency_files_gcs_uri.setter
-    def dependency_files_gcs_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dependency_files_gcs_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dependency_files_gcs_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="pickleObjectGcsUri")
-    def pickle_object_gcs_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pickle_object_gcs_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Cloud Storage URI of the pickled python object.
         """
         return pulumi.get(self, "pickle_object_gcs_uri")
 
     @pickle_object_gcs_uri.setter
-    def pickle_object_gcs_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pickle_object_gcs_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pickle_object_gcs_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonVersion")
-    def python_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def python_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Python version. Currently support 3.8, 3.9, 3.10,
         3.11, 3.12, 3.13. If not specified, default value is 3.10.
@@ -9716,39 +9716,39 @@ class AiReasoningEngineSpecPackageSpecArgs:
         return pulumi.get(self, "python_version")
 
     @python_version.setter
-    def python_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def python_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "python_version", value)
 
     @_builtins.property
     @pulumi.getter(name="requirementsGcsUri")
-    def requirements_gcs_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirements_gcs_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Cloud Storage URI of the requirements.txtfile
         """
         return pulumi.get(self, "requirements_gcs_uri")
 
     @requirements_gcs_uri.setter
-    def requirements_gcs_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirements_gcs_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirements_gcs_uri", value)
 
 
 class AiReasoningEngineSpecSourceCodeSpecArgsDict(TypedDict):
-    developer_connect_source: NotRequired[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgsDict']]
+    developer_connect_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']]]
     """
     Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
     Structure is documented below.
     """
-    image_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgsDict']]
+    image_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]]
     """
     Configuration for building an image with custom config file.
     Structure is documented below.
     """
-    inline_source: NotRequired[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict']]
+    inline_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']]]
     """
     Source code is provided directly in the request.
     Structure is documented below.
     """
-    python_spec: NotRequired[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgsDict']]
+    python_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']]]
     """
     Specification for running a Python application from source.
     Structure is documented below.
@@ -9757,10 +9757,10 @@ class AiReasoningEngineSpecSourceCodeSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecSourceCodeSpecArgs:
     def __init__(__self__, *,
-                 developer_connect_source: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']] = None,
-                 image_spec: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']] = None,
-                 inline_source: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']] = None,
-                 python_spec: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']] = None):
+                 developer_connect_source: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']] = None,
+                 image_spec: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']] = None,
+                 inline_source: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']] = None,
+                 python_spec: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']] = None):
         """
         :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs'] developer_connect_source: Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
                Structure is documented below.
@@ -9782,7 +9782,7 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="developerConnectSource")
-    def developer_connect_source(self) -> Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']]:
+    def developer_connect_source(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']]:
         """
         Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
         Structure is documented below.
@@ -9790,12 +9790,12 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
         return pulumi.get(self, "developer_connect_source")
 
     @developer_connect_source.setter
-    def developer_connect_source(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']]):
+    def developer_connect_source(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']]):
         pulumi.set(self, "developer_connect_source", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSpec")
-    def image_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]:
+    def image_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]:
         """
         Configuration for building an image with custom config file.
         Structure is documented below.
@@ -9803,12 +9803,12 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
         return pulumi.get(self, "image_spec")
 
     @image_spec.setter
-    def image_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]):
+    def image_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]):
         pulumi.set(self, "image_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="inlineSource")
-    def inline_source(self) -> Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']]:
+    def inline_source(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']]:
         """
         Source code is provided directly in the request.
         Structure is documented below.
@@ -9816,12 +9816,12 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
         return pulumi.get(self, "inline_source")
 
     @inline_source.setter
-    def inline_source(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']]):
+    def inline_source(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']]):
         pulumi.set(self, "inline_source", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonSpec")
-    def python_spec(self) -> Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']]:
+    def python_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']]:
         """
         Specification for running a Python application from source.
         Structure is documented below.
@@ -9829,7 +9829,7 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
         return pulumi.get(self, "python_spec")
 
     @python_spec.setter
-    def python_spec(self, value: Optional[pulumi.Input['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']]):
+    def python_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']]):
         pulumi.set(self, "python_spec", value)
 
 
@@ -9931,7 +9931,7 @@ class AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs:
 
 
 class AiReasoningEngineSpecSourceCodeSpecImageSpecArgsDict(TypedDict):
-    build_args: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    build_args: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Build arguments to be used. They will be passed through --build-arg flags.
     """
@@ -9939,7 +9939,7 @@ class AiReasoningEngineSpecSourceCodeSpecImageSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecSourceCodeSpecImageSpecArgs:
     def __init__(__self__, *,
-                 build_args: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 build_args: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_args: Build arguments to be used. They will be passed through --build-arg flags.
         """
@@ -9948,19 +9948,19 @@ class AiReasoningEngineSpecSourceCodeSpecImageSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="buildArgs")
-    def build_args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def build_args(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Build arguments to be used. They will be passed through --build-arg flags.
         """
         return pulumi.get(self, "build_args")
 
     @build_args.setter
-    def build_args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def build_args(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "build_args", value)
 
 
 class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict(TypedDict):
-    source_archive: NotRequired[pulumi.Input[_builtins.str]]
+    source_archive: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Input only.
     The application source code archive, provided as a compressed
@@ -9970,7 +9970,7 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs:
     def __init__(__self__, *,
-                 source_archive: Optional[pulumi.Input[_builtins.str]] = None):
+                 source_archive: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_archive: Required. Input only.
                The application source code archive, provided as a compressed
@@ -9981,7 +9981,7 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceArchive")
-    def source_archive(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_archive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Input only.
         The application source code archive, provided as a compressed
@@ -9990,12 +9990,12 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs:
         return pulumi.get(self, "source_archive")
 
     @source_archive.setter
-    def source_archive(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_archive(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_archive", value)
 
 
 class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgsDict(TypedDict):
-    entrypoint_module: NotRequired[pulumi.Input[_builtins.str]]
+    entrypoint_module: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The Python module to load as the entrypoint,
     specified as a fully qualified module name. For example:
@@ -10003,18 +10003,18 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgsDict(TypedDict):
     The project root will be added to Python sys.path, allowing
     imports to be specified relative to the root.
     """
-    entrypoint_object: NotRequired[pulumi.Input[_builtins.str]]
+    entrypoint_object: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The name of the callable object within the
     entrypointModule to use as the application If not specified,
     defaults to "root_agent".
     """
-    requirements_file: NotRequired[pulumi.Input[_builtins.str]]
+    requirements_file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The path to the requirements file, relative to the
     source root. If not specified, defaults to "requirements.txt".
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The version of Python to use. Support version
     includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
@@ -10024,10 +10024,10 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
     def __init__(__self__, *,
-                 entrypoint_module: Optional[pulumi.Input[_builtins.str]] = None,
-                 entrypoint_object: Optional[pulumi.Input[_builtins.str]] = None,
-                 requirements_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 entrypoint_module: pulumi.Input[Optional[_builtins.str]] = None,
+                 entrypoint_object: pulumi.Input[Optional[_builtins.str]] = None,
+                 requirements_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] entrypoint_module: Optional. The Python module to load as the entrypoint,
                specified as a fully qualified module name. For example:
@@ -10054,7 +10054,7 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="entrypointModule")
-    def entrypoint_module(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entrypoint_module(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The Python module to load as the entrypoint,
         specified as a fully qualified module name. For example:
@@ -10065,12 +10065,12 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
         return pulumi.get(self, "entrypoint_module")
 
     @entrypoint_module.setter
-    def entrypoint_module(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entrypoint_module(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entrypoint_module", value)
 
     @_builtins.property
     @pulumi.getter(name="entrypointObject")
-    def entrypoint_object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entrypoint_object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The name of the callable object within the
         entrypointModule to use as the application If not specified,
@@ -10079,12 +10079,12 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
         return pulumi.get(self, "entrypoint_object")
 
     @entrypoint_object.setter
-    def entrypoint_object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entrypoint_object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entrypoint_object", value)
 
     @_builtins.property
     @pulumi.getter(name="requirementsFile")
-    def requirements_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirements_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The path to the requirements file, relative to the
         source root. If not specified, defaults to "requirements.txt".
@@ -10092,12 +10092,12 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
         return pulumi.get(self, "requirements_file")
 
     @requirements_file.setter
-    def requirements_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirements_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirements_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The version of Python to use. Support version
         includes 3.9, 3.10, 3.11, 3.12, 3.13. If not specified,
@@ -10106,7 +10106,7 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 

@@ -23,11 +23,11 @@ class CxToolArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
-                 connector_spec: Optional[pulumi.Input['CxToolConnectorSpecArgs']] = None,
-                 data_store_spec: Optional[pulumi.Input['CxToolDataStoreSpecArgs']] = None,
-                 function_spec: Optional[pulumi.Input['CxToolFunctionSpecArgs']] = None,
-                 open_api_spec: Optional[pulumi.Input['CxToolOpenApiSpecArgs']] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 connector_spec: pulumi.Input[Optional['CxToolConnectorSpecArgs']] = None,
+                 data_store_spec: pulumi.Input[Optional['CxToolDataStoreSpecArgs']] = None,
+                 function_spec: pulumi.Input[Optional['CxToolFunctionSpecArgs']] = None,
+                 open_api_spec: pulumi.Input[Optional['CxToolOpenApiSpecArgs']] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CxTool resource.
 
@@ -88,7 +88,7 @@ class CxToolArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectorSpec")
-    def connector_spec(self) -> Optional[pulumi.Input['CxToolConnectorSpecArgs']]:
+    def connector_spec(self) -> pulumi.Input[Optional['CxToolConnectorSpecArgs']]:
         """
         (Optional, Beta)
         Integration connectors tool specification.
@@ -98,12 +98,12 @@ class CxToolArgs:
         return pulumi.get(self, "connector_spec")
 
     @connector_spec.setter
-    def connector_spec(self, value: Optional[pulumi.Input['CxToolConnectorSpecArgs']]):
+    def connector_spec(self, value: pulumi.Input[Optional['CxToolConnectorSpecArgs']]):
         pulumi.set(self, "connector_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreSpec")
-    def data_store_spec(self) -> Optional[pulumi.Input['CxToolDataStoreSpecArgs']]:
+    def data_store_spec(self) -> pulumi.Input[Optional['CxToolDataStoreSpecArgs']]:
         """
         Data store search tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -112,12 +112,12 @@ class CxToolArgs:
         return pulumi.get(self, "data_store_spec")
 
     @data_store_spec.setter
-    def data_store_spec(self, value: Optional[pulumi.Input['CxToolDataStoreSpecArgs']]):
+    def data_store_spec(self, value: pulumi.Input[Optional['CxToolDataStoreSpecArgs']]):
         pulumi.set(self, "data_store_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="functionSpec")
-    def function_spec(self) -> Optional[pulumi.Input['CxToolFunctionSpecArgs']]:
+    def function_spec(self) -> pulumi.Input[Optional['CxToolFunctionSpecArgs']]:
         """
         Client side executed function specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -126,12 +126,12 @@ class CxToolArgs:
         return pulumi.get(self, "function_spec")
 
     @function_spec.setter
-    def function_spec(self, value: Optional[pulumi.Input['CxToolFunctionSpecArgs']]):
+    def function_spec(self, value: pulumi.Input[Optional['CxToolFunctionSpecArgs']]):
         pulumi.set(self, "function_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="openApiSpec")
-    def open_api_spec(self) -> Optional[pulumi.Input['CxToolOpenApiSpecArgs']]:
+    def open_api_spec(self) -> pulumi.Input[Optional['CxToolOpenApiSpecArgs']]:
         """
         OpenAPI specification of the Tool.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -140,12 +140,12 @@ class CxToolArgs:
         return pulumi.get(self, "open_api_spec")
 
     @open_api_spec.setter
-    def open_api_spec(self, value: Optional[pulumi.Input['CxToolOpenApiSpecArgs']]):
+    def open_api_spec(self, value: pulumi.Input[Optional['CxToolOpenApiSpecArgs']]):
         pulumi.set(self, "open_api_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create a Tool for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -153,22 +153,22 @@ class CxToolArgs:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
 @pulumi.input_type
 class _CxToolState:
     def __init__(__self__, *,
-                 connector_spec: Optional[pulumi.Input['CxToolConnectorSpecArgs']] = None,
-                 data_store_spec: Optional[pulumi.Input['CxToolDataStoreSpecArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_spec: Optional[pulumi.Input['CxToolFunctionSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_api_spec: Optional[pulumi.Input['CxToolOpenApiSpecArgs']] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 connector_spec: pulumi.Input[Optional['CxToolConnectorSpecArgs']] = None,
+                 data_store_spec: pulumi.Input[Optional['CxToolDataStoreSpecArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_spec: pulumi.Input[Optional['CxToolFunctionSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_api_spec: pulumi.Input[Optional['CxToolOpenApiSpecArgs']] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxTool resources.
 
@@ -214,7 +214,7 @@ class _CxToolState:
 
     @_builtins.property
     @pulumi.getter(name="connectorSpec")
-    def connector_spec(self) -> Optional[pulumi.Input['CxToolConnectorSpecArgs']]:
+    def connector_spec(self) -> pulumi.Input[Optional['CxToolConnectorSpecArgs']]:
         """
         (Optional, Beta)
         Integration connectors tool specification.
@@ -224,12 +224,12 @@ class _CxToolState:
         return pulumi.get(self, "connector_spec")
 
     @connector_spec.setter
-    def connector_spec(self, value: Optional[pulumi.Input['CxToolConnectorSpecArgs']]):
+    def connector_spec(self, value: pulumi.Input[Optional['CxToolConnectorSpecArgs']]):
         pulumi.set(self, "connector_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreSpec")
-    def data_store_spec(self) -> Optional[pulumi.Input['CxToolDataStoreSpecArgs']]:
+    def data_store_spec(self) -> pulumi.Input[Optional['CxToolDataStoreSpecArgs']]:
         """
         Data store search tool specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -238,36 +238,36 @@ class _CxToolState:
         return pulumi.get(self, "data_store_spec")
 
     @data_store_spec.setter
-    def data_store_spec(self, value: Optional[pulumi.Input['CxToolDataStoreSpecArgs']]):
+    def data_store_spec(self, value: pulumi.Input[Optional['CxToolDataStoreSpecArgs']]):
         pulumi.set(self, "data_store_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         High level description of the Tool and its usage.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable name of the tool, unique within the agent.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="functionSpec")
-    def function_spec(self) -> Optional[pulumi.Input['CxToolFunctionSpecArgs']]:
+    def function_spec(self) -> pulumi.Input[Optional['CxToolFunctionSpecArgs']]:
         """
         Client side executed function specification.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -276,12 +276,12 @@ class _CxToolState:
         return pulumi.get(self, "function_spec")
 
     @function_spec.setter
-    def function_spec(self, value: Optional[pulumi.Input['CxToolFunctionSpecArgs']]):
+    def function_spec(self, value: pulumi.Input[Optional['CxToolFunctionSpecArgs']]):
         pulumi.set(self, "function_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the Tool.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
@@ -289,12 +289,12 @@ class _CxToolState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="openApiSpec")
-    def open_api_spec(self) -> Optional[pulumi.Input['CxToolOpenApiSpecArgs']]:
+    def open_api_spec(self) -> pulumi.Input[Optional['CxToolOpenApiSpecArgs']]:
         """
         OpenAPI specification of the Tool.
         This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
@@ -303,12 +303,12 @@ class _CxToolState:
         return pulumi.get(self, "open_api_spec")
 
     @open_api_spec.setter
-    def open_api_spec(self, value: Optional[pulumi.Input['CxToolOpenApiSpecArgs']]):
+    def open_api_spec(self, value: pulumi.Input[Optional['CxToolOpenApiSpecArgs']]):
         pulumi.set(self, "open_api_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The agent to create a Tool for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
@@ -316,19 +316,19 @@ class _CxToolState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="toolType")
-    def tool_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tool_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tool type.
         """
         return pulumi.get(self, "tool_type")
 
     @tool_type.setter
-    def tool_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tool_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tool_type", value)
 
 
@@ -338,13 +338,13 @@ class CxTool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_spec: Optional[pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
-                 data_store_spec: Optional[pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_spec: Optional[pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
-                 open_api_spec: Optional[pulumi.Input[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
+                 data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
+                 open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A tool provides a list of actions which are available to the Playbook to attain its goal.
@@ -927,13 +927,13 @@ class CxTool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_spec: Optional[pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
-                 data_store_spec: Optional[pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_spec: Optional[pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
-                 open_api_spec: Optional[pulumi.Input[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
+                 data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
+                 open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -966,15 +966,15 @@ class CxTool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connector_spec: Optional[pulumi.Input[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
-            data_store_spec: Optional[pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            function_spec: Optional[pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            open_api_spec: Optional[pulumi.Input[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            tool_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'CxTool':
+            connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
+            data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_api_spec: pulumi.Input[Optional[Union['CxToolOpenApiSpecArgs', 'CxToolOpenApiSpecArgsDict']]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            tool_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'CxTool':
         """
         Get an existing CxTool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

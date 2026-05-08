@@ -87,23 +87,23 @@ export class DeliveryPipelineIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DeliveryPipelineIamBinding resources.
  */
 export interface DeliveryPipelineIamBindingState {
-    condition?: pulumi.Input<inputs.clouddeploy.DeliveryPipelineIamBindingCondition>;
-    etag?: pulumi.Input<string>;
-    location?: pulumi.Input<string>;
-    members?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.DeliveryPipelineIamBindingCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    location?: pulumi.Input<string | undefined>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DeliveryPipelineIamBinding resource.
  */
 export interface DeliveryPipelineIamBindingArgs {
-    condition?: pulumi.Input<inputs.clouddeploy.DeliveryPipelineIamBindingCondition>;
-    location?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.clouddeploy.DeliveryPipelineIamBindingCondition | undefined>;
+    location?: pulumi.Input<string | undefined>;
     members: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
     role: pulumi.Input<string>;
 }

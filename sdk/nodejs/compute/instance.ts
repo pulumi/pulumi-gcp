@@ -511,103 +511,103 @@ export interface InstanceState {
     /**
      * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
      */
-    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures | undefined>;
     /**
      * If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
-    allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
+    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[] | undefined>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
      */
-    bootDisk?: pulumi.Input<inputs.compute.InstanceBootDisk>;
+    bootDisk?: pulumi.Input<inputs.compute.InstanceBootDisk | undefined>;
     /**
      * Whether to allow sending and receiving of
      * packets with non-matching source or destination IPs.
      * This defaults to false.
      */
-    canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean | undefined>;
     /**
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
-    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig | undefined>;
     /**
      * The CPU platform used by this instance.
      */
-    cpuPlatform?: pulumi.Input<string>;
+    cpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
-    currentStatus?: pulumi.Input<string>;
+    currentStatus?: pulumi.Input<string | undefined>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * A brief description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Desired status of the instance. Either
      * `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean | undefined>;
     /**
      * Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
      */
-    eraseWindowsVssSignature?: pulumi.Input<boolean>;
+    eraseWindowsVssSignature?: pulumi.Input<boolean | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
-    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[] | undefined>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
      * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Configuration for data encryption on the instance with encryption keys. Structure is documented below.
      */
-    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceInstanceEncryptionKey>;
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceInstanceEncryptionKey | undefined>;
     /**
      * The server-assigned unique identifier of this instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
      */
-    keyRevocationActionType?: pulumi.Input<string>;
+    keyRevocationActionType?: pulumi.Input<string | undefined>;
     /**
      * The unique fingerprint of the labels.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value label pairs to assign to the instance.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to create.
      *
@@ -619,7 +619,7 @@ export interface InstanceState {
      *
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Metadata key/value pairs to make available from
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
@@ -635,11 +635,11 @@ export interface InstanceState {
      * For the convenience of the users of `metadata.startup-script`,
      * we provide a special attribute, `metadataStartupScript`, which is documented below.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The unique fingerprint of the metadata.
      */
-    metadataFingerprint?: pulumi.Input<string>;
+    metadataFingerprint?: pulumi.Input<string | undefined>;
     /**
      * An alternative to using the
      * startup-script metadata key, except this one forces the instance to be recreated
@@ -652,25 +652,25 @@ export interface InstanceState {
      * destroy/recreate operation. If importing an instance and specifying this value
      * is desired, you will need to modify your state file.
      */
-    metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string | undefined>;
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      *
      * - - -
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[] | undefined>;
     /**
      * Configures network performance settings for the instance. Structure is
      * documented below. **Note**: `machineType` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
@@ -678,72 +678,72 @@ export interface InstanceState {
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
      * in order for this setting to take effect.
      */
-    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig | undefined>;
     /**
      * Additional instance parameters.
      * .
      */
-    params?: pulumi.Input<inputs.compute.InstanceParams>;
+    params?: pulumi.Input<inputs.compute.InstanceParams | undefined>;
     /**
      * Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
      */
-    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the reservations that this instance can consume from.
      * Structure is documented below.
      */
-    reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity | undefined>;
     /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
-    resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string | undefined>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceScheduling | undefined>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
+    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig | undefined>;
     /**
      * A list of network tags to attach to the instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique fingerprint of the tags.
      */
-    tagsFingerprint?: pulumi.Input<string>;
+    tagsFingerprint?: pulumi.Input<string | undefined>;
     /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -753,16 +753,16 @@ export interface InstanceArgs {
     /**
      * Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
      */
-    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures>;
+    advancedMachineFeatures?: pulumi.Input<inputs.compute.InstanceAdvancedMachineFeatures | undefined>;
     /**
      * If true, allows this provider to stop the instance to update its properties.
      * If you try to update a property that requires stopping the instance without setting this field, the update will fail.
      */
-    allowStoppingForUpdate?: pulumi.Input<boolean>;
+    allowStoppingForUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is documented below.
      */
-    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[]>;
+    attachedDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceAttachedDisk>[] | undefined>;
     /**
      * The boot disk for the instance.
      * Structure is documented below.
@@ -773,59 +773,59 @@ export interface InstanceArgs {
      * packets with non-matching source or destination IPs.
      * This defaults to false.
      */
-    canIpForward?: pulumi.Input<boolean>;
+    canIpForward?: pulumi.Input<boolean | undefined>;
     /**
      * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
      */
-    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
+    confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig | undefined>;
     /**
      * Enable deletion protection on this instance. Defaults to false.
      * **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * A brief description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Desired status of the instance. Either
      * `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    enableDisplay?: pulumi.Input<boolean>;
+    enableDisplay?: pulumi.Input<boolean | undefined>;
     /**
      * Beta Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
      */
-    eraseWindowsVssSignature?: pulumi.Input<boolean>;
+    eraseWindowsVssSignature?: pulumi.Input<boolean | undefined>;
     /**
      * List of the type and count of accelerator cards attached to the instance. Structure documented below.
      * **Note:** GPU accelerators can only be used with `onHostMaintenance` option set to TERMINATE.
      */
-    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[]>;
+    guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGuestAccelerator>[] | undefined>;
     /**
      * A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
      * Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
      * The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Configuration for data encryption on the instance with encryption keys. Structure is documented below.
      */
-    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceInstanceEncryptionKey>;
+    instanceEncryptionKey?: pulumi.Input<inputs.compute.InstanceInstanceEncryptionKey | undefined>;
     /**
      * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
      */
-    keyRevocationActionType?: pulumi.Input<string>;
+    keyRevocationActionType?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value label pairs to assign to the instance.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type to create.
      *
@@ -853,7 +853,7 @@ export interface InstanceArgs {
      * For the convenience of the users of `metadata.startup-script`,
      * we provide a special attribute, `metadataStartupScript`, which is documented below.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An alternative to using the
      * startup-script metadata key, except this one forces the instance to be recreated
@@ -866,18 +866,18 @@ export interface InstanceArgs {
      * destroy/recreate operation. If importing an instance and specifying this value
      * is desired, you will need to modify your state file.
      */
-    metadataStartupScript?: pulumi.Input<string>;
+    metadataStartupScript?: pulumi.Input<string | undefined>;
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as
      * `Intel Haswell` or `Intel Skylake`. See the complete list [here](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    minCpuPlatform?: pulumi.Input<string>;
+    minCpuPlatform?: pulumi.Input<string | undefined>;
     /**
      * A unique name for the resource, required by GCE.
      * Changing this forces a new resource to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
@@ -892,58 +892,58 @@ export interface InstanceArgs {
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
      * in order for this setting to take effect.
      */
-    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
+    networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig | undefined>;
     /**
      * Additional instance parameters.
      * .
      */
-    params?: pulumi.Input<inputs.compute.InstanceParams>;
+    params?: pulumi.Input<inputs.compute.InstanceParams | undefined>;
     /**
      * Beta key/value pair represents partner metadata assigned to instance where key represent a defined namespace and value is a json string represent the entries associted with the namespace.
      */
-    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    partnerMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the reservations that this instance can consume from.
      * Structure is documented below.
      */
-    reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity>;
+    reservationAffinity?: pulumi.Input<inputs.compute.InstanceReservationAffinity | undefined>;
     /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
-    resourcePolicies?: pulumi.Input<string>;
+    resourcePolicies?: pulumi.Input<string | undefined>;
     /**
      * The scheduling strategy to use. More details about
      * this configuration option are detailed below.
      */
-    scheduling?: pulumi.Input<inputs.compute.InstanceScheduling>;
+    scheduling?: pulumi.Input<inputs.compute.InstanceScheduling | undefined>;
     /**
      * Scratch disks to attach to the instance. This can be
      * specified multiple times for multiple scratch disks. Structure is documented below.
      */
-    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[]>;
+    scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceScratchDisk>[] | undefined>;
     /**
      * Service account to attach to the instance.
      * Structure is documented below.
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount>;
+    serviceAccount?: pulumi.Input<inputs.compute.InstanceServiceAccount | undefined>;
     /**
      * Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
      * **Note**: `shieldedInstanceConfig` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
      * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
      */
-    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig>;
+    shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceShieldedInstanceConfig | undefined>;
     /**
      * A list of network tags to attach to the instance.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

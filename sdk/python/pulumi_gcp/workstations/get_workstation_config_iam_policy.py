@@ -157,10 +157,10 @@ def get_workstation_config_iam_policy(location: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         workstation_cluster_id=pulumi.get(__ret__, 'workstation_cluster_id'),
         workstation_config_id=pulumi.get(__ret__, 'workstation_config_id'))
-def get_workstation_config_iam_policy_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                             workstation_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             workstation_config_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workstation_config_iam_policy_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                             workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                             workstation_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkstationConfigIamPolicyResult]:
     """
     Retrieves the current IAM policy data for workstationconfig

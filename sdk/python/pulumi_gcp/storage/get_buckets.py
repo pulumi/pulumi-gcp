@@ -114,8 +114,8 @@ def get_buckets(prefix: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         prefix=pulumi.get(__ret__, 'prefix'),
         project=pulumi.get(__ret__, 'project'))
-def get_buckets_output(prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_buckets_output(prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketsResult]:
     """
     Gets a list of existing GCS buckets.

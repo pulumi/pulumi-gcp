@@ -202,8 +202,8 @@ def get_certificate(name: Optional[_builtins.str] = None,
         private_key_wo_version=pulumi.get(__ret__, 'private_key_wo_version'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-def get_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_certificate_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Get info about a Google Compute SSL Certificate from its name.

@@ -441,75 +441,75 @@ export interface UptimeCheckConfigState {
      * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
-    checkerType?: pulumi.Input<string>;
+    checkerType?: pulumi.Input<string | undefined>;
     /**
      * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
      * Structure is documented below.
      */
-    contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
+    contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[] | undefined>;
     /**
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Contains information needed to make an HTTP or HTTPS check.
      * Structure is documented below.
      */
-    httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
+    httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     /**
      * Specifies whether to log the results of failed probes to Cloud Logging.
      */
-    logCheckFailures?: pulumi.Input<boolean>;
+    logCheckFailures?: pulumi.Input<boolean | undefined>;
     /**
      * The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
-    monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
+    monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
      * A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The group resource associated with the configuration.
      * Structure is documented below.
      */
-    resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
+    resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup | undefined>;
     /**
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
      */
-    selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
      * Structure is documented below.
      */
-    syntheticMonitor?: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitor>;
+    syntheticMonitor?: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitor | undefined>;
     /**
      * Contains information needed to make a TCP check.
      * Structure is documented below.
      */
-    tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
+    tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * The id of the uptime check
      */
-    uptimeCheckId?: pulumi.Input<string>;
+    uptimeCheckId?: pulumi.Input<string | undefined>;
     /**
      * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -520,12 +520,12 @@ export interface UptimeCheckConfigArgs {
      * The checker type to use for the check. If the monitored resource type is `servicedirectoryService`, `checkerType` must be set to `VPC_CHECKERS`.
      * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
-    checkerType?: pulumi.Input<string>;
+    checkerType?: pulumi.Input<string | undefined>;
     /**
      * The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
      * Structure is documented below.
      */
-    contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[]>;
+    contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.UptimeCheckConfigContentMatcher>[] | undefined>;
     /**
      * A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
      */
@@ -534,45 +534,45 @@ export interface UptimeCheckConfigArgs {
      * Contains information needed to make an HTTP or HTTPS check.
      * Structure is documented below.
      */
-    httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck>;
+    httpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigHttpCheck | undefined>;
     /**
      * Specifies whether to log the results of failed probes to Cloud Logging.
      */
-    logCheckFailures?: pulumi.Input<boolean>;
+    logCheckFailures?: pulumi.Input<boolean | undefined>;
     /**
      * The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
      * configuration. The following monitored resource types are supported for
      * uptime checks:
      */
-    monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
+    monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
      * How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The group resource associated with the configuration.
      * Structure is documented below.
      */
-    resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup>;
+    resourceGroup?: pulumi.Input<inputs.monitoring.UptimeCheckConfigResourceGroup | undefined>;
     /**
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
      */
-    selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
      * Structure is documented below.
      */
-    syntheticMonitor?: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitor>;
+    syntheticMonitor?: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitor | undefined>;
     /**
      * Contains information needed to make a TCP check.
      * Structure is documented below.
      */
-    tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck>;
+    tcpCheck?: pulumi.Input<inputs.monitoring.UptimeCheckConfigTcpCheck | undefined>;
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
      */
@@ -580,5 +580,5 @@ export interface UptimeCheckConfigArgs {
     /**
      * User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -147,9 +147,9 @@ def get_connection_iam_policy(connection_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_connection_iam_policy_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for connection

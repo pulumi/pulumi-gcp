@@ -22,8 +22,8 @@ __all__ = ['AclConfigArgs', 'AclConfig']
 class AclConfigArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 idp_config: Optional[pulumi.Input['AclConfigIdpConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 idp_config: pulumi.Input[Optional['AclConfigIdpConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclConfig resource.
 
@@ -55,7 +55,7 @@ class AclConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="idpConfig")
-    def idp_config(self) -> Optional[pulumi.Input['AclConfigIdpConfigArgs']]:
+    def idp_config(self) -> pulumi.Input[Optional['AclConfigIdpConfigArgs']]:
         """
         Identity provider config.
         Structure is documented below.
@@ -63,12 +63,12 @@ class AclConfigArgs:
         return pulumi.get(self, "idp_config")
 
     @idp_config.setter
-    def idp_config(self, value: Optional[pulumi.Input['AclConfigIdpConfigArgs']]):
+    def idp_config(self, value: pulumi.Input[Optional['AclConfigIdpConfigArgs']]):
         pulumi.set(self, "idp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -76,17 +76,17 @@ class AclConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _AclConfigState:
     def __init__(__self__, *,
-                 idp_config: Optional[pulumi.Input['AclConfigIdpConfigArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 idp_config: pulumi.Input[Optional['AclConfigIdpConfigArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclConfig resources.
 
@@ -110,7 +110,7 @@ class _AclConfigState:
 
     @_builtins.property
     @pulumi.getter(name="idpConfig")
-    def idp_config(self) -> Optional[pulumi.Input['AclConfigIdpConfigArgs']]:
+    def idp_config(self) -> pulumi.Input[Optional['AclConfigIdpConfigArgs']]:
         """
         Identity provider config.
         Structure is documented below.
@@ -118,12 +118,12 @@ class _AclConfigState:
         return pulumi.get(self, "idp_config")
 
     @idp_config.setter
-    def idp_config(self, value: Optional[pulumi.Input['AclConfigIdpConfigArgs']]):
+    def idp_config(self, value: pulumi.Input[Optional['AclConfigIdpConfigArgs']]):
         pulumi.set(self, "idp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the data store should reside. The value can
         only be one of "global", "us" and "eu".
@@ -131,12 +131,12 @@ class _AclConfigState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique full resource name of the aclConfig. Values are of the format
         `projects/{project}/locations/{location}/aclConfig`.
@@ -144,12 +144,12 @@ class _AclConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -157,7 +157,7 @@ class _AclConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -167,9 +167,9 @@ class AclConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 idp_config: Optional[pulumi.Input[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Access Control Configuration.
@@ -285,9 +285,9 @@ class AclConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 idp_config: Optional[pulumi.Input[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,10 +313,10 @@ class AclConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            idp_config: Optional[pulumi.Input[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'AclConfig':
+            idp_config: pulumi.Input[Optional[Union['AclConfigIdpConfigArgs', 'AclConfigIdpConfigArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclConfig':
         """
         Get an existing AclConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -230,18 +230,18 @@ export interface CryptoKeyIAMBindingState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition | undefined>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
      * `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
      * the provider's project setting will be used as a fallback.
      */
-    cryptoKeyId?: pulumi.Input<string>;
+    cryptoKeyId?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -252,12 +252,12 @@ export interface CryptoKeyIAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role that should be applied. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -268,7 +268,7 @@ export interface CryptoKeyIAMBindingArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.kms.CryptoKeyIAMBindingCondition | undefined>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

@@ -24,12 +24,12 @@ class VMwareNodePoolArgs:
                  config: pulumi.Input['VMwareNodePoolConfigArgs'],
                  location: pulumi.Input[_builtins.str],
                  vmware_cluster: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
-                 on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_autoscaling: pulumi.Input[Optional['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
+                 on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VMwareNodePool resource.
 
@@ -111,7 +111,7 @@ class VMwareNodePoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations on the node Pool.
         This field has the same restrictions as Kubernetes annotations.
@@ -128,36 +128,36 @@ class VMwareNodePoolArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the node pool.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vmware node pool name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolAutoscaling")
-    def node_pool_autoscaling(self) -> Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]:
+    def node_pool_autoscaling(self) -> pulumi.Input[Optional['VMwareNodePoolNodePoolAutoscalingArgs']]:
         """
         Node Pool autoscaling config for the node pool.
         Structure is documented below.
@@ -165,24 +165,24 @@ class VMwareNodePoolArgs:
         return pulumi.get(self, "node_pool_autoscaling")
 
     @node_pool_autoscaling.setter
-    def node_pool_autoscaling(self, value: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]):
+    def node_pool_autoscaling(self, value: pulumi.Input[Optional['VMwareNodePoolNodePoolAutoscalingArgs']]):
         pulumi.set(self, "node_pool_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="onPremVersion")
-    def on_prem_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_prem_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Anthos version for the node pool. Defaults to the user cluster version.
         """
         return pulumi.get(self, "on_prem_version")
 
     @on_prem_version.setter
-    def on_prem_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_prem_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_prem_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -190,31 +190,31 @@ class VMwareNodePoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _VMwareNodePoolState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config: Optional[pulumi.Input['VMwareNodePoolConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
-                 on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 config: pulumi.Input[Optional['VMwareNodePoolConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_autoscaling: pulumi.Input[Optional['VMwareNodePoolNodePoolAutoscalingArgs']] = None,
+                 on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VMwareNodePool resources.
 
@@ -295,7 +295,7 @@ class _VMwareNodePoolState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Annotations on the node Pool.
         This field has the same restrictions as Kubernetes annotations.
@@ -312,12 +312,12 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['VMwareNodePoolConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['VMwareNodePoolConfigArgs']]:
         """
         The node configuration of the node pool.
         Structure is documented below.
@@ -325,60 +325,60 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['VMwareNodePoolConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['VMwareNodePoolConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was created, in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was deleted, in RFC3339 text format.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for the node pool.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other
         fields, and may be sent on update and delete requests to ensure the
@@ -389,36 +389,36 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vmware node pool name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolAutoscaling")
-    def node_pool_autoscaling(self) -> Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]:
+    def node_pool_autoscaling(self) -> pulumi.Input[Optional['VMwareNodePoolNodePoolAutoscalingArgs']]:
         """
         Node Pool autoscaling config for the node pool.
         Structure is documented below.
@@ -426,24 +426,24 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "node_pool_autoscaling")
 
     @node_pool_autoscaling.setter
-    def node_pool_autoscaling(self, value: Optional[pulumi.Input['VMwareNodePoolNodePoolAutoscalingArgs']]):
+    def node_pool_autoscaling(self, value: pulumi.Input[Optional['VMwareNodePoolNodePoolAutoscalingArgs']]):
         pulumi.set(self, "node_pool_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="onPremVersion")
-    def on_prem_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_prem_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Anthos version for the node pool. Defaults to the user cluster version.
         """
         return pulumi.get(self, "on_prem_version")
 
     @on_prem_version.setter
-    def on_prem_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_prem_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_prem_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -451,24 +451,24 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set, there are currently changes in flight to the node pool.
         """
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The lifecycle state of the condition.
@@ -476,12 +476,12 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]]:
         """
         ResourceStatus representing detailed cluster state.
         Structure is documented below.
@@ -489,43 +489,43 @@ class _VMwareNodePoolState:
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the node pool.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the cluster was last updated, in RFC3339 text format.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vmwareCluster")
-    def vmware_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vmware_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster this node pool belongs to.
         """
         return pulumi.get(self, "vmware_cluster")
 
     @vmware_cluster.setter
-    def vmware_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vmware_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vmware_cluster", value)
 
 
@@ -535,15 +535,15 @@ class VMwareNodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config: Optional[pulumi.Input[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
-                 on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+                 on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Google Vmware Node Pool.
@@ -939,15 +939,15 @@ class VMwareNodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 config: Optional[pulumi.Input[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool_autoscaling: Optional[pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
-                 on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+                 on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -991,24 +991,24 @@ class VMwareNodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            config: Optional[pulumi.Input[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_pool_autoscaling: Optional[pulumi.Input[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
-            on_prem_version: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VMwareNodePoolStatusArgs', 'VMwareNodePoolStatusArgsDict']]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            vmware_cluster: Optional[pulumi.Input[_builtins.str]] = None) -> 'VMwareNodePool':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            config: pulumi.Input[Optional[Union['VMwareNodePoolConfigArgs', 'VMwareNodePoolConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_pool_autoscaling: pulumi.Input[Optional[Union['VMwareNodePoolNodePoolAutoscalingArgs', 'VMwareNodePoolNodePoolAutoscalingArgsDict']]] = None,
+            on_prem_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VMwareNodePoolStatusArgs', 'VMwareNodePoolStatusArgsDict']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vmware_cluster: pulumi.Input[Optional[_builtins.str]] = None) -> 'VMwareNodePool':
         """
         Get an existing VMwareNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -428,78 +428,78 @@ export interface AttachedClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      * Structure is documented below.
      */
-    authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization | undefined>;
     /**
      * Binary Authorization configuration.
      * Structure is documented below.
      */
-    binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization | undefined>;
     /**
      * Output only. The region where this cluster runs.
      * For EKS clusters, this is an AWS region. For AKS clusters,
      * this is an Azure region.
      */
-    clusterRegion?: pulumi.Input<string>;
+    clusterRegion?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which this cluster was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
      * "eks", "aks", "generic". The generic distribution provides the ability to register
      * or migrate any CNCF conformant cluster.
      */
-    distribution?: pulumi.Input<string>;
+    distribution?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A set of errors found in the cluster.
      * Structure is documented below.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.container.AttachedClusterError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.container.AttachedClusterError>[] | undefined>;
     /**
      * Fleet configuration.
      * Structure is documented below.
      */
-    fleet?: pulumi.Input<inputs.container.AttachedClusterFleet>;
+    fleet?: pulumi.Input<inputs.container.AttachedClusterFleet | undefined>;
     /**
      * The Kubernetes version of the cluster.
      */
-    kubernetesVersion?: pulumi.Input<string>;
+    kubernetesVersion?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Logging configuration.
      * Structure is documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.container.AttachedClusterLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.container.AttachedClusterLoggingConfig | undefined>;
     /**
      * Monitoring configuration.
      * Structure is documented below.
      */
-    monitoringConfig?: pulumi.Input<inputs.container.AttachedClusterMonitoringConfig>;
+    monitoringConfig?: pulumi.Input<inputs.container.AttachedClusterMonitoringConfig | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OIDC discovery information of the target cluster.
      * Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -512,25 +512,25 @@ export interface AttachedClusterState {
      * `issuerUrl` and `jwks`.
      * Structure is documented below.
      */
-    oidcConfig?: pulumi.Input<inputs.container.AttachedClusterOidcConfig>;
+    oidcConfig?: pulumi.Input<inputs.container.AttachedClusterOidcConfig | undefined>;
     /**
      * The platform version for the cluster (e.g. `1.23.0-gke.1`).
      */
-    platformVersion?: pulumi.Input<string>;
+    platformVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Support for proxy configuration.
      * Structure is documented below.
      */
-    proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
+    proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig | undefined>;
     /**
      * If set, there are currently changes in flight to the cluster.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Deprecated)
      * Enable/Disable Security Posture API features for the cluster.
@@ -540,26 +540,26 @@ export interface AttachedClusterState {
      *
      * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
-    securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig>;
+    securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig | undefined>;
     /**
      * The current state of the cluster. Possible values:
      * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
      * DEGRADED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A globally unique identifier for the cluster.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The time at which this cluster was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Workload Identity settings.
      * Structure is documented below.
      */
-    workloadIdentityConfigs?: pulumi.Input<pulumi.Input<inputs.container.AttachedClusterWorkloadIdentityConfig>[]>;
+    workloadIdentityConfigs?: pulumi.Input<pulumi.Input<inputs.container.AttachedClusterWorkloadIdentityConfig>[] | undefined>;
 }
 
 /**
@@ -577,26 +577,26 @@ export interface AttachedClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration related to the cluster RBAC settings.
      * Structure is documented below.
      */
-    authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.container.AttachedClusterAuthorization | undefined>;
     /**
      * Binary Authorization configuration.
      * Structure is documented below.
      */
-    binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization>;
+    binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization | undefined>;
     /**
      * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human readable description of this attached cluster. Cannot be longer
      * than 255 UTF-8 encoded bytes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Kubernetes distribution of the underlying attached cluster. Supported values:
      * "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -616,16 +616,16 @@ export interface AttachedClusterArgs {
      * Logging configuration.
      * Structure is documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.container.AttachedClusterLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.container.AttachedClusterLoggingConfig | undefined>;
     /**
      * Monitoring configuration.
      * Structure is documented below.
      */
-    monitoringConfig?: pulumi.Input<inputs.container.AttachedClusterMonitoringConfig>;
+    monitoringConfig?: pulumi.Input<inputs.container.AttachedClusterMonitoringConfig | undefined>;
     /**
      * The name of this resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OIDC discovery information of the target cluster.
      * Kubernetes Service Account (KSA) tokens are JWT tokens signed by the cluster
@@ -647,12 +647,12 @@ export interface AttachedClusterArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Support for proxy configuration.
      * Structure is documented below.
      */
-    proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
+    proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig | undefined>;
     /**
      * (Optional, Deprecated)
      * Enable/Disable Security Posture API features for the cluster.
@@ -662,5 +662,5 @@ export interface AttachedClusterArgs {
      *
      * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
-    securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig>;
+    securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig | undefined>;
 }

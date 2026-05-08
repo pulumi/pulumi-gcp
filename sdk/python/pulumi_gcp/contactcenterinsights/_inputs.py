@@ -46,7 +46,7 @@ __all__ = [
 ]
 
 class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
-    issue_models: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    issue_models: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The issue model to run. If not provided, the most recently deployed topic
     model will be used. The provided issue model will only be used for
@@ -54,7 +54,7 @@ class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
     is set to true. If more than one issue model is provided, only the first
     provided issue model will be used for inference.
     """
-    phrase_matchers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    phrase_matchers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of phrase matchers to run. If not provided, all active phrase
     matchers will be used. If inactive phrase matchers are provided, they will
@@ -62,49 +62,49 @@ class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
     run_phrase_matcher_annotator is set to true. Format:
     projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
     """
-    qa_config: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigArgsDict']]
+    qa_config: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigArgs']]]
     """
     Configuration for the QA feature.
     Structure is documented below.
     """
-    run_entity_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_entity_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the entity annotator.
     """
-    run_intent_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_intent_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the intent annotator.
     """
-    run_interruption_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_interruption_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the interruption annotator.
     """
-    run_issue_model_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_issue_model_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the issue model annotator. A model should have already been
     deployed for this to take effect.
     """
-    run_phrase_matcher_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_phrase_matcher_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the active phrase matcher annotator(s).
     """
-    run_qa_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_qa_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the QA annotator.
     """
-    run_sentiment_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_sentiment_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the sentiment annotator.
     """
-    run_silence_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_silence_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the silence annotator.
     """
-    run_summarization_annotator: NotRequired[pulumi.Input[_builtins.bool]]
+    run_summarization_annotator: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to run the summarization annotator.
     """
-    summarization_config: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict']]
+    summarization_config: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']]]
     """
     Configuration for summarization.
     Structure is documented below.
@@ -113,19 +113,19 @@ class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorArgs:
     def __init__(__self__, *,
-                 issue_models: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 phrase_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 qa_config: Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigArgs']] = None,
-                 run_entity_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_intent_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_interruption_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_issue_model_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_phrase_matcher_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_qa_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_sentiment_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_silence_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_summarization_annotator: Optional[pulumi.Input[_builtins.bool]] = None,
-                 summarization_config: Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']] = None):
+                 issue_models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 phrase_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 qa_config: pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigArgs']] = None,
+                 run_entity_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_intent_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_interruption_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_issue_model_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_phrase_matcher_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_qa_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_sentiment_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_silence_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_summarization_annotator: pulumi.Input[Optional[_builtins.bool]] = None,
+                 summarization_config: pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] issue_models: The issue model to run. If not provided, the most recently deployed topic
                model will be used. The provided issue model will only be used for
@@ -181,7 +181,7 @@ class AnalysisRuleAnnotatorSelectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="issueModels")
-    def issue_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def issue_models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The issue model to run. If not provided, the most recently deployed topic
         model will be used. The provided issue model will only be used for
@@ -192,12 +192,12 @@ class AnalysisRuleAnnotatorSelectorArgs:
         return pulumi.get(self, "issue_models")
 
     @issue_models.setter
-    def issue_models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def issue_models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "issue_models", value)
 
     @_builtins.property
     @pulumi.getter(name="phraseMatchers")
-    def phrase_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def phrase_matchers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of phrase matchers to run. If not provided, all active phrase
         matchers will be used. If inactive phrase matchers are provided, they will
@@ -208,12 +208,12 @@ class AnalysisRuleAnnotatorSelectorArgs:
         return pulumi.get(self, "phrase_matchers")
 
     @phrase_matchers.setter
-    def phrase_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def phrase_matchers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "phrase_matchers", value)
 
     @_builtins.property
     @pulumi.getter(name="qaConfig")
-    def qa_config(self) -> Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigArgs']]:
+    def qa_config(self) -> pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigArgs']]:
         """
         Configuration for the QA feature.
         Structure is documented below.
@@ -221,48 +221,48 @@ class AnalysisRuleAnnotatorSelectorArgs:
         return pulumi.get(self, "qa_config")
 
     @qa_config.setter
-    def qa_config(self, value: Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigArgs']]):
+    def qa_config(self, value: pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigArgs']]):
         pulumi.set(self, "qa_config", value)
 
     @_builtins.property
     @pulumi.getter(name="runEntityAnnotator")
-    def run_entity_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_entity_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the entity annotator.
         """
         return pulumi.get(self, "run_entity_annotator")
 
     @run_entity_annotator.setter
-    def run_entity_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_entity_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_entity_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runIntentAnnotator")
-    def run_intent_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_intent_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the intent annotator.
         """
         return pulumi.get(self, "run_intent_annotator")
 
     @run_intent_annotator.setter
-    def run_intent_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_intent_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_intent_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runInterruptionAnnotator")
-    def run_interruption_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_interruption_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the interruption annotator.
         """
         return pulumi.get(self, "run_interruption_annotator")
 
     @run_interruption_annotator.setter
-    def run_interruption_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_interruption_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_interruption_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runIssueModelAnnotator")
-    def run_issue_model_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_issue_model_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the issue model annotator. A model should have already been
         deployed for this to take effect.
@@ -270,72 +270,72 @@ class AnalysisRuleAnnotatorSelectorArgs:
         return pulumi.get(self, "run_issue_model_annotator")
 
     @run_issue_model_annotator.setter
-    def run_issue_model_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_issue_model_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_issue_model_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runPhraseMatcherAnnotator")
-    def run_phrase_matcher_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_phrase_matcher_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the active phrase matcher annotator(s).
         """
         return pulumi.get(self, "run_phrase_matcher_annotator")
 
     @run_phrase_matcher_annotator.setter
-    def run_phrase_matcher_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_phrase_matcher_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_phrase_matcher_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runQaAnnotator")
-    def run_qa_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_qa_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the QA annotator.
         """
         return pulumi.get(self, "run_qa_annotator")
 
     @run_qa_annotator.setter
-    def run_qa_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_qa_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_qa_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runSentimentAnnotator")
-    def run_sentiment_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_sentiment_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the sentiment annotator.
         """
         return pulumi.get(self, "run_sentiment_annotator")
 
     @run_sentiment_annotator.setter
-    def run_sentiment_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_sentiment_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_sentiment_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runSilenceAnnotator")
-    def run_silence_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_silence_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the silence annotator.
         """
         return pulumi.get(self, "run_silence_annotator")
 
     @run_silence_annotator.setter
-    def run_silence_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_silence_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_silence_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="runSummarizationAnnotator")
-    def run_summarization_annotator(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_summarization_annotator(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to run the summarization annotator.
         """
         return pulumi.get(self, "run_summarization_annotator")
 
     @run_summarization_annotator.setter
-    def run_summarization_annotator(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_summarization_annotator(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_summarization_annotator", value)
 
     @_builtins.property
     @pulumi.getter(name="summarizationConfig")
-    def summarization_config(self) -> Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']]:
+    def summarization_config(self) -> pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']]:
         """
         Configuration for summarization.
         Structure is documented below.
@@ -343,12 +343,12 @@ class AnalysisRuleAnnotatorSelectorArgs:
         return pulumi.get(self, "summarization_config")
 
     @summarization_config.setter
-    def summarization_config(self, value: Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']]):
+    def summarization_config(self, value: pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']]):
         pulumi.set(self, "summarization_config", value)
 
 
 class AnalysisRuleAnnotatorSelectorQaConfigArgsDict(TypedDict):
-    scorecard_list: NotRequired[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict']]
+    scorecard_list: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']]]
     """
     Container for a list of scorecards.
     Structure is documented below.
@@ -357,7 +357,7 @@ class AnalysisRuleAnnotatorSelectorQaConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorQaConfigArgs:
     def __init__(__self__, *,
-                 scorecard_list: Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']] = None):
+                 scorecard_list: pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']] = None):
         """
         :param pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs'] scorecard_list: Container for a list of scorecards.
                Structure is documented below.
@@ -367,7 +367,7 @@ class AnalysisRuleAnnotatorSelectorQaConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="scorecardList")
-    def scorecard_list(self) -> Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']]:
+    def scorecard_list(self) -> pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']]:
         """
         Container for a list of scorecards.
         Structure is documented below.
@@ -375,12 +375,12 @@ class AnalysisRuleAnnotatorSelectorQaConfigArgs:
         return pulumi.get(self, "scorecard_list")
 
     @scorecard_list.setter
-    def scorecard_list(self, value: Optional[pulumi.Input['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']]):
+    def scorecard_list(self, value: pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']]):
         pulumi.set(self, "scorecard_list", value)
 
 
 class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict(TypedDict):
-    qa_scorecard_revisions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    qa_scorecard_revisions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of QaScorecardRevisions.
     """
@@ -388,7 +388,7 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict(TypedDict):
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs:
     def __init__(__self__, *,
-                 qa_scorecard_revisions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 qa_scorecard_revisions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] qa_scorecard_revisions: List of QaScorecardRevisions.
         """
@@ -397,25 +397,25 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs:
 
     @_builtins.property
     @pulumi.getter(name="qaScorecardRevisions")
-    def qa_scorecard_revisions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def qa_scorecard_revisions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of QaScorecardRevisions.
         """
         return pulumi.get(self, "qa_scorecard_revisions")
 
     @qa_scorecard_revisions.setter
-    def qa_scorecard_revisions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def qa_scorecard_revisions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "qa_scorecard_revisions", value)
 
 
 class AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict(TypedDict):
-    conversation_profile: NotRequired[pulumi.Input[_builtins.str]]
+    conversation_profile: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Resource name of the Dialogflow conversation profile.
     Format:
     projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
     """
-    summarization_model: NotRequired[pulumi.Input[_builtins.str]]
+    summarization_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default summarization model to be used.
     Possible values:
@@ -428,8 +428,8 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AnalysisRuleAnnotatorSelectorSummarizationConfigArgs:
     def __init__(__self__, *,
-                 conversation_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 summarization_model: Optional[pulumi.Input[_builtins.str]] = None):
+                 conversation_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 summarization_model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] conversation_profile: Resource name of the Dialogflow conversation profile.
                Format:
@@ -448,7 +448,7 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="conversationProfile")
-    def conversation_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def conversation_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of the Dialogflow conversation profile.
         Format:
@@ -457,12 +457,12 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfigArgs:
         return pulumi.get(self, "conversation_profile")
 
     @conversation_profile.setter
-    def conversation_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def conversation_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "conversation_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="summarizationModel")
-    def summarization_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summarization_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default summarization model to be used.
         Possible values:
@@ -474,28 +474,28 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfigArgs:
         return pulumi.get(self, "summarization_model")
 
     @summarization_model.setter
-    def summarization_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summarization_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summarization_model", value)
 
 
 class AssessmentRuleSampleRuleArgsDict(TypedDict):
-    conversation_filter: NotRequired[pulumi.Input[_builtins.str]]
+    conversation_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     To specify the filter for the conversions that should apply this sample
     rule. An empty filter means this sample rule applies to all conversations.
     """
-    dimension: NotRequired[pulumi.Input[_builtins.str]]
+    dimension: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Group by dimension to sample the conversation. If no dimension is
     provided, the sampling will be applied to the project level.
     Current supported dimensions is 'quality_metadata.agent_info.agent_id'.
     """
-    sample_percentage: NotRequired[pulumi.Input[_builtins.float]]
+    sample_percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Percentage of conversations that we should sample  based on the dimension
     between [0, 100].
     """
-    sample_row: NotRequired[pulumi.Input[_builtins.int]]
+    sample_row: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of the conversations that we should sample based on the dimension.
     """
@@ -503,10 +503,10 @@ class AssessmentRuleSampleRuleArgsDict(TypedDict):
 @pulumi.input_type
 class AssessmentRuleSampleRuleArgs:
     def __init__(__self__, *,
-                 conversation_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimension: Optional[pulumi.Input[_builtins.str]] = None,
-                 sample_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 sample_row: Optional[pulumi.Input[_builtins.int]] = None):
+                 conversation_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimension: pulumi.Input[Optional[_builtins.str]] = None,
+                 sample_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 sample_row: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] conversation_filter: To specify the filter for the conversions that should apply this sample
                rule. An empty filter means this sample rule applies to all conversations.
@@ -528,7 +528,7 @@ class AssessmentRuleSampleRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="conversationFilter")
-    def conversation_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def conversation_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         To specify the filter for the conversions that should apply this sample
         rule. An empty filter means this sample rule applies to all conversations.
@@ -536,12 +536,12 @@ class AssessmentRuleSampleRuleArgs:
         return pulumi.get(self, "conversation_filter")
 
     @conversation_filter.setter
-    def conversation_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def conversation_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "conversation_filter", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimension(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dimension(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group by dimension to sample the conversation. If no dimension is
         provided, the sampling will be applied to the project level.
@@ -550,12 +550,12 @@ class AssessmentRuleSampleRuleArgs:
         return pulumi.get(self, "dimension")
 
     @dimension.setter
-    def dimension(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dimension(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dimension", value)
 
     @_builtins.property
     @pulumi.getter(name="samplePercentage")
-    def sample_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def sample_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Percentage of conversations that we should sample  based on the dimension
         between [0, 100].
@@ -563,31 +563,31 @@ class AssessmentRuleSampleRuleArgs:
         return pulumi.get(self, "sample_percentage")
 
     @sample_percentage.setter
-    def sample_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def sample_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "sample_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleRow")
-    def sample_row(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sample_row(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the conversations that we should sample based on the dimension.
         """
         return pulumi.get(self, "sample_row")
 
     @sample_row.setter
-    def sample_row(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sample_row(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sample_row", value)
 
 
 class AssessmentRuleScheduleInfoArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     End time of the schedule. If not specified, will keep scheduling new
     pipelines for execution until the schedule is no longer active or deleted.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
     up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    schedule: NotRequired[pulumi.Input[_builtins.str]]
+    schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The groc expression.
     Format: `every number [synchronized]`
@@ -600,14 +600,14 @@ class AssessmentRuleScheduleInfoArgsDict(TypedDict):
     Example: `every 5 minutes`
     could be  00:02, 00:07, 00:12, ...
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start time of the schedule. If not specified, will start as soon as the
     schedule is created.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
     up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The timezone to use for the groc expression.
     If not specified, defaults to UTC.
@@ -616,10 +616,10 @@ class AssessmentRuleScheduleInfoArgsDict(TypedDict):
 @pulumi.input_type
 class AssessmentRuleScheduleInfoArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: End time of the schedule. If not specified, will keep scheduling new
                pipelines for execution until the schedule is no longer active or deleted.
@@ -653,7 +653,7 @@ class AssessmentRuleScheduleInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         End time of the schedule. If not specified, will keep scheduling new
         pipelines for execution until the schedule is no longer active or deleted.
@@ -663,12 +663,12 @@ class AssessmentRuleScheduleInfoArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The groc expression.
         Format: `every number [synchronized]`
@@ -684,12 +684,12 @@ class AssessmentRuleScheduleInfoArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time of the schedule. If not specified, will start as soon as the
         schedule is created.
@@ -699,12 +699,12 @@ class AssessmentRuleScheduleInfoArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timezone to use for the groc expression.
         If not specified, defaults to UTC.
@@ -712,18 +712,18 @@ class AssessmentRuleScheduleInfoArgs:
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
 class AutoLabelingRuleConditionArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[_builtins.str]]
+    condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A optional CEL expression to be evaluated as a boolean value.
     Once evaluated as true, then we will proceed with the value evaluation.
     An empty condition will be auto evaluated as true.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CEL expression to be evaluated as the value.
     """
@@ -731,8 +731,8 @@ class AutoLabelingRuleConditionArgsDict(TypedDict):
 @pulumi.input_type
 class AutoLabelingRuleConditionArgs:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition: A optional CEL expression to be evaluated as a boolean value.
                Once evaluated as true, then we will proceed with the value evaluation.
@@ -746,7 +746,7 @@ class AutoLabelingRuleConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A optional CEL expression to be evaluated as a boolean value.
         Once evaluated as true, then we will proceed with the value evaluation.
@@ -755,47 +755,47 @@ class AutoLabelingRuleConditionArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEL expression to be evaluated as the value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class QaQuestionAnswerChoiceArgsDict(TypedDict):
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Boolean value.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A short string used as an identifier.
     """
-    na_value: NotRequired[pulumi.Input[_builtins.bool]]
+    na_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     A value of "Not Applicable (N/A)". If provided, this field may only
     be set to `true`. If a question receives this answer, it will be
     excluded from any score calculations.
     """
-    num_value: NotRequired[pulumi.Input[_builtins.float]]
+    num_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Numerical value.
     """
-    score: NotRequired[pulumi.Input[_builtins.float]]
+    score: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Numerical score of the answer, used for generating the overall score of
     a QaScorecardResult. If the answer uses na_value, this field is unused.
     """
-    str_value: NotRequired[pulumi.Input[_builtins.str]]
+    str_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String value.
     """
@@ -803,12 +803,12 @@ class QaQuestionAnswerChoiceArgsDict(TypedDict):
 @pulumi.input_type
 class QaQuestionAnswerChoiceArgs:
     def __init__(__self__, *,
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 na_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 num_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 score: Optional[pulumi.Input[_builtins.float]] = None,
-                 str_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 na_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 num_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 score: pulumi.Input[Optional[_builtins.float]] = None,
+                 str_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] bool_value: Boolean value.
         :param pulumi.Input[_builtins.str] key: A short string used as an identifier.
@@ -835,31 +835,31 @@ class QaQuestionAnswerChoiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short string used as an identifier.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="naValue")
-    def na_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def na_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A value of "Not Applicable (N/A)". If provided, this field may only
         be set to `true`. If a question receives this answer, it will be
@@ -868,24 +868,24 @@ class QaQuestionAnswerChoiceArgs:
         return pulumi.get(self, "na_value")
 
     @na_value.setter
-    def na_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def na_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "na_value", value)
 
     @_builtins.property
     @pulumi.getter(name="numValue")
-    def num_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def num_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Numerical value.
         """
         return pulumi.get(self, "num_value")
 
     @num_value.setter
-    def num_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def num_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "num_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def score(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def score(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Numerical score of the answer, used for generating the overall score of
         a QaScorecardResult. If the answer uses na_value, this field is unused.
@@ -893,24 +893,24 @@ class QaQuestionAnswerChoiceArgs:
         return pulumi.get(self, "score")
 
     @score.setter
-    def score(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def score(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "score", value)
 
     @_builtins.property
     @pulumi.getter(name="strValue")
-    def str_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def str_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String value.
         """
         return pulumi.get(self, "str_value")
 
     @str_value.setter
-    def str_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def str_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "str_value", value)
 
 
 class QaQuestionMetricsArgsDict(TypedDict):
-    accuracy: NotRequired[pulumi.Input[_builtins.float]]
+    accuracy: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     Accuracy of the model. Measures the percentage of correct answers the
@@ -920,7 +920,7 @@ class QaQuestionMetricsArgsDict(TypedDict):
 @pulumi.input_type
 class QaQuestionMetricsArgs:
     def __init__(__self__, *,
-                 accuracy: Optional[pulumi.Input[_builtins.float]] = None):
+                 accuracy: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] accuracy: (Output)
                Accuracy of the model. Measures the percentage of correct answers the
@@ -931,7 +931,7 @@ class QaQuestionMetricsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accuracy(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def accuracy(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         Accuracy of the model. Measures the percentage of correct answers the
@@ -940,12 +940,12 @@ class QaQuestionMetricsArgs:
         return pulumi.get(self, "accuracy")
 
     @accuracy.setter
-    def accuracy(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def accuracy(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "accuracy", value)
 
 
 class QaQuestionPredefinedQuestionConfigArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the predefined question.
     Possible values:
@@ -956,7 +956,7 @@ class QaQuestionPredefinedQuestionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class QaQuestionPredefinedQuestionConfigArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The type of the predefined question.
                Possible values:
@@ -968,7 +968,7 @@ class QaQuestionPredefinedQuestionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the predefined question.
         Possible values:
@@ -978,12 +978,12 @@ class QaQuestionPredefinedQuestionConfigArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class QaQuestionQaQuestionDataOptionsArgsDict(TypedDict):
-    conversation_data_options: NotRequired[pulumi.Input['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgsDict']]
+    conversation_data_options: NotRequired[pulumi.Input[Optional['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']]]
     """
     Options for configuring what metadata is included in the conversation data
     used in QAI and Discovery Engine.
@@ -993,7 +993,7 @@ class QaQuestionQaQuestionDataOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class QaQuestionQaQuestionDataOptionsArgs:
     def __init__(__self__, *,
-                 conversation_data_options: Optional[pulumi.Input['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']] = None):
+                 conversation_data_options: pulumi.Input[Optional['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']] = None):
         """
         :param pulumi.Input['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs'] conversation_data_options: Options for configuring what metadata is included in the conversation data
                used in QAI and Discovery Engine.
@@ -1004,7 +1004,7 @@ class QaQuestionQaQuestionDataOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="conversationDataOptions")
-    def conversation_data_options(self) -> Optional[pulumi.Input['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']]:
+    def conversation_data_options(self) -> pulumi.Input[Optional['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']]:
         """
         Options for configuring what metadata is included in the conversation data
         used in QAI and Discovery Engine.
@@ -1013,12 +1013,12 @@ class QaQuestionQaQuestionDataOptionsArgs:
         return pulumi.get(self, "conversation_data_options")
 
     @conversation_data_options.setter
-    def conversation_data_options(self, value: Optional[pulumi.Input['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']]):
+    def conversation_data_options(self, value: pulumi.Input[Optional['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']]):
         pulumi.set(self, "conversation_data_options", value)
 
 
 class QaQuestionQaQuestionDataOptionsConversationDataOptionsArgsDict(TypedDict):
-    include_dialogflow_interaction_data: NotRequired[pulumi.Input[_builtins.bool]]
+    include_dialogflow_interaction_data: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to include the per turn Dialogflow interaction data in conversation
     transcript.
@@ -1027,7 +1027,7 @@ class QaQuestionQaQuestionDataOptionsConversationDataOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs:
     def __init__(__self__, *,
-                 include_dialogflow_interaction_data: Optional[pulumi.Input[_builtins.bool]] = None):
+                 include_dialogflow_interaction_data: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] include_dialogflow_interaction_data: Whether to include the per turn Dialogflow interaction data in conversation
                transcript.
@@ -1037,7 +1037,7 @@ class QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="includeDialogflowInteractionData")
-    def include_dialogflow_interaction_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_dialogflow_interaction_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to include the per turn Dialogflow interaction data in conversation
         transcript.
@@ -1045,22 +1045,22 @@ class QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs:
         return pulumi.get(self, "include_dialogflow_interaction_data")
 
     @include_dialogflow_interaction_data.setter
-    def include_dialogflow_interaction_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_dialogflow_interaction_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_dialogflow_interaction_data", value)
 
 
 class QaQuestionTuningMetadataArgsDict(TypedDict):
-    dataset_validation_warnings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dataset_validation_warnings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of any applicable data validation warnings about the question's
     feedback labels.
     """
-    total_valid_label_count: NotRequired[pulumi.Input[_builtins.str]]
+    total_valid_label_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Total number of valid labels provided for the question at the time of
     tuining.
     """
-    tuning_error: NotRequired[pulumi.Input[_builtins.str]]
+    tuning_error: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Error status of the tuning operation for the question. Will only be set
     if the tuning operation failed.
@@ -1069,9 +1069,9 @@ class QaQuestionTuningMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class QaQuestionTuningMetadataArgs:
     def __init__(__self__, *,
-                 dataset_validation_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 total_valid_label_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 tuning_error: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset_validation_warnings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 total_valid_label_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 tuning_error: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dataset_validation_warnings: A list of any applicable data validation warnings about the question's
                feedback labels.
@@ -1089,7 +1089,7 @@ class QaQuestionTuningMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="datasetValidationWarnings")
-    def dataset_validation_warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dataset_validation_warnings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of any applicable data validation warnings about the question's
         feedback labels.
@@ -1097,12 +1097,12 @@ class QaQuestionTuningMetadataArgs:
         return pulumi.get(self, "dataset_validation_warnings")
 
     @dataset_validation_warnings.setter
-    def dataset_validation_warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dataset_validation_warnings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dataset_validation_warnings", value)
 
     @_builtins.property
     @pulumi.getter(name="totalValidLabelCount")
-    def total_valid_label_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_valid_label_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Total number of valid labels provided for the question at the time of
         tuining.
@@ -1110,12 +1110,12 @@ class QaQuestionTuningMetadataArgs:
         return pulumi.get(self, "total_valid_label_count")
 
     @total_valid_label_count.setter
-    def total_valid_label_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_valid_label_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_valid_label_count", value)
 
     @_builtins.property
     @pulumi.getter(name="tuningError")
-    def tuning_error(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tuning_error(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Error status of the tuning operation for the question. Will only be set
         if the tuning operation failed.
@@ -1123,44 +1123,44 @@ class QaQuestionTuningMetadataArgs:
         return pulumi.get(self, "tuning_error")
 
     @tuning_error.setter
-    def tuning_error(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tuning_error(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tuning_error", value)
 
 
 class QaScorecardRevisionSnapshotArgsDict(TypedDict):
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time at which this scorecard was created.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A text description explaining the intent of the scorecard.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user-specified display name of the scorecard.
     """
-    is_default: NotRequired[pulumi.Input[_builtins.bool]]
+    is_default: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the scorecard is the default one for the project.
     A default scorecard cannot be deleted and will always appear first in
     scorecard selector.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Identifier. The scorecard name.
     Format:
     projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
     """
-    source: NotRequired[pulumi.Input[_builtins.str]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
     QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The most recent time at which the scorecard was updated.
@@ -1169,13 +1169,13 @@ class QaScorecardRevisionSnapshotArgsDict(TypedDict):
 @pulumi.input_type
 class QaScorecardRevisionSnapshotArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] create_time: (Output)
                The time at which this scorecard was created.
@@ -1211,7 +1211,7 @@ class QaScorecardRevisionSnapshotArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time at which this scorecard was created.
@@ -1219,36 +1219,36 @@ class QaScorecardRevisionSnapshotArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A text description explaining the intent of the scorecard.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-specified display name of the scorecard.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the scorecard is the default one for the project.
         A default scorecard cannot be deleted and will always appear first in
@@ -1257,12 +1257,12 @@ class QaScorecardRevisionSnapshotArgs:
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Identifier. The scorecard name.
@@ -1272,12 +1272,12 @@ class QaScorecardRevisionSnapshotArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
@@ -1286,12 +1286,12 @@ class QaScorecardRevisionSnapshotArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The most recent time at which the scorecard was updated.
@@ -1299,7 +1299,7 @@ class QaScorecardRevisionSnapshotArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 

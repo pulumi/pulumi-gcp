@@ -114,23 +114,23 @@ __all__ = [
 ]
 
 class BackupPlanAssociationRulesConfigInfoArgsDict(TypedDict):
-    last_backup_errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgsDict']]]]
+    last_backup_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]]]
     """
     (Output)
     google.rpc.Status object to store the last backup error
     Structure is documented below.
     """
-    last_backup_state: NotRequired[pulumi.Input[_builtins.str]]
+    last_backup_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     State of last backup taken.
     """
-    last_successful_backup_consistency_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_successful_backup_consistency_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The point in time when the last successful backup was captured from the source
     """
-    rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    rule_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Backup Rule id fetched from backup plan.
@@ -139,10 +139,10 @@ class BackupPlanAssociationRulesConfigInfoArgsDict(TypedDict):
 @pulumi.input_type
 class BackupPlanAssociationRulesConfigInfoArgs:
     def __init__(__self__, *,
-                 last_backup_errors: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]] = None,
-                 last_backup_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_successful_backup_consistency_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 last_backup_errors: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]] = None,
+                 last_backup_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_successful_backup_consistency_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]] last_backup_errors: (Output)
                google.rpc.Status object to store the last backup error
@@ -165,7 +165,7 @@ class BackupPlanAssociationRulesConfigInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="lastBackupErrors")
-    def last_backup_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]]:
+    def last_backup_errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]]:
         """
         (Output)
         google.rpc.Status object to store the last backup error
@@ -174,12 +174,12 @@ class BackupPlanAssociationRulesConfigInfoArgs:
         return pulumi.get(self, "last_backup_errors")
 
     @last_backup_errors.setter
-    def last_backup_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]]):
+    def last_backup_errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]]):
         pulumi.set(self, "last_backup_errors", value)
 
     @_builtins.property
     @pulumi.getter(name="lastBackupState")
-    def last_backup_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_backup_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         State of last backup taken.
@@ -187,12 +187,12 @@ class BackupPlanAssociationRulesConfigInfoArgs:
         return pulumi.get(self, "last_backup_state")
 
     @last_backup_state.setter
-    def last_backup_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_backup_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_backup_state", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
-    def last_successful_backup_consistency_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_successful_backup_consistency_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The point in time when the last successful backup was captured from the source
@@ -200,12 +200,12 @@ class BackupPlanAssociationRulesConfigInfoArgs:
         return pulumi.get(self, "last_successful_backup_consistency_time")
 
     @last_successful_backup_consistency_time.setter
-    def last_successful_backup_consistency_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_successful_backup_consistency_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_successful_backup_consistency_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Backup Rule id fetched from backup plan.
@@ -213,17 +213,17 @@ class BackupPlanAssociationRulesConfigInfoArgs:
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
 
 class BackupPlanAssociationRulesConfigInfoLastBackupErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.float]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     The status code, which should be an enum value of [google.rpc.Code]
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English.
@@ -232,8 +232,8 @@ class BackupPlanAssociationRulesConfigInfoLastBackupErrorArgsDict(TypedDict):
 @pulumi.input_type
 class BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.float]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.float]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] code: (Output)
                The status code, which should be an enum value of [google.rpc.Code]
@@ -247,7 +247,7 @@ class BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         The status code, which should be an enum value of [google.rpc.Code]
@@ -255,12 +255,12 @@ class BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English.
@@ -268,7 +268,7 @@ class BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
@@ -351,32 +351,32 @@ class BackupPlanBackupRuleStandardScheduleArgsDict(TypedDict):
     """
     The time zone to be used when interpreting the schedule.
     """
-    backup_window: NotRequired[pulumi.Input['BackupPlanBackupRuleStandardScheduleBackupWindowArgsDict']]
+    backup_window: NotRequired[pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']]]
     """
     A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
     `NOT_RUN` if they do not start by the end of the window.
     Structure is documented below.
     """
-    days_of_months: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    days_of_months: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     Specifies days of months like 1, 5, or 14 on which jobs will run.
     """
-    days_of_weeks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    days_of_weeks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
     Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
     """
-    hourly_frequency: NotRequired[pulumi.Input[_builtins.int]]
+    hourly_frequency: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
     This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
     """
-    months: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    months: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies values of months
     Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
     """
-    week_day_of_month: NotRequired[pulumi.Input['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgsDict']]
+    week_day_of_month: NotRequired[pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']]]
     """
     Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
     Structure is documented below.
@@ -387,12 +387,12 @@ class BackupPlanBackupRuleStandardScheduleArgs:
     def __init__(__self__, *,
                  recurrence_type: pulumi.Input[_builtins.str],
                  time_zone: pulumi.Input[_builtins.str],
-                 backup_window: Optional[pulumi.Input['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']] = None,
-                 days_of_months: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hourly_frequency: Optional[pulumi.Input[_builtins.int]] = None,
-                 months: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 week_day_of_month: Optional[pulumi.Input['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']] = None):
+                 backup_window: pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']] = None,
+                 days_of_months: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 days_of_weeks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hourly_frequency: pulumi.Input[Optional[_builtins.int]] = None,
+                 months: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 week_day_of_month: pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] recurrence_type: RecurrenceType enumerates the applicable periodicity for the schedule.
                Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
@@ -452,7 +452,7 @@ class BackupPlanBackupRuleStandardScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupWindow")
-    def backup_window(self) -> Optional[pulumi.Input['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']]:
+    def backup_window(self) -> pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']]:
         """
         A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
         `NOT_RUN` if they do not start by the end of the window.
@@ -461,24 +461,24 @@ class BackupPlanBackupRuleStandardScheduleArgs:
         return pulumi.get(self, "backup_window")
 
     @backup_window.setter
-    def backup_window(self, value: Optional[pulumi.Input['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']]):
+    def backup_window(self, value: pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']]):
         pulumi.set(self, "backup_window", value)
 
     @_builtins.property
     @pulumi.getter(name="daysOfMonths")
-    def days_of_months(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def days_of_months(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Specifies days of months like 1, 5, or 14 on which jobs will run.
         """
         return pulumi.get(self, "days_of_months")
 
     @days_of_months.setter
-    def days_of_months(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def days_of_months(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "days_of_months", value)
 
     @_builtins.property
     @pulumi.getter(name="daysOfWeeks")
-    def days_of_weeks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def days_of_weeks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
         Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -486,12 +486,12 @@ class BackupPlanBackupRuleStandardScheduleArgs:
         return pulumi.get(self, "days_of_weeks")
 
     @days_of_weeks.setter
-    def days_of_weeks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def days_of_weeks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "days_of_weeks", value)
 
     @_builtins.property
     @pulumi.getter(name="hourlyFrequency")
-    def hourly_frequency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hourly_frequency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
         This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
@@ -499,12 +499,12 @@ class BackupPlanBackupRuleStandardScheduleArgs:
         return pulumi.get(self, "hourly_frequency")
 
     @hourly_frequency.setter
-    def hourly_frequency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hourly_frequency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hourly_frequency", value)
 
     @_builtins.property
     @pulumi.getter
-    def months(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def months(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies values of months
         Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
@@ -512,12 +512,12 @@ class BackupPlanBackupRuleStandardScheduleArgs:
         return pulumi.get(self, "months")
 
     @months.setter
-    def months(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def months(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "months", value)
 
     @_builtins.property
     @pulumi.getter(name="weekDayOfMonth")
-    def week_day_of_month(self) -> Optional[pulumi.Input['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']]:
+    def week_day_of_month(self) -> pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']]:
         """
         Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
         Structure is documented below.
@@ -525,7 +525,7 @@ class BackupPlanBackupRuleStandardScheduleArgs:
         return pulumi.get(self, "week_day_of_month")
 
     @week_day_of_month.setter
-    def week_day_of_month(self, value: Optional[pulumi.Input['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']]):
+    def week_day_of_month(self, value: pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']]):
         pulumi.set(self, "week_day_of_month", value)
 
 
@@ -534,7 +534,7 @@ class BackupPlanBackupRuleStandardScheduleBackupWindowArgsDict(TypedDict):
     """
     The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
     """
-    end_hour_of_day: NotRequired[pulumi.Input[_builtins.int]]
+    end_hour_of_day: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
     The end hour of the day should be greater than the start
@@ -544,7 +544,7 @@ class BackupPlanBackupRuleStandardScheduleBackupWindowArgsDict(TypedDict):
 class BackupPlanBackupRuleStandardScheduleBackupWindowArgs:
     def __init__(__self__, *,
                  start_hour_of_day: pulumi.Input[_builtins.int],
-                 end_hour_of_day: Optional[pulumi.Input[_builtins.int]] = None):
+                 end_hour_of_day: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] start_hour_of_day: The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
         :param pulumi.Input[_builtins.int] end_hour_of_day: The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
@@ -568,7 +568,7 @@ class BackupPlanBackupRuleStandardScheduleBackupWindowArgs:
 
     @_builtins.property
     @pulumi.getter(name="endHourOfDay")
-    def end_hour_of_day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_hour_of_day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
         The end hour of the day should be greater than the start
@@ -576,7 +576,7 @@ class BackupPlanBackupRuleStandardScheduleBackupWindowArgs:
         return pulumi.get(self, "end_hour_of_day")
 
     @end_hour_of_day.setter
-    def end_hour_of_day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_hour_of_day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_hour_of_day", value)
 
 
@@ -671,7 +671,7 @@ class BackupPlanDiskBackupPlanPropertiesArgs:
 
 
 class BackupVaultEncryptionConfigArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
     """
@@ -679,7 +679,7 @@ class BackupVaultEncryptionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BackupVaultEncryptionConfigArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
         """
@@ -688,24 +688,24 @@ class BackupVaultEncryptionConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
 
 class ManagementServerManagementUriArgsDict(TypedDict):
-    api: NotRequired[pulumi.Input[_builtins.str]]
+    api: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The management console api endpoint.
     """
-    web_ui: NotRequired[pulumi.Input[_builtins.str]]
+    web_ui: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The management console webUi.
@@ -714,8 +714,8 @@ class ManagementServerManagementUriArgsDict(TypedDict):
 @pulumi.input_type
 class ManagementServerManagementUriArgs:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_ui: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_ui: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] api: (Output)
                The management console api endpoint.
@@ -729,7 +729,7 @@ class ManagementServerManagementUriArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The management console api endpoint.
@@ -737,12 +737,12 @@ class ManagementServerManagementUriArgs:
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="webUi")
-    def web_ui(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_ui(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The management console webUi.
@@ -750,7 +750,7 @@ class ManagementServerManagementUriArgs:
         return pulumi.get(self, "web_ui")
 
     @web_ui.setter
-    def web_ui(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_ui(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_ui", value)
 
 
@@ -759,7 +759,7 @@ class ManagementServerNetworkArgsDict(TypedDict):
     """
     Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
     """
-    peering_mode: NotRequired[pulumi.Input[_builtins.str]]
+    peering_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of Network peeringMode
     Default value is `PRIVATE_SERVICE_ACCESS`.
@@ -770,7 +770,7 @@ class ManagementServerNetworkArgsDict(TypedDict):
 class ManagementServerNetworkArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 peering_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 peering_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
         :param pulumi.Input[_builtins.str] peering_mode: Type of Network peeringMode
@@ -795,7 +795,7 @@ class ManagementServerNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="peeringMode")
-    def peering_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Network peeringMode
         Default value is `PRIVATE_SERVICE_ACCESS`.
@@ -804,7 +804,7 @@ class ManagementServerNetworkArgs:
         return pulumi.get(self, "peering_mode")
 
     @peering_mode.setter
-    def peering_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_mode", value)
 
 
@@ -813,120 +813,120 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Required. Name of the compute instance.
     """
-    advanced_machine_features: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgsDict']]
+    advanced_machine_features: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']]]
     """
     Optional. Controls for advanced machine-related behavior features.
     Structure is documented below.
     """
-    allocation_affinity: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgsDict']]
+    allocation_affinity: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']]]
     """
     Optional. Specifies the reservations that this instance can consume from.
     Structure is documented below.
     """
-    can_ip_forward: NotRequired[pulumi.Input[_builtins.bool]]
+    can_ip_forward: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
     """
-    confidential_instance_config: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgsDict']]
+    confidential_instance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']]]
     """
     Optional. Controls Confidential compute options on the instance.
     Structure is documented below.
     """
-    deletion_protection: NotRequired[pulumi.Input[_builtins.bool]]
+    deletion_protection: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Whether the resource should be protected against deletion.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. An optional description of this resource.
     """
-    disks: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgsDict']]]]
+    disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]]]
     """
     Optional. Array of disks associated with this instance.
     Structure is documented below.
     """
-    display_device: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgsDict']]
+    display_device: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']]]
     """
     Optional. Enables display device for the instance.
     Structure is documented below.
     """
-    guest_accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgsDict']]]]
+    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]]]
     """
     Optional. A list of the type and count of accelerator cards attached to the instance.
     Structure is documented below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Specifies the hostname of the instance.
     """
-    instance_encryption_key: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgsDict']]
+    instance_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']]]
     """
     Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
     Structure is documented below.
     """
-    key_revocation_action_type: NotRequired[pulumi.Input[_builtins.str]]
+    key_revocation_action_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. KeyRevocationActionType of the instance.
     Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
     """
-    labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgsDict']]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]]]
     """
     Optional. Labels to apply to this instance.
     Structure is documented below.
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Full or partial URL of the machine type resource to use for this instance.
     """
-    metadata: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgsDict']]
+    metadata: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']]]
     """
     Optional. This includes custom metadata and predefined keys.
     Structure is documented below.
     """
-    min_cpu_platform: NotRequired[pulumi.Input[_builtins.str]]
+    min_cpu_platform: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Minimum CPU platform to use for this instance.
     """
-    network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgsDict']]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]]]
     """
     Optional. An array of network configurations for this instance.
     Structure is documented below.
     """
-    network_performance_config: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgsDict']]
+    network_performance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']]]
     """
     Optional. Configure network performance such as egress bandwidth tier.
     Structure is documented below.
     """
-    params: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgsDict']]
+    params: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']]]
     """
     Input only. Additional params passed with the request.
     Structure is documented below.
     """
-    private_ipv6_google_access: NotRequired[pulumi.Input[_builtins.str]]
+    private_ipv6_google_access: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The private IPv6 google access type for the VM.
     Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
     """
-    resource_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Resource policies applied to this instance.
     """
-    scheduling: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgsDict']]
+    scheduling: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']]]
     """
     Optional. Sets the scheduling options for this instance.
     Structure is documented below.
     """
-    service_accounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgsDict']]]]
+    service_accounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]]]
     """
     Optional. A list of service accounts, with their specified scopes, authorized for this instance.
     Structure is documented below.
     """
-    shielded_instance_config: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgsDict']]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']]]
     """
     Optional. Controls Shielded compute options on the instance.
     Structure is documented below.
     """
-    tags: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgsDict']]
+    tags: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']]]
     """
     Optional. Tags to apply to this instance.
     Structure is documented below.
@@ -936,31 +936,31 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
 class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 advanced_machine_features: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']] = None,
-                 allocation_affinity: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']] = None,
-                 can_ip_forward: Optional[pulumi.Input[_builtins.bool]] = None,
-                 confidential_instance_config: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]] = None,
-                 display_device: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']] = None,
-                 guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_encryption_key: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']] = None,
-                 key_revocation_action_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']] = None,
-                 min_cpu_platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]] = None,
-                 network_performance_config: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']] = None,
-                 params: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 scheduling: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']] = None,
-                 service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']] = None,
-                 tags: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']] = None):
+                 advanced_machine_features: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']] = None,
+                 allocation_affinity: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']] = None,
+                 can_ip_forward: pulumi.Input[Optional[_builtins.bool]] = None,
+                 confidential_instance_config: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]] = None,
+                 display_device: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']] = None,
+                 guest_accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_encryption_key: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']] = None,
+                 key_revocation_action_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]] = None,
+                 network_performance_config: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']] = None,
+                 params: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 scheduling: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']] = None,
+                 service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']] = None,
+                 tags: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Required. Name of the compute instance.
         :param pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs'] advanced_machine_features: Optional. Controls for advanced machine-related behavior features.
@@ -1073,7 +1073,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedMachineFeatures")
-    def advanced_machine_features(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']]:
+    def advanced_machine_features(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']]:
         """
         Optional. Controls for advanced machine-related behavior features.
         Structure is documented below.
@@ -1081,12 +1081,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "advanced_machine_features")
 
     @advanced_machine_features.setter
-    def advanced_machine_features(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']]):
+    def advanced_machine_features(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']]):
         pulumi.set(self, "advanced_machine_features", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationAffinity")
-    def allocation_affinity(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']]:
+    def allocation_affinity(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']]:
         """
         Optional. Specifies the reservations that this instance can consume from.
         Structure is documented below.
@@ -1094,24 +1094,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "allocation_affinity")
 
     @allocation_affinity.setter
-    def allocation_affinity(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']]):
+    def allocation_affinity(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']]):
         pulumi.set(self, "allocation_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="canIpForward")
-    def can_ip_forward(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def can_ip_forward(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
         """
         return pulumi.get(self, "can_ip_forward")
 
     @can_ip_forward.setter
-    def can_ip_forward(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def can_ip_forward(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "can_ip_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']]:
+    def confidential_instance_config(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']]:
         """
         Optional. Controls Confidential compute options on the instance.
         Structure is documented below.
@@ -1119,36 +1119,36 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "confidential_instance_config")
 
     @confidential_instance_config.setter
-    def confidential_instance_config(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']]):
+    def confidential_instance_config(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']]):
         pulumi.set(self, "confidential_instance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Whether the resource should be protected against deletion.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]]:
+    def disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]]:
         """
         Optional. Array of disks associated with this instance.
         Structure is documented below.
@@ -1156,12 +1156,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "disks")
 
     @disks.setter
-    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]]):
+    def disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]]):
         pulumi.set(self, "disks", value)
 
     @_builtins.property
     @pulumi.getter(name="displayDevice")
-    def display_device(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']]:
+    def display_device(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']]:
         """
         Optional. Enables display device for the instance.
         Structure is documented below.
@@ -1169,12 +1169,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "display_device")
 
     @display_device.setter
-    def display_device(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']]):
+    def display_device(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']]):
         pulumi.set(self, "display_device", value)
 
     @_builtins.property
     @pulumi.getter(name="guestAccelerators")
-    def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]]:
+    def guest_accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]]:
         """
         Optional. A list of the type and count of accelerator cards attached to the instance.
         Structure is documented below.
@@ -1182,24 +1182,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "guest_accelerators")
 
     @guest_accelerators.setter
-    def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]]):
+    def guest_accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies the hostname of the instance.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceEncryptionKey")
-    def instance_encryption_key(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']]:
+    def instance_encryption_key(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']]:
         """
         Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
         Structure is documented below.
@@ -1207,12 +1207,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "instance_encryption_key")
 
     @instance_encryption_key.setter
-    def instance_encryption_key(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']]):
+    def instance_encryption_key(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']]):
         pulumi.set(self, "instance_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="keyRevocationActionType")
-    def key_revocation_action_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_revocation_action_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. KeyRevocationActionType of the instance.
         Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
@@ -1220,12 +1220,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "key_revocation_action_type")
 
     @key_revocation_action_type.setter
-    def key_revocation_action_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_revocation_action_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_revocation_action_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]]:
         """
         Optional. Labels to apply to this instance.
         Structure is documented below.
@@ -1233,24 +1233,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Full or partial URL of the machine type resource to use for this instance.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']]:
+    def metadata(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']]:
         """
         Optional. This includes custom metadata and predefined keys.
         Structure is documented below.
@@ -1258,24 +1258,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']]):
+    def metadata(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Minimum CPU platform to use for this instance.
         """
         return pulumi.get(self, "min_cpu_platform")
 
     @min_cpu_platform.setter
-    def min_cpu_platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_cpu_platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_cpu_platform", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]]:
         """
         Optional. An array of network configurations for this instance.
         Structure is documented below.
@@ -1283,12 +1283,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPerformanceConfig")
-    def network_performance_config(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']]:
+    def network_performance_config(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']]:
         """
         Optional. Configure network performance such as egress bandwidth tier.
         Structure is documented below.
@@ -1296,12 +1296,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "network_performance_config")
 
     @network_performance_config.setter
-    def network_performance_config(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']]):
+    def network_performance_config(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']]):
         pulumi.set(self, "network_performance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']]:
         """
         Input only. Additional params passed with the request.
         Structure is documented below.
@@ -1309,12 +1309,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ipv6_google_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The private IPv6 google access type for the VM.
         Possible values are: `INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED`, `INHERIT_FROM_SUBNETWORK`, `ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE`, `ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE`.
@@ -1322,24 +1322,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ipv6_google_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Resource policies applied to this instance.
         """
         return pulumi.get(self, "resource_policies")
 
     @resource_policies.setter
-    def resource_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_policies", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduling(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']]:
+    def scheduling(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']]:
         """
         Optional. Sets the scheduling options for this instance.
         Structure is documented below.
@@ -1347,12 +1347,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "scheduling")
 
     @scheduling.setter
-    def scheduling(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']]):
+    def scheduling(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']]):
         pulumi.set(self, "scheduling", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccounts")
-    def service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]]:
+    def service_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]]:
         """
         Optional. A list of service accounts, with their specified scopes, authorized for this instance.
         Structure is documented below.
@@ -1360,12 +1360,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "service_accounts")
 
     @service_accounts.setter
-    def service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]]):
+    def service_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]]):
         pulumi.set(self, "service_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']]:
         """
         Optional. Controls Shielded compute options on the instance.
         Structure is documented below.
@@ -1373,12 +1373,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']]:
+    def tags(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']]:
         """
         Optional. Tags to apply to this instance.
         Structure is documented below.
@@ -1386,24 +1386,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']]):
+    def tags(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']]):
         pulumi.set(self, "tags", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgsDict(TypedDict):
-    enable_nested_virtualization: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_nested_virtualization: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Whether to enable nested virtualization or not (default is false).
     """
-    enable_uefi_networking: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_uefi_networking: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Whether to enable UEFI networking for instance creation.
     """
-    threads_per_core: NotRequired[pulumi.Input[_builtins.int]]
+    threads_per_core: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The number of threads per physical core.
     """
-    visible_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    visible_core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The number of physical cores to expose to an instance.
     """
@@ -1411,10 +1411,10 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
-                 enable_nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_uefi_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 threads_per_core: Optional[pulumi.Input[_builtins.int]] = None,
-                 visible_core_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 enable_nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_uefi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 threads_per_core: pulumi.Input[Optional[_builtins.int]] = None,
+                 visible_core_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Optional. Whether to enable nested virtualization or not (default is false).
         :param pulumi.Input[_builtins.bool] enable_uefi_networking: Optional. Whether to enable UEFI networking for instance creation.
@@ -1432,63 +1432,63 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs
 
     @_builtins.property
     @pulumi.getter(name="enableNestedVirtualization")
-    def enable_nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_nested_virtualization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Whether to enable nested virtualization or not (default is false).
         """
         return pulumi.get(self, "enable_nested_virtualization")
 
     @enable_nested_virtualization.setter
-    def enable_nested_virtualization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_nested_virtualization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
 
     @_builtins.property
     @pulumi.getter(name="enableUefiNetworking")
-    def enable_uefi_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_uefi_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Whether to enable UEFI networking for instance creation.
         """
         return pulumi.get(self, "enable_uefi_networking")
 
     @enable_uefi_networking.setter
-    def enable_uefi_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_uefi_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_uefi_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="threadsPerCore")
-    def threads_per_core(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def threads_per_core(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of threads per physical core.
         """
         return pulumi.get(self, "threads_per_core")
 
     @threads_per_core.setter
-    def threads_per_core(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def threads_per_core(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "threads_per_core", value)
 
     @_builtins.property
     @pulumi.getter(name="visibleCoreCount")
-    def visible_core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def visible_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of physical cores to expose to an instance.
         """
         return pulumi.get(self, "visible_core_count")
 
     @visible_core_count.setter
-    def visible_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def visible_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "visible_core_count", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgsDict(TypedDict):
-    consume_allocation_type: NotRequired[pulumi.Input[_builtins.str]]
+    consume_allocation_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
@@ -1496,9 +1496,9 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgsDict(
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs:
     def __init__(__self__, *,
-                 consume_allocation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 consume_allocation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] consume_allocation_type: Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
         :param pulumi.Input[_builtins.str] key: (Optional)
@@ -1513,43 +1513,43 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs:
 
     @_builtins.property
     @pulumi.getter(name="consumeAllocationType")
-    def consume_allocation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consume_allocation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
         """
         return pulumi.get(self, "consume_allocation_type")
 
     @consume_allocation_type.setter
-    def consume_allocation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consume_allocation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consume_allocation_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgsDict(TypedDict):
-    enable_confidential_compute: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_confidential_compute: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Defines whether the instance should have confidential compute enabled.
     """
@@ -1557,7 +1557,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigA
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Optional. Defines whether the instance should have confidential compute enabled.
         """
@@ -1566,85 +1566,85 @@ class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigA
 
     @_builtins.property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_confidential_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Defines whether the instance should have confidential compute enabled.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
-    def enable_confidential_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_confidential_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgsDict(TypedDict):
-    auto_delete: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_delete: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Specifies whether the disk will be auto-deleted when the instance is deleted.
     """
-    boot: NotRequired[pulumi.Input[_builtins.bool]]
+    boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Indicates that this is a boot disk.
     """
-    device_name: NotRequired[pulumi.Input[_builtins.str]]
+    device_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. This is used as an identifier for the disks.
     """
-    disk_encryption_key: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgsDict']]
+    disk_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']]]
     """
     Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.
     Structure is documented below.
     """
-    disk_interface: NotRequired[pulumi.Input[_builtins.str]]
+    disk_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Specifies the disk interface to use for attaching this disk.
     Possible values are: `DISK_INTERFACE_UNSPECIFIED`, `SCSI`, `NVME`, `NVDIMM`, `ISCSI`.
     """
-    disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The size of the disk in GB.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The URI of the disk type resource.
     """
-    guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgsDict']]]]
+    guest_os_features: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]]]
     """
     Optional. A list of features to enable on the guest operating system.
     Structure is documented below.
     """
-    index: NotRequired[pulumi.Input[_builtins.int]]
+    index: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.
     """
-    initialize_params: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgsDict']]
+    initialize_params: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']]]
     """
     Optional. Specifies the parameters to initialize this disk.
     Structure is documented below.
     """
-    kind: NotRequired[pulumi.Input[_builtins.str]]
+    kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Type of the resource.
     """
-    licenses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    licenses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Any valid publicly visible licenses.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The mode in which to attach this disk.
     Possible values are: `DISK_MODE_UNSPECIFIED`, `READ_WRITE`, `READ_ONLY`, `LOCKED`.
     """
-    saved_state: NotRequired[pulumi.Input[_builtins.str]]
+    saved_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Specifies the saved state of the disk.
     Possible values are: `DISK_SAVED_STATE_UNSPECIFIED`, `PRESERVED`.
     """
-    source: NotRequired[pulumi.Input[_builtins.str]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Specifies the type of the disk.
     Possible values are: `DISK_TYPE_UNSPECIFIED`, `SCRATCH`, `PERSISTENT`.
@@ -1653,22 +1653,22 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
     def __init__(__self__, *,
-                 auto_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']] = None,
-                 disk_interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]] = None,
-                 index: Optional[pulumi.Input[_builtins.int]] = None,
-                 initialize_params: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 saved_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']] = None,
+                 disk_interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]] = None,
+                 index: pulumi.Input[Optional[_builtins.int]] = None,
+                 initialize_params: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 saved_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_delete: Optional. Specifies whether the disk will be auto-deleted when the instance is deleted.
         :param pulumi.Input[_builtins.bool] boot: Optional. Indicates that this is a boot disk.
@@ -1729,43 +1729,43 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoDelete")
-    def auto_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Specifies whether the disk will be auto-deleted when the instance is deleted.
         """
         return pulumi.get(self, "auto_delete")
 
     @auto_delete.setter
-    def auto_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Indicates that this is a boot disk.
         """
         return pulumi.get(self, "boot")
 
     @boot.setter
-    def boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "boot", value)
 
     @_builtins.property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. This is used as an identifier for the disks.
         """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_name", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']]:
         """
         Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.
         Structure is documented below.
@@ -1773,12 +1773,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="diskInterface")
-    def disk_interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies the disk interface to use for attaching this disk.
         Possible values are: `DISK_INTERFACE_UNSPECIFIED`, `SCSI`, `NVME`, `NVDIMM`, `ISCSI`.
@@ -1786,36 +1786,36 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
         return pulumi.get(self, "disk_interface")
 
     @disk_interface.setter
-    def disk_interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_interface", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The size of the disk in GB.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The URI of the disk type resource.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]]:
         """
         Optional. A list of features to enable on the guest operating system.
         Structure is documented below.
@@ -1823,24 +1823,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @_builtins.property
     @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def index(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.
         """
         return pulumi.get(self, "index")
 
     @index.setter
-    def index(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def index(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "index", value)
 
     @_builtins.property
     @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']]:
+    def initialize_params(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']]:
         """
         Optional. Specifies the parameters to initialize this disk.
         Structure is documented below.
@@ -1848,36 +1848,36 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']]):
+    def initialize_params(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']]):
         pulumi.set(self, "initialize_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Type of the resource.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The mode in which to attach this disk.
         Possible values are: `DISK_MODE_UNSPECIFIED`, `READ_WRITE`, `READ_ONLY`, `LOCKED`.
@@ -1885,12 +1885,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="savedState")
-    def saved_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saved_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies the saved state of the disk.
         Possible values are: `DISK_SAVED_STATE_UNSPECIFIED`, `PRESERVED`.
@@ -1898,24 +1898,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
         return pulumi.get(self, "saved_state")
 
     @saved_state.setter
-    def saved_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saved_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saved_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies the type of the disk.
         Possible values are: `DISK_TYPE_UNSPECIFIED`, `SCRATCH`, `PERSISTENT`.
@@ -1923,24 +1923,24 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    kms_key_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    raw_key: NotRequired[pulumi.Input[_builtins.str]]
+    raw_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    rsa_encrypted_key: NotRequired[pulumi.Input[_builtins.str]]
+    rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -1948,10 +1948,10 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgsDi
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rsa_encrypted_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rsa_encrypted_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: (Optional)
         :param pulumi.Input[_builtins.str] kms_key_service_account: (Optional)
@@ -1969,55 +1969,55 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyServiceAccount")
-    def kms_key_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "kms_key_service_account")
 
     @kms_key_service_account.setter
-    def kms_key_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="rawKey")
-    def raw_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def raw_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "raw_key")
 
     @raw_key.setter
-    def raw_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def raw_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "raw_key", value)
 
     @_builtins.property
     @pulumi.getter(name="rsaEncryptedKey")
-    def rsa_encrypted_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
     @rsa_encrypted_key.setter
-    def rsa_encrypted_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rsa_encrypted_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rsa_encrypted_key", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
     """
@@ -2025,7 +2025,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgsDict(
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
         """
@@ -2034,23 +2034,23 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgsDict(TypedDict):
-    disk_name: NotRequired[pulumi.Input[_builtins.str]]
+    disk_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Specifies the disk name.
     """
-    replica_zones: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    replica_zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. URL of the zone where the disk should be created.
     """
@@ -2058,8 +2058,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgsDic
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs:
     def __init__(__self__, *,
-                 disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_name: Optional. Specifies the disk name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_zones: Optional. URL of the zone where the disk should be created.
@@ -2071,31 +2071,31 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskName")
-    def disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Specifies the disk name.
         """
         return pulumi.get(self, "disk_name")
 
     @disk_name.setter
-    def disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaZones")
-    def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def replica_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. URL of the zone where the disk should be created.
         """
         return pulumi.get(self, "replica_zones")
 
     @replica_zones.setter
-    def replica_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def replica_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "replica_zones", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgsDict(TypedDict):
-    enable_display: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_display: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Enables display for the Compute Engine VM.
     """
@@ -2103,7 +2103,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgsDict(Typed
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs:
     def __init__(__self__, *,
-                 enable_display: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_display: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_display: Optional. Enables display for the Compute Engine VM.
         """
@@ -2112,23 +2112,23 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableDisplay")
-    def enable_display(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_display(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Enables display for the Compute Engine VM.
         """
         return pulumi.get(self, "enable_display")
 
     @enable_display.setter
-    def enable_display(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_display(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_display", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgsDict(TypedDict):
-    accelerator_count: NotRequired[pulumi.Input[_builtins.int]]
+    accelerator_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The number of the guest accelerator cards exposed to this instance.
     """
-    accelerator_type: NotRequired[pulumi.Input[_builtins.str]]
+    accelerator_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Full or partial URL of the accelerator type resource.
     """
@@ -2136,8 +2136,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgsDict(Ty
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs:
     def __init__(__self__, *,
-                 accelerator_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 accelerator_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 accelerator_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] accelerator_count: Optional. The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[_builtins.str] accelerator_type: Optional. Full or partial URL of the accelerator type resource.
@@ -2149,43 +2149,43 @@ class RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorCount")
-    def accelerator_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accelerator_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of the guest accelerator cards exposed to this instance.
         """
         return pulumi.get(self, "accelerator_count")
 
     @accelerator_count.setter
-    def accelerator_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accelerator_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accelerator_count", value)
 
     @_builtins.property
     @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Full or partial URL of the accelerator type resource.
         """
         return pulumi.get(self, "accelerator_type")
 
     @accelerator_type.setter
-    def accelerator_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_type", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    kms_key_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    raw_key: NotRequired[pulumi.Input[_builtins.str]]
+    raw_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    rsa_encrypted_key: NotRequired[pulumi.Input[_builtins.str]]
+    rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2193,10 +2193,10 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgsDi
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rsa_encrypted_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rsa_encrypted_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: (Optional)
         :param pulumi.Input[_builtins.str] kms_key_service_account: (Optional)
@@ -2214,50 +2214,50 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyServiceAccount")
-    def kms_key_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "kms_key_service_account")
 
     @kms_key_service_account.setter
-    def kms_key_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="rawKey")
-    def raw_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def raw_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "raw_key")
 
     @raw_key.setter
-    def raw_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def raw_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "raw_key", value)
 
     @_builtins.property
     @pulumi.getter(name="rsaEncryptedKey")
-    def rsa_encrypted_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
     @rsa_encrypted_key.setter
-    def rsa_encrypted_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rsa_encrypted_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rsa_encrypted_key", value)
 
 
@@ -2266,7 +2266,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesLabelArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2275,7 +2275,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesLabelArgsDict(TypedDict):
 class RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -2298,19 +2298,19 @@ class RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgsDict(TypedDict):
-    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgsDict']]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]]]
     """
     Structure is documented below.
     """
@@ -2318,7 +2318,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgsDict(TypedDict)
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs:
     def __init__(__self__, *,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]] = None):
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]] items: Structure is documented below.
         """
@@ -2327,23 +2327,23 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs:
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]]:
+    def items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]]):
+    def items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]]):
         pulumi.set(self, "items", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2351,8 +2351,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgsDict(TypedD
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: (Optional)
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -2364,79 +2364,79 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgsDict(TypedDict):
-    access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgsDict']]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]]]
     """
     Structure is documented below.
     """
-    alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgsDict']]]]
+    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]]]
     """
     Structure is documented below.
     """
-    internal_ipv6_prefix_length: NotRequired[pulumi.Input[_builtins.int]]
+    internal_ipv6_prefix_length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. The prefix length of the primary internal IPv6 range.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. An IPv4 internal IP address to assign to the instance.
     """
-    ipv6_access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgsDict']]]]
+    ipv6_access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]]]
     """
     Structure is documented below.
     """
-    ipv6_access_type: NotRequired[pulumi.Input[_builtins.str]]
+    ipv6_access_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `UNSPECIFIED_IPV6_ACCESS_TYPE`, `INTERNAL`, `EXTERNAL`.
     """
-    ipv6_address: NotRequired[pulumi.Input[_builtins.str]]
+    ipv6_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. An IPv6 internal network address for this network interface.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. URL of the VPC network resource for this instance.
     """
-    network_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    network_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    nic_type: NotRequired[pulumi.Input[_builtins.str]]
+    nic_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `NIC_TYPE_UNSPECIFIED`, `VIRTIO_NET`, `GVNIC`.
     """
-    queue_count: NotRequired[pulumi.Input[_builtins.int]]
+    queue_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    stack_type: NotRequired[pulumi.Input[_builtins.str]]
+    stack_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `STACK_TYPE_UNSPECIFIED`, `IPV4_ONLY`, `IPV4_IPV6`.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The URL of the Subnetwork resource for this instance.
     """
@@ -2444,19 +2444,19 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgsDict(Ty
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]] = None,
-                 alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]] = None,
-                 internal_ipv6_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
-                 ipv6_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_attachment: Optional[pulumi.Input[_builtins.str]] = None,
-                 nic_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]] = None,
+                 alias_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]] = None,
+                 internal_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_access_configs: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]] = None,
+                 ipv6_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+                 nic_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]] access_configs: Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: Structure is documented below.
@@ -2501,191 +2501,191 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessConfigs")
-    def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]]:
+    def access_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
-    def access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]]):
+    def access_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]]):
         pulumi.set(self, "access_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasIpRanges")
-    def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]]:
+    def alias_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
-    def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]]):
+    def alias_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIpv6PrefixLength")
-    def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internal_ipv6_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The prefix length of the primary internal IPv6 range.
         """
         return pulumi.get(self, "internal_ipv6_prefix_length")
 
     @internal_ipv6_prefix_length.setter
-    def internal_ipv6_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internal_ipv6_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internal_ipv6_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. An IPv4 internal IP address to assign to the instance.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AccessConfigs")
-    def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]]:
+    def ipv6_access_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
-    def ipv6_access_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]]):
+    def ipv6_access_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]]):
         pulumi.set(self, "ipv6_access_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AccessType")
-    def ipv6_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `UNSPECIFIED_IPV6_ACCESS_TYPE`, `INTERNAL`, `EXTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
     @ipv6_access_type.setter
-    def ipv6_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. An IPv6 internal network address for this network interface.
         """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
-    def ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. URL of the VPC network resource for this instance.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAttachment")
-    def network_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "network_attachment")
 
     @network_attachment.setter
-    def network_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_attachment", value)
 
     @_builtins.property
     @pulumi.getter(name="nicType")
-    def nic_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nic_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `NIC_TYPE_UNSPECIFIED`, `VIRTIO_NET`, `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
-    def nic_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nic_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nic_type", value)
 
     @_builtins.property
     @pulumi.getter(name="queueCount")
-    def queue_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queue_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "queue_count")
 
     @queue_count.setter
-    def queue_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queue_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_count", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
-    def stack_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `STACK_TYPE_UNSPECIFIED`, `IPV4_ONLY`, `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
-    def stack_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The URL of the Subnetwork resource for this instance.
         """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgsDict(TypedDict):
-    external_ip: NotRequired[pulumi.Input[_builtins.str]]
+    external_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    external_ipv6: NotRequired[pulumi.Input[_builtins.str]]
+    external_ipv6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    external_ipv6_prefix_length: NotRequired[pulumi.Input[_builtins.int]]
+    external_ipv6_prefix_length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The name of this access configuration.
     """
-    network_tier: NotRequired[pulumi.Input[_builtins.str]]
+    network_tier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
     """
-    public_ptr_domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    public_ptr_domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    set_public_ptr: NotRequired[pulumi.Input[_builtins.bool]]
+    set_public_ptr: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The type of configuration.
     Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
@@ -2694,14 +2694,14 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfi
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs:
     def __init__(__self__, *,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 set_public_ptr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ptr_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 set_public_ptr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] external_ip: (Optional)
         :param pulumi.Input[_builtins.str] external_ipv6: (Optional)
@@ -2732,91 +2732,91 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfi
 
     @_builtins.property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "external_ip")
 
     @external_ip.setter
-    def external_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6")
-    def external_ipv6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ipv6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "external_ipv6")
 
     @external_ipv6.setter
-    def external_ipv6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ipv6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6PrefixLength")
-    def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def external_ipv6_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
     @external_ipv6_prefix_length.setter
-    def external_ipv6_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def external_ipv6_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "external_ipv6_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The name of this access configuration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
         """
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
-    def network_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="publicPtrDomainName")
-    def public_ptr_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ptr_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
-    def public_ptr_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ptr_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="setPublicPtr")
-    def set_public_ptr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def set_public_ptr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "set_public_ptr")
 
     @set_public_ptr.setter
-    def set_public_ptr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def set_public_ptr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "set_public_ptr", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The type of configuration.
         Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
@@ -2824,16 +2824,16 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfi
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgsDict(TypedDict):
-    ip_cidr_range: NotRequired[pulumi.Input[_builtins.str]]
+    ip_cidr_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    subnetwork_range_name: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork_range_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -2841,8 +2841,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRang
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
-                 ip_cidr_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork_range_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_cidr_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork_range_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_cidr_range: (Optional)
         :param pulumi.Input[_builtins.str] subnetwork_range_name: (Optional)
@@ -2854,62 +2854,62 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRang
 
     @_builtins.property
     @pulumi.getter(name="ipCidrRange")
-    def ip_cidr_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_cidr_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
-    def ip_cidr_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_cidr_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_cidr_range", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetworkRangeName")
-    def subnetwork_range_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork_range_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "subnetwork_range_name")
 
     @subnetwork_range_name.setter
-    def subnetwork_range_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork_range_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork_range_name", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgsDict(TypedDict):
-    external_ip: NotRequired[pulumi.Input[_builtins.str]]
+    external_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    external_ipv6: NotRequired[pulumi.Input[_builtins.str]]
+    external_ipv6: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    external_ipv6_prefix_length: NotRequired[pulumi.Input[_builtins.int]]
+    external_ipv6_prefix_length: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The resource name of the backup instance.
 
     > **Warning:** `name` is deprecated and will be removed in a future major release. The backup is identified by the parameters (location, backup_vault_id, data_source_id, backup_id).
     """
-    network_tier: NotRequired[pulumi.Input[_builtins.str]]
+    network_tier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
     """
-    public_ptr_domain_name: NotRequired[pulumi.Input[_builtins.str]]
+    public_ptr_domain_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    set_public_ptr: NotRequired[pulumi.Input[_builtins.bool]]
+    set_public_ptr: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. Type of the resource.
     """
@@ -2917,14 +2917,14 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs:
     def __init__(__self__, *,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_ipv6_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ptr_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 set_public_ptr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ptr_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 set_public_ptr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] external_ip: (Optional)
         :param pulumi.Input[_builtins.str] external_ipv6: (Optional)
@@ -2957,43 +2957,43 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
 
     @_builtins.property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "external_ip")
 
     @external_ip.setter
-    def external_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6")
-    def external_ipv6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ipv6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "external_ipv6")
 
     @external_ipv6.setter
-    def external_ipv6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ipv6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="externalIpv6PrefixLength")
-    def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def external_ipv6_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
     @external_ipv6_prefix_length.setter
-    def external_ipv6_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def external_ipv6_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "external_ipv6_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The resource name of the backup instance.
@@ -3003,60 +3003,60 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values: ["NETWORK_TIER_UNSPECIFIED", "PREMIUM", "STANDARD"]
         """
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
-    def network_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="publicPtrDomainName")
-    def public_ptr_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ptr_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
-    def public_ptr_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ptr_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ptr_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="setPublicPtr")
-    def set_public_ptr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def set_public_ptr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "set_public_ptr")
 
     @set_public_ptr.setter
-    def set_public_ptr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def set_public_ptr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "set_public_ptr", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Type of the resource.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgsDict(TypedDict):
-    total_egress_bandwidth_tier: NotRequired[pulumi.Input[_builtins.str]]
+    total_egress_bandwidth_tier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
     """
@@ -3064,7 +3064,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArg
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
-                 total_egress_bandwidth_tier: Optional[pulumi.Input[_builtins.str]] = None):
+                 total_egress_bandwidth_tier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] total_egress_bandwidth_tier: Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
         """
@@ -3073,19 +3073,19 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArg
 
     @_builtins.property
     @pulumi.getter(name="totalEgressBandwidthTier")
-    def total_egress_bandwidth_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_egress_bandwidth_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
         """
         return pulumi.get(self, "total_egress_bandwidth_tier")
 
     @total_egress_bandwidth_tier.setter
-    def total_egress_bandwidth_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_egress_bandwidth_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesParamsArgsDict(TypedDict):
-    resource_manager_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgsDict']]]]
+    resource_manager_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]]]
     """
     Structure is documented below.
     """
@@ -3093,7 +3093,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParamsArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs:
     def __init__(__self__, *,
-                 resource_manager_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]] = None):
+                 resource_manager_tags: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]] resource_manager_tags: Structure is documented below.
         """
@@ -3102,14 +3102,14 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]]:
+    def resource_manager_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]]):
+    def resource_manager_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
 
@@ -3118,7 +3118,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArg
     """
     The identifier for this object. Format specified above.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -3127,7 +3127,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArg
 class RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -3150,57 +3150,57 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArg
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgsDict(TypedDict):
-    automatic_restart: NotRequired[pulumi.Input[_builtins.bool]]
+    automatic_restart: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    instance_termination_action: NotRequired[pulumi.Input[_builtins.str]]
+    instance_termination_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
     """
-    local_ssd_recovery_timeout: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgsDict']]
+    local_ssd_recovery_timeout: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    max_run_duration: NotRequired[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgsDict']]
+    max_run_duration: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    min_node_cpus: NotRequired[pulumi.Input[_builtins.int]]
+    min_node_cpus: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    node_affinities: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgsDict']]]]
+    node_affinities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]]]
     """
     Structure is documented below.
     """
-    on_host_maintenance: NotRequired[pulumi.Input[_builtins.str]]
+    on_host_maintenance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
     """
-    preemptible: NotRequired[pulumi.Input[_builtins.bool]]
+    preemptible: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    provisioning_model: NotRequired[pulumi.Input[_builtins.str]]
+    provisioning_model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
     """
-    termination_time: NotRequired[pulumi.Input[_builtins.str]]
+    termination_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -3208,16 +3208,16 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgsDict(TypedDic
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs:
     def __init__(__self__, *,
-                 automatic_restart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_termination_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_ssd_recovery_timeout: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
-                 max_run_duration: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']] = None,
-                 min_node_cpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_affinities: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]] = None,
-                 on_host_maintenance: Optional[pulumi.Input[_builtins.str]] = None,
-                 preemptible: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provisioning_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 automatic_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_termination_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_recovery_timeout: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
+                 max_run_duration: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']] = None,
+                 min_node_cpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_affinities: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]] = None,
+                 on_host_maintenance: pulumi.Input[Optional[_builtins.str]] = None,
+                 preemptible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provisioning_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] automatic_restart: (Optional)
         :param pulumi.Input[_builtins.str] instance_termination_action: Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
@@ -3255,31 +3255,31 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs:
 
     @_builtins.property
     @pulumi.getter(name="automaticRestart")
-    def automatic_restart(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def automatic_restart(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "automatic_restart")
 
     @automatic_restart.setter
-    def automatic_restart(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def automatic_restart(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "automatic_restart", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTerminationAction")
-    def instance_termination_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_termination_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
         """
         return pulumi.get(self, "instance_termination_action")
 
     @instance_termination_action.setter
-    def instance_termination_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_termination_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_termination_action", value)
 
     @_builtins.property
     @pulumi.getter(name="localSsdRecoveryTimeout")
-    def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']]:
+    def local_ssd_recovery_timeout(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3287,12 +3287,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs:
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @local_ssd_recovery_timeout.setter
-    def local_ssd_recovery_timeout(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']]):
+    def local_ssd_recovery_timeout(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']]):
         pulumi.set(self, "local_ssd_recovery_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRunDuration")
-    def max_run_duration(self) -> Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']]:
+    def max_run_duration(self) -> pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -3300,88 +3300,88 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs:
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
-    def max_run_duration(self, value: Optional[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']]):
+    def max_run_duration(self, value: pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']]):
         pulumi.set(self, "max_run_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="minNodeCpus")
-    def min_node_cpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_node_cpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "min_node_cpus")
 
     @min_node_cpus.setter
-    def min_node_cpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_node_cpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_node_cpus", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinities")
-    def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]]:
+    def node_affinities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
-    def node_affinities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]]):
+    def node_affinities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]]):
         pulumi.set(self, "node_affinities", value)
 
     @_builtins.property
     @pulumi.getter(name="onHostMaintenance")
-    def on_host_maintenance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_host_maintenance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
         """
         return pulumi.get(self, "on_host_maintenance")
 
     @on_host_maintenance.setter
-    def on_host_maintenance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_host_maintenance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_host_maintenance", value)
 
     @_builtins.property
     @pulumi.getter
-    def preemptible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preemptible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "preemptible")
 
     @preemptible.setter
-    def preemptible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preemptible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preemptible", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningModel")
-    def provisioning_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioning_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
         """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
-    def provisioning_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioning_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioning_model", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationTime")
-    def termination_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def termination_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "termination_time")
 
     @termination_time.setter
-    def termination_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def termination_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "termination_time", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgsDict(TypedDict):
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -3389,8 +3389,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryT
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] nanos: (Optional)
         :param pulumi.Input[_builtins.int] seconds: (Optional)
@@ -3402,35 +3402,35 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryT
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgsDict(TypedDict):
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Optional)
     """
@@ -3438,8 +3438,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArg
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs:
     def __init__(__self__, *,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] nanos: (Optional)
         :param pulumi.Input[_builtins.int] seconds: (Optional)
@@ -3451,39 +3451,39 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArg
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Optional)
         """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
     """
-    values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
@@ -3491,9 +3491,9 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgsD
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] key: (Optional)
         :param pulumi.Input[_builtins.str] operator: Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
@@ -3508,47 +3508,47 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgsDict(TypedDict):
-    email: NotRequired[pulumi.Input[_builtins.str]]
+    email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
@@ -3556,8 +3556,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgsDict(Type
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] email: (Optional)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: (Optional)
@@ -3569,39 +3569,39 @@ class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgsDict(TypedDict):
-    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
-    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_vtpm: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional)
     """
@@ -3609,9 +3609,9 @@ class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgsD
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_integrity_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_vtpm: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_vtpm: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_integrity_monitoring: (Optional)
         :param pulumi.Input[_builtins.bool] enable_secure_boot: (Optional)
@@ -3626,43 +3626,43 @@ class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableIntegrityMonitoring")
-    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
-    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_integrity_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
     @_builtins.property
     @pulumi.getter(name="enableVtpm")
-    def enable_vtpm(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_vtpm(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional)
         """
         return pulumi.get(self, "enable_vtpm")
 
     @enable_vtpm.setter
-    def enable_vtpm(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_vtpm(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_vtpm", value)
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesTagsArgsDict(TypedDict):
-    items: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Optional)
     """
@@ -3670,7 +3670,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesTagsArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs:
     def __init__(__self__, *,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] items: (Optional)
         """
@@ -3679,14 +3679,14 @@ class RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Optional)
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "items", value)
 
 
@@ -3750,65 +3750,65 @@ class RestoreWorkloadDiskRestorePropertiesArgsDict(TypedDict):
     """
     Required. URL of the disk type resource describing which disk type to use.
     """
-    access_mode: NotRequired[pulumi.Input[_builtins.str]]
+    access_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The access mode of the disk.
     Possible values are: `READ_WRITE_SINGLE`, `READ_WRITE_MANY`, `READ_ONLY_MANY`.
     """
-    architecture: NotRequired[pulumi.Input[_builtins.str]]
+    architecture: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The architecture of the source disk.
     Possible values are: `ARCHITECTURE_UNSPECIFIED`, `X86_64`, `ARM64`.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. An optional description of this resource.
     """
-    disk_encryption_key: NotRequired[pulumi.Input['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgsDict']]
+    disk_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']]]
     """
     Optional. Encrypts the disk using a customer-supplied encryption key.
     Structure is documented below.
     """
-    enable_confidential_compute: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_confidential_compute: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. Indicates whether this disk is using confidential compute mode.
     """
-    guest_os_features: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgsDict']]]]
+    guest_os_features: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]]]
     """
     Optional. A list of features to enable in the guest operating system.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgsDict']]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]]]
     """
     Optional. Labels to apply to this disk.
     Structure is documented below.
     """
-    licenses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    licenses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. A list of publicly available licenses that are applicable to this backup.
     """
-    physical_block_size_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    physical_block_size_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Physical block size of the persistent disk, in bytes.
     """
-    provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Indicates how many IOPS to provision for the disk.
     """
-    provisioned_throughput: NotRequired[pulumi.Input[_builtins.int]]
+    provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Indicates how much throughput to provision for the disk.
     """
-    resource_manager_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgsDict']]]]
+    resource_manager_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]]]
     """
     Optional. Resource manager tags to be bound to the disk.
     Structure is documented below.
     """
-    resource_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Optional. Resource policies applied to this disk.
     """
-    storage_pool: NotRequired[pulumi.Input[_builtins.str]]
+    storage_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The storage pool in which the new disk is created.
     """
@@ -3819,20 +3819,20 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
                  name: pulumi.Input[_builtins.str],
                  size_gb: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']] = None,
-                 enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 physical_block_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_manager_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]] = None,
-                 resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 storage_pool: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key: pulumi.Input[Optional['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']] = None,
+                 enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_manager_tags: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]] = None,
+                 resource_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 storage_pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Required. Name of the disk.
         :param pulumi.Input[_builtins.int] size_gb: Required. The size of the disk in GB.
@@ -3928,7 +3928,7 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The access mode of the disk.
         Possible values are: `READ_WRITE_SINGLE`, `READ_WRITE_MANY`, `READ_ONLY_MANY`.
@@ -3936,12 +3936,12 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The architecture of the source disk.
         Possible values are: `ARCHITECTURE_UNSPECIFIED`, `X86_64`, `ARM64`.
@@ -3949,24 +3949,24 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> pulumi.Input[Optional['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']]:
         """
         Optional. Encrypts the disk using a customer-supplied encryption key.
         Structure is documented below.
@@ -3974,24 +3974,24 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: pulumi.Input[Optional['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_confidential_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Indicates whether this disk is using confidential compute mode.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
-    def enable_confidential_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_confidential_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]]:
         """
         Optional. A list of features to enable in the guest operating system.
         Structure is documented below.
@@ -3999,12 +3999,12 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]]:
         """
         Optional. Labels to apply to this disk.
         Structure is documented below.
@@ -4012,60 +4012,60 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. A list of publicly available licenses that are applicable to this backup.
         """
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalBlockSizeBytes")
-    def physical_block_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def physical_block_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Physical block size of the persistent disk, in bytes.
         """
         return pulumi.get(self, "physical_block_size_bytes")
 
     @physical_block_size_bytes.setter
-    def physical_block_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def physical_block_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "physical_block_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Indicates how many IOPS to provision for the disk.
         """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedThroughput")
-    def provisioned_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. Indicates how much throughput to provision for the disk.
         """
         return pulumi.get(self, "provisioned_throughput")
 
     @provisioned_throughput.setter
-    def provisioned_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerTags")
-    def resource_manager_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]]:
+    def resource_manager_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]]:
         """
         Optional. Resource manager tags to be bound to the disk.
         Structure is documented below.
@@ -4073,48 +4073,48 @@ class RestoreWorkloadDiskRestorePropertiesArgs:
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
-    def resource_manager_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]]):
+    def resource_manager_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]]):
         pulumi.set(self, "resource_manager_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePolicies")
-    def resource_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional. Resource policies applied to this disk.
         """
         return pulumi.get(self, "resource_policies")
 
     @resource_policies.setter
-    def resource_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePool")
-    def storage_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The storage pool in which the new disk is created.
         """
         return pulumi.get(self, "storage_pool")
 
     @storage_pool.setter
-    def storage_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_pool", value)
 
 
 class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgsDict(TypedDict):
-    kms_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    kms_key_service_account: NotRequired[pulumi.Input[_builtins.str]]
+    kms_key_service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    raw_key: NotRequired[pulumi.Input[_builtins.str]]
+    raw_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
-    rsa_encrypted_key: NotRequired[pulumi.Input[_builtins.str]]
+    rsa_encrypted_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -4122,10 +4122,10 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 raw_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rsa_encrypted_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 raw_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rsa_encrypted_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kms_key_name: (Optional)
         :param pulumi.Input[_builtins.str] kms_key_service_account: (Optional)
@@ -4143,55 +4143,55 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyServiceAccount")
-    def kms_key_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "kms_key_service_account")
 
     @kms_key_service_account.setter
-    def kms_key_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="rawKey")
-    def raw_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def raw_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "raw_key")
 
     @raw_key.setter
-    def raw_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def raw_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "raw_key", value)
 
     @_builtins.property
     @pulumi.getter(name="rsaEncryptedKey")
-    def rsa_encrypted_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rsa_encrypted_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "rsa_encrypted_key")
 
     @rsa_encrypted_key.setter
-    def rsa_encrypted_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rsa_encrypted_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rsa_encrypted_key", value)
 
 
 class RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
     """
@@ -4199,7 +4199,7 @@ class RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
         """
@@ -4208,14 +4208,14 @@ class RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values are: `FEATURE_TYPE_UNSPECIFIED`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `MULTI_IP_SUBNET`, `UEFI_COMPATIBLE`, `SECURE_BOOT`, `GVNIC`, `SEV_CAPABLE`, `BARE_METAL_LINUX_COMPATIBLE`, `SUSPEND_RESUME_COMPATIBLE`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `TDX_CAPABLE`, `IDPF`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -4224,7 +4224,7 @@ class RestoreWorkloadDiskRestorePropertiesLabelArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -4233,7 +4233,7 @@ class RestoreWorkloadDiskRestorePropertiesLabelArgsDict(TypedDict):
 class RestoreWorkloadDiskRestorePropertiesLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -4256,14 +4256,14 @@ class RestoreWorkloadDiskRestorePropertiesLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4272,7 +4272,7 @@ class RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional)
     """
@@ -4281,7 +4281,7 @@ class RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgsDict(TypedDict):
 class RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] value: (Optional)
@@ -4304,14 +4304,14 @@ class RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional)
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -4429,7 +4429,7 @@ class RestoreWorkloadRegionDiskTargetEnvironmentArgs:
 
 
 class RestoreWorkloadTargetResourceArgsDict(TypedDict):
-    gcp_resource: NotRequired[pulumi.Input['RestoreWorkloadTargetResourceGcpResourceArgsDict']]
+    gcp_resource: NotRequired[pulumi.Input[Optional['RestoreWorkloadTargetResourceGcpResourceArgs']]]
     """
     Output only. Details of the native Google Cloud resource created as part of restore.
     Structure is documented below.
@@ -4438,7 +4438,7 @@ class RestoreWorkloadTargetResourceArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreWorkloadTargetResourceArgs:
     def __init__(__self__, *,
-                 gcp_resource: Optional[pulumi.Input['RestoreWorkloadTargetResourceGcpResourceArgs']] = None):
+                 gcp_resource: pulumi.Input[Optional['RestoreWorkloadTargetResourceGcpResourceArgs']] = None):
         """
         :param pulumi.Input['RestoreWorkloadTargetResourceGcpResourceArgs'] gcp_resource: Output only. Details of the native Google Cloud resource created as part of restore.
                Structure is documented below.
@@ -4448,7 +4448,7 @@ class RestoreWorkloadTargetResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcpResource")
-    def gcp_resource(self) -> Optional[pulumi.Input['RestoreWorkloadTargetResourceGcpResourceArgs']]:
+    def gcp_resource(self) -> pulumi.Input[Optional['RestoreWorkloadTargetResourceGcpResourceArgs']]:
         """
         Output only. Details of the native Google Cloud resource created as part of restore.
         Structure is documented below.
@@ -4456,20 +4456,20 @@ class RestoreWorkloadTargetResourceArgs:
         return pulumi.get(self, "gcp_resource")
 
     @gcp_resource.setter
-    def gcp_resource(self, value: Optional[pulumi.Input['RestoreWorkloadTargetResourceGcpResourceArgs']]):
+    def gcp_resource(self, value: pulumi.Input[Optional['RestoreWorkloadTargetResourceGcpResourceArgs']]):
         pulumi.set(self, "gcp_resource", value)
 
 
 class RestoreWorkloadTargetResourceGcpResourceArgsDict(TypedDict):
-    gcp_resourcename: NotRequired[pulumi.Input[_builtins.str]]
+    gcp_resourcename: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. Name of the Google Cloud resource.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. The location for the backup vault.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. Type of the resource.
     """
@@ -4477,9 +4477,9 @@ class RestoreWorkloadTargetResourceGcpResourceArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreWorkloadTargetResourceGcpResourceArgs:
     def __init__(__self__, *,
-                 gcp_resourcename: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 gcp_resourcename: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] gcp_resourcename: Output only. Name of the Google Cloud resource.
         :param pulumi.Input[_builtins.str] location: Required. The location for the backup vault.
@@ -4494,38 +4494,38 @@ class RestoreWorkloadTargetResourceGcpResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcpResourcename")
-    def gcp_resourcename(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_resourcename(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Name of the Google Cloud resource.
         """
         return pulumi.get(self, "gcp_resourcename")
 
     @gcp_resourcename.setter
-    def gcp_resourcename(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_resourcename(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_resourcename", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The location for the backup vault.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Type of the resource.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

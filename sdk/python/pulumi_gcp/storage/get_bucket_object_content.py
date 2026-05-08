@@ -412,9 +412,9 @@ def get_bucket_object_content(bucket: Optional[_builtins.str] = None,
         source_md5hash=pulumi.get(__ret__, 'source_md5hash'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
         temporary_hold=pulumi.get(__ret__, 'temporary_hold'))
-def get_bucket_object_content_output(bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                                     content: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_bucket_object_content_output(bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                                     content: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     name: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectContentResult]:
     """
     Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).

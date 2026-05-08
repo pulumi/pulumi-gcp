@@ -177,30 +177,30 @@ export interface ResponsePolicyRuleState {
      * (Optional, Beta)
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name;
      * in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      * Structure is documented below.
      */
-    localData?: pulumi.Input<inputs.dns.ResponsePolicyRuleLocalData>;
+    localData?: pulumi.Input<inputs.dns.ResponsePolicyRuleLocalData | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Identifies the response policy addressed by this request.
      */
-    responsePolicy?: pulumi.Input<string>;
+    responsePolicy?: pulumi.Input<string | undefined>;
     /**
      * An identifier for this rule. Must be unique with the ResponsePolicy.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,7 +211,7 @@ export interface ResponsePolicyRuleArgs {
      * (Optional, Beta)
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
@@ -221,12 +221,12 @@ export interface ResponsePolicyRuleArgs {
      * in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      * Structure is documented below.
      */
-    localData?: pulumi.Input<inputs.dns.ResponsePolicyRuleLocalData>;
+    localData?: pulumi.Input<inputs.dns.ResponsePolicyRuleLocalData | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Identifies the response policy addressed by this request.
      */

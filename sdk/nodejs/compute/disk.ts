@@ -572,35 +572,35 @@ export interface DiskState {
      * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
      * The AccessMode is only valid for Hyperdisk disk types.
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * The architecture of the disk. Values include `X86_64`, `ARM64`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
+    asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk | undefined>;
     /**
      * If set to true, a snapshot of the disk will be created before it is destroyed.
      * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
      * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
      */
-    createSnapshotBeforeDestroy?: pulumi.Input<boolean>;
+    createSnapshotBeforeDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
      */
-    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string>;
+    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Encrypts the disk using a customer-supplied encryption key.
      * After you encrypt a disk with a customer-supplied key, you must
@@ -613,31 +613,31 @@ export interface DiskState {
      * you do not need to provide a key to use the disk later.
      * Structure is documented below.
      */
-    diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
+    diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether this disk is using confidential compute mode.
      * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
-    enableConfidentialCompute?: pulumi.Input<boolean>;
+    enableConfidentialCompute?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
-    eraseWindowsVssSignature?: pulumi.Input<boolean>;
+    eraseWindowsVssSignature?: pulumi.Input<boolean | undefined>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
      */
-    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.DiskGuestOsFeature>[]>;
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.DiskGuestOsFeature>[] | undefined>;
     /**
      * The image from which to initialize this disk. This can be
      * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -649,7 +649,7 @@ export interface DiskState {
      * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
      * These images can be referred by family name here.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -658,36 +658,36 @@ export interface DiskState {
      *
      * @deprecated `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this disk.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Last attach timestamp in RFC3339 text format.
      */
-    lastAttachTimestamp?: pulumi.Input<string>;
+    lastAttachTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Last detach timestamp in RFC3339 text format.
      */
-    lastDetachTimestamp?: pulumi.Input<string>;
+    lastDetachTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Any applicable license URI.
      */
-    licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    licenses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Optional, Beta)
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
-    multiWriter?: pulumi.Input<boolean>;
+    multiWriter?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -697,12 +697,12 @@ export interface DiskState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.DiskParams>;
+    params?: pulumi.Input<inputs.compute.DiskParams | undefined>;
     /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
@@ -710,29 +710,29 @@ export interface DiskState {
      * If an unsupported value is requested, the error message will list
      * the supported values for the caller's project.
      */
-    physicalBlockSizeBytes?: pulumi.Input<number>;
+    physicalBlockSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
      * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
      * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
-    provisionedIops?: pulumi.Input<number>;
+    provisionedIops?: pulumi.Input<number | undefined>;
     /**
      * Indicates how much Throughput must be provisioned for the disk.
      * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
      * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
-    provisionedThroughput?: pulumi.Input<number>;
+    provisionedThroughput?: pulumi.Input<number | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Optional, Beta)
      * Resource policies applied to this disk for automatic snapshot creations.
@@ -742,11 +742,11 @@ export interface DiskState {
      * `gcp.compute.DiskResourcePolicyAttachment`
      * to allow for updating the resource policy attached to the disk.
      */
-    resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    resourcePolicies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Size of the persistent disk, specified in GB. You can specify this
      * field when creating a persistent disk using the `image` or
@@ -760,7 +760,7 @@ export interface DiskState {
      * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
      * and recreating.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The source snapshot used to create this disk. You can provide this as
      * a partial or full URL to the resource. If the snapshot is in another
@@ -770,7 +770,7 @@ export interface DiskState {
      * * `projects/project/global/snapshots/snapshot`
      * * `global/snapshots/snapshot`
      */
-    snapshot?: pulumi.Input<string>;
+    snapshot?: pulumi.Input<string | undefined>;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
@@ -781,19 +781,19 @@ export interface DiskState {
      * * zones/{zone}/disks/{disk}
      * * regions/{region}/disks/{disk}
      */
-    sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string | undefined>;
     /**
      * The ID value of the disk used to create this image. This value may
      * be used to determine whether the image was taken from the current
      * or a previous instance of a given disk name.
      */
-    sourceDiskId?: pulumi.Input<string>;
+    sourceDiskId?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source image. Required if
      * the source image is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey | undefined>;
     /**
      * The ID value of the image used to create this disk. This value
      * identifies the exact image that was used to create this persistent
@@ -801,7 +801,7 @@ export interface DiskState {
      * that was later deleted and recreated under the same name, the source
      * image ID would identify the exact version of the image that was used.
      */
-    sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string | undefined>;
     /**
      * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
@@ -809,7 +809,7 @@ export interface DiskState {
      * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
      * * `zones/zone/instantSnapshots/instantSnapshot`
      */
-    sourceInstantSnapshot?: pulumi.Input<string>;
+    sourceInstantSnapshot?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the instant snapshot used to create this disk. This value identifies
      * the exact instant snapshot that was used to create this persistent disk.
@@ -817,14 +817,14 @@ export interface DiskState {
      * deleted and recreated under the same name, the source instant snapshot ID would identify
      * the exact version of the instant snapshot that was used.
      */
-    sourceInstantSnapshotId?: pulumi.Input<string>;
+    sourceInstantSnapshotId?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
      * Structure is documented below.
      */
-    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
+    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey | undefined>;
     /**
      * The unique ID of the snapshot used to create this disk. This value
      * identifies the exact snapshot that was used to create this persistent
@@ -833,7 +833,7 @@ export interface DiskState {
      * snapshot ID would identify the exact version of the snapshot that was
      * used.
      */
-    sourceSnapshotId?: pulumi.Input<string>;
+    sourceSnapshotId?: pulumi.Input<string | undefined>;
     /**
      * The full Google Cloud Storage URI where the disk image is stored.
      * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
@@ -841,7 +841,7 @@ export interface DiskState {
      * This flag is not optimized for creating multiple disks from a source storage object.
      * To create many disks from a source storage object, use gcloud compute images import instead.
      */
-    sourceStorageObject?: pulumi.Input<string>;
+    sourceStorageObject?: pulumi.Input<string | undefined>;
     /**
      * The URL or the name of the storage pool in which the new disk is created.
      * For example:
@@ -850,21 +850,21 @@ export interface DiskState {
      * * /zones/{zone}/storagePools/{storagePool}
      * * /{storagePool}
      */
-    storagePool?: pulumi.Input<string>;
+    storagePool?: pulumi.Input<string | undefined>;
     /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Links to the users of the disk (attached instances) in form:
      * project/zones/zone/instances/instance
      */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the zone where the disk resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -879,31 +879,31 @@ export interface DiskArgs {
      * * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
      * The AccessMode is only valid for Hyperdisk disk types.
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * The architecture of the disk. Values include `X86_64`, `ARM64`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
+    asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk | undefined>;
     /**
      * If set to true, a snapshot of the disk will be created before it is destroyed.
      * If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
      * The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
      */
-    createSnapshotBeforeDestroy?: pulumi.Input<boolean>;
+    createSnapshotBeforeDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * This will set a custom name prefix for the snapshot that's created when the disk is deleted.
      */
-    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string>;
+    createSnapshotBeforeDestroyPrefix?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Encrypts the disk using a customer-supplied encryption key.
      * After you encrypt a disk with a customer-supplied key, you must
@@ -916,23 +916,23 @@ export interface DiskArgs {
      * you do not need to provide a key to use the disk later.
      * Structure is documented below.
      */
-    diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
+    diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
      * Whether this disk is using confidential compute mode.
      * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
-    enableConfidentialCompute?: pulumi.Input<boolean>;
+    enableConfidentialCompute?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
-    eraseWindowsVssSignature?: pulumi.Input<boolean>;
+    eraseWindowsVssSignature?: pulumi.Input<boolean | undefined>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
      */
-    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.DiskGuestOsFeature>[]>;
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.DiskGuestOsFeature>[] | undefined>;
     /**
      * The image from which to initialize this disk. This can be
      * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
@@ -944,7 +944,7 @@ export interface DiskArgs {
      * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
      * These images can be referred by family name here.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -953,23 +953,23 @@ export interface DiskArgs {
      *
      * @deprecated `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this disk.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Any applicable license URI.
      */
-    licenses?: pulumi.Input<pulumi.Input<string>[]>;
+    licenses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Optional, Beta)
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
-    multiWriter?: pulumi.Input<boolean>;
+    multiWriter?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -979,12 +979,12 @@ export interface DiskArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.DiskParams>;
+    params?: pulumi.Input<inputs.compute.DiskParams | undefined>;
     /**
      * Physical block size of the persistent disk, in bytes. If not present
      * in a request, a default value is used. Currently supported sizes
@@ -992,24 +992,24 @@ export interface DiskArgs {
      * If an unsupported value is requested, the error message will list
      * the supported values for the caller's project.
      */
-    physicalBlockSizeBytes?: pulumi.Input<number>;
+    physicalBlockSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
      * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
      * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
-    provisionedIops?: pulumi.Input<number>;
+    provisionedIops?: pulumi.Input<number | undefined>;
     /**
      * Indicates how much Throughput must be provisioned for the disk.
      * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
      * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
-    provisionedThroughput?: pulumi.Input<number>;
+    provisionedThroughput?: pulumi.Input<number | undefined>;
     /**
      * (Optional, Beta)
      * Resource policies applied to this disk for automatic snapshot creations.
@@ -1019,7 +1019,7 @@ export interface DiskArgs {
      * `gcp.compute.DiskResourcePolicyAttachment`
      * to allow for updating the resource policy attached to the disk.
      */
-    resourcePolicies?: pulumi.Input<pulumi.Input<string>[]>;
+    resourcePolicies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Size of the persistent disk, specified in GB. You can specify this
      * field when creating a persistent disk using the `image` or
@@ -1033,7 +1033,7 @@ export interface DiskArgs {
      * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
      * and recreating.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The source snapshot used to create this disk. You can provide this as
      * a partial or full URL to the resource. If the snapshot is in another
@@ -1043,7 +1043,7 @@ export interface DiskArgs {
      * * `projects/project/global/snapshots/snapshot`
      * * `global/snapshots/snapshot`
      */
-    snapshot?: pulumi.Input<string>;
+    snapshot?: pulumi.Input<string | undefined>;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
@@ -1054,13 +1054,13 @@ export interface DiskArgs {
      * * zones/{zone}/disks/{disk}
      * * regions/{region}/disks/{disk}
      */
-    sourceDisk?: pulumi.Input<string>;
+    sourceDisk?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source image. Required if
      * the source image is protected by a customer-supplied encryption key.
      * Structure is documented below.
      */
-    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey>;
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceImageEncryptionKey | undefined>;
     /**
      * The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource.
      * For example, the following are valid values:
@@ -1068,14 +1068,14 @@ export interface DiskArgs {
      * * `projects/project/zones/zone/instantSnapshots/instantSnapshot`
      * * `zones/zone/instantSnapshots/instantSnapshot`
      */
-    sourceInstantSnapshot?: pulumi.Input<string>;
+    sourceInstantSnapshot?: pulumi.Input<string | undefined>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
      * Structure is documented below.
      */
-    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey>;
+    sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.DiskSourceSnapshotEncryptionKey | undefined>;
     /**
      * The full Google Cloud Storage URI where the disk image is stored.
      * This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk.
@@ -1083,7 +1083,7 @@ export interface DiskArgs {
      * This flag is not optimized for creating multiple disks from a source storage object.
      * To create many disks from a source storage object, use gcloud compute images import instead.
      */
-    sourceStorageObject?: pulumi.Input<string>;
+    sourceStorageObject?: pulumi.Input<string | undefined>;
     /**
      * The URL or the name of the storage pool in which the new disk is created.
      * For example:
@@ -1092,14 +1092,14 @@ export interface DiskArgs {
      * * /zones/{zone}/storagePools/{storagePool}
      * * /{storagePool}
      */
-    storagePool?: pulumi.Input<string>;
+    storagePool?: pulumi.Input<string | undefined>;
     /**
      * URL of the disk type resource describing which disk type to use to
      * create the disk. Provide this when creating the disk.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * A reference to the zone where the disk resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

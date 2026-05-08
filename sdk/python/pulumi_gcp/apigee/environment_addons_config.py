@@ -20,7 +20,7 @@ __all__ = ['EnvironmentAddonsConfigArgs', 'EnvironmentAddonsConfig']
 class EnvironmentAddonsConfigArgs:
     def __init__(__self__, *,
                  env_id: pulumi.Input[_builtins.str],
-                 analytics_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 analytics_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EnvironmentAddonsConfig resource.
 
@@ -47,22 +47,22 @@ class EnvironmentAddonsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="analyticsEnabled")
-    def analytics_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def analytics_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable/disable Analytics.
         """
         return pulumi.get(self, "analytics_enabled")
 
     @analytics_enabled.setter
-    def analytics_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def analytics_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "analytics_enabled", value)
 
 
 @pulumi.input_type
 class _EnvironmentAddonsConfigState:
     def __init__(__self__, *,
-                 analytics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 analytics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentAddonsConfig resources.
 
@@ -77,19 +77,19 @@ class _EnvironmentAddonsConfigState:
 
     @_builtins.property
     @pulumi.getter(name="analyticsEnabled")
-    def analytics_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def analytics_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable/disable Analytics.
         """
         return pulumi.get(self, "analytics_enabled")
 
     @analytics_enabled.setter
-    def analytics_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def analytics_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "analytics_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="envId")
-    def env_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
@@ -97,7 +97,7 @@ class _EnvironmentAddonsConfigState:
         return pulumi.get(self, "env_id")
 
     @env_id.setter
-    def env_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_id", value)
 
 
@@ -107,8 +107,8 @@ class EnvironmentAddonsConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 analytics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Enable/Disable add-ons for an Apigee environment.
@@ -185,8 +185,8 @@ class EnvironmentAddonsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 env_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 analytics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -210,8 +210,8 @@ class EnvironmentAddonsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            analytics_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            env_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvironmentAddonsConfig':
+            analytics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvironmentAddonsConfig':
         """
         Get an existing EnvironmentAddonsConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

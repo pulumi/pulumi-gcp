@@ -630,31 +630,31 @@ export interface BackupPlanState {
      * Defines the configuration of Backups created via this BackupPlan.
      * Structure is documented below.
      */
-    backupConfig?: pulumi.Input<inputs.gkebackup.BackupPlanBackupConfig>;
+    backupConfig?: pulumi.Input<inputs.gkebackup.BackupPlanBackupConfig | undefined>;
     /**
      * Defines a schedule for automatic Backup creation via this BackupPlan.
      * Structure is documented below.
      */
-    backupSchedule?: pulumi.Input<inputs.gkebackup.BackupPlanBackupSchedule>;
+    backupSchedule?: pulumi.Input<inputs.gkebackup.BackupPlanBackupSchedule | undefined>;
     /**
      * The source cluster from which Backups will be created via this BackupPlan.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * This flag indicates whether this BackupPlan has been deactivated.
      * Setting this field to True locks the BackupPlan such that no further updates will be allowed
      * (except deletes), including the deactivated field itself. It also prevents any new Backups
      * from being created via this BackupPlan (including scheduled Backups).
      */
-    deactivated?: pulumi.Input<boolean>;
+    deactivated?: pulumi.Input<boolean | undefined>;
     /**
      * User specified descriptive string for this BackupPlan.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous
      * updates of a backup plan from overwriting each other. It is strongly suggested that
@@ -663,7 +663,7 @@ export interface BackupPlanState {
      * and systems are expected to put that etag in the request to backupPlans.patch or
      * backupPlans.delete to ensure that their change will be applied to the same version of the resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -672,50 +672,50 @@ export interface BackupPlanState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the Backup Plan.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full name of the BackupPlan Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The number of Kubernetes Namespaces backed up in the last successful Backup created via this BackupPlan.
      */
-    protectedNamespaceCount?: pulumi.Input<number>;
+    protectedNamespaceCount?: pulumi.Input<number | undefined>;
     /**
      * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      */
-    protectedPodCount?: pulumi.Input<number>;
+    protectedPodCount?: pulumi.Input<number | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * RetentionPolicy governs lifecycle of Backups created under this plan.
      * Structure is documented below.
      */
-    retentionPolicy?: pulumi.Input<inputs.gkebackup.BackupPlanRetentionPolicy>;
+    retentionPolicy?: pulumi.Input<inputs.gkebackup.BackupPlanRetentionPolicy | undefined>;
     /**
      * The State of the BackupPlan.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Detailed description of why BackupPlan is in its current state.
      */
-    stateReason?: pulumi.Input<string>;
+    stateReason?: pulumi.Input<string | undefined>;
     /**
      * Server generated, unique identifier of UUID format.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -726,12 +726,12 @@ export interface BackupPlanArgs {
      * Defines the configuration of Backups created via this BackupPlan.
      * Structure is documented below.
      */
-    backupConfig?: pulumi.Input<inputs.gkebackup.BackupPlanBackupConfig>;
+    backupConfig?: pulumi.Input<inputs.gkebackup.BackupPlanBackupConfig | undefined>;
     /**
      * Defines a schedule for automatic Backup creation via this BackupPlan.
      * Structure is documented below.
      */
-    backupSchedule?: pulumi.Input<inputs.gkebackup.BackupPlanBackupSchedule>;
+    backupSchedule?: pulumi.Input<inputs.gkebackup.BackupPlanBackupSchedule | undefined>;
     /**
      * The source cluster from which Backups will be created via this BackupPlan.
      */
@@ -742,11 +742,11 @@ export interface BackupPlanArgs {
      * (except deletes), including the deactivated field itself. It also prevents any new Backups
      * from being created via this BackupPlan (including scheduled Backups).
      */
-    deactivated?: pulumi.Input<boolean>;
+    deactivated?: pulumi.Input<boolean | undefined>;
     /**
      * User specified descriptive string for this BackupPlan.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Description: A set of custom labels supplied by the user.
      * A list of key->value pairs.
@@ -755,7 +755,7 @@ export interface BackupPlanArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the Backup Plan.
      */
@@ -763,15 +763,15 @@ export interface BackupPlanArgs {
     /**
      * The full name of the BackupPlan Resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * RetentionPolicy governs lifecycle of Backups created under this plan.
      * Structure is documented below.
      */
-    retentionPolicy?: pulumi.Input<inputs.gkebackup.BackupPlanRetentionPolicy>;
+    retentionPolicy?: pulumi.Input<inputs.gkebackup.BackupPlanRetentionPolicy | undefined>;
 }

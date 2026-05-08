@@ -233,24 +233,24 @@ export interface ApiHubInstanceState {
      * This value should be 4-40 characters, and valid characters
      * are `/a-z[0-9]-_/`.
      */
-    apiHubInstanceId?: pulumi.Input<string>;
+    apiHubInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Available configurations to provision an ApiHub Instance.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.apihub.ApiHubInstanceConfig>;
+    config?: pulumi.Input<inputs.apihub.ApiHubInstanceConfig | undefined>;
     /**
      * Output only. Creation timestamp.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Description of the ApiHub instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. Instance labels to represent user-provided metadata.
      * Refer to cloud documentation on labels for more details.
@@ -258,26 +258,26 @@ export interface ApiHubInstanceState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. Format:
      * `projects/{project}/locations/{location}/apiHubInstances/{apiHubInstance}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The current state of the ApiHub instance.
      * Possible values:
@@ -289,16 +289,16 @@ export interface ApiHubInstanceState {
      * DELETING
      * FAILED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. Extra information about ApiHub instance state. Currently the message
      * would be populated when state is `FAILED`.
      */
-    stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string | undefined>;
     /**
      * Output only. Last update timestamp.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -312,7 +312,7 @@ export interface ApiHubInstanceArgs {
      * This value should be 4-40 characters, and valid characters
      * are `/a-z[0-9]-_/`.
      */
-    apiHubInstanceId?: pulumi.Input<string>;
+    apiHubInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Available configurations to provision an ApiHub Instance.
      * Structure is documented below.
@@ -321,7 +321,7 @@ export interface ApiHubInstanceArgs {
     /**
      * Optional. Description of the ApiHub instance.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional. Instance labels to represent user-provided metadata.
      * Refer to cloud documentation on labels for more details.
@@ -329,7 +329,7 @@ export interface ApiHubInstanceArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -338,5 +338,5 @@ export interface ApiHubInstanceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

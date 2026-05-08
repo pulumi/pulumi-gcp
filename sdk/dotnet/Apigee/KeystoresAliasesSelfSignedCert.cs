@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Apigee
     ///         },
     ///     });
     /// 
-    ///     var wait300Seconds = new Time.Index.Sleep("wait_300_seconds", new()
+    ///     var wait300Seconds = new Time.Sleep("wait_300_seconds", new()
     ///     {
     ///         CreateDuration = "300s",
     ///     }, new CustomResourceOptions

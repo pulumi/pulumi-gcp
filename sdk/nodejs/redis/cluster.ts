@@ -1008,199 +1008,199 @@ export interface ClusterState {
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      */
-    authorizationMode?: pulumi.Input<string>;
+    authorizationMode?: pulumi.Input<string | undefined>;
     /**
      * The automated backup config for a instance.
      * Structure is documented below.
      */
-    automatedBackupConfig?: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfig>;
+    automatedBackupConfig?: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfig | undefined>;
     /**
      * This field is used to determine the available maintenance versions for the self service update.
      */
-    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The backup collection full resource name.
      * Example: projects/{project}/locations/{location}/backupCollections/{collection}
      */
-    backupCollection?: pulumi.Input<string>;
+    backupCollection?: pulumi.Input<string | undefined>;
     /**
      * The timestamp associated with the cluster creation request. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Cross cluster replication config
      * Structure is documented below.
      */
-    crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig>;
+    crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig | undefined>;
     /**
      * Optional. Indicates if the cluster is deletion protected or not.
      * If the value if set to true, any delete cluster operation will fail.
      * Default value is true.
      */
-    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. Endpoints created on each given network,
      * for Redis clients to connect to the cluster.
      * Currently only one endpoint is supported.
      * Structure is documented below.
      */
-    discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterDiscoveryEndpoint>[]>;
+    discoveryEndpoints?: pulumi.Input<pulumi.Input<inputs.redis.ClusterDiscoveryEndpoint>[] | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * This field represents the actual maintenance version of the cluster.
      */
-    effectiveMaintenanceVersion?: pulumi.Input<string>;
+    effectiveMaintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
      * Structure is documented below.
      */
-    gcsSource?: pulumi.Input<inputs.redis.ClusterGcsSource>;
+    gcsSource?: pulumi.Input<inputs.redis.ClusterGcsSource | undefined>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.redis.ClusterMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.redis.ClusterMaintenancePolicy | undefined>;
     /**
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.redis.ClusterMaintenanceSchedule>[]>;
+    maintenanceSchedules?: pulumi.Input<pulumi.Input<inputs.redis.ClusterMaintenanceSchedule>[] | undefined>;
     /**
      * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
      * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
      */
-    maintenanceVersion?: pulumi.Input<string>;
+    maintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * Backups that generated and managed by memorystore.
      * Structure is documented below.
      */
-    managedBackupSource?: pulumi.Input<inputs.redis.ClusterManagedBackupSource>;
+    managedBackupSource?: pulumi.Input<inputs.redis.ClusterManagedBackupSource | undefined>;
     /**
      * Cluster's Certificate Authority. This field will only be populated if Redis Cluster's transitEncryptionMode is TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION
      * Structure is documented below.
      */
-    managedServerCas?: pulumi.Input<pulumi.Input<inputs.redis.ClusterManagedServerCa>[]>;
+    managedServerCas?: pulumi.Input<pulumi.Input<inputs.redis.ClusterManagedServerCa>[] | undefined>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
      * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Persistence config (RDB, AOF) for the cluster.
      * Structure is documented below.
      */
-    persistenceConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfig>;
+    persistenceConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfig | undefined>;
     /**
      * Output only. Redis memory precise size in GB for the entire cluster.
      */
-    preciseSizeGb?: pulumi.Input<number>;
+    preciseSizeGb?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. Each PscConfig configures the consumer network where two
      * network addresses will be designated to the cluster for client access.
      * Currently, only one PscConfig is supported.
      * Structure is documented below.
      */
-    pscConfigs?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConfig>[]>;
+    pscConfigs?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConfig>[] | undefined>;
     /**
      * Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
      * Structure is documented below.
      */
-    pscConnections?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConnection>[]>;
+    pscConnections?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConnection>[] | undefined>;
     /**
      * Service attachment details to configure Psc connections.
      * Structure is documented below.
      */
-    pscServiceAttachments?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscServiceAttachment>[]>;
+    pscServiceAttachments?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscServiceAttachment>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
      * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
      */
-    redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the region of the Redis cluster.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Optional. The number of replica nodes per shard.
      */
-    replicaCount?: pulumi.Input<number>;
+    replicaCount?: pulumi.Input<number | undefined>;
     /**
      * The serverCaMode for the TLS enabled Redis cluster.
      * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
      * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
      */
-    serverCaMode?: pulumi.Input<string>;
+    serverCaMode?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
      * as the server_ca_mode.
      * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
      */
-    serverCaPool?: pulumi.Input<string>;
+    serverCaPool?: pulumi.Input<string | undefined>;
     /**
      * Required. Number of shards for the Redis cluster.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
     /**
      * Output only. Redis memory size in GB for the entire cluster.
      */
-    sizeGb?: pulumi.Input<number>;
+    sizeGb?: pulumi.Input<number | undefined>;
     /**
      * The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. Additional information about the current state of the cluster.
      * Structure is documented below.
      */
-    stateInfos?: pulumi.Input<pulumi.Input<inputs.redis.ClusterStateInfo>[]>;
+    stateInfos?: pulumi.Input<pulumi.Input<inputs.redis.ClusterStateInfo>[] | undefined>;
     /**
      * Optional. The in-transit encryption for the Redis cluster.
      * If not provided, encryption is disabled for the cluster.
      * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
      * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      */
-    transitEncryptionMode?: pulumi.Input<string>;
+    transitEncryptionMode?: pulumi.Input<string | undefined>;
     /**
      * System assigned, unique identifier for the cluster.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Zone distribution config for Memorystore Redis cluster.
      * Structure is documented below.
      */
-    zoneDistributionConfig?: pulumi.Input<inputs.redis.ClusterZoneDistributionConfig>;
+    zoneDistributionConfig?: pulumi.Input<inputs.redis.ClusterZoneDistributionConfig | undefined>;
 }
 
 /**
@@ -1212,107 +1212,107 @@ export interface ClusterArgs {
      * Default value is `AUTH_MODE_DISABLED`.
      * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      */
-    authorizationMode?: pulumi.Input<string>;
+    authorizationMode?: pulumi.Input<string | undefined>;
     /**
      * The automated backup config for a instance.
      * Structure is documented below.
      */
-    automatedBackupConfig?: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfig>;
+    automatedBackupConfig?: pulumi.Input<inputs.redis.ClusterAutomatedBackupConfig | undefined>;
     /**
      * Cross cluster replication config
      * Structure is documented below.
      */
-    crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig>;
+    crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig | undefined>;
     /**
      * Optional. Indicates if the cluster is deletion protected or not.
      * If the value if set to true, any delete cluster operation will fail.
      * Default value is true.
      */
-    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    deletionProtectionEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters.
      * Structure is documented below.
      */
-    gcsSource?: pulumi.Input<inputs.redis.ClusterGcsSource>;
+    gcsSource?: pulumi.Input<inputs.redis.ClusterGcsSource | undefined>;
     /**
      * The KMS key used to encrypt the at-rest data of the cluster.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Maintenance policy for a cluster
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.redis.ClusterMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.redis.ClusterMaintenancePolicy | undefined>;
     /**
      * This field can be used to trigger self service update to indicate the desired maintenance version. The input to this field can be determined by the availableMaintenanceVersions field.
      * *Note*: This field can only be specified when updating an existing cluster to a newer version. Downgrades are currently not supported!
      */
-    maintenanceVersion?: pulumi.Input<string>;
+    maintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * Backups that generated and managed by memorystore.
      * Structure is documented below.
      */
-    managedBackupSource?: pulumi.Input<inputs.redis.ClusterManagedBackupSource>;
+    managedBackupSource?: pulumi.Input<inputs.redis.ClusterManagedBackupSource | undefined>;
     /**
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
      * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Persistence config (RDB, AOF) for the cluster.
      * Structure is documented below.
      */
-    persistenceConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfig>;
+    persistenceConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. Each PscConfig configures the consumer network where two
      * network addresses will be designated to the cluster for client access.
      * Currently, only one PscConfig is supported.
      * Structure is documented below.
      */
-    pscConfigs?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConfig>[]>;
+    pscConfigs?: pulumi.Input<pulumi.Input<inputs.redis.ClusterPscConfig>[] | undefined>;
     /**
      * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
      * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
      */
-    redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    redisConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the region of the Redis cluster.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Optional. The number of replica nodes per shard.
      */
-    replicaCount?: pulumi.Input<number>;
+    replicaCount?: pulumi.Input<number | undefined>;
     /**
      * The serverCaMode for the TLS enabled Redis cluster.
      * If not provided, SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA will be used as default
      * Possible values are: `SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA`, `SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA`, `SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA`, `SERVER_CA_MODE_UNSPECIFIED`.
      */
-    serverCaMode?: pulumi.Input<string>;
+    serverCaMode?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the server CA pool for an instance with SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA
      * as the server_ca_mode.
      * Format: projects/{project}/locations/{region}/caPools/{caPoolId}
      */
-    serverCaPool?: pulumi.Input<string>;
+    serverCaPool?: pulumi.Input<string | undefined>;
     /**
      * Required. Number of shards for the Redis cluster.
      */
@@ -1323,10 +1323,10 @@ export interface ClusterArgs {
      * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
      * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      */
-    transitEncryptionMode?: pulumi.Input<string>;
+    transitEncryptionMode?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Zone distribution config for Memorystore Redis cluster.
      * Structure is documented below.
      */
-    zoneDistributionConfig?: pulumi.Input<inputs.redis.ClusterZoneDistributionConfig>;
+    zoneDistributionConfig?: pulumi.Input<inputs.redis.ClusterZoneDistributionConfig | undefined>;
 }

@@ -131,10 +131,10 @@ export interface GetNetworkOutputArgs {
     /**
      * A full or partial URL of the network profile to apply to this network.
      */
-    networkProfile?: pulumi.Input<string>;
+    networkProfile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

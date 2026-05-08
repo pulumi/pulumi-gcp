@@ -98,11 +98,11 @@ export interface GetForwardingRulesOutputArgs {
     /**
      * The name of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region you want to get the forwarding rules from.
      *
      * These arguments must be set in either the provider or the resource in order for the information to be queried.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -22,19 +22,19 @@ __all__ = ['OrganizationArgs', 'Organization']
 class OrganizationArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 analytics_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_vpc_peering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input['OrganizationPropertiesArgs']] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_database_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 analytics_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional['OrganizationPropertiesArgs']] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Organization resource.
 
@@ -115,31 +115,31 @@ class OrganizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="analyticsRegion")
-    def analytics_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def analytics_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
 
     @analytics_region.setter
-    def analytics_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def analytics_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analytics_region", value)
 
     @_builtins.property
     @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
-    def api_consumer_data_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_consumer_data_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud KMS key name used for encrypting API consumer data.
         """
         return pulumi.get(self, "api_consumer_data_encryption_key_name")
 
     @api_consumer_data_encryption_key_name.setter
-    def api_consumer_data_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_consumer_data_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_consumer_data_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="apiConsumerDataLocation")
-    def api_consumer_data_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_consumer_data_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is needed only for customers using non-default data residency regions.
         Apigee stores some control plane data only in single region.
@@ -148,12 +148,12 @@ class OrganizationArgs:
         return pulumi.get(self, "api_consumer_data_location")
 
     @api_consumer_data_location.setter
-    def api_consumer_data_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_consumer_data_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_consumer_data_location", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
         See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
@@ -162,24 +162,24 @@ class OrganizationArgs:
         return pulumi.get(self, "authorized_network")
 
     @authorized_network.setter
-    def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
 
     @_builtins.property
     @pulumi.getter(name="billingType")
-    def billing_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         """
         return pulumi.get(self, "billing_type")
 
     @billing_type.setter
-    def billing_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_type", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneEncryptionKeyName")
-    def control_plane_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
         Only used for the data residency region "US" or "EU".
@@ -187,24 +187,24 @@ class OrganizationArgs:
         return pulumi.get(self, "control_plane_encryption_key_name")
 
     @control_plane_encryption_key_name.setter
-    def control_plane_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the Apigee organization.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableVpcPeering")
-    def disable_vpc_peering(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_vpc_peering(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies whether the VPC Peering through Private Google Access should be
         disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -215,24 +215,24 @@ class OrganizationArgs:
         return pulumi.get(self, "disable_vpc_peering")
 
     @disable_vpc_peering.setter
-    def disable_vpc_peering(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_vpc_peering(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_vpc_peering", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Apigee organization.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['OrganizationPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['OrganizationPropertiesArgs']]:
         """
         Properties defined in the Apigee organization profile.
         Structure is documented below.
@@ -240,12 +240,12 @@ class OrganizationArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['OrganizationPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['OrganizationPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
         is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -257,12 +257,12 @@ class OrganizationArgs:
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeDatabaseEncryptionKeyName")
-    def runtime_database_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_database_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
         Update is not allowed after the organization is created.
@@ -272,12 +272,12 @@ class OrganizationArgs:
         return pulumi.get(self, "runtime_database_encryption_key_name")
 
     @runtime_database_encryption_key_name.setter
-    def runtime_database_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_database_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_database_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeType")
-    def runtime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Runtime type of the Apigee organization based on the Apigee subscription purchased.
         Default value is `CLOUD`.
@@ -286,31 +286,31 @@ class OrganizationArgs:
         return pulumi.get(self, "runtime_type")
 
     @runtime_type.setter
-    def runtime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_type", value)
 
 
 @pulumi.input_type
 class _OrganizationState:
     def __init__(__self__, *,
-                 analytics_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 apigee_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_vpc_peering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input['OrganizationPropertiesArgs']] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_database_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 analytics_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 apigee_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional['OrganizationPropertiesArgs']] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Organization resources.
 
@@ -394,31 +394,31 @@ class _OrganizationState:
 
     @_builtins.property
     @pulumi.getter(name="analyticsRegion")
-    def analytics_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def analytics_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
 
     @analytics_region.setter
-    def analytics_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def analytics_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "analytics_region", value)
 
     @_builtins.property
     @pulumi.getter(name="apiConsumerDataEncryptionKeyName")
-    def api_consumer_data_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_consumer_data_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud KMS key name used for encrypting API consumer data.
         """
         return pulumi.get(self, "api_consumer_data_encryption_key_name")
 
     @api_consumer_data_encryption_key_name.setter
-    def api_consumer_data_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_consumer_data_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_consumer_data_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="apiConsumerDataLocation")
-    def api_consumer_data_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_consumer_data_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is needed only for customers using non-default data residency regions.
         Apigee stores some control plane data only in single region.
@@ -427,24 +427,24 @@ class _OrganizationState:
         return pulumi.get(self, "api_consumer_data_location")
 
     @api_consumer_data_location.setter
-    def api_consumer_data_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_consumer_data_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_consumer_data_location", value)
 
     @_builtins.property
     @pulumi.getter(name="apigeeProjectId")
-    def apigee_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def apigee_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Project ID of the Apigee Tenant Project.
         """
         return pulumi.get(self, "apigee_project_id")
 
     @apigee_project_id.setter
-    def apigee_project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def apigee_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "apigee_project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
         See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
@@ -453,24 +453,24 @@ class _OrganizationState:
         return pulumi.get(self, "authorized_network")
 
     @authorized_network.setter
-    def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
 
     @_builtins.property
     @pulumi.getter(name="billingType")
-    def billing_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         """
         return pulumi.get(self, "billing_type")
 
     @billing_type.setter
-    def billing_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_type", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
         Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
@@ -478,12 +478,12 @@ class _OrganizationState:
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneEncryptionKeyName")
-    def control_plane_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
         Only used for the data residency region "US" or "EU".
@@ -491,24 +491,24 @@ class _OrganizationState:
         return pulumi.get(self, "control_plane_encryption_key_name")
 
     @control_plane_encryption_key_name.setter
-    def control_plane_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the Apigee organization.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableVpcPeering")
-    def disable_vpc_peering(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_vpc_peering(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies whether the VPC Peering through Private Google Access should be
         disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -519,48 +519,48 @@ class _OrganizationState:
         return pulumi.get(self, "disable_vpc_peering")
 
     @disable_vpc_peering.setter
-    def disable_vpc_peering(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_vpc_peering(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_vpc_peering", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Apigee organization.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Name of the Apigee organization.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID associated with the Apigee organization.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['OrganizationPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['OrganizationPropertiesArgs']]:
         """
         Properties defined in the Apigee organization profile.
         Structure is documented below.
@@ -568,12 +568,12 @@ class _OrganizationState:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['OrganizationPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['OrganizationPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
         is not EVALUATION). It controls how long Organization data will be retained after the initial delete
@@ -585,12 +585,12 @@ class _OrganizationState:
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeDatabaseEncryptionKeyName")
-    def runtime_database_encryption_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_database_encryption_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
         Update is not allowed after the organization is created.
@@ -600,12 +600,12 @@ class _OrganizationState:
         return pulumi.get(self, "runtime_database_encryption_key_name")
 
     @runtime_database_encryption_key_name.setter
-    def runtime_database_encryption_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_database_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_database_encryption_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeType")
-    def runtime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Runtime type of the Apigee organization based on the Apigee subscription purchased.
         Default value is `CLOUD`.
@@ -614,12 +614,12 @@ class _OrganizationState:
         return pulumi.get(self, "runtime_type")
 
     @runtime_type.setter
-    def runtime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_type", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionType")
-    def subscription_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Subscription type of the Apigee organization.
         Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
@@ -627,7 +627,7 @@ class _OrganizationState:
         return pulumi.get(self, "subscription_type")
 
     @subscription_type.setter
-    def subscription_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_type", value)
 
 
@@ -637,20 +637,20 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytics_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_vpc_peering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_database_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 analytics_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An `Organization` is the top-level container in Apigee.
@@ -1012,20 +1012,20 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytics_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_consumer_data_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_vpc_peering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_database_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 runtime_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 analytics_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_consumer_data_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1065,24 +1065,24 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            analytics_region: Optional[pulumi.Input[_builtins.str]] = None,
-            api_consumer_data_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            api_consumer_data_location: Optional[pulumi.Input[_builtins.str]] = None,
-            apigee_project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-            billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            control_plane_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_vpc_peering: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
-            retention: Optional[pulumi.Input[_builtins.str]] = None,
-            runtime_database_encryption_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            runtime_type: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Organization':
+            analytics_region: pulumi.Input[Optional[_builtins.str]] = None,
+            api_consumer_data_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            api_consumer_data_location: pulumi.Input[Optional[_builtins.str]] = None,
+            apigee_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Union['OrganizationPropertiesArgs', 'OrganizationPropertiesArgsDict']]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_database_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime_type: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

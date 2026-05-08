@@ -197,19 +197,19 @@ export interface InstanceIamPolicyState {
     /**
      * (Computed) The etag of the instances's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
      *
      * For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
      */
-    instance?: pulumi.Input<string>;
-    policyData?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
+    policyData?: pulumi.Input<string | undefined>;
     /**
      * The project in which the instance belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,5 +227,5 @@ export interface InstanceIamPolicyArgs {
      * The project in which the instance belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

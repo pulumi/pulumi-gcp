@@ -199,42 +199,42 @@ export interface EnvironmentState {
      * - projects/<Project ID>/agent/versions/<Version ID>
      * - projects/<Project ID>/locations/<Location ID>/agent/versions/<Version ID>
      */
-    agentVersion?: pulumi.Input<string>;
+    agentVersion?: pulumi.Input<string | undefined>;
     /**
      * The developer-provided description for this environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Required)
      */
-    environmentid?: pulumi.Input<string>;
+    environmentid?: pulumi.Input<string | undefined>;
     /**
      * desc
      * Structure is documented below.
      */
-    fulfillment?: pulumi.Input<inputs.diagflow.EnvironmentFulfillment>;
+    fulfillment?: pulumi.Input<inputs.diagflow.EnvironmentFulfillment | undefined>;
     /**
      * (Optional)
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of this agent environment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The state of this environment.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Text to speech settings for this environment.
      * Structure is documented below.
      */
-    textToSpeechSettings?: pulumi.Input<inputs.diagflow.EnvironmentTextToSpeechSettings>;
+    textToSpeechSettings?: pulumi.Input<inputs.diagflow.EnvironmentTextToSpeechSettings | undefined>;
 }
 
 /**
@@ -246,11 +246,11 @@ export interface EnvironmentArgs {
      * - projects/<Project ID>/agent/versions/<Version ID>
      * - projects/<Project ID>/locations/<Location ID>/agent/versions/<Version ID>
      */
-    agentVersion?: pulumi.Input<string>;
+    agentVersion?: pulumi.Input<string | undefined>;
     /**
      * The developer-provided description for this environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Required)
      */
@@ -259,19 +259,19 @@ export interface EnvironmentArgs {
      * desc
      * Structure is documented below.
      */
-    fulfillment?: pulumi.Input<inputs.diagflow.EnvironmentFulfillment>;
+    fulfillment?: pulumi.Input<inputs.diagflow.EnvironmentFulfillment | undefined>;
     /**
      * (Optional)
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Text to speech settings for this environment.
      * Structure is documented below.
      */
-    textToSpeechSettings?: pulumi.Input<inputs.diagflow.EnvironmentTextToSpeechSettings>;
+    textToSpeechSettings?: pulumi.Input<inputs.diagflow.EnvironmentTextToSpeechSettings | undefined>;
 }

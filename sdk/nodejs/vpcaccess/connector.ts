@@ -221,67 +221,67 @@ export interface ConnectorState {
     /**
      * List of projects using the connector.
      */
-    connectedProjects?: pulumi.Input<pulumi.Input<string>[]>;
+    connectedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
      * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      */
-    maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number | undefined>;
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
      * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      */
-    maxThroughput?: pulumi.Input<number>;
+    maxThroughput?: pulumi.Input<number | undefined>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
      * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      */
-    minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number | undefined>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
      * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
      * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      */
-    minThroughput?: pulumi.Input<number>;
+    minThroughput?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource (Max 25 characters).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified name of this VPC connector
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * State of the VPC access connector.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The subnet in which to house the connector
      * Structure is documented below.
      */
-    subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
+    subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet | undefined>;
 }
 
 /**
@@ -291,53 +291,53 @@ export interface ConnectorArgs {
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Maximum value of instances in autoscaling group underlying the connector. Value must be between 3 and 10, inclusive. Must be
      * higher than the value specified by min_instances. Required alongside `minInstances` if not using `minThroughput`/`maxThroughput`.
      */
-    maxInstances?: pulumi.Input<number>;
+    maxInstances?: pulumi.Input<number | undefined>;
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
      * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      */
-    maxThroughput?: pulumi.Input<number>;
+    maxThroughput?: pulumi.Input<number | undefined>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector. Value must be between 2 and 9, inclusive. Must be
      * lower than the value specified by max_instances. Required alongside `maxInstances` if not using `minThroughput`/`maxThroughput`.
      */
-    minInstances?: pulumi.Input<number>;
+    minInstances?: pulumi.Input<number | undefined>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
      * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
      * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      */
-    minThroughput?: pulumi.Input<number>;
+    minThroughput?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource (Max 25 characters).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name or selfLink of the VPC network. Required if `ipCidrRange` is set.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The subnet in which to house the connector
      * Structure is documented below.
      */
-    subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
+    subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet | undefined>;
 }

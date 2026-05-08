@@ -116,12 +116,12 @@ __all__ = [
 ]
 
 class AccessBoundaryPolicyRuleArgsDict(TypedDict):
-    access_boundary_rule: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict']]
+    access_boundary_rule: NotRequired[pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]]
     """
     An access boundary rule in an IAM policy.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the rule.
     """
@@ -129,8 +129,8 @@ class AccessBoundaryPolicyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class AccessBoundaryPolicyRuleArgs:
     def __init__(__self__, *,
-                 access_boundary_rule: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_boundary_rule: pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs'] access_boundary_rule: An access boundary rule in an IAM policy.
                Structure is documented below.
@@ -143,7 +143,7 @@ class AccessBoundaryPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessBoundaryRule")
-    def access_boundary_rule(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]:
+    def access_boundary_rule(self) -> pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]:
         """
         An access boundary rule in an IAM policy.
         Structure is documented below.
@@ -151,33 +151,33 @@ class AccessBoundaryPolicyRuleArgs:
         return pulumi.get(self, "access_boundary_rule")
 
     @access_boundary_rule.setter
-    def access_boundary_rule(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]):
+    def access_boundary_rule(self, value: pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]):
         pulumi.set(self, "access_boundary_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict(TypedDict):
-    availability_condition: NotRequired[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict']]
+    availability_condition: NotRequired[pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]]
     """
     The availability condition further constrains the access allowed by the access boundary rule.
     Structure is documented below.
     """
-    available_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    available_permissions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of permissions that may be allowed for use on the specified resource.
     """
-    available_resource: NotRequired[pulumi.Input[_builtins.str]]
+    available_resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full resource name of a Google Cloud resource entity.
     """
@@ -185,9 +185,9 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict(TypedDict):
 @pulumi.input_type
 class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
     def __init__(__self__, *,
-                 availability_condition: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']] = None,
-                 available_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 available_resource: Optional[pulumi.Input[_builtins.str]] = None):
+                 availability_condition: pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']] = None,
+                 available_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 available_resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs'] availability_condition: The availability condition further constrains the access allowed by the access boundary rule.
                Structure is documented below.
@@ -203,7 +203,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="availabilityCondition")
-    def availability_condition(self) -> Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]:
+    def availability_condition(self) -> pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]:
         """
         The availability condition further constrains the access allowed by the access boundary rule.
         Structure is documented below.
@@ -211,31 +211,31 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleArgs:
         return pulumi.get(self, "availability_condition")
 
     @availability_condition.setter
-    def availability_condition(self, value: Optional[pulumi.Input['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]):
+    def availability_condition(self, value: pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]):
         pulumi.set(self, "availability_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="availablePermissions")
-    def available_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def available_permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of permissions that may be allowed for use on the specified resource.
         """
         return pulumi.get(self, "available_permissions")
 
     @available_permissions.setter
-    def available_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def available_permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "available_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="availableResource")
-    def available_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def available_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource name of a Google Cloud resource entity.
         """
         return pulumi.get(self, "available_resource")
 
     @available_resource.setter
-    def available_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def available_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "available_resource", value)
 
 
@@ -244,17 +244,17 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict(Ty
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression. This is a longer text which describes the expression,
     e.g. when hovered over it in a UI.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting,
     e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     This can be used e.g. in UIs which allow to enter the expression.
@@ -264,9 +264,9 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict(Ty
 class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression. This is a longer text which describes the expression,
@@ -298,7 +298,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression. This is a longer text which describes the expression,
         e.g. when hovered over it in a UI.
@@ -306,12 +306,12 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
@@ -319,12 +319,12 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         This can be used e.g. in UIs which allow to enter the expression.
@@ -332,17 +332,17 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class DenyPolicyRuleArgsDict(TypedDict):
-    deny_rule: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleArgsDict']]
+    deny_rule: NotRequired[pulumi.Input[Optional['DenyPolicyRuleDenyRuleArgs']]]
     """
     A deny rule in an IAM deny policy.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the rule.
     """
@@ -350,8 +350,8 @@ class DenyPolicyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class DenyPolicyRuleArgs:
     def __init__(__self__, *,
-                 deny_rule: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 deny_rule: pulumi.Input[Optional['DenyPolicyRuleDenyRuleArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['DenyPolicyRuleDenyRuleArgs'] deny_rule: A deny rule in an IAM deny policy.
                Structure is documented below.
@@ -364,7 +364,7 @@ class DenyPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="denyRule")
-    def deny_rule(self) -> Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']]:
+    def deny_rule(self) -> pulumi.Input[Optional['DenyPolicyRuleDenyRuleArgs']]:
         """
         A deny rule in an IAM deny policy.
         Structure is documented below.
@@ -372,44 +372,44 @@ class DenyPolicyRuleArgs:
         return pulumi.get(self, "deny_rule")
 
     @deny_rule.setter
-    def deny_rule(self, value: Optional[pulumi.Input['DenyPolicyRuleDenyRuleArgs']]):
+    def deny_rule(self, value: pulumi.Input[Optional['DenyPolicyRuleDenyRuleArgs']]):
         pulumi.set(self, "deny_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class DenyPolicyRuleDenyRuleArgsDict(TypedDict):
-    denial_condition: NotRequired[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgsDict']]
+    denial_condition: NotRequired[pulumi.Input[Optional['DenyPolicyRuleDenyRuleDenialConditionArgs']]]
     """
     User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
     Structure is documented below.
     """
-    denied_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    denied_permissions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
     where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
     """
-    denied_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    denied_principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The identities that are prevented from using one or more permissions on Google Cloud resources.
     """
-    exception_permissions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exception_permissions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
     If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
     The excluded permissions can be specified using the same syntax as deniedPermissions.
     """
-    exception_principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exception_principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
     For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
@@ -418,11 +418,11 @@ class DenyPolicyRuleDenyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class DenyPolicyRuleDenyRuleArgs:
     def __init__(__self__, *,
-                 denial_condition: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']] = None,
-                 denied_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 denied_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exception_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exception_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 denial_condition: pulumi.Input[Optional['DenyPolicyRuleDenyRuleDenialConditionArgs']] = None,
+                 denied_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 denied_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exception_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exception_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs'] denial_condition: User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
                Structure is documented below.
@@ -448,7 +448,7 @@ class DenyPolicyRuleDenyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="denialCondition")
-    def denial_condition(self) -> Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']]:
+    def denial_condition(self) -> pulumi.Input[Optional['DenyPolicyRuleDenyRuleDenialConditionArgs']]:
         """
         User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
         Structure is documented below.
@@ -456,12 +456,12 @@ class DenyPolicyRuleDenyRuleArgs:
         return pulumi.get(self, "denial_condition")
 
     @denial_condition.setter
-    def denial_condition(self, value: Optional[pulumi.Input['DenyPolicyRuleDenyRuleDenialConditionArgs']]):
+    def denial_condition(self, value: pulumi.Input[Optional['DenyPolicyRuleDenyRuleDenialConditionArgs']]):
         pulumi.set(self, "denial_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedPermissions")
-    def denied_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def denied_permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The permissions that are explicitly denied by this rule. Each permission uses the format `{service-fqdn}/{resource}.{verb}`,
         where `{service-fqdn}` is the fully qualified domain name for the service. For example, `iam.googleapis.com/roles.list`.
@@ -469,24 +469,24 @@ class DenyPolicyRuleDenyRuleArgs:
         return pulumi.get(self, "denied_permissions")
 
     @denied_permissions.setter
-    def denied_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def denied_permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "denied_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedPrincipals")
-    def denied_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def denied_principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The identities that are prevented from using one or more permissions on Google Cloud resources.
         """
         return pulumi.get(self, "denied_principals")
 
     @denied_principals.setter
-    def denied_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def denied_principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "denied_principals", value)
 
     @_builtins.property
     @pulumi.getter(name="exceptionPermissions")
-    def exception_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exception_permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
         If a permission appears in deniedPermissions and in exceptionPermissions then it will not be denied.
@@ -495,12 +495,12 @@ class DenyPolicyRuleDenyRuleArgs:
         return pulumi.get(self, "exception_permissions")
 
     @exception_permissions.setter
-    def exception_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exception_permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exception_permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="exceptionPrincipals")
-    def exception_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exception_principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
         For example, you could add a Google group to the deniedPrincipals, then exclude specific users who belong to that group.
@@ -508,7 +508,7 @@ class DenyPolicyRuleDenyRuleArgs:
         return pulumi.get(self, "exception_principals")
 
     @exception_principals.setter
-    def exception_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exception_principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exception_principals", value)
 
 
@@ -517,17 +517,17 @@ class DenyPolicyRuleDenyRuleDenialConditionArgsDict(TypedDict):
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression. This is a longer text which describes the expression,
     e.g. when hovered over it in a UI.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting,
     e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     This can be used e.g. in UIs which allow to enter the expression.
@@ -537,9 +537,9 @@ class DenyPolicyRuleDenyRuleDenialConditionArgsDict(TypedDict):
 class DenyPolicyRuleDenyRuleDenialConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression. This is a longer text which describes the expression,
@@ -571,7 +571,7 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression. This is a longer text which describes the expression,
         e.g. when hovered over it in a UI.
@@ -579,12 +579,12 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
@@ -592,12 +592,12 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         This can be used e.g. in UIs which allow to enter the expression.
@@ -605,24 +605,24 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class FoldersPolicyBindingConditionArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
     """
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
     """
@@ -630,10 +630,10 @@ class FoldersPolicyBindingConditionArgsDict(TypedDict):
 @pulumi.input_type
 class FoldersPolicyBindingConditionArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
@@ -651,55 +651,55 @@ class FoldersPolicyBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Textual representation of an expression in Common Expression Language syntax.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class FoldersPolicyBindingTargetArgsDict(TypedDict):
-    principal_set: NotRequired[pulumi.Input[_builtins.str]]
+    principal_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
     Examples for each one of the following supported principal set types:
@@ -710,7 +710,7 @@ class FoldersPolicyBindingTargetArgsDict(TypedDict):
 @pulumi.input_type
 class FoldersPolicyBindingTargetArgs:
     def __init__(__self__, *,
-                 principal_set: Optional[pulumi.Input[_builtins.str]] = None):
+                 principal_set: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
@@ -722,7 +722,7 @@ class FoldersPolicyBindingTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
-    def principal_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
@@ -732,24 +732,24 @@ class FoldersPolicyBindingTargetArgs:
         return pulumi.get(self, "principal_set")
 
     @principal_set.setter
-    def principal_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_set", value)
 
 
 class OrganizationsPolicyBindingConditionArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
     """
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
     """
@@ -757,10 +757,10 @@ class OrganizationsPolicyBindingConditionArgsDict(TypedDict):
 @pulumi.input_type
 class OrganizationsPolicyBindingConditionArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
@@ -778,55 +778,55 @@ class OrganizationsPolicyBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Textual representation of an expression in Common Expression Language syntax.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class OrganizationsPolicyBindingTargetArgsDict(TypedDict):
-    principal_set: NotRequired[pulumi.Input[_builtins.str]]
+    principal_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
     Examples for each one of the following supported principal set types:
@@ -839,7 +839,7 @@ class OrganizationsPolicyBindingTargetArgsDict(TypedDict):
 @pulumi.input_type
 class OrganizationsPolicyBindingTargetArgs:
     def __init__(__self__, *,
-                 principal_set: Optional[pulumi.Input[_builtins.str]] = None):
+                 principal_set: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
@@ -853,7 +853,7 @@ class OrganizationsPolicyBindingTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
-    def principal_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
@@ -865,7 +865,7 @@ class OrganizationsPolicyBindingTargetArgs:
         return pulumi.get(self, "principal_set")
 
     @principal_set.setter
-    def principal_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_set", value)
 
 
@@ -875,7 +875,7 @@ class PrincipalAccessBoundaryPolicyDetailsArgsDict(TypedDict):
     A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
     Structure is documented below.
     """
-    enforcement_version: NotRequired[pulumi.Input[_builtins.str]]
+    enforcement_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version number that indicates which Google Cloud services
     are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
@@ -887,7 +887,7 @@ class PrincipalAccessBoundaryPolicyDetailsArgsDict(TypedDict):
 class PrincipalAccessBoundaryPolicyDetailsArgs:
     def __init__(__self__, *,
                  rules: pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgs']]],
-                 enforcement_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 enforcement_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgs']]] rules: A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
                Structure is documented below.
@@ -915,7 +915,7 @@ class PrincipalAccessBoundaryPolicyDetailsArgs:
 
     @_builtins.property
     @pulumi.getter(name="enforcementVersion")
-    def enforcement_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforcement_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number that indicates which Google Cloud services
         are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
@@ -925,7 +925,7 @@ class PrincipalAccessBoundaryPolicyDetailsArgs:
         return pulumi.get(self, "enforcement_version")
 
     @enforcement_version.setter
-    def enforcement_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforcement_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforcement_version", value)
 
 
@@ -946,7 +946,7 @@ class PrincipalAccessBoundaryPolicyDetailsRuleArgsDict(TypedDict):
     * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
     or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
     """
@@ -956,7 +956,7 @@ class PrincipalAccessBoundaryPolicyDetailsRuleArgs:
     def __init__(__self__, *,
                  effect: pulumi.Input[_builtins.str],
                  resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: The access relationship of principals to the resources in this rule.
                Possible values: ALLOW
@@ -1009,31 +1009,31 @@ class PrincipalAccessBoundaryPolicyDetailsRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ProjectsPolicyBindingConditionArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
     """
-    expression: NotRequired[pulumi.Input[_builtins.str]]
+    expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
     """
@@ -1041,10 +1041,10 @@ class ProjectsPolicyBindingConditionArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectsPolicyBindingConditionArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
@@ -1062,55 +1062,55 @@ class ProjectsPolicyBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Textual representation of an expression in Common Expression Language syntax.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class ProjectsPolicyBindingTargetArgsDict(TypedDict):
-    principal_set: NotRequired[pulumi.Input[_builtins.str]]
+    principal_set: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
     Examples for each one of the following supported principal set types:
@@ -1124,7 +1124,7 @@ class ProjectsPolicyBindingTargetArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectsPolicyBindingTargetArgs:
     def __init__(__self__, *,
-                 principal_set: Optional[pulumi.Input[_builtins.str]] = None):
+                 principal_set: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] principal_set: Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
                Examples for each one of the following supported principal set types:
@@ -1139,7 +1139,7 @@ class ProjectsPolicyBindingTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="principalSet")
-    def principal_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
         Examples for each one of the following supported principal set types:
@@ -1152,18 +1152,18 @@ class ProjectsPolicyBindingTargetArgs:
         return pulumi.get(self, "principal_set")
 
     @principal_set.setter
-    def principal_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_set", value)
 
 
 class WorkforcePoolAccessRestrictionsArgsDict(TypedDict):
-    allowed_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgsDict']]]]
+    allowed_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]]]
     """
     Services allowed for web sign-in with the workforce pool.
     If not set by default there are no restrictions.
     Structure is documented below.
     """
-    disable_programmatic_signin: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_programmatic_signin: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
     See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
@@ -1172,8 +1172,8 @@ class WorkforcePoolAccessRestrictionsArgsDict(TypedDict):
 @pulumi.input_type
 class WorkforcePoolAccessRestrictionsArgs:
     def __init__(__self__, *,
-                 allowed_services: Optional[pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]] = None,
-                 disable_programmatic_signin: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allowed_services: pulumi.Input[Optional[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]] = None,
+                 disable_programmatic_signin: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]] allowed_services: Services allowed for web sign-in with the workforce pool.
                If not set by default there are no restrictions.
@@ -1188,7 +1188,7 @@ class WorkforcePoolAccessRestrictionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedServices")
-    def allowed_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]]:
+    def allowed_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]]:
         """
         Services allowed for web sign-in with the workforce pool.
         If not set by default there are no restrictions.
@@ -1197,12 +1197,12 @@ class WorkforcePoolAccessRestrictionsArgs:
         return pulumi.get(self, "allowed_services")
 
     @allowed_services.setter
-    def allowed_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]]):
+    def allowed_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]]):
         pulumi.set(self, "allowed_services", value)
 
     @_builtins.property
     @pulumi.getter(name="disableProgrammaticSignin")
-    def disable_programmatic_signin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_programmatic_signin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
         See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
@@ -1210,12 +1210,12 @@ class WorkforcePoolAccessRestrictionsArgs:
         return pulumi.get(self, "disable_programmatic_signin")
 
     @disable_programmatic_signin.setter
-    def disable_programmatic_signin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_programmatic_signin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_programmatic_signin", value)
 
 
 class WorkforcePoolAccessRestrictionsAllowedServiceArgsDict(TypedDict):
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Domain name of the service.
     Example: console.cloud.google
@@ -1224,7 +1224,7 @@ class WorkforcePoolAccessRestrictionsAllowedServiceArgsDict(TypedDict):
 @pulumi.input_type
 class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: Domain name of the service.
                Example: console.cloud.google
@@ -1234,7 +1234,7 @@ class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name of the service.
         Example: console.cloud.google
@@ -1242,21 +1242,21 @@ class WorkforcePoolAccessRestrictionsAllowedServiceArgs:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
 
 class WorkforcePoolIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkforcePoolIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1282,25 +1282,25 @@ class WorkforcePoolIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class WorkforcePoolIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkforcePoolIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1326,11 +1326,11 @@ class WorkforcePoolIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -1359,7 +1359,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict(TypedDict):
     """
     The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
     """
-    query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict']]
+    query_parameters: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]]
     """
     Represents the parameters to control which claims are fetched from an IdP.
     """
@@ -1371,7 +1371,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientArgs:
                  client_id: pulumi.Input[_builtins.str],
                  client_secret: pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs'],
                  issuer_uri: pulumi.Input[_builtins.str],
-                 query_parameters: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']] = None):
+                 query_parameters: pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] attributes_type: Represents the IdP and type of claims that should be fetched.
                * AZURE_AD_GROUPS_ID:  Used to get the user's group claims from the Azure AD identity provider
@@ -1452,19 +1452,19 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientArgs:
 
     @_builtins.property
     @pulumi.getter(name="queryParameters")
-    def query_parameters(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]:
+    def query_parameters(self) -> pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]:
         """
         Represents the parameters to control which claims are fetched from an IdP.
         """
         return pulumi.get(self, "query_parameters")
 
     @query_parameters.setter
-    def query_parameters(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]):
+    def query_parameters(self, value: pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]):
         pulumi.set(self, "query_parameters", value)
 
 
 class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict(TypedDict):
-    value: NotRequired[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict']]
+    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]]
     """
     The value of the client secret.
     Structure is documented below.
@@ -1473,7 +1473,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict(Ty
 @pulumi.input_type
 class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs:
     def __init__(__self__, *,
-                 value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']] = None):
+                 value: pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']] = None):
         """
         :param pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs'] value: The value of the client secret.
                Structure is documented below.
@@ -1483,7 +1483,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]:
+    def value(self) -> pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]:
         """
         The value of the client secret.
         Structure is documented below.
@@ -1491,7 +1491,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]):
+    def value(self, value: pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]):
         pulumi.set(self, "value", value)
 
 
@@ -1500,7 +1500,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDi
     """
     The plain text of the client secret value.
     """
-    thumbprint: NotRequired[pulumi.Input[_builtins.str]]
+    thumbprint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A thumbprint to represent the current client secret value.
@@ -1510,7 +1510,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDi
 class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs:
     def __init__(__self__, *,
                  plain_text: pulumi.Input[_builtins.str],
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plain_text: The plain text of the client secret value.
         :param pulumi.Input[_builtins.str] thumbprint: (Output)
@@ -1534,7 +1534,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def thumbprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def thumbprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A thumbprint to represent the current client secret value.
@@ -1542,12 +1542,12 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs:
         return pulumi.get(self, "thumbprint")
 
     @thumbprint.setter
-    def thumbprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def thumbprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "thumbprint", value)
 
 
 class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
-    filter: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
     filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
@@ -1557,7 +1557,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict
 @pulumi.input_type
 class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs:
     def __init__(__self__, *,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
                filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
@@ -1568,7 +1568,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
         filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
@@ -1577,7 +1577,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
 
@@ -1618,7 +1618,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict(TypedDict):
     """
     The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
     """
-    query_parameters: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict']]
+    query_parameters: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]]
     """
     Represents the parameters to control which claims are fetched from an IdP.
     """
@@ -1630,7 +1630,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
                  client_id: pulumi.Input[_builtins.str],
                  client_secret: pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs'],
                  issuer_uri: pulumi.Input[_builtins.str],
-                 query_parameters: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']] = None):
+                 query_parameters: pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] attributes_type: Represents the IdP and type of claims that should be fetched.
                * AZURE_AD_GROUPS_MAIL: Used to get the user's group claims from the Azure AD identity provider using configuration provided
@@ -1735,19 +1735,19 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
 
     @_builtins.property
     @pulumi.getter(name="queryParameters")
-    def query_parameters(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]:
+    def query_parameters(self) -> pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]:
         """
         Represents the parameters to control which claims are fetched from an IdP.
         """
         return pulumi.get(self, "query_parameters")
 
     @query_parameters.setter
-    def query_parameters(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]):
+    def query_parameters(self, value: pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]):
         pulumi.set(self, "query_parameters", value)
 
 
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict(TypedDict):
-    value: NotRequired[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict']]
+    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]]
     """
     The value of the client secret.
     Structure is documented below.
@@ -1756,7 +1756,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict(Typed
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
     def __init__(__self__, *,
-                 value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']] = None):
+                 value: pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']] = None):
         """
         :param pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs'] value: The value of the client secret.
                Structure is documented below.
@@ -1766,7 +1766,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]:
+    def value(self) -> pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]:
         """
         The value of the client secret.
         Structure is documented below.
@@ -1774,7 +1774,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]):
+    def value(self, value: pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]):
         pulumi.set(self, "value", value)
 
 
@@ -1783,7 +1783,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict(
     """
     The plain text of the client secret value.
     """
-    thumbprint: NotRequired[pulumi.Input[_builtins.str]]
+    thumbprint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A thumbprint to represent the current client secret value.
@@ -1793,7 +1793,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict(
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
     def __init__(__self__, *,
                  plain_text: pulumi.Input[_builtins.str],
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plain_text: The plain text of the client secret value.
         :param pulumi.Input[_builtins.str] thumbprint: (Output)
@@ -1817,7 +1817,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def thumbprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def thumbprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A thumbprint to represent the current client secret value.
@@ -1825,12 +1825,12 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs:
         return pulumi.get(self, "thumbprint")
 
     @thumbprint.setter
-    def thumbprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def thumbprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "thumbprint", value)
 
 
 class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict(TypedDict):
-    filter: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
     filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
@@ -1840,7 +1840,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict(Ty
 @pulumi.input_type
 class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
     def __init__(__self__, *,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filter: The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
                filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
@@ -1851,7 +1851,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
         filter used to request specific groups for users from IdP. By default, all of the groups associated with the user are fetched. The
@@ -1860,7 +1860,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
 
@@ -1870,17 +1870,17 @@ class WorkforcePoolProviderKeyKeyDataArgsDict(TypedDict):
     The specifications for the key.
     Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
     """
-    format: NotRequired[pulumi.Input[_builtins.str]]
+    format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The format of the key.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The key data. The format of the key is represented by the format field.
     """
-    not_after_time: NotRequired[pulumi.Input[_builtins.str]]
+    not_after_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
@@ -1889,7 +1889,7 @@ class WorkforcePoolProviderKeyKeyDataArgsDict(TypedDict):
     Offsets other than "Z" are also accepted.
     Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
     """
-    not_before_time: NotRequired[pulumi.Input[_builtins.str]]
+    not_before_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
@@ -1903,10 +1903,10 @@ class WorkforcePoolProviderKeyKeyDataArgsDict(TypedDict):
 class WorkforcePoolProviderKeyKeyDataArgs:
     def __init__(__self__, *,
                  key_spec: pulumi.Input[_builtins.str],
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_after_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 not_before_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_after_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 not_before_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key_spec: The specifications for the key.
                Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`.
@@ -1952,7 +1952,7 @@ class WorkforcePoolProviderKeyKeyDataArgs:
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The format of the key.
@@ -1960,12 +1960,12 @@ class WorkforcePoolProviderKeyKeyDataArgs:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The key data. The format of the key is represented by the format field.
@@ -1973,12 +1973,12 @@ class WorkforcePoolProviderKeyKeyDataArgs:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="notAfterTime")
-    def not_after_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_after_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
@@ -1990,12 +1990,12 @@ class WorkforcePoolProviderKeyKeyDataArgs:
         return pulumi.get(self, "not_after_time")
 
     @not_after_time.setter
-    def not_after_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_after_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_after_time", value)
 
     @_builtins.property
     @pulumi.getter(name="notBeforeTime")
-    def not_before_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def not_before_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
@@ -2007,7 +2007,7 @@ class WorkforcePoolProviderKeyKeyDataArgs:
         return pulumi.get(self, "not_before_time")
 
     @not_before_time.setter
-    def not_before_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def not_before_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "not_before_time", value)
 
 
@@ -2020,12 +2020,12 @@ class WorkforcePoolProviderOidcArgsDict(TypedDict):
     """
     The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
     """
-    client_secret: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgsDict']]
+    client_secret: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretArgs']]]
     """
     The optional client secret. Required to enable Authorization Code flow for web sign-in.
     Structure is documented below.
     """
-    jwks_json: NotRequired[pulumi.Input[_builtins.str]]
+    jwks_json: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OIDC JWKs in JSON String format. For details on definition of a
     JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
@@ -2051,7 +2051,7 @@ class WorkforcePoolProviderOidcArgsDict(TypedDict):
     }
     ```
     """
-    web_sso_config: NotRequired[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgsDict']]
+    web_sso_config: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcWebSsoConfigArgs']]]
     """
     Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
     Structure is documented below.
@@ -2062,9 +2062,9 @@ class WorkforcePoolProviderOidcArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[_builtins.str],
                  issuer_uri: pulumi.Input[_builtins.str],
-                 client_secret: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']] = None,
-                 jwks_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_sso_config: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']] = None):
+                 client_secret: pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretArgs']] = None,
+                 jwks_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_sso_config: pulumi.Input[Optional['WorkforcePoolProviderOidcWebSsoConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
         :param pulumi.Input[_builtins.str] issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
@@ -2131,7 +2131,7 @@ class WorkforcePoolProviderOidcArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']]:
+    def client_secret(self) -> pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretArgs']]:
         """
         The optional client secret. Required to enable Authorization Code flow for web sign-in.
         Structure is documented below.
@@ -2139,12 +2139,12 @@ class WorkforcePoolProviderOidcArgs:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']]):
+    def client_secret(self, value: pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretArgs']]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="jwksJson")
-    def jwks_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jwks_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OIDC JWKs in JSON String format. For details on definition of a
         JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
@@ -2173,12 +2173,12 @@ class WorkforcePoolProviderOidcArgs:
         return pulumi.get(self, "jwks_json")
 
     @jwks_json.setter
-    def jwks_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jwks_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jwks_json", value)
 
     @_builtins.property
     @pulumi.getter(name="webSsoConfig")
-    def web_sso_config(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']]:
+    def web_sso_config(self) -> pulumi.Input[Optional['WorkforcePoolProviderOidcWebSsoConfigArgs']]:
         """
         Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
         Structure is documented below.
@@ -2186,12 +2186,12 @@ class WorkforcePoolProviderOidcArgs:
         return pulumi.get(self, "web_sso_config")
 
     @web_sso_config.setter
-    def web_sso_config(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']]):
+    def web_sso_config(self, value: pulumi.Input[Optional['WorkforcePoolProviderOidcWebSsoConfigArgs']]):
         pulumi.set(self, "web_sso_config", value)
 
 
 class WorkforcePoolProviderOidcClientSecretArgsDict(TypedDict):
-    value: NotRequired[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgsDict']]
+    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretValueArgs']]]
     """
     The value of the client secret.
     Structure is documented below.
@@ -2200,7 +2200,7 @@ class WorkforcePoolProviderOidcClientSecretArgsDict(TypedDict):
 @pulumi.input_type
 class WorkforcePoolProviderOidcClientSecretArgs:
     def __init__(__self__, *,
-                 value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']] = None):
+                 value: pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretValueArgs']] = None):
         """
         :param pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs'] value: The value of the client secret.
                Structure is documented below.
@@ -2210,7 +2210,7 @@ class WorkforcePoolProviderOidcClientSecretArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']]:
+    def value(self) -> pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretValueArgs']]:
         """
         The value of the client secret.
         Structure is documented below.
@@ -2218,7 +2218,7 @@ class WorkforcePoolProviderOidcClientSecretArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']]):
+    def value(self, value: pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretValueArgs']]):
         pulumi.set(self, "value", value)
 
 
@@ -2227,7 +2227,7 @@ class WorkforcePoolProviderOidcClientSecretValueArgsDict(TypedDict):
     """
     The plain text of the client secret value.
     """
-    thumbprint: NotRequired[pulumi.Input[_builtins.str]]
+    thumbprint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A thumbprint to represent the current client secret value.
@@ -2237,7 +2237,7 @@ class WorkforcePoolProviderOidcClientSecretValueArgsDict(TypedDict):
 class WorkforcePoolProviderOidcClientSecretValueArgs:
     def __init__(__self__, *,
                  plain_text: pulumi.Input[_builtins.str],
-                 thumbprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 thumbprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] plain_text: The plain text of the client secret value.
         :param pulumi.Input[_builtins.str] thumbprint: (Output)
@@ -2261,7 +2261,7 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def thumbprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def thumbprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A thumbprint to represent the current client secret value.
@@ -2269,7 +2269,7 @@ class WorkforcePoolProviderOidcClientSecretValueArgs:
         return pulumi.get(self, "thumbprint")
 
     @thumbprint.setter
-    def thumbprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def thumbprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "thumbprint", value)
 
 
@@ -2289,7 +2289,7 @@ class WorkforcePoolProviderOidcWebSsoConfigArgsDict(TypedDict):
     * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
     Possible values are: `CODE`, `ID_TOKEN`.
     """
-    additional_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    additional_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
     Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
@@ -2302,7 +2302,7 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
     def __init__(__self__, *,
                  assertion_claims_behavior: pulumi.Input[_builtins.str],
                  response_type: pulumi.Input[_builtins.str],
-                 additional_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 additional_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
                * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
@@ -2356,7 +2356,7 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalScopes")
-    def additional_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
         Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
@@ -2366,7 +2366,7 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
         return pulumi.get(self, "additional_scopes")
 
     @additional_scopes.setter
-    def additional_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_scopes", value)
 
 
@@ -2474,7 +2474,7 @@ class WorkloadIdentityPoolIamBindingConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2488,7 +2488,7 @@ class WorkloadIdentityPoolIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2529,7 +2529,7 @@ class WorkloadIdentityPoolIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2540,7 +2540,7 @@ class WorkloadIdentityPoolIamBindingConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -2553,7 +2553,7 @@ class WorkloadIdentityPoolIamMemberConditionArgsDict(TypedDict):
     """
     A title for the expression, i.e. a short string describing its purpose.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2567,7 +2567,7 @@ class WorkloadIdentityPoolIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
@@ -2608,7 +2608,7 @@ class WorkloadIdentityPoolIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 
@@ -2619,12 +2619,12 @@ class WorkloadIdentityPoolIamMemberConditionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
-    ca_pools: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    ca_pools: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     A required mapping of a cloud region to the CA pool resource located in that region used
     for certificate issuance, adhering to these constraints:
@@ -2635,7 +2635,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
     * **Region Matching:** Workloads are ONLY issued certificates from CA pools within the
     same region. Also the CA pool region (in value) must match the workload's region (key).
     """
-    key_algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    key_algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Key algorithm to use when generating the key pair. This key pair will be used to create
     the certificate. If unspecified, this will default to `ECDSA_P256`.
@@ -2646,20 +2646,20 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
     * `ECDSA_P384`: Specifies ECDSA with curve P384.
     Possible values are: `RSA_2048`, `RSA_3072`, `RSA_4096`, `ECDSA_P256`, `ECDSA_P384`.
     """
-    lifetime: NotRequired[pulumi.Input[_builtins.str]]
+    lifetime: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
     `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
     and is preceded by the number of seconds. If unspecified, this will be defaulted to
     `86400s` (24 hours).
     """
-    rotation_window_percentage: NotRequired[pulumi.Input[_builtins.int]]
+    rotation_window_percentage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Rotation window percentage indicating when certificate rotation should be initiated based
     on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
     to `50`.
     """
-    use_default_shared_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    use_default_shared_ca: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
     CA in the same region as the workload will be selected to issue the certificate. Enabling
@@ -2673,11 +2673,11 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
     def __init__(__self__, *,
-                 ca_pools: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 key_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_window_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_default_shared_ca: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_pools: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_window_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_default_shared_ca: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ca_pools: A required mapping of a cloud region to the CA pool resource located in that region used
                for certificate issuance, adhering to these constraints:
@@ -2723,7 +2723,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="caPools")
-    def ca_pools(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def ca_pools(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A required mapping of a cloud region to the CA pool resource located in that region used
         for certificate issuance, adhering to these constraints:
@@ -2737,12 +2737,12 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         return pulumi.get(self, "ca_pools")
 
     @ca_pools.setter
-    def ca_pools(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def ca_pools(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ca_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="keyAlgorithm")
-    def key_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key algorithm to use when generating the key pair. This key pair will be used to create
         the certificate. If unspecified, this will default to `ECDSA_P256`.
@@ -2756,12 +2756,12 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         return pulumi.get(self, "key_algorithm")
 
     @key_algorithm.setter
-    def key_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifetime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Lifetime of the workload certificates issued by the CA pool in seconds. Must be between
         `86400s` (24 hours) to `2592000s` (30 days), ends in the suffix "`s`" (indicating seconds)
@@ -2771,12 +2771,12 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         return pulumi.get(self, "lifetime")
 
     @lifetime.setter
-    def lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifetime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationWindowPercentage")
-    def rotation_window_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rotation_window_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Rotation window percentage indicating when certificate rotation should be initiated based
         on remaining lifetime. Must be between `50` - `80`. If unspecified, this will be defaulted
@@ -2785,12 +2785,12 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         return pulumi.get(self, "rotation_window_percentage")
 
     @rotation_window_percentage.setter
-    def rotation_window_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rotation_window_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rotation_window_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="useDefaultSharedCa")
-    def use_default_shared_ca(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_default_shared_ca(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the trust domain will utilize the GCP-provisioned default CA. A default
         CA in the same region as the workload will be selected to issue the certificate. Enabling
@@ -2803,12 +2803,12 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
         return pulumi.get(self, "use_default_shared_ca")
 
     @use_default_shared_ca.setter
-    def use_default_shared_ca(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_default_shared_ca(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_default_shared_ca", value)
 
 
 class WorkloadIdentityPoolInlineTrustConfigArgsDict(TypedDict):
-    additional_trust_bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict']]]]
+    additional_trust_bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]]
     """
     Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
     objects, which contain the trusted root certificates for that domain. There can be a
@@ -2823,7 +2823,7 @@ class WorkloadIdentityPoolInlineTrustConfigArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadIdentityPoolInlineTrustConfigArgs:
     def __init__(__self__, *,
-                 additional_trust_bundles: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]] = None):
+                 additional_trust_bundles: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]] additional_trust_bundles: Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
                objects, which contain the trusted root certificates for that domain. There can be a
@@ -2839,7 +2839,7 @@ class WorkloadIdentityPoolInlineTrustConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalTrustBundles")
-    def additional_trust_bundles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]:
+    def additional_trust_bundles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]:
         """
         Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
         objects, which contain the trusted root certificates for that domain. There can be a
@@ -2853,7 +2853,7 @@ class WorkloadIdentityPoolInlineTrustConfigArgs:
         return pulumi.get(self, "additional_trust_bundles")
 
     @additional_trust_bundles.setter
-    def additional_trust_bundles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]):
+    def additional_trust_bundles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]):
         pulumi.set(self, "additional_trust_bundles", value)
 
 
@@ -2869,7 +2869,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict(TypedDi
     """
     The identifier for this object. Format specified above.
     """
-    trust_default_shared_ca: NotRequired[pulumi.Input[_builtins.bool]]
+    trust_default_shared_ca: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If set to True, the trust bundle will include the private ca managed identity regional root
     public certificates.
@@ -2883,7 +2883,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
     def __init__(__self__, *,
                  trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]],
                  trust_domain: pulumi.Input[_builtins.str],
-                 trust_default_shared_ca: Optional[pulumi.Input[_builtins.bool]] = None):
+                 trust_default_shared_ca: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation against a given
                `TrustStore`. The incoming end entity's certificate must be chained up to one of the
@@ -2930,7 +2930,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
 
     @_builtins.property
     @pulumi.getter(name="trustDefaultSharedCa")
-    def trust_default_shared_ca(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_default_shared_ca(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to True, the trust bundle will include the private ca managed identity regional root
         public certificates.
@@ -2941,7 +2941,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs:
         return pulumi.get(self, "trust_default_shared_ca")
 
     @trust_default_shared_ca.setter
-    def trust_default_shared_ca(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_default_shared_ca(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_default_shared_ca", value)
 
 
@@ -3008,7 +3008,7 @@ class WorkloadIdentityPoolManagedIdentityAttestationRuleArgs:
 
 
 class WorkloadIdentityPoolNamespaceOwnerServiceArgsDict(TypedDict):
-    principal_subject: NotRequired[pulumi.Input[_builtins.str]]
+    principal_subject: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The service agent principal subject, e.g.
@@ -3018,7 +3018,7 @@ class WorkloadIdentityPoolNamespaceOwnerServiceArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadIdentityPoolNamespaceOwnerServiceArgs:
     def __init__(__self__, *,
-                 principal_subject: Optional[pulumi.Input[_builtins.str]] = None):
+                 principal_subject: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] principal_subject: (Output)
                The service agent principal subject, e.g.
@@ -3029,7 +3029,7 @@ class WorkloadIdentityPoolNamespaceOwnerServiceArgs:
 
     @_builtins.property
     @pulumi.getter(name="principalSubject")
-    def principal_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The service agent principal subject, e.g.
@@ -3038,7 +3038,7 @@ class WorkloadIdentityPoolNamespaceOwnerServiceArgs:
         return pulumi.get(self, "principal_subject")
 
     @principal_subject.setter
-    def principal_subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_subject", value)
 
 
@@ -3075,7 +3075,7 @@ class WorkloadIdentityPoolProviderOidcArgsDict(TypedDict):
     """
     The OIDC issuer URL.
     """
-    allowed_audiences: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_audiences: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
     requests are rejected if the token audience does not match one of the configured
@@ -3089,7 +3089,7 @@ class WorkloadIdentityPoolProviderOidcArgsDict(TypedDict):
     https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
     ```
     """
-    jwks_json: NotRequired[pulumi.Input[_builtins.str]]
+    jwks_json: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OIDC JWKs in JSON String format. For details on definition of a
     JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
@@ -3120,8 +3120,8 @@ class WorkloadIdentityPoolProviderOidcArgsDict(TypedDict):
 class WorkloadIdentityPoolProviderOidcArgs:
     def __init__(__self__, *,
                  issuer_uri: pulumi.Input[_builtins.str],
-                 allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 jwks_json: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 jwks_json: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] issuer_uri: The OIDC issuer URL.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_audiences: Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
@@ -3179,7 +3179,7 @@ class WorkloadIdentityPoolProviderOidcArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedAudiences")
-    def allowed_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
         requests are rejected if the token audience does not match one of the configured
@@ -3196,12 +3196,12 @@ class WorkloadIdentityPoolProviderOidcArgs:
         return pulumi.get(self, "allowed_audiences")
 
     @allowed_audiences.setter
-    def allowed_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="jwksJson")
-    def jwks_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jwks_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OIDC JWKs in JSON String format. For details on definition of a
         JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
@@ -3230,7 +3230,7 @@ class WorkloadIdentityPoolProviderOidcArgs:
         return pulumi.get(self, "jwks_json")
 
     @jwks_json.setter
-    def jwks_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jwks_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jwks_json", value)
 
 
@@ -3316,7 +3316,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreArgsDict(TypedDict):
     must be chained up to one of the trust anchors here.
     Structure is documented below.
     """
-    intermediate_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict']]]]
+    intermediate_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]]
     """
     Set of intermediate CA certificates used for building the trust chain to
     trust anchor.
@@ -3328,7 +3328,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreArgsDict(TypedDict):
 class WorkloadIdentityPoolProviderX509TrustStoreArgs:
     def __init__(__self__, *,
                  trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs']]],
-                 intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]] = None):
+                 intermediate_cas: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation
                against a given TrustStore. The incoming end entity's certificate
@@ -3360,7 +3360,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="intermediateCas")
-    def intermediate_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]:
+    def intermediate_cas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]:
         """
         Set of intermediate CA certificates used for building the trust chain to
         trust anchor.
@@ -3370,12 +3370,12 @@ class WorkloadIdentityPoolProviderX509TrustStoreArgs:
         return pulumi.get(self, "intermediate_cas")
 
     @intermediate_cas.setter
-    def intermediate_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]):
+    def intermediate_cas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]):
         pulumi.set(self, "intermediate_cas", value)
 
 
 class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict(TypedDict):
-    pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    pem_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM certificate of the PKI used for validation. Must only contain one
     ca certificate(either root or intermediate cert).
@@ -3384,7 +3384,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict(TypedDict
 @pulumi.input_type
 class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs:
     def __init__(__self__, *,
-                 pem_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 pem_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
                ca certificate(either root or intermediate cert).
@@ -3394,7 +3394,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs:
 
     @_builtins.property
     @pulumi.getter(name="pemCertificate")
-    def pem_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM certificate of the PKI used for validation. Must only contain one
         ca certificate(either root or intermediate cert).
@@ -3402,12 +3402,12 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs:
         return pulumi.get(self, "pem_certificate")
 
     @pem_certificate.setter
-    def pem_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_certificate", value)
 
 
 class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict(TypedDict):
-    pem_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    pem_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM certificate of the PKI used for validation. Must only contain one
     ca certificate(either root or intermediate cert).
@@ -3416,7 +3416,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs:
     def __init__(__self__, *,
-                 pem_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 pem_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
                ca certificate(either root or intermediate cert).
@@ -3426,7 +3426,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs:
 
     @_builtins.property
     @pulumi.getter(name="pemCertificate")
-    def pem_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pem_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM certificate of the PKI used for validation. Must only contain one
         ca certificate(either root or intermediate cert).
@@ -3434,32 +3434,32 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs:
         return pulumi.get(self, "pem_certificate")
 
     @pem_certificate.setter
-    def pem_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pem_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_certificate", value)
 
 
 class WorkloadIdentityServiceAgentServiceAgentArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[_builtins.str]]
+    container: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
-    principal: NotRequired[pulumi.Input[_builtins.str]]
+    principal: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
-    service_producer: NotRequired[pulumi.Input[_builtins.str]]
+    service_producer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     """
@@ -3467,12 +3467,12 @@ class WorkloadIdentityServiceAgentServiceAgentArgsDict(TypedDict):
 @pulumi.input_type
 class WorkloadIdentityServiceAgentServiceAgentArgs:
     def __init__(__self__, *,
-                 container: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_producer: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 container: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_producer: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] container: (Output)
         :param pulumi.Input[_builtins.str] name: (Output)
@@ -3496,74 +3496,74 @@ class WorkloadIdentityServiceAgentServiceAgentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def container(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "container")
 
     @container.setter
-    def container(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "principal")
 
     @principal.setter
-    def principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceProducer")
-    def service_producer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_producer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "service_producer")
 
     @service_producer.setter
-    def service_producer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_producer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_producer", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 

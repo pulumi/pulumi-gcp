@@ -234,53 +234,53 @@ export interface FloorsettingState {
      * AI Platform floor setting.
      * Structure is documented below.
      */
-    aiPlatformFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingAiPlatformFloorSetting>;
+    aiPlatformFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingAiPlatformFloorSetting | undefined>;
     /**
      * [Output only] Create timestamp
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Floor Settings enforcement status.
      */
-    enableFloorSettingEnforcement?: pulumi.Input<boolean>;
+    enableFloorSettingEnforcement?: pulumi.Input<boolean | undefined>;
     /**
      * Filters configuration.
      * Structure is documented below.
      */
-    filterConfig?: pulumi.Input<inputs.modelarmor.FloorsettingFilterConfig>;
+    filterConfig?: pulumi.Input<inputs.modelarmor.FloorsettingFilterConfig | undefined>;
     /**
      * Metadata to enable multi language detection via floor setting.
      * Structure is documented below.
      */
-    floorSettingMetadata?: pulumi.Input<inputs.modelarmor.FloorsettingFloorSettingMetadata>;
+    floorSettingMetadata?: pulumi.Input<inputs.modelarmor.FloorsettingFloorSettingMetadata | undefined>;
     /**
      * Google MCP Server floor setting.
      * Structure is documented below.
      */
-    googleMcpServerFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingGoogleMcpServerFloorSetting>;
+    googleMcpServerFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingGoogleMcpServerFloorSetting | undefined>;
     /**
      * List of integrated services for which the floor setting is applicable.
      */
-    integratedServices?: pulumi.Input<pulumi.Input<string>[]>;
+    integratedServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Will be any one of these:
      * * `projects/{project}`
      * * `folders/{folder}`
      * * `organizations/{organizationId}`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * [Output only] Update timestamp
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -291,11 +291,11 @@ export interface FloorsettingArgs {
      * AI Platform floor setting.
      * Structure is documented below.
      */
-    aiPlatformFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingAiPlatformFloorSetting>;
+    aiPlatformFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingAiPlatformFloorSetting | undefined>;
     /**
      * Floor Settings enforcement status.
      */
-    enableFloorSettingEnforcement?: pulumi.Input<boolean>;
+    enableFloorSettingEnforcement?: pulumi.Input<boolean | undefined>;
     /**
      * Filters configuration.
      * Structure is documented below.
@@ -305,16 +305,16 @@ export interface FloorsettingArgs {
      * Metadata to enable multi language detection via floor setting.
      * Structure is documented below.
      */
-    floorSettingMetadata?: pulumi.Input<inputs.modelarmor.FloorsettingFloorSettingMetadata>;
+    floorSettingMetadata?: pulumi.Input<inputs.modelarmor.FloorsettingFloorSettingMetadata | undefined>;
     /**
      * Google MCP Server floor setting.
      * Structure is documented below.
      */
-    googleMcpServerFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingGoogleMcpServerFloorSetting>;
+    googleMcpServerFloorSetting?: pulumi.Input<inputs.modelarmor.FloorsettingGoogleMcpServerFloorSetting | undefined>;
     /**
      * List of integrated services for which the floor setting is applicable.
      */
-    integratedServices?: pulumi.Input<pulumi.Input<string>[]>;
+    integratedServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */

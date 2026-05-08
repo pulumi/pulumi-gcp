@@ -217,33 +217,33 @@ export interface DataPolicyState {
      * The data masking policy that specifies the data masking rule to use.
      * Structure is documented below.
      */
-    dataMaskingPolicy?: pulumi.Input<inputs.bigquerydatapolicy.DataPolicyDataMaskingPolicy>;
+    dataMaskingPolicy?: pulumi.Input<inputs.bigquerydatapolicy.DataPolicyDataMaskingPolicy | undefined>;
     /**
      * User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
      */
-    dataPolicyId?: pulumi.Input<string>;
+    dataPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The enrollment level of the service.
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      */
-    dataPolicyType?: pulumi.Input<string>;
+    dataPolicyType?: pulumi.Input<string | undefined>;
     /**
      * The name of the location of the data policy.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
      */
-    policyTag?: pulumi.Input<string>;
+    policyTag?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,7 +254,7 @@ export interface DataPolicyArgs {
      * The data masking policy that specifies the data masking rule to use.
      * Structure is documented below.
      */
-    dataMaskingPolicy?: pulumi.Input<inputs.bigquerydatapolicy.DataPolicyDataMaskingPolicy>;
+    dataMaskingPolicy?: pulumi.Input<inputs.bigquerydatapolicy.DataPolicyDataMaskingPolicy | undefined>;
     /**
      * User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
      */
@@ -276,5 +276,5 @@ export interface DataPolicyArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

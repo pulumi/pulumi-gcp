@@ -21,13 +21,13 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
-                 graceful_decommission_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
+                 cluster_config: pulumi.Input[Optional['ClusterClusterConfigArgs']] = None,
+                 graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_cluster_config: pulumi.Input[Optional['ClusterVirtualClusterConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -73,7 +73,7 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterConfig")
-    def cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigArgs']]:
+    def cluster_config(self) -> pulumi.Input[Optional['ClusterClusterConfigArgs']]:
         """
         Allows you to configure various aspects of the cluster.
         Structure defined below.
@@ -81,12 +81,12 @@ class ClusterArgs:
         return pulumi.get(self, "cluster_config")
 
     @cluster_config.setter
-    def cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigArgs']]):
+    def cluster_config(self, value: pulumi.Input[Optional['ClusterClusterConfigArgs']]):
         pulumi.set(self, "cluster_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gracefulDecommissionTimeout")
-    def graceful_decommission_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def graceful_decommission_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
         Does not affect auto scaling decomissioning from an autoscaling policy.
@@ -101,12 +101,12 @@ class ClusterArgs:
         return pulumi.get(self, "graceful_decommission_timeout")
 
     @graceful_decommission_timeout.setter
-    def graceful_decommission_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def graceful_decommission_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "graceful_decommission_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
         instances in the cluster.
@@ -115,12 +115,12 @@ class ClusterArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster, unique within the project and
         zone.
@@ -130,12 +130,12 @@ class ClusterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the `cluster` will exist. If it
         is not provided, the provider project is used.
@@ -143,12 +143,12 @@ class ClusterArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which the cluster and associated nodes will be created in.
         Defaults to `global`.
@@ -156,12 +156,12 @@ class ClusterArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualClusterConfig")
-    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]:
+    def virtual_cluster_config(self) -> pulumi.Input[Optional['ClusterVirtualClusterConfigArgs']]:
         """
         Allows you to configure a virtual Dataproc on GKE cluster.
         Structure defined below.
@@ -169,22 +169,22 @@ class ClusterArgs:
         return pulumi.get(self, "virtual_cluster_config")
 
     @virtual_cluster_config.setter
-    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]):
+    def virtual_cluster_config(self, value: pulumi.Input[Optional['ClusterVirtualClusterConfigArgs']]):
         pulumi.set(self, "virtual_cluster_config", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 cluster_config: Optional[pulumi.Input['ClusterClusterConfigArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 graceful_decommission_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']] = None):
+                 cluster_config: pulumi.Input[Optional['ClusterClusterConfigArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_cluster_config: pulumi.Input[Optional['ClusterVirtualClusterConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -238,7 +238,7 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="clusterConfig")
-    def cluster_config(self) -> Optional[pulumi.Input['ClusterClusterConfigArgs']]:
+    def cluster_config(self) -> pulumi.Input[Optional['ClusterClusterConfigArgs']]:
         """
         Allows you to configure various aspects of the cluster.
         Structure defined below.
@@ -246,12 +246,12 @@ class _ClusterState:
         return pulumi.get(self, "cluster_config")
 
     @cluster_config.setter
-    def cluster_config(self, value: Optional[pulumi.Input['ClusterClusterConfigArgs']]):
+    def cluster_config(self, value: pulumi.Input[Optional['ClusterClusterConfigArgs']]):
         pulumi.set(self, "cluster_config", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of labels (key/value pairs) to be applied to
         instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
@@ -260,12 +260,12 @@ class _ClusterState:
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="gracefulDecommissionTimeout")
-    def graceful_decommission_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def graceful_decommission_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
         Does not affect auto scaling decomissioning from an autoscaling policy.
@@ -280,12 +280,12 @@ class _ClusterState:
         return pulumi.get(self, "graceful_decommission_timeout")
 
     @graceful_decommission_timeout.setter
-    def graceful_decommission_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def graceful_decommission_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "graceful_decommission_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
         instances in the cluster.
@@ -294,12 +294,12 @@ class _ClusterState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster, unique within the project and
         zone.
@@ -309,12 +309,12 @@ class _ClusterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the `cluster` will exist. If it
         is not provided, the provider project is used.
@@ -322,24 +322,24 @@ class _ClusterState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region in which the cluster and associated nodes will be created in.
         Defaults to `global`.
@@ -347,12 +347,12 @@ class _ClusterState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualClusterConfig")
-    def virtual_cluster_config(self) -> Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]:
+    def virtual_cluster_config(self) -> pulumi.Input[Optional['ClusterVirtualClusterConfigArgs']]:
         """
         Allows you to configure a virtual Dataproc on GKE cluster.
         Structure defined below.
@@ -360,7 +360,7 @@ class _ClusterState:
         return pulumi.get(self, "virtual_cluster_config")
 
     @virtual_cluster_config.setter
-    def virtual_cluster_config(self, value: Optional[pulumi.Input['ClusterVirtualClusterConfigArgs']]):
+    def virtual_cluster_config(self, value: pulumi.Input[Optional['ClusterVirtualClusterConfigArgs']]):
         pulumi.set(self, "virtual_cluster_config", value)
 
 
@@ -370,13 +370,13 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
-                 graceful_decommission_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
+                 cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+                 graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Cloud Dataproc cluster resource within GCP.
@@ -648,13 +648,13 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_config: Optional[pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
-                 graceful_decommission_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_cluster_config: Optional[pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
+                 cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+                 graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -685,15 +685,15 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_config: Optional[pulumi.Input[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            graceful_decommission_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_cluster_config: Optional[pulumi.Input[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None) -> 'Cluster':
+            cluster_config: pulumi.Input[Optional[Union['ClusterClusterConfigArgs', 'ClusterClusterConfigArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            graceful_decommission_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_cluster_config: pulumi.Input[Optional[Union['ClusterVirtualClusterConfigArgs', 'ClusterVirtualClusterConfigArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -94,5 +94,5 @@ export interface GetStaticIpsOutputArgs {
     /**
      * Project from which to list static IP addresses. Defaults to project declared in the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

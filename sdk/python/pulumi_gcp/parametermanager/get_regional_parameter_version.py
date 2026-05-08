@@ -205,10 +205,10 @@ def get_regional_parameter_version(location: Optional[_builtins.str] = None,
         parameter_version_id=pulumi.get(__ret__, 'parameter_version_id'),
         project=pulumi.get(__ret__, 'project'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_regional_parameter_version_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          parameter: Optional[pulumi.Input[_builtins.str]] = None,
-                                          parameter_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regional_parameter_version_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          parameter: pulumi.Input[Optional[_builtins.str]] = None,
+                                          parameter_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalParameterVersionResult]:
     """
     Get the value and metadata from a Parameter Manager Regional Parameter version. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview) and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions).

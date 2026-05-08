@@ -540,8 +540,8 @@ def get_backend_service(name: Optional[_builtins.str] = None,
         strong_session_affinity_cookies=pulumi.get(__ret__, 'strong_session_affinity_cookies'),
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'),
         tls_settings=pulumi.get(__ret__, 'tls_settings'))
-def get_backend_service_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backend_service_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendServiceResult]:
     """
     Provide access to a Backend Service's attribute. For more information

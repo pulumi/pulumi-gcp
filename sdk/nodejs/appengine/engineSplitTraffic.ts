@@ -182,21 +182,21 @@ export interface EngineSplitTrafficState {
     /**
      * If set to true traffic will be migrated to this version.
      */
-    migrateTraffic?: pulumi.Input<boolean>;
+    migrateTraffic?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service these settings apply to.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Mapping that defines fractional HTTP traffic diversion to different versions within the service.
      * Structure is documented below.
      */
-    split?: pulumi.Input<inputs.appengine.EngineSplitTrafficSplit>;
+    split?: pulumi.Input<inputs.appengine.EngineSplitTrafficSplit | undefined>;
 }
 
 /**
@@ -206,12 +206,12 @@ export interface EngineSplitTrafficArgs {
     /**
      * If set to true traffic will be migrated to this version.
      */
-    migrateTraffic?: pulumi.Input<boolean>;
+    migrateTraffic?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service these settings apply to.
      */

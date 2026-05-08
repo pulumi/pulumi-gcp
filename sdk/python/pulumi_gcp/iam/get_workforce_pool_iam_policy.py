@@ -126,8 +126,8 @@ def get_workforce_pool_iam_policy(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         workforce_pool_id=pulumi.get(__ret__, 'workforce_pool_id'))
-def get_workforce_pool_iam_policy_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         workforce_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workforce_pool_iam_policy_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         workforce_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkforcePoolIamPolicyResult]:
     """
     Retrieves the current IAM policy data for workforcepool

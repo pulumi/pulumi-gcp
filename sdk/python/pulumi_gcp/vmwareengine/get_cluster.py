@@ -181,8 +181,8 @@ def get_cluster(name: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                       parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                       parent: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to get details about a cluster resource.

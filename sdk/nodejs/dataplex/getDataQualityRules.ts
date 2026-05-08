@@ -107,9 +107,9 @@ export interface GetDataQualityRulesOutputArgs {
     /**
      * The location where the referenced data profile scan resides.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the datascan belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

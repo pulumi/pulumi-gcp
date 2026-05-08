@@ -19,16 +19,16 @@ __all__ = ['HttpHealthCheckArgs', 'HttpHealthCheck']
 @pulumi.input_type
 class HttpHealthCheckArgs:
     def __init__(__self__, *,
-                 check_interval_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
+                 check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HttpHealthCheck resource.
 
@@ -83,7 +83,7 @@ class HttpHealthCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkIntervalSec")
-    def check_interval_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_interval_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to send a health check. The default value is 5
         seconds.
@@ -91,12 +91,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "check_interval_sec")
 
     @check_interval_sec.setter
-    def check_interval_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_interval_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_interval_sec", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -104,12 +104,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A so-far unhealthy instance will be marked healthy after this many
         consecutive successes. The default value is 2.
@@ -117,12 +117,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the host header in the HTTP health check request. If
         left empty (default value), the public IP on behalf of which this
@@ -131,12 +131,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -149,12 +149,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TCP port number for the HTTP health check request.
         The default value is 80.
@@ -162,12 +162,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -175,12 +175,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPath")
-    def request_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The request path of the HTTP health check request.
         The default value is /.
@@ -188,12 +188,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "request_path")
 
     @request_path.setter
-    def request_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_path", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait before claiming failure.
         The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -202,12 +202,12 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "timeout_sec")
 
     @timeout_sec.setter
-    def timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A so-far healthy instance will be marked unhealthy after this many
         consecutive failures. The default value is 2.
@@ -215,25 +215,25 @@ class HttpHealthCheckArgs:
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
 
 @pulumi.input_type
 class _HttpHealthCheckState:
     def __init__(__self__, *,
-                 check_interval_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None):
+                 check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering HttpHealthCheck resources.
 
@@ -294,7 +294,7 @@ class _HttpHealthCheckState:
 
     @_builtins.property
     @pulumi.getter(name="checkIntervalSec")
-    def check_interval_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_interval_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often (in seconds) to send a health check. The default value is 5
         seconds.
@@ -302,24 +302,24 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "check_interval_sec")
 
     @check_interval_sec.setter
-    def check_interval_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_interval_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_interval_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -327,12 +327,12 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A so-far unhealthy instance will be marked healthy after this many
         consecutive successes. The default value is 2.
@@ -340,12 +340,12 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the host header in the HTTP health check request. If
         left empty (default value), the public IP on behalf of which this
@@ -354,12 +354,12 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -372,12 +372,12 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TCP port number for the HTTP health check request.
         The default value is 80.
@@ -385,12 +385,12 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -398,12 +398,12 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPath")
-    def request_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The request path of the HTTP health check request.
         The default value is /.
@@ -411,24 +411,24 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "request_path")
 
     @request_path.setter
-    def request_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_path", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSec")
-    def timeout_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long (in seconds) to wait before claiming failure.
         The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -437,12 +437,12 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "timeout_sec")
 
     @timeout_sec.setter
-    def timeout_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A so-far healthy instance will be marked unhealthy after this many
         consecutive failures. The default value is 2.
@@ -450,7 +450,7 @@ class _HttpHealthCheckState:
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
 
@@ -460,16 +460,16 @@ class HttpHealthCheck(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_interval_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         An HttpHealthCheck resource. This resource defines a template for how
@@ -618,16 +618,16 @@ class HttpHealthCheck(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_interval_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
+                 check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -659,18 +659,18 @@ class HttpHealthCheck(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            check_interval_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            request_path: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None) -> 'HttpHealthCheck':
+            check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            request_path: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None) -> 'HttpHealthCheck':
         """
         Get an existing HttpHealthCheck resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

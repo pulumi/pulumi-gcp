@@ -134,9 +134,9 @@ def get_regional_secrets(filter: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         secrets=pulumi.get(__ret__, 'secrets'))
-def get_regional_secrets_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                location: Optional[pulumi.Input[_builtins.str]] = None,
-                                project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regional_secrets_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                location: pulumi.Input[Optional[_builtins.str]] = None,
+                                project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretsResult]:
     """
     subcategory: "Secret Manager"

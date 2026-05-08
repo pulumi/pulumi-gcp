@@ -20,10 +20,10 @@ __all__ = ['HostingReleaseArgs', 'HostingRelease']
 class HostingReleaseArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 channel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HostingRelease resource.
 
@@ -66,7 +66,7 @@ class HostingReleaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="channelId")
-    def channel_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the channel to which the release belongs. If not provided, the release will
         belong to the default "live" channel
@@ -74,24 +74,24 @@ class HostingReleaseArgs:
         return pulumi.get(self, "channel_id")
 
     @channel_id.setter
-    def channel_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deploy description when the release was created. The value can be up to 512 characters.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the release; indicates what happened to the content of the site. There is no need to specify
         `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
@@ -103,12 +103,12 @@ class HostingReleaseArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="versionName")
-    def version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
         The content of the version specified will be actively displayed on the appropriate URL.
@@ -118,20 +118,20 @@ class HostingReleaseArgs:
         return pulumi.get(self, "version_name")
 
     @version_name.setter
-    def version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_name", value)
 
 
 @pulumi.input_type
 class _HostingReleaseState:
     def __init__(__self__, *,
-                 channel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostingRelease resources.
 
@@ -171,7 +171,7 @@ class _HostingReleaseState:
 
     @_builtins.property
     @pulumi.getter(name="channelId")
-    def channel_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the channel to which the release belongs. If not provided, the release will
         belong to the default "live" channel
@@ -179,24 +179,24 @@ class _HostingReleaseState:
         return pulumi.get(self, "channel_id")
 
     @channel_id.setter
-    def channel_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deploy description when the release was created. The value can be up to 512 characters.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the release, in either of the following formats:
         sites/SITE_ID/releases/RELEASE_ID
@@ -205,36 +205,36 @@ class _HostingReleaseState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseId")
-    def release_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Release.
         """
         return pulumi.get(self, "release_id")
 
     @release_id.setter
-    def release_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The ID of the site to which the release belongs.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the release; indicates what happened to the content of the site. There is no need to specify
         `DEPLOY` or `ROLLBACK` type if a `version_name` is provided.
@@ -246,12 +246,12 @@ class _HostingReleaseState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="versionName")
-    def version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
         The content of the version specified will be actively displayed on the appropriate URL.
@@ -261,7 +261,7 @@ class _HostingReleaseState:
         return pulumi.get(self, "version_name")
 
     @version_name.setter
-    def version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_name", value)
 
 
@@ -271,11 +271,11 @@ class HostingRelease(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 channel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Release is a particular collection of configurations that is set to be public at a particular time.
@@ -511,11 +511,11 @@ class HostingRelease(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 channel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -544,13 +544,13 @@ class HostingRelease(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channel_id: Optional[pulumi.Input[_builtins.str]] = None,
-            message: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            release_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            version_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostingRelease':
+            channel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            release_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            version_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostingRelease':
         """
         Get an existing HostingRelease resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

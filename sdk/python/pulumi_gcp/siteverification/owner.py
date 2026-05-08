@@ -64,8 +64,8 @@ class OwnerArgs:
 @pulumi.input_type
 class _OwnerState:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_resource_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Owner resources.
 
@@ -82,7 +82,7 @@ class _OwnerState:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user to be added as an owner.
 
@@ -91,12 +91,12 @@ class _OwnerState:
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="webResourceId")
-    def web_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
         such as `webResource/https://www.example.com/`
@@ -104,7 +104,7 @@ class _OwnerState:
         return pulumi.get(self, "web_resource_id")
 
     @web_resource_id.setter
-    def web_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_resource_id", value)
 
 
@@ -114,8 +114,8 @@ class Owner(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An owner is an additional user that may manage a verified web site in the
@@ -318,8 +318,8 @@ class Owner(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -345,8 +345,8 @@ class Owner(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            web_resource_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Owner':
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            web_resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Owner':
         """
         Get an existing Owner resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

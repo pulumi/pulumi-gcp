@@ -21,16 +21,16 @@ __all__ = ['EntryTypeArgs', 'EntryType']
 @pulumi.input_type
 class EntryTypeArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EntryType resource.
 
@@ -73,43 +73,43 @@ class EntryTypeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the EntryType.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User friendly display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="entryTypeId")
-    def entry_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entry type id of the entry type.
         """
         return pulumi.get(self, "entry_type_id")
 
     @entry_type_id.setter
-    def entry_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_type_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels for the EntryType.
 
@@ -119,36 +119,36 @@ class EntryTypeArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where entry type will be created in.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The platform that Entries of this type belongs to.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -156,12 +156,12 @@ class EntryTypeArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAspects")
-    def required_aspects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]:
+    def required_aspects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]:
         """
         AspectInfo for the entry type.
         Structure is documented below.
@@ -169,53 +169,53 @@ class EntryTypeArgs:
         return pulumi.get(self, "required_aspects")
 
     @required_aspects.setter
-    def required_aspects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]):
+    def required_aspects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]):
         pulumi.set(self, "required_aspects", value)
 
     @_builtins.property
     @pulumi.getter
-    def system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system that Entries of this type belongs to.
         """
         return pulumi.get(self, "system")
 
     @system.setter
-    def system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system", value)
 
     @_builtins.property
     @pulumi.getter(name="typeAliases")
-    def type_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def type_aliases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
         """
         return pulumi.get(self, "type_aliases")
 
     @type_aliases.setter
-    def type_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def type_aliases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "type_aliases", value)
 
 
 @pulumi.input_type
 class _EntryTypeState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 entry_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 entry_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntryType resources.
 
@@ -277,67 +277,67 @@ class _EntryTypeState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the EntryType was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the EntryType.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User friendly display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="entryTypeId")
-    def entry_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entry type id of the entry type.
         """
         return pulumi.get(self, "entry_type_id")
 
     @entry_type_id.setter
-    def entry_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_type_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels for the EntryType.
 
@@ -347,48 +347,48 @@ class _EntryTypeState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where entry type will be created in.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the EntryType, of the form: projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The platform that Entries of this type belongs to.
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -396,12 +396,12 @@ class _EntryTypeState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -409,12 +409,12 @@ class _EntryTypeState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAspects")
-    def required_aspects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]:
+    def required_aspects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]:
         """
         AspectInfo for the entry type.
         Structure is documented below.
@@ -422,55 +422,55 @@ class _EntryTypeState:
         return pulumi.get(self, "required_aspects")
 
     @required_aspects.setter
-    def required_aspects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]):
+    def required_aspects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryTypeRequiredAspectArgs']]]]):
         pulumi.set(self, "required_aspects", value)
 
     @_builtins.property
     @pulumi.getter
-    def system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system that Entries of this type belongs to.
         """
         return pulumi.get(self, "system")
 
     @system.setter
-    def system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system", value)
 
     @_builtins.property
     @pulumi.getter(name="typeAliases")
-    def type_aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def type_aliases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
         """
         return pulumi.get(self, "type_aliases")
 
     @type_aliases.setter
-    def type_aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def type_aliases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "type_aliases", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System generated globally unique ID for the EntryType. This ID will be different if the EntryType is deleted and re-created with the same name.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the EntryType was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -480,16 +480,16 @@ class EntryType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         An Entry Type is a template for creating Entries.
@@ -706,16 +706,16 @@ class EntryType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
-                 system: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
+                 system: pulumi.Input[Optional[_builtins.str]] = None,
+                 type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -753,22 +753,22 @@ class EntryType(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            entry_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            platform: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            required_aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
-            system: Optional[pulumi.Input[_builtins.str]] = None,
-            type_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'EntryType':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            entry_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            required_aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryTypeRequiredAspectArgs', 'EntryTypeRequiredAspectArgsDict']]]]] = None,
+            system: pulumi.Input[Optional[_builtins.str]] = None,
+            type_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'EntryType':
         """
         Get an existing EntryType resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

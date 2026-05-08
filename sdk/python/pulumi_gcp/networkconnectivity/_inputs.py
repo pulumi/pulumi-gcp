@@ -82,12 +82,12 @@ class DestinationEndpointArgsDict(TypedDict):
     """
     The CSP of the remote IP prefix.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The state of the DestinationEndpoint resource.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Time when the DestinationEndpoint resource was updated.
@@ -98,8 +98,8 @@ class DestinationEndpointArgs:
     def __init__(__self__, *,
                  asn: pulumi.Input[_builtins.str],
                  csp: pulumi.Input[_builtins.str],
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] asn: The ASN of the remote IP prefix.
         :param pulumi.Input[_builtins.str] csp: The CSP of the remote IP prefix.
@@ -141,7 +141,7 @@ class DestinationEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The state of the DestinationEndpoint resource.
@@ -149,12 +149,12 @@ class DestinationEndpointArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Time when the DestinationEndpoint resource was updated.
@@ -162,12 +162,12 @@ class DestinationEndpointArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 class DestinationStateTimelineArgsDict(TypedDict):
-    states: NotRequired[pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineStateArgsDict']]]]
+    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]]]
     """
     (Output)
     The state and activation time details of the resource state.
@@ -177,7 +177,7 @@ class DestinationStateTimelineArgsDict(TypedDict):
 @pulumi.input_type
 class DestinationStateTimelineArgs:
     def __init__(__self__, *,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]] = None):
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]] states: (Output)
                The state and activation time details of the resource state.
@@ -188,7 +188,7 @@ class DestinationStateTimelineArgs:
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]]:
         """
         (Output)
         The state and activation time details of the resource state.
@@ -197,12 +197,12 @@ class DestinationStateTimelineArgs:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]]):
         pulumi.set(self, "states", value)
 
 
 class DestinationStateTimelineStateArgsDict(TypedDict):
-    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    effective_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Accompanies only the transient states, which include `ADDING`,
@@ -211,7 +211,7 @@ class DestinationStateTimelineStateArgsDict(TypedDict):
     state is `ADDING`, this field shows the time when the resource state
     transitions to `ACTIVE`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The state of the resource.
@@ -220,8 +220,8 @@ class DestinationStateTimelineStateArgsDict(TypedDict):
 @pulumi.input_type
 class DestinationStateTimelineStateArgs:
     def __init__(__self__, *,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effective_time: (Output)
                Accompanies only the transient states, which include `ADDING`,
@@ -239,7 +239,7 @@ class DestinationStateTimelineStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Accompanies only the transient states, which include `ADDING`,
@@ -251,12 +251,12 @@ class DestinationStateTimelineStateArgs:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The state of the resource.
@@ -264,7 +264,7 @@ class DestinationStateTimelineStateArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -299,14 +299,14 @@ class GroupAutoAcceptArgs:
 class HubIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class HubIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -332,25 +332,25 @@ class HubIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class HubIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class HubIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -376,16 +376,16 @@ class HubIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class HubRoutingVpcArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI of the VPC network.
     """
@@ -393,7 +393,7 @@ class HubRoutingVpcArgsDict(TypedDict):
 @pulumi.input_type
 class HubRoutingVpcArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The URI of the VPC network.
         """
@@ -402,24 +402,24 @@ class HubRoutingVpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the VPC network.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class InternalRangeAllocationOptionsArgsDict(TypedDict):
-    allocation_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    allocation_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
     Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
     """
-    first_available_ranges_lookup_size: NotRequired[pulumi.Input[_builtins.int]]
+    first_available_ranges_lookup_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
     in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
@@ -428,8 +428,8 @@ class InternalRangeAllocationOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class InternalRangeAllocationOptionsArgs:
     def __init__(__self__, *,
-                 allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 first_available_ranges_lookup_size: Optional[pulumi.Input[_builtins.int]] = None):
+                 allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 first_available_ranges_lookup_size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] allocation_strategy: Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
                Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
@@ -443,7 +443,7 @@ class InternalRangeAllocationOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocationStrategy")
-    def allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Sets the strategy used to automatically find a free range of a size given by prefixLength. Can be set only when trying to create a reservation that automatically finds the free range to reserve.
         Possible values are: `RANDOM`, `FIRST_AVAILABLE`, `RANDOM_FIRST_N_AVAILABLE`, `FIRST_SMALLEST_FITTING`.
@@ -451,12 +451,12 @@ class InternalRangeAllocationOptionsArgs:
         return pulumi.get(self, "allocation_strategy")
 
     @allocation_strategy.setter
-    def allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="firstAvailableRangesLookupSize")
-    def first_available_ranges_lookup_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def first_available_ranges_lookup_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Must be set when allocation_strategy is RANDOM_FIRST_N_AVAILABLE, otherwise must remain unset. Defines the size of the set of free ranges from which RANDOM_FIRST_N_AVAILABLE strategy randomy selects one,
         in other words it sets the N in the RANDOM_FIRST_N_AVAILABLE.
@@ -464,7 +464,7 @@ class InternalRangeAllocationOptionsArgs:
         return pulumi.get(self, "first_available_ranges_lookup_size")
 
     @first_available_ranges_lookup_size.setter
-    def first_available_ranges_lookup_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def first_available_ranges_lookup_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "first_available_ranges_lookup_size", value)
 
 
@@ -539,7 +539,7 @@ class MulticloudDataTransferConfigServiceArgsDict(TypedDict):
     The name of the service, like "big-query" or "cloud-storage".
     This corresponds to the map key in the API.
     """
-    states: NotRequired[pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgsDict']]]]
+    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]]]
     """
     (Output)
     The state and activation time details for the service.
@@ -553,7 +553,7 @@ class MulticloudDataTransferConfigServiceArgsDict(TypedDict):
 class MulticloudDataTransferConfigServiceArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[_builtins.str],
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]] = None):
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] service_name: The name of the service, like "big-query" or "cloud-storage".
                This corresponds to the map key in the API.
@@ -583,7 +583,7 @@ class MulticloudDataTransferConfigServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]]:
         """
         (Output)
         The state and activation time details for the service.
@@ -595,16 +595,16 @@ class MulticloudDataTransferConfigServiceArgs:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]]):
         pulumi.set(self, "states", value)
 
 
 class MulticloudDataTransferConfigServiceStateArgsDict(TypedDict):
-    effective_time: NotRequired[pulumi.Input[_builtins.str]]
+    effective_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time when the state becomes effective
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The state of the resource.
     """
@@ -612,8 +612,8 @@ class MulticloudDataTransferConfigServiceStateArgsDict(TypedDict):
 @pulumi.input_type
 class MulticloudDataTransferConfigServiceStateArgs:
     def __init__(__self__, *,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effective_time: The time when the state becomes effective
         :param pulumi.Input[_builtins.str] state: The state of the resource.
@@ -625,26 +625,26 @@ class MulticloudDataTransferConfigServiceStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the state becomes effective
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the resource.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -654,15 +654,15 @@ class PolicyBasedRouteFilterArgsDict(TypedDict):
     Internet protocol versions this policy-based route applies to.
     Possible values are: `IPV4`, `IPV6`.
     """
-    dest_range: NotRequired[pulumi.Input[_builtins.str]]
+    dest_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
     """
-    ip_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    ip_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
     """
-    src_range: NotRequired[pulumi.Input[_builtins.str]]
+    src_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
     """
@@ -671,9 +671,9 @@ class PolicyBasedRouteFilterArgsDict(TypedDict):
 class PolicyBasedRouteFilterArgs:
     def __init__(__self__, *,
                  protocol_version: pulumi.Input[_builtins.str],
-                 dest_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 dest_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] protocol_version: Internet protocol versions this policy-based route applies to.
                Possible values are: `IPV4`, `IPV6`.
@@ -704,38 +704,38 @@ class PolicyBasedRouteFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="destRange")
-    def dest_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
         """
         return pulumi.get(self, "dest_range")
 
     @dest_range.setter
-    def dest_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_range", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
         """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="srcRange")
-    def src_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
         """
         return pulumi.get(self, "src_range")
 
     @src_range.setter
-    def src_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_range", value)
 
 
@@ -796,17 +796,17 @@ class PolicyBasedRouteVirtualMachineArgs:
 
 
 class PolicyBasedRouteWarningArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A warning code, if applicable.
     """
-    data: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    data: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
     """
-    warning_message: NotRequired[pulumi.Input[_builtins.str]]
+    warning_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A human-readable description of the warning code.
@@ -815,9 +815,9 @@ class PolicyBasedRouteWarningArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyBasedRouteWarningArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 warning_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 warning_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                A warning code, if applicable.
@@ -835,7 +835,7 @@ class PolicyBasedRouteWarningArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A warning code, if applicable.
@@ -843,12 +843,12 @@ class PolicyBasedRouteWarningArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Metadata about this warning in key: value format. The key should provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement.
@@ -856,12 +856,12 @@ class PolicyBasedRouteWarningArgs:
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def data(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter(name="warningMessage")
-    def warning_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warning_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A human-readable description of the warning code.
@@ -869,7 +869,7 @@ class PolicyBasedRouteWarningArgs:
         return pulumi.get(self, "warning_message")
 
     @warning_message.setter
-    def warning_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warning_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warning_message", value)
 
 
@@ -878,7 +878,7 @@ class ServiceConnectionPolicyPscConfigArgsDict(TypedDict):
     """
     IDs of the subnetworks or fully qualified identifiers for the subnetworks
     """
-    allowed_google_producers_resource_hierarchy_levels: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_google_producers_resource_hierarchy_levels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
     a network administrator can provide both 'organizations/foo' and 'projects/bar' as
@@ -890,11 +890,11 @@ class ServiceConnectionPolicyPscConfigArgsDict(TypedDict):
     allowedGoogleProducersResourceHierarchyLevel value: 'projects/' or 'folders/' or 'organizations/' Eg.
     [projects/my-project-id, projects/567, folders/891, organizations/123]
     """
-    limit: NotRequired[pulumi.Input[_builtins.str]]
+    limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Max number of PSC connections for this policy.
     """
-    producer_instance_location: NotRequired[pulumi.Input[_builtins.str]]
+    producer_instance_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
     the Producer instance can be within.
@@ -905,9 +905,9 @@ class ServiceConnectionPolicyPscConfigArgsDict(TypedDict):
 class ServiceConnectionPolicyPscConfigArgs:
     def __init__(__self__, *,
                  subnetworks: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 allowed_google_producers_resource_hierarchy_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 producer_instance_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_google_producers_resource_hierarchy_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 producer_instance_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnetworks: IDs of the subnetworks or fully qualified identifiers for the subnetworks
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_google_producers_resource_hierarchy_levels: List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
@@ -946,7 +946,7 @@ class ServiceConnectionPolicyPscConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedGoogleProducersResourceHierarchyLevels")
-    def allowed_google_producers_resource_hierarchy_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_google_producers_resource_hierarchy_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Projects, Folders, or Organizations from where the Producer instance can be within. For example,
         a network administrator can provide both 'organizations/foo' and 'projects/bar' as
@@ -961,24 +961,24 @@ class ServiceConnectionPolicyPscConfigArgs:
         return pulumi.get(self, "allowed_google_producers_resource_hierarchy_levels")
 
     @allowed_google_producers_resource_hierarchy_levels.setter
-    def allowed_google_producers_resource_hierarchy_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_google_producers_resource_hierarchy_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_google_producers_resource_hierarchy_levels", value)
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Max number of PSC connections for this policy.
         """
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "limit", value)
 
     @_builtins.property
     @pulumi.getter(name="producerInstanceLocation")
-    def producer_instance_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def producer_instance_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ProducerInstanceLocation is used to specify which authorization mechanism to use to determine which projects
         the Producer instance can be within.
@@ -987,48 +987,48 @@ class ServiceConnectionPolicyPscConfigArgs:
         return pulumi.get(self, "producer_instance_location")
 
     @producer_instance_location.setter
-    def producer_instance_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def producer_instance_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "producer_instance_location", value)
 
 
 class ServiceConnectionPolicyPscConnectionArgsDict(TypedDict):
-    consumer_address: NotRequired[pulumi.Input[_builtins.str]]
+    consumer_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource reference of the consumer address.
     """
-    consumer_forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    consumer_forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource reference of the PSC Forwarding Rule within the consumer VPC.
     """
-    consumer_target_project: NotRequired[pulumi.Input[_builtins.str]]
+    consumer_target_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The project where the PSC connection is created.
     """
-    error: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgsDict']]
+    error: NotRequired[pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorArgs']]]
     """
     The most recent error during operating this connection.
     Structure is documented below.
     """
-    error_info: NotRequired[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgsDict']]
+    error_info: NotRequired[pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]]
     """
     The error info for the latest error during operating this connection.
     Structure is documented below.
     """
-    error_type: NotRequired[pulumi.Input[_builtins.str]]
+    error_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The error type indicates whether the error is consumer facing, producer
     facing or system internal.
     Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
     """
-    gce_operation: NotRequired[pulumi.Input[_builtins.str]]
+    gce_operation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The last Compute Engine operation to setup PSC connection.
     """
-    psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    psc_connection_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PSC connection id of the PSC forwarding rule.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The state of the PSC connection.
     Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
@@ -1037,15 +1037,15 @@ class ServiceConnectionPolicyPscConnectionArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionArgs:
     def __init__(__self__, *,
-                 consumer_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_target_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 error: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs']] = None,
-                 error_info: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs']] = None,
-                 error_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 gce_operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 consumer_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_target_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 error: pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorArgs']] = None,
+                 error_info: pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorInfoArgs']] = None,
+                 error_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gce_operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] consumer_address: The resource reference of the consumer address.
         :param pulumi.Input[_builtins.str] consumer_forwarding_rule: The resource reference of the PSC Forwarding Rule within the consumer VPC.
@@ -1083,43 +1083,43 @@ class ServiceConnectionPolicyPscConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="consumerAddress")
-    def consumer_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource reference of the consumer address.
         """
         return pulumi.get(self, "consumer_address")
 
     @consumer_address.setter
-    def consumer_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_address", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerForwardingRule")
-    def consumer_forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource reference of the PSC Forwarding Rule within the consumer VPC.
         """
         return pulumi.get(self, "consumer_forwarding_rule")
 
     @consumer_forwarding_rule.setter
-    def consumer_forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerTargetProject")
-    def consumer_target_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consumer_target_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project where the PSC connection is created.
         """
         return pulumi.get(self, "consumer_target_project")
 
     @consumer_target_project.setter
-    def consumer_target_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consumer_target_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_target_project", value)
 
     @_builtins.property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs']]:
+    def error(self) -> pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorArgs']]:
         """
         The most recent error during operating this connection.
         Structure is documented below.
@@ -1127,12 +1127,12 @@ class ServiceConnectionPolicyPscConnectionArgs:
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorArgs']]):
+    def error(self, value: pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorArgs']]):
         pulumi.set(self, "error", value)
 
     @_builtins.property
     @pulumi.getter(name="errorInfo")
-    def error_info(self) -> Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]:
+    def error_info(self) -> pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]:
         """
         The error info for the latest error during operating this connection.
         Structure is documented below.
@@ -1140,12 +1140,12 @@ class ServiceConnectionPolicyPscConnectionArgs:
         return pulumi.get(self, "error_info")
 
     @error_info.setter
-    def error_info(self, value: Optional[pulumi.Input['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]):
+    def error_info(self, value: pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]):
         pulumi.set(self, "error_info", value)
 
     @_builtins.property
     @pulumi.getter(name="errorType")
-    def error_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The error type indicates whether the error is consumer facing, producer
         facing or system internal.
@@ -1154,36 +1154,36 @@ class ServiceConnectionPolicyPscConnectionArgs:
         return pulumi.get(self, "error_type")
 
     @error_type.setter
-    def error_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_type", value)
 
     @_builtins.property
     @pulumi.getter(name="gceOperation")
-    def gce_operation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gce_operation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last Compute Engine operation to setup PSC connection.
         """
         return pulumi.get(self, "gce_operation")
 
     @gce_operation.setter
-    def gce_operation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gce_operation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gce_operation", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionId")
-    def psc_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PSC connection id of the PSC forwarding rule.
         """
         return pulumi.get(self, "psc_connection_id")
 
     @psc_connection_id.setter
-    def psc_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the PSC connection.
         Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
@@ -1191,21 +1191,21 @@ class ServiceConnectionPolicyPscConnectionArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class ServiceConnectionPolicyPscConnectionErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The status code, which should be an enum value of [google.rpc.Code][].
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A developer-facing error message.
     """
@@ -1213,9 +1213,9 @@ class ServiceConnectionPolicyPscConnectionErrorArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: The status code, which should be an enum value of [google.rpc.Code][].
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] details: (Output)
@@ -1231,19 +1231,19 @@ class ServiceConnectionPolicyPscConnectionErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status code, which should be an enum value of [google.rpc.Code][].
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -1251,32 +1251,32 @@ class ServiceConnectionPolicyPscConnectionErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A developer-facing error message.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class ServiceConnectionPolicyPscConnectionErrorInfoArgsDict(TypedDict):
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The logical grouping to which the "reason" belongs.
     """
-    metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    metadata: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Additional structured details about this error.
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The reason of the error.
     """
@@ -1284,9 +1284,9 @@ class ServiceConnectionPolicyPscConnectionErrorInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The logical grouping to which the "reason" belongs.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Additional structured details about this error.
@@ -1301,38 +1301,38 @@ class ServiceConnectionPolicyPscConnectionErrorInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical grouping to which the "reason" belongs.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Additional structured details about this error.
         """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason of the error.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
@@ -1347,7 +1347,7 @@ class SpokeGatewayArgsDict(TypedDict):
     A list of IP ranges that are reserved for this gateway's internal infrastructure.
     Structure is documented below.
     """
-    routers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    routers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output, Beta)
     Set of Cloud Routers that are attached to this NCC-GW
@@ -1358,7 +1358,7 @@ class SpokeGatewayArgs:
     def __init__(__self__, *,
                  capacity: pulumi.Input[_builtins.str],
                  ip_range_reservations: pulumi.Input[Sequence[pulumi.Input['SpokeGatewayIpRangeReservationArgs']]],
-                 routers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 routers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] capacity: the capacity of the gateway spoke, in Gbps.
                Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
@@ -1400,7 +1400,7 @@ class SpokeGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def routers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output, Beta)
         Set of Cloud Routers that are attached to this NCC-GW
@@ -1408,7 +1408,7 @@ class SpokeGatewayArgs:
         return pulumi.get(self, "routers")
 
     @routers.setter
-    def routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def routers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "routers", value)
 
 
@@ -1449,19 +1449,19 @@ class SpokeLinkedInterconnectAttachmentsArgsDict(TypedDict):
     """
     The URIs of linked interconnect attachment resources
     """
-    exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
     """
-    exclude_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_import_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
     """
-    include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Dynamic routes fully encompassed by include export ranges are included during export to hub.
     """
-    include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_import_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Hub routes fully encompassed by include import ranges are included during import from hub.
     "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
@@ -1472,10 +1472,10 @@ class SpokeLinkedInterconnectAttachmentsArgs:
     def __init__(__self__, *,
                  site_to_site_data_transfer: pulumi.Input[_builtins.bool],
                  uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_import_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_import_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exclude_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_import_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_import_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uris: The URIs of linked interconnect attachment resources
@@ -1522,43 +1522,43 @@ class SpokeLinkedInterconnectAttachmentsArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeExportRanges")
-    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
         """
         return pulumi.get(self, "exclude_export_ranges")
 
     @exclude_export_ranges.setter
-    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeImportRanges")
-    def exclude_import_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_import_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
         """
         return pulumi.get(self, "exclude_import_ranges")
 
     @exclude_import_ranges.setter
-    def exclude_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_import_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_import_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeExportRanges")
-    def include_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dynamic routes fully encompassed by include export ranges are included during export to hub.
         """
         return pulumi.get(self, "include_export_ranges")
 
     @include_export_ranges.setter
-    def include_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeImportRanges")
-    def include_import_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_import_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Hub routes fully encompassed by include import ranges are included during import from hub.
         "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
@@ -1566,7 +1566,7 @@ class SpokeLinkedInterconnectAttachmentsArgs:
         return pulumi.get(self, "include_import_ranges")
 
     @include_import_ranges.setter
-    def include_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_import_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_import_ranges", value)
 
 
@@ -1579,15 +1579,15 @@ class SpokeLinkedProducerVpcNetworkArgsDict(TypedDict):
     """
     The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
     """
-    exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IP ranges encompassing the subnets to be excluded from peering.
     """
-    include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IP ranges allowed to be included from peering.
     """
-    producer_network: NotRequired[pulumi.Input[_builtins.str]]
+    producer_network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The URI of the Producer VPC.
@@ -1598,9 +1598,9 @@ class SpokeLinkedProducerVpcNetworkArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
                  peering: pulumi.Input[_builtins.str],
-                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 producer_network: Optional[pulumi.Input[_builtins.str]] = None):
+                 exclude_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 producer_network: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The URI of the Service Consumer VPC that the Producer VPC is peered with.
         :param pulumi.Input[_builtins.str] peering: The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
@@ -1644,31 +1644,31 @@ class SpokeLinkedProducerVpcNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeExportRanges")
-    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP ranges encompassing the subnets to be excluded from peering.
         """
         return pulumi.get(self, "exclude_export_ranges")
 
     @exclude_export_ranges.setter
-    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeExportRanges")
-    def include_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP ranges allowed to be included from peering.
         """
         return pulumi.get(self, "include_export_ranges")
 
     @include_export_ranges.setter
-    def include_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="producerNetwork")
-    def producer_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def producer_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The URI of the Producer VPC.
@@ -1676,7 +1676,7 @@ class SpokeLinkedProducerVpcNetworkArgs:
         return pulumi.get(self, "producer_network")
 
     @producer_network.setter
-    def producer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def producer_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "producer_network", value)
 
 
@@ -1690,19 +1690,19 @@ class SpokeLinkedRouterApplianceInstancesArgsDict(TypedDict):
     """
     A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
     """
-    exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
     """
-    exclude_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_import_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
     """
-    include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Dynamic routes fully encompassed by include export ranges are included during export to hub.
     """
-    include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_import_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Hub routes fully encompassed by include import ranges are included during import from hub.
     "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
@@ -1713,10 +1713,10 @@ class SpokeLinkedRouterApplianceInstancesArgs:
     def __init__(__self__, *,
                  instances: pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]],
                  site_to_site_data_transfer: pulumi.Input[_builtins.bool],
-                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_import_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_import_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exclude_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_import_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_import_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['SpokeLinkedRouterApplianceInstancesInstanceArgs']]] instances: The list of router appliance instances
                Structure is documented below.
@@ -1765,43 +1765,43 @@ class SpokeLinkedRouterApplianceInstancesArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeExportRanges")
-    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
         """
         return pulumi.get(self, "exclude_export_ranges")
 
     @exclude_export_ranges.setter
-    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeImportRanges")
-    def exclude_import_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_import_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
         """
         return pulumi.get(self, "exclude_import_ranges")
 
     @exclude_import_ranges.setter
-    def exclude_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_import_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_import_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeExportRanges")
-    def include_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dynamic routes fully encompassed by include export ranges are included during export to hub.
         """
         return pulumi.get(self, "include_export_ranges")
 
     @include_export_ranges.setter
-    def include_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeImportRanges")
-    def include_import_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_import_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Hub routes fully encompassed by include import ranges are included during import from hub.
         "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
@@ -1809,7 +1809,7 @@ class SpokeLinkedRouterApplianceInstancesArgs:
         return pulumi.get(self, "include_import_ranges")
 
     @include_import_ranges.setter
-    def include_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_import_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_import_ranges", value)
 
 
@@ -1865,11 +1865,11 @@ class SpokeLinkedVpcNetworkArgsDict(TypedDict):
     """
     The URI of the VPC network resource.
     """
-    exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IP ranges encompassing the subnets to be excluded from peering.
     """
-    include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IP ranges allowed to be included from peering.
     """
@@ -1878,8 +1878,8 @@ class SpokeLinkedVpcNetworkArgsDict(TypedDict):
 class SpokeLinkedVpcNetworkArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exclude_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The URI of the VPC network resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
@@ -1905,26 +1905,26 @@ class SpokeLinkedVpcNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeExportRanges")
-    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP ranges encompassing the subnets to be excluded from peering.
         """
         return pulumi.get(self, "exclude_export_ranges")
 
     @exclude_export_ranges.setter
-    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeExportRanges")
-    def include_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP ranges allowed to be included from peering.
         """
         return pulumi.get(self, "include_export_ranges")
 
     @include_export_ranges.setter
-    def include_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_export_ranges", value)
 
 
@@ -1937,19 +1937,19 @@ class SpokeLinkedVpnTunnelsArgsDict(TypedDict):
     """
     The URIs of linked VPN tunnel resources.
     """
-    exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
     """
-    exclude_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_import_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
     """
-    include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_export_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Dynamic routes fully encompassed by include export ranges are included during export to hub.
     """
-    include_import_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    include_import_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Hub routes fully encompassed by include import ranges are included during import from hub.
     "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
@@ -1960,10 +1960,10 @@ class SpokeLinkedVpnTunnelsArgs:
     def __init__(__self__, *,
                  site_to_site_data_transfer: pulumi.Input[_builtins.bool],
                  uris: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_import_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 include_import_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exclude_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_import_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_export_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 include_import_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uris: The URIs of linked VPN tunnel resources.
@@ -2010,43 +2010,43 @@ class SpokeLinkedVpnTunnelsArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeExportRanges")
-    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dynamic routes overlapped/encompassed by exclude export ranges are excluded during export to hub.
         """
         return pulumi.get(self, "exclude_export_ranges")
 
     @exclude_export_ranges.setter
-    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeImportRanges")
-    def exclude_import_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_import_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Hub routes overlapped/encompassed by exclude import ranges are excluded during import from hub.
         """
         return pulumi.get(self, "exclude_import_ranges")
 
     @exclude_import_ranges.setter
-    def exclude_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_import_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_import_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeExportRanges")
-    def include_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_export_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Dynamic routes fully encompassed by include export ranges are included during export to hub.
         """
         return pulumi.get(self, "include_export_ranges")
 
     @include_export_ranges.setter
-    def include_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_export_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_export_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="includeImportRanges")
-    def include_import_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def include_import_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Hub routes fully encompassed by include import ranges are included during import from hub.
         "ALL_IPV4_RANGES" or IPv4 CIDR ranges are allowed.
@@ -2054,20 +2054,20 @@ class SpokeLinkedVpnTunnelsArgs:
         return pulumi.get(self, "include_import_ranges")
 
     @include_import_ranges.setter
-    def include_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def include_import_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "include_import_ranges", value)
 
 
 class SpokeReasonArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The code associated with this reason.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Human-readable details about this reason.
     """
-    user_details: NotRequired[pulumi.Input[_builtins.str]]
+    user_details: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Additional information provided by the user in the RejectSpoke call.
     """
@@ -2075,9 +2075,9 @@ class SpokeReasonArgsDict(TypedDict):
 @pulumi.input_type
 class SpokeReasonArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_details: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_details: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: The code associated with this reason.
         :param pulumi.Input[_builtins.str] message: Human-readable details about this reason.
@@ -2092,38 +2092,38 @@ class SpokeReasonArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code associated with this reason.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable details about this reason.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="userDetails")
-    def user_details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional information provided by the user in the RejectSpoke call.
         """
         return pulumi.get(self, "user_details")
 
     @user_details.setter
-    def user_details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_details", value)
 
 

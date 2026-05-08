@@ -162,32 +162,32 @@ export interface SchemaState {
     /**
      * The unique id of the data store.
      */
-    dataStoreId?: pulumi.Input<string>;
+    dataStoreId?: pulumi.Input<string | undefined>;
     /**
      * The JSON representation of the schema.
      */
-    jsonSchema?: pulumi.Input<string>;
+    jsonSchema?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the schema. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/schemas/{schema_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the schema.
      */
-    schemaId?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,7 +201,7 @@ export interface SchemaArgs {
     /**
      * The JSON representation of the schema.
      */
-    jsonSchema?: pulumi.Input<string>;
+    jsonSchema?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -211,7 +211,7 @@ export interface SchemaArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the schema.
      */

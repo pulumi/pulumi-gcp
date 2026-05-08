@@ -24,13 +24,13 @@ class AlertPolicyArgs:
                  combiner: pulumi.Input[_builtins.str],
                  conditions: pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]],
                  display_name: pulumi.Input[_builtins.str],
-                 alert_strategy: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']] = None,
-                 documentation: Optional[pulumi.Input['AlertPolicyDocumentationArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 alert_strategy: pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']] = None,
+                 documentation: pulumi.Input[Optional['AlertPolicyDocumentationArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AlertPolicy resource.
 
@@ -139,7 +139,7 @@ class AlertPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertStrategy")
-    def alert_strategy(self) -> Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']]:
+    def alert_strategy(self) -> pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']]:
         """
         Control over how this alert policy's notification channels are notified.
         Structure is documented below.
@@ -147,12 +147,12 @@ class AlertPolicyArgs:
         return pulumi.get(self, "alert_strategy")
 
     @alert_strategy.setter
-    def alert_strategy(self, value: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']]):
+    def alert_strategy(self, value: pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']]):
         pulumi.set(self, "alert_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def documentation(self) -> Optional[pulumi.Input['AlertPolicyDocumentationArgs']]:
+    def documentation(self) -> pulumi.Input[Optional['AlertPolicyDocumentationArgs']]:
         """
         Documentation that is included with notifications and incidents related
         to this policy. Best practice is for the documentation to include information
@@ -164,24 +164,24 @@ class AlertPolicyArgs:
         return pulumi.get(self, "documentation")
 
     @documentation.setter
-    def documentation(self, value: Optional[pulumi.Input['AlertPolicyDocumentationArgs']]):
+    def documentation(self, value: pulumi.Input[Optional['AlertPolicyDocumentationArgs']]):
         pulumi.set(self, "documentation", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the policy is enabled. The default is true.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationChannels")
-    def notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identifies the notification channels to which notifications should be
         sent when incidents are opened or closed or when new violations occur
@@ -194,12 +194,12 @@ class AlertPolicyArgs:
         return pulumi.get(self, "notification_channels")
 
     @notification_channels.setter
-    def notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_channels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -207,12 +207,12 @@ class AlertPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The severity of an alert policy indicates how important incidents generated
         by that policy are. The severity level will be displayed on the Incident
@@ -222,12 +222,12 @@ class AlertPolicyArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This field is intended to be used for organizing and identifying the AlertPolicy
         objects.The field can contain up to 64 entries. Each key and value is limited
@@ -238,25 +238,25 @@ class AlertPolicyArgs:
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
 @pulumi.input_type
 class _AlertPolicyState:
     def __init__(__self__, *,
-                 alert_strategy: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']] = None,
-                 combiner: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]] = None,
-                 creation_records: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 documentation: Optional[pulumi.Input['AlertPolicyDocumentationArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 alert_strategy: pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']] = None,
+                 combiner: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]] = None,
+                 creation_records: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 documentation: pulumi.Input[Optional['AlertPolicyDocumentationArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AlertPolicy resources.
 
@@ -333,7 +333,7 @@ class _AlertPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="alertStrategy")
-    def alert_strategy(self) -> Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']]:
+    def alert_strategy(self) -> pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']]:
         """
         Control over how this alert policy's notification channels are notified.
         Structure is documented below.
@@ -341,12 +341,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "alert_strategy")
 
     @alert_strategy.setter
-    def alert_strategy(self, value: Optional[pulumi.Input['AlertPolicyAlertStrategyArgs']]):
+    def alert_strategy(self, value: pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']]):
         pulumi.set(self, "alert_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def combiner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def combiner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to combine the results of multiple conditions to
         determine if an incident should be opened.
@@ -355,12 +355,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "combiner")
 
     @combiner.setter
-    def combiner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def combiner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "combiner", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]]:
         """
         A list of conditions for the policy. The conditions are combined by
         AND or OR according to the combiner field. If the combined conditions
@@ -371,12 +371,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="creationRecords")
-    def creation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]]:
+    def creation_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]]:
         """
         A read-only record of the creation of the alerting policy.
         If provided in a call to create or update, this field will
@@ -386,12 +386,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "creation_records")
 
     @creation_records.setter
-    def creation_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]]):
+    def creation_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]]):
         pulumi.set(self, "creation_records", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short name or phrase used to identify the policy in
         dashboards, notifications, and incidents. To avoid confusion, don't use
@@ -401,12 +401,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def documentation(self) -> Optional[pulumi.Input['AlertPolicyDocumentationArgs']]:
+    def documentation(self) -> pulumi.Input[Optional['AlertPolicyDocumentationArgs']]:
         """
         Documentation that is included with notifications and incidents related
         to this policy. Best practice is for the documentation to include information
@@ -418,24 +418,24 @@ class _AlertPolicyState:
         return pulumi.get(self, "documentation")
 
     @documentation.setter
-    def documentation(self, value: Optional[pulumi.Input['AlertPolicyDocumentationArgs']]):
+    def documentation(self, value: pulumi.Input[Optional['AlertPolicyDocumentationArgs']]):
         pulumi.set(self, "documentation", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the policy is enabled. The default is true.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique resource name for this policy.
         Its syntax is: projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
@@ -443,12 +443,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationChannels")
-    def notification_channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identifies the notification channels to which notifications should be
         sent when incidents are opened or closed or when new violations occur
@@ -461,12 +461,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "notification_channels")
 
     @notification_channels.setter
-    def notification_channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_channels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -474,12 +474,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The severity of an alert policy indicates how important incidents generated
         by that policy are. The severity level will be displayed on the Incident
@@ -489,12 +489,12 @@ class _AlertPolicyState:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This field is intended to be used for organizing and identifying the AlertPolicy
         objects.The field can contain up to 64 entries. Each key and value is limited
@@ -505,7 +505,7 @@ class _AlertPolicyState:
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
@@ -515,16 +515,16 @@ class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_strategy: Optional[pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
-                 combiner: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 documentation: Optional[pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 alert_strategy: pulumi.Input[Optional[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
+                 combiner: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 documentation: pulumi.Input[Optional[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A description of the conditions under which some aspect of your system is
@@ -901,16 +901,16 @@ class AlertPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_strategy: Optional[pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
-                 combiner: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 documentation: Optional[pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 alert_strategy: pulumi.Input[Optional[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
+                 combiner: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 documentation: pulumi.Input[Optional[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -948,18 +948,18 @@ class AlertPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_strategy: Optional[pulumi.Input[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
-            combiner: Optional[pulumi.Input[_builtins.str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
-            creation_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlertPolicyCreationRecordArgs', 'AlertPolicyCreationRecordArgsDict']]]]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            documentation: Optional[pulumi.Input[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            severity: Optional[pulumi.Input[_builtins.str]] = None,
-            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'AlertPolicy':
+            alert_strategy: pulumi.Input[Optional[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
+            combiner: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
+            creation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyCreationRecordArgs', 'AlertPolicyCreationRecordArgsDict']]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            documentation: pulumi.Input[Optional[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            severity: pulumi.Input[Optional[_builtins.str]] = None,
+            user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'AlertPolicy':
         """
         Get an existing AlertPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

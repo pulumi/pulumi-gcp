@@ -588,36 +588,36 @@ export interface SubnetworkState {
      * Setting this field to true will allow these packets to match dynamic routes injected
      * via BGP even if their destinations match existing subnet ranges.
      */
-    allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean>;
+    allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
      * creation time.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
-    externalIpv6Prefix?: pulumi.Input<string>;
+    externalIpv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during updates of this resource.
      *
      * @deprecated This field is not useful for users, and has been removed as an output.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The gateway address for default routes to reach destination addresses
      * outside this subnetwork.
      */
-    gatewayAddress?: pulumi.Input<string>;
+    gatewayAddress?: pulumi.Input<string | undefined>;
     /**
      * The internal IPv6 address range that is assigned to this subnetwork.
      */
-    internalIpv6Prefix?: pulumi.Input<string>;
+    internalIpv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
@@ -625,7 +625,7 @@ export interface SubnetworkState {
      * non-overlapping within a network. Only IPv4 is supported.
      * Field is optional when `reservedInternalRange` is defined, otherwise required.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
      * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
@@ -637,18 +637,18 @@ export interface SubnetworkState {
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      */
-    ipCollection?: pulumi.Input<string>;
+    ipCollection?: pulumi.Input<string | undefined>;
     /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
-    ipv6AccessType?: pulumi.Input<string>;
+    ipv6AccessType?: pulumi.Input<string | undefined>;
     /**
      * The range of internal IPv6 addresses that are owned by this subnetwork.
      */
-    ipv6CidrRange?: pulumi.Input<string>;
+    ipv6CidrRange?: pulumi.Input<string | undefined>;
     /**
      * Possible endpoints of this subnetwork. It can be one of the following:
      * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
@@ -656,7 +656,7 @@ export interface SubnetworkState {
      * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
      * IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
      */
-    ipv6GceEndpoint?: pulumi.Input<string>;
+    ipv6GceEndpoint?: pulumi.Input<string | undefined>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If
      * logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -664,7 +664,7 @@ export interface SubnetworkState {
      * `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig | undefined>;
     /**
      * The name of the resource, provided by the client when initially
      * creating the resource. The name must be 1-63 characters long, and
@@ -674,31 +674,31 @@ export interface SubnetworkState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.SubnetworkParams>;
+    params?: pulumi.Input<inputs.compute.SubnetworkParams | undefined>;
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
-    privateIpGoogleAccess?: pulumi.Input<boolean>;
+    privateIpGoogleAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The private IPv6 google access type for the VMs in this subnet.
      */
-    privateIpv6GoogleAccess?: pulumi.Input<string>;
+    privateIpv6GoogleAccess?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
@@ -709,21 +709,21 @@ export interface SubnetworkState {
      * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
      * If unspecified, the purpose defaults to `PRIVATE`.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * The GCP region for this subnetwork.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
      * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
      */
-    reservedInternalRange?: pulumi.Input<string>;
+    reservedInternalRange?: pulumi.Input<string | undefined>;
     /**
      * 'Configures subnet mask resolution for this subnetwork.'
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      */
-    resolveSubnetMask?: pulumi.Input<string>;
+    resolveSubnetMask?: pulumi.Input<string | undefined>;
     /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -732,7 +732,7 @@ export interface SubnetworkState {
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
      * Possible values are: `ACTIVE`, `BACKUP`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
@@ -740,11 +740,11 @@ export interface SubnetworkState {
      * to either primary or secondary ranges.
      * Structure is documented below.
      */
-    secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
+    secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[] | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Controls the removal behavior of secondary_ip_range.
      * When false, removing secondaryIpRange from config will not produce a diff as
@@ -753,24 +753,24 @@ export interface SubnetworkState {
      * empty list of secondary IP ranges to the API.
      * Defaults to false.
      */
-    sendSecondaryIpRangeIfEmpty?: pulumi.Input<boolean>;
+    sendSecondaryIpRangeIfEmpty?: pulumi.Input<boolean | undefined>;
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
     /**
      * 'The state of the subnetwork, which can be one of the following values:
      * READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose
      * set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained.
      * A subnetwork that is draining cannot be used or modified until it reaches a status of READY'
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier number for the resource. This identifier is defined by the server.
      */
-    subnetworkId?: pulumi.Input<number>;
+    subnetworkId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -783,21 +783,21 @@ export interface SubnetworkArgs {
      * Setting this field to true will allow these packets to match dynamic routes injected
      * via BGP even if their destinations match existing subnet ranges.
      */
-    allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean>;
+    allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource. This field can be set only at resource
      * creation time.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
-    externalIpv6Prefix?: pulumi.Input<string>;
+    externalIpv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * The internal IPv6 address range that is assigned to this subnetwork.
      */
-    internalIpv6Prefix?: pulumi.Input<string>;
+    internalIpv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * The range of internal addresses that are owned by this subnetwork.
      * Provide this property when you create the subnetwork. For example,
@@ -805,7 +805,7 @@ export interface SubnetworkArgs {
      * non-overlapping within a network. Only IPv4 is supported.
      * Field is optional when `reservedInternalRange` is defined, otherwise required.
      */
-    ipCidrRange?: pulumi.Input<string>;
+    ipCidrRange?: pulumi.Input<string | undefined>;
     /**
      * Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
      * in EXTERNAL_IPV6_SUBNETWORK_CREATION or INTERNAL_IPV6_SUBNETWORK_CREATION
@@ -817,14 +817,14 @@ export interface SubnetworkArgs {
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      */
-    ipCollection?: pulumi.Input<string>;
+    ipCollection?: pulumi.Input<string | undefined>;
     /**
      * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6Type is EXTERNAL then this subnet
      * cannot enable direct path.
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
-    ipv6AccessType?: pulumi.Input<string>;
+    ipv6AccessType?: pulumi.Input<string | undefined>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If
      * logging is enabled, logs are exported to Cloud Logging. Flow logging
@@ -832,7 +832,7 @@ export interface SubnetworkArgs {
      * `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.SubnetworkLogConfig | undefined>;
     /**
      * The name of the resource, provided by the client when initially
      * creating the resource. The name must be 1-63 characters long, and
@@ -842,7 +842,7 @@ export interface SubnetworkArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
@@ -852,21 +852,21 @@ export interface SubnetworkArgs {
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.SubnetworkParams>;
+    params?: pulumi.Input<inputs.compute.SubnetworkParams | undefined>;
     /**
      * When enabled, VMs in this subnetwork without external IP addresses can
      * access Google APIs and services by using Private Google Access.
      */
-    privateIpGoogleAccess?: pulumi.Input<boolean>;
+    privateIpGoogleAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The private IPv6 google access type for the VMs in this subnet.
      */
-    privateIpv6GoogleAccess?: pulumi.Input<string>;
+    privateIpv6GoogleAccess?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The purpose of the resource. This field can be either `PRIVATE`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT`, `PEER_MIGRATION` or `PRIVATE_NAT`(Beta).
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
@@ -877,21 +877,21 @@ export interface SubnetworkArgs {
      * Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
      * If unspecified, the purpose defaults to `PRIVATE`.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * The GCP region for this subnetwork.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
      * E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
      */
-    reservedInternalRange?: pulumi.Input<string>;
+    reservedInternalRange?: pulumi.Input<string | undefined>;
     /**
      * 'Configures subnet mask resolution for this subnetwork.'
      * Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
      */
-    resolveSubnetMask?: pulumi.Input<string>;
+    resolveSubnetMask?: pulumi.Input<string | undefined>;
     /**
      * The role of subnetwork.
      * Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
@@ -900,7 +900,7 @@ export interface SubnetworkArgs {
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
      * Possible values are: `ACTIVE`, `BACKUP`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * An array of configurations for secondary IP ranges for VM instances
      * contained in this subnetwork. The primary IP of such VM must belong
@@ -908,7 +908,7 @@ export interface SubnetworkArgs {
      * to either primary or secondary ranges.
      * Structure is documented below.
      */
-    secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[]>;
+    secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.SubnetworkSecondaryIpRange>[] | undefined>;
     /**
      * Controls the removal behavior of secondary_ip_range.
      * When false, removing secondaryIpRange from config will not produce a diff as
@@ -917,11 +917,11 @@ export interface SubnetworkArgs {
      * empty list of secondary IP ranges to the API.
      * Defaults to false.
      */
-    sendSecondaryIpRangeIfEmpty?: pulumi.Input<boolean>;
+    sendSecondaryIpRangeIfEmpty?: pulumi.Input<boolean | undefined>;
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
 }

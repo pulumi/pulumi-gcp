@@ -22,29 +22,29 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  memory_size_gb: pulumi.Input[_builtins.int],
-                 alternative_location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replicas_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 redis_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 alternative_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional['InstancePersistenceConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_replicas_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 redis_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -186,7 +186,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="alternativeLocationId")
-    def alternative_location_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alternative_location_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only applicable to STANDARD_HA tier which protects the instance
         against zonal failures by provisioning it across two zones.
@@ -196,12 +196,12 @@ class InstanceArgs:
         return pulumi.get(self, "alternative_location_id")
 
     @alternative_location_id.setter
-    def alternative_location_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alternative_location_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alternative_location_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authEnabled")
-    def auth_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auth_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Indicates whether OSS Redis AUTH is enabled for the
         instance. If set to "true" AUTH is enabled on the instance.
@@ -210,12 +210,12 @@ class InstanceArgs:
         return pulumi.get(self, "auth_enabled")
 
     @auth_enabled.setter
-    def auth_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auth_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auth_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the Google Compute Engine network to which the
         instance is connected. If left unspecified, the default network
@@ -224,12 +224,12 @@ class InstanceArgs:
         return pulumi.get(self, "authorized_network")
 
     @authorized_network.setter
-    def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
 
     @_builtins.property
     @pulumi.getter(name="connectMode")
-    def connect_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection mode of the Redis instance.
         Default value is `DIRECT_PEERING`.
@@ -238,12 +238,12 @@ class InstanceArgs:
         return pulumi.get(self, "connect_mode")
 
     @connect_mode.setter
-    def connect_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedKey")
-    def customer_managed_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
         instance. If this is provided, CMEK is enabled.
@@ -251,12 +251,12 @@ class InstanceArgs:
         return pulumi.get(self, "customer_managed_key")
 
     @customer_managed_key.setter
-    def customer_managed_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the instance.
         When a`terraform destroy` or `pulumi up` would delete the instance,
@@ -268,24 +268,24 @@ class InstanceArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An arbitrary and optional user-provided name for the instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -294,12 +294,12 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="locationId")
-    def location_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone where the instance will be provisioned. If not provided,
         the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -310,12 +310,12 @@ class InstanceArgs:
         return pulumi.get(self, "location_id")
 
     @location_id.setter
-    def location_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -323,36 +323,36 @@ class InstanceArgs:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceVersion")
-    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The self service update maintenance version.
         """
         return pulumi.get(self, "maintenance_version")
 
     @maintenance_version.setter
-    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+    def persistence_config(self) -> pulumi.Input[Optional['InstancePersistenceConfigArgs']]:
         """
         Persistence configuration for an instance.
         Structure is documented below.
@@ -360,12 +360,12 @@ class InstanceArgs:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+    def persistence_config(self, value: pulumi.Input[Optional['InstancePersistenceConfigArgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -373,12 +373,12 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="readReplicasMode")
-    def read_replicas_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_replicas_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Read replica mode. Can only be specified when trying to create the instance.
         If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
@@ -391,12 +391,12 @@ class InstanceArgs:
         return pulumi.get(self, "read_replicas_mode")
 
     @read_replicas_mode.setter
-    def read_replicas_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_replicas_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_replicas_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="redisConfigs")
-    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def redis_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Redis configuration parameters, according to http://redis.io/topics/config.
         Please check Memorystore documentation for the list of supported parameters:
@@ -405,12 +405,12 @@ class InstanceArgs:
         return pulumi.get(self, "redis_configs")
 
     @redis_configs.setter
-    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def redis_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "redis_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="redisVersion")
-    def redis_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redis_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Redis software. If not provided, latest supported
         version will be used. Please check the API documentation linked
@@ -419,24 +419,24 @@ class InstanceArgs:
         return pulumi.get(self, "redis_version")
 
     @redis_version.setter
-    def redis_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redis_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redis_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Redis region of the instance.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of replica nodes. The valid range for the Standard Tier with
         read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
@@ -446,12 +446,12 @@ class InstanceArgs:
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR range of internal addresses that are reserved for this
         instance. If not provided, the service will choose an unused /29
@@ -462,12 +462,12 @@ class InstanceArgs:
         return pulumi.get(self, "reserved_ip_range")
 
     @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryIpRange")
-    def secondary_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Additional IP range for node placement. Required when enabling read replicas on
         an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
@@ -477,12 +477,12 @@ class InstanceArgs:
         return pulumi.get(self, "secondary_ip_range")
 
     @secondary_ip_range.setter
-    def secondary_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_ip_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service tier of the instance. Must be one of these values:
         - BASIC: standalone instance
@@ -493,12 +493,12 @@ class InstanceArgs:
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
-    def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_encryption_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
@@ -508,51 +508,51 @@ class InstanceArgs:
         return pulumi.get(self, "transit_encryption_mode")
 
     @transit_encryption_mode.setter
-    def transit_encryption_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_encryption_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_encryption_mode", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 alternative_location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auth_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
-                 persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
-                 persistence_iam_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 read_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 read_replicas_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 redis_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 alternative_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auth_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
+                 maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNodeArgs']]]] = None,
+                 persistence_config: pulumi.Input[Optional['InstancePersistenceConfigArgs']] = None,
+                 persistence_iam_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 read_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 read_replicas_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 redis_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -745,7 +745,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="alternativeLocationId")
-    def alternative_location_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alternative_location_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only applicable to STANDARD_HA tier which protects the instance
         against zonal failures by provisioning it across two zones.
@@ -755,12 +755,12 @@ class _InstanceState:
         return pulumi.get(self, "alternative_location_id")
 
     @alternative_location_id.setter
-    def alternative_location_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alternative_location_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alternative_location_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authEnabled")
-    def auth_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auth_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. Indicates whether OSS Redis AUTH is enabled for the
         instance. If set to "true" AUTH is enabled on the instance.
@@ -769,24 +769,24 @@ class _InstanceState:
         return pulumi.get(self, "auth_enabled")
 
     @auth_enabled.setter
-    def auth_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auth_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auth_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="authString")
-    def auth_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AUTH String set on the instance. This field will only be populated if auth_enabled is true.
         """
         return pulumi.get(self, "auth_string")
 
     @auth_string.setter
-    def auth_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_string", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the Google Compute Engine network to which the
         instance is connected. If left unspecified, the default network
@@ -795,12 +795,12 @@ class _InstanceState:
         return pulumi.get(self, "authorized_network")
 
     @authorized_network.setter
-    def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
 
     @_builtins.property
     @pulumi.getter(name="connectMode")
-    def connect_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection mode of the Redis instance.
         Default value is `DIRECT_PEERING`.
@@ -809,12 +809,12 @@ class _InstanceState:
         return pulumi.get(self, "connect_mode")
 
     @connect_mode.setter
-    def connect_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the certificate was created.
@@ -822,12 +822,12 @@ class _InstanceState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="currentLocationId")
-    def current_location_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_location_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current zone where the Redis endpoint is placed.
         For Basic Tier instances, this will always be the same as the
@@ -838,12 +838,12 @@ class _InstanceState:
         return pulumi.get(self, "current_location_id")
 
     @current_location_id.setter
-    def current_location_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_location_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_location_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedKey")
-    def customer_managed_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
         instance. If this is provided, CMEK is enabled.
@@ -851,12 +851,12 @@ class _InstanceState:
         return pulumi.get(self, "customer_managed_key")
 
     @customer_managed_key.setter
-    def customer_managed_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the instance.
         When a`terraform destroy` or `pulumi up` would delete the instance,
@@ -868,36 +868,36 @@ class _InstanceState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An arbitrary and optional user-provided name for the instance.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveReservedIpRange")
-    def effective_reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR range of internal addresses that are reserved for this
         instance. If not provided, the service will choose an unused /29
@@ -908,12 +908,12 @@ class _InstanceState:
         return pulumi.get(self, "effective_reserved_ip_range")
 
     @effective_reserved_ip_range.setter
-    def effective_reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_reserved_ip_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname or IP address of the exposed Redis endpoint used by clients
         to connect to the service.
@@ -921,12 +921,12 @@ class _InstanceState:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels to represent user provided metadata.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -935,12 +935,12 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="locationId")
-    def location_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone where the instance will be provisioned. If not provided,
         the service will choose a zone for the instance. For STANDARD_HA tier,
@@ -951,12 +951,12 @@ class _InstanceState:
         return pulumi.get(self, "location_id")
 
     @location_id.setter
-    def location_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
         """
         Maintenance policy for an instance.
         Structure is documented below.
@@ -964,12 +964,12 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceSchedules")
-    def maintenance_schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
+    def maintenance_schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]:
         """
         Upcoming maintenance schedule.
         Structure is documented below.
@@ -977,48 +977,48 @@ class _InstanceState:
         return pulumi.get(self, "maintenance_schedules")
 
     @maintenance_schedules.setter
-    def maintenance_schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
+    def maintenance_schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceScheduleArgs']]]]):
         pulumi.set(self, "maintenance_schedules", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceVersion")
-    def maintenance_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The self service update maintenance version.
         """
         return pulumi.get(self, "maintenance_version")
 
     @maintenance_version.setter
-    def maintenance_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_version", value)
 
     @_builtins.property
     @pulumi.getter(name="memorySizeGb")
-    def memory_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Redis memory size in GiB.
         """
         return pulumi.get(self, "memory_size_gb")
 
     @memory_size_gb.setter
-    def memory_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_size_gb", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance or a fully qualified identifier for the instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNodeArgs']]]]:
         """
         Output only. Info per node.
         Structure is documented below.
@@ -1026,12 +1026,12 @@ class _InstanceState:
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceConfig")
-    def persistence_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigArgs']]:
+    def persistence_config(self) -> pulumi.Input[Optional['InstancePersistenceConfigArgs']]:
         """
         Persistence configuration for an instance.
         Structure is documented below.
@@ -1039,12 +1039,12 @@ class _InstanceState:
         return pulumi.get(self, "persistence_config")
 
     @persistence_config.setter
-    def persistence_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigArgs']]):
+    def persistence_config(self, value: pulumi.Input[Optional['InstancePersistenceConfigArgs']]):
         pulumi.set(self, "persistence_config", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceIamIdentity")
-    def persistence_iam_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def persistence_iam_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Cloud IAM identity used by import / export operations
         to transfer data to/from Cloud Storage. Format is "serviceAccount:".
@@ -1054,24 +1054,24 @@ class _InstanceState:
         return pulumi.get(self, "persistence_iam_identity")
 
     @persistence_iam_identity.setter
-    def persistence_iam_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def persistence_iam_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "persistence_iam_identity", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port number of the exposed Redis endpoint.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1079,12 +1079,12 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1092,12 +1092,12 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="readEndpoint")
-    def read_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Hostname or IP address of the exposed readonly Redis endpoint. Standard tier only.
         Targets all healthy replica nodes in instance. Replication is asynchronous and replica nodes
@@ -1106,12 +1106,12 @@ class _InstanceState:
         return pulumi.get(self, "read_endpoint")
 
     @read_endpoint.setter
-    def read_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="readEndpointPort")
-    def read_endpoint_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def read_endpoint_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Output only. The port number of the exposed readonly redis endpoint. Standard tier only.
         Write requests should target 'port'.
@@ -1119,12 +1119,12 @@ class _InstanceState:
         return pulumi.get(self, "read_endpoint_port")
 
     @read_endpoint_port.setter
-    def read_endpoint_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def read_endpoint_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "read_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="readReplicasMode")
-    def read_replicas_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_replicas_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Read replica mode. Can only be specified when trying to create the instance.
         If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
@@ -1137,12 +1137,12 @@ class _InstanceState:
         return pulumi.get(self, "read_replicas_mode")
 
     @read_replicas_mode.setter
-    def read_replicas_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_replicas_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_replicas_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="redisConfigs")
-    def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def redis_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Redis configuration parameters, according to http://redis.io/topics/config.
         Please check Memorystore documentation for the list of supported parameters:
@@ -1151,12 +1151,12 @@ class _InstanceState:
         return pulumi.get(self, "redis_configs")
 
     @redis_configs.setter
-    def redis_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def redis_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "redis_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="redisVersion")
-    def redis_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redis_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Redis software. If not provided, latest supported
         version will be used. Please check the API documentation linked
@@ -1165,24 +1165,24 @@ class _InstanceState:
         return pulumi.get(self, "redis_version")
 
     @redis_version.setter
-    def redis_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redis_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redis_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Redis region of the instance.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Optional. The number of replica nodes. The valid range for the Standard Tier with
         read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled
@@ -1192,12 +1192,12 @@ class _InstanceState:
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR range of internal addresses that are reserved for this
         instance. If not provided, the service will choose an unused /29
@@ -1208,12 +1208,12 @@ class _InstanceState:
         return pulumi.get(self, "reserved_ip_range")
 
     @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryIpRange")
-    def secondary_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Additional IP range for node placement. Required when enabling read replicas on
         an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or
@@ -1223,12 +1223,12 @@ class _InstanceState:
         return pulumi.get(self, "secondary_ip_range")
 
     @secondary_ip_range.setter
-    def secondary_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCaCerts")
-    def server_ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]:
+    def server_ca_certs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]:
         """
         List of server CA certificates for the instance.
         Structure is documented below.
@@ -1236,12 +1236,12 @@ class _InstanceState:
         return pulumi.get(self, "server_ca_certs")
 
     @server_ca_certs.setter
-    def server_ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]):
+    def server_ca_certs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceServerCaCertArgs']]]]):
         pulumi.set(self, "server_ca_certs", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service tier of the instance. Must be one of these values:
         - BASIC: standalone instance
@@ -1252,12 +1252,12 @@ class _InstanceState:
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="transitEncryptionMode")
-    def transit_encryption_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_encryption_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
@@ -1267,7 +1267,7 @@ class _InstanceState:
         return pulumi.get(self, "transit_encryption_mode")
 
     @transit_encryption_mode.setter
-    def transit_encryption_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_encryption_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_encryption_mode", value)
 
 
@@ -1277,30 +1277,30 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternative_location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replicas_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 redis_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 alternative_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_replicas_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 redis_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Google Cloud Redis instance.
@@ -1809,30 +1809,30 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternative_location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-                 maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_replicas_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 redis_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 alternative_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+                 maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_config: pulumi.Input[Optional[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_replicas_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 redis_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1894,44 +1894,44 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alternative_location_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            auth_string: Optional[pulumi.Input[_builtins.str]] = None,
-            authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-            connect_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            current_location_id: Optional[pulumi.Input[_builtins.str]] = None,
-            customer_managed_key: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location_id: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_policy: Optional[pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
-            maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
-            maintenance_version: Optional[pulumi.Input[_builtins.str]] = None,
-            memory_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNodeArgs', 'InstanceNodeArgsDict']]]]] = None,
-            persistence_config: Optional[pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
-            persistence_iam_identity: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            read_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            read_endpoint_port: Optional[pulumi.Input[_builtins.int]] = None,
-            read_replicas_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            redis_version: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-            reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerCaCertArgs', 'InstanceServerCaCertArgsDict']]]]] = None,
-            tier: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_encryption_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            alternative_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            auth_string: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+            connect_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            current_location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_managed_key: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
+            maintenance_schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMaintenanceScheduleArgs', 'InstanceMaintenanceScheduleArgsDict']]]]] = None,
+            maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
+            memory_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNodeArgs', 'InstanceNodeArgsDict']]]]] = None,
+            persistence_config: pulumi.Input[Optional[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']]] = None,
+            persistence_iam_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            read_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            read_endpoint_port: pulumi.Input[Optional[_builtins.int]] = None,
+            read_replicas_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            redis_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            redis_version: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceServerCaCertArgs', 'InstanceServerCaCertArgsDict']]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_encryption_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

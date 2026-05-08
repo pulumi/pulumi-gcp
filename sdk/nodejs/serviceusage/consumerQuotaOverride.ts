@@ -241,39 +241,39 @@ export interface ConsumerQuotaOverrideState {
     /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
-    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The limit on the metric, e.g. `/project/region`.
      * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
      * E.g. use `/project/user` instead of `1/{project}/{user}`.
      */
-    limit?: pulumi.Input<string>;
+    limit?: pulumi.Input<string | undefined>;
     /**
      * The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
      */
-    metric?: pulumi.Input<string>;
+    metric?: pulumi.Input<string | undefined>;
     /**
      * The server-generated name of the quota override.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
      */
-    overrideValue?: pulumi.Input<string>;
+    overrideValue?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -283,12 +283,12 @@ export interface ConsumerQuotaOverrideArgs {
     /**
      * If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
      */
-    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If the new quota would decrease the existing quota by more than 10%, the request is rejected.
      * If `force` is `true`, that safety check is ignored.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The limit on the metric, e.g. `/project/region`.
      * > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
@@ -307,7 +307,7 @@ export interface ConsumerQuotaOverrideArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service that the metrics belong to, e.g. `compute.googleapis.com`.
      */

@@ -124,8 +124,8 @@ def get_instance_iam_policy(instance: Optional[_builtins.str] = None,
         instance=pulumi.get(__ret__, 'instance'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_instance_iam_policy_output(instance: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_iam_policy_output(instance: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Spanner instance.

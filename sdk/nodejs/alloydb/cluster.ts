@@ -650,198 +650,198 @@ export interface ClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      */
-    automatedBackupPolicy?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicy>;
+    automatedBackupPolicy?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicy | undefined>;
     /**
      * Cluster created from backup.
      * Structure is documented below.
      */
-    backupSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterBackupSource>[]>;
+    backupSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterBackupSource>[] | undefined>;
     /**
      * Cluster created from a BackupDR backup.
      * Structure is documented below.
      */
-    backupdrBackupSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterBackupdrBackupSource>[]>;
+    backupdrBackupSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterBackupdrBackupSource>[] | undefined>;
     /**
      * The ID of the alloydb cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The type of cluster. If not set, defaults to PRIMARY.
      * Default value is `PRIMARY`.
      * Possible values are: `PRIMARY`, `SECONDARY`.
      */
-    clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string | undefined>;
     /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
      */
-    continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig>;
+    continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig | undefined>;
     /**
      * ContinuousBackupInfo describes the continuous backup properties of a cluster.
      * Structure is documented below.
      */
-    continuousBackupInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterContinuousBackupInfo>[]>;
+    continuousBackupInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterContinuousBackupInfo>[] | undefined>;
     /**
      * The database engine major version. This is an optional field and it's populated at the Cluster creation time.
      * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
-    databaseVersion?: pulumi.Input<string>;
+    databaseVersion?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
      * Structure is documented below.
      */
-    dataplexConfig?: pulumi.Input<inputs.alloydb.ClusterDataplexConfig>;
+    dataplexConfig?: pulumi.Input<inputs.alloydb.ClusterDataplexConfig | undefined>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
      * Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the cluster.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the cluster will fail.
      * When the field is set to false, deleting the cluster is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig | undefined>;
     /**
      * (Output)
      * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
      * Structure is documented below.
      */
-    encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterEncryptionInfo>[]>;
+    encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterEncryptionInfo>[] | undefined>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
      * Structure is documented below.
      */
-    initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;
+    initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser | undefined>;
     /**
      * User-defined labels for the alloydb cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the alloydb cluster should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * MaintenanceUpdatePolicy defines the policy for system updates.
      * Structure is documented below.
      */
-    maintenanceUpdatePolicy?: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicy>;
+    maintenanceUpdatePolicy?: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicy | undefined>;
     /**
      * Cluster created via DMS migration.
      * Structure is documented below.
      */
-    migrationSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterMigrationSource>[]>;
+    migrationSources?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterMigrationSource>[] | undefined>;
     /**
      * The name of the cluster resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Metadata related to network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.alloydb.ClusterNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.alloydb.ClusterNetworkConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Private Service Connect (PSC) for the cluster.
      * Structure is documented below.
      */
-    pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig>;
+    pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Reconciling (https://google.aip.dev/128#reconciliation).
      * Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
      * This can happen due to user-triggered updates or system actions like failover or maintenance.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
-    restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource>;
+    restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource | undefined>;
     /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
-    restoreBackupdrBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrBackupSource>;
+    restoreBackupdrBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrBackupSource | undefined>;
     /**
      * The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
      * Structure is documented below.
      */
-    restoreBackupdrPitrSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrPitrSource>;
+    restoreBackupdrPitrSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrPitrSource | undefined>;
     /**
      * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
-    restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
+    restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
     /**
      * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
      * Structure is documented below.
      */
-    secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig>;
+    secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig | undefined>;
     /**
      * Set to true to skip awaiting on the major version upgrade of the cluster.
      * Possible values: true, false
      * Default value: "true"
      */
-    skipAwaitMajorVersionUpgrade?: pulumi.Input<boolean>;
+    skipAwaitMajorVersionUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. The current serving state of the cluster.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The subscrition type of cluster.
      * Possible values are: `TRIAL`, `STANDARD`.
      */
-    subscriptionType?: pulumi.Input<string>;
+    subscriptionType?: pulumi.Input<string | undefined>;
     /**
      * Contains information and all metadata related to TRIAL clusters.
      * Structure is documented below.
      */
-    trialMetadatas?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterTrialMetadata>[]>;
+    trialMetadatas?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterTrialMetadata>[] | undefined>;
     /**
      * The system-generated UID of the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -855,12 +855,12 @@ export interface ClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      */
-    automatedBackupPolicy?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicy>;
+    automatedBackupPolicy?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicy | undefined>;
     /**
      * The ID of the alloydb cluster.
      */
@@ -870,61 +870,61 @@ export interface ClusterArgs {
      * Default value is `PRIMARY`.
      * Possible values are: `PRIMARY`, `SECONDARY`.
      */
-    clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string | undefined>;
     /**
      * The continuous backup config for this cluster.
      * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
      * Structure is documented below.
      */
-    continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig>;
+    continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig | undefined>;
     /**
      * The database engine major version. This is an optional field and it's populated at the Cluster creation time.
      * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
-    databaseVersion?: pulumi.Input<string>;
+    databaseVersion?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
      * Structure is documented below.
      */
-    dataplexConfig?: pulumi.Input<inputs.alloydb.ClusterDataplexConfig>;
+    dataplexConfig?: pulumi.Input<inputs.alloydb.ClusterDataplexConfig | undefined>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
      * Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the cluster.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the cluster will fail.
      * When the field is set to false, deleting the cluster is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig | undefined>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
      * Structure is documented below.
      */
-    initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser>;
+    initialUser?: pulumi.Input<inputs.alloydb.ClusterInitialUser | undefined>;
     /**
      * User-defined labels for the alloydb cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the alloydb cluster should reside.
      */
@@ -933,56 +933,56 @@ export interface ClusterArgs {
      * MaintenanceUpdatePolicy defines the policy for system updates.
      * Structure is documented below.
      */
-    maintenanceUpdatePolicy?: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicy>;
+    maintenanceUpdatePolicy?: pulumi.Input<inputs.alloydb.ClusterMaintenanceUpdatePolicy | undefined>;
     /**
      * Metadata related to network configuration.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.alloydb.ClusterNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.alloydb.ClusterNetworkConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration for Private Service Connect (PSC) for the cluster.
      * Structure is documented below.
      */
-    pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig>;
+    pscConfig?: pulumi.Input<inputs.alloydb.ClusterPscConfig | undefined>;
     /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
-    restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource>;
+    restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource | undefined>;
     /**
      * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
-    restoreBackupdrBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrBackupSource>;
+    restoreBackupdrBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrBackupSource | undefined>;
     /**
      * The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
      * Structure is documented below.
      */
-    restoreBackupdrPitrSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrPitrSource>;
+    restoreBackupdrPitrSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupdrPitrSource | undefined>;
     /**
      * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
      * Structure is documented below.
      */
-    restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
+    restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
     /**
      * Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
      * Structure is documented below.
      */
-    secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig>;
+    secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig | undefined>;
     /**
      * Set to true to skip awaiting on the major version upgrade of the cluster.
      * Possible values: true, false
      * Default value: "true"
      */
-    skipAwaitMajorVersionUpgrade?: pulumi.Input<boolean>;
+    skipAwaitMajorVersionUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * The subscrition type of cluster.
      * Possible values are: `TRIAL`, `STANDARD`.
      */
-    subscriptionType?: pulumi.Input<string>;
+    subscriptionType?: pulumi.Input<string | undefined>;
 }

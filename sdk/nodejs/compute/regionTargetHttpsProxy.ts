@@ -451,15 +451,15 @@ export interface RegionTargetHttpsProxyState {
      * sslCertificates and certificateManagerCertificates can't be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      */
-    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -467,7 +467,7 @@ export interface RegionTargetHttpsProxyState {
      * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
      * maximum allowed value is 600 seconds.
      */
-    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
+    httpKeepAliveTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -477,25 +477,25 @@ export interface RegionTargetHttpsProxyState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource.
      */
-    proxyId?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<number | undefined>;
     /**
      * The Region in which the created target https proxy should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * A URL referring to a networksecurity.ServerTlsPolicy
      * resource that describes how the proxy should authenticate inbound
@@ -511,24 +511,24 @@ export interface RegionTargetHttpsProxyState {
      * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
      * within the ServerTlsPolicy resource to avoid this.
      */
-    serverTlsPolicy?: pulumi.Input<string>;
+    serverTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
      * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
-    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the Region SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
      * resource will not have any SSL policy configured.
      */
-    sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string | undefined>;
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.
      */
-    urlMap?: pulumi.Input<string>;
+    urlMap?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -540,11 +540,11 @@ export interface RegionTargetHttpsProxyArgs {
      * sslCertificates and certificateManagerCertificates can't be defined together.
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      */
-    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies how long to keep a connection open, after completing a response,
      * while there is no matching traffic (in seconds). If an HTTP keepalive is
@@ -552,7 +552,7 @@ export interface RegionTargetHttpsProxyArgs {
      * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
      * maximum allowed value is 600 seconds.
      */
-    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
+    httpKeepAliveTimeoutSec?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -562,17 +562,17 @@ export interface RegionTargetHttpsProxyArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created target https proxy should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A URL referring to a networksecurity.ServerTlsPolicy
      * resource that describes how the proxy should authenticate inbound
@@ -588,19 +588,19 @@ export interface RegionTargetHttpsProxyArgs {
      * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
      * within the ServerTlsPolicy resource to avoid this.
      */
-    serverTlsPolicy?: pulumi.Input<string>;
+    serverTlsPolicy?: pulumi.Input<string | undefined>;
     /**
      * URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
      * At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
      * sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
      */
-    sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A reference to the Region SslPolicy resource that will be associated with
      * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
      * resource will not have any SSL policy configured.
      */
-    sslPolicy?: pulumi.Input<string>;
+    sslPolicy?: pulumi.Input<string | undefined>;
     /**
      * A reference to the RegionUrlMap resource that defines the mapping from URL
      * to the RegionBackendService.

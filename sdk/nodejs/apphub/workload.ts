@@ -190,67 +190,67 @@ export interface WorkloadState {
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<inputs.apphub.WorkloadAttributes>;
+    attributes?: pulumi.Input<inputs.apphub.WorkloadAttributes | undefined>;
     /**
      * Output only. Create time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-defined description of a Workload.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The resource name of the original discovered workload.
      */
-    discoveredWorkload?: pulumi.Input<string>;
+    discoveredWorkload?: pulumi.Input<string | undefined>;
     /**
      * User-defined name for the Workload.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the Workload. Format:"projects/{host-project-id}/locations/{location}/applications/{application-id}/workloads/{workload-id}"
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. Workload state. Possible values:  STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. A universally unique identifier (UUID) for the `Workload` in the UUID4 format.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. Update time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The Workload identifier.
      */
-    workloadId?: pulumi.Input<string>;
+    workloadId?: pulumi.Input<string | undefined>;
     /**
      * Properties of an underlying compute resource represented by the Workload.
      * Structure is documented below.
      */
-    workloadProperties?: pulumi.Input<pulumi.Input<inputs.apphub.WorkloadWorkloadProperty>[]>;
+    workloadProperties?: pulumi.Input<pulumi.Input<inputs.apphub.WorkloadWorkloadProperty>[] | undefined>;
     /**
      * Reference of an underlying compute resource represented by the Workload.
      * Structure is documented below.
      */
-    workloadReferences?: pulumi.Input<pulumi.Input<inputs.apphub.WorkloadWorkloadReference>[]>;
+    workloadReferences?: pulumi.Input<pulumi.Input<inputs.apphub.WorkloadWorkloadReference>[] | undefined>;
 }
 
 /**
@@ -265,11 +265,11 @@ export interface WorkloadArgs {
      * Consumer provided attributes.
      * Structure is documented below.
      */
-    attributes?: pulumi.Input<inputs.apphub.WorkloadAttributes>;
+    attributes?: pulumi.Input<inputs.apphub.WorkloadAttributes | undefined>;
     /**
      * User-defined description of a Workload.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The resource name of the original discovered workload.
      */
@@ -277,7 +277,7 @@ export interface WorkloadArgs {
     /**
      * User-defined name for the Workload.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
      */
@@ -286,7 +286,7 @@ export interface WorkloadArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Workload identifier.
      */

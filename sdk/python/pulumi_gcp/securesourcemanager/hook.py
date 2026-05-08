@@ -25,11 +25,11 @@ class HookArgs:
                  location: pulumi.Input[_builtins.str],
                  repository_id: pulumi.Input[_builtins.str],
                  target_uri: pulumi.Input[_builtins.str],
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_option: Optional[pulumi.Input['HookPushOptionArgs']] = None,
-                 sensitive_query_string: Optional[pulumi.Input[_builtins.str]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_option: pulumi.Input[Optional['HookPushOptionArgs']] = None,
+                 sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Hook resource.
 
@@ -113,7 +113,7 @@ class HookArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the hook disabled or not.
         Set to true to stop sending traffic.
@@ -121,12 +121,12 @@ class HookArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The events that trigger hook on.
         Each value may be one of: `PUSH`, `PULL_REQUEST`.
@@ -134,12 +134,12 @@ class HookArgs:
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def events(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "events", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -147,12 +147,12 @@ class HookArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pushOption")
-    def push_option(self) -> Optional[pulumi.Input['HookPushOptionArgs']]:
+    def push_option(self) -> pulumi.Input[Optional['HookPushOptionArgs']]:
         """
         The trigger option for push events.
         Structure is documented below.
@@ -160,12 +160,12 @@ class HookArgs:
         return pulumi.get(self, "push_option")
 
     @push_option.setter
-    def push_option(self, value: Optional[pulumi.Input['HookPushOptionArgs']]):
+    def push_option(self, value: pulumi.Input[Optional['HookPushOptionArgs']]):
         pulumi.set(self, "push_option", value)
 
     @_builtins.property
     @pulumi.getter(name="sensitiveQueryString")
-    def sensitive_query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sensitive_query_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sensitive query string to be appended to the target URI.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -173,26 +173,26 @@ class HookArgs:
         return pulumi.get(self, "sensitive_query_string")
 
     @sensitive_query_string.setter
-    def sensitive_query_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sensitive_query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sensitive_query_string", value)
 
 
 @pulumi.input_type
 class _HookState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hook_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_option: Optional[pulumi.Input['HookPushOptionArgs']] = None,
-                 repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sensitive_query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hook_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_option: pulumi.Input[Optional['HookPushOptionArgs']] = None,
+                 repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hook resources.
 
@@ -245,19 +245,19 @@ class _HookState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create timestamp.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines if the hook disabled or not.
         Set to true to stop sending traffic.
@@ -265,12 +265,12 @@ class _HookState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The events that trigger hook on.
         Each value may be one of: `PUSH`, `PULL_REQUEST`.
@@ -278,36 +278,36 @@ class _HookState:
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def events(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "events", value)
 
     @_builtins.property
     @pulumi.getter(name="hookId")
-    def hook_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hook_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the Hook.
         """
         return pulumi.get(self, "hook_id")
 
     @hook_id.setter
-    def hook_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hook_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hook_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the Repository.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique identifier for a Hook. The name should be of the format:
         `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`
@@ -315,12 +315,12 @@ class _HookState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -328,12 +328,12 @@ class _HookState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pushOption")
-    def push_option(self) -> Optional[pulumi.Input['HookPushOptionArgs']]:
+    def push_option(self) -> pulumi.Input[Optional['HookPushOptionArgs']]:
         """
         The trigger option for push events.
         Structure is documented below.
@@ -341,24 +341,24 @@ class _HookState:
         return pulumi.get(self, "push_option")
 
     @push_option.setter
-    def push_option(self, value: Optional[pulumi.Input['HookPushOptionArgs']]):
+    def push_option(self, value: pulumi.Input[Optional['HookPushOptionArgs']]):
         pulumi.set(self, "push_option", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryId")
-    def repository_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the Repository.
         """
         return pulumi.get(self, "repository_id")
 
     @repository_id.setter
-    def repository_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sensitiveQueryString")
-    def sensitive_query_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sensitive_query_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sensitive query string to be appended to the target URI.
         **Note**: This property is sensitive and will not be displayed in the plan.
@@ -366,43 +366,43 @@ class _HookState:
         return pulumi.get(self, "sensitive_query_string")
 
     @sensitive_query_string.setter
-    def sensitive_query_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sensitive_query_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sensitive_query_string", value)
 
     @_builtins.property
     @pulumi.getter(name="targetUri")
-    def target_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target URI to which the payloads will be delivered.
         """
         return pulumi.get(self, "target_uri")
 
     @target_uri.setter
-    def target_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the hook.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update timestamp.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -412,15 +412,15 @@ class Hook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hook_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_option: Optional[pulumi.Input[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
-                 repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sensitive_query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hook_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
+                 repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Hook is a user-defined HTTP callback triggered by an event.
@@ -516,15 +516,15 @@ class Hook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hook_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_option: Optional[pulumi.Input[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
-                 repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sensitive_query_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_uri: Optional[pulumi.Input[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hook_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
+                 repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -567,19 +567,19 @@ class Hook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hook_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            push_option: Optional[pulumi.Input[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
-            repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sensitive_query_string: Optional[pulumi.Input[_builtins.str]] = None,
-            target_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Hook':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hook_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            push_option: pulumi.Input[Optional[Union['HookPushOptionArgs', 'HookPushOptionArgsDict']]] = None,
+            repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sensitive_query_string: pulumi.Input[Optional[_builtins.str]] = None,
+            target_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Hook':
         """
         Get an existing Hook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

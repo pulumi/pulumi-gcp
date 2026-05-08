@@ -21,8 +21,8 @@ class SshPublicKeyArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
                  user: pulumi.Input[_builtins.str],
-                 expiration_time_usec: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration_time_usec: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SshPublicKey resource.
 
@@ -64,37 +64,37 @@ class SshPublicKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="expirationTimeUsec")
-    def expiration_time_usec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time_usec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An expiration time in microseconds since epoch.
         """
         return pulumi.get(self, "expiration_time_usec")
 
     @expiration_time_usec.setter
-    def expiration_time_usec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time_usec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time_usec", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the Google Cloud Platform project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _SshPublicKeyState:
     def __init__(__self__, *,
-                 expiration_time_usec: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration_time_usec: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SshPublicKey resources.
 
@@ -117,62 +117,62 @@ class _SshPublicKeyState:
 
     @_builtins.property
     @pulumi.getter(name="expirationTimeUsec")
-    def expiration_time_usec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time_usec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An expiration time in microseconds since epoch.
         """
         return pulumi.get(self, "expiration_time_usec")
 
     @expiration_time_usec.setter
-    def expiration_time_usec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time_usec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time_usec", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA-256 fingerprint of the SSH public key.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public key text in SSH format, defined by RFC4253 section 6.6.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID of the Google Cloud Platform project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user email.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
@@ -182,10 +182,10 @@ class SshPublicKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expiration_time_usec: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 expiration_time_usec: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The SSH public key information associated with a Google account.
@@ -293,10 +293,10 @@ class SshPublicKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 expiration_time_usec: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 expiration_time_usec: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -325,11 +325,11 @@ class SshPublicKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            expiration_time_usec: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None) -> 'SshPublicKey':
+            expiration_time_usec: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> 'SshPublicKey':
         """
         Get an existing SshPublicKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

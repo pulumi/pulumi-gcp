@@ -381,102 +381,102 @@ export interface WorkstationClusterState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Status conditions describing the current resource state.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationClusterCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationClusterCondition>[] | undefined>;
     /**
      * The private IP address of the control plane for this workstation cluster.
      * Workstation VMs need access to this IP address to work with the service, so make sure that your firewall rules allow egress from the workstation VMs to this address.
      */
-    controlPlaneIp?: pulumi.Input<string>;
+    controlPlaneIp?: pulumi.Input<string | undefined>;
     /**
      * Time when this resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
      * Details can be found in the conditions field.
      */
-    degraded?: pulumi.Input<boolean>;
+    degraded?: pulumi.Input<boolean | undefined>;
     /**
      * Human-readable name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for a custom domain.
      * Structure is documented below.
      */
-    domainConfig?: pulumi.Input<inputs.workstations.WorkstationClusterDomainConfig>;
+    domainConfig?: pulumi.Input<inputs.workstations.WorkstationClusterDomainConfig | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Checksum computed by the server.
      * May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the workstation cluster should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed.
      * It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Configuration for private cluster.
      * Structure is documented below.
      */
-    privateClusterConfig?: pulumi.Input<inputs.workstations.WorkstationClusterPrivateClusterConfig>;
+    privateClusterConfig?: pulumi.Input<inputs.workstations.WorkstationClusterPrivateClusterConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
      * Must be part of the subnetwork specified for this cluster.
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * Resource manager tags bound to this resource.
      * For example:
      * "123/environment": "production",
      * "123/costCenter": "marketing"
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The system-generated UID of the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * ID to use for the workstation cluster.
      */
-    workstationClusterId?: pulumi.Input<string>;
+    workstationClusterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -488,26 +488,26 @@ export interface WorkstationClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Human-readable name for this resource.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Configuration options for a custom domain.
      * Structure is documented below.
      */
-    domainConfig?: pulumi.Input<inputs.workstations.WorkstationClusterDomainConfig>;
+    domainConfig?: pulumi.Input<inputs.workstations.WorkstationClusterDomainConfig | undefined>;
     /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where the workstation cluster should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed.
      * It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
@@ -517,12 +517,12 @@ export interface WorkstationClusterArgs {
      * Configuration for private cluster.
      * Structure is documented below.
      */
-    privateClusterConfig?: pulumi.Input<inputs.workstations.WorkstationClusterPrivateClusterConfig>;
+    privateClusterConfig?: pulumi.Input<inputs.workstations.WorkstationClusterPrivateClusterConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
      * Must be part of the subnetwork specified for this cluster.
@@ -534,7 +534,7 @@ export interface WorkstationClusterArgs {
      * "123/environment": "production",
      * "123/costCenter": "marketing"
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID to use for the workstation cluster.
      */

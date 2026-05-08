@@ -22,10 +22,10 @@ __all__ = ['RolloutPlanArgs', 'RolloutPlan']
 class RolloutPlanArgs:
     def __init__(__self__, *,
                  waves: pulumi.Input[Sequence[pulumi.Input['RolloutPlanWaveArgs']]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RolloutPlan resource.
 
@@ -64,19 +64,19 @@ class RolloutPlanArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="locationScope")
-    def location_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location scope of the rollout plan.
         Possible values are: `LOCATION_SCOPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
@@ -84,12 +84,12 @@ class RolloutPlanArgs:
         return pulumi.get(self, "location_scope")
 
     @location_scope.setter
-    def location_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created.
         The name must be 1-63 characters long, and comply with RFC1035.
@@ -97,12 +97,12 @@ class RolloutPlanArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -110,19 +110,19 @@ class RolloutPlanArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RolloutPlanState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 waves: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutPlanWaveArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 waves: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutPlanWaveArgs']]]] = None):
         """
         Input properties used for looking up and filtering RolloutPlan resources.
 
@@ -152,19 +152,19 @@ class _RolloutPlanState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="locationScope")
-    def location_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location scope of the rollout plan.
         Possible values are: `LOCATION_SCOPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
@@ -172,12 +172,12 @@ class _RolloutPlanState:
         return pulumi.get(self, "location_scope")
 
     @location_scope.setter
-    def location_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created.
         The name must be 1-63 characters long, and comply with RFC1035.
@@ -185,12 +185,12 @@ class _RolloutPlanState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -198,24 +198,24 @@ class _RolloutPlanState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def waves(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RolloutPlanWaveArgs']]]]:
+    def waves(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RolloutPlanWaveArgs']]]]:
         """
         The waves included in this rollout plan.
         Structure is documented below.
@@ -223,7 +223,7 @@ class _RolloutPlanState:
         return pulumi.get(self, "waves")
 
     @waves.setter
-    def waves(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RolloutPlanWaveArgs']]]]):
+    def waves(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutPlanWaveArgs']]]]):
         pulumi.set(self, "waves", value)
 
 
@@ -233,11 +233,11 @@ class RolloutPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 waves: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None,
                  __props__=None):
         """
         A RolloutPlan is the customer-defined strategy to divide a large-scale change
@@ -382,11 +382,11 @@ class RolloutPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 waves: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,12 +414,12 @@ class RolloutPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            location_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            waves: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None) -> 'RolloutPlan':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            location_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            waves: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutPlanWaveArgs', 'RolloutPlanWaveArgsDict']]]]] = None) -> 'RolloutPlan':
         """
         Get an existing RolloutPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

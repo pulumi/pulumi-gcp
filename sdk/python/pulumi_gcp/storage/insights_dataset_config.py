@@ -25,19 +25,19 @@ class InsightsDatasetConfigArgs:
                  identity: pulumi.Input['InsightsDatasetConfigIdentityArgs'],
                  location: pulumi.Input[_builtins.str],
                  retention_period_days: pulumi.Input[_builtins.int],
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_cloud_storage_buckets: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']] = None,
-                 exclude_cloud_storage_locations: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']] = None,
-                 include_cloud_storage_buckets: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']] = None,
-                 include_cloud_storage_locations: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']] = None,
-                 include_newly_created_buckets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_dataset: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organization_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_folders: Optional[pulumi.Input['InsightsDatasetConfigSourceFoldersArgs']] = None,
-                 source_projects: Optional[pulumi.Input['InsightsDatasetConfigSourceProjectsArgs']] = None):
+                 activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_cloud_storage_buckets: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']] = None,
+                 exclude_cloud_storage_locations: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']] = None,
+                 include_cloud_storage_buckets: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']] = None,
+                 include_cloud_storage_locations: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']] = None,
+                 include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organization_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_folders: pulumi.Input[Optional['InsightsDatasetConfigSourceFoldersArgs']] = None,
+                 source_projects: pulumi.Input[Optional['InsightsDatasetConfigSourceProjectsArgs']] = None):
         """
         The set of arguments for constructing a InsightsDatasetConfig resource.
 
@@ -154,31 +154,31 @@ class InsightsDatasetConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="activityDataRetentionPeriodDays")
-    def activity_data_retention_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def activity_data_retention_period_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         """
         return pulumi.get(self, "activity_data_retention_period_days")
 
     @activity_data_retention_period_days.setter
-    def activity_data_retention_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def activity_data_retention_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "activity_data_retention_period_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeCloudStorageBuckets")
-    def exclude_cloud_storage_buckets(self) -> Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]:
+    def exclude_cloud_storage_buckets(self) -> pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]:
         """
         Defined the options for excluding cloud storage buckets for the DatasetConfig.
         Structure is documented below.
@@ -186,12 +186,12 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "exclude_cloud_storage_buckets")
 
     @exclude_cloud_storage_buckets.setter
-    def exclude_cloud_storage_buckets(self, value: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]):
+    def exclude_cloud_storage_buckets(self, value: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]):
         pulumi.set(self, "exclude_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeCloudStorageLocations")
-    def exclude_cloud_storage_locations(self) -> Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]:
+    def exclude_cloud_storage_locations(self) -> pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]:
         """
         Defines the options for excluding cloud storage locations for the DatasetConfig.
         Structure is documented below.
@@ -199,12 +199,12 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "exclude_cloud_storage_locations")
 
     @exclude_cloud_storage_locations.setter
-    def exclude_cloud_storage_locations(self, value: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]):
+    def exclude_cloud_storage_locations(self, value: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]):
         pulumi.set(self, "exclude_cloud_storage_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="includeCloudStorageBuckets")
-    def include_cloud_storage_buckets(self) -> Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]:
+    def include_cloud_storage_buckets(self) -> pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]:
         """
         Defines the options for including cloud storage buckets for the DatasetConfig.
         Structure is documented below.
@@ -212,12 +212,12 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "include_cloud_storage_buckets")
 
     @include_cloud_storage_buckets.setter
-    def include_cloud_storage_buckets(self, value: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]):
+    def include_cloud_storage_buckets(self, value: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]):
         pulumi.set(self, "include_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="includeCloudStorageLocations")
-    def include_cloud_storage_locations(self) -> Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]:
+    def include_cloud_storage_locations(self) -> pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]:
         """
         Defines the options for including cloud storage locations for the DatasetConfig.
         Structure is documented below.
@@ -225,24 +225,24 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "include_cloud_storage_locations")
 
     @include_cloud_storage_locations.setter
-    def include_cloud_storage_locations(self, value: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]):
+    def include_cloud_storage_locations(self, value: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]):
         pulumi.set(self, "include_cloud_storage_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="includeNewlyCreatedBuckets")
-    def include_newly_created_buckets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_newly_created_buckets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
         """
         return pulumi.get(self, "include_newly_created_buckets")
 
     @include_newly_created_buckets.setter
-    def include_newly_created_buckets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_newly_created_buckets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_newly_created_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="linkDataset")
-    def link_dataset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def link_dataset(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean terraform only flag to link/unlink dataset.
 
@@ -253,12 +253,12 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "link_dataset")
 
     @link_dataset.setter
-    def link_dataset(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def link_dataset(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "link_dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationNumber")
-    def organization_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization resource ID that the source projects should belong to.
         Projects that do not belong to the provided organization are not considered when creating the dataset.
@@ -266,24 +266,24 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "organization_number")
 
     @organization_number.setter
-    def organization_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_number", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationScope")
-    def organization_scope(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def organization_scope(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines the options for providing a source organization for the DatasetConfig.
         """
         return pulumi.get(self, "organization_scope")
 
     @organization_scope.setter
-    def organization_scope(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def organization_scope(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "organization_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -291,12 +291,12 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFolders")
-    def source_folders(self) -> Optional[pulumi.Input['InsightsDatasetConfigSourceFoldersArgs']]:
+    def source_folders(self) -> pulumi.Input[Optional['InsightsDatasetConfigSourceFoldersArgs']]:
         """
         Defines the options for providing source folders for the DatasetConfig.
         Structure is documented below.
@@ -304,12 +304,12 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "source_folders")
 
     @source_folders.setter
-    def source_folders(self, value: Optional[pulumi.Input['InsightsDatasetConfigSourceFoldersArgs']]):
+    def source_folders(self, value: pulumi.Input[Optional['InsightsDatasetConfigSourceFoldersArgs']]):
         pulumi.set(self, "source_folders", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceProjects")
-    def source_projects(self) -> Optional[pulumi.Input['InsightsDatasetConfigSourceProjectsArgs']]:
+    def source_projects(self) -> pulumi.Input[Optional['InsightsDatasetConfigSourceProjectsArgs']]:
         """
         Defines the options for providing source projects for the DatasetConfig.
         Structure is documented below.
@@ -317,36 +317,36 @@ class InsightsDatasetConfigArgs:
         return pulumi.get(self, "source_projects")
 
     @source_projects.setter
-    def source_projects(self, value: Optional[pulumi.Input['InsightsDatasetConfigSourceProjectsArgs']]):
+    def source_projects(self, value: pulumi.Input[Optional['InsightsDatasetConfigSourceProjectsArgs']]):
         pulumi.set(self, "source_projects", value)
 
 
 @pulumi.input_type
 class _InsightsDatasetConfigState:
     def __init__(__self__, *,
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_config_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_cloud_storage_buckets: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']] = None,
-                 exclude_cloud_storage_locations: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']] = None,
-                 identity: Optional[pulumi.Input['InsightsDatasetConfigIdentityArgs']] = None,
-                 include_cloud_storage_buckets: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']] = None,
-                 include_cloud_storage_locations: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']] = None,
-                 include_newly_created_buckets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_dataset: Optional[pulumi.Input[_builtins.bool]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigLinkArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_folders: Optional[pulumi.Input['InsightsDatasetConfigSourceFoldersArgs']] = None,
-                 source_projects: Optional[pulumi.Input['InsightsDatasetConfigSourceProjectsArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_config_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_cloud_storage_buckets: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']] = None,
+                 exclude_cloud_storage_locations: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']] = None,
+                 identity: pulumi.Input[Optional['InsightsDatasetConfigIdentityArgs']] = None,
+                 include_cloud_storage_buckets: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']] = None,
+                 include_cloud_storage_locations: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']] = None,
+                 include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsDatasetConfigLinkArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_folders: pulumi.Input[Optional['InsightsDatasetConfigSourceFoldersArgs']] = None,
+                 source_projects: pulumi.Input[Optional['InsightsDatasetConfigSourceProjectsArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InsightsDatasetConfig resources.
 
@@ -437,67 +437,67 @@ class _InsightsDatasetConfigState:
 
     @_builtins.property
     @pulumi.getter(name="activityDataRetentionPeriodDays")
-    def activity_data_retention_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def activity_data_retention_period_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
         """
         return pulumi.get(self, "activity_data_retention_period_days")
 
     @activity_data_retention_period_days.setter
-    def activity_data_retention_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def activity_data_retention_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "activity_data_retention_period_days", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time at which the DatasetConfig was created. This is auto-populated.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetConfigId")
-    def dataset_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined ID of the DatasetConfig
         """
         return pulumi.get(self, "dataset_config_id")
 
     @dataset_config_id.setter
-    def dataset_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetConfigState")
-    def dataset_config_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_config_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the DatasetConfig.
         """
         return pulumi.get(self, "dataset_config_state")
 
     @dataset_config_state.setter
-    def dataset_config_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_config_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_config_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeCloudStorageBuckets")
-    def exclude_cloud_storage_buckets(self) -> Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]:
+    def exclude_cloud_storage_buckets(self) -> pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]:
         """
         Defined the options for excluding cloud storage buckets for the DatasetConfig.
         Structure is documented below.
@@ -505,12 +505,12 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "exclude_cloud_storage_buckets")
 
     @exclude_cloud_storage_buckets.setter
-    def exclude_cloud_storage_buckets(self, value: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]):
+    def exclude_cloud_storage_buckets(self, value: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageBucketsArgs']]):
         pulumi.set(self, "exclude_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeCloudStorageLocations")
-    def exclude_cloud_storage_locations(self) -> Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]:
+    def exclude_cloud_storage_locations(self) -> pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]:
         """
         Defines the options for excluding cloud storage locations for the DatasetConfig.
         Structure is documented below.
@@ -518,12 +518,12 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "exclude_cloud_storage_locations")
 
     @exclude_cloud_storage_locations.setter
-    def exclude_cloud_storage_locations(self, value: Optional[pulumi.Input['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]):
+    def exclude_cloud_storage_locations(self, value: pulumi.Input[Optional['InsightsDatasetConfigExcludeCloudStorageLocationsArgs']]):
         pulumi.set(self, "exclude_cloud_storage_locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input['InsightsDatasetConfigIdentityArgs']]:
+    def identity(self) -> pulumi.Input[Optional['InsightsDatasetConfigIdentityArgs']]:
         """
         Identity used by DatasetConfig.
         Structure is documented below.
@@ -531,12 +531,12 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input['InsightsDatasetConfigIdentityArgs']]):
+    def identity(self, value: pulumi.Input[Optional['InsightsDatasetConfigIdentityArgs']]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="includeCloudStorageBuckets")
-    def include_cloud_storage_buckets(self) -> Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]:
+    def include_cloud_storage_buckets(self) -> pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]:
         """
         Defines the options for including cloud storage buckets for the DatasetConfig.
         Structure is documented below.
@@ -544,12 +544,12 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "include_cloud_storage_buckets")
 
     @include_cloud_storage_buckets.setter
-    def include_cloud_storage_buckets(self, value: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]):
+    def include_cloud_storage_buckets(self, value: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageBucketsArgs']]):
         pulumi.set(self, "include_cloud_storage_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="includeCloudStorageLocations")
-    def include_cloud_storage_locations(self) -> Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]:
+    def include_cloud_storage_locations(self) -> pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]:
         """
         Defines the options for including cloud storage locations for the DatasetConfig.
         Structure is documented below.
@@ -557,24 +557,24 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "include_cloud_storage_locations")
 
     @include_cloud_storage_locations.setter
-    def include_cloud_storage_locations(self, value: Optional[pulumi.Input['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]):
+    def include_cloud_storage_locations(self, value: pulumi.Input[Optional['InsightsDatasetConfigIncludeCloudStorageLocationsArgs']]):
         pulumi.set(self, "include_cloud_storage_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="includeNewlyCreatedBuckets")
-    def include_newly_created_buckets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_newly_created_buckets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
         """
         return pulumi.get(self, "include_newly_created_buckets")
 
     @include_newly_created_buckets.setter
-    def include_newly_created_buckets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_newly_created_buckets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_newly_created_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="linkDataset")
-    def link_dataset(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def link_dataset(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean terraform only flag to link/unlink dataset.
 
@@ -585,12 +585,12 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "link_dataset")
 
     @link_dataset.setter
-    def link_dataset(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def link_dataset(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "link_dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigLinkArgs']]]]:
+    def links(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InsightsDatasetConfigLinkArgs']]]]:
         """
         Details of the linked DatasetConfig.
         Structure is documented below.
@@ -598,36 +598,36 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "links")
 
     @links.setter
-    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsDatasetConfigLinkArgs']]]]):
+    def links(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsDatasetConfigLinkArgs']]]]):
         pulumi.set(self, "links", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the DatasetConfig.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationNumber")
-    def organization_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization resource ID that the source projects should belong to.
         Projects that do not belong to the provided organization are not considered when creating the dataset.
@@ -635,24 +635,24 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "organization_number")
 
     @organization_number.setter
-    def organization_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_number", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationScope")
-    def organization_scope(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def organization_scope(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Defines the options for providing a source organization for the DatasetConfig.
         """
         return pulumi.get(self, "organization_scope")
 
     @organization_scope.setter
-    def organization_scope(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def organization_scope(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "organization_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -660,24 +660,24 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriodDays")
-    def retention_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days of history that must be retained.
         """
         return pulumi.get(self, "retention_period_days")
 
     @retention_period_days.setter
-    def retention_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period_days", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFolders")
-    def source_folders(self) -> Optional[pulumi.Input['InsightsDatasetConfigSourceFoldersArgs']]:
+    def source_folders(self) -> pulumi.Input[Optional['InsightsDatasetConfigSourceFoldersArgs']]:
         """
         Defines the options for providing source folders for the DatasetConfig.
         Structure is documented below.
@@ -685,12 +685,12 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "source_folders")
 
     @source_folders.setter
-    def source_folders(self, value: Optional[pulumi.Input['InsightsDatasetConfigSourceFoldersArgs']]):
+    def source_folders(self, value: pulumi.Input[Optional['InsightsDatasetConfigSourceFoldersArgs']]):
         pulumi.set(self, "source_folders", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceProjects")
-    def source_projects(self) -> Optional[pulumi.Input['InsightsDatasetConfigSourceProjectsArgs']]:
+    def source_projects(self) -> pulumi.Input[Optional['InsightsDatasetConfigSourceProjectsArgs']]:
         """
         Defines the options for providing source projects for the DatasetConfig.
         Structure is documented below.
@@ -698,31 +698,31 @@ class _InsightsDatasetConfigState:
         return pulumi.get(self, "source_projects")
 
     @source_projects.setter
-    def source_projects(self, value: Optional[pulumi.Input['InsightsDatasetConfigSourceProjectsArgs']]):
+    def source_projects(self, value: pulumi.Input[Optional['InsightsDatasetConfigSourceProjectsArgs']]):
         pulumi.set(self, "source_projects", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System generated unique identifier for the resource.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UTC time at which the DatasetConfig was updated. This is auto-populated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -732,23 +732,23 @@ class InsightsDatasetConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
-                 exclude_cloud_storage_locations: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
-                 identity: Optional[pulumi.Input[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
-                 include_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
-                 include_cloud_storage_locations: Optional[pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
-                 include_newly_created_buckets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_dataset: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_folders: Optional[pulumi.Input[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
-                 source_projects: Optional[pulumi.Input[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
+                 activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
+                 exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
+                 identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
+                 include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
+                 include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
+                 include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
+                 source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
                  __props__=None):
         """
         Represents a Storage Insights DatasetConfig.
@@ -994,23 +994,23 @@ class InsightsDatasetConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
-                 exclude_cloud_storage_locations: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
-                 identity: Optional[pulumi.Input[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
-                 include_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
-                 include_cloud_storage_locations: Optional[pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
-                 include_newly_created_buckets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_dataset: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_folders: Optional[pulumi.Input[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
-                 source_projects: Optional[pulumi.Input[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
+                 activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
+                 exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
+                 identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
+                 include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
+                 include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
+                 include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
+                 source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1061,29 +1061,29 @@ class InsightsDatasetConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activity_data_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset_config_state: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            exclude_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
-            exclude_cloud_storage_locations: Optional[pulumi.Input[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
-            identity: Optional[pulumi.Input[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
-            include_cloud_storage_buckets: Optional[pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
-            include_cloud_storage_locations: Optional[pulumi.Input[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
-            include_newly_created_buckets: Optional[pulumi.Input[_builtins.bool]] = None,
-            link_dataset: Optional[pulumi.Input[_builtins.bool]] = None,
-            links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict']]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_number: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_scope: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-            source_folders: Optional[pulumi.Input[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
-            source_projects: Optional[pulumi.Input[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'InsightsDatasetConfig':
+            activity_data_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_config_state: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageBucketsArgs', 'InsightsDatasetConfigExcludeCloudStorageBucketsArgsDict']]] = None,
+            exclude_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigExcludeCloudStorageLocationsArgs', 'InsightsDatasetConfigExcludeCloudStorageLocationsArgsDict']]] = None,
+            identity: pulumi.Input[Optional[Union['InsightsDatasetConfigIdentityArgs', 'InsightsDatasetConfigIdentityArgsDict']]] = None,
+            include_cloud_storage_buckets: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageBucketsArgs', 'InsightsDatasetConfigIncludeCloudStorageBucketsArgsDict']]] = None,
+            include_cloud_storage_locations: pulumi.Input[Optional[Union['InsightsDatasetConfigIncludeCloudStorageLocationsArgs', 'InsightsDatasetConfigIncludeCloudStorageLocationsArgsDict']]] = None,
+            include_newly_created_buckets: pulumi.Input[Optional[_builtins.bool]] = None,
+            link_dataset: pulumi.Input[Optional[_builtins.bool]] = None,
+            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsDatasetConfigLinkArgs', 'InsightsDatasetConfigLinkArgsDict']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_number: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_scope: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+            source_folders: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceFoldersArgs', 'InsightsDatasetConfigSourceFoldersArgsDict']]] = None,
+            source_projects: pulumi.Input[Optional[Union['InsightsDatasetConfigSourceProjectsArgs', 'InsightsDatasetConfigSourceProjectsArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'InsightsDatasetConfig':
         """
         Get an existing InsightsDatasetConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

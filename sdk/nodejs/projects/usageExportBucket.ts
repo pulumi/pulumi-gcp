@@ -123,15 +123,15 @@ export interface UsageExportBucketState {
      *
      * - - -
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * A prefix for the reports, for instance, the project name.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The project to set the export bucket on. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,9 +147,9 @@ export interface UsageExportBucketArgs {
     /**
      * A prefix for the reports, for instance, the project name.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The project to set the export bucket on. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

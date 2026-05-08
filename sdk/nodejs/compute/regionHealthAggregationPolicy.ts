@@ -207,12 +207,12 @@ export interface RegionHealthAggregationPolicyState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you
      * create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object.
      * This field is used in optimistic locking. This field will be ignored when
@@ -222,7 +222,7 @@ export interface RegionHealthAggregationPolicyState {
      * the latest fingerprint, make a `get()` request to retrieve the
      * RegionHealthAggregationPolicy.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Can only be set if the `policyType` field is
      * `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
@@ -236,7 +236,7 @@ export interface RegionHealthAggregationPolicyState {
      * endpoints within a Network Endpoint Group or instances within an Instance
      * Group.
      */
-    healthyPercentThreshold?: pulumi.Input<number>;
+    healthyPercentThreshold?: pulumi.Input<number | undefined>;
     /**
      * Can only be set if the `policyType` field is
      * `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
@@ -250,7 +250,7 @@ export interface RegionHealthAggregationPolicyState {
      * network endpoints within a Network Endpoint Group or instances within an
      * Instance Group.
      */
-    minHealthyThreshold?: pulumi.Input<number>;
+    minHealthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
@@ -260,7 +260,7 @@ export interface RegionHealthAggregationPolicyState {
      * be a dash, lowercase letter, or digit, except the last character, which
      * cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of the healthAggregationPolicy. The only allowed value
      * for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
@@ -270,20 +270,20 @@ export interface RegionHealthAggregationPolicyState {
      * Default value is `BACKEND_SERVICE_POLICY`.
      * Possible values are: `DNS_PUBLIC_IP_POLICY`, `BACKEND_SERVICE_POLICY`.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where the health aggregation policy resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL with id for the resource.
      */
-    selfLinkWithId?: pulumi.Input<string>;
+    selfLinkWithId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,7 +294,7 @@ export interface RegionHealthAggregationPolicyArgs {
      * An optional description of this resource. Provide this property when you
      * create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Can only be set if the `policyType` field is
      * `BACKEND_SERVICE_POLICY`. Specifies the threshold (as a
@@ -308,7 +308,7 @@ export interface RegionHealthAggregationPolicyArgs {
      * endpoints within a Network Endpoint Group or instances within an Instance
      * Group.
      */
-    healthyPercentThreshold?: pulumi.Input<number>;
+    healthyPercentThreshold?: pulumi.Input<number | undefined>;
     /**
      * Can only be set if the `policyType` field is
      * `BACKEND_SERVICE_POLICY`. Specifies the minimum number of
@@ -322,7 +322,7 @@ export interface RegionHealthAggregationPolicyArgs {
      * network endpoints within a Network Endpoint Group or instances within an
      * Instance Group.
      */
-    minHealthyThreshold?: pulumi.Input<number>;
+    minHealthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created.
      * The name must be 1-63 characters long, and comply with RFC1035.
@@ -332,7 +332,7 @@ export interface RegionHealthAggregationPolicyArgs {
      * be a dash, lowercase letter, or digit, except the last character, which
      * cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies the type of the healthAggregationPolicy. The only allowed value
      * for global resources is `DNS_PUBLIC_IP_POLICY`. The only allowed
@@ -342,12 +342,12 @@ export interface RegionHealthAggregationPolicyArgs {
      * Default value is `BACKEND_SERVICE_POLICY`.
      * Possible values are: `DNS_PUBLIC_IP_POLICY`, `BACKEND_SERVICE_POLICY`.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * URL of the region where the health aggregation policy resides.
      */

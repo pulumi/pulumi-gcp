@@ -22,8 +22,8 @@ class ReservationAssignmentArgs:
                  assignee: pulumi.Input[_builtins.str],
                  job_type: pulumi.Input[_builtins.str],
                  reservation: pulumi.Input[_builtins.str],
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReservationAssignment resource.
 
@@ -80,19 +80,19 @@ class ReservationAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -100,20 +100,20 @@ class ReservationAssignmentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ReservationAssignmentState:
     def __init__(__self__, *,
-                 assignee: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 assignee: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservationAssignment resources.
 
@@ -144,55 +144,55 @@ class _ReservationAssignmentState:
 
     @_builtins.property
     @pulumi.getter
-    def assignee(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assignee(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
         """
         return pulumi.get(self, "assignee")
 
     @assignee.setter
-    def assignee(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assignee(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assignee", value)
 
     @_builtins.property
     @pulumi.getter(name="jobType")
-    def job_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         """
         return pulumi.get(self, "job_type")
 
     @job_type.setter
-    def job_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The resource name of the assignment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -200,24 +200,24 @@ class _ReservationAssignmentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def reservation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reservation for the resource
         """
         return pulumi.get(self, "reservation")
 
     @reservation.setter
-    def reservation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
         Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
@@ -225,7 +225,7 @@ class _ReservationAssignmentState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -235,11 +235,11 @@ class ReservationAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignee: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None,
+                 assignee: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The BigqueryReservation Assignment resource.
@@ -363,11 +363,11 @@ class ReservationAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignee: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None,
+                 assignee: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,13 +400,13 @@ class ReservationAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignee: Optional[pulumi.Input[_builtins.str]] = None,
-            job_type: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReservationAssignment':
+            assignee: pulumi.Input[Optional[_builtins.str]] = None,
+            job_type: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReservationAssignment':
         """
         Get an existing ReservationAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -372,56 +372,56 @@ export interface TlsInspectionPolicyState {
     /**
      * A CA pool resource used to issue interception certificates.
      */
-    caPool?: pulumi.Input<string>;
+    caPool?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      */
-    customTlsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    customTlsFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
      */
-    excludePublicCaSet?: pulumi.Input<boolean>;
+    excludePublicCaSet?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the tls inspection policy.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `TLS_VERSION_UNSPECIFIED`.
      * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */
-    minTlsVersion?: pulumi.Input<string>;
+    minTlsVersion?: pulumi.Input<string | undefined>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `PROFILE_UNSPECIFIED`.
      * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
      */
-    tlsFeatureProfile?: pulumi.Input<string>;
+    tlsFeatureProfile?: pulumi.Input<string | undefined>;
     /**
      * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
      */
-    trustConfig?: pulumi.Input<string>;
+    trustConfig?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -435,42 +435,42 @@ export interface TlsInspectionPolicyArgs {
     /**
      * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      */
-    customTlsFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    customTlsFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Free-text description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If FALSE (the default), use our default set of public CAs in addition to any CAs specified in trustConfig. These public CAs are currently based on the Mozilla Root Program and are subject to change over time. If TRUE, do not accept our default set of public CAs. Only CAs specified in trustConfig will be accepted.
      */
-    excludePublicCaSet?: pulumi.Input<boolean>;
+    excludePublicCaSet?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the tls inspection policy.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `TLS_VERSION_UNSPECIFIED`.
      * Possible values are: `TLS_VERSION_UNSPECIFIED`, `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */
-    minTlsVersion?: pulumi.Input<string>;
+    minTlsVersion?: pulumi.Input<string | undefined>;
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
      * Default value is `PROFILE_UNSPECIFIED`.
      * Possible values are: `PROFILE_UNSPECIFIED`, `PROFILE_COMPATIBLE`, `PROFILE_MODERN`, `PROFILE_RESTRICTED`, `PROFILE_CUSTOM`.
      */
-    tlsFeatureProfile?: pulumi.Input<string>;
+    tlsFeatureProfile?: pulumi.Input<string | undefined>;
     /**
      * A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
      */
-    trustConfig?: pulumi.Input<string>;
+    trustConfig?: pulumi.Input<string | undefined>;
 }

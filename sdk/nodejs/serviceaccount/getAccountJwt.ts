@@ -114,11 +114,11 @@ export interface GetAccountJwtOutputArgs {
     /**
      * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.
      */
-    delegates?: pulumi.Input<pulumi.Input<string>[]>;
+    delegates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of seconds until the JWT expires. If set and non-zero an `exp` claim will be added to the payload derived from the current timestamp plus expiresIn seconds.
      */
-    expiresIn?: pulumi.Input<number>;
+    expiresIn?: pulumi.Input<number | undefined>;
     /**
      * The JSON-encoded JWT claims set to include in the self-signed JWT.
      */

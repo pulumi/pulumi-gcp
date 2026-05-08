@@ -24,13 +24,13 @@ class WorkflowTemplateArgs:
                  jobs: pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]],
                  location: pulumi.Input[_builtins.str],
                  placement: pulumi.Input['WorkflowTemplatePlacementArgs'],
-                 dag_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional['WorkflowTemplateEncryptionConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a WorkflowTemplate resource.
 
@@ -107,31 +107,31 @@ class WorkflowTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="dagTimeout")
-    def dag_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dag_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
     @dag_timeout.setter
-    def dag_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dag_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dag_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['WorkflowTemplateEncryptionConfigArgs']]:
         """
         Encryption settings for encrypting workflow template job arguments. Structure is documented below
         """
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['WorkflowTemplateEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
 
@@ -141,76 +141,76 @@ class WorkflowTemplateArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
         """
         Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""version is not useful as a configurable field, and will be removed in the future.""")
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Output only. The current version of this workflow template.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
 class _WorkflowTemplateState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dag_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_config: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
-                 placement: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_config: pulumi.Input[Optional['WorkflowTemplateEncryptionConfigArgs']] = None,
+                 jobs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]] = None,
+                 placement: pulumi.Input[Optional['WorkflowTemplatePlacementArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering WorkflowTemplate resources.
 
@@ -266,67 +266,67 @@ class _WorkflowTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time template was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dagTimeout")
-    def dag_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dag_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Timeout duration for the DAG of jobs, expressed in seconds (see [JSON representation of duration](https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a [managed cluster](https://www.terraform.io/dataproc/docs/concepts/workflows/using-workflows#configuring_or_selecting_a_cluster), the cluster is deleted.
         """
         return pulumi.get(self, "dag_timeout")
 
     @dag_timeout.setter
-    def dag_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dag_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dag_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfig")
-    def encryption_config(self) -> Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]:
+    def encryption_config(self) -> pulumi.Input[Optional['WorkflowTemplateEncryptionConfigArgs']]:
         """
         Encryption settings for encrypting workflow template job arguments. Structure is documented below
         """
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter
-    def encryption_config(self, value: Optional[pulumi.Input['WorkflowTemplateEncryptionConfigArgs']]):
+    def encryption_config(self, value: pulumi.Input[Optional['WorkflowTemplateEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]]:
+    def jobs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]]:
         """
         (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
         """
         return pulumi.get(self, "jobs")
 
     @jobs.setter
-    def jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]]):
+    def jobs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateJobArgs']]]]):
         pulumi.set(self, "jobs", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
 
@@ -336,104 +336,104 @@ class _WorkflowTemplateState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]:
         """
         Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplateParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def placement(self) -> Optional[pulumi.Input['WorkflowTemplatePlacementArgs']]:
+    def placement(self) -> pulumi.Input[Optional['WorkflowTemplatePlacementArgs']]:
         """
         (Required) WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
 
     @placement.setter
-    def placement(self, value: Optional[pulumi.Input['WorkflowTemplatePlacementArgs']]):
+    def placement(self, value: pulumi.Input[Optional['WorkflowTemplatePlacementArgs']]):
         pulumi.set(self, "placement", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time template was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""version is not useful as a configurable field, and will be removed in the future.""")
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Output only. The current version of this workflow template.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -443,16 +443,16 @@ class WorkflowTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dag_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
-                 placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
+                 dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
+                 jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         A Workflow Template is a reusable workflow configuration. It defines a graph of jobs with information on where to run those jobs.
@@ -781,16 +781,16 @@ class WorkflowTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dag_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_config: Optional[pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
-                 placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None,
+                 dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
+                 jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
+                 placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -832,20 +832,20 @@ class WorkflowTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dag_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_config: Optional[pulumi.Input[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
-            jobs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
-            placement: Optional[pulumi.Input[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'WorkflowTemplate':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dag_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_config: pulumi.Input[Optional[Union['WorkflowTemplateEncryptionConfigArgs', 'WorkflowTemplateEncryptionConfigArgsDict']]] = None,
+            jobs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateJobArgs', 'WorkflowTemplateJobArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkflowTemplateParameterArgs', 'WorkflowTemplateParameterArgsDict']]]]] = None,
+            placement: pulumi.Input[Optional[Union['WorkflowTemplatePlacementArgs', 'WorkflowTemplatePlacementArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'WorkflowTemplate':
         """
         Get an existing WorkflowTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

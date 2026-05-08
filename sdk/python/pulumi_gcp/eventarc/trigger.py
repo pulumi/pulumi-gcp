@@ -24,14 +24,14 @@ class TriggerArgs:
                  destination: pulumi.Input['TriggerDestinationArgs'],
                  location: pulumi.Input[_builtins.str],
                  matching_criterias: pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]],
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_data_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_policy: Optional[pulumi.Input['TriggerRetryPolicyArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 transport: Optional[pulumi.Input['TriggerTransportArgs']] = None):
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_policy: pulumi.Input[Optional['TriggerRetryPolicyArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 transport: pulumi.Input[Optional['TriggerTransportArgs']] = None):
         """
         The set of arguments for constructing a Trigger resource.
 
@@ -115,31 +115,31 @@ class TriggerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter(name="eventDataContentType")
-    def event_data_content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_data_content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         """
         return pulumi.get(self, "event_data_content_type")
 
     @event_data_content_type.setter
-    def event_data_content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_data_content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_data_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User labels attached to the triggers that can be used to group resources.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -148,24 +148,24 @@ class TriggerArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The resource name of the trigger. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -173,12 +173,12 @@ class TriggerArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['TriggerRetryPolicyArgs']]:
+    def retry_policy(self) -> pulumi.Input[Optional['TriggerRetryPolicyArgs']]:
         """
         The retry policy configuration for the Trigger.
         Can only be set with Cloud Run destinations.
@@ -187,24 +187,24 @@ class TriggerArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['TriggerRetryPolicyArgs']]):
+    def retry_policy(self, value: pulumi.Input[Optional['TriggerRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def transport(self) -> Optional[pulumi.Input['TriggerTransportArgs']]:
+    def transport(self) -> pulumi.Input[Optional['TriggerTransportArgs']]:
         """
         Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         Structure is documented below.
@@ -212,31 +212,31 @@ class TriggerArgs:
         return pulumi.get(self, "transport")
 
     @transport.setter
-    def transport(self, value: Optional[pulumi.Input['TriggerTransportArgs']]):
+    def transport(self, value: pulumi.Input[Optional['TriggerTransportArgs']]):
         pulumi.set(self, "transport", value)
 
 
 @pulumi.input_type
 class _TriggerState:
     def __init__(__self__, *,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_data_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 retry_policy: Optional[pulumi.Input['TriggerRetryPolicyArgs']] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 transport: Optional[pulumi.Input['TriggerTransportArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional['TriggerDestinationArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 retry_policy: pulumi.Input[Optional['TriggerRetryPolicyArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 transport: pulumi.Input[Optional['TriggerTransportArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Trigger resources.
 
@@ -307,43 +307,43 @@ class _TriggerState:
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def conditions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Output only. The reason(s) why a trigger is in FAILED state.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def conditions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['TriggerDestinationArgs']]:
+    def destination(self) -> pulumi.Input[Optional['TriggerDestinationArgs']]:
         """
         Required. Destination specifies where the events should be sent to.
         Structure is documented below.
@@ -351,48 +351,48 @@ class _TriggerState:
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['TriggerDestinationArgs']]):
+    def destination(self, value: pulumi.Input[Optional['TriggerDestinationArgs']]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="eventDataContentType")
-    def event_data_content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_data_content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         """
         return pulumi.get(self, "event_data_content_type")
 
     @event_data_content_type.setter
-    def event_data_content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_data_content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_data_content_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User labels attached to the triggers that can be used to group resources.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -401,24 +401,24 @@ class _TriggerState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="matchingCriterias")
-    def matching_criterias(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]]:
+    def matching_criterias(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]]:
         """
         Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         Structure is documented below.
@@ -426,24 +426,24 @@ class _TriggerState:
         return pulumi.get(self, "matching_criterias")
 
     @matching_criterias.setter
-    def matching_criterias(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]]):
+    def matching_criterias(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]]):
         pulumi.set(self, "matching_criterias", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The resource name of the trigger. Must be unique within the location on the project.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -451,12 +451,12 @@ class _TriggerState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -464,12 +464,12 @@ class _TriggerState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input['TriggerRetryPolicyArgs']]:
+    def retry_policy(self) -> pulumi.Input[Optional['TriggerRetryPolicyArgs']]:
         """
         The retry policy configuration for the Trigger.
         Can only be set with Cloud Run destinations.
@@ -478,24 +478,24 @@ class _TriggerState:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input['TriggerRetryPolicyArgs']]):
+    def retry_policy(self, value: pulumi.Input[Optional['TriggerRetryPolicyArgs']]):
         pulumi.set(self, "retry_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def transport(self) -> Optional[pulumi.Input['TriggerTransportArgs']]:
+    def transport(self) -> pulumi.Input[Optional['TriggerTransportArgs']]:
         """
         Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         Structure is documented below.
@@ -503,31 +503,31 @@ class _TriggerState:
         return pulumi.get(self, "transport")
 
     @transport.setter
-    def transport(self, value: Optional[pulumi.Input['TriggerTransportArgs']]):
+    def transport(self, value: pulumi.Input[Optional['TriggerTransportArgs']]):
         pulumi.set(self, "transport", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The last-modified time.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -537,17 +537,17 @@ class Trigger(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
-                 event_data_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_policy: Optional[pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
+                 event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
                  __props__=None):
         """
         The Eventarc Trigger resource
@@ -752,17 +752,17 @@ class Trigger(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
-                 event_data_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_policy: Optional[pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
+                 event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -808,24 +808,24 @@ class Trigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channel: Optional[pulumi.Input[_builtins.str]] = None,
-            conditions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            destination: Optional[pulumi.Input[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            event_data_content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            retry_policy: Optional[pulumi.Input[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            transport: Optional[pulumi.Input[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Trigger':
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['TriggerDestinationArgs', 'TriggerDestinationArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            event_data_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            matching_criterias: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerMatchingCriteriaArgs', 'TriggerMatchingCriteriaArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            retry_policy: pulumi.Input[Optional[Union['TriggerRetryPolicyArgs', 'TriggerRetryPolicyArgsDict']]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            transport: pulumi.Input[Optional[Union['TriggerTransportArgs', 'TriggerTransportArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Trigger':
         """
         Get an existing Trigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

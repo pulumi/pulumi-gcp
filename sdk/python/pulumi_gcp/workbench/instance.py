@@ -22,16 +22,16 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gce_setup: pulumi.Input[Optional['InstanceGceSetupArgs']] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -94,43 +94,43 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="disableProxyAccess")
-    def disable_proxy_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_proxy_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If true, the workbench instance will not register with the proxy.
         """
         return pulumi.get(self, "disable_proxy_access")
 
     @disable_proxy_access.setter
-    def disable_proxy_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_proxy_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_proxy_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableManagedEuc")
-    def enable_managed_euc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_managed_euc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable managed end user credentials for the instance.
         """
         return pulumi.get(self, "enable_managed_euc")
 
     @enable_managed_euc.setter
-    def enable_managed_euc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_managed_euc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_managed_euc", value)
 
     @_builtins.property
     @pulumi.getter(name="enableThirdPartyIdentity")
-    def enable_third_party_identity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_third_party_identity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies that a notebook can be accessed with third party
         identity provider.
@@ -138,12 +138,12 @@ class InstanceArgs:
         return pulumi.get(self, "enable_third_party_identity")
 
     @enable_third_party_identity.setter
-    def enable_third_party_identity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_third_party_identity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_third_party_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="gceSetup")
-    def gce_setup(self) -> Optional[pulumi.Input['InstanceGceSetupArgs']]:
+    def gce_setup(self) -> pulumi.Input[Optional['InstanceGceSetupArgs']]:
         """
         The definition of how to configure a VM instance outside of Resources and Identity.
         Structure is documented below.
@@ -151,24 +151,24 @@ class InstanceArgs:
         return pulumi.get(self, "gce_setup")
 
     @gce_setup.setter
-    def gce_setup(self, value: Optional[pulumi.Input['InstanceGceSetupArgs']]):
+    def gce_setup(self, value: pulumi.Input[Optional['InstanceGceSetupArgs']]):
         pulumi.set(self, "gce_setup", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. User-defined unique ID of this instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceOwners")
-    def instance_owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         'Optional. Input only. The owner of this instance after creation. Format:
         `alias@example.com` Currently supports one owner only. If not specified, all of
@@ -179,12 +179,12 @@ class InstanceArgs:
         return pulumi.get(self, "instance_owners")
 
     @instance_owners.setter
-    def instance_owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_owners", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels to apply to this instance. These can be later modified
         by the UpdateInstance method.
@@ -195,24 +195,24 @@ class InstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -220,34 +220,34 @@ class InstanceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
-                 health_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]] = None,
-                 health_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_histories: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUpgradeHistoryArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gce_setup: pulumi.Input[Optional['InstanceGceSetupArgs']] = None,
+                 health_infos: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]] = None,
+                 health_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_histories: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUpgradeHistoryArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -336,7 +336,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
         The milliseconds portion (".SSS") is optional.
@@ -344,72 +344,72 @@ class _InstanceState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Email address of entity that sent original CreateInstance request.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         """
         return pulumi.get(self, "desired_state")
 
     @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_state", value)
 
     @_builtins.property
     @pulumi.getter(name="disableProxyAccess")
-    def disable_proxy_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_proxy_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. If true, the workbench instance will not register with the proxy.
         """
         return pulumi.get(self, "disable_proxy_access")
 
     @disable_proxy_access.setter
-    def disable_proxy_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_proxy_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_proxy_access", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableManagedEuc")
-    def enable_managed_euc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_managed_euc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable managed end user credentials for the instance.
         """
         return pulumi.get(self, "enable_managed_euc")
 
     @enable_managed_euc.setter
-    def enable_managed_euc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_managed_euc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_managed_euc", value)
 
     @_builtins.property
     @pulumi.getter(name="enableThirdPartyIdentity")
-    def enable_third_party_identity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_third_party_identity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag that specifies that a notebook can be accessed with third party
         identity provider.
@@ -417,12 +417,12 @@ class _InstanceState:
         return pulumi.get(self, "enable_third_party_identity")
 
     @enable_third_party_identity.setter
-    def enable_third_party_identity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_third_party_identity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_third_party_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="gceSetup")
-    def gce_setup(self) -> Optional[pulumi.Input['InstanceGceSetupArgs']]:
+    def gce_setup(self) -> pulumi.Input[Optional['InstanceGceSetupArgs']]:
         """
         The definition of how to configure a VM instance outside of Resources and Identity.
         Structure is documented below.
@@ -430,12 +430,12 @@ class _InstanceState:
         return pulumi.get(self, "gce_setup")
 
     @gce_setup.setter
-    def gce_setup(self, value: Optional[pulumi.Input['InstanceGceSetupArgs']]):
+    def gce_setup(self, value: pulumi.Input[Optional['InstanceGceSetupArgs']]):
         pulumi.set(self, "gce_setup", value)
 
     @_builtins.property
     @pulumi.getter(name="healthInfos")
-    def health_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]]:
+    def health_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]]:
         """
         'Output only. Additional information about instance health. Example:
         healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status":
@@ -444,36 +444,36 @@ class _InstanceState:
         return pulumi.get(self, "health_infos")
 
     @health_infos.setter
-    def health_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]]):
+    def health_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceHealthInfoArgs']]]]):
         pulumi.set(self, "health_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="healthState")
-    def health_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Instance health_state.
         """
         return pulumi.get(self, "health_state")
 
     @health_state.setter
-    def health_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_state", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. User-defined unique ID of this instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceOwners")
-    def instance_owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         'Optional. Input only. The owner of this instance after creation. Format:
         `alias@example.com` Currently supports one owner only. If not specified, all of
@@ -484,12 +484,12 @@ class _InstanceState:
         return pulumi.get(self, "instance_owners")
 
     @instance_owners.setter
-    def instance_owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_owners", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. Labels to apply to this instance. These can be later modified
         by the UpdateInstance method.
@@ -500,36 +500,36 @@ class _InstanceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Part of `parent`. See documentation of `projectsId`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this workbench instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -537,24 +537,24 @@ class _InstanceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyUri")
-    def proxy_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The proxy endpoint that is used to access the Jupyter notebook.
         """
         return pulumi.get(self, "proxy_uri")
 
     @proxy_uri.setter
-    def proxy_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -562,12 +562,12 @@ class _InstanceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The state of this instance upgrade history entry.
@@ -575,12 +575,12 @@ class _InstanceState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
         The milliseconds portion (".SSS") is optional.
@@ -588,12 +588,12 @@ class _InstanceState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeHistories")
-    def upgrade_histories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUpgradeHistoryArgs']]]]:
+    def upgrade_histories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUpgradeHistoryArgs']]]]:
         """
         Output only. The upgrade history of this instance.
         Structure is documented below.
@@ -601,7 +601,7 @@ class _InstanceState:
         return pulumi.get(self, "upgrade_histories")
 
     @upgrade_histories.setter
-    def upgrade_histories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUpgradeHistoryArgs']]]]):
+    def upgrade_histories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceUpgradeHistoryArgs']]]]):
         pulumi.set(self, "upgrade_histories", value)
 
 
@@ -611,17 +611,17 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Workbench instance.
@@ -1211,17 +1211,17 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1266,27 +1266,27 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_state: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_proxy_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_managed_euc: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_third_party_identity: Optional[pulumi.Input[_builtins.bool]] = None,
-            gce_setup: Optional[pulumi.Input[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
-            health_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]]] = None,
-            health_state: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_histories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict']]]]] = None) -> 'Instance':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_state: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+            gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
+            health_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceHealthInfoArgs', 'InstanceHealthInfoArgsDict']]]]] = None,
+            health_state: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_histories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUpgradeHistoryArgs', 'InstanceUpgradeHistoryArgsDict']]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

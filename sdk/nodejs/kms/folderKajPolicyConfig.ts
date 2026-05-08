@@ -167,11 +167,11 @@ export interface FolderKajPolicyConfigState {
      * policy is not provided in the CreateCryptoKeyRequest.
      * Structure is documented below.
      */
-    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>;
+    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy | undefined>;
     /**
      * The numeric folder number for which to retrieve config.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,7 +184,7 @@ export interface FolderKajPolicyConfigArgs {
      * policy is not provided in the CreateCryptoKeyRequest.
      * Structure is documented below.
      */
-    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>;
+    defaultKeyAccessJustificationPolicy?: pulumi.Input<inputs.kms.FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy | undefined>;
     /**
      * The numeric folder number for which to retrieve config.
      */

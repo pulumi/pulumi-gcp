@@ -218,25 +218,25 @@ export interface OrganizationPolicyState {
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
-    booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy>;
+    booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy | undefined>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
      * - - -
      */
-    constraint?: pulumi.Input<string>;
+    constraint?: pulumi.Input<string | undefined>;
     /**
      * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    listPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicy>;
+    listPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicy | undefined>;
     /**
      * The project id of the project to set the policy for.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      *
@@ -245,15 +245,15 @@ export interface OrganizationPolicyState {
      *
      * - - -
      */
-    restorePolicy?: pulumi.Input<inputs.projects.OrganizationPolicyRestorePolicy>;
+    restorePolicy?: pulumi.Input<inputs.projects.OrganizationPolicyRestorePolicy | undefined>;
     /**
      * (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Version of the Policy. Default version is 0.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -263,7 +263,7 @@ export interface OrganizationPolicyArgs {
     /**
      * A boolean policy is a constraint that is either enforced or not. Structure is documented below.
      */
-    booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy>;
+    booleanPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyBooleanPolicy | undefined>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      *
@@ -273,7 +273,7 @@ export interface OrganizationPolicyArgs {
     /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
-    listPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicy>;
+    listPolicy?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicy | undefined>;
     /**
      * The project id of the project to set the policy for.
      */
@@ -286,9 +286,9 @@ export interface OrganizationPolicyArgs {
      *
      * - - -
      */
-    restorePolicy?: pulumi.Input<inputs.projects.OrganizationPolicyRestorePolicy>;
+    restorePolicy?: pulumi.Input<inputs.projects.OrganizationPolicyRestorePolicy | undefined>;
     /**
      * Version of the Policy. Default version is 0.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }

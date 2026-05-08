@@ -79,12 +79,12 @@ class CxToolVersionArgs:
 @pulumi.input_type
 class _CxToolVersionState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool: Optional[pulumi.Input['CxToolVersionToolArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool: pulumi.Input[Optional['CxToolVersionToolArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CxToolVersion resources.
 
@@ -119,7 +119,7 @@ class _CxToolVersionState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last time the tool version was created or modified.
         Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
@@ -129,24 +129,24 @@ class _CxToolVersionState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the tool version.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the tool version.
         Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/tools/<ToolID>/versions/<VersionID>.
@@ -154,12 +154,12 @@ class _CxToolVersionState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tool to create a Version for.
         Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
@@ -167,12 +167,12 @@ class _CxToolVersionState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def tool(self) -> Optional[pulumi.Input['CxToolVersionToolArgs']]:
+    def tool(self) -> pulumi.Input[Optional['CxToolVersionToolArgs']]:
         """
         Snapshot of the tool to be associated with this version.
         Structure is documented below.
@@ -180,12 +180,12 @@ class _CxToolVersionState:
         return pulumi.get(self, "tool")
 
     @tool.setter
-    def tool(self, value: Optional[pulumi.Input['CxToolVersionToolArgs']]):
+    def tool(self, value: pulumi.Input[Optional['CxToolVersionToolArgs']]):
         pulumi.set(self, "tool", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last time the tool version was created or modified.
         Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits.
@@ -195,7 +195,7 @@ class _CxToolVersionState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -205,9 +205,9 @@ class CxToolVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool: Optional[pulumi.Input[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
                  __props__=None):
         """
         Tool version is a snapshot of the tool at certain timestamp.
@@ -1070,9 +1070,9 @@ class CxToolVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 tool: Optional[pulumi.Input[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1104,12 +1104,12 @@ class CxToolVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            tool: Optional[pulumi.Input[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'CxToolVersion':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            tool: pulumi.Input[Optional[Union['CxToolVersionToolArgs', 'CxToolVersionToolArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'CxToolVersion':
         """
         Get an existing CxToolVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

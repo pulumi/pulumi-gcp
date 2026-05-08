@@ -167,28 +167,28 @@ export interface DocumentAiWarehouseDocumentSchemaState {
     /**
      * Name of the schema given by the user.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Tells whether the document is a folder or a typical document.
      */
-    documentIsFolder?: pulumi.Input<boolean>;
+    documentIsFolder?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the document schema.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the project.
      */
-    projectNumber?: pulumi.Input<string>;
+    projectNumber?: pulumi.Input<string | undefined>;
     /**
      * Defines the metadata for a schema property.
      * Structure is documented below.
      */
-    propertyDefinitions?: pulumi.Input<pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinition>[]>;
+    propertyDefinitions?: pulumi.Input<pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinition>[] | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface DocumentAiWarehouseDocumentSchemaArgs {
     /**
      * Tells whether the document is a folder or a typical document.
      */
-    documentIsFolder?: pulumi.Input<boolean>;
+    documentIsFolder?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the resource.
      */

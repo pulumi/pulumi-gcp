@@ -293,38 +293,38 @@ export interface EntryState {
      * Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
      * Structure is documented below.
      */
-    bigqueryDateShardedSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryDateShardedSpec>[]>;
+    bigqueryDateShardedSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryDateShardedSpec>[] | undefined>;
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
      * Structure is documented below.
      */
-    bigqueryTableSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpec>[]>;
+    bigqueryTableSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpec>[] | undefined>;
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display information such as title and description. A short name to identify the entry,
      * for example, "Analytics Data - Jan 2011".
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the entry group this entry is in.
      */
-    entryGroup?: pulumi.Input<string>;
+    entryGroup?: pulumi.Input<string | undefined>;
     /**
      * The id of the entry to create.
      */
-    entryId?: pulumi.Input<string>;
+    entryId?: pulumi.Input<string | undefined>;
     /**
      * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
      * Structure is documented below.
      */
-    gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpec>;
+    gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpec | undefined>;
     /**
      * This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
      */
-    integratedSystem?: pulumi.Input<string>;
+    integratedSystem?: pulumi.Input<string | undefined>;
     /**
      * The resource this metadata entry refers to.
      * For Google Cloud Platform resources, linkedResource is the full name of the resource.
@@ -333,32 +333,32 @@ export interface EntryState {
      * Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
      * this field is optional and defaults to an empty string.
      */
-    linkedResource?: pulumi.Input<string>;
+    linkedResource?: pulumi.Input<string | undefined>;
     /**
      * The Data Catalog resource name of the entry in URL format.
      * Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
      * Note that this Entry and its child resources may not actually be stored in the location in this name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
      * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
      * for what fields this schema can contain.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
      * Possible values are: `FILESET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * This field indicates the entry's source system that Data Catalog does not integrate with.
      * userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
      * and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */
-    userSpecifiedSystem?: pulumi.Input<string>;
+    userSpecifiedSystem?: pulumi.Input<string | undefined>;
     /**
      * Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
      * When creating an entry, users should check the enum values first, if nothing matches the entry
@@ -366,7 +366,7 @@ export interface EntryState {
      * userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
      * numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */
-    userSpecifiedType?: pulumi.Input<string>;
+    userSpecifiedType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -376,12 +376,12 @@ export interface EntryArgs {
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display information such as title and description. A short name to identify the entry,
      * for example, "Analytics Data - Jan 2011".
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the entry group this entry is in.
      */
@@ -394,7 +394,7 @@ export interface EntryArgs {
      * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
      * Structure is documented below.
      */
-    gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpec>;
+    gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpec | undefined>;
     /**
      * The resource this metadata entry refers to.
      * For Google Cloud Platform resources, linkedResource is the full name of the resource.
@@ -403,26 +403,26 @@ export interface EntryArgs {
      * Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
      * this field is optional and defaults to an empty string.
      */
-    linkedResource?: pulumi.Input<string>;
+    linkedResource?: pulumi.Input<string | undefined>;
     /**
      * Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
      * attached to it. See
      * https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
      * for what fields this schema can contain.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
      * Possible values are: `FILESET`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * This field indicates the entry's source system that Data Catalog does not integrate with.
      * userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
      * and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */
-    userSpecifiedSystem?: pulumi.Input<string>;
+    userSpecifiedSystem?: pulumi.Input<string | undefined>;
     /**
      * Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
      * When creating an entry, users should check the enum values first, if nothing matches the entry
@@ -430,5 +430,5 @@ export interface EntryArgs {
      * userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
      * numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */
-    userSpecifiedType?: pulumi.Input<string>;
+    userSpecifiedType?: pulumi.Input<string | undefined>;
 }

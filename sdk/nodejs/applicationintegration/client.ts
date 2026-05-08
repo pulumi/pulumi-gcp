@@ -178,20 +178,20 @@ export interface ClientState {
      * Cloud KMS config for AuthModule to encrypt/decrypt credentials.
      * Structure is documented below.
      */
-    cloudKmsConfig?: pulumi.Input<inputs.applicationintegration.ClientCloudKmsConfig>;
+    cloudKmsConfig?: pulumi.Input<inputs.applicationintegration.ClientCloudKmsConfig | undefined>;
     /**
      * Indicates if sample integrations should be created along with provisioning.
      */
-    createSampleIntegrations?: pulumi.Input<boolean>;
+    createSampleIntegrations?: pulumi.Input<boolean | undefined>;
     /**
      * Location in which client needs to be provisioned.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
@@ -200,7 +200,7 @@ export interface ClientState {
      *
      * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
      */
-    runAsServiceAccount?: pulumi.Input<string>;
+    runAsServiceAccount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,11 +211,11 @@ export interface ClientArgs {
      * Cloud KMS config for AuthModule to encrypt/decrypt credentials.
      * Structure is documented below.
      */
-    cloudKmsConfig?: pulumi.Input<inputs.applicationintegration.ClientCloudKmsConfig>;
+    cloudKmsConfig?: pulumi.Input<inputs.applicationintegration.ClientCloudKmsConfig | undefined>;
     /**
      * Indicates if sample integrations should be created along with provisioning.
      */
-    createSampleIntegrations?: pulumi.Input<boolean>;
+    createSampleIntegrations?: pulumi.Input<boolean | undefined>;
     /**
      * Location in which client needs to be provisioned.
      */
@@ -224,7 +224,7 @@ export interface ClientArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * User input run-as service account, if empty, will bring up a new default service account.
@@ -233,5 +233,5 @@ export interface ClientArgs {
      *
      * @deprecated `runAsServiceAccount` is deprecated and will be removed in a future major release.
      */
-    runAsServiceAccount?: pulumi.Input<string>;
+    runAsServiceAccount?: pulumi.Input<string | undefined>;
 }

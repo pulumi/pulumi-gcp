@@ -22,13 +22,13 @@ __all__ = ['EnterpriseKeyArgs', 'EnterpriseKey']
 class EnterpriseKeyArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
-                 ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
-                 waf_settings: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']] = None,
-                 web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
+                 android_settings: pulumi.Input[Optional['EnterpriseKeyAndroidSettingsArgs']] = None,
+                 ios_settings: pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_options: pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']] = None,
+                 waf_settings: pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']] = None,
+                 web_settings: pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']] = None):
         """
         The set of arguments for constructing a EnterpriseKey resource.
 
@@ -82,31 +82,31 @@ class EnterpriseKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="androidSettings")
-    def android_settings(self) -> Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]:
+    def android_settings(self) -> pulumi.Input[Optional['EnterpriseKeyAndroidSettingsArgs']]:
         """
         Settings for keys that can be used by Android apps.
         """
         return pulumi.get(self, "android_settings")
 
     @android_settings.setter
-    def android_settings(self, value: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]):
+    def android_settings(self, value: pulumi.Input[Optional['EnterpriseKeyAndroidSettingsArgs']]):
         pulumi.set(self, "android_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="iosSettings")
-    def ios_settings(self) -> Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]:
+    def ios_settings(self) -> pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']]:
         """
         Settings for keys that can be used by iOS apps.
         """
         return pulumi.get(self, "ios_settings")
 
     @ios_settings.setter
-    def ios_settings(self, value: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]):
+    def ios_settings(self, value: pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']]):
         pulumi.set(self, "ios_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
 
@@ -116,73 +116,73 @@ class EnterpriseKeyArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="testingOptions")
-    def testing_options(self) -> Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]:
+    def testing_options(self) -> pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']]:
         """
         Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
 
     @testing_options.setter
-    def testing_options(self, value: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]):
+    def testing_options(self, value: pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']]):
         pulumi.set(self, "testing_options", value)
 
     @_builtins.property
     @pulumi.getter(name="wafSettings")
-    def waf_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]:
+    def waf_settings(self) -> pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']]:
         """
         Settings specific to keys that can be used for WAF (Web Application Firewall).
         """
         return pulumi.get(self, "waf_settings")
 
     @waf_settings.setter
-    def waf_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]):
+    def waf_settings(self, value: pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']]):
         pulumi.set(self, "waf_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="webSettings")
-    def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]:
+    def web_settings(self) -> pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']]:
         """
         Settings for keys that can be used by websites.
         """
         return pulumi.get(self, "web_settings")
 
     @web_settings.setter
-    def web_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]):
+    def web_settings(self, value: pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']]):
         pulumi.set(self, "web_settings", value)
 
 
 @pulumi.input_type
 class _EnterpriseKeyState:
     def __init__(__self__, *,
-                 android_settings: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ios_settings: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
-                 waf_settings: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']] = None,
-                 web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
+                 android_settings: pulumi.Input[Optional['EnterpriseKeyAndroidSettingsArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ios_settings: pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 testing_options: pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']] = None,
+                 waf_settings: pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']] = None,
+                 web_settings: pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering EnterpriseKey resources.
 
@@ -233,31 +233,31 @@ class _EnterpriseKeyState:
 
     @_builtins.property
     @pulumi.getter(name="androidSettings")
-    def android_settings(self) -> Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]:
+    def android_settings(self) -> pulumi.Input[Optional['EnterpriseKeyAndroidSettingsArgs']]:
         """
         Settings for keys that can be used by Android apps.
         """
         return pulumi.get(self, "android_settings")
 
     @android_settings.setter
-    def android_settings(self, value: Optional[pulumi.Input['EnterpriseKeyAndroidSettingsArgs']]):
+    def android_settings(self, value: pulumi.Input[Optional['EnterpriseKeyAndroidSettingsArgs']]):
         pulumi.set(self, "android_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp corresponding to the creation of this Key.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable display name of this key. Modifiable by user.
 
@@ -268,36 +268,36 @@ class _EnterpriseKeyState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="iosSettings")
-    def ios_settings(self) -> Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]:
+    def ios_settings(self) -> pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']]:
         """
         Settings for keys that can be used by iOS apps.
         """
         return pulumi.get(self, "ios_settings")
 
     @ios_settings.setter
-    def ios_settings(self, value: Optional[pulumi.Input['EnterpriseKeyIosSettingsArgs']]):
+    def ios_settings(self, value: pulumi.Input[Optional['EnterpriseKeyIosSettingsArgs']]):
         pulumi.set(self, "ios_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
 
@@ -307,79 +307,79 @@ class _EnterpriseKeyState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource id for the Key, which is the same as the Site Key itself.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="testingOptions")
-    def testing_options(self) -> Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]:
+    def testing_options(self) -> pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']]:
         """
         Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
 
     @testing_options.setter
-    def testing_options(self, value: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']]):
+    def testing_options(self, value: pulumi.Input[Optional['EnterpriseKeyTestingOptionsArgs']]):
         pulumi.set(self, "testing_options", value)
 
     @_builtins.property
     @pulumi.getter(name="wafSettings")
-    def waf_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]:
+    def waf_settings(self) -> pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']]:
         """
         Settings specific to keys that can be used for WAF (Web Application Firewall).
         """
         return pulumi.get(self, "waf_settings")
 
     @waf_settings.setter
-    def waf_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]):
+    def waf_settings(self, value: pulumi.Input[Optional['EnterpriseKeyWafSettingsArgs']]):
         pulumi.set(self, "waf_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="webSettings")
-    def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]:
+    def web_settings(self) -> pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']]:
         """
         Settings for keys that can be used by websites.
         """
         return pulumi.get(self, "web_settings")
 
     @web_settings.setter
-    def web_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]):
+    def web_settings(self, value: pulumi.Input[Optional['EnterpriseKeyWebSettingsArgs']]):
         pulumi.set(self, "web_settings", value)
 
 
@@ -389,14 +389,14 @@ class EnterpriseKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ios_settings: Optional[pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_options: Optional[pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
-                 waf_settings: Optional[pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
-                 web_settings: Optional[pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None,
+                 android_settings: pulumi.Input[Optional[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ios_settings: pulumi.Input[Optional[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_options: pulumi.Input[Optional[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
+                 waf_settings: pulumi.Input[Optional[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
+                 web_settings: pulumi.Input[Optional[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None,
                  __props__=None):
         """
         The RecaptchaEnterprise Key resource
@@ -437,7 +437,7 @@ class EnterpriseKey(pulumi.CustomResource):
             },
             project="my-project-name",
             testing_options={
-                "testing_score": 1,
+                "testing_score": float(1),
             },
             labels={
                 "label-one": "value-one",
@@ -610,7 +610,7 @@ class EnterpriseKey(pulumi.CustomResource):
             },
             project="my-project-name",
             testing_options={
-                "testing_score": 1,
+                "testing_score": float(1),
             },
             labels={
                 "label-one": "value-one",
@@ -735,14 +735,14 @@ class EnterpriseKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_settings: Optional[pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ios_settings: Optional[pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 testing_options: Optional[pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
-                 waf_settings: Optional[pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
-                 web_settings: Optional[pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None,
+                 android_settings: pulumi.Input[Optional[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ios_settings: pulumi.Input[Optional[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing_options: pulumi.Input[Optional[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
+                 waf_settings: pulumi.Input[Optional[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
+                 web_settings: pulumi.Input[Optional[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -778,18 +778,18 @@ class EnterpriseKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            android_settings: Optional[pulumi.Input[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ios_settings: Optional[pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            testing_options: Optional[pulumi.Input[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
-            waf_settings: Optional[pulumi.Input[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
-            web_settings: Optional[pulumi.Input[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None) -> 'EnterpriseKey':
+            android_settings: pulumi.Input[Optional[Union['EnterpriseKeyAndroidSettingsArgs', 'EnterpriseKeyAndroidSettingsArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ios_settings: pulumi.Input[Optional[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            testing_options: pulumi.Input[Optional[Union['EnterpriseKeyTestingOptionsArgs', 'EnterpriseKeyTestingOptionsArgsDict']]] = None,
+            waf_settings: pulumi.Input[Optional[Union['EnterpriseKeyWafSettingsArgs', 'EnterpriseKeyWafSettingsArgsDict']]] = None,
+            web_settings: pulumi.Input[Optional[Union['EnterpriseKeyWebSettingsArgs', 'EnterpriseKeyWebSettingsArgsDict']]] = None) -> 'EnterpriseKey':
         """
         Get an existing EnterpriseKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

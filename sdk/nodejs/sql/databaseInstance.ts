@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  *     settings: {
  *         tier: "db-f1-micro",
  *         ipConfiguration: {
- *             authorizedNetworks: Object.entries(apps).map(([k, v]) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
+ *             authorizedNetworks: Object.entries(apps).sort().map(([k, v]) => ({key: k, value: v})).apply(entries => entries.map(entry => ({
  *                 name: entry.value.name,
  *                 value: entry.value.networkInterface[0].accessConfig[0].natIp,
  *             }))),
@@ -686,25 +686,25 @@ export interface DatabaseInstanceState {
     /**
      * The list of all maintenance versions applicable on the instance.
      */
-    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    availableMaintenanceVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The backupdrBackup needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      */
-    backupdrBackup?: pulumi.Input<string>;
+    backupdrBackup?: pulumi.Input<string | undefined>;
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
      */
-    clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
+    clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone | undefined>;
     /**
      * The connection name of the instance to be used in
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
@@ -716,22 +716,22 @@ export interface DatabaseInstanceState {
      * [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
      * includes an up-to-date reference of supported versions.
      */
-    databaseVersion?: pulumi.Input<string>;
+    databaseVersion?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
      *
      * > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
      */
-    dnsNames?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceDnsName>[]>;
+    dnsNames?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceDnsName>[] | undefined>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
@@ -742,122 +742,122 @@ export interface DatabaseInstanceState {
      * That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
-    encryptionKeyName?: pulumi.Input<string>;
+    encryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      */
-    finalBackupDescription?: pulumi.Input<string>;
+    finalBackupDescription?: pulumi.Input<string | undefined>;
     /**
      * The first IPv4 address of any type assigned.
      */
-    firstIpAddress?: pulumi.Input<string>;
+    firstIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
-    instanceType?: pulumi.Input<string>;
-    ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[]>;
+    instanceType?: pulumi.Input<string | undefined>;
+    ipAddresses?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceIpAddress>[] | undefined>;
     /**
      * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
      */
-    maintenanceVersion?: pulumi.Input<string>;
+    maintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to
      * have `binaryLogEnabled` set, as well as existing backups.
      */
-    masterInstanceName?: pulumi.Input<string>;
+    masterInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. If the name is left
      * blank, the provider will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The pointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
      * cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      */
-    pointInTimeRestoreContext?: pulumi.Input<inputs.sql.DatabaseInstancePointInTimeRestoreContext>;
+    pointInTimeRestoreContext?: pulumi.Input<inputs.sql.DatabaseInstancePointInTimeRestoreContext | undefined>;
     /**
      * The first private (`PRIVATE`) IPv4 address assigned.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * the URI that points to the service attachment of the instance.
      */
-    pscServiceAttachmentLink?: pulumi.Input<string>;
+    pscServiceAttachmentLink?: pulumi.Input<string | undefined>;
     /**
      * The first public (`PRIMARY`) IPv4 address assigned.
      */
-    publicIpAddress?: pulumi.Input<string>;
+    publicIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The configuration for replication. The
      * configuration is detailed below.
      */
-    replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration | undefined>;
     /**
      * List of replica names. Can be updated.
      */
-    replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
+    replicaNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      */
-    replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
+    replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster | undefined>;
     /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      */
-    restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
+    restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext | undefined>;
     /**
      * Initial root password. Can be updated. Required for MS SQL Server.
      */
-    rootPassword?: pulumi.Input<string>;
+    rootPassword?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
      *
      * > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
      */
-    rootPasswordWo?: pulumi.Input<string>;
+    rootPasswordWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    rootPasswordWoVersion?: pulumi.Input<string>;
+    rootPasswordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
-    serverCaCerts?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceServerCaCert>[]>;
+    selfLink?: pulumi.Input<string | undefined>;
+    serverCaCerts?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceServerCaCert>[] | undefined>;
     /**
      * The service account email address assigned to the
      * instance.
      */
-    serviceAccountEmailAddress?: pulumi.Input<string>;
+    serviceAccountEmailAddress?: pulumi.Input<string | undefined>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below. Required if `clone` is not set.
      */
-    settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings>;
+    settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings | undefined>;
 }
 
 /**
@@ -870,13 +870,13 @@ export interface DatabaseInstanceArgs {
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      */
-    backupdrBackup?: pulumi.Input<string>;
+    backupdrBackup?: pulumi.Input<string | undefined>;
     /**
      * The context needed to create this instance as a clone of another instance. When this field is set during
      * resource creation, this provider will attempt to clone another instance as indicated in the context. The
      * configuration is detailed below.
      */
-    clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
+    clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone | undefined>;
     /**
      * The MySQL, PostgreSQL or
      * SQL Server version to use. Supported values include `MYSQL_5_6`,
@@ -895,7 +895,7 @@ export interface DatabaseInstanceArgs {
      *
      * > **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
@@ -906,93 +906,93 @@ export interface DatabaseInstanceArgs {
      * That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      * key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
      */
-    encryptionKeyName?: pulumi.Input<string>;
+    encryptionKeyName?: pulumi.Input<string | undefined>;
     /**
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      */
-    finalBackupDescription?: pulumi.Input<string>;
+    finalBackupDescription?: pulumi.Input<string | undefined>;
     /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
      */
-    maintenanceVersion?: pulumi.Input<string>;
+    maintenanceVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the existing instance that will
      * act as the master in the replication setup. Note, this requires the master to
      * have `binaryLogEnabled` set, as well as existing backups.
      */
-    masterInstanceName?: pulumi.Input<string>;
+    masterInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. If the name is left
      * blank, the provider will randomly generate one when the instance is first
      * created. This is done because after a name is used, it cannot be reused for
      * up to [one week](https://cloud.google.com/sql/docs/delete-instance).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * For a read pool instance, the number of nodes in the read pool. For read pools with auto scaling enabled, this field is read only.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The pointInTimeRestoreContext needed for performing a point-in-time recovery of an instance managed by Google Cloud Backup and Disaster Recovery. This field will
      * cause Terraform to trigger the database to restore to a point in time indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      */
-    pointInTimeRestoreContext?: pulumi.Input<inputs.sql.DatabaseInstancePointInTimeRestoreContext>;
+    pointInTimeRestoreContext?: pulumi.Input<inputs.sql.DatabaseInstancePointInTimeRestoreContext | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The configuration for replication. The
      * configuration is detailed below.
      */
-    replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration | undefined>;
     /**
      * List of replica names. Can be updated.
      */
-    replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
+    replicaNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set if the primary has psaWriteEndpoint set or both the primary and replica are created.
      */
-    replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
+    replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster | undefined>;
     /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
      * block during resource creation/update will trigger the restore action after the resource is created/updated.
      */
-    restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
+    restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext | undefined>;
     /**
      * Initial root password. Can be updated. Required for MS SQL Server.
      */
-    rootPassword?: pulumi.Input<string>;
+    rootPassword?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Initial root password. Can be updated. Required for MS SQL Server. **Note**: This property is write-only and will not be read from the API.
      *
      * > **Note:** One of `rootPassword` or `rootPasswordWo` can only be set.
      */
-    rootPasswordWo?: pulumi.Input<string>;
+    rootPasswordWo?: pulumi.Input<string | undefined>;
     /**
      * Triggers update of `rootPasswordWo` write-only. Increment this value when an update to `rootPasswordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
      */
-    rootPasswordWoVersion?: pulumi.Input<string>;
+    rootPasswordWoVersion?: pulumi.Input<string | undefined>;
     /**
      * The settings to use for the database. The
      * configuration is detailed below. Required if `clone` is not set.
      */
-    settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings>;
+    settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings | undefined>;
 }

@@ -20,8 +20,8 @@ __all__ = ['AutokeyConfigArgs', 'AutokeyConfig']
 class AutokeyConfigArgs:
     def __init__(__self__, *,
                  folder: pulumi.Input[_builtins.str],
-                 key_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutokeyConfig resource.
 
@@ -52,7 +52,7 @@ class AutokeyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="keyProject")
-    def key_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target key project for a given folder where KMS Autokey will provision a
         CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -61,12 +61,12 @@ class AutokeyConfigArgs:
         return pulumi.get(self, "key_project")
 
     @key_project.setter
-    def key_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_project", value)
 
     @_builtins.property
     @pulumi.getter(name="keyProjectResolutionMode")
-    def key_project_resolution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_project_resolution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How Autokey determines which project to use when provisioning CMEK keys.
         Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
@@ -74,17 +74,17 @@ class AutokeyConfigArgs:
         return pulumi.get(self, "key_project_resolution_mode")
 
     @key_project_resolution_mode.setter
-    def key_project_resolution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_project_resolution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_project_resolution_mode", value)
 
 
 @pulumi.input_type
 class _AutokeyConfigState:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutokeyConfig resources.
 
@@ -107,31 +107,31 @@ class _AutokeyConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The etag of the AutokeyConfig for optimistic concurrency control.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The folder for which to retrieve config.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter(name="keyProject")
-    def key_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target key project for a given folder where KMS Autokey will provision a
         CryptoKey for any new KeyHandle the Developer creates. Should have the form
@@ -140,12 +140,12 @@ class _AutokeyConfigState:
         return pulumi.get(self, "key_project")
 
     @key_project.setter
-    def key_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_project", value)
 
     @_builtins.property
     @pulumi.getter(name="keyProjectResolutionMode")
-    def key_project_resolution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_project_resolution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How Autokey determines which project to use when provisioning CMEK keys.
         Possible values are: `DEDICATED_KEY_PROJECT`, `RESOURCE_PROJECT`, `DISABLED`.
@@ -153,7 +153,7 @@ class _AutokeyConfigState:
         return pulumi.get(self, "key_project_resolution_mode")
 
     @key_project_resolution_mode.setter
-    def key_project_resolution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_project_resolution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_project_resolution_mode", value)
 
 
@@ -163,9 +163,9 @@ class AutokeyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         `AutokeyConfig` is a singleton resource used to configure the auto-provisioning
@@ -373,9 +373,9 @@ class AutokeyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -401,10 +401,10 @@ class AutokeyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            key_project: Optional[pulumi.Input[_builtins.str]] = None,
-            key_project_resolution_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutokeyConfig':
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            key_project: pulumi.Input[Optional[_builtins.str]] = None,
+            key_project_resolution_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'AutokeyConfig':
         """
         Get an existing AutokeyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

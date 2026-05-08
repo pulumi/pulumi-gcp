@@ -399,11 +399,11 @@ export interface IAMBindingState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.projects.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.projects.IAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:
@@ -412,18 +412,18 @@ export interface IAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project id of the target project. This is not
      * inferred from the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -434,7 +434,7 @@ export interface IAMBindingArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.projects.IAMBindingCondition>;
+    condition?: pulumi.Input<inputs.projects.IAMBindingCondition | undefined>;
     /**
      * Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
      * Each entry can have one of the following values:

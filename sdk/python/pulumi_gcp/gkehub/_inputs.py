@@ -174,17 +174,17 @@ __all__ = [
 ]
 
 class FeatureFleetDefaultMemberConfigArgsDict(TypedDict):
-    configmanagement: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgsDict']]
+    configmanagement: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]]
     """
     Config Management spec
     Structure is documented below.
     """
-    mesh: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgsDict']]
+    mesh: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigMeshArgs']]]
     """
     Service Mesh spec
     Structure is documented below.
     """
-    policycontroller: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict']]
+    policycontroller: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']]]
     """
     Policy Controller spec
     Structure is documented below.
@@ -193,9 +193,9 @@ class FeatureFleetDefaultMemberConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigArgs:
     def __init__(__self__, *,
-                 configmanagement: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs']] = None,
-                 mesh: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgs']] = None,
-                 policycontroller: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']] = None):
+                 configmanagement: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementArgs']] = None,
+                 mesh: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigMeshArgs']] = None,
+                 policycontroller: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']] = None):
         """
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs'] configmanagement: Config Management spec
                Structure is documented below.
@@ -213,7 +213,7 @@ class FeatureFleetDefaultMemberConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def configmanagement(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]:
+    def configmanagement(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]:
         """
         Config Management spec
         Structure is documented below.
@@ -221,12 +221,12 @@ class FeatureFleetDefaultMemberConfigArgs:
         return pulumi.get(self, "configmanagement")
 
     @configmanagement.setter
-    def configmanagement(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]):
+    def configmanagement(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]):
         pulumi.set(self, "configmanagement", value)
 
     @_builtins.property
     @pulumi.getter
-    def mesh(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgs']]:
+    def mesh(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigMeshArgs']]:
         """
         Service Mesh spec
         Structure is documented below.
@@ -234,12 +234,12 @@ class FeatureFleetDefaultMemberConfigArgs:
         return pulumi.get(self, "mesh")
 
     @mesh.setter
-    def mesh(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigMeshArgs']]):
+    def mesh(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigMeshArgs']]):
         pulumi.set(self, "mesh", value)
 
     @_builtins.property
     @pulumi.getter
-    def policycontroller(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']]:
+    def policycontroller(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']]:
         """
         Policy Controller spec
         Structure is documented below.
@@ -247,22 +247,22 @@ class FeatureFleetDefaultMemberConfigArgs:
         return pulumi.get(self, "policycontroller")
 
     @policycontroller.setter
-    def policycontroller(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']]):
+    def policycontroller(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']]):
         pulumi.set(self, "policycontroller", value)
 
 
 class FeatureFleetDefaultMemberConfigConfigmanagementArgsDict(TypedDict):
-    config_sync: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict']]
+    config_sync: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]]
     """
     ConfigSync configuration for the cluster
     Structure is documented below.
     """
-    management: NotRequired[pulumi.Input[_builtins.str]]
+    management: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
     Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version of Config Sync installed
     """
@@ -270,9 +270,9 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
     def __init__(__self__, *,
-                 config_sync: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']] = None,
-                 management: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_sync: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']] = None,
+                 management: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs'] config_sync: ConfigSync configuration for the cluster
                Structure is documented below.
@@ -289,7 +289,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
 
     @_builtins.property
     @pulumi.getter(name="configSync")
-    def config_sync(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]:
+    def config_sync(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]:
         """
         ConfigSync configuration for the cluster
         Structure is documented below.
@@ -297,12 +297,12 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
         return pulumi.get(self, "config_sync")
 
     @config_sync.setter
-    def config_sync(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]):
+    def config_sync(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]):
         pulumi.set(self, "config_sync", value)
 
     @_builtins.property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
         Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
@@ -310,46 +310,46 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of Config Sync installed
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
     """
-    git: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict']]
+    git: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]]
     """
     Git repo configuration for the cluster
     Structure is documented below.
     """
-    metrics_gcp_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    metrics_gcp_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
     """
-    oci: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict']]
+    oci: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]]
     """
     OCI repo configuration for the cluster
     Structure is documented below.
     """
-    prevent_drift: NotRequired[pulumi.Input[_builtins.bool]]
+    prevent_drift: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
     """
-    source_format: NotRequired[pulumi.Input[_builtins.str]]
+    source_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
     """
@@ -357,12 +357,12 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict(TypedDic
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']] = None,
-                 metrics_gcp_service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 oci: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']] = None,
-                 prevent_drift: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_format: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']] = None,
+                 metrics_gcp_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 oci: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']] = None,
+                 prevent_drift: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_format: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] git: Git repo configuration for the cluster
@@ -388,19 +388,19 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def git(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]:
+    def git(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]:
         """
         Git repo configuration for the cluster
         Structure is documented below.
@@ -408,24 +408,24 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
         return pulumi.get(self, "git")
 
     @git.setter
-    def git(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]):
+    def git(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]):
         pulumi.set(self, "git", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsGcpServiceAccountEmail")
-    def metrics_gcp_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metrics_gcp_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         """
         return pulumi.get(self, "metrics_gcp_service_account_email")
 
     @metrics_gcp_service_account_email.setter
-    def metrics_gcp_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metrics_gcp_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metrics_gcp_service_account_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def oci(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]:
+    def oci(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]:
         """
         OCI repo configuration for the cluster
         Structure is documented below.
@@ -433,31 +433,31 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs:
         return pulumi.get(self, "oci")
 
     @oci.setter
-    def oci(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]):
+    def oci(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]):
         pulumi.set(self, "oci", value)
 
     @_builtins.property
     @pulumi.getter(name="preventDrift")
-    def prevent_drift(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_drift(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         """
         return pulumi.get(self, "prevent_drift")
 
     @prevent_drift.setter
-    def prevent_drift(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_drift(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_drift", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFormat")
-    def source_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
         """
         return pulumi.get(self, "source_format")
 
     @source_format.setter
-    def source_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_format", value)
 
 
@@ -466,31 +466,31 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict(Typed
     """
     Type of secret configured for access to the Git repo
     """
-    gcp_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    gcp_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
     """
-    https_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    https_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL for the HTTPS Proxy to be used when communicating with the Git repo
     """
-    policy_dir: NotRequired[pulumi.Input[_builtins.str]]
+    policy_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path within the Git repository that represents the top level of the repo to sync
     """
-    sync_branch: NotRequired[pulumi.Input[_builtins.str]]
+    sync_branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The branch of the repository to sync from. Default: master
     """
-    sync_repo: NotRequired[pulumi.Input[_builtins.str]]
+    sync_repo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL of the Git repository to use as the source of truth
     """
-    sync_rev: NotRequired[pulumi.Input[_builtins.str]]
+    sync_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Git revision (tag or hash) to check out. Default HEAD
     """
-    sync_wait_secs: NotRequired[pulumi.Input[_builtins.str]]
+    sync_wait_secs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Period in seconds between consecutive syncs. Default: 15
     """
@@ -499,13 +499,13 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict(Typed
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs:
     def __init__(__self__, *,
                  secret_type: pulumi.Input[_builtins.str],
-                 gcp_service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_wait_secs: Optional[pulumi.Input[_builtins.str]] = None):
+                 gcp_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_wait_secs: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_type: Type of secret configured for access to the Git repo
         :param pulumi.Input[_builtins.str] gcp_service_account_email: The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
@@ -546,86 +546,86 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcpServiceAccountEmail")
-    def gcp_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
         """
         return pulumi.get(self, "gcp_service_account_email")
 
     @gcp_service_account_email.setter
-    def gcp_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsProxy")
-    def https_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the HTTPS Proxy to be used when communicating with the Git repo
         """
         return pulumi.get(self, "https_proxy")
 
     @https_proxy.setter
-    def https_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDir")
-    def policy_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path within the Git repository that represents the top level of the repo to sync
         """
         return pulumi.get(self, "policy_dir")
 
     @policy_dir.setter
-    def policy_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="syncBranch")
-    def sync_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch of the repository to sync from. Default: master
         """
         return pulumi.get(self, "sync_branch")
 
     @sync_branch.setter
-    def sync_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRepo")
-    def sync_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the Git repository to use as the source of truth
         """
         return pulumi.get(self, "sync_repo")
 
     @sync_repo.setter
-    def sync_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRev")
-    def sync_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git revision (tag or hash) to check out. Default HEAD
         """
         return pulumi.get(self, "sync_rev")
 
     @sync_rev.setter
-    def sync_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="syncWaitSecs")
-    def sync_wait_secs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_wait_secs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Period in seconds between consecutive syncs. Default: 15
         """
         return pulumi.get(self, "sync_wait_secs")
 
     @sync_wait_secs.setter
-    def sync_wait_secs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_wait_secs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_wait_secs", value)
 
 
@@ -634,23 +634,23 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict(Typed
     """
     Type of secret configured for access to the Git repo
     """
-    gcp_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    gcp_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
     """
-    policy_dir: NotRequired[pulumi.Input[_builtins.str]]
+    policy_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The absolute path of the directory that contains the local resources. Default: the root directory of the image
     """
-    sync_repo: NotRequired[pulumi.Input[_builtins.str]]
+    sync_repo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OCI image repository URL for the package to sync from
     """
-    sync_wait_secs: NotRequired[pulumi.Input[_builtins.str]]
+    sync_wait_secs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Period in seconds between consecutive syncs. Default: 15
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     Version of Config Sync installed
@@ -662,11 +662,11 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict(Typed
 class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
     def __init__(__self__, *,
                  secret_type: pulumi.Input[_builtins.str],
-                 gcp_service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_wait_secs: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 gcp_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_wait_secs: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] secret_type: Type of secret configured for access to the Git repo
         :param pulumi.Input[_builtins.str] gcp_service_account_email: The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
@@ -707,56 +707,56 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcpServiceAccountEmail")
-    def gcp_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
         """
         return pulumi.get(self, "gcp_service_account_email")
 
     @gcp_service_account_email.setter
-    def gcp_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDir")
-    def policy_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The absolute path of the directory that contains the local resources. Default: the root directory of the image
         """
         return pulumi.get(self, "policy_dir")
 
     @policy_dir.setter
-    def policy_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRepo")
-    def sync_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OCI image repository URL for the package to sync from
         """
         return pulumi.get(self, "sync_repo")
 
     @sync_repo.setter
-    def sync_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="syncWaitSecs")
-    def sync_wait_secs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_wait_secs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Period in seconds between consecutive syncs. Default: 15
         """
         return pulumi.get(self, "sync_wait_secs")
 
     @sync_wait_secs.setter
-    def sync_wait_secs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_wait_secs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_wait_secs", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.""")
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         Version of Config Sync installed
@@ -766,7 +766,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -807,7 +807,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict(TypedDict):
     Configuration of Policy Controller
     Structure is documented below.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Configures the version of Policy Controller
     """
@@ -816,7 +816,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict(TypedDict):
 class FeatureFleetDefaultMemberConfigPolicycontrollerArgs:
     def __init__(__self__, *,
                  policy_controller_hub_config: pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs'],
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs'] policy_controller_hub_config: Configuration of Policy Controller
                Structure is documented below.
@@ -841,14 +841,14 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configures the version of Policy Controller
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -858,42 +858,42 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
     Configures the mode of the Policy Controller installation
     Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
     """
-    audit_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    audit_interval_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
     """
-    constraint_violation_limit: NotRequired[pulumi.Input[_builtins.int]]
+    constraint_violation_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
     """
-    deployment_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict']]]]
+    deployment_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]]
     """
     Map of deployment configs to deployments ("admission", "audit", "mutation").
     Structure is documented below.
     """
-    exemptable_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exemptable_namespaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
     """
-    log_denies_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    log_denies_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Logs all denies and dry run failures.
     """
-    monitoring: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict']]
+    monitoring: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]]
     """
     Monitoring specifies the configuration of monitoring Policy Controller.
     Structure is documented below.
     """
-    mutation_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    mutation_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the ability to mutate resources using Policy Controller.
     """
-    policy_content: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict']]
+    policy_content: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]]
     """
     Specifies the desired policy content on the cluster.
     Structure is documented below.
     """
-    referential_rules_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    referential_rules_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
     """
@@ -902,15 +902,15 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs:
     def __init__(__self__, *,
                  install_spec: pulumi.Input[_builtins.str],
-                 audit_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 constraint_violation_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 deployment_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]] = None,
-                 exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_denies_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitoring: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']] = None,
-                 mutation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_content: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']] = None,
-                 referential_rules_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 audit_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 constraint_violation_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 deployment_configs: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]] = None,
+                 exemptable_namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_denies_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitoring: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']] = None,
+                 mutation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_content: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']] = None,
+                 referential_rules_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] install_spec: Configures the mode of the Policy Controller installation
                Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
@@ -962,31 +962,31 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
 
     @_builtins.property
     @pulumi.getter(name="auditIntervalSeconds")
-    def audit_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audit_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
         """
         return pulumi.get(self, "audit_interval_seconds")
 
     @audit_interval_seconds.setter
-    def audit_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audit_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audit_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="constraintViolationLimit")
-    def constraint_violation_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def constraint_violation_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
         """
         return pulumi.get(self, "constraint_violation_limit")
 
     @constraint_violation_limit.setter
-    def constraint_violation_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def constraint_violation_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "constraint_violation_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]:
+    def deployment_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]:
         """
         Map of deployment configs to deployments ("admission", "audit", "mutation").
         Structure is documented below.
@@ -994,36 +994,36 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
         return pulumi.get(self, "deployment_configs")
 
     @deployment_configs.setter
-    def deployment_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]):
+    def deployment_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]):
         pulumi.set(self, "deployment_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="exemptableNamespaces")
-    def exemptable_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exemptable_namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         """
         return pulumi.get(self, "exemptable_namespaces")
 
     @exemptable_namespaces.setter
-    def exemptable_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exemptable_namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exemptable_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="logDeniesEnabled")
-    def log_denies_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_denies_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Logs all denies and dry run failures.
         """
         return pulumi.get(self, "log_denies_enabled")
 
     @log_denies_enabled.setter
-    def log_denies_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_denies_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_denies_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]:
+    def monitoring(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]:
         """
         Monitoring specifies the configuration of monitoring Policy Controller.
         Structure is documented below.
@@ -1031,24 +1031,24 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]):
+    def monitoring(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="mutationEnabled")
-    def mutation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mutation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the ability to mutate resources using Policy Controller.
         """
         return pulumi.get(self, "mutation_enabled")
 
     @mutation_enabled.setter
-    def mutation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mutation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mutation_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="policyContent")
-    def policy_content(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]:
+    def policy_content(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]:
         """
         Specifies the desired policy content on the cluster.
         Structure is documented below.
@@ -1056,19 +1056,19 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
         return pulumi.get(self, "policy_content")
 
     @policy_content.setter
-    def policy_content(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]):
+    def policy_content(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]):
         pulumi.set(self, "policy_content", value)
 
     @_builtins.property
     @pulumi.getter(name="referentialRulesEnabled")
-    def referential_rules_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def referential_rules_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         """
         return pulumi.get(self, "referential_rules_enabled")
 
     @referential_rules_enabled.setter
-    def referential_rules_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def referential_rules_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "referential_rules_enabled", value)
 
 
@@ -1077,22 +1077,22 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
     """
     The identifier for this object. Format specified above.
     """
-    container_resources: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict']]
+    container_resources: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]]
     """
     Container resource requirements.
     Structure is documented below.
     """
-    pod_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    pod_affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pod affinity configuration.
     Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
     """
-    pod_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict']]]]
+    pod_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]]
     """
     Pod tolerations of node taints.
     Structure is documented below.
     """
-    replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Pod replica count.
     """
@@ -1101,10 +1101,10 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs:
     def __init__(__self__, *,
                  component: pulumi.Input[_builtins.str],
-                 container_resources: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']] = None,
-                 pod_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_resources: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']] = None,
+                 pod_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_tolerations: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] component: The identifier for this object. Format specified above.
         :param pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs'] container_resources: Container resource requirements.
@@ -1139,7 +1139,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 
     @_builtins.property
     @pulumi.getter(name="containerResources")
-    def container_resources(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]:
+    def container_resources(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]:
         """
         Container resource requirements.
         Structure is documented below.
@@ -1147,12 +1147,12 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         return pulumi.get(self, "container_resources")
 
     @container_resources.setter
-    def container_resources(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]):
+    def container_resources(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]):
         pulumi.set(self, "container_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="podAffinity")
-    def pod_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pod affinity configuration.
         Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
@@ -1160,12 +1160,12 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         return pulumi.get(self, "pod_affinity")
 
     @pod_affinity.setter
-    def pod_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="podTolerations")
-    def pod_tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]:
+    def pod_tolerations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]:
         """
         Pod tolerations of node taints.
         Structure is documented below.
@@ -1173,29 +1173,29 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         return pulumi.get(self, "pod_tolerations")
 
     @pod_tolerations.setter
-    def pod_tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]):
+    def pod_tolerations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]):
         pulumi.set(self, "pod_tolerations", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Pod replica count.
         """
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict']]
+    limits: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]]
     """
     Limits describes the maximum amount of compute resources allowed for use by the running container.
     Structure is documented below.
     """
-    requests: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict']]
+    requests: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]]
     """
     Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
     Structure is documented below.
@@ -1204,8 +1204,8 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']] = None,
-                 requests: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']] = None):
+                 limits: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']] = None,
+                 requests: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']] = None):
         """
         :param pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs'] limits: Limits describes the maximum amount of compute resources allowed for use by the running container.
                Structure is documented below.
@@ -1219,7 +1219,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]:
+    def limits(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]:
         """
         Limits describes the maximum amount of compute resources allowed for use by the running container.
         Structure is documented below.
@@ -1227,12 +1227,12 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]):
+    def limits(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]:
+    def requests(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]:
         """
         Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
         Structure is documented below.
@@ -1240,16 +1240,16 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]):
+    def requests(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]):
         pulumi.set(self, "requests", value)
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[_builtins.str]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CPU requirement expressed in Kubernetes resource units.
     """
-    memory: NotRequired[pulumi.Input[_builtins.str]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Memory requirement expressed in Kubernetes resource units.
     """
@@ -1257,8 +1257,8 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs:
     def __init__(__self__, *,
-                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+                 cpu: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cpu: CPU requirement expressed in Kubernetes resource units.
         :param pulumi.Input[_builtins.str] memory: Memory requirement expressed in Kubernetes resource units.
@@ -1270,35 +1270,35 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CPU requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Memory requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory", value)
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[_builtins.str]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CPU requirement expressed in Kubernetes resource units.
     """
-    memory: NotRequired[pulumi.Input[_builtins.str]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Memory requirement expressed in Kubernetes resource units.
     """
@@ -1306,8 +1306,8 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs:
     def __init__(__self__, *,
-                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+                 cpu: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cpu: CPU requirement expressed in Kubernetes resource units.
         :param pulumi.Input[_builtins.str] memory: Memory requirement expressed in Kubernetes resource units.
@@ -1319,43 +1319,43 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CPU requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Memory requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory", value)
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint effect.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint key (not necessarily unique).
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint operator.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint value.
     """
@@ -1363,10 +1363,10 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Matches a taint effect.
         :param pulumi.Input[_builtins.str] key: Matches a taint key (not necessarily unique).
@@ -1384,55 +1384,55 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint effect.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint key (not necessarily unique).
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint operator.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict(TypedDict):
-    backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    backends: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
     Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
@@ -1441,7 +1441,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMo
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs:
     def __init__(__self__, *,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 backends: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backends: Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
                Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
@@ -1451,7 +1451,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMo
 
     @_builtins.property
     @pulumi.getter
-    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
         Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
@@ -1459,17 +1459,17 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMo
         return pulumi.get(self, "backends")
 
     @backends.setter
-    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backends", value)
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict(TypedDict):
-    bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict']]]]
+    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]]
     """
     Configures which bundles to install and their corresponding install specs.
     Structure is documented below.
     """
-    template_library: NotRequired[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict']]
+    template_library: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]]
     """
     Configures the installation of the Template Library.
     Structure is documented below.
@@ -1478,8 +1478,8 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs:
     def __init__(__self__, *,
-                 bundles: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]] = None,
-                 template_library: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']] = None):
+                 bundles: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]] = None,
+                 template_library: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]] bundles: Configures which bundles to install and their corresponding install specs.
                Structure is documented below.
@@ -1493,7 +1493,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 
     @_builtins.property
     @pulumi.getter
-    def bundles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]:
+    def bundles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]:
         """
         Configures which bundles to install and their corresponding install specs.
         Structure is documented below.
@@ -1501,12 +1501,12 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
         return pulumi.get(self, "bundles")
 
     @bundles.setter
-    def bundles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]):
+    def bundles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]):
         pulumi.set(self, "bundles", value)
 
     @_builtins.property
     @pulumi.getter(name="templateLibrary")
-    def template_library(self) -> Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]:
+    def template_library(self) -> pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]:
         """
         Configures the installation of the Template Library.
         Structure is documented below.
@@ -1514,7 +1514,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
         return pulumi.get(self, "template_library")
 
     @template_library.setter
-    def template_library(self, value: Optional[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]):
+    def template_library(self, value: pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]):
         pulumi.set(self, "template_library", value)
 
 
@@ -1523,7 +1523,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
     """
     The identifier for this object. Format specified above.
     """
-    exempted_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exempted_namespaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of namespaces to be exempted from the bundle.
     """
@@ -1532,7 +1532,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs:
     def __init__(__self__, *,
                  bundle: pulumi.Input[_builtins.str],
-                 exempted_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exempted_namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] bundle: The identifier for this object. Format specified above.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exempted_namespaces: The set of namespaces to be exempted from the bundle.
@@ -1555,19 +1555,19 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 
     @_builtins.property
     @pulumi.getter(name="exemptedNamespaces")
-    def exempted_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exempted_namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of namespaces to be exempted from the bundle.
         """
         return pulumi.get(self, "exempted_namespaces")
 
     @exempted_namespaces.setter
-    def exempted_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exempted_namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exempted_namespaces", value)
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict(TypedDict):
-    installation: NotRequired[pulumi.Input[_builtins.str]]
+    installation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Configures the manner in which the template library is installed on the cluster.
     Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
@@ -1576,7 +1576,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 @pulumi.input_type
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs:
     def __init__(__self__, *,
-                 installation: Optional[pulumi.Input[_builtins.str]] = None):
+                 installation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] installation: Configures the manner in which the template library is installed on the cluster.
                Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
@@ -1586,7 +1586,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 
     @_builtins.property
     @pulumi.getter
-    def installation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configures the manner in which the template library is installed on the cluster.
         Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
@@ -1594,21 +1594,21 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
         return pulumi.get(self, "installation")
 
     @installation.setter
-    def installation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installation", value)
 
 
 class FeatureIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FeatureIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1634,25 +1634,25 @@ class FeatureIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class FeatureIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FeatureIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1678,20 +1678,20 @@ class FeatureIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class FeatureMembershipConfigmanagementArgsDict(TypedDict):
-    config_sync: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgsDict']]
+    config_sync: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncArgs']]]
     """
     Config Sync configuration for the cluster. Structure is documented below.
     """
-    hierarchy_controller: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgsDict']]
+    hierarchy_controller: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementHierarchyControllerArgs']]]
     """
     Hierarchy Controller configuration for the cluster. Structure is documented below.
     Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
@@ -1699,19 +1699,19 @@ class FeatureMembershipConfigmanagementArgsDict(TypedDict):
     Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
     to migrate from Hierarchy Controller to HNC.
     """
-    management: NotRequired[pulumi.Input[_builtins.str]]
+    management: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
     and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
     This field was introduced in Terraform version 5.41.0.
     """
-    policy_controller: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgsDict']]
+    policy_controller: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerArgs']]]
     """
     Policy Controller configuration for the cluster. Structure is documented below.
     Configuring Policy Controller through the configmanagement feature is no longer recommended.
     Use the policycontroller feature instead.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version of Config Sync installed.
     """
@@ -1719,11 +1719,11 @@ class FeatureMembershipConfigmanagementArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureMembershipConfigmanagementArgs:
     def __init__(__self__, *,
-                 config_sync: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']] = None,
-                 hierarchy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']] = None,
-                 management: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_controller: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_sync: pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncArgs']] = None,
+                 hierarchy_controller: pulumi.Input[Optional['FeatureMembershipConfigmanagementHierarchyControllerArgs']] = None,
+                 management: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_controller: pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs'] config_sync: Config Sync configuration for the cluster. Structure is documented below.
         :param pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs'] hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
@@ -1752,19 +1752,19 @@ class FeatureMembershipConfigmanagementArgs:
 
     @_builtins.property
     @pulumi.getter(name="configSync")
-    def config_sync(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']]:
+    def config_sync(self) -> pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncArgs']]:
         """
         Config Sync configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "config_sync")
 
     @config_sync.setter
-    def config_sync(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncArgs']]):
+    def config_sync(self, value: pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncArgs']]):
         pulumi.set(self, "config_sync", value)
 
     @_builtins.property
     @pulumi.getter(name="hierarchyController")
-    def hierarchy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']]:
+    def hierarchy_controller(self) -> pulumi.Input[Optional['FeatureMembershipConfigmanagementHierarchyControllerArgs']]:
         """
         Hierarchy Controller configuration for the cluster. Structure is documented below.
         Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
@@ -1775,12 +1775,12 @@ class FeatureMembershipConfigmanagementArgs:
         return pulumi.get(self, "hierarchy_controller")
 
     @hierarchy_controller.setter
-    def hierarchy_controller(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementHierarchyControllerArgs']]):
+    def hierarchy_controller(self, value: pulumi.Input[Optional['FeatureMembershipConfigmanagementHierarchyControllerArgs']]):
         pulumi.set(self, "hierarchy_controller", value)
 
     @_builtins.property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
         and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
@@ -1789,12 +1789,12 @@ class FeatureMembershipConfigmanagementArgs:
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management", value)
 
     @_builtins.property
     @pulumi.getter(name="policyController")
-    def policy_controller(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']]:
+    def policy_controller(self) -> pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerArgs']]:
         """
         Policy Controller configuration for the cluster. Structure is documented below.
         Configuring Policy Controller through the configmanagement feature is no longer recommended.
@@ -1803,56 +1803,56 @@ class FeatureMembershipConfigmanagementArgs:
         return pulumi.get(self, "policy_controller")
 
     @policy_controller.setter
-    def policy_controller(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs']]):
+    def policy_controller(self, value: pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerArgs']]):
         pulumi.set(self, "policy_controller", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of Config Sync installed.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
-    deployment_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict']]]]
+    deployment_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]]
     """
     The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
     5.41.0, and
     needs to be set to `true` explicitly to install Config Sync.
     """
-    git: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgsDict']]
+    git: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncGitArgs']]]
     """
     (Optional) Structure is documented below.
     """
-    metrics_gcp_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    metrics_gcp_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
     """
-    oci: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgsDict']]
+    oci: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncOciArgs']]]
     """
     (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 
     Use either `git` or `oci` config option.
     """
-    prevent_drift: NotRequired[pulumi.Input[_builtins.bool]]
+    prevent_drift: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
     """
-    source_format: NotRequired[pulumi.Input[_builtins.str]]
+    source_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
     """
-    stop_syncing: NotRequired[pulumi.Input[_builtins.bool]]
+    stop_syncing: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set to true to stop syncing configs for a single cluster. Default to false.
     """
@@ -1860,14 +1860,14 @@ class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncArgs:
     def __init__(__self__, *,
-                 deployment_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']] = None,
-                 metrics_gcp_service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 oci: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']] = None,
-                 prevent_drift: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 stop_syncing: Optional[pulumi.Input[_builtins.bool]] = None):
+                 deployment_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git: pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncGitArgs']] = None,
+                 metrics_gcp_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 oci: pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncOciArgs']] = None,
+                 prevent_drift: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 stop_syncing: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]] deployment_overrides: The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
         :param pulumi.Input[_builtins.bool] enabled: Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
@@ -1901,19 +1901,19 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
 
     @_builtins.property
     @pulumi.getter(name="deploymentOverrides")
-    def deployment_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]:
+    def deployment_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]:
         """
         The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
         """
         return pulumi.get(self, "deployment_overrides")
 
     @deployment_overrides.setter
-    def deployment_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]):
+    def deployment_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]):
         pulumi.set(self, "deployment_overrides", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Config Sync is enabled in the cluster. This field was introduced in Terraform version
         5.41.0, and
@@ -1922,36 +1922,36 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def git(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']]:
+    def git(self) -> pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncGitArgs']]:
         """
         (Optional) Structure is documented below.
         """
         return pulumi.get(self, "git")
 
     @git.setter
-    def git(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs']]):
+    def git(self, value: pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncGitArgs']]):
         pulumi.set(self, "git", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsGcpServiceAccountEmail")
-    def metrics_gcp_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metrics_gcp_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         """
         return pulumi.get(self, "metrics_gcp_service_account_email")
 
     @metrics_gcp_service_account_email.setter
-    def metrics_gcp_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metrics_gcp_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metrics_gcp_service_account_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def oci(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']]:
+    def oci(self) -> pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncOciArgs']]:
         """
         (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 
@@ -1960,56 +1960,56 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         return pulumi.get(self, "oci")
 
     @oci.setter
-    def oci(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']]):
+    def oci(self, value: pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncOciArgs']]):
         pulumi.set(self, "oci", value)
 
     @_builtins.property
     @pulumi.getter(name="preventDrift")
-    def prevent_drift(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prevent_drift(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         """
         return pulumi.get(self, "prevent_drift")
 
     @prevent_drift.setter
-    def prevent_drift(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prevent_drift(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prevent_drift", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFormat")
-    def source_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
         return pulumi.get(self, "source_format")
 
     @source_format.setter
-    def source_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_format", value)
 
     @_builtins.property
     @pulumi.getter(name="stopSyncing")
-    def stop_syncing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_syncing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to stop syncing configs for a single cluster. Default to false.
         """
         return pulumi.get(self, "stop_syncing")
 
     @stop_syncing.setter
-    def stop_syncing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_syncing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_syncing", value)
 
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict(TypedDict):
-    containers: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgsDict']]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]]
     """
     The override configurations for the containers in the Deployment. Structure is documented below.
     """
-    deployment_name: NotRequired[pulumi.Input[_builtins.str]]
+    deployment_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Deployment.
     """
-    deployment_namespace: NotRequired[pulumi.Input[_builtins.str]]
+    deployment_namespace: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The namespace of the Deployment.
     """
@@ -2017,9 +2017,9 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict(Type
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs:
     def __init__(__self__, *,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_namespace: Optional[pulumi.Input[_builtins.str]] = None):
+                 containers: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]] containers: The override configurations for the containers in the Deployment. Structure is documented below.
         :param pulumi.Input[_builtins.str] deployment_name: The name of the Deployment.
@@ -2034,59 +2034,59 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs:
 
     @_builtins.property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]:
+    def containers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]:
         """
         The override configurations for the containers in the Deployment. Structure is documented below.
         """
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]):
+    def containers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentName")
-    def deployment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Deployment.
         """
         return pulumi.get(self, "deployment_name")
 
     @deployment_name.setter
-    def deployment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentNamespace")
-    def deployment_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace of the Deployment.
         """
         return pulumi.get(self, "deployment_namespace")
 
     @deployment_namespace.setter
-    def deployment_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_namespace", value)
 
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgsDict(TypedDict):
-    container_name: NotRequired[pulumi.Input[_builtins.str]]
+    container_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the container.
     """
-    cpu_limit: NotRequired[pulumi.Input[_builtins.str]]
+    cpu_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU limit of the container.
     """
-    cpu_request: NotRequired[pulumi.Input[_builtins.str]]
+    cpu_request: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU request of the container.
     """
-    memory_limit: NotRequired[pulumi.Input[_builtins.str]]
+    memory_limit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The memory limit of the container.
     """
-    memory_request: NotRequired[pulumi.Input[_builtins.str]]
+    memory_request: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The memory request of the container.
     """
@@ -2094,11 +2094,11 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs:
     def __init__(__self__, *,
-                 container_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_request: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_request: Optional[pulumi.Input[_builtins.str]] = None):
+                 container_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_request: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_request: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] container_name: The name of the container.
         :param pulumi.Input[_builtins.str] cpu_limit: The CPU limit of the container.
@@ -2119,95 +2119,95 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs
 
     @_builtins.property
     @pulumi.getter(name="containerName")
-    def container_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the container.
         """
         return pulumi.get(self, "container_name")
 
     @container_name.setter
-    def container_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_name", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuLimit")
-    def cpu_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU limit of the container.
         """
         return pulumi.get(self, "cpu_limit")
 
     @cpu_limit.setter
-    def cpu_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuRequest")
-    def cpu_request(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_request(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU request of the container.
         """
         return pulumi.get(self, "cpu_request")
 
     @cpu_request.setter
-    def cpu_request(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_request(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_request", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The memory limit of the container.
         """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryRequest")
-    def memory_request(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_request(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The memory request of the container.
         """
         return pulumi.get(self, "memory_request")
 
     @memory_request.setter
-    def memory_request(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_request(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_request", value)
 
 
 class FeatureMembershipConfigmanagementConfigSyncGitArgsDict(TypedDict):
-    gcp_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    gcp_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
     """
-    https_proxy: NotRequired[pulumi.Input[_builtins.str]]
+    https_proxy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URL for the HTTPS proxy to be used when communicating with the Git repo.
     """
-    policy_dir: NotRequired[pulumi.Input[_builtins.str]]
+    policy_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
     """
-    secret_type: NotRequired[pulumi.Input[_builtins.str]]
+    secret_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of secret configured for access to the Git repo.
     """
-    sync_branch: NotRequired[pulumi.Input[_builtins.str]]
+    sync_branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The branch of the repository to sync from. Default: master.
     """
-    sync_repo: NotRequired[pulumi.Input[_builtins.str]]
+    sync_repo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL of the Git repository to use as the source of truth.
     """
-    sync_rev: NotRequired[pulumi.Input[_builtins.str]]
+    sync_rev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Git revision (tag or hash) to check out. Default HEAD.
     """
-    sync_wait_secs: NotRequired[pulumi.Input[_builtins.str]]
+    sync_wait_secs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Period in seconds between consecutive syncs. Default: 15.
     """
@@ -2215,14 +2215,14 @@ class FeatureMembershipConfigmanagementConfigSyncGitArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncGitArgs:
     def __init__(__self__, *,
-                 gcp_service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_rev: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_wait_secs: Optional[pulumi.Input[_builtins.str]] = None):
+                 gcp_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_rev: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_wait_secs: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] gcp_service_account_email: The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
         :param pulumi.Input[_builtins.str] https_proxy: URL for the HTTPS proxy to be used when communicating with the Git repo.
@@ -2252,119 +2252,119 @@ class FeatureMembershipConfigmanagementConfigSyncGitArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcpServiceAccountEmail")
-    def gcp_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
         """
         return pulumi.get(self, "gcp_service_account_email")
 
     @gcp_service_account_email.setter
-    def gcp_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsProxy")
-    def https_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the HTTPS proxy to be used when communicating with the Git repo.
         """
         return pulumi.get(self, "https_proxy")
 
     @https_proxy.setter
-    def https_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_proxy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDir")
-    def policy_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
         """
         return pulumi.get(self, "policy_dir")
 
     @policy_dir.setter
-    def policy_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of secret configured for access to the Git repo.
         """
         return pulumi.get(self, "secret_type")
 
     @secret_type.setter
-    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_type", value)
 
     @_builtins.property
     @pulumi.getter(name="syncBranch")
-    def sync_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch of the repository to sync from. Default: master.
         """
         return pulumi.get(self, "sync_branch")
 
     @sync_branch.setter
-    def sync_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRepo")
-    def sync_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the Git repository to use as the source of truth.
         """
         return pulumi.get(self, "sync_repo")
 
     @sync_repo.setter
-    def sync_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRev")
-    def sync_rev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_rev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git revision (tag or hash) to check out. Default HEAD.
         """
         return pulumi.get(self, "sync_rev")
 
     @sync_rev.setter
-    def sync_rev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_rev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_rev", value)
 
     @_builtins.property
     @pulumi.getter(name="syncWaitSecs")
-    def sync_wait_secs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_wait_secs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Period in seconds between consecutive syncs. Default: 15.
         """
         return pulumi.get(self, "sync_wait_secs")
 
     @sync_wait_secs.setter
-    def sync_wait_secs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_wait_secs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_wait_secs", value)
 
 
 class FeatureMembershipConfigmanagementConfigSyncOciArgsDict(TypedDict):
-    gcp_service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    gcp_service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
     """
-    policy_dir: NotRequired[pulumi.Input[_builtins.str]]
+    policy_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The absolute path of the directory that contains the local resources. Default: the root directory of the image.
     """
-    secret_type: NotRequired[pulumi.Input[_builtins.str]]
+    secret_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
     """
-    sync_repo: NotRequired[pulumi.Input[_builtins.str]]
+    sync_repo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
     """
-    sync_wait_secs: NotRequired[pulumi.Input[_builtins.str]]
+    sync_wait_secs: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Period in seconds(int64 format) between consecutive syncs. Default: 15.
     """
@@ -2372,11 +2372,11 @@ class FeatureMembershipConfigmanagementConfigSyncOciArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureMembershipConfigmanagementConfigSyncOciArgs:
     def __init__(__self__, *,
-                 gcp_service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_wait_secs: Optional[pulumi.Input[_builtins.str]] = None):
+                 gcp_service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_wait_secs: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] gcp_service_account_email: The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
         :param pulumi.Input[_builtins.str] policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image.
@@ -2397,75 +2397,75 @@ class FeatureMembershipConfigmanagementConfigSyncOciArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcpServiceAccountEmail")
-    def gcp_service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GCP Service Account Email used for auth when secret_type is gcpserviceaccount.
         """
         return pulumi.get(self, "gcp_service_account_email")
 
     @gcp_service_account_email.setter
-    def gcp_service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDir")
-    def policy_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The absolute path of the directory that contains the local resources. Default: the root directory of the image.
         """
         return pulumi.get(self, "policy_dir")
 
     @policy_dir.setter
-    def policy_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
         """
         return pulumi.get(self, "secret_type")
 
     @secret_type.setter
-    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_type", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRepo")
-    def sync_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
         """
         return pulumi.get(self, "sync_repo")
 
     @sync_repo.setter
-    def sync_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="syncWaitSecs")
-    def sync_wait_secs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_wait_secs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Period in seconds(int64 format) between consecutive syncs. Default: 15.
         """
         return pulumi.get(self, "sync_wait_secs")
 
     @sync_wait_secs.setter
-    def sync_wait_secs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_wait_secs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_wait_secs", value)
 
 
 class FeatureMembershipConfigmanagementHierarchyControllerArgsDict(TypedDict):
-    enable_hierarchical_resource_quota: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_hierarchical_resource_quota: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether hierarchical resource quota is enabled in this cluster.
     """
-    enable_pod_tree_labels: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_pod_tree_labels: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether pod tree labels are enabled in this cluster.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether Hierarchy Controller is enabled in this cluster.
     """
@@ -2473,9 +2473,9 @@ class FeatureMembershipConfigmanagementHierarchyControllerArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureMembershipConfigmanagementHierarchyControllerArgs:
     def __init__(__self__, *,
-                 enable_hierarchical_resource_quota: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_pod_tree_labels: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_hierarchical_resource_quota: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_pod_tree_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_hierarchical_resource_quota: Whether hierarchical resource quota is enabled in this cluster.
         :param pulumi.Input[_builtins.bool] enable_pod_tree_labels: Whether pod tree labels are enabled in this cluster.
@@ -2490,71 +2490,71 @@ class FeatureMembershipConfigmanagementHierarchyControllerArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableHierarchicalResourceQuota")
-    def enable_hierarchical_resource_quota(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_hierarchical_resource_quota(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether hierarchical resource quota is enabled in this cluster.
         """
         return pulumi.get(self, "enable_hierarchical_resource_quota")
 
     @enable_hierarchical_resource_quota.setter
-    def enable_hierarchical_resource_quota(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_hierarchical_resource_quota(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_hierarchical_resource_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePodTreeLabels")
-    def enable_pod_tree_labels(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_pod_tree_labels(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether pod tree labels are enabled in this cluster.
         """
         return pulumi.get(self, "enable_pod_tree_labels")
 
     @enable_pod_tree_labels.setter
-    def enable_pod_tree_labels(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_pod_tree_labels(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_pod_tree_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Hierarchy Controller is enabled in this cluster.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class FeatureMembershipConfigmanagementPolicyControllerArgsDict(TypedDict):
-    audit_interval_seconds: NotRequired[pulumi.Input[_builtins.str]]
+    audit_interval_seconds: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
     """
-    exemptable_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exemptable_namespaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
     """
-    log_denies_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    log_denies_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Logs all denies and dry run failures.
     """
-    monitoring: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict']]
+    monitoring: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]]
     """
     Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
     """
-    mutation_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    mutation_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
     """
-    referential_rules_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    referential_rules_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
     """
-    template_library_installed: NotRequired[pulumi.Input[_builtins.bool]]
+    template_library_installed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Installs the default template library along with Policy Controller.
     """
@@ -2562,14 +2562,14 @@ class FeatureMembershipConfigmanagementPolicyControllerArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureMembershipConfigmanagementPolicyControllerArgs:
     def __init__(__self__, *,
-                 audit_interval_seconds: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 log_denies_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitoring: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']] = None,
-                 mutation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 referential_rules_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 template_library_installed: Optional[pulumi.Input[_builtins.bool]] = None):
+                 audit_interval_seconds: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exemptable_namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 log_denies_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitoring: pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']] = None,
+                 mutation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 referential_rules_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 template_library_installed: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
         :param pulumi.Input[_builtins.bool] enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
@@ -2599,103 +2599,103 @@ class FeatureMembershipConfigmanagementPolicyControllerArgs:
 
     @_builtins.property
     @pulumi.getter(name="auditIntervalSeconds")
-    def audit_interval_seconds(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_interval_seconds(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether. Defaults to 60
         """
         return pulumi.get(self, "audit_interval_seconds")
 
     @audit_interval_seconds.setter
-    def audit_interval_seconds(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_interval_seconds(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="exemptableNamespaces")
-    def exemptable_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exemptable_namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         """
         return pulumi.get(self, "exemptable_namespaces")
 
     @exemptable_namespaces.setter
-    def exemptable_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exemptable_namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exemptable_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="logDeniesEnabled")
-    def log_denies_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_denies_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Logs all denies and dry run failures.
         """
         return pulumi.get(self, "log_denies_enabled")
 
     @log_denies_enabled.setter
-    def log_denies_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_denies_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_denies_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]:
+    def monitoring(self) -> pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]:
         """
         Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
         """
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]):
+    def monitoring(self, value: pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="mutationEnabled")
-    def mutation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mutation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
         """
         return pulumi.get(self, "mutation_enabled")
 
     @mutation_enabled.setter
-    def mutation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mutation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mutation_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="referentialRulesEnabled")
-    def referential_rules_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def referential_rules_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         """
         return pulumi.get(self, "referential_rules_enabled")
 
     @referential_rules_enabled.setter
-    def referential_rules_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def referential_rules_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "referential_rules_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="templateLibraryInstalled")
-    def template_library_installed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template_library_installed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Installs the default template library along with Policy Controller.
         """
         return pulumi.get(self, "template_library_installed")
 
     @template_library_installed.setter
-    def template_library_installed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template_library_installed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template_library_installed", value)
 
 
 class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict(TypedDict):
-    backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    backends: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
     """
@@ -2703,7 +2703,7 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict(TypedD
 @pulumi.input_type
 class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
     def __init__(__self__, *,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 backends: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backends: Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
         """
@@ -2712,23 +2712,23 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
         """
         return pulumi.get(self, "backends")
 
     @backends.setter
-    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backends", value)
 
 
 class FeatureMembershipMeshArgsDict(TypedDict):
-    control_plane: NotRequired[pulumi.Input[_builtins.str]]
+    control_plane: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
     """
-    management: NotRequired[pulumi.Input[_builtins.str]]
+    management: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
     """
@@ -2736,8 +2736,8 @@ class FeatureMembershipMeshArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureMembershipMeshArgs:
     def __init__(__self__, *,
-                 control_plane: Optional[pulumi.Input[_builtins.str]] = None,
-                 management: Optional[pulumi.Input[_builtins.str]] = None):
+                 control_plane: pulumi.Input[Optional[_builtins.str]] = None,
+                 management: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] control_plane: **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
         :param pulumi.Input[_builtins.str] management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -2753,26 +2753,26 @@ class FeatureMembershipMeshArgs:
     @_builtins.property
     @pulumi.getter(name="controlPlane")
     @_utilities.deprecated("""Deprecated in favor of the `management` field""")
-    def control_plane(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_plane(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_plane(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane", value)
 
     @_builtins.property
     @pulumi.getter
-    def management(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def management(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
         return pulumi.get(self, "management")
 
     @management.setter
-    def management(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def management(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "management", value)
 
 
@@ -2781,7 +2781,7 @@ class FeatureMembershipPolicycontrollerArgsDict(TypedDict):
     """
     Policy Controller configuration for the cluster. Structure is documented below.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version of Policy Controller to install. Defaults to the latest version.
     """
@@ -2790,7 +2790,7 @@ class FeatureMembershipPolicycontrollerArgsDict(TypedDict):
 class FeatureMembershipPolicycontrollerArgs:
     def __init__(__self__, *,
                  policy_controller_hub_config: pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs'],
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs'] policy_controller_hub_config: Policy Controller configuration for the cluster. Structure is documented below.
         :param pulumi.Input[_builtins.str] version: Version of Policy Controller to install. Defaults to the latest version.
@@ -2813,55 +2813,55 @@ class FeatureMembershipPolicycontrollerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version of Policy Controller to install. Defaults to the latest version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict(TypedDict):
-    audit_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    audit_interval_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
     """
-    constraint_violation_limit: NotRequired[pulumi.Input[_builtins.int]]
+    constraint_violation_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
     """
-    deployment_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict']]]]
+    deployment_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]]
     """
     Map of deployment configs to deployments ("admission", "audit", "mutation").
     """
-    exemptable_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exemptable_namespaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
     """
-    install_spec: NotRequired[pulumi.Input[_builtins.str]]
+    install_spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
     """
-    log_denies_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    log_denies_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Logs all denies and dry run failures.
     """
-    monitoring: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict']]
+    monitoring: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]]
     """
     Specifies the backends Policy Controller should export metrics to. Structure is documented below.
     """
-    mutation_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    mutation_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
     """
-    policy_content: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict']]
+    policy_content: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]]
     """
     Specifies the desired policy content on the cluster. Structure is documented below.
     """
-    referential_rules_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    referential_rules_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
     """
@@ -2869,16 +2869,16 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict(TypedDi
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs:
     def __init__(__self__, *,
-                 audit_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 constraint_violation_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 deployment_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]] = None,
-                 exemptable_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 install_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_denies_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitoring: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']] = None,
-                 mutation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_content: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']] = None,
-                 referential_rules_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 audit_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 constraint_violation_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 deployment_configs: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]] = None,
+                 exemptable_namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 install_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_denies_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitoring: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']] = None,
+                 mutation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_content: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']] = None,
+                 referential_rules_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
         :param pulumi.Input[_builtins.int] constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
@@ -2914,122 +2914,122 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="auditIntervalSeconds")
-    def audit_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audit_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
         """
         return pulumi.get(self, "audit_interval_seconds")
 
     @audit_interval_seconds.setter
-    def audit_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audit_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audit_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="constraintViolationLimit")
-    def constraint_violation_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def constraint_violation_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
         """
         return pulumi.get(self, "constraint_violation_limit")
 
     @constraint_violation_limit.setter
-    def constraint_violation_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def constraint_violation_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "constraint_violation_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]:
+    def deployment_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]:
         """
         Map of deployment configs to deployments ("admission", "audit", "mutation").
         """
         return pulumi.get(self, "deployment_configs")
 
     @deployment_configs.setter
-    def deployment_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]):
+    def deployment_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]):
         pulumi.set(self, "deployment_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="exemptableNamespaces")
-    def exemptable_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exemptable_namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         """
         return pulumi.get(self, "exemptable_namespaces")
 
     @exemptable_namespaces.setter
-    def exemptable_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exemptable_namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exemptable_namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="installSpec")
-    def install_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def install_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
         """
         return pulumi.get(self, "install_spec")
 
     @install_spec.setter
-    def install_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def install_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "install_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="logDeniesEnabled")
-    def log_denies_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_denies_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Logs all denies and dry run failures.
         """
         return pulumi.get(self, "log_denies_enabled")
 
     @log_denies_enabled.setter
-    def log_denies_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_denies_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_denies_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]:
+    def monitoring(self) -> pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]:
         """
         Specifies the backends Policy Controller should export metrics to. Structure is documented below.
         """
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]):
+    def monitoring(self, value: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="mutationEnabled")
-    def mutation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mutation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
         """
         return pulumi.get(self, "mutation_enabled")
 
     @mutation_enabled.setter
-    def mutation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mutation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mutation_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="policyContent")
-    def policy_content(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]:
+    def policy_content(self) -> pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]:
         """
         Specifies the desired policy content on the cluster. Structure is documented below.
         """
         return pulumi.get(self, "policy_content")
 
     @policy_content.setter
-    def policy_content(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]):
+    def policy_content(self, value: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]):
         pulumi.set(self, "policy_content", value)
 
     @_builtins.property
     @pulumi.getter(name="referentialRulesEnabled")
-    def referential_rules_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def referential_rules_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         """
         return pulumi.get(self, "referential_rules_enabled")
 
     @referential_rules_enabled.setter
-    def referential_rules_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def referential_rules_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "referential_rules_enabled", value)
 
 
@@ -3038,19 +3038,19 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     """
     The name of the component. One of `admission` `audit` or `mutation`
     """
-    container_resources: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict']]
+    container_resources: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]]
     """
     Container resource requirements.
     """
-    pod_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    pod_affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
     """
-    pod_tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict']]]]
+    pod_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]]
     """
     Pod tolerations of node taints.
     """
-    replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Pod replica count.
     """
@@ -3059,10 +3059,10 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs:
     def __init__(__self__, *,
                  component_name: pulumi.Input[_builtins.str],
-                 container_resources: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']] = None,
-                 pod_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]] = None,
-                 replica_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_resources: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']] = None,
+                 pod_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_tolerations: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]] = None,
+                 replica_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] component_name: The name of the component. One of `admission` `audit` or `mutation`
         :param pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs'] container_resources: Container resource requirements.
@@ -3094,59 +3094,59 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
     @_builtins.property
     @pulumi.getter(name="containerResources")
-    def container_resources(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]:
+    def container_resources(self) -> pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]:
         """
         Container resource requirements.
         """
         return pulumi.get(self, "container_resources")
 
     @container_resources.setter
-    def container_resources(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]):
+    def container_resources(self, value: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]):
         pulumi.set(self, "container_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="podAffinity")
-    def pod_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
         """
         return pulumi.get(self, "pod_affinity")
 
     @pod_affinity.setter
-    def pod_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="podTolerations")
-    def pod_tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]:
+    def pod_tolerations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]:
         """
         Pod tolerations of node taints.
         """
         return pulumi.get(self, "pod_tolerations")
 
     @pod_tolerations.setter
-    def pod_tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]):
+    def pod_tolerations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]):
         pulumi.set(self, "pod_tolerations", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaCount")
-    def replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Pod replica count.
         """
         return pulumi.get(self, "replica_count")
 
     @replica_count.setter
-    def replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica_count", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict']]
+    limits: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]]
     """
     Limits describes the maximum amount of compute resources allowed for use by the running container.
     """
-    requests: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict']]
+    requests: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]]
     """
     Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
     """
@@ -3154,8 +3154,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs:
     def __init__(__self__, *,
-                 limits: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']] = None,
-                 requests: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']] = None):
+                 limits: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']] = None,
+                 requests: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']] = None):
         """
         :param pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs'] limits: Limits describes the maximum amount of compute resources allowed for use by the running container.
         :param pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs'] requests: Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
@@ -3167,35 +3167,35 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
     @_builtins.property
     @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]:
+    def limits(self) -> pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]:
         """
         Limits describes the maximum amount of compute resources allowed for use by the running container.
         """
         return pulumi.get(self, "limits")
 
     @limits.setter
-    def limits(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]):
+    def limits(self, value: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]):
         pulumi.set(self, "limits", value)
 
     @_builtins.property
     @pulumi.getter
-    def requests(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]:
+    def requests(self) -> pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]:
         """
         Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
         """
         return pulumi.get(self, "requests")
 
     @requests.setter
-    def requests(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]):
+    def requests(self, value: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]):
         pulumi.set(self, "requests", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[_builtins.str]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CPU requirement expressed in Kubernetes resource units.
     """
-    memory: NotRequired[pulumi.Input[_builtins.str]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Memory requirement expressed in Kubernetes resource units.
     """
@@ -3203,8 +3203,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs:
     def __init__(__self__, *,
-                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+                 cpu: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cpu: CPU requirement expressed in Kubernetes resource units.
         :param pulumi.Input[_builtins.str] memory: Memory requirement expressed in Kubernetes resource units.
@@ -3216,35 +3216,35 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CPU requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Memory requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[_builtins.str]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CPU requirement expressed in Kubernetes resource units.
     """
-    memory: NotRequired[pulumi.Input[_builtins.str]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Memory requirement expressed in Kubernetes resource units.
     """
@@ -3252,8 +3252,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs:
     def __init__(__self__, *,
-                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+                 cpu: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cpu: CPU requirement expressed in Kubernetes resource units.
         :param pulumi.Input[_builtins.str] memory: Memory requirement expressed in Kubernetes resource units.
@@ -3265,43 +3265,43 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CPU requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Memory requirement expressed in Kubernetes resource units.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint effect.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint key (not necessarily unique).
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint operator.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matches a taint value.
     """
@@ -3309,10 +3309,10 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: Matches a taint effect.
         :param pulumi.Input[_builtins.str] key: Matches a taint key (not necessarily unique).
@@ -3330,55 +3330,55 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint effect.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint key (not necessarily unique).
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint operator.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matches a taint value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict(TypedDict):
-    backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    backends: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
     """
@@ -3386,7 +3386,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDi
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs:
     def __init__(__self__, *,
-                 backends: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 backends: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backends: Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
         """
@@ -3395,23 +3395,23 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backends(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def backends(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
         """
         return pulumi.get(self, "backends")
 
     @backends.setter
-    def backends(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def backends(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "backends", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict(TypedDict):
-    bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict']]]]
+    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]]
     """
     map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
     """
-    template_library: NotRequired[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict']]
+    template_library: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]]
     """
     Configures the installation of the Template Library. Structure is documented below.
     """
@@ -3419,8 +3419,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArg
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs:
     def __init__(__self__, *,
-                 bundles: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]] = None,
-                 template_library: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']] = None):
+                 bundles: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]] = None,
+                 template_library: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]] bundles: map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         :param pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs'] template_library: Configures the installation of the Template Library. Structure is documented below.
@@ -3432,26 +3432,26 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArg
 
     @_builtins.property
     @pulumi.getter
-    def bundles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]:
+    def bundles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]:
         """
         map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
         """
         return pulumi.get(self, "bundles")
 
     @bundles.setter
-    def bundles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]):
+    def bundles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]):
         pulumi.set(self, "bundles", value)
 
     @_builtins.property
     @pulumi.getter(name="templateLibrary")
-    def template_library(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]:
+    def template_library(self) -> pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]:
         """
         Configures the installation of the Template Library. Structure is documented below.
         """
         return pulumi.get(self, "template_library")
 
     @template_library.setter
-    def template_library(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]):
+    def template_library(self, value: pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]):
         pulumi.set(self, "template_library", value)
 
 
@@ -3460,7 +3460,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBun
     """
     The name of the bundle.
     """
-    exempted_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exempted_namespaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The set of namespaces to be exempted from the bundle.
     """
@@ -3469,7 +3469,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBun
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs:
     def __init__(__self__, *,
                  bundle_name: pulumi.Input[_builtins.str],
-                 exempted_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 exempted_namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] bundle_name: The name of the bundle.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exempted_namespaces: The set of namespaces to be exempted from the bundle.
@@ -3492,19 +3492,19 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBun
 
     @_builtins.property
     @pulumi.getter(name="exemptedNamespaces")
-    def exempted_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exempted_namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of namespaces to be exempted from the bundle.
         """
         return pulumi.get(self, "exempted_namespaces")
 
     @exempted_namespaces.setter
-    def exempted_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exempted_namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exempted_namespaces", value)
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict(TypedDict):
-    installation: NotRequired[pulumi.Input[_builtins.str]]
+    installation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
     """
@@ -3512,7 +3512,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTem
 @pulumi.input_type
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs:
     def __init__(__self__, *,
-                 installation: Optional[pulumi.Input[_builtins.str]] = None):
+                 installation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] installation: Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
         """
@@ -3521,24 +3521,24 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTem
 
     @_builtins.property
     @pulumi.getter
-    def installation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
         """
         return pulumi.get(self, "installation")
 
     @installation.setter
-    def installation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installation", value)
 
 
 class FeatureResourceStateArgsDict(TypedDict):
-    has_resources: NotRequired[pulumi.Input[_builtins.bool]]
+    has_resources: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Output)
     Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The "running state" of the Feature in this Hub.
@@ -3548,8 +3548,8 @@ class FeatureResourceStateArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureResourceStateArgs:
     def __init__(__self__, *,
-                 has_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 has_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] has_resources: (Output)
                Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
@@ -3564,7 +3564,7 @@ class FeatureResourceStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="hasResources")
-    def has_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def has_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Output)
         Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
@@ -3572,12 +3572,12 @@ class FeatureResourceStateArgs:
         return pulumi.get(self, "has_resources")
 
     @has_resources.setter
-    def has_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def has_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "has_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The "running state" of the Feature in this Hub.
@@ -3586,32 +3586,32 @@ class FeatureResourceStateArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class FeatureSpecArgsDict(TypedDict):
-    clusterupgrade: NotRequired[pulumi.Input['FeatureSpecClusterupgradeArgsDict']]
+    clusterupgrade: NotRequired[pulumi.Input[Optional['FeatureSpecClusterupgradeArgs']]]
     """
     Clusterupgrade feature spec.
     Structure is documented below.
     """
-    fleetobservability: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityArgsDict']]
+    fleetobservability: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityArgs']]]
     """
     Fleet Observability feature spec.
     Structure is documented below.
     """
-    multiclusteringress: NotRequired[pulumi.Input['FeatureSpecMulticlusteringressArgsDict']]
+    multiclusteringress: NotRequired[pulumi.Input[Optional['FeatureSpecMulticlusteringressArgs']]]
     """
     Multicluster Ingress-specific spec.
     Structure is documented below.
     """
-    rbacrolebindingactuation: NotRequired[pulumi.Input['FeatureSpecRbacrolebindingactuationArgsDict']]
+    rbacrolebindingactuation: NotRequired[pulumi.Input[Optional['FeatureSpecRbacrolebindingactuationArgs']]]
     """
     RBACRolebinding Actuation feature spec.
     Structure is documented below.
     """
-    workloadidentity: NotRequired[pulumi.Input['FeatureSpecWorkloadidentityArgsDict']]
+    workloadidentity: NotRequired[pulumi.Input[Optional['FeatureSpecWorkloadidentityArgs']]]
     """
     Workload Identity feature spec.
     Structure is documented below.
@@ -3620,11 +3620,11 @@ class FeatureSpecArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureSpecArgs:
     def __init__(__self__, *,
-                 clusterupgrade: Optional[pulumi.Input['FeatureSpecClusterupgradeArgs']] = None,
-                 fleetobservability: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']] = None,
-                 multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']] = None,
-                 rbacrolebindingactuation: Optional[pulumi.Input['FeatureSpecRbacrolebindingactuationArgs']] = None,
-                 workloadidentity: Optional[pulumi.Input['FeatureSpecWorkloadidentityArgs']] = None):
+                 clusterupgrade: pulumi.Input[Optional['FeatureSpecClusterupgradeArgs']] = None,
+                 fleetobservability: pulumi.Input[Optional['FeatureSpecFleetobservabilityArgs']] = None,
+                 multiclusteringress: pulumi.Input[Optional['FeatureSpecMulticlusteringressArgs']] = None,
+                 rbacrolebindingactuation: pulumi.Input[Optional['FeatureSpecRbacrolebindingactuationArgs']] = None,
+                 workloadidentity: pulumi.Input[Optional['FeatureSpecWorkloadidentityArgs']] = None):
         """
         :param pulumi.Input['FeatureSpecClusterupgradeArgs'] clusterupgrade: Clusterupgrade feature spec.
                Structure is documented below.
@@ -3650,7 +3650,7 @@ class FeatureSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def clusterupgrade(self) -> Optional[pulumi.Input['FeatureSpecClusterupgradeArgs']]:
+    def clusterupgrade(self) -> pulumi.Input[Optional['FeatureSpecClusterupgradeArgs']]:
         """
         Clusterupgrade feature spec.
         Structure is documented below.
@@ -3658,12 +3658,12 @@ class FeatureSpecArgs:
         return pulumi.get(self, "clusterupgrade")
 
     @clusterupgrade.setter
-    def clusterupgrade(self, value: Optional[pulumi.Input['FeatureSpecClusterupgradeArgs']]):
+    def clusterupgrade(self, value: pulumi.Input[Optional['FeatureSpecClusterupgradeArgs']]):
         pulumi.set(self, "clusterupgrade", value)
 
     @_builtins.property
     @pulumi.getter
-    def fleetobservability(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']]:
+    def fleetobservability(self) -> pulumi.Input[Optional['FeatureSpecFleetobservabilityArgs']]:
         """
         Fleet Observability feature spec.
         Structure is documented below.
@@ -3671,12 +3671,12 @@ class FeatureSpecArgs:
         return pulumi.get(self, "fleetobservability")
 
     @fleetobservability.setter
-    def fleetobservability(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']]):
+    def fleetobservability(self, value: pulumi.Input[Optional['FeatureSpecFleetobservabilityArgs']]):
         pulumi.set(self, "fleetobservability", value)
 
     @_builtins.property
     @pulumi.getter
-    def multiclusteringress(self) -> Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']]:
+    def multiclusteringress(self) -> pulumi.Input[Optional['FeatureSpecMulticlusteringressArgs']]:
         """
         Multicluster Ingress-specific spec.
         Structure is documented below.
@@ -3684,12 +3684,12 @@ class FeatureSpecArgs:
         return pulumi.get(self, "multiclusteringress")
 
     @multiclusteringress.setter
-    def multiclusteringress(self, value: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']]):
+    def multiclusteringress(self, value: pulumi.Input[Optional['FeatureSpecMulticlusteringressArgs']]):
         pulumi.set(self, "multiclusteringress", value)
 
     @_builtins.property
     @pulumi.getter
-    def rbacrolebindingactuation(self) -> Optional[pulumi.Input['FeatureSpecRbacrolebindingactuationArgs']]:
+    def rbacrolebindingactuation(self) -> pulumi.Input[Optional['FeatureSpecRbacrolebindingactuationArgs']]:
         """
         RBACRolebinding Actuation feature spec.
         Structure is documented below.
@@ -3697,12 +3697,12 @@ class FeatureSpecArgs:
         return pulumi.get(self, "rbacrolebindingactuation")
 
     @rbacrolebindingactuation.setter
-    def rbacrolebindingactuation(self, value: Optional[pulumi.Input['FeatureSpecRbacrolebindingactuationArgs']]):
+    def rbacrolebindingactuation(self, value: pulumi.Input[Optional['FeatureSpecRbacrolebindingactuationArgs']]):
         pulumi.set(self, "rbacrolebindingactuation", value)
 
     @_builtins.property
     @pulumi.getter
-    def workloadidentity(self) -> Optional[pulumi.Input['FeatureSpecWorkloadidentityArgs']]:
+    def workloadidentity(self) -> pulumi.Input[Optional['FeatureSpecWorkloadidentityArgs']]:
         """
         Workload Identity feature spec.
         Structure is documented below.
@@ -3710,7 +3710,7 @@ class FeatureSpecArgs:
         return pulumi.get(self, "workloadidentity")
 
     @workloadidentity.setter
-    def workloadidentity(self, value: Optional[pulumi.Input['FeatureSpecWorkloadidentityArgs']]):
+    def workloadidentity(self, value: pulumi.Input[Optional['FeatureSpecWorkloadidentityArgs']]):
         pulumi.set(self, "workloadidentity", value)
 
 
@@ -3719,12 +3719,12 @@ class FeatureSpecClusterupgradeArgsDict(TypedDict):
     """
     Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
     """
-    gke_upgrade_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgsDict']]]]
+    gke_upgrade_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]]]
     """
     Configuration overrides for individual upgrades.
     Structure is documented below.
     """
-    post_conditions: NotRequired[pulumi.Input['FeatureSpecClusterupgradePostConditionsArgsDict']]
+    post_conditions: NotRequired[pulumi.Input[Optional['FeatureSpecClusterupgradePostConditionsArgs']]]
     """
     Post conditions to override for the specified upgrade.
     Structure is documented below.
@@ -3734,8 +3734,8 @@ class FeatureSpecClusterupgradeArgsDict(TypedDict):
 class FeatureSpecClusterupgradeArgs:
     def __init__(__self__, *,
                  upstream_fleets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 gke_upgrade_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]] = None,
-                 post_conditions: Optional[pulumi.Input['FeatureSpecClusterupgradePostConditionsArgs']] = None):
+                 gke_upgrade_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]] = None,
+                 post_conditions: pulumi.Input[Optional['FeatureSpecClusterupgradePostConditionsArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] upstream_fleets: Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]] gke_upgrade_overrides: Configuration overrides for individual upgrades.
@@ -3763,7 +3763,7 @@ class FeatureSpecClusterupgradeArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeUpgradeOverrides")
-    def gke_upgrade_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]]:
+    def gke_upgrade_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]]:
         """
         Configuration overrides for individual upgrades.
         Structure is documented below.
@@ -3771,12 +3771,12 @@ class FeatureSpecClusterupgradeArgs:
         return pulumi.get(self, "gke_upgrade_overrides")
 
     @gke_upgrade_overrides.setter
-    def gke_upgrade_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]]):
+    def gke_upgrade_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]]):
         pulumi.set(self, "gke_upgrade_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="postConditions")
-    def post_conditions(self) -> Optional[pulumi.Input['FeatureSpecClusterupgradePostConditionsArgs']]:
+    def post_conditions(self) -> pulumi.Input[Optional['FeatureSpecClusterupgradePostConditionsArgs']]:
         """
         Post conditions to override for the specified upgrade.
         Structure is documented below.
@@ -3784,7 +3784,7 @@ class FeatureSpecClusterupgradeArgs:
         return pulumi.get(self, "post_conditions")
 
     @post_conditions.setter
-    def post_conditions(self, value: Optional[pulumi.Input['FeatureSpecClusterupgradePostConditionsArgs']]):
+    def post_conditions(self, value: pulumi.Input[Optional['FeatureSpecClusterupgradePostConditionsArgs']]):
         pulumi.set(self, "post_conditions", value)
 
 
@@ -3945,7 +3945,7 @@ class FeatureSpecClusterupgradePostConditionsArgs:
 
 
 class FeatureSpecFleetobservabilityArgsDict(TypedDict):
-    logging_config: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgsDict']]
+    logging_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigArgs']]]
     """
     Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
     Structure is documented below.
@@ -3954,7 +3954,7 @@ class FeatureSpecFleetobservabilityArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureSpecFleetobservabilityArgs:
     def __init__(__self__, *,
-                 logging_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']] = None):
+                 logging_config: pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigArgs']] = None):
         """
         :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs'] logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
                Structure is documented below.
@@ -3964,7 +3964,7 @@ class FeatureSpecFleetobservabilityArgs:
 
     @_builtins.property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]:
+    def logging_config(self) -> pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigArgs']]:
         """
         Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
         Structure is documented below.
@@ -3972,17 +3972,17 @@ class FeatureSpecFleetobservabilityArgs:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]):
+    def logging_config(self, value: pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
 
 class FeatureSpecFleetobservabilityLoggingConfigArgsDict(TypedDict):
-    default_config: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict']]
+    default_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]]
     """
     Specified if applying the default routing config to logs not specified in other configs.
     Structure is documented below.
     """
-    fleet_scope_logs_config: NotRequired[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict']]
+    fleet_scope_logs_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]]
     """
     Specified if applying the routing config to all logs for all fleet scopes.
     Structure is documented below.
@@ -3991,8 +3991,8 @@ class FeatureSpecFleetobservabilityLoggingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureSpecFleetobservabilityLoggingConfigArgs:
     def __init__(__self__, *,
-                 default_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']] = None,
-                 fleet_scope_logs_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']] = None):
+                 default_config: pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']] = None,
+                 fleet_scope_logs_config: pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']] = None):
         """
         :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs'] default_config: Specified if applying the default routing config to logs not specified in other configs.
                Structure is documented below.
@@ -4006,7 +4006,7 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultConfig")
-    def default_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]:
+    def default_config(self) -> pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]:
         """
         Specified if applying the default routing config to logs not specified in other configs.
         Structure is documented below.
@@ -4014,12 +4014,12 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
         return pulumi.get(self, "default_config")
 
     @default_config.setter
-    def default_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]):
+    def default_config(self, value: pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]):
         pulumi.set(self, "default_config", value)
 
     @_builtins.property
     @pulumi.getter(name="fleetScopeLogsConfig")
-    def fleet_scope_logs_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]:
+    def fleet_scope_logs_config(self) -> pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]:
         """
         Specified if applying the routing config to all logs for all fleet scopes.
         Structure is documented below.
@@ -4027,12 +4027,12 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
         return pulumi.get(self, "fleet_scope_logs_config")
 
     @fleet_scope_logs_config.setter
-    def fleet_scope_logs_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]):
+    def fleet_scope_logs_config(self, value: pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]):
         pulumi.set(self, "fleet_scope_logs_config", value)
 
 
 class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specified if fleet logging feature is enabled.
     Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
@@ -4041,7 +4041,7 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict(TypedDict)
 @pulumi.input_type
 class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: Specified if fleet logging feature is enabled.
                Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
@@ -4051,7 +4051,7 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specified if fleet logging feature is enabled.
         Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
@@ -4059,12 +4059,12 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
 
 class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specified if fleet logging feature is enabled.
     Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
@@ -4073,7 +4073,7 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict(Typ
 @pulumi.input_type
 class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: Specified if fleet logging feature is enabled.
                Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
@@ -4083,7 +4083,7 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specified if fleet logging feature is enabled.
         Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
@@ -4091,7 +4091,7 @@ class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
 
@@ -4124,7 +4124,7 @@ class FeatureSpecMulticlusteringressArgs:
 
 
 class FeatureSpecRbacrolebindingactuationArgsDict(TypedDict):
-    allowed_custom_roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_custom_roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
     """
@@ -4132,7 +4132,7 @@ class FeatureSpecRbacrolebindingactuationArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureSpecRbacrolebindingactuationArgs:
     def __init__(__self__, *,
-                 allowed_custom_roles: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_custom_roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_custom_roles: The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
         """
@@ -4141,14 +4141,14 @@ class FeatureSpecRbacrolebindingactuationArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedCustomRoles")
-    def allowed_custom_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_custom_roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of allowed custom roles (ClusterRoles). If a custom role is not part of this list, it cannot be used in a fleet scope RBACRoleBinding. If a custom role in this list is in use, it cannot be removed from the list until the scope RBACRolebindings using it are deleted.
         """
         return pulumi.get(self, "allowed_custom_roles")
 
     @allowed_custom_roles.setter
-    def allowed_custom_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_custom_roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_custom_roles", value)
 
 
@@ -4181,7 +4181,7 @@ class FeatureSpecWorkloadidentityArgs:
 
 
 class FeatureStateArgsDict(TypedDict):
-    states: NotRequired[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgsDict']]]]
+    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateStateArgs']]]]]
     """
     (Output)
     Output only. The "running state" of the Feature in this Hub.
@@ -4191,7 +4191,7 @@ class FeatureStateArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureStateArgs:
     def __init__(__self__, *,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]] = None):
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateStateArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]] states: (Output)
                Output only. The "running state" of the Feature in this Hub.
@@ -4202,7 +4202,7 @@ class FeatureStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateStateArgs']]]]:
         """
         (Output)
         Output only. The "running state" of the Feature in this Hub.
@@ -4211,22 +4211,22 @@ class FeatureStateArgs:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateStateArgs']]]]):
         pulumi.set(self, "states", value)
 
 
 class FeatureStateStateArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The high-level, machine-readable status of this Feature.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A human-readable description of the current status.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -4235,9 +4235,9 @@ class FeatureStateStateArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureStateStateArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                The high-level, machine-readable status of this Feature.
@@ -4255,7 +4255,7 @@ class FeatureStateStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The high-level, machine-readable status of this Feature.
@@ -4263,12 +4263,12 @@ class FeatureStateStateArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A human-readable description of the current status.
@@ -4276,12 +4276,12 @@ class FeatureStateStateArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
@@ -4289,17 +4289,17 @@ class FeatureStateStateArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 class FleetDefaultClusterConfigArgsDict(TypedDict):
-    binary_authorization_config: NotRequired[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict']]
+    binary_authorization_config: NotRequired[pulumi.Input[Optional['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']]]
     """
     Enable/Disable binary authorization features for the cluster.
     Structure is documented below.
     """
-    security_posture_config: NotRequired[pulumi.Input['FleetDefaultClusterConfigSecurityPostureConfigArgsDict']]
+    security_posture_config: NotRequired[pulumi.Input[Optional['FleetDefaultClusterConfigSecurityPostureConfigArgs']]]
     """
     Enable/Disable Security Posture features for the cluster.
     Structure is documented below.
@@ -4308,8 +4308,8 @@ class FleetDefaultClusterConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FleetDefaultClusterConfigArgs:
     def __init__(__self__, *,
-                 binary_authorization_config: Optional[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']] = None,
-                 security_posture_config: Optional[pulumi.Input['FleetDefaultClusterConfigSecurityPostureConfigArgs']] = None):
+                 binary_authorization_config: pulumi.Input[Optional['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']] = None,
+                 security_posture_config: pulumi.Input[Optional['FleetDefaultClusterConfigSecurityPostureConfigArgs']] = None):
         """
         :param pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs'] binary_authorization_config: Enable/Disable binary authorization features for the cluster.
                Structure is documented below.
@@ -4323,7 +4323,7 @@ class FleetDefaultClusterConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorizationConfig")
-    def binary_authorization_config(self) -> Optional[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']]:
+    def binary_authorization_config(self) -> pulumi.Input[Optional['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']]:
         """
         Enable/Disable binary authorization features for the cluster.
         Structure is documented below.
@@ -4331,12 +4331,12 @@ class FleetDefaultClusterConfigArgs:
         return pulumi.get(self, "binary_authorization_config")
 
     @binary_authorization_config.setter
-    def binary_authorization_config(self, value: Optional[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']]):
+    def binary_authorization_config(self, value: pulumi.Input[Optional['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']]):
         pulumi.set(self, "binary_authorization_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPostureConfig")
-    def security_posture_config(self) -> Optional[pulumi.Input['FleetDefaultClusterConfigSecurityPostureConfigArgs']]:
+    def security_posture_config(self) -> pulumi.Input[Optional['FleetDefaultClusterConfigSecurityPostureConfigArgs']]:
         """
         Enable/Disable Security Posture features for the cluster.
         Structure is documented below.
@@ -4344,17 +4344,17 @@ class FleetDefaultClusterConfigArgs:
         return pulumi.get(self, "security_posture_config")
 
     @security_posture_config.setter
-    def security_posture_config(self, value: Optional[pulumi.Input['FleetDefaultClusterConfigSecurityPostureConfigArgs']]):
+    def security_posture_config(self, value: pulumi.Input[Optional['FleetDefaultClusterConfigSecurityPostureConfigArgs']]):
         pulumi.set(self, "security_posture_config", value)
 
 
 class FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict(TypedDict):
-    evaluation_mode: NotRequired[pulumi.Input[_builtins.str]]
+    evaluation_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Mode of operation for binauthz policy evaluation.
     Possible values are: `DISABLED`, `POLICY_BINDINGS`.
     """
-    policy_bindings: NotRequired[pulumi.Input[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict']]]]
+    policy_bindings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]]]
     """
     Binauthz policies that apply to this cluster.
     Structure is documented below.
@@ -4363,8 +4363,8 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FleetDefaultClusterConfigBinaryAuthorizationConfigArgs:
     def __init__(__self__, *,
-                 evaluation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]] = None):
+                 evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_bindings: pulumi.Input[Optional[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] evaluation_mode: Mode of operation for binauthz policy evaluation.
                Possible values are: `DISABLED`, `POLICY_BINDINGS`.
@@ -4378,7 +4378,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="evaluationMode")
-    def evaluation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def evaluation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode of operation for binauthz policy evaluation.
         Possible values are: `DISABLED`, `POLICY_BINDINGS`.
@@ -4386,12 +4386,12 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigArgs:
         return pulumi.get(self, "evaluation_mode")
 
     @evaluation_mode.setter
-    def evaluation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def evaluation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "evaluation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="policyBindings")
-    def policy_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]]:
+    def policy_bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]]:
         """
         Binauthz policies that apply to this cluster.
         Structure is documented below.
@@ -4399,12 +4399,12 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigArgs:
         return pulumi.get(self, "policy_bindings")
 
     @policy_bindings.setter
-    def policy_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]]):
+    def policy_bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]]):
         pulumi.set(self, "policy_bindings", value)
 
 
 class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The relative resource name of the binauthz platform policy to audit. GKE
     platform policies have the following format:
@@ -4414,7 +4414,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict(Ty
 @pulumi.input_type
 class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The relative resource name of the binauthz platform policy to audit. GKE
                platform policies have the following format:
@@ -4425,7 +4425,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the binauthz platform policy to audit. GKE
         platform policies have the following format:
@@ -4434,17 +4434,17 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class FleetDefaultClusterConfigSecurityPostureConfigArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sets which mode to use for Security Posture features.
     Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
     """
-    vulnerability_mode: NotRequired[pulumi.Input[_builtins.str]]
+    vulnerability_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sets which mode to use for vulnerability scanning.
     Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
@@ -4453,8 +4453,8 @@ class FleetDefaultClusterConfigSecurityPostureConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FleetDefaultClusterConfigSecurityPostureConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 vulnerability_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 vulnerability_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: Sets which mode to use for Security Posture features.
                Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
@@ -4468,7 +4468,7 @@ class FleetDefaultClusterConfigSecurityPostureConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets which mode to use for Security Posture features.
         Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
@@ -4476,12 +4476,12 @@ class FleetDefaultClusterConfigSecurityPostureConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vulnerabilityMode")
-    def vulnerability_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vulnerability_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets which mode to use for vulnerability scanning.
         Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
@@ -4489,12 +4489,12 @@ class FleetDefaultClusterConfigSecurityPostureConfigArgs:
         return pulumi.get(self, "vulnerability_mode")
 
     @vulnerability_mode.setter
-    def vulnerability_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vulnerability_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vulnerability_mode", value)
 
 
 class FleetStateArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Describes the state of a Fleet resource.
@@ -4503,7 +4503,7 @@ class FleetStateArgsDict(TypedDict):
 @pulumi.input_type
 class FleetStateArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                Describes the state of a Fleet resource.
@@ -4513,7 +4513,7 @@ class FleetStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Describes the state of a Fleet resource.
@@ -4521,7 +4521,7 @@ class FleetStateArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
 
@@ -4557,7 +4557,7 @@ class MembershipAuthorityArgs:
 
 
 class MembershipBindingStateArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Code describes the state of a MembershipBinding resource.
@@ -4566,7 +4566,7 @@ class MembershipBindingStateArgsDict(TypedDict):
 @pulumi.input_type
 class MembershipBindingStateArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                Code describes the state of a MembershipBinding resource.
@@ -4576,7 +4576,7 @@ class MembershipBindingStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Code describes the state of a MembershipBinding resource.
@@ -4584,12 +4584,12 @@ class MembershipBindingStateArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
 
 class MembershipEndpointArgsDict(TypedDict):
-    gke_cluster: NotRequired[pulumi.Input['MembershipEndpointGkeClusterArgsDict']]
+    gke_cluster: NotRequired[pulumi.Input[Optional['MembershipEndpointGkeClusterArgs']]]
     """
     If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
     Structure is documented below.
@@ -4598,7 +4598,7 @@ class MembershipEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class MembershipEndpointArgs:
     def __init__(__self__, *,
-                 gke_cluster: Optional[pulumi.Input['MembershipEndpointGkeClusterArgs']] = None):
+                 gke_cluster: pulumi.Input[Optional['MembershipEndpointGkeClusterArgs']] = None):
         """
         :param pulumi.Input['MembershipEndpointGkeClusterArgs'] gke_cluster: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
@@ -4608,7 +4608,7 @@ class MembershipEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeCluster")
-    def gke_cluster(self) -> Optional[pulumi.Input['MembershipEndpointGkeClusterArgs']]:
+    def gke_cluster(self) -> pulumi.Input[Optional['MembershipEndpointGkeClusterArgs']]:
         """
         If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
         Structure is documented below.
@@ -4616,7 +4616,7 @@ class MembershipEndpointArgs:
         return pulumi.get(self, "gke_cluster")
 
     @gke_cluster.setter
-    def gke_cluster(self, value: Optional[pulumi.Input['MembershipEndpointGkeClusterArgs']]):
+    def gke_cluster(self, value: pulumi.Input[Optional['MembershipEndpointGkeClusterArgs']]):
         pulumi.set(self, "gke_cluster", value)
 
 
@@ -4663,14 +4663,14 @@ class MembershipEndpointGkeClusterArgs:
 class MembershipIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class MembershipIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -4696,25 +4696,25 @@ class MembershipIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class MembershipIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class MembershipIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -4740,11 +4740,11 @@ class MembershipIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -4780,7 +4780,7 @@ class MembershipRbacRoleBindingRoleArgs:
 
 
 class MembershipRbacRoleBindingStateArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Code describes the state of a RBAC Role Binding resource.
@@ -4789,7 +4789,7 @@ class MembershipRbacRoleBindingStateArgsDict(TypedDict):
 @pulumi.input_type
 class MembershipRbacRoleBindingStateArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                Code describes the state of a RBAC Role Binding resource.
@@ -4799,7 +4799,7 @@ class MembershipRbacRoleBindingStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Code describes the state of a RBAC Role Binding resource.
@@ -4807,12 +4807,12 @@ class MembershipRbacRoleBindingStateArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
 
 class NamespaceStateArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Code describes the state of a Namespace resource.
@@ -4821,7 +4821,7 @@ class NamespaceStateArgsDict(TypedDict):
 @pulumi.input_type
 class NamespaceStateArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                Code describes the state of a Namespace resource.
@@ -4831,7 +4831,7 @@ class NamespaceStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Code describes the state of a Namespace resource.
@@ -4839,7 +4839,7 @@ class NamespaceStateArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
 
@@ -4880,13 +4880,13 @@ class RolloutSequenceStageArgsDict(TypedDict):
     List of Fleet projects to select the clusters from.
     Expected format: projects/{project}
     """
-    cluster_selector: NotRequired[pulumi.Input['RolloutSequenceStageClusterSelectorArgsDict']]
+    cluster_selector: NotRequired[pulumi.Input[Optional['RolloutSequenceStageClusterSelectorArgs']]]
     """
     Filter to select a subset of clusters from the specified Fleet projects.
     If not specified, all clusters in the fleet projects are selected.
     Structure is documented below.
     """
-    soak_duration: NotRequired[pulumi.Input[_builtins.str]]
+    soak_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Soak time after upgrading all the clusters in the stage, specified in seconds.
     """
@@ -4895,8 +4895,8 @@ class RolloutSequenceStageArgsDict(TypedDict):
 class RolloutSequenceStageArgs:
     def __init__(__self__, *,
                  fleet_projects: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 cluster_selector: Optional[pulumi.Input['RolloutSequenceStageClusterSelectorArgs']] = None,
-                 soak_duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_selector: pulumi.Input[Optional['RolloutSequenceStageClusterSelectorArgs']] = None,
+                 soak_duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fleet_projects: List of Fleet projects to select the clusters from.
                Expected format: projects/{project}
@@ -4926,7 +4926,7 @@ class RolloutSequenceStageArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterSelector")
-    def cluster_selector(self) -> Optional[pulumi.Input['RolloutSequenceStageClusterSelectorArgs']]:
+    def cluster_selector(self) -> pulumi.Input[Optional['RolloutSequenceStageClusterSelectorArgs']]:
         """
         Filter to select a subset of clusters from the specified Fleet projects.
         If not specified, all clusters in the fleet projects are selected.
@@ -4935,19 +4935,19 @@ class RolloutSequenceStageArgs:
         return pulumi.get(self, "cluster_selector")
 
     @cluster_selector.setter
-    def cluster_selector(self, value: Optional[pulumi.Input['RolloutSequenceStageClusterSelectorArgs']]):
+    def cluster_selector(self, value: pulumi.Input[Optional['RolloutSequenceStageClusterSelectorArgs']]):
         pulumi.set(self, "cluster_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="soakDuration")
-    def soak_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def soak_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Soak time after upgrading all the clusters in the stage, specified in seconds.
         """
         return pulumi.get(self, "soak_duration")
 
     @soak_duration.setter
-    def soak_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def soak_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "soak_duration", value)
 
 
@@ -4985,14 +4985,14 @@ class RolloutSequenceStageClusterSelectorArgs:
 class ScopeIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ScopeIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -5018,25 +5018,25 @@ class ScopeIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ScopeIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ScopeIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -5062,20 +5062,20 @@ class ScopeIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ScopeRbacRoleBindingRoleArgsDict(TypedDict):
-    custom_role: NotRequired[pulumi.Input[_builtins.str]]
+    custom_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
     """
-    predefined_role: NotRequired[pulumi.Input[_builtins.str]]
+    predefined_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PredefinedRole is an ENUM representation of the default Kubernetes Roles
     Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
@@ -5084,8 +5084,8 @@ class ScopeRbacRoleBindingRoleArgsDict(TypedDict):
 @pulumi.input_type
 class ScopeRbacRoleBindingRoleArgs:
     def __init__(__self__, *,
-                 custom_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 predefined_role: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 predefined_role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] custom_role: CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
         :param pulumi.Input[_builtins.str] predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
@@ -5098,19 +5098,19 @@ class ScopeRbacRoleBindingRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="customRole")
-    def custom_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CustomRole is the custom Kubernetes ClusterRole to be used. The custom role format must be allowlisted in the rbacrolebindingactuation feature and RFC 1123 compliant.
         """
         return pulumi.get(self, "custom_role")
 
     @custom_role.setter
-    def custom_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_role", value)
 
     @_builtins.property
     @pulumi.getter(name="predefinedRole")
-    def predefined_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predefined_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PredefinedRole is an ENUM representation of the default Kubernetes Roles
         Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
@@ -5118,12 +5118,12 @@ class ScopeRbacRoleBindingRoleArgs:
         return pulumi.get(self, "predefined_role")
 
     @predefined_role.setter
-    def predefined_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predefined_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predefined_role", value)
 
 
 class ScopeRbacRoleBindingStateArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Code describes the state of a RBAC Role Binding resource.
@@ -5132,7 +5132,7 @@ class ScopeRbacRoleBindingStateArgsDict(TypedDict):
 @pulumi.input_type
 class ScopeRbacRoleBindingStateArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                Code describes the state of a RBAC Role Binding resource.
@@ -5142,7 +5142,7 @@ class ScopeRbacRoleBindingStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Code describes the state of a RBAC Role Binding resource.
@@ -5150,12 +5150,12 @@ class ScopeRbacRoleBindingStateArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
 
 class ScopeStateArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.str]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Code describes the state of a Scope resource.
@@ -5164,7 +5164,7 @@ class ScopeStateArgsDict(TypedDict):
 @pulumi.input_type
 class ScopeStateArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] code: (Output)
                Code describes the state of a Scope resource.
@@ -5174,7 +5174,7 @@ class ScopeStateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Code describes the state of a Scope resource.
@@ -5182,7 +5182,7 @@ class ScopeStateArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code", value)
 
 

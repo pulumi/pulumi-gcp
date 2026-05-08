@@ -186,40 +186,40 @@ export interface InterconnectAttachmentGroupState {
      * The size of this map is limited by an "Attachments per group" quota.
      * Structure is documented below.
      */
-    attachments?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupAttachment>[]>;
+    attachments?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupAttachment>[] | undefined>;
     /**
      * The redundancy this group is configured to support. The way a
      * user queries what SLA their Attachment gets is by looking at this field of
      * the Attachment's AttachmentGroup.
      * Structure is documented below.
      */
-    configureds?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupConfigured>[]>;
+    configureds?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupConfigured>[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user's intent for this group. This is the only required field besides
      * the name that must be specified on group creation.
      * Structure is documented below.
      */
-    intent?: pulumi.Input<inputs.compute.InterconnectAttachmentGroupIntent>;
+    intent?: pulumi.Input<inputs.compute.InterconnectAttachmentGroupIntent | undefined>;
     /**
      * The URL of an InterconnectGroup that groups these Attachments'
      * Interconnects. Customers do not need to set this unless directed by
      * Google Support.
      */
-    interconnectGroup?: pulumi.Input<string>;
+    interconnectGroup?: pulumi.Input<string | undefined>;
     /**
      * An analysis of the logical layout of Attachments in this
      * group. Every Attachment in the group is shown once in this structure.
      * Structure is documented below.
      */
-    logicalStructures?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupLogicalStructure>[]>;
+    logicalStructures?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupLogicalStructure>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -227,12 +227,12 @@ export interface InterconnectAttachmentGroupState {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -247,11 +247,11 @@ export interface InterconnectAttachmentGroupArgs {
      * The size of this map is limited by an "Attachments per group" quota.
      * Structure is documented below.
      */
-    attachments?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupAttachment>[]>;
+    attachments?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectAttachmentGroupAttachment>[] | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user's intent for this group. This is the only required field besides
      * the name that must be specified on group creation.
@@ -263,7 +263,7 @@ export interface InterconnectAttachmentGroupArgs {
      * Interconnects. Customers do not need to set this unless directed by
      * Google Support.
      */
-    interconnectGroup?: pulumi.Input<string>;
+    interconnectGroup?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -271,10 +271,10 @@ export interface InterconnectAttachmentGroupArgs {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

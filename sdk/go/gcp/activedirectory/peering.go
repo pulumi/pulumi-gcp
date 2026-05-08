@@ -72,7 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//			compute2, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
 //				Project: peered_project.ProjectId,
 //				Service: pulumi.String("compute.googleapis.com"),
 //			})
@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			peered_network, err := compute.NewNetwork(ctx, "peered-network", &compute.NetworkArgs{
-//				Project: compute.Project,
+//				Project: compute2.Project,
 //				Name:    pulumi.String("ad-peered-network"),
 //			})
 //			if err != nil {

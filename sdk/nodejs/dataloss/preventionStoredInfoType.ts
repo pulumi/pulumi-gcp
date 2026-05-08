@@ -232,25 +232,25 @@ export interface PreventionStoredInfoTypeState {
     /**
      * A description of the info type.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary>;
+    dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary | undefined>;
     /**
      * User set display name of the info type.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
+    largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary | undefined>;
     /**
      * The resource name of the info type. Set by the server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the info type in any of the following formats:
      * * `projects/{{project}}`
@@ -258,18 +258,18 @@ export interface PreventionStoredInfoTypeState {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Regular expression which defines the rule.
      * Structure is documented below.
      */
-    regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex>;
+    regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex | undefined>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
      * characters. Can be empty to allow the system to generate one.
      */
-    storedInfoTypeId?: pulumi.Input<string>;
+    storedInfoTypeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,21 +279,21 @@ export interface PreventionStoredInfoTypeArgs {
     /**
      * A description of the info type.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary>;
+    dictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeDictionary | undefined>;
     /**
      * User set display name of the info type.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Dictionary which defines the rule.
      * Structure is documented below.
      */
-    largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary>;
+    largeCustomDictionary?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeLargeCustomDictionary | undefined>;
     /**
      * The parent of the info type in any of the following formats:
      * * `projects/{{project}}`
@@ -306,11 +306,11 @@ export interface PreventionStoredInfoTypeArgs {
      * Regular expression which defines the rule.
      * Structure is documented below.
      */
-    regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex>;
+    regex?: pulumi.Input<inputs.dataloss.PreventionStoredInfoTypeRegex | undefined>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
      * characters. Can be empty to allow the system to generate one.
      */
-    storedInfoTypeId?: pulumi.Input<string>;
+    storedInfoTypeId?: pulumi.Input<string | undefined>;
 }

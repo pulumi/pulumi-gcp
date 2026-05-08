@@ -22,14 +22,14 @@ __all__ = [
 ]
 
 class ProviderBatchingArgsDict(TypedDict):
-    enable_batching: NotRequired[pulumi.Input[_builtins.bool]]
-    send_after: NotRequired[pulumi.Input[_builtins.str]]
+    enable_batching: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    send_after: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ProviderBatchingArgs:
     def __init__(__self__, *,
-                 enable_batching: Optional[pulumi.Input[_builtins.bool]] = None,
-                 send_after: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_batching: pulumi.Input[Optional[_builtins.bool]] = None,
+                 send_after: pulumi.Input[Optional[_builtins.str]] = None):
         if enable_batching is not None:
             pulumi.set(__self__, "enable_batching", enable_batching)
         if send_after is not None:
@@ -37,20 +37,20 @@ class ProviderBatchingArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableBatching")
-    def enable_batching(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_batching(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_batching")
 
     @enable_batching.setter
-    def enable_batching(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_batching(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_batching", value)
 
     @_builtins.property
     @pulumi.getter(name="sendAfter")
-    def send_after(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def send_after(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "send_after")
 
     @send_after.setter
-    def send_after(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def send_after(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "send_after", value)
 
 

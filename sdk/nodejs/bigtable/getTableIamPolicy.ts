@@ -97,7 +97,7 @@ export interface GetTableIamPolicyOutputArgs {
      * The project in which the table belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name or relative resource id of the table to manage IAM policies for.
      */

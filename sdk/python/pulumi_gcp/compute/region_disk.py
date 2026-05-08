@@ -22,28 +22,28 @@ __all__ = ['RegionDiskArgs', 'RegionDisk']
 class RegionDiskArgs:
     def __init__(__self__, *,
                  replica_zones: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 async_primary_disk: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']] = None,
-                 create_snapshot_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
-                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_block_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 async_primary_disk: pulumi.Input[Optional['RegionDiskAsyncPrimaryDiskArgs']] = None,
+                 create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key: pulumi.Input[Optional['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegionDisk resource.
 
@@ -197,7 +197,7 @@ class RegionDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access mode of the disk.
         For example:
@@ -209,12 +209,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="asyncPrimaryDisk")
-    def async_primary_disk(self) -> Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']]:
+    def async_primary_disk(self) -> pulumi.Input[Optional['RegionDiskAsyncPrimaryDiskArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -222,12 +222,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "async_primary_disk")
 
     @async_primary_disk.setter
-    def async_primary_disk(self, value: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']]):
+    def async_primary_disk(self, value: pulumi.Input[Optional['RegionDiskAsyncPrimaryDiskArgs']]):
         pulumi.set(self, "async_primary_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="createSnapshotBeforeDestroy")
-    def create_snapshot_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_snapshot_before_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, a snapshot of the disk will be created before it is destroyed.
         If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
@@ -236,24 +236,24 @@ class RegionDiskArgs:
         return pulumi.get(self, "create_snapshot_before_destroy")
 
     @create_snapshot_before_destroy.setter
-    def create_snapshot_before_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_snapshot_before_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_snapshot_before_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="createSnapshotBeforeDestroyPrefix")
-    def create_snapshot_before_destroy_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_snapshot_before_destroy_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         """
         return pulumi.get(self, "create_snapshot_before_destroy_prefix")
 
     @create_snapshot_before_destroy_prefix.setter
-    def create_snapshot_before_destroy_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_snapshot_before_destroy_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_snapshot_before_destroy_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -261,12 +261,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> pulumi.Input[Optional['RegionDiskDiskEncryptionKeyArgs']]:
         """
         Encrypts the disk using a customer-supplied encryption key.
         After you encrypt a disk with a customer-supplied key, you must
@@ -282,12 +282,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: pulumi.Input[Optional['RegionDiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="eraseWindowsVssSignature")
-    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def erase_windows_vss_signature(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
@@ -295,12 +295,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "erase_windows_vss_signature")
 
     @erase_windows_vss_signature.setter
-    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def erase_windows_vss_signature(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]:
         """
         A list of features to enable on the guest operating system.
         Applicable only for bootable disks.
@@ -309,13 +309,13 @@ class RegionDiskArgs:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -325,12 +325,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
 
@@ -340,24 +340,24 @@ class RegionDiskArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Any applicable license URI.
         """
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -370,12 +370,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalBlockSizeBytes")
-    def physical_block_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def physical_block_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Physical block size of the persistent disk, in bytes. If not present
         in a request, a default value is used. Currently supported sizes
@@ -386,12 +386,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "physical_block_size_bytes")
 
     @physical_block_size_bytes.setter
-    def physical_block_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def physical_block_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "physical_block_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -399,12 +399,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
         that the disk can handle. Values must be between 10,000 and 120,000.
@@ -413,12 +413,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedThroughput")
-    def provisioned_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates how much throughput to provision for the disk. This sets the number of throughput
         mb per second that the disk can handle. Values must be greater than or equal to 1.
@@ -426,24 +426,24 @@ class RegionDiskArgs:
         return pulumi.get(self, "provisioned_throughput")
 
     @provisioned_throughput.setter
-    def provisioned_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the region where the disk resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the persistent disk, specified in GB. You can specify this
         field when creating a persistent disk using the sourceImage or
@@ -456,12 +456,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source snapshot used to create this disk. You can provide this as
         a partial or full URL to the resource. For example, the following are
@@ -473,12 +473,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "snapshot")
 
     @snapshot.setter
-    def snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
@@ -492,12 +492,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "source_disk")
 
     @source_disk.setter
-    def source_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -507,12 +507,12 @@ class RegionDiskArgs:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the disk type resource describing which disk type to use to
         create the disk. Provide this when creating the disk.
@@ -520,47 +520,47 @@ class RegionDiskArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _RegionDiskState:
     def __init__(__self__, *,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 async_primary_disk: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']] = None,
-                 create_snapshot_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 last_attach_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_detach_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_block_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
-                 source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 async_primary_disk: pulumi.Input[Optional['RegionDiskAsyncPrimaryDiskArgs']] = None,
+                 create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key: pulumi.Input[Optional['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 last_attach_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_detach_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']] = None,
+                 source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RegionDisk resources.
 
@@ -746,7 +746,7 @@ class _RegionDiskState:
 
     @_builtins.property
     @pulumi.getter(name="accessMode")
-    def access_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access mode of the disk.
         For example:
@@ -758,12 +758,12 @@ class _RegionDiskState:
         return pulumi.get(self, "access_mode")
 
     @access_mode.setter
-    def access_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="asyncPrimaryDisk")
-    def async_primary_disk(self) -> Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']]:
+    def async_primary_disk(self) -> pulumi.Input[Optional['RegionDiskAsyncPrimaryDiskArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -771,12 +771,12 @@ class _RegionDiskState:
         return pulumi.get(self, "async_primary_disk")
 
     @async_primary_disk.setter
-    def async_primary_disk(self, value: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']]):
+    def async_primary_disk(self, value: pulumi.Input[Optional['RegionDiskAsyncPrimaryDiskArgs']]):
         pulumi.set(self, "async_primary_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="createSnapshotBeforeDestroy")
-    def create_snapshot_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_snapshot_before_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, a snapshot of the disk will be created before it is destroyed.
         If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
@@ -785,36 +785,36 @@ class _RegionDiskState:
         return pulumi.get(self, "create_snapshot_before_destroy")
 
     @create_snapshot_before_destroy.setter
-    def create_snapshot_before_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_snapshot_before_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_snapshot_before_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="createSnapshotBeforeDestroyPrefix")
-    def create_snapshot_before_destroy_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_snapshot_before_destroy_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         """
         return pulumi.get(self, "create_snapshot_before_destroy_prefix")
 
     @create_snapshot_before_destroy_prefix.setter
-    def create_snapshot_before_destroy_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_snapshot_before_destroy_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_snapshot_before_destroy_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -822,12 +822,12 @@ class _RegionDiskState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionKey")
-    def disk_encryption_key(self) -> Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]:
+    def disk_encryption_key(self) -> pulumi.Input[Optional['RegionDiskDiskEncryptionKeyArgs']]:
         """
         Encrypts the disk using a customer-supplied encryption key.
         After you encrypt a disk with a customer-supplied key, you must
@@ -843,36 +843,36 @@ class _RegionDiskState:
         return pulumi.get(self, "disk_encryption_key")
 
     @disk_encryption_key.setter
-    def disk_encryption_key(self, value: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']]):
+    def disk_encryption_key(self, value: pulumi.Input[Optional['RegionDiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="eraseWindowsVssSignature")
-    def erase_windows_vss_signature(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def erase_windows_vss_signature(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
@@ -880,12 +880,12 @@ class _RegionDiskState:
         return pulumi.get(self, "erase_windows_vss_signature")
 
     @erase_windows_vss_signature.setter
-    def erase_windows_vss_signature(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def erase_windows_vss_signature(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "erase_windows_vss_signature", value)
 
     @_builtins.property
     @pulumi.getter(name="guestOsFeatures")
-    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]:
+    def guest_os_features(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]:
         """
         A list of features to enable on the guest operating system.
         Applicable only for bootable disks.
@@ -894,13 +894,13 @@ class _RegionDiskState:
         return pulumi.get(self, "guest_os_features")
 
     @guest_os_features.setter
-    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
+    def guest_os_features(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -910,12 +910,12 @@ class _RegionDiskState:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource.  Used
         internally during updates.
@@ -923,12 +923,12 @@ class _RegionDiskState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this disk.  A list of key->value pairs.
 
@@ -938,48 +938,48 @@ class _RegionDiskState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="lastAttachTimestamp")
-    def last_attach_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_attach_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last attach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_attach_timestamp")
 
     @last_attach_timestamp.setter
-    def last_attach_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_attach_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_attach_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="lastDetachTimestamp")
-    def last_detach_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_detach_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last detach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_detach_timestamp")
 
     @last_detach_timestamp.setter
-    def last_detach_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_detach_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_detach_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Any applicable license URI.
         """
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -992,12 +992,12 @@ class _RegionDiskState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="physicalBlockSizeBytes")
-    def physical_block_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def physical_block_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Physical block size of the persistent disk, in bytes. If not present
         in a request, a default value is used. Currently supported sizes
@@ -1008,12 +1008,12 @@ class _RegionDiskState:
         return pulumi.get(self, "physical_block_size_bytes")
 
     @physical_block_size_bytes.setter
-    def physical_block_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def physical_block_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "physical_block_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1021,12 +1021,12 @@ class _RegionDiskState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second
         that the disk can handle. Values must be between 10,000 and 120,000.
@@ -1035,12 +1035,12 @@ class _RegionDiskState:
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedThroughput")
-    def provisioned_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates how much throughput to provision for the disk. This sets the number of throughput
         mb per second that the disk can handle. Values must be greater than or equal to 1.
@@ -1048,12 +1048,12 @@ class _RegionDiskState:
         return pulumi.get(self, "provisioned_throughput")
 
     @provisioned_throughput.setter
-    def provisioned_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1061,48 +1061,48 @@ class _RegionDiskState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the region where the disk resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaZones")
-    def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def replica_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs of the zones where the disk should be replicated to.
         """
         return pulumi.get(self, "replica_zones")
 
     @replica_zones.setter
-    def replica_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def replica_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "replica_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the persistent disk, specified in GB. You can specify this
         field when creating a persistent disk using the sourceImage or
@@ -1115,12 +1115,12 @@ class _RegionDiskState:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source snapshot used to create this disk. You can provide this as
         a partial or full URL to the resource. For example, the following are
@@ -1132,12 +1132,12 @@ class _RegionDiskState:
         return pulumi.get(self, "snapshot")
 
     @snapshot.setter
-    def snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
         For example, the following are valid values:
@@ -1151,12 +1151,12 @@ class _RegionDiskState:
         return pulumi.get(self, "source_disk")
 
     @source_disk.setter
-    def source_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDiskId")
-    def source_disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID value of the disk used to create this image. This value may
         be used to determine whether the image was taken from the current
@@ -1165,12 +1165,12 @@ class _RegionDiskState:
         return pulumi.get(self, "source_disk_id")
 
     @source_disk_id.setter
-    def source_disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKey")
-    def source_snapshot_encryption_key(self) -> Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']]:
+    def source_snapshot_encryption_key(self) -> pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -1180,12 +1180,12 @@ class _RegionDiskState:
         return pulumi.get(self, "source_snapshot_encryption_key")
 
     @source_snapshot_encryption_key.setter
-    def source_snapshot_encryption_key(self, value: Optional[pulumi.Input['RegionDiskSourceSnapshotEncryptionKeyArgs']]):
+    def source_snapshot_encryption_key(self, value: pulumi.Input[Optional['RegionDiskSourceSnapshotEncryptionKeyArgs']]):
         pulumi.set(self, "source_snapshot_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshotId")
-    def source_snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique ID of the snapshot used to create this disk. This value
         identifies the exact snapshot that was used to create this persistent
@@ -1197,12 +1197,12 @@ class _RegionDiskState:
         return pulumi.get(self, "source_snapshot_id")
 
     @source_snapshot_id.setter
-    def source_snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the disk type resource describing which disk type to use to
         create the disk. Provide this when creating the disk.
@@ -1210,12 +1210,12 @@ class _RegionDiskState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Links to the users of the disk (attached instances) in form:
         project/zones/zone/instances/instance
@@ -1223,7 +1223,7 @@ class _RegionDiskState:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 
@@ -1233,29 +1233,29 @@ class RegionDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 async_primary_disk: Optional[pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
-                 create_snapshot_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
-                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_block_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 async_primary_disk: pulumi.Input[Optional[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
+                 create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key: pulumi.Input[Optional[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
+                 erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Persistent disks are durable storage devices that function similarly to
@@ -1655,29 +1655,29 @@ class RegionDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 async_primary_disk: Optional[pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
-                 create_snapshot_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption_key: Optional[pulumi.Input[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
-                 erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 physical_block_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot_encryption_key: Optional[pulumi.Input[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 async_primary_disk: pulumi.Input[Optional[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
+                 create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption_key: pulumi.Input[Optional[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
+                 erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1735,40 +1735,40 @@ class RegionDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            async_primary_disk: Optional[pulumi.Input[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
-            create_snapshot_before_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_snapshot_before_destroy_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_encryption_key: Optional[pulumi.Input[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            erase_windows_vss_signature: Optional[pulumi.Input[_builtins.bool]] = None,
-            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
-            interface: Optional[pulumi.Input[_builtins.str]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            last_attach_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            last_detach_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            physical_block_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-            provisioned_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-            source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-            source_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_snapshot_encryption_key: Optional[pulumi.Input[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
-            source_snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'RegionDisk':
+            access_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            async_primary_disk: pulumi.Input[Optional[Union['RegionDiskAsyncPrimaryDiskArgs', 'RegionDiskAsyncPrimaryDiskArgsDict']]] = None,
+            create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption_key: pulumi.Input[Optional[Union['RegionDiskDiskEncryptionKeyArgs', 'RegionDiskDiskEncryptionKeyArgsDict']]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            erase_windows_vss_signature: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest_os_features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionDiskGuestOsFeatureArgs', 'RegionDiskGuestOsFeatureArgsDict']]]]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_attach_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            last_detach_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            physical_block_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+            provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_snapshot_encryption_key: pulumi.Input[Optional[Union['RegionDiskSourceSnapshotEncryptionKeyArgs', 'RegionDiskSourceSnapshotEncryptionKeyArgsDict']]] = None,
+            source_snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'RegionDisk':
         """
         Get an existing RegionDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

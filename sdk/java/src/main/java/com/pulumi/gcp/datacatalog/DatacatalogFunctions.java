@@ -40,8 +40,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -82,8 +82,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -124,8 +124,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -166,8 +166,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -208,8 +208,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -248,8 +248,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -288,8 +288,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -328,8 +328,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -368,8 +368,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -408,8 +408,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -450,8 +450,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -492,8 +492,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -534,8 +534,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -576,8 +576,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -618,8 +618,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -658,8 +658,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -698,8 +698,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -738,8 +738,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -778,8 +778,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -818,8 +818,8 @@ public final class DatacatalogFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
      * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

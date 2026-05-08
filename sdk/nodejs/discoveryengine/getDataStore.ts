@@ -139,17 +139,17 @@ export interface GetDataStoreOutputArgs {
     /**
      * The unique id of the data store. Exactly one of `dataStoreId` or `displayName` must be provided.
      */
-    dataStoreId?: pulumi.Input<string>;
+    dataStoreId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the data store. Exactly one of `dataStoreId` or `displayName` must be provided. Returns an error if multiple data stores share the same display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store resides. The value can only be one of "global", "us" and "eu". Defaults to `global`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

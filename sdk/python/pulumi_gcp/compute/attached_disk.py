@@ -21,11 +21,11 @@ class AttachedDiskArgs:
     def __init__(__self__, *,
                  disk: pulumi.Input[_builtins.str],
                  instance: pulumi.Input[_builtins.str],
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AttachedDisk resource.
 
@@ -112,7 +112,7 @@ class AttachedDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a unique device name of your choice that is
         reflected into the /dev/disk/by-id/google-* tree of a Linux operating
@@ -127,12 +127,12 @@ class AttachedDiskArgs:
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk interface used for attaching this disk.
 
@@ -147,12 +147,12 @@ class AttachedDiskArgs:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which to attach this disk, either READ_WRITE or
         READ_ONLY. If not specified, the default is to attach the disk in
@@ -165,12 +165,12 @@ class AttachedDiskArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project that the referenced compute instance is a part of. If `instance` is referenced by its
         `self_link` the project defined in the link will take precedence.
@@ -178,12 +178,12 @@ class AttachedDiskArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone that the referenced compute instance is located within. If `instance` is referenced by its
         `self_link` the zone defined in the link will take precedence.
@@ -191,20 +191,20 @@ class AttachedDiskArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _AttachedDiskState:
     def __init__(__self__, *,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AttachedDisk resources.
 
@@ -263,7 +263,7 @@ class _AttachedDiskState:
 
     @_builtins.property
     @pulumi.getter(name="deviceName")
-    def device_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a unique device name of your choice that is
         reflected into the /dev/disk/by-id/google-* tree of a Linux operating
@@ -278,12 +278,12 @@ class _AttachedDiskState:
         return pulumi.get(self, "device_name")
 
     @device_name.setter
-    def device_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `name` or `self_link` of the disk that will be attached.
 
@@ -293,12 +293,12 @@ class _AttachedDiskState:
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `name` or `self_link` of the compute instance that the disk will be attached to.
         If the `self_link` is provided then `zone` and `project` are extracted from the
@@ -308,12 +308,12 @@ class _AttachedDiskState:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk interface used for attaching this disk.
 
@@ -328,12 +328,12 @@ class _AttachedDiskState:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which to attach this disk, either READ_WRITE or
         READ_ONLY. If not specified, the default is to attach the disk in
@@ -346,12 +346,12 @@ class _AttachedDiskState:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project that the referenced compute instance is a part of. If `instance` is referenced by its
         `self_link` the project defined in the link will take precedence.
@@ -359,12 +359,12 @@ class _AttachedDiskState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone that the referenced compute instance is located within. If `instance` is referenced by its
         `self_link` the zone defined in the link will take precedence.
@@ -372,7 +372,7 @@ class _AttachedDiskState:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -382,13 +382,13 @@ class AttachedDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Persistent disks can be attached to a compute instance using the `attached_disk`
@@ -557,13 +557,13 @@ class AttachedDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 device_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -594,13 +594,13 @@ class AttachedDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            device_name: Optional[pulumi.Input[_builtins.str]] = None,
-            disk: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            interface: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'AttachedDisk':
+            device_name: pulumi.Input[Optional[_builtins.str]] = None,
+            disk: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'AttachedDisk':
         """
         Get an existing AttachedDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

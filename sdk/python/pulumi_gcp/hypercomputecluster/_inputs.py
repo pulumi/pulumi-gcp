@@ -140,27 +140,27 @@ class ClusterComputeResourceArgs:
 
 
 class ClusterComputeResourceConfigArgsDict(TypedDict):
-    new_flex_start_instances: NotRequired[pulumi.Input['ClusterComputeResourceConfigNewFlexStartInstancesArgsDict']]
+    new_flex_start_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewFlexStartInstancesArgs']]]
     """
     When set in a ComputeResourceConfig, indicates that VM instances should
     be created using [Flex
     Start](https://cloud.google.com/compute/docs/instances/provisioning-models).
     Structure is documented below.
     """
-    new_on_demand_instances: NotRequired[pulumi.Input['ClusterComputeResourceConfigNewOnDemandInstancesArgsDict']]
+    new_on_demand_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewOnDemandInstancesArgs']]]
     """
     When set in a ComputeResourceConfig, indicates that on-demand (i.e.,
     using the standard provisioning model) VM instances should be created.
     Structure is documented below.
     """
-    new_reserved_instances: NotRequired[pulumi.Input['ClusterComputeResourceConfigNewReservedInstancesArgsDict']]
+    new_reserved_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewReservedInstancesArgs']]]
     """
     When set in a ComputeResourceConfig, indicates that VM instances should
     be created from a
     [reservation](https://cloud.google.com/compute/docs/instances/reservations-overview).
     Structure is documented below.
     """
-    new_spot_instances: NotRequired[pulumi.Input['ClusterComputeResourceConfigNewSpotInstancesArgsDict']]
+    new_spot_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewSpotInstancesArgs']]]
     """
     When set in a ComputeResourceConfig, indicates that [spot
     VM](https://cloud.google.com/compute/docs/instances/spot) instances should be
@@ -171,10 +171,10 @@ class ClusterComputeResourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterComputeResourceConfigArgs:
     def __init__(__self__, *,
-                 new_flex_start_instances: Optional[pulumi.Input['ClusterComputeResourceConfigNewFlexStartInstancesArgs']] = None,
-                 new_on_demand_instances: Optional[pulumi.Input['ClusterComputeResourceConfigNewOnDemandInstancesArgs']] = None,
-                 new_reserved_instances: Optional[pulumi.Input['ClusterComputeResourceConfigNewReservedInstancesArgs']] = None,
-                 new_spot_instances: Optional[pulumi.Input['ClusterComputeResourceConfigNewSpotInstancesArgs']] = None):
+                 new_flex_start_instances: pulumi.Input[Optional['ClusterComputeResourceConfigNewFlexStartInstancesArgs']] = None,
+                 new_on_demand_instances: pulumi.Input[Optional['ClusterComputeResourceConfigNewOnDemandInstancesArgs']] = None,
+                 new_reserved_instances: pulumi.Input[Optional['ClusterComputeResourceConfigNewReservedInstancesArgs']] = None,
+                 new_spot_instances: pulumi.Input[Optional['ClusterComputeResourceConfigNewSpotInstancesArgs']] = None):
         """
         :param pulumi.Input['ClusterComputeResourceConfigNewFlexStartInstancesArgs'] new_flex_start_instances: When set in a ComputeResourceConfig, indicates that VM instances should
                be created using [Flex
@@ -203,7 +203,7 @@ class ClusterComputeResourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="newFlexStartInstances")
-    def new_flex_start_instances(self) -> Optional[pulumi.Input['ClusterComputeResourceConfigNewFlexStartInstancesArgs']]:
+    def new_flex_start_instances(self) -> pulumi.Input[Optional['ClusterComputeResourceConfigNewFlexStartInstancesArgs']]:
         """
         When set in a ComputeResourceConfig, indicates that VM instances should
         be created using [Flex
@@ -213,12 +213,12 @@ class ClusterComputeResourceConfigArgs:
         return pulumi.get(self, "new_flex_start_instances")
 
     @new_flex_start_instances.setter
-    def new_flex_start_instances(self, value: Optional[pulumi.Input['ClusterComputeResourceConfigNewFlexStartInstancesArgs']]):
+    def new_flex_start_instances(self, value: pulumi.Input[Optional['ClusterComputeResourceConfigNewFlexStartInstancesArgs']]):
         pulumi.set(self, "new_flex_start_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="newOnDemandInstances")
-    def new_on_demand_instances(self) -> Optional[pulumi.Input['ClusterComputeResourceConfigNewOnDemandInstancesArgs']]:
+    def new_on_demand_instances(self) -> pulumi.Input[Optional['ClusterComputeResourceConfigNewOnDemandInstancesArgs']]:
         """
         When set in a ComputeResourceConfig, indicates that on-demand (i.e.,
         using the standard provisioning model) VM instances should be created.
@@ -227,12 +227,12 @@ class ClusterComputeResourceConfigArgs:
         return pulumi.get(self, "new_on_demand_instances")
 
     @new_on_demand_instances.setter
-    def new_on_demand_instances(self, value: Optional[pulumi.Input['ClusterComputeResourceConfigNewOnDemandInstancesArgs']]):
+    def new_on_demand_instances(self, value: pulumi.Input[Optional['ClusterComputeResourceConfigNewOnDemandInstancesArgs']]):
         pulumi.set(self, "new_on_demand_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="newReservedInstances")
-    def new_reserved_instances(self) -> Optional[pulumi.Input['ClusterComputeResourceConfigNewReservedInstancesArgs']]:
+    def new_reserved_instances(self) -> pulumi.Input[Optional['ClusterComputeResourceConfigNewReservedInstancesArgs']]:
         """
         When set in a ComputeResourceConfig, indicates that VM instances should
         be created from a
@@ -242,12 +242,12 @@ class ClusterComputeResourceConfigArgs:
         return pulumi.get(self, "new_reserved_instances")
 
     @new_reserved_instances.setter
-    def new_reserved_instances(self, value: Optional[pulumi.Input['ClusterComputeResourceConfigNewReservedInstancesArgs']]):
+    def new_reserved_instances(self, value: pulumi.Input[Optional['ClusterComputeResourceConfigNewReservedInstancesArgs']]):
         pulumi.set(self, "new_reserved_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="newSpotInstances")
-    def new_spot_instances(self) -> Optional[pulumi.Input['ClusterComputeResourceConfigNewSpotInstancesArgs']]:
+    def new_spot_instances(self) -> pulumi.Input[Optional['ClusterComputeResourceConfigNewSpotInstancesArgs']]:
         """
         When set in a ComputeResourceConfig, indicates that [spot
         VM](https://cloud.google.com/compute/docs/instances/spot) instances should be
@@ -257,7 +257,7 @@ class ClusterComputeResourceConfigArgs:
         return pulumi.get(self, "new_spot_instances")
 
     @new_spot_instances.setter
-    def new_spot_instances(self, value: Optional[pulumi.Input['ClusterComputeResourceConfigNewSpotInstancesArgs']]):
+    def new_spot_instances(self, value: pulumi.Input[Optional['ClusterComputeResourceConfigNewSpotInstancesArgs']]):
         pulumi.set(self, "new_spot_instances", value)
 
 
@@ -402,7 +402,7 @@ class ClusterComputeResourceConfigNewOnDemandInstancesArgs:
 
 
 class ClusterComputeResourceConfigNewReservedInstancesArgsDict(TypedDict):
-    reservation: NotRequired[pulumi.Input[_builtins.str]]
+    reservation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the reservation from which VM instances should be created, in the
     format `projects/{project}/zones/{zone}/reservations/{reservation}`.
@@ -411,7 +411,7 @@ class ClusterComputeResourceConfigNewReservedInstancesArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterComputeResourceConfigNewReservedInstancesArgs:
     def __init__(__self__, *,
-                 reservation: Optional[pulumi.Input[_builtins.str]] = None):
+                 reservation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] reservation: Name of the reservation from which VM instances should be created, in the
                format `projects/{project}/zones/{zone}/reservations/{reservation}`.
@@ -421,7 +421,7 @@ class ClusterComputeResourceConfigNewReservedInstancesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def reservation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the reservation from which VM instances should be created, in the
         format `projects/{project}/zones/{zone}/reservations/{reservation}`.
@@ -429,7 +429,7 @@ class ClusterComputeResourceConfigNewReservedInstancesArgs:
         return pulumi.get(self, "reservation")
 
     @reservation.setter
-    def reservation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation", value)
 
 
@@ -446,7 +446,7 @@ class ClusterComputeResourceConfigNewSpotInstancesArgsDict(TypedDict):
     Must be in the same region as the cluster, and must match the zone of any
     other resources specified in the cluster.
     """
-    termination_action: NotRequired[pulumi.Input[_builtins.str]]
+    termination_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the termination action of the instance
     Possible values:
@@ -459,7 +459,7 @@ class ClusterComputeResourceConfigNewSpotInstancesArgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
-                 termination_action: Optional[pulumi.Input[_builtins.str]] = None):
+                 termination_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] machine_type: Name of the Compute Engine [machine
                type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g.
@@ -507,7 +507,7 @@ class ClusterComputeResourceConfigNewSpotInstancesArgs:
 
     @_builtins.property
     @pulumi.getter(name="terminationAction")
-    def termination_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def termination_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the termination action of the instance
         Possible values:
@@ -517,7 +517,7 @@ class ClusterComputeResourceConfigNewSpotInstancesArgs:
         return pulumi.get(self, "termination_action")
 
     @termination_action.setter
-    def termination_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def termination_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "termination_action", value)
 
 
@@ -526,14 +526,14 @@ class ClusterNetworkResourceArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    config: NotRequired[pulumi.Input['ClusterNetworkResourceConfigArgsDict']]
+    config: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigArgs']]]
     """
     Describes how a network resource should be initialized. Each network resource
     can either be imported from an existing Google Cloud resource or initialized
     when the cluster is created.
     Structure is documented below.
     """
-    networks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgsDict']]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]]]
     """
     (Output)
     A reference to a [VPC network](https://cloud.google.com/vpc/docs/vpc) in
@@ -545,8 +545,8 @@ class ClusterNetworkResourceArgsDict(TypedDict):
 class ClusterNetworkResourceArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input['ClusterNetworkResourceConfigArgs']] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]] = None):
+                 config: pulumi.Input[Optional['ClusterNetworkResourceConfigArgs']] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The identifier for this object. Format specified above.
         :param pulumi.Input['ClusterNetworkResourceConfigArgs'] config: Describes how a network resource should be initialized. Each network resource
@@ -578,7 +578,7 @@ class ClusterNetworkResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ClusterNetworkResourceConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ClusterNetworkResourceConfigArgs']]:
         """
         Describes how a network resource should be initialized. Each network resource
         can either be imported from an existing Google Cloud resource or initialized
@@ -588,12 +588,12 @@ class ClusterNetworkResourceArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ClusterNetworkResourceConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ClusterNetworkResourceConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]]:
+    def networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]]:
         """
         (Output)
         A reference to a [VPC network](https://cloud.google.com/vpc/docs/vpc) in
@@ -603,18 +603,18 @@ class ClusterNetworkResourceArgs:
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]]):
+    def networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
 
 
 class ClusterNetworkResourceConfigArgsDict(TypedDict):
-    existing_network: NotRequired[pulumi.Input['ClusterNetworkResourceConfigExistingNetworkArgsDict']]
+    existing_network: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigExistingNetworkArgs']]]
     """
     When set in a NetworkResourceConfig, indicates that an existing network
     should be imported.
     Structure is documented below.
     """
-    new_network: NotRequired[pulumi.Input['ClusterNetworkResourceConfigNewNetworkArgsDict']]
+    new_network: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigNewNetworkArgs']]]
     """
     When set in a NetworkResourceConfig, indicates that a new network should
     be created.
@@ -624,8 +624,8 @@ class ClusterNetworkResourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworkResourceConfigArgs:
     def __init__(__self__, *,
-                 existing_network: Optional[pulumi.Input['ClusterNetworkResourceConfigExistingNetworkArgs']] = None,
-                 new_network: Optional[pulumi.Input['ClusterNetworkResourceConfigNewNetworkArgs']] = None):
+                 existing_network: pulumi.Input[Optional['ClusterNetworkResourceConfigExistingNetworkArgs']] = None,
+                 new_network: pulumi.Input[Optional['ClusterNetworkResourceConfigNewNetworkArgs']] = None):
         """
         :param pulumi.Input['ClusterNetworkResourceConfigExistingNetworkArgs'] existing_network: When set in a NetworkResourceConfig, indicates that an existing network
                should be imported.
@@ -641,7 +641,7 @@ class ClusterNetworkResourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="existingNetwork")
-    def existing_network(self) -> Optional[pulumi.Input['ClusterNetworkResourceConfigExistingNetworkArgs']]:
+    def existing_network(self) -> pulumi.Input[Optional['ClusterNetworkResourceConfigExistingNetworkArgs']]:
         """
         When set in a NetworkResourceConfig, indicates that an existing network
         should be imported.
@@ -650,12 +650,12 @@ class ClusterNetworkResourceConfigArgs:
         return pulumi.get(self, "existing_network")
 
     @existing_network.setter
-    def existing_network(self, value: Optional[pulumi.Input['ClusterNetworkResourceConfigExistingNetworkArgs']]):
+    def existing_network(self, value: pulumi.Input[Optional['ClusterNetworkResourceConfigExistingNetworkArgs']]):
         pulumi.set(self, "existing_network", value)
 
     @_builtins.property
     @pulumi.getter(name="newNetwork")
-    def new_network(self) -> Optional[pulumi.Input['ClusterNetworkResourceConfigNewNetworkArgs']]:
+    def new_network(self) -> pulumi.Input[Optional['ClusterNetworkResourceConfigNewNetworkArgs']]:
         """
         When set in a NetworkResourceConfig, indicates that a new network should
         be created.
@@ -664,7 +664,7 @@ class ClusterNetworkResourceConfigArgs:
         return pulumi.get(self, "new_network")
 
     @new_network.setter
-    def new_network(self, value: Optional[pulumi.Input['ClusterNetworkResourceConfigNewNetworkArgs']]):
+    def new_network(self, value: pulumi.Input[Optional['ClusterNetworkResourceConfigNewNetworkArgs']]):
         pulumi.set(self, "new_network", value)
 
 
@@ -728,7 +728,7 @@ class ClusterNetworkResourceConfigNewNetworkArgsDict(TypedDict):
     Name of the network, in the format
     `projects/{project}/global/networks/{network}`.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the network. Maximum of 2048 characters.
     """
@@ -737,7 +737,7 @@ class ClusterNetworkResourceConfigNewNetworkArgsDict(TypedDict):
 class ClusterNetworkResourceConfigNewNetworkArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: (Output)
                Name of the network, in the format
@@ -764,24 +764,24 @@ class ClusterNetworkResourceConfigNewNetworkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the network. Maximum of 2048 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ClusterNetworkResourceNetworkArgsDict(TypedDict):
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the network, in the format
     'projects/{project}/global/networks/{network}'.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the particular subnetwork being used by the cluster, in the format
     'projects/{project}/regions/{region}/subnetworks/{subnetwork}'.
@@ -790,8 +790,8 @@ class ClusterNetworkResourceNetworkArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworkResourceNetworkArgs:
     def __init__(__self__, *,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: Name of the network, in the format
                'projects/{project}/global/networks/{network}'.
@@ -805,7 +805,7 @@ class ClusterNetworkResourceNetworkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the network, in the format
         'projects/{project}/global/networks/{network}'.
@@ -813,12 +813,12 @@ class ClusterNetworkResourceNetworkArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the particular subnetwork being used by the cluster, in the format
         'projects/{project}/regions/{region}/subnetworks/{subnetwork}'.
@@ -826,12 +826,12 @@ class ClusterNetworkResourceNetworkArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
 class ClusterOrchestratorArgsDict(TypedDict):
-    slurm: NotRequired[pulumi.Input['ClusterOrchestratorSlurmArgsDict']]
+    slurm: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmArgs']]]
     """
     When set in Orchestrator, indicates that the cluster should use
     [Slurm](https://slurm.schedmd.com/) as the orchestrator.
@@ -841,7 +841,7 @@ class ClusterOrchestratorArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterOrchestratorArgs:
     def __init__(__self__, *,
-                 slurm: Optional[pulumi.Input['ClusterOrchestratorSlurmArgs']] = None):
+                 slurm: pulumi.Input[Optional['ClusterOrchestratorSlurmArgs']] = None):
         """
         :param pulumi.Input['ClusterOrchestratorSlurmArgs'] slurm: When set in Orchestrator, indicates that the cluster should use
                [Slurm](https://slurm.schedmd.com/) as the orchestrator.
@@ -852,7 +852,7 @@ class ClusterOrchestratorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def slurm(self) -> Optional[pulumi.Input['ClusterOrchestratorSlurmArgs']]:
+    def slurm(self) -> pulumi.Input[Optional['ClusterOrchestratorSlurmArgs']]:
         """
         When set in Orchestrator, indicates that the cluster should use
         [Slurm](https://slurm.schedmd.com/) as the orchestrator.
@@ -861,7 +861,7 @@ class ClusterOrchestratorArgs:
         return pulumi.get(self, "slurm")
 
     @slurm.setter
-    def slurm(self, value: Optional[pulumi.Input['ClusterOrchestratorSlurmArgs']]):
+    def slurm(self, value: pulumi.Input[Optional['ClusterOrchestratorSlurmArgs']]):
         pulumi.set(self, "slurm", value)
 
 
@@ -887,19 +887,19 @@ class ClusterOrchestratorSlurmArgsDict(TypedDict):
     required.
     Structure is documented below.
     """
-    default_partition: NotRequired[pulumi.Input[_builtins.str]]
+    default_partition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default partition to use for submitted jobs that do not explicitly specify
     a partition. Required if and only if there is more than one partition, in
     which case it must match the id of one of the partitions.
     """
-    epilog_bash_scripts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    epilog_bash_scripts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Slurm [epilog scripts](https://slurm.schedmd.com/prolog_epilog.html), which
     will be executed by compute nodes whenever a node finishes running a job.
     Values must not be empty.
     """
-    prolog_bash_scripts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    prolog_bash_scripts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Slurm [prolog scripts](https://slurm.schedmd.com/prolog_epilog.html), which
     will be executed by compute nodes before a node begins running a new job.
@@ -912,9 +912,9 @@ class ClusterOrchestratorSlurmArgs:
                  login_nodes: pulumi.Input['ClusterOrchestratorSlurmLoginNodesArgs'],
                  node_sets: pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetArgs']]],
                  partitions: pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmPartitionArgs']]],
-                 default_partition: Optional[pulumi.Input[_builtins.str]] = None,
-                 epilog_bash_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 prolog_bash_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 default_partition: pulumi.Input[Optional[_builtins.str]] = None,
+                 epilog_bash_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 prolog_bash_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['ClusterOrchestratorSlurmLoginNodesArgs'] login_nodes: Configuration for Slurm [login
                nodes](https://slurm.schedmd.com/quickstart_admin.html#login) in the cluster.
@@ -995,7 +995,7 @@ class ClusterOrchestratorSlurmArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultPartition")
-    def default_partition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_partition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default partition to use for submitted jobs that do not explicitly specify
         a partition. Required if and only if there is more than one partition, in
@@ -1004,12 +1004,12 @@ class ClusterOrchestratorSlurmArgs:
         return pulumi.get(self, "default_partition")
 
     @default_partition.setter
-    def default_partition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_partition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_partition", value)
 
     @_builtins.property
     @pulumi.getter(name="epilogBashScripts")
-    def epilog_bash_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def epilog_bash_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Slurm [epilog scripts](https://slurm.schedmd.com/prolog_epilog.html), which
         will be executed by compute nodes whenever a node finishes running a job.
@@ -1018,12 +1018,12 @@ class ClusterOrchestratorSlurmArgs:
         return pulumi.get(self, "epilog_bash_scripts")
 
     @epilog_bash_scripts.setter
-    def epilog_bash_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def epilog_bash_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "epilog_bash_scripts", value)
 
     @_builtins.property
     @pulumi.getter(name="prologBashScripts")
-    def prolog_bash_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def prolog_bash_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Slurm [prolog scripts](https://slurm.schedmd.com/prolog_epilog.html), which
         will be executed by compute nodes before a node begins running a new job.
@@ -1032,7 +1032,7 @@ class ClusterOrchestratorSlurmArgs:
         return pulumi.get(self, "prolog_bash_scripts")
 
     @prolog_bash_scripts.setter
-    def prolog_bash_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def prolog_bash_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "prolog_bash_scripts", value)
 
 
@@ -1053,35 +1053,35 @@ class ClusterOrchestratorSlurmLoginNodesArgsDict(TypedDict):
     Must be in the same region as the cluster, and must match the zone of any
     other resources specified in the cluster.
     """
-    boot_disk: NotRequired[pulumi.Input['ClusterOrchestratorSlurmLoginNodesBootDiskArgsDict']]
+    boot_disk: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']]]
     """
     A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
     boot disk for a Compute Engine VM instance.
     Structure is documented below.
     """
-    enable_os_login: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_os_login: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether [OS Login](https://cloud.google.com/compute/docs/oslogin) should be
     enabled on login node instances.
     """
-    enable_public_ips: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_public_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether login node instances should be assigned [external IP
     addresses](https://cloud.google.com/compute/docs/ip-addresses#externaladdresses).
     """
-    instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgsDict']]]]
+    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]]]
     """
     (Output)
     Information about the login node instances that were created in Compute
     Engine.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
     should be applied to each login node instance.
     """
-    startup_script: NotRequired[pulumi.Input[_builtins.str]]
+    startup_script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [Startup
     script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
@@ -1090,7 +1090,7 @@ class ClusterOrchestratorSlurmLoginNodesArgsDict(TypedDict):
     minutes. For tasks that require more time, consider running them in the
     background using methods such as `&` or `nohup`.
     """
-    storage_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgsDict']]]]
+    storage_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]]]
     """
     How storage resources should be mounted on each login
     node.
@@ -1103,13 +1103,13 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
                  count: pulumi.Input[_builtins.str],
                  machine_type: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
-                 boot_disk: Optional[pulumi.Input['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']] = None,
-                 enable_os_login: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_public_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 startup_script: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]] = None):
+                 boot_disk: pulumi.Input[Optional['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']] = None,
+                 enable_os_login: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_public_ips: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 startup_script: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] count: Number of login node instances to create.
         :param pulumi.Input[_builtins.str] machine_type: Name of the Compute Engine [machine
@@ -1201,7 +1201,7 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
 
     @_builtins.property
     @pulumi.getter(name="bootDisk")
-    def boot_disk(self) -> Optional[pulumi.Input['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']]:
+    def boot_disk(self) -> pulumi.Input[Optional['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']]:
         """
         A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
         boot disk for a Compute Engine VM instance.
@@ -1210,12 +1210,12 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
         return pulumi.get(self, "boot_disk")
 
     @boot_disk.setter
-    def boot_disk(self, value: Optional[pulumi.Input['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']]):
+    def boot_disk(self, value: pulumi.Input[Optional['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']]):
         pulumi.set(self, "boot_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="enableOsLogin")
-    def enable_os_login(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_os_login(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether [OS Login](https://cloud.google.com/compute/docs/oslogin) should be
         enabled on login node instances.
@@ -1223,12 +1223,12 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
         return pulumi.get(self, "enable_os_login")
 
     @enable_os_login.setter
-    def enable_os_login(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_os_login(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_os_login", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublicIps")
-    def enable_public_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public_ips(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether login node instances should be assigned [external IP
         addresses](https://cloud.google.com/compute/docs/ip-addresses#externaladdresses).
@@ -1236,12 +1236,12 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
         return pulumi.get(self, "enable_public_ips")
 
     @enable_public_ips.setter
-    def enable_public_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]]:
         """
         (Output)
         Information about the login node instances that were created in Compute
@@ -1251,12 +1251,12 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
         should be applied to each login node instance.
@@ -1264,12 +1264,12 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="startupScript")
-    def startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Startup
         script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
@@ -1281,12 +1281,12 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
         return pulumi.get(self, "startup_script")
 
     @startup_script.setter
-    def startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "startup_script", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigs")
-    def storage_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]]:
+    def storage_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]]:
         """
         How storage resources should be mounted on each login
         node.
@@ -1295,7 +1295,7 @@ class ClusterOrchestratorSlurmLoginNodesArgs:
         return pulumi.get(self, "storage_configs")
 
     @storage_configs.setter
-    def storage_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]]):
+    def storage_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]]):
         pulumi.set(self, "storage_configs", value)
 
 
@@ -1353,7 +1353,7 @@ class ClusterOrchestratorSlurmLoginNodesBootDiskArgs:
 
 
 class ClusterOrchestratorSlurmLoginNodesInstanceArgsDict(TypedDict):
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the VM instance, in the format
     'projects/{project}/zones/{zone}/instances/{instance}'.
@@ -1362,7 +1362,7 @@ class ClusterOrchestratorSlurmLoginNodesInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterOrchestratorSlurmLoginNodesInstanceArgs:
     def __init__(__self__, *,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance: Name of the VM instance, in the format
                'projects/{project}/zones/{zone}/instances/{instance}'.
@@ -1372,7 +1372,7 @@ class ClusterOrchestratorSlurmLoginNodesInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the VM instance, in the format
         'projects/{project}/zones/{zone}/instances/{instance}'.
@@ -1380,7 +1380,7 @@ class ClusterOrchestratorSlurmLoginNodesInstanceArgs:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
 
@@ -1445,18 +1445,18 @@ class ClusterOrchestratorSlurmNodeSetArgsDict(TypedDict):
     [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
     alphanumeric, and at most 63 characters).
     """
-    compute_id: NotRequired[pulumi.Input[_builtins.str]]
+    compute_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of the compute resource on which this nodeset will run. Must match a key
     in the cluster's compute_resources.
     """
-    compute_instance: NotRequired[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceArgsDict']]
+    compute_instance: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']]]
     """
     When set in a SlurmNodeSet, indicates that the nodeset should be backed
     by Compute Engine VM instances.
     Structure is documented below.
     """
-    max_dynamic_node_count: NotRequired[pulumi.Input[_builtins.str]]
+    max_dynamic_node_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Controls how many additional nodes a cluster can bring online to handle
     workloads. Set this value to enable dynamic node creation and limit the
@@ -1464,12 +1464,12 @@ class ClusterOrchestratorSlurmNodeSetArgsDict(TypedDict):
     do not want the cluster to create nodes dynamically, and instead rely only
     on static nodes.
     """
-    static_node_count: NotRequired[pulumi.Input[_builtins.str]]
+    static_node_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Number of nodes to be statically created for this nodeset. The cluster will
     attempt to ensure that at least this many nodes exist at all times.
     """
-    storage_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgsDict']]]]
+    storage_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]]]
     """
     How storage resources should be mounted on each compute
     node.
@@ -1480,11 +1480,11 @@ class ClusterOrchestratorSlurmNodeSetArgsDict(TypedDict):
 class ClusterOrchestratorSlurmNodeSetArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 compute_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_instance: Optional[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']] = None,
-                 max_dynamic_node_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_node_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]] = None):
+                 compute_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_instance: pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']] = None,
+                 max_dynamic_node_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_node_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] id: Identifier for the nodeset, which allows it to be referenced by partitions.
                Must conform to
@@ -1535,7 +1535,7 @@ class ClusterOrchestratorSlurmNodeSetArgs:
 
     @_builtins.property
     @pulumi.getter(name="computeId")
-    def compute_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the compute resource on which this nodeset will run. Must match a key
         in the cluster's compute_resources.
@@ -1543,12 +1543,12 @@ class ClusterOrchestratorSlurmNodeSetArgs:
         return pulumi.get(self, "compute_id")
 
     @compute_id.setter
-    def compute_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computeInstance")
-    def compute_instance(self) -> Optional[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']]:
+    def compute_instance(self) -> pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']]:
         """
         When set in a SlurmNodeSet, indicates that the nodeset should be backed
         by Compute Engine VM instances.
@@ -1557,12 +1557,12 @@ class ClusterOrchestratorSlurmNodeSetArgs:
         return pulumi.get(self, "compute_instance")
 
     @compute_instance.setter
-    def compute_instance(self, value: Optional[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']]):
+    def compute_instance(self, value: pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']]):
         pulumi.set(self, "compute_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDynamicNodeCount")
-    def max_dynamic_node_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_dynamic_node_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls how many additional nodes a cluster can bring online to handle
         workloads. Set this value to enable dynamic node creation and limit the
@@ -1573,12 +1573,12 @@ class ClusterOrchestratorSlurmNodeSetArgs:
         return pulumi.get(self, "max_dynamic_node_count")
 
     @max_dynamic_node_count.setter
-    def max_dynamic_node_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_dynamic_node_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_dynamic_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="staticNodeCount")
-    def static_node_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def static_node_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of nodes to be statically created for this nodeset. The cluster will
         attempt to ensure that at least this many nodes exist at all times.
@@ -1586,12 +1586,12 @@ class ClusterOrchestratorSlurmNodeSetArgs:
         return pulumi.get(self, "static_node_count")
 
     @static_node_count.setter
-    def static_node_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def static_node_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "static_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigs")
-    def storage_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]]:
+    def storage_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]]:
         """
         How storage resources should be mounted on each compute
         node.
@@ -1600,23 +1600,23 @@ class ClusterOrchestratorSlurmNodeSetArgs:
         return pulumi.get(self, "storage_configs")
 
     @storage_configs.setter
-    def storage_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]]):
+    def storage_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]]):
         pulumi.set(self, "storage_configs", value)
 
 
 class ClusterOrchestratorSlurmNodeSetComputeInstanceArgsDict(TypedDict):
-    boot_disk: NotRequired[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgsDict']]
+    boot_disk: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']]]
     """
     A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
     boot disk for a Compute Engine VM instance.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
     should be applied to each VM instance in the nodeset.
     """
-    startup_script: NotRequired[pulumi.Input[_builtins.str]]
+    startup_script: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     [Startup
     script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
@@ -1626,9 +1626,9 @@ class ClusterOrchestratorSlurmNodeSetComputeInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterOrchestratorSlurmNodeSetComputeInstanceArgs:
     def __init__(__self__, *,
-                 boot_disk: Optional[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 startup_script: Optional[pulumi.Input[_builtins.str]] = None):
+                 boot_disk: pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 startup_script: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs'] boot_disk: A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
                boot disk for a Compute Engine VM instance.
@@ -1648,7 +1648,7 @@ class ClusterOrchestratorSlurmNodeSetComputeInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="bootDisk")
-    def boot_disk(self) -> Optional[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']]:
+    def boot_disk(self) -> pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']]:
         """
         A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
         boot disk for a Compute Engine VM instance.
@@ -1657,12 +1657,12 @@ class ClusterOrchestratorSlurmNodeSetComputeInstanceArgs:
         return pulumi.get(self, "boot_disk")
 
     @boot_disk.setter
-    def boot_disk(self, value: Optional[pulumi.Input['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']]):
+    def boot_disk(self, value: pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']]):
         pulumi.set(self, "boot_disk", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
         should be applied to each VM instance in the nodeset.
@@ -1670,12 +1670,12 @@ class ClusterOrchestratorSlurmNodeSetComputeInstanceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="startupScript")
-    def startup_script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def startup_script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Startup
         script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
@@ -1684,7 +1684,7 @@ class ClusterOrchestratorSlurmNodeSetComputeInstanceArgs:
         return pulumi.get(self, "startup_script")
 
     @startup_script.setter
-    def startup_script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def startup_script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "startup_script", value)
 
 
@@ -1862,18 +1862,18 @@ class ClusterStorageResourceArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    buckets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceBucketArgsDict']]]]
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]]]
     """
     (Output)
     Name of the bucket.
     """
-    filestores: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgsDict']]]]
+    filestores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]]]
     """
     (Output)
     A reference to a [Filestore](https://cloud.google.com/filestore) instance.
     Structure is documented below.
     """
-    lustres: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceLustreArgsDict']]]]
+    lustres: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]]]
     """
     (Output)
     A reference to a [Managed
@@ -1889,9 +1889,9 @@ class ClusterStorageResourceArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['ClusterStorageResourceConfigArgs'],
                  id: pulumi.Input[_builtins.str],
-                 buckets: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]] = None,
-                 filestores: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]] = None,
-                 lustres: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]] = None):
+                 buckets: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]] = None,
+                 filestores: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]] = None,
+                 lustres: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]] = None):
         """
         :param pulumi.Input['ClusterStorageResourceConfigArgs'] config: Describes how a storage resource should be initialized. Each storage resource
                can either be imported from an existing Google Cloud resource or initialized
@@ -1949,7 +1949,7 @@ class ClusterStorageResourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def buckets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]]:
+    def buckets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]]:
         """
         (Output)
         Name of the bucket.
@@ -1957,12 +1957,12 @@ class ClusterStorageResourceArgs:
         return pulumi.get(self, "buckets")
 
     @buckets.setter
-    def buckets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]]):
+    def buckets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]]):
         pulumi.set(self, "buckets", value)
 
     @_builtins.property
     @pulumi.getter
-    def filestores(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]]:
+    def filestores(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]]:
         """
         (Output)
         A reference to a [Filestore](https://cloud.google.com/filestore) instance.
@@ -1971,12 +1971,12 @@ class ClusterStorageResourceArgs:
         return pulumi.get(self, "filestores")
 
     @filestores.setter
-    def filestores(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]]):
+    def filestores(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]]):
         pulumi.set(self, "filestores", value)
 
     @_builtins.property
     @pulumi.getter
-    def lustres(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]]:
+    def lustres(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]]:
         """
         (Output)
         A reference to a [Managed
@@ -1989,12 +1989,12 @@ class ClusterStorageResourceArgs:
         return pulumi.get(self, "lustres")
 
     @lustres.setter
-    def lustres(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]]):
+    def lustres(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]]):
         pulumi.set(self, "lustres", value)
 
 
 class ClusterStorageResourceBucketArgsDict(TypedDict):
-    bucket: NotRequired[pulumi.Input[_builtins.str]]
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the bucket.
     """
@@ -2002,7 +2002,7 @@ class ClusterStorageResourceBucketArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterStorageResourceBucketArgs:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Name of the bucket.
         """
@@ -2011,52 +2011,52 @@ class ClusterStorageResourceBucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
 
 class ClusterStorageResourceConfigArgsDict(TypedDict):
-    existing_bucket: NotRequired[pulumi.Input['ClusterStorageResourceConfigExistingBucketArgsDict']]
+    existing_bucket: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingBucketArgs']]]
     """
     When set in a StorageResourceConfig, indicates that an existing
     [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
     imported.
     Structure is documented below.
     """
-    existing_filestore: NotRequired[pulumi.Input['ClusterStorageResourceConfigExistingFilestoreArgsDict']]
+    existing_filestore: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingFilestoreArgs']]]
     """
     When set in a StorageResourceConfig, indicates that an existing
     [Filestore](https://cloud.google.com/filestore) instance should be imported.
     Structure is documented below.
     """
-    existing_lustre: NotRequired[pulumi.Input['ClusterStorageResourceConfigExistingLustreArgsDict']]
+    existing_lustre: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgs']]]
     """
     When set in a StorageResourceConfig, indicates that an existing
     [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
     should be imported.
     Structure is documented below.
     """
-    new_bucket: NotRequired[pulumi.Input['ClusterStorageResourceConfigNewBucketArgsDict']]
+    new_bucket: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgs']]]
     """
     When set in a StorageResourceConfig, indicates that a new
     [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
     created.
     Structure is documented below.
     """
-    new_filestore: NotRequired[pulumi.Input['ClusterStorageResourceConfigNewFilestoreArgsDict']]
+    new_filestore: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewFilestoreArgs']]]
     """
     When set in a StorageResourceConfig, indicates that a new
     [Filestore](https://cloud.google.com/filestore) instance should be created.
     Structure is documented below.
     """
-    new_lustre: NotRequired[pulumi.Input['ClusterStorageResourceConfigNewLustreArgsDict']]
+    new_lustre: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewLustreArgs']]]
     """
     When set in a StorageResourceConfig, indicates that a new
     [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
@@ -2067,12 +2067,12 @@ class ClusterStorageResourceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterStorageResourceConfigArgs:
     def __init__(__self__, *,
-                 existing_bucket: Optional[pulumi.Input['ClusterStorageResourceConfigExistingBucketArgs']] = None,
-                 existing_filestore: Optional[pulumi.Input['ClusterStorageResourceConfigExistingFilestoreArgs']] = None,
-                 existing_lustre: Optional[pulumi.Input['ClusterStorageResourceConfigExistingLustreArgs']] = None,
-                 new_bucket: Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketArgs']] = None,
-                 new_filestore: Optional[pulumi.Input['ClusterStorageResourceConfigNewFilestoreArgs']] = None,
-                 new_lustre: Optional[pulumi.Input['ClusterStorageResourceConfigNewLustreArgs']] = None):
+                 existing_bucket: pulumi.Input[Optional['ClusterStorageResourceConfigExistingBucketArgs']] = None,
+                 existing_filestore: pulumi.Input[Optional['ClusterStorageResourceConfigExistingFilestoreArgs']] = None,
+                 existing_lustre: pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgs']] = None,
+                 new_bucket: pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgs']] = None,
+                 new_filestore: pulumi.Input[Optional['ClusterStorageResourceConfigNewFilestoreArgs']] = None,
+                 new_lustre: pulumi.Input[Optional['ClusterStorageResourceConfigNewLustreArgs']] = None):
         """
         :param pulumi.Input['ClusterStorageResourceConfigExistingBucketArgs'] existing_bucket: When set in a StorageResourceConfig, indicates that an existing
                [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
@@ -2112,7 +2112,7 @@ class ClusterStorageResourceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="existingBucket")
-    def existing_bucket(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigExistingBucketArgs']]:
+    def existing_bucket(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigExistingBucketArgs']]:
         """
         When set in a StorageResourceConfig, indicates that an existing
         [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
@@ -2122,12 +2122,12 @@ class ClusterStorageResourceConfigArgs:
         return pulumi.get(self, "existing_bucket")
 
     @existing_bucket.setter
-    def existing_bucket(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigExistingBucketArgs']]):
+    def existing_bucket(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigExistingBucketArgs']]):
         pulumi.set(self, "existing_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="existingFilestore")
-    def existing_filestore(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigExistingFilestoreArgs']]:
+    def existing_filestore(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigExistingFilestoreArgs']]:
         """
         When set in a StorageResourceConfig, indicates that an existing
         [Filestore](https://cloud.google.com/filestore) instance should be imported.
@@ -2136,12 +2136,12 @@ class ClusterStorageResourceConfigArgs:
         return pulumi.get(self, "existing_filestore")
 
     @existing_filestore.setter
-    def existing_filestore(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigExistingFilestoreArgs']]):
+    def existing_filestore(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigExistingFilestoreArgs']]):
         pulumi.set(self, "existing_filestore", value)
 
     @_builtins.property
     @pulumi.getter(name="existingLustre")
-    def existing_lustre(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigExistingLustreArgs']]:
+    def existing_lustre(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgs']]:
         """
         When set in a StorageResourceConfig, indicates that an existing
         [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
@@ -2151,12 +2151,12 @@ class ClusterStorageResourceConfigArgs:
         return pulumi.get(self, "existing_lustre")
 
     @existing_lustre.setter
-    def existing_lustre(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigExistingLustreArgs']]):
+    def existing_lustre(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgs']]):
         pulumi.set(self, "existing_lustre", value)
 
     @_builtins.property
     @pulumi.getter(name="newBucket")
-    def new_bucket(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketArgs']]:
+    def new_bucket(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgs']]:
         """
         When set in a StorageResourceConfig, indicates that a new
         [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
@@ -2166,12 +2166,12 @@ class ClusterStorageResourceConfigArgs:
         return pulumi.get(self, "new_bucket")
 
     @new_bucket.setter
-    def new_bucket(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketArgs']]):
+    def new_bucket(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgs']]):
         pulumi.set(self, "new_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="newFilestore")
-    def new_filestore(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigNewFilestoreArgs']]:
+    def new_filestore(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigNewFilestoreArgs']]:
         """
         When set in a StorageResourceConfig, indicates that a new
         [Filestore](https://cloud.google.com/filestore) instance should be created.
@@ -2180,12 +2180,12 @@ class ClusterStorageResourceConfigArgs:
         return pulumi.get(self, "new_filestore")
 
     @new_filestore.setter
-    def new_filestore(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigNewFilestoreArgs']]):
+    def new_filestore(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigNewFilestoreArgs']]):
         pulumi.set(self, "new_filestore", value)
 
     @_builtins.property
     @pulumi.getter(name="newLustre")
-    def new_lustre(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigNewLustreArgs']]:
+    def new_lustre(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigNewLustreArgs']]:
         """
         When set in a StorageResourceConfig, indicates that a new
         [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
@@ -2195,7 +2195,7 @@ class ClusterStorageResourceConfigArgs:
         return pulumi.get(self, "new_lustre")
 
     @new_lustre.setter
-    def new_lustre(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigNewLustreArgs']]):
+    def new_lustre(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigNewLustreArgs']]):
         pulumi.set(self, "new_lustre", value)
 
 
@@ -2294,17 +2294,17 @@ class ClusterStorageResourceConfigNewBucketArgsDict(TypedDict):
     """
     Name of the Cloud Storage bucket to create.
     """
-    autoclass: NotRequired[pulumi.Input['ClusterStorageResourceConfigNewBucketAutoclassArgsDict']]
+    autoclass: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketAutoclassArgs']]]
     """
     Message describing Google Cloud Storage autoclass configuration
     Structure is documented below.
     """
-    hierarchical_namespace: NotRequired[pulumi.Input['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgsDict']]
+    hierarchical_namespace: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']]]
     """
     Message describing Google Cloud Storage hierarchical namespace configuration
     Structure is documented below.
     """
-    storage_class: NotRequired[pulumi.Input[_builtins.str]]
+    storage_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If set, uses the provided storage class as the bucket's default storage
     class.
@@ -2319,9 +2319,9 @@ class ClusterStorageResourceConfigNewBucketArgsDict(TypedDict):
 class ClusterStorageResourceConfigNewBucketArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
-                 autoclass: Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketAutoclassArgs']] = None,
-                 hierarchical_namespace: Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']] = None,
-                 storage_class: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoclass: pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketAutoclassArgs']] = None,
+                 hierarchical_namespace: pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']] = None,
+                 storage_class: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Name of the Cloud Storage bucket to create.
         :param pulumi.Input['ClusterStorageResourceConfigNewBucketAutoclassArgs'] autoclass: Message describing Google Cloud Storage autoclass configuration
@@ -2358,7 +2358,7 @@ class ClusterStorageResourceConfigNewBucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def autoclass(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketAutoclassArgs']]:
+    def autoclass(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketAutoclassArgs']]:
         """
         Message describing Google Cloud Storage autoclass configuration
         Structure is documented below.
@@ -2366,12 +2366,12 @@ class ClusterStorageResourceConfigNewBucketArgs:
         return pulumi.get(self, "autoclass")
 
     @autoclass.setter
-    def autoclass(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketAutoclassArgs']]):
+    def autoclass(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketAutoclassArgs']]):
         pulumi.set(self, "autoclass", value)
 
     @_builtins.property
     @pulumi.getter(name="hierarchicalNamespace")
-    def hierarchical_namespace(self) -> Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']]:
+    def hierarchical_namespace(self) -> pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']]:
         """
         Message describing Google Cloud Storage hierarchical namespace configuration
         Structure is documented below.
@@ -2379,12 +2379,12 @@ class ClusterStorageResourceConfigNewBucketArgs:
         return pulumi.get(self, "hierarchical_namespace")
 
     @hierarchical_namespace.setter
-    def hierarchical_namespace(self, value: Optional[pulumi.Input['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']]):
+    def hierarchical_namespace(self, value: pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']]):
         pulumi.set(self, "hierarchical_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
-    def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, uses the provided storage class as the bucket's default storage
         class.
@@ -2397,7 +2397,7 @@ class ClusterStorageResourceConfigNewBucketArgs:
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
-    def storage_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_class", value)
 
 
@@ -2430,7 +2430,7 @@ class ClusterStorageResourceConfigNewBucketAutoclassArgs:
 
 
 class ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables hierarchical namespace setup for the bucket.
     """
@@ -2438,7 +2438,7 @@ class ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgsDict(TypedDi
 @pulumi.input_type
 class ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enables hierarchical namespace setup for the bucket.
         """
@@ -2447,14 +2447,14 @@ class ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables hierarchical namespace setup for the bucket.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
@@ -2478,11 +2478,11 @@ class ClusterStorageResourceConfigNewFilestoreArgsDict(TypedDict):
     REGIONAL
     Possible values are: `TIER_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the instance. Maximum of 2048 characters.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access protocol to use for all file shares in the instance. Defaults to NFS
     V3 if not set.
@@ -2498,8 +2498,8 @@ class ClusterStorageResourceConfigNewFilestoreArgs:
                  file_shares: pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceConfigNewFilestoreFileShareArgs']]],
                  filestore: pulumi.Input[_builtins.str],
                  tier: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterStorageResourceConfigNewFilestoreFileShareArgs']]] file_shares: File system shares on the instance. Exactly one file share must be
                specified.
@@ -2572,19 +2572,19 @@ class ClusterStorageResourceConfigNewFilestoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the instance. Maximum of 2048 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access protocol to use for all file shares in the instance. Defaults to NFS
         V3 if not set.
@@ -2596,7 +2596,7 @@ class ClusterStorageResourceConfigNewFilestoreArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
@@ -2671,7 +2671,7 @@ class ClusterStorageResourceConfigNewLustreArgsDict(TypedDict):
     Name of the Managed Lustre instance, in the format
     `projects/{project}/locations/{location}/instances/{instance}`
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the Managed Lustre instance. Maximum of 2048 characters.
     """
@@ -2682,7 +2682,7 @@ class ClusterStorageResourceConfigNewLustreArgs:
                  capacity_gb: pulumi.Input[_builtins.str],
                  filesystem: pulumi.Input[_builtins.str],
                  lustre: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] capacity_gb: Storage capacity of the instance in gibibytes (GiB). Allowed values are
                between 18000 and 7632000.
@@ -2743,19 +2743,19 @@ class ClusterStorageResourceConfigNewLustreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the Managed Lustre instance. Maximum of 2048 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ClusterStorageResourceFilestoreArgsDict(TypedDict):
-    filestore: NotRequired[pulumi.Input[_builtins.str]]
+    filestore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Filestore instance, in the format
     'projects/{project}/locations/{location}/instances/{instance}'
@@ -2764,7 +2764,7 @@ class ClusterStorageResourceFilestoreArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterStorageResourceFilestoreArgs:
     def __init__(__self__, *,
-                 filestore: Optional[pulumi.Input[_builtins.str]] = None):
+                 filestore: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] filestore: Name of the Filestore instance, in the format
                'projects/{project}/locations/{location}/instances/{instance}'
@@ -2774,7 +2774,7 @@ class ClusterStorageResourceFilestoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filestore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filestore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Filestore instance, in the format
         'projects/{project}/locations/{location}/instances/{instance}'
@@ -2782,12 +2782,12 @@ class ClusterStorageResourceFilestoreArgs:
         return pulumi.get(self, "filestore")
 
     @filestore.setter
-    def filestore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filestore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filestore", value)
 
 
 class ClusterStorageResourceLustreArgsDict(TypedDict):
-    lustre: NotRequired[pulumi.Input[_builtins.str]]
+    lustre: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Managed Lustre instance, in the format
     'projects/{project}/locations/{location}/instances/{instance}'
@@ -2796,7 +2796,7 @@ class ClusterStorageResourceLustreArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterStorageResourceLustreArgs:
     def __init__(__self__, *,
-                 lustre: Optional[pulumi.Input[_builtins.str]] = None):
+                 lustre: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] lustre: Name of the Managed Lustre instance, in the format
                'projects/{project}/locations/{location}/instances/{instance}'
@@ -2806,7 +2806,7 @@ class ClusterStorageResourceLustreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lustre(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lustre(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Managed Lustre instance, in the format
         'projects/{project}/locations/{location}/instances/{instance}'
@@ -2814,7 +2814,7 @@ class ClusterStorageResourceLustreArgs:
         return pulumi.get(self, "lustre")
 
     @lustre.setter
-    def lustre(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lustre(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lustre", value)
 
 

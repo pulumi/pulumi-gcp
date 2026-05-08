@@ -201,60 +201,60 @@ export interface BatchOperationsJobState {
      * List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
      * Structure is documented below.
      */
-    bucketList?: pulumi.Input<inputs.storage.BatchOperationsJobBucketList>;
+    bucketList?: pulumi.Input<inputs.storage.BatchOperationsJobBucketList | undefined>;
     /**
      * The time that the job was completed.
      */
-    completeTime?: pulumi.Input<string>;
+    completeTime?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this storage batch operation was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * allows batch operations to delete objects in bucket
      * Structure is documented below.
      */
-    deleteObject?: pulumi.Input<inputs.storage.BatchOperationsJobDeleteObject>;
+    deleteObject?: pulumi.Input<inputs.storage.BatchOperationsJobDeleteObject | undefined>;
     /**
      * If set to `true`, the storage batch operation job will not be deleted and new job will be created.
      */
-    deleteProtection?: pulumi.Input<boolean>;
+    deleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the job.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * allows batch operations to update metadata for objects in bucket
      * Structure is documented below.
      */
-    putMetadata?: pulumi.Input<inputs.storage.BatchOperationsJobPutMetadata>;
+    putMetadata?: pulumi.Input<inputs.storage.BatchOperationsJobPutMetadata | undefined>;
     /**
      * allows to update temporary hold or eventBased hold for objects in bucket.
      * Structure is documented below.
      */
-    putObjectHold?: pulumi.Input<inputs.storage.BatchOperationsJobPutObjectHold>;
+    putObjectHold?: pulumi.Input<inputs.storage.BatchOperationsJobPutObjectHold | undefined>;
     /**
      * allows to update encryption key for objects in bucket.
      * Structure is documented below.
      */
-    rewriteObject?: pulumi.Input<inputs.storage.BatchOperationsJobRewriteObject>;
+    rewriteObject?: pulumi.Input<inputs.storage.BatchOperationsJobRewriteObject | undefined>;
     /**
      * The time that the job was scheduled.
      */
-    scheduleTime?: pulumi.Input<string>;
+    scheduleTime?: pulumi.Input<string | undefined>;
     /**
      * State of the job.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which this storage batch operation was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,38 +265,38 @@ export interface BatchOperationsJobArgs {
      * List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned
      * Structure is documented below.
      */
-    bucketList?: pulumi.Input<inputs.storage.BatchOperationsJobBucketList>;
+    bucketList?: pulumi.Input<inputs.storage.BatchOperationsJobBucketList | undefined>;
     /**
      * allows batch operations to delete objects in bucket
      * Structure is documented below.
      */
-    deleteObject?: pulumi.Input<inputs.storage.BatchOperationsJobDeleteObject>;
+    deleteObject?: pulumi.Input<inputs.storage.BatchOperationsJobDeleteObject | undefined>;
     /**
      * If set to `true`, the storage batch operation job will not be deleted and new job will be created.
      */
-    deleteProtection?: pulumi.Input<boolean>;
+    deleteProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the job.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * allows batch operations to update metadata for objects in bucket
      * Structure is documented below.
      */
-    putMetadata?: pulumi.Input<inputs.storage.BatchOperationsJobPutMetadata>;
+    putMetadata?: pulumi.Input<inputs.storage.BatchOperationsJobPutMetadata | undefined>;
     /**
      * allows to update temporary hold or eventBased hold for objects in bucket.
      * Structure is documented below.
      */
-    putObjectHold?: pulumi.Input<inputs.storage.BatchOperationsJobPutObjectHold>;
+    putObjectHold?: pulumi.Input<inputs.storage.BatchOperationsJobPutObjectHold | undefined>;
     /**
      * allows to update encryption key for objects in bucket.
      * Structure is documented below.
      */
-    rewriteObject?: pulumi.Input<inputs.storage.BatchOperationsJobRewriteObject>;
+    rewriteObject?: pulumi.Input<inputs.storage.BatchOperationsJobRewriteObject | undefined>;
 }

@@ -25,7 +25,7 @@ class ListingSubscriptionArgs:
                  destination_dataset: pulumi.Input['ListingSubscriptionDestinationDatasetArgs'],
                  listing_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ListingSubscription resource.
 
@@ -95,7 +95,7 @@ class ListingSubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -103,31 +103,31 @@ class ListingSubscriptionArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ListingSubscriptionState:
     def __init__(__self__, *,
-                 commercial_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_dataset: Optional[pulumi.Input['ListingSubscriptionDestinationDatasetArgs']] = None,
-                 last_modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_dataset_maps: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]]] = None,
-                 linked_resources: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]] = None,
-                 listing_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscriber_contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 commercial_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_dataset: pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']] = None,
+                 last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]]] = None,
+                 linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]] = None,
+                 listing_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscriber_contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ListingSubscription resources.
 
@@ -195,7 +195,7 @@ class _ListingSubscriptionState:
 
     @_builtins.property
     @pulumi.getter(name="commercialInfos")
-    def commercial_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]]:
+    def commercial_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]]:
         """
         Commercial info metadata for this subscription. This is set if this is a commercial subscription i.e. if this subscription was created from subscribing to a commercial listing.
         Structure is documented below.
@@ -203,36 +203,36 @@ class _ListingSubscriptionState:
         return pulumi.get(self, "commercial_infos")
 
     @commercial_infos.setter
-    def commercial_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]]):
+    def commercial_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoArgs']]]]):
         pulumi.set(self, "commercial_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the subscription was created.
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataExchangeId")
-    def data_exchange_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_exchange_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         """
         return pulumi.get(self, "data_exchange_id")
 
     @data_exchange_id.setter
-    def data_exchange_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_exchange_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_exchange_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationDataset")
-    def destination_dataset(self) -> Optional[pulumi.Input['ListingSubscriptionDestinationDatasetArgs']]:
+    def destination_dataset(self) -> pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']]:
         """
         The destination dataset for this subscription.
         Structure is documented below.
@@ -240,24 +240,24 @@ class _ListingSubscriptionState:
         return pulumi.get(self, "destination_dataset")
 
     @destination_dataset.setter
-    def destination_dataset(self, value: Optional[pulumi.Input['ListingSubscriptionDestinationDatasetArgs']]):
+    def destination_dataset(self, value: pulumi.Input[Optional['ListingSubscriptionDestinationDatasetArgs']]):
         pulumi.set(self, "destination_dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifyTime")
-    def last_modify_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modify_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the subscription was last modified.
         """
         return pulumi.get(self, "last_modify_time")
 
     @last_modify_time.setter
-    def last_modify_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modify_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modify_time", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedDatasetMaps")
-    def linked_dataset_maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]]]:
+    def linked_dataset_maps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]]]:
         """
         Output only. Map of listing resource names to associated linked resource,
         e.g. projects/123/locations/US/dataExchanges/456/listings/789 > projects/123/datasets/my_dataset
@@ -266,12 +266,12 @@ class _ListingSubscriptionState:
         return pulumi.get(self, "linked_dataset_maps")
 
     @linked_dataset_maps.setter
-    def linked_dataset_maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]]]):
+    def linked_dataset_maps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedDatasetMapArgs']]]]):
         pulumi.set(self, "linked_dataset_maps", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedResources")
-    def linked_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]]:
+    def linked_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]]:
         """
         Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
         Structure is documented below.
@@ -279,84 +279,84 @@ class _ListingSubscriptionState:
         return pulumi.get(self, "linked_resources")
 
     @linked_resources.setter
-    def linked_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]]):
+    def linked_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionLinkedResourceArgs']]]]):
         pulumi.set(self, "linked_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="listingId")
-    def listing_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listing_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         """
         return pulumi.get(self, "listing_id")
 
     @listing_id.setter
-    def listing_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listing_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listing_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the location of the data exchange. Distinct from the location of the destination data set.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="logLinkedDatasetQueryUserEmail")
-    def log_linked_dataset_query_user_email(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_linked_dataset_query_user_email(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Output only. By default, false. If true, the Subscriber agreed to the email sharing mandate that is enabled for Listing.
         """
         return pulumi.get(self, "log_linked_dataset_query_user_email")
 
     @log_linked_dataset_query_user_email.setter
-    def log_linked_dataset_query_user_email(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_linked_dataset_query_user_email(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_linked_dataset_query_user_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the subscription. e.g. "projects/myproject/locations/US/subscriptions/123"
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationDisplayName")
-    def organization_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name of the project of this subscription.
         """
         return pulumi.get(self, "organization_display_name")
 
     @organization_display_name.setter
-    def organization_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization of the project this subscription belongs to.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -364,55 +364,55 @@ class _ListingSubscriptionState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Listing shared asset type.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current state of the subscription.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriberContact")
-    def subscriber_contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscriber_contact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email of the subscriber.
         """
         return pulumi.get(self, "subscriber_contact")
 
     @subscriber_contact.setter
-    def subscriber_contact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscriber_contact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscriber_contact", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription id used to reference the subscription.
         """
         return pulumi.get(self, "subscription_id")
 
     @subscription_id.setter
-    def subscription_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_id", value)
 
 
@@ -422,11 +422,11 @@ class ListingSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_dataset: Optional[pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
-                 listing_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
+                 listing_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Bigquery Analytics Hub listing subscription
@@ -669,11 +669,11 @@ class ListingSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_dataset: Optional[pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
-                 listing_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
+                 listing_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -719,24 +719,24 @@ class ListingSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commercial_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict']]]]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_exchange_id: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_dataset: Optional[pulumi.Input[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
-            last_modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_dataset_maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict']]]]] = None,
-            linked_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict']]]]] = None,
-            listing_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            log_linked_dataset_query_user_email: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subscriber_contact: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ListingSubscription':
+            commercial_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionCommercialInfoArgs', 'ListingSubscriptionCommercialInfoArgsDict']]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_dataset: pulumi.Input[Optional[Union['ListingSubscriptionDestinationDatasetArgs', 'ListingSubscriptionDestinationDatasetArgsDict']]] = None,
+            last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedDatasetMapArgs', 'ListingSubscriptionLinkedDatasetMapArgsDict']]]]] = None,
+            linked_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListingSubscriptionLinkedResourceArgs', 'ListingSubscriptionLinkedResourceArgsDict']]]]] = None,
+            listing_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log_linked_dataset_query_user_email: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subscriber_contact: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ListingSubscription':
         """
         Get an existing ListingSubscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

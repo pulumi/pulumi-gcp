@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.OsLogin
     ///     var cache = new Gcp.OsLogin.SshPublicKey("cache", new()
     ///     {
     ///         User = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
-    ///         Key = Std.Index.File.Invoke(new()
+    ///         Key = Std.File.Invoke(new()
     ///         {
     ///             Input = "path/to/id_rsa.pub",
     ///         }).Apply(invoke =&gt; invoke.Result),

@@ -276,10 +276,10 @@ def get_subnetwork(name: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         stack_type=pulumi.get(__ret__, 'stack_type'),
         subnetwork_id=pulumi.get(__ret__, 'subnetwork_id'))
-def get_subnetwork_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          self_link: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_subnetwork_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          self_link: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetworkResult]:
     """
     Get a subnetwork within GCE from its name and region.

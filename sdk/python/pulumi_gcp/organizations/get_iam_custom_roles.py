@@ -126,9 +126,9 @@ def get_iam_custom_roles(org_id: Optional[_builtins.str] = None,
         roles=pulumi.get(__ret__, 'roles'),
         show_deleted=pulumi.get(__ret__, 'show_deleted'),
         view=pulumi.get(__ret__, 'view'))
-def get_iam_custom_roles_output(org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                show_deleted: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                view: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_iam_custom_roles_output(org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                show_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                view: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamCustomRolesResult]:
     """
     Get information about a Google Cloud Organization IAM Custom Roles.

@@ -46,22 +46,22 @@ __all__ = [
 ]
 
 class QueueAppEngineRoutingOverrideArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The host that the task is sent to.
     """
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     App instance.
     By default, the task is sent to an instance which is available when the task is attempted.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     App service.
     By default, the task is sent to the service which is the default service when the task is attempted.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     App version.
     By default, the task is sent to the version which is the default version when the task is attempted.
@@ -70,10 +70,10 @@ class QueueAppEngineRoutingOverrideArgsDict(TypedDict):
 @pulumi.input_type
 class QueueAppEngineRoutingOverrideArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: (Output)
                The host that the task is sent to.
@@ -95,7 +95,7 @@ class QueueAppEngineRoutingOverrideArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The host that the task is sent to.
@@ -103,12 +103,12 @@ class QueueAppEngineRoutingOverrideArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App instance.
         By default, the task is sent to an instance which is available when the task is attempted.
@@ -116,12 +116,12 @@ class QueueAppEngineRoutingOverrideArgs:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App service.
         By default, the task is sent to the service which is the default service when the task is attempted.
@@ -129,12 +129,12 @@ class QueueAppEngineRoutingOverrideArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App version.
         By default, the task is sent to the version which is the default version when the task is attempted.
@@ -142,12 +142,12 @@ class QueueAppEngineRoutingOverrideArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class QueueHttpTargetArgsDict(TypedDict):
-    header_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgsDict']]]]
+    header_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]]
     """
     HTTP target headers.
     This map contains the header field names and values.
@@ -158,28 +158,28 @@ class QueueHttpTargetArgsDict(TypedDict):
     The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
     Structure is documented below.
     """
-    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    http_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The HTTP method to use for the request.
     When specified, it overrides HttpRequest for the task.
     Note that if the value is set to GET the body of the task will be ignored at execution time.
     Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
     """
-    oauth_token: NotRequired[pulumi.Input['QueueHttpTargetOauthTokenArgsDict']]
+    oauth_token: NotRequired[pulumi.Input[Optional['QueueHttpTargetOauthTokenArgs']]]
     """
     If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
     This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
     Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input['QueueHttpTargetOidcTokenArgsDict']]
+    oidc_token: NotRequired[pulumi.Input[Optional['QueueHttpTargetOidcTokenArgs']]]
     """
     If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
     This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
     Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
     Structure is documented below.
     """
-    uri_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideArgsDict']]
+    uri_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverrideArgs']]]
     """
     URI override.
     When specified, overrides the execution URI for all the tasks in the queue.
@@ -189,11 +189,11 @@ class QueueHttpTargetArgsDict(TypedDict):
 @pulumi.input_type
 class QueueHttpTargetArgs:
     def __init__(__self__, *,
-                 header_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_token: Optional[pulumi.Input['QueueHttpTargetOauthTokenArgs']] = None,
-                 oidc_token: Optional[pulumi.Input['QueueHttpTargetOidcTokenArgs']] = None,
-                 uri_override: Optional[pulumi.Input['QueueHttpTargetUriOverrideArgs']] = None):
+                 header_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_token: pulumi.Input[Optional['QueueHttpTargetOauthTokenArgs']] = None,
+                 oidc_token: pulumi.Input[Optional['QueueHttpTargetOidcTokenArgs']] = None,
+                 uri_override: pulumi.Input[Optional['QueueHttpTargetUriOverrideArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]] header_overrides: HTTP target headers.
                This map contains the header field names and values.
@@ -232,7 +232,7 @@ class QueueHttpTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerOverrides")
-    def header_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]:
+    def header_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]:
         """
         HTTP target headers.
         This map contains the header field names and values.
@@ -246,12 +246,12 @@ class QueueHttpTargetArgs:
         return pulumi.get(self, "header_overrides")
 
     @header_overrides.setter
-    def header_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]):
+    def header_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]):
         pulumi.set(self, "header_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP method to use for the request.
         When specified, it overrides HttpRequest for the task.
@@ -261,12 +261,12 @@ class QueueHttpTargetArgs:
         return pulumi.get(self, "http_method")
 
     @http_method.setter
-    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_method", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthToken")
-    def oauth_token(self) -> Optional[pulumi.Input['QueueHttpTargetOauthTokenArgs']]:
+    def oauth_token(self) -> pulumi.Input[Optional['QueueHttpTargetOauthTokenArgs']]:
         """
         If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
         This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
@@ -276,12 +276,12 @@ class QueueHttpTargetArgs:
         return pulumi.get(self, "oauth_token")
 
     @oauth_token.setter
-    def oauth_token(self, value: Optional[pulumi.Input['QueueHttpTargetOauthTokenArgs']]):
+    def oauth_token(self, value: pulumi.Input[Optional['QueueHttpTargetOauthTokenArgs']]):
         pulumi.set(self, "oauth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> Optional[pulumi.Input['QueueHttpTargetOidcTokenArgs']]:
+    def oidc_token(self) -> pulumi.Input[Optional['QueueHttpTargetOidcTokenArgs']]:
         """
         If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
         This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -291,12 +291,12 @@ class QueueHttpTargetArgs:
         return pulumi.get(self, "oidc_token")
 
     @oidc_token.setter
-    def oidc_token(self, value: Optional[pulumi.Input['QueueHttpTargetOidcTokenArgs']]):
+    def oidc_token(self, value: pulumi.Input[Optional['QueueHttpTargetOidcTokenArgs']]):
         pulumi.set(self, "oidc_token", value)
 
     @_builtins.property
     @pulumi.getter(name="uriOverride")
-    def uri_override(self) -> Optional[pulumi.Input['QueueHttpTargetUriOverrideArgs']]:
+    def uri_override(self) -> pulumi.Input[Optional['QueueHttpTargetUriOverrideArgs']]:
         """
         URI override.
         When specified, overrides the execution URI for all the tasks in the queue.
@@ -305,7 +305,7 @@ class QueueHttpTargetArgs:
         return pulumi.get(self, "uri_override")
 
     @uri_override.setter
-    def uri_override(self, value: Optional[pulumi.Input['QueueHttpTargetUriOverrideArgs']]):
+    def uri_override(self, value: pulumi.Input[Optional['QueueHttpTargetUriOverrideArgs']]):
         pulumi.set(self, "uri_override", value)
 
 
@@ -394,7 +394,7 @@ class QueueHttpTargetOauthTokenArgsDict(TypedDict):
     The service account must be within the same project as the queue.
     The caller must have iam.serviceAccounts.actAs permission for the service account.
     """
-    scope: NotRequired[pulumi.Input[_builtins.str]]
+    scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OAuth scope to be used for generating OAuth access token.
     If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -404,7 +404,7 @@ class QueueHttpTargetOauthTokenArgsDict(TypedDict):
 class QueueHttpTargetOauthTokenArgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[_builtins.str],
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to be used for generating OAuth token.
                The service account must be within the same project as the queue.
@@ -432,7 +432,7 @@ class QueueHttpTargetOauthTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OAuth scope to be used for generating OAuth access token.
         If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -440,7 +440,7 @@ class QueueHttpTargetOauthTokenArgs:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
@@ -451,7 +451,7 @@ class QueueHttpTargetOidcTokenArgsDict(TypedDict):
     The service account must be within the same project as the queue.
     The caller must have iam.serviceAccounts.actAs permission for the service account.
     """
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
     """
@@ -460,7 +460,7 @@ class QueueHttpTargetOidcTokenArgsDict(TypedDict):
 class QueueHttpTargetOidcTokenArgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[_builtins.str],
-                 audience: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to be used for generating OIDC token.
                The service account must be within the same project as the queue.
@@ -487,19 +487,19 @@ class QueueHttpTargetOidcTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
         """
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
 
 class QueueHttpTargetUriOverrideArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host override.
     When specified, replaces the host part of the task URL.
@@ -507,14 +507,14 @@ class QueueHttpTargetUriOverrideArgsDict(TypedDict):
     is set to "example.net", the overridden URI will be changed to "https://example.net".
     Host value cannot be an empty string (INVALID_ARGUMENT).
     """
-    path_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgsDict']]
+    path_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverridePathOverrideArgs']]]
     """
     URI path.
     When specified, replaces the existing path of the task URL.
     Setting the path value to an empty string clears the URI path segment.
     Structure is documented below.
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Port override.
     When specified, replaces the port part of the task URI.
@@ -522,19 +522,19 @@ class QueueHttpTargetUriOverrideArgsDict(TypedDict):
     Note that the port value must be a positive integer.
     Setting the port to 0 (Zero) clears the URI port.
     """
-    query_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgsDict']]
+    query_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverrideQueryOverrideArgs']]]
     """
     URI query.
     When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
     Structure is documented below.
     """
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheme override.
     When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
     Possible values are: `HTTP`, `HTTPS`.
     """
-    uri_override_enforce_mode: NotRequired[pulumi.Input[_builtins.str]]
+    uri_override_enforce_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     URI Override Enforce Mode
     When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
@@ -544,12 +544,12 @@ class QueueHttpTargetUriOverrideArgsDict(TypedDict):
 @pulumi.input_type
 class QueueHttpTargetUriOverrideArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_override: Optional[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgs']] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_override: Optional[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgs']] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri_override_enforce_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_override: pulumi.Input[Optional['QueueHttpTargetUriOverridePathOverrideArgs']] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_override: pulumi.Input[Optional['QueueHttpTargetUriOverrideQueryOverrideArgs']] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri_override_enforce_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host: Host override.
                When specified, replaces the host part of the task URL.
@@ -590,7 +590,7 @@ class QueueHttpTargetUriOverrideArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host override.
         When specified, replaces the host part of the task URL.
@@ -601,12 +601,12 @@ class QueueHttpTargetUriOverrideArgs:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="pathOverride")
-    def path_override(self) -> Optional[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgs']]:
+    def path_override(self) -> pulumi.Input[Optional['QueueHttpTargetUriOverridePathOverrideArgs']]:
         """
         URI path.
         When specified, replaces the existing path of the task URL.
@@ -616,12 +616,12 @@ class QueueHttpTargetUriOverrideArgs:
         return pulumi.get(self, "path_override")
 
     @path_override.setter
-    def path_override(self, value: Optional[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgs']]):
+    def path_override(self, value: pulumi.Input[Optional['QueueHttpTargetUriOverridePathOverrideArgs']]):
         pulumi.set(self, "path_override", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Port override.
         When specified, replaces the port part of the task URI.
@@ -632,12 +632,12 @@ class QueueHttpTargetUriOverrideArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="queryOverride")
-    def query_override(self) -> Optional[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgs']]:
+    def query_override(self) -> pulumi.Input[Optional['QueueHttpTargetUriOverrideQueryOverrideArgs']]:
         """
         URI query.
         When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
@@ -646,12 +646,12 @@ class QueueHttpTargetUriOverrideArgs:
         return pulumi.get(self, "query_override")
 
     @query_override.setter
-    def query_override(self, value: Optional[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgs']]):
+    def query_override(self, value: pulumi.Input[Optional['QueueHttpTargetUriOverrideQueryOverrideArgs']]):
         pulumi.set(self, "query_override", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheme override.
         When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
@@ -660,12 +660,12 @@ class QueueHttpTargetUriOverrideArgs:
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="uriOverrideEnforceMode")
-    def uri_override_enforce_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri_override_enforce_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI Override Enforce Mode
         When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
@@ -674,12 +674,12 @@ class QueueHttpTargetUriOverrideArgs:
         return pulumi.get(self, "uri_override_enforce_mode")
 
     @uri_override_enforce_mode.setter
-    def uri_override_enforce_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri_override_enforce_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri_override_enforce_mode", value)
 
 
 class QueueHttpTargetUriOverridePathOverrideArgsDict(TypedDict):
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI path (e.g., /users/1234). Default is an empty string.
     """
@@ -687,7 +687,7 @@ class QueueHttpTargetUriOverridePathOverrideArgsDict(TypedDict):
 @pulumi.input_type
 class QueueHttpTargetUriOverridePathOverrideArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The URI path (e.g., /users/1234). Default is an empty string.
         """
@@ -696,19 +696,19 @@ class QueueHttpTargetUriOverridePathOverrideArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI path (e.g., /users/1234). Default is an empty string.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
 class QueueHttpTargetUriOverrideQueryOverrideArgsDict(TypedDict):
-    query_params: NotRequired[pulumi.Input[_builtins.str]]
+    query_params: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
     """
@@ -716,7 +716,7 @@ class QueueHttpTargetUriOverrideQueryOverrideArgsDict(TypedDict):
 @pulumi.input_type
 class QueueHttpTargetUriOverrideQueryOverrideArgs:
     def __init__(__self__, *,
-                 query_params: Optional[pulumi.Input[_builtins.str]] = None):
+                 query_params: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] query_params: The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
         """
@@ -725,28 +725,28 @@ class QueueHttpTargetUriOverrideQueryOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="queryParams")
-    def query_params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
         """
         return pulumi.get(self, "query_params")
 
     @query_params.setter
-    def query_params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_params", value)
 
 
 class QueueIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class QueueIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -772,25 +772,25 @@ class QueueIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class QueueIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class QueueIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -816,16 +816,16 @@ class QueueIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class QueueRateLimitsArgsDict(TypedDict):
-    max_burst_size: NotRequired[pulumi.Input[_builtins.int]]
+    max_burst_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The max burst size.
@@ -834,14 +834,14 @@ class QueueRateLimitsArgsDict(TypedDict):
     rate so processing starts shortly after a task is enqueued, but still limits
     resource usage when many tasks are enqueued in a short period of time.
     """
-    max_concurrent_dispatches: NotRequired[pulumi.Input[_builtins.int]]
+    max_concurrent_dispatches: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of concurrent tasks that Cloud Tasks allows to
     be dispatched for this queue. After this threshold has been
     reached, Cloud Tasks stops dispatching tasks until the number of
     concurrent requests decreases.
     """
-    max_dispatches_per_second: NotRequired[pulumi.Input[_builtins.float]]
+    max_dispatches_per_second: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The maximum rate at which tasks are dispatched from this queue.
     If unspecified when the queue is created, Cloud Tasks will pick the default.
@@ -850,9 +850,9 @@ class QueueRateLimitsArgsDict(TypedDict):
 @pulumi.input_type
 class QueueRateLimitsArgs:
     def __init__(__self__, *,
-                 max_burst_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrent_dispatches: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_dispatches_per_second: Optional[pulumi.Input[_builtins.float]] = None):
+                 max_burst_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrent_dispatches: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_dispatches_per_second: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.int] max_burst_size: (Output)
                The max burst size.
@@ -876,7 +876,7 @@ class QueueRateLimitsArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxBurstSize")
-    def max_burst_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_burst_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The max burst size.
@@ -888,12 +888,12 @@ class QueueRateLimitsArgs:
         return pulumi.get(self, "max_burst_size")
 
     @max_burst_size.setter
-    def max_burst_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_burst_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_burst_size", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrentDispatches")
-    def max_concurrent_dispatches(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrent_dispatches(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of concurrent tasks that Cloud Tasks allows to
         be dispatched for this queue. After this threshold has been
@@ -903,12 +903,12 @@ class QueueRateLimitsArgs:
         return pulumi.get(self, "max_concurrent_dispatches")
 
     @max_concurrent_dispatches.setter
-    def max_concurrent_dispatches(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrent_dispatches(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrent_dispatches", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDispatchesPerSecond")
-    def max_dispatches_per_second(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max_dispatches_per_second(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The maximum rate at which tasks are dispatched from this queue.
         If unspecified when the queue is created, Cloud Tasks will pick the default.
@@ -916,12 +916,12 @@ class QueueRateLimitsArgs:
         return pulumi.get(self, "max_dispatches_per_second")
 
     @max_dispatches_per_second.setter
-    def max_dispatches_per_second(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max_dispatches_per_second(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max_dispatches_per_second", value)
 
 
 class QueueRetryConfigArgsDict(TypedDict):
-    max_attempts: NotRequired[pulumi.Input[_builtins.int]]
+    max_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of attempts per task.
     Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -931,20 +931,20 @@ class QueueRetryConfigArgsDict(TypedDict):
     the default.
     -1 indicates unlimited attempts.
     """
-    max_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    max_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A task will be scheduled for retry between minBackoff and
     maxBackoff duration after it fails, if the queue's RetryConfig
     specifies that the task should be retried.
     """
-    max_doublings: NotRequired[pulumi.Input[_builtins.int]]
+    max_doublings: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The time between retries will double maxDoublings times.
     A task's retry interval starts at minBackoff, then doubles maxDoublings times,
     then increases linearly, and finally retries retries at intervals of maxBackoff
     up to maxAttempts times.
     """
-    max_retry_duration: NotRequired[pulumi.Input[_builtins.str]]
+    max_retry_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If positive, maxRetryDuration specifies the time limit for
     retrying a failed task, measured from when the task was first
@@ -953,7 +953,7 @@ class QueueRetryConfigArgsDict(TypedDict):
     made and the task will be deleted.
     If zero, then the task age is unlimited.
     """
-    min_backoff: NotRequired[pulumi.Input[_builtins.str]]
+    min_backoff: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A task will be scheduled for retry between minBackoff and
     maxBackoff duration after it fails, if the queue's RetryConfig
@@ -963,11 +963,11 @@ class QueueRetryConfigArgsDict(TypedDict):
 @pulumi.input_type
 class QueueRetryConfigArgs:
     def __init__(__self__, *,
-                 max_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_backoff: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_doublings: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retry_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_backoff: Optional[pulumi.Input[_builtins.str]] = None):
+                 max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_backoff: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_doublings: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retry_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_backoff: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] max_attempts: Number of attempts per task.
                Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -1006,7 +1006,7 @@ class QueueRetryConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxAttempts")
-    def max_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of attempts per task.
         Cloud Tasks will attempt the task maxAttempts times (that is, if
@@ -1019,12 +1019,12 @@ class QueueRetryConfigArgs:
         return pulumi.get(self, "max_attempts")
 
     @max_attempts.setter
-    def max_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBackoff")
-    def max_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A task will be scheduled for retry between minBackoff and
         maxBackoff duration after it fails, if the queue's RetryConfig
@@ -1033,12 +1033,12 @@ class QueueRetryConfigArgs:
         return pulumi.get(self, "max_backoff")
 
     @max_backoff.setter
-    def max_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_backoff", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDoublings")
-    def max_doublings(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_doublings(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time between retries will double maxDoublings times.
         A task's retry interval starts at minBackoff, then doubles maxDoublings times,
@@ -1048,12 +1048,12 @@ class QueueRetryConfigArgs:
         return pulumi.get(self, "max_doublings")
 
     @max_doublings.setter
-    def max_doublings(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_doublings(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_doublings", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetryDuration")
-    def max_retry_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_retry_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If positive, maxRetryDuration specifies the time limit for
         retrying a failed task, measured from when the task was first
@@ -1065,12 +1065,12 @@ class QueueRetryConfigArgs:
         return pulumi.get(self, "max_retry_duration")
 
     @max_retry_duration.setter
-    def max_retry_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_retry_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_retry_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="minBackoff")
-    def min_backoff(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_backoff(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A task will be scheduled for retry between minBackoff and
         maxBackoff duration after it fails, if the queue's RetryConfig
@@ -1079,7 +1079,7 @@ class QueueRetryConfigArgs:
         return pulumi.get(self, "min_backoff")
 
     @min_backoff.setter
-    def min_backoff(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_backoff(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_backoff", value)
 
 

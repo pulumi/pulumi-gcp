@@ -24,13 +24,13 @@ class GCPolicyArgs:
                  column_family: pulumi.Input[_builtins.str],
                  instance_name: pulumi.Input[_builtins.str],
                  table: pulumi.Input[_builtins.str],
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 gc_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
-                 max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_age: pulumi.Input[Optional['GCPolicyMaxAgeArgs']] = None,
+                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GCPolicy resource.
 
@@ -108,7 +108,7 @@ class GCPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the GC policy.
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
@@ -118,24 +118,24 @@ class GCPolicyArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="gcRules")
-    def gc_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gc_rules(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         """
         return pulumi.get(self, "gc_rules")
 
     @gc_rules.setter
-    def gc_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gc_rules(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gc_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreWarnings")
-    def ignore_warnings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_warnings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean for whether to allow ignoring warnings when updating the gc policy.
         Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -146,71 +146,71 @@ class GCPolicyArgs:
         return pulumi.get(self, "ignore_warnings")
 
     @ignore_warnings.setter
-    def ignore_warnings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_warnings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_warnings", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[pulumi.Input['GCPolicyMaxAgeArgs']]:
+    def max_age(self) -> pulumi.Input[Optional['GCPolicyMaxAgeArgs']]:
         """
         GC policy that applies to all cells older than the given age.
         """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
-    def max_age(self, value: Optional[pulumi.Input['GCPolicyMaxAgeArgs']]):
+    def max_age(self, value: pulumi.Input[Optional['GCPolicyMaxAgeArgs']]):
         pulumi.set(self, "max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="maxVersions")
-    def max_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]:
+    def max_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]:
         """
         GC policy that applies to all versions of a cell except for the most recent.
         """
         return pulumi.get(self, "max_versions")
 
     @max_versions.setter
-    def max_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]):
+    def max_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]):
         pulumi.set(self, "max_versions", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _GCPolicyState:
     def __init__(__self__, *,
-                 column_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 gc_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_age: Optional[pulumi.Input['GCPolicyMaxAgeArgs']] = None,
-                 max_versions: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None):
+                 column_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_age: pulumi.Input[Optional['GCPolicyMaxAgeArgs']] = None,
+                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GCPolicy resources.
 
@@ -255,19 +255,19 @@ class _GCPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="columnFamily")
-    def column_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def column_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the column family.
         """
         return pulumi.get(self, "column_family")
 
     @column_family.setter
-    def column_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def column_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "column_family", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the GC policy.
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
@@ -277,24 +277,24 @@ class _GCPolicyState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="gcRules")
-    def gc_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gc_rules(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         """
         return pulumi.get(self, "gc_rules")
 
     @gc_rules.setter
-    def gc_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gc_rules(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gc_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreWarnings")
-    def ignore_warnings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_warnings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean for whether to allow ignoring warnings when updating the gc policy.
         Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
@@ -305,79 +305,79 @@ class _GCPolicyState:
         return pulumi.get(self, "ignore_warnings")
 
     @ignore_warnings.setter
-    def ignore_warnings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_warnings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_warnings", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Bigtable instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[pulumi.Input['GCPolicyMaxAgeArgs']]:
+    def max_age(self) -> pulumi.Input[Optional['GCPolicyMaxAgeArgs']]:
         """
         GC policy that applies to all cells older than the given age.
         """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
-    def max_age(self, value: Optional[pulumi.Input['GCPolicyMaxAgeArgs']]):
+    def max_age(self, value: pulumi.Input[Optional['GCPolicyMaxAgeArgs']]):
         pulumi.set(self, "max_age", value)
 
     @_builtins.property
     @pulumi.getter(name="maxVersions")
-    def max_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]:
+    def max_versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]:
         """
         GC policy that applies to all versions of a cell except for the most recent.
         """
         return pulumi.get(self, "max_versions")
 
     @max_versions.setter
-    def max_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]):
+    def max_versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]]]):
         pulumi.set(self, "max_versions", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the table.
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
 
@@ -387,16 +387,16 @@ class GCPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 gc_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_age: Optional[pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
-                 max_versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
+                 column_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
+                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
@@ -689,16 +689,16 @@ class GCPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 gc_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_age: Optional[pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
-                 max_versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
+                 column_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
+                 max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -734,16 +734,16 @@ class GCPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            column_family: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            gc_rules: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            max_age: Optional[pulumi.Input[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
-            max_versions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            table: Optional[pulumi.Input[_builtins.str]] = None) -> 'GCPolicy':
+            column_family: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            gc_rules: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_age: pulumi.Input[Optional[Union['GCPolicyMaxAgeArgs', 'GCPolicyMaxAgeArgsDict']]] = None,
+            max_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GCPolicyMaxVersionArgs', 'GCPolicyMaxVersionArgsDict']]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None) -> 'GCPolicy':
         """
         Get an existing GCPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

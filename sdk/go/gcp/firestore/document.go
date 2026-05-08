@@ -66,7 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//			firestore2, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("firestore.googleapis.com"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -81,7 +81,7 @@ import (
 //				LocationId: pulumi.String("nam5"),
 //				Type:       pulumi.String("FIRESTORE_NATIVE"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				firestore,
+//				firestore2,
 //			}))
 //			if err != nil {
 //				return err
@@ -137,7 +137,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//			firestore2, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("firestore.googleapis.com"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -152,7 +152,7 @@ import (
 //				LocationId: pulumi.String("nam5"),
 //				Type:       pulumi.String("FIRESTORE_NATIVE"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				firestore,
+//				firestore2,
 //			}))
 //			if err != nil {
 //				return err

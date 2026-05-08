@@ -25,7 +25,7 @@ class FolderNotificationConfigArgs:
                  folder: pulumi.Input[_builtins.str],
                  pubsub_topic: pulumi.Input[_builtins.str],
                  streaming_config: pulumi.Input['FolderNotificationConfigStreamingConfigArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderNotificationConfig resource.
 
@@ -96,27 +96,27 @@ class FolderNotificationConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _FolderNotificationConfigState:
     def __init__(__self__, *,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input['FolderNotificationConfigStreamingConfigArgs']] = None):
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional['FolderNotificationConfigStreamingConfigArgs']] = None):
         """
         Input properties used for looking up and filtering FolderNotificationConfig resources.
 
@@ -149,43 +149,43 @@ class _FolderNotificationConfigState:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This must be unique within the organization.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the notification config (max of 1024 characters).
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Numerical ID of the parent folder.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of this notification config, in the format
         `folders/{{folder}}/notificationConfigs/{{config_id}}`.
@@ -193,12 +193,12 @@ class _FolderNotificationConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubTopic")
-    def pubsub_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pubsub_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Pub/Sub topic to send notifications to. Its format is
         "projects/[project_id]/topics/[topic]".
@@ -206,12 +206,12 @@ class _FolderNotificationConfigState:
         return pulumi.get(self, "pubsub_topic")
 
     @pubsub_topic.setter
-    def pubsub_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pubsub_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pubsub_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service account that needs "pubsub.topics.publish" permission to
         publish to the Pub/Sub topic.
@@ -219,12 +219,12 @@ class _FolderNotificationConfigState:
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="streamingConfig")
-    def streaming_config(self) -> Optional[pulumi.Input['FolderNotificationConfigStreamingConfigArgs']]:
+    def streaming_config(self) -> pulumi.Input[Optional['FolderNotificationConfigStreamingConfigArgs']]:
         """
         The config for triggering streaming-based notifications.
         Structure is documented below.
@@ -232,7 +232,7 @@ class _FolderNotificationConfigState:
         return pulumi.get(self, "streaming_config")
 
     @streaming_config.setter
-    def streaming_config(self, value: Optional[pulumi.Input['FolderNotificationConfigStreamingConfigArgs']]):
+    def streaming_config(self, value: pulumi.Input[Optional['FolderNotificationConfigStreamingConfigArgs']]):
         pulumi.set(self, "streaming_config", value)
 
 
@@ -242,11 +242,11 @@ class FolderNotificationConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Cloud Security Command Center (Cloud SCC) notification configs. A
@@ -385,11 +385,11 @@ class FolderNotificationConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_config: Optional[pulumi.Input[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -424,13 +424,13 @@ class FolderNotificationConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            streaming_config: Optional[pulumi.Input[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None) -> 'FolderNotificationConfig':
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            streaming_config: pulumi.Input[Optional[Union['FolderNotificationConfigStreamingConfigArgs', 'FolderNotificationConfigStreamingConfigArgsDict']]] = None) -> 'FolderNotificationConfig':
         """
         Get an existing FolderNotificationConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

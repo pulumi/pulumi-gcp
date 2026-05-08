@@ -537,79 +537,79 @@ export interface InstanceState {
      * Looker instance Admin settings.
      * Structure is documented below.
      */
-    adminSettings?: pulumi.Input<inputs.looker.InstanceAdminSettings>;
+    adminSettings?: pulumi.Input<inputs.looker.InstanceAdminSettings | undefined>;
     /**
      * Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
      * Note that the consumer network may be in a different GCP project than the consumer
      * project that is hosting the Looker Instance.
      */
-    consumerNetwork?: pulumi.Input<string>;
+    consumerNetwork?: pulumi.Input<string | undefined>;
     /**
      * Controlled egress configuration.
      * Structure is documented below.
      */
-    controlledEgressConfig?: pulumi.Input<inputs.looker.InstanceControlledEgressConfig>;
+    controlledEgressConfig?: pulumi.Input<inputs.looker.InstanceControlledEgressConfig | undefined>;
     /**
      * Whether controlled egress is enabled on the Looker instance.
      */
-    controlledEgressEnabled?: pulumi.Input<boolean>;
+    controlledEgressEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The time the instance was created in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Custom domain settings for a Looker instance.
      * Structure is documented below.
      */
-    customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
+    customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain | undefined>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
      * of its nested resources. If set to "DEFAULT", Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
      * between any two deny maintenance periods.
      * Structure is documented below.
      */
-    denyMaintenancePeriod?: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriod>;
+    denyMaintenancePeriod?: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriod | undefined>;
     /**
      * Public Egress IP (IPv4).
      */
-    egressPublicIp?: pulumi.Input<string>;
+    egressPublicIp?: pulumi.Input<string | undefined>;
     /**
      * Looker instance encryption settings.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig | undefined>;
     /**
      * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
      */
-    fipsEnabled?: pulumi.Input<boolean>;
+    fipsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Gemini enablement for Looker (Google Cloud Core).
      */
-    geminiEnabled?: pulumi.Input<boolean>;
+    geminiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Private Ingress IP (IPv4).
      */
-    ingressPrivateIp?: pulumi.Input<string>;
+    ingressPrivateIp?: pulumi.Input<string | undefined>;
     /**
      * Public Ingress IP (IPv4).
      */
-    ingressPublicIp?: pulumi.Input<string>;
+    ingressPublicIp?: pulumi.Input<string | undefined>;
     /**
      * Looker instance URI which can be used to access the Looker Instance UI.
      */
-    lookerUri?: pulumi.Input<string>;
+    lookerUri?: pulumi.Input<string | undefined>;
     /**
      * The Looker version that the instance is using.
      */
-    lookerVersion?: pulumi.Input<string>;
+    lookerVersion?: pulumi.Input<string | undefined>;
     /**
      * Maintenance window for an instance.
      * Maintenance of your instance takes place once a month, and will require
@@ -617,21 +617,21 @@ export interface InstanceState {
      * disrupt service.
      * Structure is documented below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Looker Instance OAuth login settings.
      * Structure is documented below.
      */
-    oauthConfig?: pulumi.Input<inputs.looker.InstanceOauthConfig>;
+    oauthConfig?: pulumi.Input<inputs.looker.InstanceOauthConfig | undefined>;
     /**
      * Configuration for periodic export.
      * Structure is documented below.
      */
-    periodicExportConfig?: pulumi.Input<inputs.looker.InstancePeriodicExportConfig>;
+    periodicExportConfig?: pulumi.Input<inputs.looker.InstancePeriodicExportConfig | undefined>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
      * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -648,43 +648,43 @@ export interface InstanceState {
      * Default value is `LOOKER_CORE_TRIAL`.
      * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`, `LOOKER_CORE_TRIAL_STANDARD`, `LOOKER_CORE_TRIAL_ENTERPRISE`, `LOOKER_CORE_TRIAL_EMBED`.
      */
-    platformEdition?: pulumi.Input<string>;
+    platformEdition?: pulumi.Input<string | undefined>;
     /**
      * Whether private IP is enabled on the Looker instance.
      */
-    privateIpEnabled?: pulumi.Input<boolean>;
+    privateIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Information for Private Service Connect (PSC) setup for a Looker instance.
      * Structure is documented below.
      */
-    pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig>;
+    pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig | undefined>;
     /**
      * Whether Public Service Connect (PSC) is enabled on the Looker instance
      */
-    pscEnabled?: pulumi.Input<boolean>;
+    pscEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether public IP is enabled on the Looker instance.
      */
-    publicIpEnabled?: pulumi.Input<boolean>;
+    publicIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Looker region of the instance.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Name of a reserved IP address range within the consumer network, to be used for
      * private service access connection. User may or may not specify this in a request.
      */
-    reservedRange?: pulumi.Input<string>;
+    reservedRange?: pulumi.Input<string | undefined>;
     /**
      * The time the instance was updated in RFC3339 UTC "Zulu" format,
      * accurate to nanoseconds.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Metadata about users for a Looker instance.
      * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
@@ -695,7 +695,7 @@ export interface InstanceState {
      * total users, distributed across Viewer, Standard, and Developer.
      * Structure is documented below.
      */
-    userMetadata?: pulumi.Input<inputs.looker.InstanceUserMetadata>;
+    userMetadata?: pulumi.Input<inputs.looker.InstanceUserMetadata | undefined>;
 }
 
 /**
@@ -706,54 +706,54 @@ export interface InstanceArgs {
      * Looker instance Admin settings.
      * Structure is documented below.
      */
-    adminSettings?: pulumi.Input<inputs.looker.InstanceAdminSettings>;
+    adminSettings?: pulumi.Input<inputs.looker.InstanceAdminSettings | undefined>;
     /**
      * Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
      * Note that the consumer network may be in a different GCP project than the consumer
      * project that is hosting the Looker Instance.
      */
-    consumerNetwork?: pulumi.Input<string>;
+    consumerNetwork?: pulumi.Input<string | undefined>;
     /**
      * Controlled egress configuration.
      * Structure is documented below.
      */
-    controlledEgressConfig?: pulumi.Input<inputs.looker.InstanceControlledEgressConfig>;
+    controlledEgressConfig?: pulumi.Input<inputs.looker.InstanceControlledEgressConfig | undefined>;
     /**
      * Whether controlled egress is enabled on the Looker instance.
      */
-    controlledEgressEnabled?: pulumi.Input<boolean>;
+    controlledEgressEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Custom domain settings for a Looker instance.
      * Structure is documented below.
      */
-    customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
+    customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain | undefined>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
      * of its nested resources. If set to "DEFAULT", Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
      * between any two deny maintenance periods.
      * Structure is documented below.
      */
-    denyMaintenancePeriod?: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriod>;
+    denyMaintenancePeriod?: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriod | undefined>;
     /**
      * Looker instance encryption settings.
      * Structure is documented below.
      */
-    encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig>;
+    encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig | undefined>;
     /**
      * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
      */
-    fipsEnabled?: pulumi.Input<boolean>;
+    fipsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Gemini enablement for Looker (Google Cloud Core).
      */
-    geminiEnabled?: pulumi.Input<boolean>;
+    geminiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maintenance window for an instance.
      * Maintenance of your instance takes place once a month, and will require
@@ -761,11 +761,11 @@ export interface InstanceArgs {
      * disrupt service.
      * Structure is documented below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Looker Instance OAuth login settings.
      * Structure is documented below.
@@ -775,7 +775,7 @@ export interface InstanceArgs {
      * Configuration for periodic export.
      * Structure is documented below.
      */
-    periodicExportConfig?: pulumi.Input<inputs.looker.InstancePeriodicExportConfig>;
+    periodicExportConfig?: pulumi.Input<inputs.looker.InstancePeriodicExportConfig | undefined>;
     /**
      * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
      * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
@@ -792,38 +792,38 @@ export interface InstanceArgs {
      * Default value is `LOOKER_CORE_TRIAL`.
      * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_CORE_NONPROD_STANDARD_ANNUAL`, `LOOKER_CORE_NONPROD_ENTERPRISE_ANNUAL`, `LOOKER_CORE_NONPROD_EMBED_ANNUAL`, `LOOKER_CORE_TRIAL_STANDARD`, `LOOKER_CORE_TRIAL_ENTERPRISE`, `LOOKER_CORE_TRIAL_EMBED`.
      */
-    platformEdition?: pulumi.Input<string>;
+    platformEdition?: pulumi.Input<string | undefined>;
     /**
      * Whether private IP is enabled on the Looker instance.
      */
-    privateIpEnabled?: pulumi.Input<boolean>;
+    privateIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Information for Private Service Connect (PSC) setup for a Looker instance.
      * Structure is documented below.
      */
-    pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig>;
+    pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig | undefined>;
     /**
      * Whether Public Service Connect (PSC) is enabled on the Looker instance
      */
-    pscEnabled?: pulumi.Input<boolean>;
+    pscEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether public IP is enabled on the Looker instance.
      */
-    publicIpEnabled?: pulumi.Input<boolean>;
+    publicIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Looker region of the instance.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Name of a reserved IP address range within the consumer network, to be used for
      * private service access connection. User may or may not specify this in a request.
      */
-    reservedRange?: pulumi.Input<string>;
+    reservedRange?: pulumi.Input<string | undefined>;
     /**
      * Metadata about users for a Looker instance.
      * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
@@ -834,5 +834,5 @@ export interface InstanceArgs {
      * total users, distributed across Viewer, Standard, and Developer.
      * Structure is documented below.
      */
-    userMetadata?: pulumi.Input<inputs.looker.InstanceUserMetadata>;
+    userMetadata?: pulumi.Input<inputs.looker.InstanceUserMetadata | undefined>;
 }

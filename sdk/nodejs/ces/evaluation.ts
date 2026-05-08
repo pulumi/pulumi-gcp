@@ -603,76 +603,76 @@ export interface EvaluationState {
     /**
      * (Required)
      */
-    app?: pulumi.Input<string>;
+    app?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the evaluation was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The user who created the evaluation.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * User-defined description of the evaluation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User-defined display name of the evaluation.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Etag used to ensure the object hasn't changed during a read-modify-write operation.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * List of evaluation datasets the evaluation belongs to.
      */
-    evaluationDatasets?: pulumi.Input<pulumi.Input<string>[]>;
+    evaluationDatasets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID to use for the evaluation, which will become the final component of
      * the evaluation's resource name. If not provided, a unique ID will be
      * automatically assigned for the evaluation.
      */
-    evaluationId?: pulumi.Input<string>;
+    evaluationId?: pulumi.Input<string | undefined>;
     /**
      * The evaluation runs for this evaluation.
      */
-    evaluationRuns?: pulumi.Input<pulumi.Input<string>[]>;
+    evaluationRuns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Golden input.
      * Structure is documented below.
      */
-    golden?: pulumi.Input<inputs.ces.EvaluationGolden>;
+    golden?: pulumi.Input<inputs.ces.EvaluationGolden | undefined>;
     /**
      * Whether the evaluation is invalid.
      */
-    invalid?: pulumi.Input<boolean>;
+    invalid?: pulumi.Input<boolean | undefined>;
     /**
      * The user who last updated the evaluation.
      */
-    lastUpdatedBy?: pulumi.Input<string>;
+    lastUpdatedBy?: pulumi.Input<string | undefined>;
     /**
      * (Required)
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The unique identifier of the evaluation.
      * Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User defined tags to categorize the evaluation.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the evaluation was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -686,7 +686,7 @@ export interface EvaluationArgs {
     /**
      * User-defined description of the evaluation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User-defined display name of the evaluation.
      */
@@ -701,7 +701,7 @@ export interface EvaluationArgs {
      * Golden input.
      * Structure is documented below.
      */
-    golden?: pulumi.Input<inputs.ces.EvaluationGolden>;
+    golden?: pulumi.Input<inputs.ces.EvaluationGolden | undefined>;
     /**
      * (Required)
      */
@@ -710,9 +710,9 @@ export interface EvaluationArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * User defined tags to categorize the evaluation.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

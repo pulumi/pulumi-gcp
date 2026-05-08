@@ -56,8 +56,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -118,8 +118,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -180,8 +180,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -242,8 +242,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -304,8 +304,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -358,8 +358,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -410,8 +410,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -462,8 +462,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -514,8 +514,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -566,8 +566,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.RecordSet;
      * import com.pulumi.gcp.dns.RecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -614,8 +614,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -655,8 +655,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -696,8 +696,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -737,8 +737,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -778,8 +778,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -821,8 +821,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -863,8 +863,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -905,8 +905,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -947,8 +947,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -989,8 +989,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1031,8 +1031,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1073,8 +1073,8 @@ public final class DnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1118,8 +1118,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1169,8 +1169,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1220,8 +1220,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1271,8 +1271,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1322,8 +1322,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1376,8 +1376,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1429,8 +1429,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1482,8 +1482,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1535,8 +1535,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1588,8 +1588,8 @@ public final class DnsFunctions {
      * import com.pulumi.gcp.dns.DnsFunctions;
      * import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
      * import com.pulumi.gcp.dns.inputs.GetRecordSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

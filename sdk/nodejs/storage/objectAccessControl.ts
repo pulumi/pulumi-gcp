@@ -196,15 +196,15 @@ export interface ObjectAccessControlState {
     /**
      * The name of the bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The domain associated with the entity.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The email address associated with the entity.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The entity holding the permission, in one of the following forms:
      * * user-{{userId}}
@@ -216,29 +216,29 @@ export interface ObjectAccessControlState {
      * * allUsers
      * * allAuthenticatedUsers
      */
-    entity?: pulumi.Input<string>;
+    entity?: pulumi.Input<string | undefined>;
     /**
      * The ID for the entity
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
     /**
      * The content generation of the object, if applied to an object.
      */
-    generation?: pulumi.Input<number>;
+    generation?: pulumi.Input<number | undefined>;
     /**
      * The name of the object to apply the access control to.
      */
-    object?: pulumi.Input<string>;
+    object?: pulumi.Input<string | undefined>;
     /**
      * The project team associated with the entity
      * Structure is documented below.
      */
-    projectTeams?: pulumi.Input<pulumi.Input<inputs.storage.ObjectAccessControlProjectTeam>[]>;
+    projectTeams?: pulumi.Input<pulumi.Input<inputs.storage.ObjectAccessControlProjectTeam>[] | undefined>;
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**

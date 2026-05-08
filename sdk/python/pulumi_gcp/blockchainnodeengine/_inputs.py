@@ -30,13 +30,13 @@ __all__ = [
 ]
 
 class BlockchainNodesConnectionInfoArgsDict(TypedDict):
-    endpoint_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgsDict']]]]
+    endpoint_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]]]
     """
     (Output)
     The endpoint information through which to interact with a blockchain node.
     Structure is documented below.
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
@@ -45,8 +45,8 @@ class BlockchainNodesConnectionInfoArgsDict(TypedDict):
 @pulumi.input_type
 class BlockchainNodesConnectionInfoArgs:
     def __init__(__self__, *,
-                 endpoint_infos: Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_infos: pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]] endpoint_infos: (Output)
                The endpoint information through which to interact with a blockchain node.
@@ -61,7 +61,7 @@ class BlockchainNodesConnectionInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointInfos")
-    def endpoint_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]]:
+    def endpoint_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]]:
         """
         (Output)
         The endpoint information through which to interact with a blockchain node.
@@ -70,12 +70,12 @@ class BlockchainNodesConnectionInfoArgs:
         return pulumi.get(self, "endpoint_infos")
 
     @endpoint_infos.setter
-    def endpoint_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]]):
+    def endpoint_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]]):
         pulumi.set(self, "endpoint_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
@@ -83,17 +83,17 @@ class BlockchainNodesConnectionInfoArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
 class BlockchainNodesConnectionInfoEndpointInfoArgsDict(TypedDict):
-    json_rpc_api_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    json_rpc_api_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The assigned URL for the node JSON-RPC API endpoint.
     """
-    websockets_api_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    websockets_api_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The assigned URL for the node WebSockets API endpoint.
@@ -102,8 +102,8 @@ class BlockchainNodesConnectionInfoEndpointInfoArgsDict(TypedDict):
 @pulumi.input_type
 class BlockchainNodesConnectionInfoEndpointInfoArgs:
     def __init__(__self__, *,
-                 json_rpc_api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 websockets_api_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 json_rpc_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 websockets_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] json_rpc_api_endpoint: (Output)
                The assigned URL for the node JSON-RPC API endpoint.
@@ -117,7 +117,7 @@ class BlockchainNodesConnectionInfoEndpointInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="jsonRpcApiEndpoint")
-    def json_rpc_api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_rpc_api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The assigned URL for the node JSON-RPC API endpoint.
@@ -125,12 +125,12 @@ class BlockchainNodesConnectionInfoEndpointInfoArgs:
         return pulumi.get(self, "json_rpc_api_endpoint")
 
     @json_rpc_api_endpoint.setter
-    def json_rpc_api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_rpc_api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_rpc_api_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="websocketsApiEndpoint")
-    def websockets_api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def websockets_api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The assigned URL for the node WebSockets API endpoint.
@@ -138,51 +138,51 @@ class BlockchainNodesConnectionInfoEndpointInfoArgs:
         return pulumi.get(self, "websockets_api_endpoint")
 
     @websockets_api_endpoint.setter
-    def websockets_api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def websockets_api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "websockets_api_endpoint", value)
 
 
 class BlockchainNodesEthereumDetailsArgsDict(TypedDict):
-    additional_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict']]]]
+    additional_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]]]
     """
     (Output)
     User-provided key-value pairs
     Structure is documented below.
     """
-    api_enable_admin: NotRequired[pulumi.Input[_builtins.bool]]
+    api_enable_admin: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables JSON-RPC access to functions in the admin namespace. Defaults to false.
     """
-    api_enable_debug: NotRequired[pulumi.Input[_builtins.bool]]
+    api_enable_debug: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables JSON-RPC access to functions in the debug namespace. Defaults to false.
     """
-    consensus_client: NotRequired[pulumi.Input[_builtins.str]]
+    consensus_client: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consensus client
     Possible values are: `CONSENSUS_CLIENT_UNSPECIFIED`, `LIGHTHOUSE`.
     """
-    execution_client: NotRequired[pulumi.Input[_builtins.str]]
+    execution_client: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The execution client
     Possible values are: `EXECUTION_CLIENT_UNSPECIFIED`, `GETH`, `ERIGON`.
     """
-    geth_details: NotRequired[pulumi.Input['BlockchainNodesEthereumDetailsGethDetailsArgsDict']]
+    geth_details: NotRequired[pulumi.Input[Optional['BlockchainNodesEthereumDetailsGethDetailsArgs']]]
     """
     User-provided key-value pairs
     Structure is documented below.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Ethereum environment being accessed.
     Possible values are: `MAINNET`, `TESTNET_GOERLI_PRATER`, `TESTNET_SEPOLIA`.
     """
-    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of Ethereum node.
     Possible values are: `LIGHT`, `FULL`, `ARCHIVE`.
     """
-    validator_config: NotRequired[pulumi.Input['BlockchainNodesEthereumDetailsValidatorConfigArgsDict']]
+    validator_config: NotRequired[pulumi.Input[Optional['BlockchainNodesEthereumDetailsValidatorConfigArgs']]]
     """
     Configuration for validator-related parameters on the beacon client, and for any managed validator client.
     Structure is documented below.
@@ -191,15 +191,15 @@ class BlockchainNodesEthereumDetailsArgsDict(TypedDict):
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsArgs:
     def __init__(__self__, *,
-                 additional_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]] = None,
-                 api_enable_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_enable_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 consensus_client: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_client: Optional[pulumi.Input[_builtins.str]] = None,
-                 geth_details: Optional[pulumi.Input['BlockchainNodesEthereumDetailsGethDetailsArgs']] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 validator_config: Optional[pulumi.Input['BlockchainNodesEthereumDetailsValidatorConfigArgs']] = None):
+                 additional_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]] = None,
+                 api_enable_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_enable_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 consensus_client: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_client: pulumi.Input[Optional[_builtins.str]] = None,
+                 geth_details: pulumi.Input[Optional['BlockchainNodesEthereumDetailsGethDetailsArgs']] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 validator_config: pulumi.Input[Optional['BlockchainNodesEthereumDetailsValidatorConfigArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]] additional_endpoints: (Output)
                User-provided key-value pairs
@@ -240,7 +240,7 @@ class BlockchainNodesEthereumDetailsArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalEndpoints")
-    def additional_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]]:
+    def additional_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]]:
         """
         (Output)
         User-provided key-value pairs
@@ -249,36 +249,36 @@ class BlockchainNodesEthereumDetailsArgs:
         return pulumi.get(self, "additional_endpoints")
 
     @additional_endpoints.setter
-    def additional_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]]):
+    def additional_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]]):
         pulumi.set(self, "additional_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="apiEnableAdmin")
-    def api_enable_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def api_enable_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables JSON-RPC access to functions in the admin namespace. Defaults to false.
         """
         return pulumi.get(self, "api_enable_admin")
 
     @api_enable_admin.setter
-    def api_enable_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def api_enable_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "api_enable_admin", value)
 
     @_builtins.property
     @pulumi.getter(name="apiEnableDebug")
-    def api_enable_debug(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def api_enable_debug(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables JSON-RPC access to functions in the debug namespace. Defaults to false.
         """
         return pulumi.get(self, "api_enable_debug")
 
     @api_enable_debug.setter
-    def api_enable_debug(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def api_enable_debug(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "api_enable_debug", value)
 
     @_builtins.property
     @pulumi.getter(name="consensusClient")
-    def consensus_client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consensus_client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consensus client
         Possible values are: `CONSENSUS_CLIENT_UNSPECIFIED`, `LIGHTHOUSE`.
@@ -286,12 +286,12 @@ class BlockchainNodesEthereumDetailsArgs:
         return pulumi.get(self, "consensus_client")
 
     @consensus_client.setter
-    def consensus_client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consensus_client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consensus_client", value)
 
     @_builtins.property
     @pulumi.getter(name="executionClient")
-    def execution_client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution client
         Possible values are: `EXECUTION_CLIENT_UNSPECIFIED`, `GETH`, `ERIGON`.
@@ -299,12 +299,12 @@ class BlockchainNodesEthereumDetailsArgs:
         return pulumi.get(self, "execution_client")
 
     @execution_client.setter
-    def execution_client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_client", value)
 
     @_builtins.property
     @pulumi.getter(name="gethDetails")
-    def geth_details(self) -> Optional[pulumi.Input['BlockchainNodesEthereumDetailsGethDetailsArgs']]:
+    def geth_details(self) -> pulumi.Input[Optional['BlockchainNodesEthereumDetailsGethDetailsArgs']]:
         """
         User-provided key-value pairs
         Structure is documented below.
@@ -312,12 +312,12 @@ class BlockchainNodesEthereumDetailsArgs:
         return pulumi.get(self, "geth_details")
 
     @geth_details.setter
-    def geth_details(self, value: Optional[pulumi.Input['BlockchainNodesEthereumDetailsGethDetailsArgs']]):
+    def geth_details(self, value: pulumi.Input[Optional['BlockchainNodesEthereumDetailsGethDetailsArgs']]):
         pulumi.set(self, "geth_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Ethereum environment being accessed.
         Possible values are: `MAINNET`, `TESTNET_GOERLI_PRATER`, `TESTNET_SEPOLIA`.
@@ -325,12 +325,12 @@ class BlockchainNodesEthereumDetailsArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Ethereum node.
         Possible values are: `LIGHT`, `FULL`, `ARCHIVE`.
@@ -338,12 +338,12 @@ class BlockchainNodesEthereumDetailsArgs:
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="validatorConfig")
-    def validator_config(self) -> Optional[pulumi.Input['BlockchainNodesEthereumDetailsValidatorConfigArgs']]:
+    def validator_config(self) -> pulumi.Input[Optional['BlockchainNodesEthereumDetailsValidatorConfigArgs']]:
         """
         Configuration for validator-related parameters on the beacon client, and for any managed validator client.
         Structure is documented below.
@@ -351,20 +351,20 @@ class BlockchainNodesEthereumDetailsArgs:
         return pulumi.get(self, "validator_config")
 
     @validator_config.setter
-    def validator_config(self, value: Optional[pulumi.Input['BlockchainNodesEthereumDetailsValidatorConfigArgs']]):
+    def validator_config(self, value: pulumi.Input[Optional['BlockchainNodesEthereumDetailsValidatorConfigArgs']]):
         pulumi.set(self, "validator_config", value)
 
 
 class BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict(TypedDict):
-    beacon_api_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    beacon_api_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The assigned URL for the node's Beacon API endpoint.
     """
-    beacon_prometheus_metrics_api_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    beacon_prometheus_metrics_api_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The assigned URL for the node's Beacon Prometheus metrics endpoint.
     """
-    execution_client_prometheus_metrics_api_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    execution_client_prometheus_metrics_api_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The assigned URL for the node's execution client's Prometheus metrics endpoint.
     """
@@ -372,9 +372,9 @@ class BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
     def __init__(__self__, *,
-                 beacon_api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 beacon_prometheus_metrics_api_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_client_prometheus_metrics_api_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 beacon_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 beacon_prometheus_metrics_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_client_prometheus_metrics_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] beacon_api_endpoint: The assigned URL for the node's Beacon API endpoint.
         :param pulumi.Input[_builtins.str] beacon_prometheus_metrics_api_endpoint: The assigned URL for the node's Beacon Prometheus metrics endpoint.
@@ -389,43 +389,43 @@ class BlockchainNodesEthereumDetailsAdditionalEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="beaconApiEndpoint")
-    def beacon_api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beacon_api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The assigned URL for the node's Beacon API endpoint.
         """
         return pulumi.get(self, "beacon_api_endpoint")
 
     @beacon_api_endpoint.setter
-    def beacon_api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beacon_api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beacon_api_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="beaconPrometheusMetricsApiEndpoint")
-    def beacon_prometheus_metrics_api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beacon_prometheus_metrics_api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The assigned URL for the node's Beacon Prometheus metrics endpoint.
         """
         return pulumi.get(self, "beacon_prometheus_metrics_api_endpoint")
 
     @beacon_prometheus_metrics_api_endpoint.setter
-    def beacon_prometheus_metrics_api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beacon_prometheus_metrics_api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beacon_prometheus_metrics_api_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="executionClientPrometheusMetricsApiEndpoint")
-    def execution_client_prometheus_metrics_api_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_client_prometheus_metrics_api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The assigned URL for the node's execution client's Prometheus metrics endpoint.
         """
         return pulumi.get(self, "execution_client_prometheus_metrics_api_endpoint")
 
     @execution_client_prometheus_metrics_api_endpoint.setter
-    def execution_client_prometheus_metrics_api_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_client_prometheus_metrics_api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_client_prometheus_metrics_api_endpoint", value)
 
 
 class BlockchainNodesEthereumDetailsGethDetailsArgsDict(TypedDict):
-    garbage_collection_mode: NotRequired[pulumi.Input[_builtins.str]]
+    garbage_collection_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
     Possible values are: `FULL`, `ARCHIVE`.
@@ -436,7 +436,7 @@ class BlockchainNodesEthereumDetailsGethDetailsArgsDict(TypedDict):
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsGethDetailsArgs:
     def __init__(__self__, *,
-                 garbage_collection_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 garbage_collection_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] garbage_collection_mode: Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
                Possible values are: `FULL`, `ARCHIVE`.
@@ -448,7 +448,7 @@ class BlockchainNodesEthereumDetailsGethDetailsArgs:
 
     @_builtins.property
     @pulumi.getter(name="garbageCollectionMode")
-    def garbage_collection_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def garbage_collection_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
         Possible values are: `FULL`, `ARCHIVE`.
@@ -458,16 +458,16 @@ class BlockchainNodesEthereumDetailsGethDetailsArgs:
         return pulumi.get(self, "garbage_collection_mode")
 
     @garbage_collection_mode.setter
-    def garbage_collection_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def garbage_collection_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "garbage_collection_mode", value)
 
 
 class BlockchainNodesEthereumDetailsValidatorConfigArgsDict(TypedDict):
-    beacon_fee_recipient: NotRequired[pulumi.Input[_builtins.str]]
+    beacon_fee_recipient: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
     """
-    mev_relay_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mev_relay_urls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
     """
@@ -475,8 +475,8 @@ class BlockchainNodesEthereumDetailsValidatorConfigArgsDict(TypedDict):
 @pulumi.input_type
 class BlockchainNodesEthereumDetailsValidatorConfigArgs:
     def __init__(__self__, *,
-                 beacon_fee_recipient: Optional[pulumi.Input[_builtins.str]] = None,
-                 mev_relay_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 beacon_fee_recipient: pulumi.Input[Optional[_builtins.str]] = None,
+                 mev_relay_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] beacon_fee_recipient: An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mev_relay_urls: URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
@@ -488,26 +488,26 @@ class BlockchainNodesEthereumDetailsValidatorConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="beaconFeeRecipient")
-    def beacon_fee_recipient(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def beacon_fee_recipient(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
         """
         return pulumi.get(self, "beacon_fee_recipient")
 
     @beacon_fee_recipient.setter
-    def beacon_fee_recipient(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def beacon_fee_recipient(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "beacon_fee_recipient", value)
 
     @_builtins.property
     @pulumi.getter(name="mevRelayUrls")
-    def mev_relay_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mev_relay_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
         """
         return pulumi.get(self, "mev_relay_urls")
 
     @mev_relay_urls.setter
-    def mev_relay_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mev_relay_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mev_relay_urls", value)
 
 

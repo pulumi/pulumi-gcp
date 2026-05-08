@@ -25,10 +25,10 @@ class SavedQueryArgs:
                  location: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  visibility: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_query: Optional[pulumi.Input['SavedQueryLoggingQueryArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ops_analytics_query: Optional[pulumi.Input['SavedQueryOpsAnalyticsQueryArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_query: pulumi.Input[Optional['SavedQueryLoggingQueryArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ops_analytics_query: pulumi.Input[Optional['SavedQueryOpsAnalyticsQueryArgs']] = None):
         """
         The set of arguments for constructing a SavedQuery resource.
 
@@ -110,19 +110,19 @@ class SavedQueryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the saved query.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingQuery")
-    def logging_query(self) -> Optional[pulumi.Input['SavedQueryLoggingQueryArgs']]:
+    def logging_query(self) -> pulumi.Input[Optional['SavedQueryLoggingQueryArgs']]:
         """
         The contents of the saved query.
         Structure is documented below.
@@ -130,24 +130,24 @@ class SavedQueryArgs:
         return pulumi.get(self, "logging_query")
 
     @logging_query.setter
-    def logging_query(self, value: Optional[pulumi.Input['SavedQueryLoggingQueryArgs']]):
+    def logging_query(self, value: pulumi.Input[Optional['SavedQueryLoggingQueryArgs']]):
         pulumi.set(self, "logging_query", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the saved query. For example: `my-saved-query`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="opsAnalyticsQuery")
-    def ops_analytics_query(self) -> Optional[pulumi.Input['SavedQueryOpsAnalyticsQueryArgs']]:
+    def ops_analytics_query(self) -> pulumi.Input[Optional['SavedQueryOpsAnalyticsQueryArgs']]:
         """
         The contents of the saved query.
         Structure is documented below.
@@ -155,23 +155,23 @@ class SavedQueryArgs:
         return pulumi.get(self, "ops_analytics_query")
 
     @ops_analytics_query.setter
-    def ops_analytics_query(self, value: Optional[pulumi.Input['SavedQueryOpsAnalyticsQueryArgs']]):
+    def ops_analytics_query(self, value: pulumi.Input[Optional['SavedQueryOpsAnalyticsQueryArgs']]):
         pulumi.set(self, "ops_analytics_query", value)
 
 
 @pulumi.input_type
 class _SavedQueryState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_query: Optional[pulumi.Input['SavedQueryLoggingQueryArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ops_analytics_query: Optional[pulumi.Input['SavedQueryOpsAnalyticsQueryArgs']] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_query: pulumi.Input[Optional['SavedQueryLoggingQueryArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ops_analytics_query: pulumi.Input[Optional['SavedQueryOpsAnalyticsQueryArgs']] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SavedQuery resources.
 
@@ -213,43 +213,43 @@ class _SavedQueryState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The creation timestamp of the saved query.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the saved query.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-visible display name of the saved query.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource see
         [supported regions](https://docs.cloud.google.com/logging/docs/region-support#bucket-regions).
@@ -257,12 +257,12 @@ class _SavedQueryState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingQuery")
-    def logging_query(self) -> Optional[pulumi.Input['SavedQueryLoggingQueryArgs']]:
+    def logging_query(self) -> pulumi.Input[Optional['SavedQueryLoggingQueryArgs']]:
         """
         The contents of the saved query.
         Structure is documented below.
@@ -270,24 +270,24 @@ class _SavedQueryState:
         return pulumi.get(self, "logging_query")
 
     @logging_query.setter
-    def logging_query(self, value: Optional[pulumi.Input['SavedQueryLoggingQueryArgs']]):
+    def logging_query(self, value: pulumi.Input[Optional['SavedQueryLoggingQueryArgs']]):
         pulumi.set(self, "logging_query", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the saved query. For example: `my-saved-query`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="opsAnalyticsQuery")
-    def ops_analytics_query(self) -> Optional[pulumi.Input['SavedQueryOpsAnalyticsQueryArgs']]:
+    def ops_analytics_query(self) -> pulumi.Input[Optional['SavedQueryOpsAnalyticsQueryArgs']]:
         """
         The contents of the saved query.
         Structure is documented below.
@@ -295,36 +295,36 @@ class _SavedQueryState:
         return pulumi.get(self, "ops_analytics_query")
 
     @ops_analytics_query.setter
-    def ops_analytics_query(self, value: Optional[pulumi.Input['SavedQueryOpsAnalyticsQueryArgs']]):
+    def ops_analytics_query(self, value: pulumi.Input[Optional['SavedQueryOpsAnalyticsQueryArgs']]):
         pulumi.set(self, "ops_analytics_query", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the resource.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The last update timestamp of the saved query.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The visibility of the saved query.
         Possible values are: `SHARED`, `PRIVATE`.
@@ -332,7 +332,7 @@ class _SavedQueryState:
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
 
@@ -342,14 +342,14 @@ class SavedQuery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_query: Optional[pulumi.Input[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ops_analytics_query: Optional[pulumi.Input[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Describes a query that has been saved by a user.
@@ -611,14 +611,14 @@ class SavedQuery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_query: Optional[pulumi.Input[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ops_analytics_query: Optional[pulumi.Input[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -656,16 +656,16 @@ class SavedQuery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            logging_query: Optional[pulumi.Input[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ops_analytics_query: Optional[pulumi.Input[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            visibility: Optional[pulumi.Input[_builtins.str]] = None) -> 'SavedQuery':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_query: pulumi.Input[Optional[Union['SavedQueryLoggingQueryArgs', 'SavedQueryLoggingQueryArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ops_analytics_query: pulumi.Input[Optional[Union['SavedQueryOpsAnalyticsQueryArgs', 'SavedQueryOpsAnalyticsQueryArgsDict']]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None) -> 'SavedQuery':
         """
         Get an existing SavedQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

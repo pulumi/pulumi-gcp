@@ -21,7 +21,7 @@ class DefaultServiceAccountsArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 restore_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 restore_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DefaultServiceAccounts resource.
 
@@ -63,7 +63,7 @@ class DefaultServiceAccountsArgs:
 
     @_builtins.property
     @pulumi.getter(name="restorePolicy")
-    def restore_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to be performed in the default service accounts on the resource destroy.
         Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
@@ -73,17 +73,17 @@ class DefaultServiceAccountsArgs:
         return pulumi.get(self, "restore_policy")
 
     @restore_policy.setter
-    def restore_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_policy", value)
 
 
 @pulumi.input_type
 class _DefaultServiceAccountsState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_accounts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_accounts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DefaultServiceAccounts resources.
 
@@ -106,31 +106,31 @@ class _DefaultServiceAccountsState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project ID where service accounts are created.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="restorePolicy")
-    def restore_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to be performed in the default service accounts on the resource destroy.
         Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
@@ -140,19 +140,19 @@ class _DefaultServiceAccountsState:
         return pulumi.get(self, "restore_policy")
 
     @restore_policy.setter
-    def restore_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccounts")
-    def service_accounts(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def service_accounts(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
         """
         return pulumi.get(self, "service_accounts")
 
     @service_accounts.setter
-    def service_accounts(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def service_accounts(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_accounts", value)
 
 
@@ -162,9 +162,9 @@ class DefaultServiceAccounts(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows management of Google Cloud Platform project default service accounts.
@@ -284,9 +284,9 @@ class DefaultServiceAccounts(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -314,10 +314,10 @@ class DefaultServiceAccounts(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            restore_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            service_accounts: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DefaultServiceAccounts':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            service_accounts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DefaultServiceAccounts':
         """
         Get an existing DefaultServiceAccounts resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

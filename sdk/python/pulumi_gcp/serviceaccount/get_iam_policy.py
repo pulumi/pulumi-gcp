@@ -109,7 +109,7 @@ def get_iam_policy(service_account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'))
-def get_iam_policy_output(service_account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_iam_policy_output(service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a service account.

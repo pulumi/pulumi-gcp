@@ -180,15 +180,15 @@ export interface EnvironmentKeyvaluemapsEntriesState {
      * The Apigee environment keyvalumaps Id associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
      */
-    envKeyvaluemapId?: pulumi.Input<string>;
+    envKeyvaluemapId?: pulumi.Input<string | undefined>;
     /**
      * Required. Resource URI that can be used to identify the scope of the key value map entries.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. Data or payload that is being retrieved and associated with the unique key.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,7 +203,7 @@ export interface EnvironmentKeyvaluemapsEntriesArgs {
     /**
      * Required. Resource URI that can be used to identify the scope of the key value map entries.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. Data or payload that is being retrieved and associated with the unique key.
      */

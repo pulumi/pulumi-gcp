@@ -324,20 +324,20 @@ export interface HostingVersionState {
      * The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.firebase.HostingVersionConfig>;
+    config?: pulumi.Input<inputs.firebase.HostingVersionConfig | undefined>;
     /**
      * The fully-qualified resource name for the version, in the format:
      * sites/SITE_ID/versions/VERSION_ID
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID of the site in which to create this Version.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The ID for the version as in sites/SITE_ID/versions/VERSION_ID
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -348,7 +348,7 @@ export interface HostingVersionArgs {
      * The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.firebase.HostingVersionConfig>;
+    config?: pulumi.Input<inputs.firebase.HostingVersionConfig | undefined>;
     /**
      * Required. The ID of the site in which to create this Version.
      */

@@ -27,14 +27,14 @@ class SearchEngineArgs:
                  engine_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  search_engine_config: pulumi.Input['SearchEngineSearchEngineConfigArgs'],
-                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
-                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_graph_config: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_config: pulumi.Input[Optional['SearchEngineCommonConfigArgs']] = None,
+                 disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_graph_config: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SearchEngine resource.
 
@@ -162,7 +162,7 @@ class SearchEngineArgs:
 
     @_builtins.property
     @pulumi.getter(name="appType")
-    def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the application type this engine resource represents.
         The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
@@ -170,12 +170,12 @@ class SearchEngineArgs:
         return pulumi.get(self, "app_type")
 
     @app_type.setter
-    def app_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_type", value)
 
     @_builtins.property
     @pulumi.getter(name="commonConfig")
-    def common_config(self) -> Optional[pulumi.Input['SearchEngineCommonConfigArgs']]:
+    def common_config(self) -> pulumi.Input[Optional['SearchEngineCommonConfigArgs']]:
         """
         Common config spec that specifies the metadata of the engine.
         Structure is documented below.
@@ -183,36 +183,36 @@ class SearchEngineArgs:
         return pulumi.get(self, "common_config")
 
     @common_config.setter
-    def common_config(self, value: Optional[pulumi.Input['SearchEngineCommonConfigArgs']]):
+    def common_config(self, value: pulumi.Input[Optional['SearchEngineCommonConfigArgs']]):
         pulumi.set(self, "common_config", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAnalytics")
-    def disable_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable analytics for searches performed on this engine.
         """
         return pulumi.get(self, "disable_analytics")
 
     @disable_analytics.setter
-    def disable_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_analytics", value)
 
     @_builtins.property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def features(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of the feature config for the engine to opt in or opt out of features.
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def features(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter(name="industryVertical")
-    def industry_vertical(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def industry_vertical(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
         Default value is `GENERIC`.
@@ -221,12 +221,12 @@ class SearchEngineArgs:
         return pulumi.get(self, "industry_vertical")
 
     @industry_vertical.setter
-    def industry_vertical(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def industry_vertical(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "industry_vertical", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key to be used to protect this Engine at creation time.
         Must be set for requests that need to comply with CMEK Org Policy
@@ -237,12 +237,12 @@ class SearchEngineArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeGraphConfig")
-    def knowledge_graph_config(self) -> Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]:
+    def knowledge_graph_config(self) -> pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']]:
         """
         Configurations for the Knowledge Graph.
         Structure is documented below.
@@ -250,12 +250,12 @@ class SearchEngineArgs:
         return pulumi.get(self, "knowledge_graph_config")
 
     @knowledge_graph_config.setter
-    def knowledge_graph_config(self, value: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]):
+    def knowledge_graph_config(self, value: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']]):
         pulumi.set(self, "knowledge_graph_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -263,30 +263,30 @@ class SearchEngineArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _SearchEngineState:
     def __init__(__self__, *,
-                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_config: Optional[pulumi.Input['SearchEngineCommonConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_graph_config: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_engine_config: Optional[pulumi.Input['SearchEngineSearchEngineConfigArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_config: pulumi.Input[Optional['SearchEngineCommonConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_graph_config: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_engine_config: pulumi.Input[Optional['SearchEngineSearchEngineConfigArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SearchEngine resources.
 
@@ -359,7 +359,7 @@ class _SearchEngineState:
 
     @_builtins.property
     @pulumi.getter(name="appType")
-    def app_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the application type this engine resource represents.
         The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
@@ -367,24 +367,24 @@ class _SearchEngineState:
         return pulumi.get(self, "app_type")
 
     @app_type.setter
-    def app_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_type", value)
 
     @_builtins.property
     @pulumi.getter(name="collectionId")
-    def collection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The collection ID.
         """
         return pulumi.get(self, "collection_id")
 
     @collection_id.setter
-    def collection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="commonConfig")
-    def common_config(self) -> Optional[pulumi.Input['SearchEngineCommonConfigArgs']]:
+    def common_config(self) -> pulumi.Input[Optional['SearchEngineCommonConfigArgs']]:
         """
         Common config spec that specifies the metadata of the engine.
         Structure is documented below.
@@ -392,84 +392,84 @@ class _SearchEngineState:
         return pulumi.get(self, "common_config")
 
     @common_config.setter
-    def common_config(self, value: Optional[pulumi.Input['SearchEngineCommonConfigArgs']]):
+    def common_config(self, value: pulumi.Input[Optional['SearchEngineCommonConfigArgs']]):
         pulumi.set(self, "common_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp the Engine was created at.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreIds")
-    def data_store_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_store_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         """
         return pulumi.get(self, "data_store_ids")
 
     @data_store_ids.setter
-    def data_store_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_store_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_store_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAnalytics")
-    def disable_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable analytics for searches performed on this engine.
         """
         return pulumi.get(self, "disable_analytics")
 
     @disable_analytics.setter
-    def disable_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_analytics", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="engineId")
-    def engine_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID to use for Search Engine App.
         """
         return pulumi.get(self, "engine_id")
 
     @engine_id.setter
-    def engine_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def features(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of the feature config for the engine to opt in or opt out of features.
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def features(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter(name="industryVertical")
-    def industry_vertical(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def industry_vertical(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
         Default value is `GENERIC`.
@@ -478,12 +478,12 @@ class _SearchEngineState:
         return pulumi.get(self, "industry_vertical")
 
     @industry_vertical.setter
-    def industry_vertical(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def industry_vertical(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "industry_vertical", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The KMS key to be used to protect this Engine at creation time.
         Must be set for requests that need to comply with CMEK Org Policy
@@ -494,12 +494,12 @@ class _SearchEngineState:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeGraphConfig")
-    def knowledge_graph_config(self) -> Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]:
+    def knowledge_graph_config(self) -> pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']]:
         """
         Configurations for the Knowledge Graph.
         Structure is documented below.
@@ -507,24 +507,24 @@ class _SearchEngineState:
         return pulumi.get(self, "knowledge_graph_config")
 
     @knowledge_graph_config.setter
-    def knowledge_graph_config(self, value: Optional[pulumi.Input['SearchEngineKnowledgeGraphConfigArgs']]):
+    def knowledge_graph_config(self, value: pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigArgs']]):
         pulumi.set(self, "knowledge_graph_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique full resource name of the search engine. Values are of the format
         `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
@@ -534,12 +534,12 @@ class _SearchEngineState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -547,12 +547,12 @@ class _SearchEngineState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="searchEngineConfig")
-    def search_engine_config(self) -> Optional[pulumi.Input['SearchEngineSearchEngineConfigArgs']]:
+    def search_engine_config(self) -> pulumi.Input[Optional['SearchEngineSearchEngineConfigArgs']]:
         """
         Configurations for a Search Engine.
         Structure is documented below.
@@ -560,19 +560,19 @@ class _SearchEngineState:
         return pulumi.get(self, "search_engine_config")
 
     @search_engine_config.setter
-    def search_engine_config(self, value: Optional[pulumi.Input['SearchEngineSearchEngineConfigArgs']]):
+    def search_engine_config(self, value: pulumi.Input[Optional['SearchEngineSearchEngineConfigArgs']]):
         pulumi.set(self, "search_engine_config", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp the Engine was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -582,20 +582,20 @@ class SearchEngine(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
-                 data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_graph_config: Optional[pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
+                 data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
                  __props__=None):
         """
         Vertex AI Search and Conversation can be used to create a search engine or a chat application by connecting it with a datastore
@@ -814,20 +814,20 @@ class SearchEngine(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
-                 data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 knowledge_graph_config: Optional[pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
+                 data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -876,23 +876,23 @@ class SearchEngine(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_type: Optional[pulumi.Input[_builtins.str]] = None,
-            collection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            common_config: Optional[pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_store_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            disable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_id: Optional[pulumi.Input[_builtins.str]] = None,
-            features: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            industry_vertical: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            knowledge_graph_config: Optional[pulumi.Input[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            search_engine_config: Optional[pulumi.Input[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SearchEngine':
+            app_type: pulumi.Input[Optional[_builtins.str]] = None,
+            collection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_id: pulumi.Input[Optional[_builtins.str]] = None,
+            features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_graph_config: pulumi.Input[Optional[Union['SearchEngineKnowledgeGraphConfigArgs', 'SearchEngineKnowledgeGraphConfigArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            search_engine_config: pulumi.Input[Optional[Union['SearchEngineSearchEngineConfigArgs', 'SearchEngineSearchEngineConfigArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SearchEngine':
         """
         Get an existing SearchEngine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

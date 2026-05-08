@@ -447,51 +447,51 @@ export interface CxWebhookState {
     /**
      * Indicates whether the webhook is disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The human-readable name of the webhook, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      */
-    enableSpellCorrection?: pulumi.Input<boolean>;
+    enableSpellCorrection?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated. Determines whether this agent should log conversation queries.
      */
-    enableStackdriverLogging?: pulumi.Input<boolean>;
+    enableStackdriverLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Represents configuration for a generic web service.
      * Structure is documented below.
      */
-    genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService>;
+    genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService | undefined>;
     /**
      * The unique identifier of the webhook.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The agent to create a webhook for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
-    securitySettings?: pulumi.Input<string>;
+    securitySettings?: pulumi.Input<string | undefined>;
     /**
      * Configuration for a Service Directory service.
      * Structure is documented below.
      */
-    serviceDirectory?: pulumi.Input<inputs.diagflow.CxWebhookServiceDirectory>;
+    serviceDirectory?: pulumi.Input<inputs.diagflow.CxWebhookServiceDirectory | undefined>;
     /**
      * Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    startFlow?: pulumi.Input<string>;
+    startFlow?: pulumi.Input<string | undefined>;
     /**
      * Webhook execution timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -501,7 +501,7 @@ export interface CxWebhookArgs {
     /**
      * Indicates whether the webhook is disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The human-readable name of the webhook, unique within the agent.
      */
@@ -509,32 +509,32 @@ export interface CxWebhookArgs {
     /**
      * Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
      */
-    enableSpellCorrection?: pulumi.Input<boolean>;
+    enableSpellCorrection?: pulumi.Input<boolean | undefined>;
     /**
      * Deprecated. Determines whether this agent should log conversation queries.
      */
-    enableStackdriverLogging?: pulumi.Input<boolean>;
+    enableStackdriverLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Represents configuration for a generic web service.
      * Structure is documented below.
      */
-    genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService>;
+    genericWebService?: pulumi.Input<inputs.diagflow.CxWebhookGenericWebService | undefined>;
     /**
      * The agent to create a webhook for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
-    securitySettings?: pulumi.Input<string>;
+    securitySettings?: pulumi.Input<string | undefined>;
     /**
      * Configuration for a Service Directory service.
      * Structure is documented below.
      */
-    serviceDirectory?: pulumi.Input<inputs.diagflow.CxWebhookServiceDirectory>;
+    serviceDirectory?: pulumi.Input<inputs.diagflow.CxWebhookServiceDirectory | undefined>;
     /**
      * Webhook execution timeout.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }

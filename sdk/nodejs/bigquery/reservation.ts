@@ -286,26 +286,26 @@ export interface ReservationState {
      * The configuration parameters for the auto scaling feature.
      * Structure is documented below.
      */
-    autoscale?: pulumi.Input<inputs.bigquery.ReservationAutoscale>;
+    autoscale?: pulumi.Input<inputs.bigquery.ReservationAutoscale | undefined>;
     /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
-    concurrency?: pulumi.Input<number>;
+    concurrency?: pulumi.Input<number | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
-    edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string | undefined>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
      */
-    ignoreIdleSlots?: pulumi.Input<boolean>;
+    ignoreIdleSlots?: pulumi.Input<boolean | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
@@ -341,27 +341,27 @@ export interface ReservationState {
      * maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
      * feature.
      */
-    maxSlots?: pulumi.Input<number>;
+    maxSlots?: pulumi.Input<number | undefined>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The location where the reservation was originally created. This is set only during the
      * failover reservation's creation. All billing charges for the failover reservation will be
      * applied to this location.
      */
-    originalPrimaryLocation?: pulumi.Input<string>;
+    originalPrimaryLocation?: pulumi.Input<string | undefined>;
     /**
      * The current location of the reservation's primary replica. This field is only set for
      * reservations using the managed disaster recovery feature.
      */
-    primaryLocation?: pulumi.Input<string>;
+    primaryLocation?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Disaster Recovery(DR) replication status of the reservation. This is only available for
      * the primary replicas of DR/failover reservations and provides information about the both the
@@ -371,11 +371,11 @@ export interface ReservationState {
      * operations on the reservation have succeeded.
      * Structure is documented below.
      */
-    replicationStatuses?: pulumi.Input<pulumi.Input<inputs.bigquery.ReservationReplicationStatus>[]>;
+    replicationStatuses?: pulumi.Input<pulumi.Input<inputs.bigquery.ReservationReplicationStatus>[] | undefined>;
     /**
      * The reservation group that this reservation belongs to.
      */
-    reservationGroup?: pulumi.Input<string>;
+    reservationGroup?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
@@ -412,19 +412,19 @@ export interface ReservationState {
      * Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
      */
-    scalingMode?: pulumi.Input<string>;
+    scalingMode?: pulumi.Input<string | undefined>;
     /**
      * The current location of the reservation's secondary replica. This field is only set for
      * reservations using the managed disaster recovery feature. Users can set this in create
      * reservation calls to create a failover reservation or in update reservation calls to convert
      * a non-failover reservation to a failover reservation(or vice versa).
      */
-    secondaryLocation?: pulumi.Input<string>;
+    secondaryLocation?: pulumi.Input<string | undefined>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
      * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
      */
-    slotCapacity?: pulumi.Input<number>;
+    slotCapacity?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -435,26 +435,26 @@ export interface ReservationArgs {
      * The configuration parameters for the auto scaling feature.
      * Structure is documented below.
      */
-    autoscale?: pulumi.Input<inputs.bigquery.ReservationAutoscale>;
+    autoscale?: pulumi.Input<inputs.bigquery.ReservationAutoscale | undefined>;
     /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
-    concurrency?: pulumi.Input<number>;
+    concurrency?: pulumi.Input<number | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
-    edition?: pulumi.Input<string>;
+    edition?: pulumi.Input<string | undefined>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
      */
-    ignoreIdleSlots?: pulumi.Input<boolean>;
+    ignoreIdleSlots?: pulumi.Input<boolean | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The overall max slots for the reservation, covering slotCapacity (baseline), idle slots
@@ -490,20 +490,20 @@ export interface ReservationArgs {
      * maxSlots to 0 and set scalingMode to SCALING_MODE_UNSPECIFIED to disable the maxSlots
      * feature.
      */
-    maxSlots?: pulumi.Input<number>;
+    maxSlots?: pulumi.Input<number | undefined>;
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The reservation group that this reservation belongs to.
      */
-    reservationGroup?: pulumi.Input<string>;
+    reservationGroup?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The scaling mode for the reservation. If the field is present but maxSlots is not present,
@@ -540,14 +540,14 @@ export interface ReservationArgs {
      * Otherwise the request will be rejected with error code google.rpc.Code.INVALID_ARGUMENT.
      * Possible values are: `SCALING_MODE_UNSPECIFIED`, `AUTOSCALE_ONLY`, `IDLE_SLOTS_ONLY`, `ALL_SLOTS`.
      */
-    scalingMode?: pulumi.Input<string>;
+    scalingMode?: pulumi.Input<string | undefined>;
     /**
      * The current location of the reservation's secondary replica. This field is only set for
      * reservations using the managed disaster recovery feature. Users can set this in create
      * reservation calls to create a failover reservation or in update reservation calls to convert
      * a non-failover reservation to a failover reservation(or vice versa).
      */
-    secondaryLocation?: pulumi.Input<string>;
+    secondaryLocation?: pulumi.Input<string | undefined>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
      * unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.

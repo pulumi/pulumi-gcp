@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Ces
     ///                         Image = new Gcp.Ces.Inputs.ExampleMessageChunkImageArgs
     ///                         {
     ///                             MimeType = "image/png",
-    ///                             Data = Std.Index.Base64encode.Invoke(new()
+    ///                             Data = Std.Base64encode.Invoke(new()
     ///                             {
     ///                                 Input = "This is some fake image binary data.",
     ///                             }).Apply(invoke =&gt; invoke.Result),

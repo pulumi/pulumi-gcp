@@ -592,76 +592,76 @@ export interface JobState {
      * Copies a table.
      * Structure is documented below.
      */
-    copy?: pulumi.Input<inputs.bigquery.JobCopy>;
+    copy?: pulumi.Input<inputs.bigquery.JobCopy | undefined>;
     /**
      * (Output)
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configures an extract job.
      * Structure is documented below.
      */
-    extract?: pulumi.Input<inputs.bigquery.JobExtract>;
+    extract?: pulumi.Input<inputs.bigquery.JobExtract | undefined>;
     /**
      * The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
      */
-    jobTimeoutMs?: pulumi.Input<string>;
+    jobTimeoutMs?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The type of the job.
      */
-    jobType?: pulumi.Input<string>;
+    jobType?: pulumi.Input<string | undefined>;
     /**
      * The labels associated with this job. You can use these to organize and group your jobs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configures a load job.
      * Structure is documented below.
      */
-    load?: pulumi.Input<inputs.bigquery.JobLoad>;
+    load?: pulumi.Input<inputs.bigquery.JobLoad | undefined>;
     /**
      * The geographic location of the job. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configures a query job.
      * Structure is documented below.
      */
-    query?: pulumi.Input<inputs.bigquery.JobQuery>;
+    query?: pulumi.Input<inputs.bigquery.JobQuery | undefined>;
     /**
      * (Optional, Beta)
      * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
      * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
      */
-    reservation?: pulumi.Input<string>;
+    reservation?: pulumi.Input<string | undefined>;
     /**
      * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatus>[] | undefined>;
     /**
      * Email address of the user who ran the job.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -672,12 +672,12 @@ export interface JobArgs {
      * Copies a table.
      * Structure is documented below.
      */
-    copy?: pulumi.Input<inputs.bigquery.JobCopy>;
+    copy?: pulumi.Input<inputs.bigquery.JobCopy | undefined>;
     /**
      * Configures an extract job.
      * Structure is documented below.
      */
-    extract?: pulumi.Input<inputs.bigquery.JobExtract>;
+    extract?: pulumi.Input<inputs.bigquery.JobExtract | undefined>;
     /**
      * The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
      */
@@ -685,37 +685,37 @@ export interface JobArgs {
     /**
      * Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
      */
-    jobTimeoutMs?: pulumi.Input<string>;
+    jobTimeoutMs?: pulumi.Input<string | undefined>;
     /**
      * The labels associated with this job. You can use these to organize and group your jobs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configures a load job.
      * Structure is documented below.
      */
-    load?: pulumi.Input<inputs.bigquery.JobLoad>;
+    load?: pulumi.Input<inputs.bigquery.JobLoad | undefined>;
     /**
      * The geographic location of the job. The default value is US.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configures a query job.
      * Structure is documented below.
      */
-    query?: pulumi.Input<inputs.bigquery.JobQuery>;
+    query?: pulumi.Input<inputs.bigquery.JobQuery | undefined>;
     /**
      * (Optional, Beta)
      * The reservation that job would use. User can specify a reservation to execute the job. If this field is not set, reservation is determined based on the rules defined by the reservation assignments.
      * The expected format is `projects/{project}/locations/{location}/reservations/{reservation}`.
      */
-    reservation?: pulumi.Input<string>;
+    reservation?: pulumi.Input<string | undefined>;
 }

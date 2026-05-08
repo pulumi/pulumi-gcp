@@ -168,15 +168,15 @@ export interface GetAddressesOutputArgs {
      * (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell")
      * AND (scheduling.automaticRestart = true)
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * The google project in which addresses are listed.
      * Defaults to provider's configuration if missing.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region that should be considered to search addresses.
      * All regions are considered if missing.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

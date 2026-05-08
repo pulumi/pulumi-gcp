@@ -114,12 +114,12 @@ export interface DocumentAiProcessorDefaultVersionState {
     /**
      * The processor to set the version on.
      */
-    processor?: pulumi.Input<string>;
+    processor?: pulumi.Input<string | undefined>;
     /**
      * The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
      * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**

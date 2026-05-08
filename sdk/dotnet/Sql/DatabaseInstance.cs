@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Sql
     ///             },
     ///         }));
     ///     }
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
@@ -166,7 +166,7 @@ namespace Pulumi.Gcp.Sql
     ///         },
     ///     });
     /// 
-    ///     var dbNameSuffix = new Random.Index.Id("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Id("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });

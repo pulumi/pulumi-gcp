@@ -88,11 +88,11 @@ class ContactArgs:
 @pulumi.input_type
 class _ContactState:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 language_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 language_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_category_subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Contact resources.
 
@@ -115,62 +115,62 @@ class _ContactState:
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address to send notifications to. This does not need to be a Google account.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="languageTag")
-    def language_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         """
         return pulumi.get(self, "language_tag")
 
     @language_tag.setter
-    def language_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationCategorySubscriptions")
-    def notification_category_subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_category_subscriptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The categories of notifications that the contact will receive communications for.
         """
         return pulumi.get(self, "notification_category_subscriptions")
 
     @notification_category_subscriptions.setter
-    def notification_category_subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_category_subscriptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_category_subscriptions", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
@@ -180,10 +180,10 @@ class Contact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 language_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 language_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_category_subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A contact that will receive notifications from Google Cloud.
@@ -301,10 +301,10 @@ class Contact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 language_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 language_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_category_subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,11 +337,11 @@ class Contact(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            language_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None) -> 'Contact':
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            language_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_category_subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> 'Contact':
         """
         Get an existing Contact resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

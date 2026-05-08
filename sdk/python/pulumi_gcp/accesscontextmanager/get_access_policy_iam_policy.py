@@ -110,7 +110,7 @@ def get_access_policy_iam_policy(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_access_policy_iam_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_access_policy_iam_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessPolicyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for accesspolicy

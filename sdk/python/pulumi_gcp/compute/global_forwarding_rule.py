@@ -22,25 +22,25 @@ __all__ = ['GlobalForwardingRuleArgs', 'GlobalForwardingRule']
 class GlobalForwardingRuleArgs:
     def __init__(__self__, *,
                  target: pulumi.Input[_builtins.str],
-                 allow_psc_global_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_managed_backend_bucket_migration_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_managed_backend_bucket_migration_testing_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_automate_dns_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata_filters: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_automate_dns_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_registrations: pulumi.Input[Optional['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalForwardingRule resource.
 
@@ -264,7 +264,7 @@ class GlobalForwardingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowPscGlobalAccess")
-    def allow_psc_global_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_psc_global_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
@@ -272,12 +272,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "allow_psc_global_access")
 
     @allow_psc_global_access.setter
-    def allow_psc_global_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_psc_global_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_psc_global_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -285,12 +285,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externalManagedBackendBucketMigrationState")
-    def external_managed_backend_bucket_migration_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_managed_backend_bucket_migration_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the canary migration state for the backend buckets attached to this forwarding rule.
         Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
@@ -308,12 +308,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "external_managed_backend_bucket_migration_state")
 
     @external_managed_backend_bucket_migration_state.setter
-    def external_managed_backend_bucket_migration_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_managed_backend_bucket_migration_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_managed_backend_bucket_migration_state", value)
 
     @_builtins.property
     @pulumi.getter(name="externalManagedBackendBucketMigrationTestingPercentage")
-    def external_managed_backend_bucket_migration_testing_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def external_managed_backend_bucket_migration_testing_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Determines the fraction of requests to backend buckets that should be processed by the Global
         external Application Load Balancer.
@@ -324,12 +324,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "external_managed_backend_bucket_migration_testing_percentage")
 
     @external_managed_backend_bucket_migration_testing_percentage.setter
-    def external_managed_backend_bucket_migration_testing_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def external_managed_backend_bucket_migration_testing_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "external_managed_backend_bucket_migration_testing_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address for which this forwarding rule accepts traffic. When a client
         sends traffic to this IP address, the forwarding rule directs the traffic
@@ -366,12 +366,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol to which this rule applies.
         For protocol forwarding, valid
@@ -386,12 +386,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP Version that will be used by this global forwarding rule.
         Possible values are: `IPV4`, `IPV6`.
@@ -399,12 +399,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
 
@@ -414,12 +414,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the forwarding rule type.
         For more information about forwarding rules, refer to
@@ -430,12 +430,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataFilters")
-    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]:
+    def metadata_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]:
         """
         Opaque filter criteria used by Loadbalancer to restrict routing
         configuration to a limited set xDS compliant clients. In their xDS
@@ -456,12 +456,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "metadata_filters")
 
     @metadata_filters.setter
-    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]):
+    def metadata_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]):
         pulumi.set(self, "metadata_filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-63 characters long, and comply with
@@ -478,12 +478,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is not used for external load balancing.
         For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -497,12 +497,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This signifies the networking tier used for configuring
         this load balancer and can only take the following values:
@@ -518,24 +518,24 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
-    def network_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="noAutomateDnsZone")
-    def no_automate_dns_zone(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_automate_dns_zone(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         """
         return pulumi.get(self, "no_automate_dns_zone")
 
     @no_automate_dns_zone.setter
-    def no_automate_dns_zone(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_automate_dns_zone(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_automate_dns_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `portRange` field has the following limitations:
         * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -558,12 +558,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "port_range")
 
     @port_range.setter
-    def port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -571,12 +571,12 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]:
+    def service_directory_registrations(self) -> pulumi.Input[Optional['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.
@@ -585,24 +585,24 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "service_directory_registrations")
 
     @service_directory_registrations.setter
-    def service_directory_registrations(self, value: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]):
+    def service_directory_registrations(self, value: pulumi.Input[Optional['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]):
         pulumi.set(self, "service_directory_registrations", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIpRanges")
-    def source_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         """
         return pulumi.get(self, "source_ip_ranges")
 
     @source_ip_ranges.setter
-    def source_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field identifies the subnetwork that the load balanced IP should
         belong to for this Forwarding Rule, used in internal load balancing and
@@ -614,41 +614,41 @@ class GlobalForwardingRuleArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type
 class _GlobalForwardingRuleState:
     def __init__(__self__, *,
-                 allow_psc_global_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 base_forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 external_managed_backend_bucket_migration_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_managed_backend_bucket_migration_testing_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 forwarding_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_automate_dns_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata_filters: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_automate_dns_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_registrations: pulumi.Input[Optional['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalForwardingRule resources.
 
@@ -878,7 +878,7 @@ class _GlobalForwardingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="allowPscGlobalAccess")
-    def allow_psc_global_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_psc_global_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
@@ -886,24 +886,24 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "allow_psc_global_access")
 
     @allow_psc_global_access.setter
-    def allow_psc_global_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_psc_global_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_psc_global_access", value)
 
     @_builtins.property
     @pulumi.getter(name="baseForwardingRule")
-    def base_forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         """
         return pulumi.get(self, "base_forwarding_rule")
 
     @base_forwarding_rule.setter
-    def base_forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when
         you create the resource.
@@ -911,24 +911,24 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="externalManagedBackendBucketMigrationState")
-    def external_managed_backend_bucket_migration_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_managed_backend_bucket_migration_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the canary migration state for the backend buckets attached to this forwarding rule.
         Possible values are PREPARE, TEST_BY_PERCENTAGE, and TEST_ALL_TRAFFIC.
@@ -946,12 +946,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "external_managed_backend_bucket_migration_state")
 
     @external_managed_backend_bucket_migration_state.setter
-    def external_managed_backend_bucket_migration_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_managed_backend_bucket_migration_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_managed_backend_bucket_migration_state", value)
 
     @_builtins.property
     @pulumi.getter(name="externalManagedBackendBucketMigrationTestingPercentage")
-    def external_managed_backend_bucket_migration_testing_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def external_managed_backend_bucket_migration_testing_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Determines the fraction of requests to backend buckets that should be processed by the Global
         external Application Load Balancer.
@@ -962,24 +962,24 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "external_managed_backend_bucket_migration_testing_percentage")
 
     @external_managed_backend_bucket_migration_testing_percentage.setter
-    def external_managed_backend_bucket_migration_testing_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def external_managed_backend_bucket_migration_testing_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "external_managed_backend_bucket_migration_testing_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRuleId")
-    def forwarding_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def forwarding_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier number for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "forwarding_rule_id")
 
     @forwarding_rule_id.setter
-    def forwarding_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def forwarding_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "forwarding_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address for which this forwarding rule accepts traffic. When a client
         sends traffic to this IP address, the forwarding rule directs the traffic
@@ -1016,12 +1016,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol to which this rule applies.
         For protocol forwarding, valid
@@ -1036,12 +1036,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP Version that will be used by this global forwarding rule.
         Possible values are: `IPV4`, `IPV6`.
@@ -1049,12 +1049,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource.  Used
         internally during updates.
@@ -1062,12 +1062,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this forwarding rule.  A list of key->value pairs.
 
@@ -1077,12 +1077,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the forwarding rule type.
         For more information about forwarding rules, refer to
@@ -1093,12 +1093,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataFilters")
-    def metadata_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]:
+    def metadata_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]:
         """
         Opaque filter criteria used by Loadbalancer to restrict routing
         configuration to a limited set xDS compliant clients. In their xDS
@@ -1119,12 +1119,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "metadata_filters")
 
     @metadata_filters.setter
-    def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]):
+    def metadata_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]]):
         pulumi.set(self, "metadata_filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-63 characters long, and comply with
@@ -1141,12 +1141,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field is not used for external load balancing.
         For Internal TCP/UDP Load Balancing, this field identifies the network that
@@ -1160,12 +1160,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This signifies the networking tier used for configuring
         this load balancer and can only take the following values:
@@ -1181,24 +1181,24 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
-    def network_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="noAutomateDnsZone")
-    def no_automate_dns_zone(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_automate_dns_zone(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         """
         return pulumi.get(self, "no_automate_dns_zone")
 
     @no_automate_dns_zone.setter
-    def no_automate_dns_zone(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_automate_dns_zone(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_automate_dns_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `portRange` field has the following limitations:
         * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -1221,12 +1221,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "port_range")
 
     @port_range.setter
-    def port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1234,36 +1234,36 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionId")
-    def psc_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PSC connection id of the PSC Forwarding Rule.
         """
         return pulumi.get(self, "psc_connection_id")
 
     @psc_connection_id.setter
-    def psc_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionStatus")
-    def psc_connection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
         """
         return pulumi.get(self, "psc_connection_status")
 
     @psc_connection_status.setter
-    def psc_connection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_status", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1271,24 +1271,24 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]:
+    def service_directory_registrations(self) -> pulumi.Input[Optional['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.
@@ -1297,24 +1297,24 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "service_directory_registrations")
 
     @service_directory_registrations.setter
-    def service_directory_registrations(self, value: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]):
+    def service_directory_registrations(self, value: pulumi.Input[Optional['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]):
         pulumi.set(self, "service_directory_registrations", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIpRanges")
-    def source_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         """
         return pulumi.get(self, "source_ip_ranges")
 
     @source_ip_ranges.setter
-    def source_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field identifies the subnetwork that the load balanced IP should
         belong to for this Forwarding Rule, used in internal load balancing and
@@ -1326,12 +1326,12 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the target resource to receive the matched traffic.  For
         regional forwarding rules, this target must be in the same region as the
@@ -1347,7 +1347,7 @@ class _GlobalForwardingRuleState:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
 
@@ -1357,26 +1357,26 @@ class GlobalForwardingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_psc_global_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_managed_backend_bucket_migration_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_managed_backend_bucket_migration_testing_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_automate_dns_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_automate_dns_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_registrations: pulumi.Input[Optional[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a GlobalForwardingRule resource. Global forwarding rules are
@@ -1475,7 +1475,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 "group": igm.instance_group,
                 "balancing_mode": "RATE",
                 "capacity_scaler": 0.4,
-                "max_rate_per_instance": 50,
+                "max_rate_per_instance": float(50),
             }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
@@ -1612,7 +1612,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             backends=[{
                 "group": default_network_endpoint_group.id,
                 "balancing_mode": "RATE",
-                "max_rate_per_endpoint": 10,
+                "max_rate_per_endpoint": float(10),
             }],
             health_checks=default_health_check.id)
         # Backgend service for Hybrid NEG
@@ -1624,7 +1624,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             backends=[{
                 "group": hybrid.id,
                 "balancing_mode": "RATE",
-                "max_rate_per_endpoint": 10,
+                "max_rate_per_endpoint": float(10),
             }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
@@ -2007,7 +2007,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 "group": igm.instance_group,
                 "balancing_mode": "RATE",
                 "capacity_scaler": 0.4,
-                "max_rate_per_instance": 50,
+                "max_rate_per_instance": float(50),
             }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
@@ -2144,7 +2144,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             backends=[{
                 "group": default_network_endpoint_group.id,
                 "balancing_mode": "RATE",
-                "max_rate_per_endpoint": 10,
+                "max_rate_per_endpoint": float(10),
             }],
             health_checks=default_health_check.id)
         # Backgend service for Hybrid NEG
@@ -2156,7 +2156,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             backends=[{
                 "group": hybrid.id,
                 "balancing_mode": "RATE",
-                "max_rate_per_endpoint": 10,
+                "max_rate_per_endpoint": float(10),
             }],
             health_checks=default_health_check.id)
         default_url_map = gcp.compute.URLMap("default",
@@ -2292,26 +2292,26 @@ class GlobalForwardingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_psc_global_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_managed_backend_bucket_migration_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_managed_backend_bucket_migration_testing_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_automate_dns_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_automate_dns_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_registrations: pulumi.Input[Optional[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
+                 source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2363,34 +2363,34 @@ class GlobalForwardingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_psc_global_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            base_forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            external_managed_backend_bucket_migration_state: Optional[pulumi.Input[_builtins.str]] = None,
-            external_managed_backend_bucket_migration_testing_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-            forwarding_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-            no_automate_dns_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-            port_range: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            psc_connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            service_directory_registrations: Optional[pulumi.Input[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
-            source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-            target: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalForwardingRule':
+            allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            external_managed_backend_bucket_migration_state: pulumi.Input[Optional[_builtins.str]] = None,
+            external_managed_backend_bucket_migration_testing_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata_filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            no_automate_dns_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_directory_registrations: pulumi.Input[Optional[Union['GlobalForwardingRuleServiceDirectoryRegistrationsArgs', 'GlobalForwardingRuleServiceDirectoryRegistrationsArgsDict']]] = None,
+            source_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalForwardingRule':
         """
         Get an existing GlobalForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

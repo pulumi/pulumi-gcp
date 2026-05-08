@@ -139,9 +139,9 @@ def get_table_iam_policy(dataset_id: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         table_id=pulumi.get(__ret__, 'table_id'))
-def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_table_iam_policy_output(dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                table_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableIamPolicyResult]:
     """
     Retrieves the current IAM policy data for table

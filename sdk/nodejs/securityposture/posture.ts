@@ -289,54 +289,54 @@ export interface PostureState {
     /**
      * Time the Posture was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the posture.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * For Resource freshness validation (https://google.aip.dev/154)
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Location of the resource, eg: global.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Name of the posture.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * List of policy sets for the posture.
      * Structure is documented below.
      */
-    policySets?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySet>[]>;
+    policySets?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySet>[] | undefined>;
     /**
      * Id of the posture. It is an immutable field.
      */
-    postureId?: pulumi.Input<string>;
+    postureId?: pulumi.Input<string | undefined>;
     /**
      * If set, there are currently changes in flight to the posture.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * Revision_id of the posture.
      */
-    revisionId?: pulumi.Input<string>;
+    revisionId?: pulumi.Input<string | undefined>;
     /**
      * State of the posture. Update to state field should not be triggered along with
      * with other field updates.
      * Possible values are: `DEPRECATED`, `DRAFT`, `ACTIVE`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Time the Posture was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -346,7 +346,7 @@ export interface PostureArgs {
     /**
      * Description of the posture.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Location of the resource, eg: global.
      */

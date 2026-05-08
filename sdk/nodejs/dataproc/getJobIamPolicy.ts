@@ -104,10 +104,10 @@ export interface GetJobIamPolicyOutputArgs {
      * The project in which the job belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the job belongs. If it
      * is not provided, Terraform will use the provider default.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -164,44 +164,44 @@ export interface KeystoresAliasesKeyCertFileState {
     /**
      * Alias Name
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Cert content
      *
      *
      * - - -
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * Chain of certificates under this alias.
      * Structure is documented below.
      */
-    certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>[]>;
+    certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>[] | undefined>;
     /**
      * Environment associated with the alias
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Private Key content, omit if uploading to truststore
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Keystore Name
      */
-    keystore?: pulumi.Input<string>;
+    keystore?: pulumi.Input<string | undefined>;
     /**
      * Organization ID associated with the alias, without organization/ prefix
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Password for the Private Key if it's encrypted
      */
-    password?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileTimeouts>;
+    password?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileTimeouts | undefined>;
     /**
      * Optional.Type of Alias
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -226,7 +226,7 @@ export interface KeystoresAliasesKeyCertFileArgs {
     /**
      * Private Key content, omit if uploading to truststore
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Keystore Name
      */
@@ -238,6 +238,6 @@ export interface KeystoresAliasesKeyCertFileArgs {
     /**
      * Password for the Private Key if it's encrypted
      */
-    password?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileTimeouts>;
+    password?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileTimeouts | undefined>;
 }

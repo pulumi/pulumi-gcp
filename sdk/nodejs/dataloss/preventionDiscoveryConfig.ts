@@ -187,66 +187,66 @@ export interface PreventionDiscoveryConfigState {
      * Actions to execute at the completion of scanning
      * Structure is documented below.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigAction>[] | undefined>;
     /**
      * Output only. The creation timestamp of a DiscoveryConfig.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Display Name (max 1000 Chars)
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
      * Structure is documented below.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigError>[] | undefined>;
     /**
      * Detection logic for profile generation
      */
-    inspectTemplates?: pulumi.Input<pulumi.Input<string>[]>;
+    inspectTemplates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Output only. The timestamp of the last time this config was executed
      */
-    lastRunTime?: pulumi.Input<string>;
+    lastRunTime?: pulumi.Input<string | undefined>;
     /**
      * Location to create the discovery config in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig>;
+    orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    otherCloudStartingLocation?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOtherCloudStartingLocation>;
+    otherCloudStartingLocation?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOtherCloudStartingLocation | undefined>;
     /**
      * The parent of the discovery config in any of the following formats:
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Required. A status for this configuration
      * Possible values are: `RUNNING`, `PAUSED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Target to match against for determining what to scan and how frequently
      * Structure is documented below.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTarget>[] | undefined>;
     /**
      * Output only. The last update timestamp of a DiscoveryConfig.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,15 +257,15 @@ export interface PreventionDiscoveryConfigArgs {
      * Actions to execute at the completion of scanning
      * Structure is documented below.
      */
-    actions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigAction>[]>;
+    actions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigAction>[] | undefined>;
     /**
      * Display Name (max 1000 Chars)
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Detection logic for profile generation
      */
-    inspectTemplates?: pulumi.Input<pulumi.Input<string>[]>;
+    inspectTemplates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Location to create the discovery config in.
      */
@@ -274,12 +274,12 @@ export interface PreventionDiscoveryConfigArgs {
      * A nested object resource.
      * Structure is documented below.
      */
-    orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig>;
+    orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    otherCloudStartingLocation?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOtherCloudStartingLocation>;
+    otherCloudStartingLocation?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOtherCloudStartingLocation | undefined>;
     /**
      * The parent of the discovery config in any of the following formats:
      * * `projects/{{project}}/locations/{{location}}`
@@ -290,10 +290,10 @@ export interface PreventionDiscoveryConfigArgs {
      * Required. A status for this configuration
      * Possible values are: `RUNNING`, `PAUSED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Target to match against for determining what to scan and how frequently
      * Structure is documented below.
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigTarget>[] | undefined>;
 }

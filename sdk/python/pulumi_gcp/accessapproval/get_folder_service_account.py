@@ -120,7 +120,7 @@ def get_folder_service_account(folder_id: Optional[_builtins.str] = None,
         folder_id=pulumi.get(__ret__, 'folder_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-def get_folder_service_account_output(folder_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_folder_service_account_output(folder_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderServiceAccountResult]:
     """
     Get the email address of a folder's Access Approval service account.

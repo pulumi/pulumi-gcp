@@ -28,43 +28,43 @@ __all__ = [
 ]
 
 class ConnectivityTestDestinationArgsDict(TypedDict):
-    cloud_sql_instance: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Cloud SQL instance URI.
     """
-    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Forwarding rule URI. Forwarding rules are frontends for load balancers,
     PSC endpoints, and Protocol Forwarding.
     """
-    fqdn: NotRequired[pulumi.Input[_builtins.str]]
+    fqdn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A DNS endpoint of Google Kubernetes Engine cluster control plane.
     Requires gke_master_cluster to be set, can't be used simultaneoulsly with
     ip_address or network. Applicable only to destination endpoint.
     """
-    gke_master_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    gke_master_cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A cluster URI for Google Kubernetes Engine cluster control plane.
     """
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Compute Engine instance URI.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the endpoint, which can be an external or internal IP.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A VPC network URI.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The IP protocol port of the endpoint. Only applicable when protocol is
     TCP or UDP.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project ID where the endpoint is located.
     The project ID can be derived from the URI if you provide a endpoint or
@@ -76,11 +76,11 @@ class ConnectivityTestDestinationArgsDict(TypedDict):
     from the service project. In this case, the network that the IP address
     resides in is defined in the host project.
     """
-    redis_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    redis_cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Redis Cluster URI.
     """
-    redis_instance: NotRequired[pulumi.Input[_builtins.str]]
+    redis_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Redis Instance URI.
     """
@@ -88,17 +88,17 @@ class ConnectivityTestDestinationArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectivityTestDestinationArgs:
     def __init__(__self__, *,
-                 cloud_sql_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_master_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_instance: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_sql_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_master_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_instance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cloud_sql_instance: A Cloud SQL instance URI.
         :param pulumi.Input[_builtins.str] forwarding_rule: Forwarding rule URI. Forwarding rules are frontends for load balancers,
@@ -149,19 +149,19 @@ class ConnectivityTestDestinationArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlInstance")
-    def cloud_sql_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_sql_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloud SQL instance URI.
         """
         return pulumi.get(self, "cloud_sql_instance")
 
     @cloud_sql_instance.setter
-    def cloud_sql_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_sql_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_sql_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Forwarding rule URI. Forwarding rules are frontends for load balancers,
         PSC endpoints, and Protocol Forwarding.
@@ -169,12 +169,12 @@ class ConnectivityTestDestinationArgs:
         return pulumi.get(self, "forwarding_rule")
 
     @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A DNS endpoint of Google Kubernetes Engine cluster control plane.
         Requires gke_master_cluster to be set, can't be used simultaneoulsly with
@@ -183,60 +183,60 @@ class ConnectivityTestDestinationArgs:
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
-    def fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fqdn", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeMasterCluster")
-    def gke_master_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gke_master_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A cluster URI for Google Kubernetes Engine cluster control plane.
         """
         return pulumi.get(self, "gke_master_cluster")
 
     @gke_master_cluster.setter
-    def gke_master_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gke_master_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gke_master_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Compute Engine instance URI.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the endpoint, which can be an external or internal IP.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A VPC network URI.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IP protocol port of the endpoint. Only applicable when protocol is
         TCP or UDP.
@@ -244,12 +244,12 @@ class ConnectivityTestDestinationArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project ID where the endpoint is located.
         The project ID can be derived from the URI if you provide a endpoint or
@@ -264,81 +264,81 @@ class ConnectivityTestDestinationArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="redisCluster")
-    def redis_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redis_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Redis Cluster URI.
         """
         return pulumi.get(self, "redis_cluster")
 
     @redis_cluster.setter
-    def redis_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redis_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redis_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="redisInstance")
-    def redis_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redis_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Redis Instance URI.
         """
         return pulumi.get(self, "redis_instance")
 
     @redis_instance.setter
-    def redis_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redis_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redis_instance", value)
 
 
 class ConnectivityTestSourceArgsDict(TypedDict):
-    app_engine_version: NotRequired[pulumi.Input['ConnectivityTestSourceAppEngineVersionArgsDict']]
+    app_engine_version: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceAppEngineVersionArgs']]]
     """
     An App Engine service version.
     Structure is documented below.
     """
-    cloud_function: NotRequired[pulumi.Input['ConnectivityTestSourceCloudFunctionArgsDict']]
+    cloud_function: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceCloudFunctionArgs']]]
     """
     A Cloud Function.
     Structure is documented below.
     """
-    cloud_run_revision: NotRequired[pulumi.Input['ConnectivityTestSourceCloudRunRevisionArgsDict']]
+    cloud_run_revision: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceCloudRunRevisionArgs']]]
     """
     A Cloud Run revision.
     Structure is documented below.
     """
-    cloud_sql_instance: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Cloud SQL instance URI.
     """
-    gke_master_cluster: NotRequired[pulumi.Input[_builtins.str]]
+    gke_master_cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A cluster URI for Google Kubernetes Engine cluster control plane.
     """
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Compute Engine instance URI.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the endpoint, which can be an external or internal IP.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A VPC network URI.
     """
-    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the network where the endpoint is located.
     Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The IP protocol port of the endpoint. Only applicable when protocol is
     TCP or UDP.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project ID where the endpoint is located.
     The project ID can be derived from the URI if you provide a endpoint or
@@ -354,17 +354,17 @@ class ConnectivityTestSourceArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectivityTestSourceArgs:
     def __init__(__self__, *,
-                 app_engine_version: Optional[pulumi.Input['ConnectivityTestSourceAppEngineVersionArgs']] = None,
-                 cloud_function: Optional[pulumi.Input['ConnectivityTestSourceCloudFunctionArgs']] = None,
-                 cloud_run_revision: Optional[pulumi.Input['ConnectivityTestSourceCloudRunRevisionArgs']] = None,
-                 cloud_sql_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_master_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_engine_version: pulumi.Input[Optional['ConnectivityTestSourceAppEngineVersionArgs']] = None,
+                 cloud_function: pulumi.Input[Optional['ConnectivityTestSourceCloudFunctionArgs']] = None,
+                 cloud_run_revision: pulumi.Input[Optional['ConnectivityTestSourceCloudRunRevisionArgs']] = None,
+                 cloud_sql_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_master_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ConnectivityTestSourceAppEngineVersionArgs'] app_engine_version: An App Engine service version.
                Structure is documented below.
@@ -416,7 +416,7 @@ class ConnectivityTestSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="appEngineVersion")
-    def app_engine_version(self) -> Optional[pulumi.Input['ConnectivityTestSourceAppEngineVersionArgs']]:
+    def app_engine_version(self) -> pulumi.Input[Optional['ConnectivityTestSourceAppEngineVersionArgs']]:
         """
         An App Engine service version.
         Structure is documented below.
@@ -424,12 +424,12 @@ class ConnectivityTestSourceArgs:
         return pulumi.get(self, "app_engine_version")
 
     @app_engine_version.setter
-    def app_engine_version(self, value: Optional[pulumi.Input['ConnectivityTestSourceAppEngineVersionArgs']]):
+    def app_engine_version(self, value: pulumi.Input[Optional['ConnectivityTestSourceAppEngineVersionArgs']]):
         pulumi.set(self, "app_engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudFunction")
-    def cloud_function(self) -> Optional[pulumi.Input['ConnectivityTestSourceCloudFunctionArgs']]:
+    def cloud_function(self) -> pulumi.Input[Optional['ConnectivityTestSourceCloudFunctionArgs']]:
         """
         A Cloud Function.
         Structure is documented below.
@@ -437,12 +437,12 @@ class ConnectivityTestSourceArgs:
         return pulumi.get(self, "cloud_function")
 
     @cloud_function.setter
-    def cloud_function(self, value: Optional[pulumi.Input['ConnectivityTestSourceCloudFunctionArgs']]):
+    def cloud_function(self, value: pulumi.Input[Optional['ConnectivityTestSourceCloudFunctionArgs']]):
         pulumi.set(self, "cloud_function", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudRunRevision")
-    def cloud_run_revision(self) -> Optional[pulumi.Input['ConnectivityTestSourceCloudRunRevisionArgs']]:
+    def cloud_run_revision(self) -> pulumi.Input[Optional['ConnectivityTestSourceCloudRunRevisionArgs']]:
         """
         A Cloud Run revision.
         Structure is documented below.
@@ -450,72 +450,72 @@ class ConnectivityTestSourceArgs:
         return pulumi.get(self, "cloud_run_revision")
 
     @cloud_run_revision.setter
-    def cloud_run_revision(self, value: Optional[pulumi.Input['ConnectivityTestSourceCloudRunRevisionArgs']]):
+    def cloud_run_revision(self, value: pulumi.Input[Optional['ConnectivityTestSourceCloudRunRevisionArgs']]):
         pulumi.set(self, "cloud_run_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudSqlInstance")
-    def cloud_sql_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_sql_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloud SQL instance URI.
         """
         return pulumi.get(self, "cloud_sql_instance")
 
     @cloud_sql_instance.setter
-    def cloud_sql_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_sql_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_sql_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeMasterCluster")
-    def gke_master_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gke_master_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A cluster URI for Google Kubernetes Engine cluster control plane.
         """
         return pulumi.get(self, "gke_master_cluster")
 
     @gke_master_cluster.setter
-    def gke_master_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gke_master_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gke_master_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Compute Engine instance URI.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the endpoint, which can be an external or internal IP.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A VPC network URI.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the network where the endpoint is located.
         Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
@@ -523,12 +523,12 @@ class ConnectivityTestSourceArgs:
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IP protocol port of the endpoint. Only applicable when protocol is
         TCP or UDP.
@@ -536,12 +536,12 @@ class ConnectivityTestSourceArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project ID where the endpoint is located.
         The project ID can be derived from the URI if you provide a endpoint or
@@ -556,12 +556,12 @@ class ConnectivityTestSourceArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 class ConnectivityTestSourceAppEngineVersionArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An App Engine service version name.
     """
@@ -569,7 +569,7 @@ class ConnectivityTestSourceAppEngineVersionArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectivityTestSourceAppEngineVersionArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: An App Engine service version name.
         """
@@ -578,19 +578,19 @@ class ConnectivityTestSourceAppEngineVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An App Engine service version name.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class ConnectivityTestSourceCloudFunctionArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Cloud Function name.
     """
@@ -598,7 +598,7 @@ class ConnectivityTestSourceCloudFunctionArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectivityTestSourceCloudFunctionArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: A Cloud Function name.
         """
@@ -607,19 +607,19 @@ class ConnectivityTestSourceCloudFunctionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloud Function name.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
 class ConnectivityTestSourceCloudRunRevisionArgsDict(TypedDict):
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Cloud Run revision URI.
     """
@@ -627,7 +627,7 @@ class ConnectivityTestSourceCloudRunRevisionArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectivityTestSourceCloudRunRevisionArgs:
     def __init__(__self__, *,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: A Cloud Run revision URI.
         """
@@ -636,14 +636,14 @@ class ConnectivityTestSourceCloudRunRevisionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Cloud Run revision URI.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 

@@ -150,28 +150,28 @@ export interface TunnelDestGroupState {
     /**
      * List of CIDRs that this group applies to.
      */
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of FQDNs that this group applies to.
      */
-    fqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    fqdns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique tunnel destination group name.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * Full resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the tunnel group. Must be the same as the network resources in the group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,11 +181,11 @@ export interface TunnelDestGroupArgs {
     /**
      * List of CIDRs that this group applies to.
      */
-    cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of FQDNs that this group applies to.
      */
-    fqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    fqdns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Unique tunnel destination group name.
      */
@@ -194,9 +194,9 @@ export interface TunnelDestGroupArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the tunnel group. Must be the same as the network resources in the group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

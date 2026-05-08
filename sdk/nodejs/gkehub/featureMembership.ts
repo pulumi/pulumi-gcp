@@ -452,35 +452,35 @@ export interface FeatureMembershipState {
     /**
      * Config Management-specific spec. Structure is documented below.
      */
-    configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
+    configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
     /**
      * The name of the feature
      */
-    feature?: pulumi.Input<string>;
+    feature?: pulumi.Input<string | undefined>;
     /**
      * The location of the feature
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the membership
      */
-    membership?: pulumi.Input<string>;
+    membership?: pulumi.Input<string | undefined>;
     /**
      * The location of the membership, for example, "us-central1". Default is "global".
      */
-    membershipLocation?: pulumi.Input<string>;
+    membershipLocation?: pulumi.Input<string | undefined>;
     /**
      * Service mesh specific spec. Structure is documented below.
      */
-    mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh>;
+    mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh | undefined>;
     /**
      * Policy Controller-specific spec. Structure is documented below.
      */
-    policycontroller?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontroller>;
+    policycontroller?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontroller | undefined>;
     /**
      * The project of the feature
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -490,7 +490,7 @@ export interface FeatureMembershipArgs {
     /**
      * Config Management-specific spec. Structure is documented below.
      */
-    configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement>;
+    configmanagement?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagement | undefined>;
     /**
      * The name of the feature
      */
@@ -506,17 +506,17 @@ export interface FeatureMembershipArgs {
     /**
      * The location of the membership, for example, "us-central1". Default is "global".
      */
-    membershipLocation?: pulumi.Input<string>;
+    membershipLocation?: pulumi.Input<string | undefined>;
     /**
      * Service mesh specific spec. Structure is documented below.
      */
-    mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh>;
+    mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh | undefined>;
     /**
      * Policy Controller-specific spec. Structure is documented below.
      */
-    policycontroller?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontroller>;
+    policycontroller?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontroller | undefined>;
     /**
      * The project of the feature
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

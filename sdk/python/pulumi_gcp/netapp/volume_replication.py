@@ -24,15 +24,15 @@ class VolumeReplicationArgs:
                  location: pulumi.Input[_builtins.str],
                  replication_schedule: pulumi.Input[_builtins.str],
                  volume_name: pulumi.Input[_builtins.str],
-                 delete_destination_volume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_volume_parameters: Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs']] = None,
-                 force_stopping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 wait_for_mirror: Optional[pulumi.Input[_builtins.bool]] = None):
+                 delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_volume_parameters: pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersArgs']] = None,
+                 force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 wait_for_mirror: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VolumeReplication resource.
 
@@ -130,7 +130,7 @@ class VolumeReplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteDestinationVolume")
-    def delete_destination_volume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_destination_volume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A destination volume is created as part of replication creation. The destination volume will not became
         under Terraform management unless you import it manually. If you delete the replication, this volume
@@ -143,24 +143,24 @@ class VolumeReplicationArgs:
         return pulumi.get(self, "delete_destination_volume")
 
     @delete_destination_volume.setter
-    def delete_destination_volume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_destination_volume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_destination_volume", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationVolumeParameters")
-    def destination_volume_parameters(self) -> Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs']]:
+    def destination_volume_parameters(self) -> pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersArgs']]:
         """
         Destination volume parameters.
         Structure is documented below.
@@ -168,12 +168,12 @@ class VolumeReplicationArgs:
         return pulumi.get(self, "destination_volume_parameters")
 
     @destination_volume_parameters.setter
-    def destination_volume_parameters(self, value: Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs']]):
+    def destination_volume_parameters(self, value: pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersArgs']]):
         pulumi.set(self, "destination_volume_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="forceStopping")
-    def force_stopping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_stopping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
         currently receives an update and stopping the update might be undesirable. Set this parameter to true
@@ -183,12 +183,12 @@ class VolumeReplicationArgs:
         return pulumi.get(self, "force_stopping")
 
     @force_stopping.setter
-    def force_stopping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_stopping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_stopping", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 
@@ -198,24 +198,24 @@ class VolumeReplicationArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the replication. Needs to be unique per location.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -223,12 +223,12 @@ class VolumeReplicationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationEnabled")
-    def replication_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replication_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
         and act independently from the source volume.
@@ -238,12 +238,12 @@ class VolumeReplicationArgs:
         return pulumi.get(self, "replication_enabled")
 
     @replication_enabled.setter
-    def replication_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replication_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replication_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForMirror")
-    def wait_for_mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_mirror(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Replication resource state is independent of mirror_state. With enough data, it can take many hours
         for mirror_state to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
@@ -252,39 +252,39 @@ class VolumeReplicationArgs:
         return pulumi.get(self, "wait_for_mirror")
 
     @wait_for_mirror.setter
-    def wait_for_mirror(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_mirror(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_mirror", value)
 
 
 @pulumi.input_type
 class _VolumeReplicationState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_destination_volume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_volume: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_volume_parameters: Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 force_stopping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 healthy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hybrid_peering_details: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]] = None,
-                 hybrid_replication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_replication_user_commands: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirror_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 replication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 replication_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_volume: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_details: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_stats: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationTransferStatArgs']]]] = None,
-                 volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_mirror: Optional[pulumi.Input[_builtins.bool]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_volume_parameters: pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 healthy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hybrid_peering_details: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]] = None,
+                 hybrid_replication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_replication_user_commands: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirror_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 replication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 replication_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_details: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_stats: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationTransferStatArgs']]]] = None,
+                 volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_mirror: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering VolumeReplication resources.
 
@@ -401,19 +401,19 @@ class _VolumeReplicationState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteDestinationVolume")
-    def delete_destination_volume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_destination_volume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A destination volume is created as part of replication creation. The destination volume will not became
         under Terraform management unless you import it manually. If you delete the replication, this volume
@@ -426,36 +426,36 @@ class _VolumeReplicationState:
         return pulumi.get(self, "delete_destination_volume")
 
     @delete_destination_volume.setter
-    def delete_destination_volume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_destination_volume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_destination_volume", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationVolume")
-    def destination_volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
         """
         return pulumi.get(self, "destination_volume")
 
     @destination_volume.setter
-    def destination_volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_volume", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationVolumeParameters")
-    def destination_volume_parameters(self) -> Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs']]:
+    def destination_volume_parameters(self) -> pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersArgs']]:
         """
         Destination volume parameters.
         Structure is documented below.
@@ -463,24 +463,24 @@ class _VolumeReplicationState:
         return pulumi.get(self, "destination_volume_parameters")
 
     @destination_volume_parameters.setter
-    def destination_volume_parameters(self, value: Optional[pulumi.Input['VolumeReplicationDestinationVolumeParametersArgs']]):
+    def destination_volume_parameters(self, value: pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersArgs']]):
         pulumi.set(self, "destination_volume_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="forceStopping")
-    def force_stopping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_stopping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
         currently receives an update and stopping the update might be undesirable. Set this parameter to true
@@ -490,12 +490,12 @@ class _VolumeReplicationState:
         return pulumi.get(self, "force_stopping")
 
     @force_stopping.setter
-    def force_stopping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_stopping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_stopping", value)
 
     @_builtins.property
     @pulumi.getter
-    def healthy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def healthy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Condition of the relationship. Can be one of the following:
         - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
@@ -504,12 +504,12 @@ class _VolumeReplicationState:
         return pulumi.get(self, "healthy")
 
     @healthy.setter
-    def healthy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def healthy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "healthy", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridPeeringDetails")
-    def hybrid_peering_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]]:
+    def hybrid_peering_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]]:
         """
         HybridPeeringDetails contains details about the hybrid peering.
         Structure is documented below.
@@ -517,24 +517,24 @@ class _VolumeReplicationState:
         return pulumi.get(self, "hybrid_peering_details")
 
     @hybrid_peering_details.setter
-    def hybrid_peering_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]]):
+    def hybrid_peering_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationHybridPeeringDetailArgs']]]]):
         pulumi.set(self, "hybrid_peering_details", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridReplicationType")
-    def hybrid_replication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_replication_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hybrid replication type.
         """
         return pulumi.get(self, "hybrid_replication_type")
 
     @hybrid_replication_type.setter
-    def hybrid_replication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_replication_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_replication_type", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridReplicationUserCommands")
-    def hybrid_replication_user_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]]:
+    def hybrid_replication_user_commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]]:
         """
         Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
         Structure is documented below.
@@ -542,12 +542,12 @@ class _VolumeReplicationState:
         return pulumi.get(self, "hybrid_replication_user_commands")
 
     @hybrid_replication_user_commands.setter
-    def hybrid_replication_user_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]]):
+    def hybrid_replication_user_commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationHybridReplicationUserCommandArgs']]]]):
         pulumi.set(self, "hybrid_replication_user_commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
 
@@ -557,24 +557,24 @@ class _VolumeReplicationState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of region for this resource. The resource needs to be created in the region of the destination volume.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="mirrorState")
-    def mirror_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirror_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the state of the mirror between source and destination volumes. Depending on the amount of data
         in your source volume, PREPARING phase can take hours or days. mirrorState = MIRRORED indicates your baseline
@@ -584,24 +584,24 @@ class _VolumeReplicationState:
         return pulumi.get(self, "mirror_state")
 
     @mirror_state.setter
-    def mirror_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirror_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirror_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the replication. Needs to be unique per location.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -609,12 +609,12 @@ class _VolumeReplicationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -622,12 +622,12 @@ class _VolumeReplicationState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationEnabled")
-    def replication_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replication_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
         and act independently from the source volume.
@@ -637,12 +637,12 @@ class _VolumeReplicationState:
         return pulumi.get(self, "replication_enabled")
 
     @replication_enabled.setter
-    def replication_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replication_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replication_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationSchedule")
-    def replication_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the replication interval.
         Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
@@ -650,12 +650,12 @@ class _VolumeReplicationState:
         return pulumi.get(self, "replication_schedule")
 
     @replication_schedule.setter
-    def replication_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reverting a replication can swap source and destination volume roles. This field indicates if the `location` hosts
         the source or destination volume. For resume and revert and resume operations it is critical to understand
@@ -664,48 +664,48 @@ class _VolumeReplicationState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceVolume")
-    def source_volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full resource name of source volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
         """
         return pulumi.get(self, "source_volume")
 
     @source_volume.setter
-    def source_volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_volume", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the state of replication resource. State of the mirror itself is indicated in mirrorState.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateDetails")
-    def state_details(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state_details(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State details of the replication resource.
         """
         return pulumi.get(self, "state_details")
 
     @state_details.setter
-    def state_details(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state_details(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state_details", value)
 
     @_builtins.property
     @pulumi.getter(name="transferStats")
-    def transfer_stats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationTransferStatArgs']]]]:
+    def transfer_stats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationTransferStatArgs']]]]:
         """
         Replication transfer statistics. All statistics are updated every 5 minutes.
         Structure is documented below.
@@ -713,24 +713,24 @@ class _VolumeReplicationState:
         return pulumi.get(self, "transfer_stats")
 
     @transfer_stats.setter
-    def transfer_stats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeReplicationTransferStatArgs']]]]):
+    def transfer_stats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VolumeReplicationTransferStatArgs']]]]):
         pulumi.set(self, "transfer_stats", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeName")
-    def volume_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the existing source volume.
         """
         return pulumi.get(self, "volume_name")
 
     @volume_name.setter
-    def volume_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_name", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForMirror")
-    def wait_for_mirror(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_mirror(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Replication resource state is independent of mirror_state. With enough data, it can take many hours
         for mirror_state to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
@@ -739,7 +739,7 @@ class _VolumeReplicationState:
         return pulumi.get(self, "wait_for_mirror")
 
     @wait_for_mirror.setter
-    def wait_for_mirror(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_mirror(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_mirror", value)
 
 
@@ -749,18 +749,18 @@ class VolumeReplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_destination_volume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_volume_parameters: Optional[pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
-                 force_stopping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 replication_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_mirror: Optional[pulumi.Input[_builtins.bool]] = None,
+                 delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
+                 force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 replication_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_mirror: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Volume replication creates an asynchronous mirror of a volume in a different location. This capability
@@ -996,18 +996,18 @@ class VolumeReplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_destination_volume: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_volume_parameters: Optional[pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
-                 force_stopping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 replication_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_mirror: Optional[pulumi.Input[_builtins.bool]] = None,
+                 delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
+                 force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 replication_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_mirror: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1061,32 +1061,32 @@ class VolumeReplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_destination_volume: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_volume: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_volume_parameters: Optional[pulumi.Input[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            force_stopping: Optional[pulumi.Input[_builtins.bool]] = None,
-            healthy: Optional[pulumi.Input[_builtins.bool]] = None,
-            hybrid_peering_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]]] = None,
-            hybrid_replication_type: Optional[pulumi.Input[_builtins.str]] = None,
-            hybrid_replication_user_commands: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict']]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            mirror_state: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            replication_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            replication_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            source_volume: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_details: Optional[pulumi.Input[_builtins.str]] = None,
-            transfer_stats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict']]]]] = None,
-            volume_name: Optional[pulumi.Input[_builtins.str]] = None,
-            wait_for_mirror: Optional[pulumi.Input[_builtins.bool]] = None) -> 'VolumeReplication':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_destination_volume: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_volume: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_volume_parameters: pulumi.Input[Optional[Union['VolumeReplicationDestinationVolumeParametersArgs', 'VolumeReplicationDestinationVolumeParametersArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            force_stopping: pulumi.Input[Optional[_builtins.bool]] = None,
+            healthy: pulumi.Input[Optional[_builtins.bool]] = None,
+            hybrid_peering_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridPeeringDetailArgs', 'VolumeReplicationHybridPeeringDetailArgsDict']]]]] = None,
+            hybrid_replication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hybrid_replication_user_commands: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationHybridReplicationUserCommandArgs', 'VolumeReplicationHybridReplicationUserCommandArgsDict']]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mirror_state: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            replication_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            replication_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_volume: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_details: pulumi.Input[Optional[_builtins.str]] = None,
+            transfer_stats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeReplicationTransferStatArgs', 'VolumeReplicationTransferStatArgsDict']]]]] = None,
+            volume_name: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_mirror: pulumi.Input[Optional[_builtins.bool]] = None) -> 'VolumeReplication':
         """
         Get an existing VolumeReplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -118,13 +118,13 @@ export interface GetEntitlementOutputArgs {
     /**
      * ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
      */
-    entitlementId?: pulumi.Input<string>;
+    entitlementId?: pulumi.Input<string | undefined>;
     /**
      * The region of the Entitlement resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }

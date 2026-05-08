@@ -218,54 +218,54 @@ export interface NetworkState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this VMware Engine network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
      * The server computes checksums based on the value of other fields in the request.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location where the VMwareEngineNetwork should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VMwareEngineNetwork.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * State of the VMware Engine network.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * VMware Engine network type.
      * Possible values are: `LEGACY`, `STANDARD`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last update time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
      * the internet, and other Google Cloud services.
      * Structure is documented below.
      */
-    vpcNetworks?: pulumi.Input<pulumi.Input<inputs.vmwareengine.NetworkVpcNetwork>[]>;
+    vpcNetworks?: pulumi.Input<pulumi.Input<inputs.vmwareengine.NetworkVpcNetwork>[] | undefined>;
 }
 
 /**
@@ -275,7 +275,7 @@ export interface NetworkArgs {
     /**
      * User-provided description for this VMware Engine network.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location where the VMwareEngineNetwork should reside.
      */
@@ -283,12 +283,12 @@ export interface NetworkArgs {
     /**
      * The ID of the VMwareEngineNetwork.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * VMware Engine network type.
      * Possible values are: `LEGACY`, `STANDARD`.

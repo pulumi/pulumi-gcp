@@ -21,15 +21,15 @@ __all__ = ['RegionSecurityPolicyArgs', 'RegionSecurityPolicy']
 @pulumi.input_type
 class RegionSecurityPolicyArgs:
     def __init__(__self__, *,
-                 advanced_options_config: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']] = None,
-                 ddos_protection_config: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
+                 advanced_options_config: pulumi.Input[Optional['RegionSecurityPolicyAdvancedOptionsConfigArgs']] = None,
+                 ddos_protection_config: pulumi.Input[Optional['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicy resource.
 
@@ -78,7 +78,7 @@ class RegionSecurityPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedOptionsConfig")
-    def advanced_options_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]:
+    def advanced_options_config(self) -> pulumi.Input[Optional['RegionSecurityPolicyAdvancedOptionsConfigArgs']]:
         """
         Advanced Options Config of this security policy.
         Structure is documented below.
@@ -86,12 +86,12 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "advanced_options_config")
 
     @advanced_options_config.setter
-    def advanced_options_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]):
+    def advanced_options_config(self, value: pulumi.Input[Optional['RegionSecurityPolicyAdvancedOptionsConfigArgs']]):
         pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ddosProtectionConfig")
-    def ddos_protection_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']]:
+    def ddos_protection_config(self) -> pulumi.Input[Optional['RegionSecurityPolicyDdosProtectionConfigArgs']]:
         """
         Configuration for Google Cloud Armor DDOS Proctection Config.
         Structure is documented below.
@@ -99,24 +99,24 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "ddos_protection_config")
 
     @ddos_protection_config.setter
-    def ddos_protection_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']]):
+    def ddos_protection_config(self, value: pulumi.Input[Optional['RegionSecurityPolicyDdosProtectionConfigArgs']]):
         pulumi.set(self, "ddos_protection_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -124,12 +124,12 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -137,12 +137,12 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region in which the created Region Security Policy should reside.
         If it is not provided, the provider region is used.
@@ -150,12 +150,12 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]:
         """
         The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         Structure is documented below.
@@ -163,12 +163,12 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type indicates the intended use of the security policy.
         - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
@@ -180,12 +180,12 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedFields")
-    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]:
+    def user_defined_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]:
         """
         Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
         A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
@@ -195,26 +195,26 @@ class RegionSecurityPolicyArgs:
         return pulumi.get(self, "user_defined_fields")
 
     @user_defined_fields.setter
-    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]):
+    def user_defined_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]):
         pulumi.set(self, "user_defined_fields", value)
 
 
 @pulumi.input_type
 class _RegionSecurityPolicyState:
     def __init__(__self__, *,
-                 advanced_options_config: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']] = None,
-                 ddos_protection_config: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link_with_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
+                 advanced_options_config: pulumi.Input[Optional['RegionSecurityPolicyAdvancedOptionsConfigArgs']] = None,
+                 ddos_protection_config: pulumi.Input[Optional['RegionSecurityPolicyDdosProtectionConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link_with_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         Input properties used for looking up and filtering RegionSecurityPolicy resources.
 
@@ -276,7 +276,7 @@ class _RegionSecurityPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="advancedOptionsConfig")
-    def advanced_options_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]:
+    def advanced_options_config(self) -> pulumi.Input[Optional['RegionSecurityPolicyAdvancedOptionsConfigArgs']]:
         """
         Advanced Options Config of this security policy.
         Structure is documented below.
@@ -284,12 +284,12 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "advanced_options_config")
 
     @advanced_options_config.setter
-    def advanced_options_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyAdvancedOptionsConfigArgs']]):
+    def advanced_options_config(self, value: pulumi.Input[Optional['RegionSecurityPolicyAdvancedOptionsConfigArgs']]):
         pulumi.set(self, "advanced_options_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ddosProtectionConfig")
-    def ddos_protection_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']]:
+    def ddos_protection_config(self) -> pulumi.Input[Optional['RegionSecurityPolicyDdosProtectionConfigArgs']]:
         """
         Configuration for Google Cloud Armor DDOS Proctection Config.
         Structure is documented below.
@@ -297,24 +297,24 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "ddos_protection_config")
 
     @ddos_protection_config.setter
-    def ddos_protection_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs']]):
+    def ddos_protection_config(self, value: pulumi.Input[Optional['RegionSecurityPolicyDdosProtectionConfigArgs']]):
         pulumi.set(self, "ddos_protection_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fingerprint of this resource. This field is used internally during
         updates of this resource.
@@ -322,12 +322,12 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
         Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -335,24 +335,24 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the resource. This identifier is defined by the server.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -360,12 +360,12 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region in which the created Region Security Policy should reside.
         If it is not provided, the provider region is used.
@@ -373,12 +373,12 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]:
         """
         The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         Structure is documented below.
@@ -386,36 +386,36 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLinkWithPolicyId")
-    def self_link_with_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link_with_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-defined URL for this resource with the resource id.
         """
         return pulumi.get(self, "self_link_with_policy_id")
 
     @self_link_with_policy_id.setter
-    def self_link_with_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link_with_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link_with_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type indicates the intended use of the security policy.
         - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
@@ -427,12 +427,12 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedFields")
-    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]:
+    def user_defined_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]:
         """
         Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
         A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
@@ -442,7 +442,7 @@ class _RegionSecurityPolicyState:
         return pulumi.get(self, "user_defined_fields")
 
     @user_defined_fields.setter
-    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]):
+    def user_defined_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]):
         pulumi.set(self, "user_defined_fields", value)
 
 
@@ -452,15 +452,15 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options_config: Optional[pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-                 ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         """
         Represents a Region Cloud Armor Security Policy resource.
@@ -741,15 +741,15 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_options_config: Optional[pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-                 ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
+                 advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+                 ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -782,19 +782,19 @@ class RegionSecurityPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_options_config: Optional[pulumi.Input[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
-            ddos_protection_config: Optional[pulumi.Input[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link_with_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None) -> 'RegionSecurityPolicy':
+            advanced_options_config: pulumi.Input[Optional[Union['RegionSecurityPolicyAdvancedOptionsConfigArgs', 'RegionSecurityPolicyAdvancedOptionsConfigArgsDict']]] = None,
+            ddos_protection_config: pulumi.Input[Optional[Union['RegionSecurityPolicyDdosProtectionConfigArgs', 'RegionSecurityPolicyDdosProtectionConfigArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link_with_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None) -> 'RegionSecurityPolicy':
         """
         Get an existing RegionSecurityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

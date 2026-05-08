@@ -23,9 +23,9 @@ class AppHostingTrafficArgs:
     def __init__(__self__, *,
                  backend: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_policy: Optional[pulumi.Input['AppHostingTrafficRolloutPolicyArgs']] = None,
-                 target: Optional[pulumi.Input['AppHostingTrafficTargetArgs']] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_policy: pulumi.Input[Optional['AppHostingTrafficRolloutPolicyArgs']] = None,
+                 target: pulumi.Input[Optional['AppHostingTrafficTargetArgs']] = None):
         """
         The set of arguments for constructing a AppHostingTraffic resource.
 
@@ -75,7 +75,7 @@ class AppHostingTrafficArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -83,12 +83,12 @@ class AppHostingTrafficArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutPolicy")
-    def rollout_policy(self) -> Optional[pulumi.Input['AppHostingTrafficRolloutPolicyArgs']]:
+    def rollout_policy(self) -> pulumi.Input[Optional['AppHostingTrafficRolloutPolicyArgs']]:
         """
         The policy for how builds and rollouts are triggered and rolled out.
         Structure is documented below.
@@ -96,12 +96,12 @@ class AppHostingTrafficArgs:
         return pulumi.get(self, "rollout_policy")
 
     @rollout_policy.setter
-    def rollout_policy(self, value: Optional[pulumi.Input['AppHostingTrafficRolloutPolicyArgs']]):
+    def rollout_policy(self, value: pulumi.Input[Optional['AppHostingTrafficRolloutPolicyArgs']]):
         pulumi.set(self, "rollout_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['AppHostingTrafficTargetArgs']]:
+    def target(self) -> pulumi.Input[Optional['AppHostingTrafficTargetArgs']]:
         """
         Set to manually control the desired traffic for the backend. This will
         cause current to eventually match this value. The percentages must add
@@ -111,25 +111,25 @@ class AppHostingTrafficArgs:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['AppHostingTrafficTargetArgs']]):
+    def target(self, value: pulumi.Input[Optional['AppHostingTrafficTargetArgs']]):
         pulumi.set(self, "target", value)
 
 
 @pulumi.input_type
 class _AppHostingTrafficState:
     def __init__(__self__, *,
-                 backend: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 currents: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_policy: Optional[pulumi.Input['AppHostingTrafficRolloutPolicyArgs']] = None,
-                 target: Optional[pulumi.Input['AppHostingTrafficTargetArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 currents: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_policy: pulumi.Input[Optional['AppHostingTrafficRolloutPolicyArgs']] = None,
+                 target: pulumi.Input[Optional['AppHostingTrafficTargetArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppHostingTraffic resources.
 
@@ -183,31 +183,31 @@ class _AppHostingTrafficState:
 
     @_builtins.property
     @pulumi.getter
-    def backend(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the backend that this Traffic config applies to
         """
         return pulumi.get(self, "backend")
 
     @backend.setter
-    def backend(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time at which the backend was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def currents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]]]:
+    def currents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]]]:
         """
         Current state of traffic allocation for the backend.
         When setting `target`, this field may differ for some time until the desired state is reached.
@@ -216,24 +216,24 @@ class _AppHostingTrafficState:
         return pulumi.get(self, "currents")
 
     @currents.setter
-    def currents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]]]):
+    def currents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentArgs']]]]):
         pulumi.set(self, "currents", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time at which the backend was deleted.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server-computed checksum based on other values; may be sent
         on update or delete to ensure operation is done on expected resource.
@@ -241,24 +241,24 @@ class _AppHostingTrafficState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location the Backend that this Traffic config applies to
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the backend traffic config
         Format:
@@ -267,12 +267,12 @@ class _AppHostingTrafficState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -280,12 +280,12 @@ class _AppHostingTrafficState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rolloutPolicy")
-    def rollout_policy(self) -> Optional[pulumi.Input['AppHostingTrafficRolloutPolicyArgs']]:
+    def rollout_policy(self) -> pulumi.Input[Optional['AppHostingTrafficRolloutPolicyArgs']]:
         """
         The policy for how builds and rollouts are triggered and rolled out.
         Structure is documented below.
@@ -293,12 +293,12 @@ class _AppHostingTrafficState:
         return pulumi.get(self, "rollout_policy")
 
     @rollout_policy.setter
-    def rollout_policy(self, value: Optional[pulumi.Input['AppHostingTrafficRolloutPolicyArgs']]):
+    def rollout_policy(self, value: pulumi.Input[Optional['AppHostingTrafficRolloutPolicyArgs']]):
         pulumi.set(self, "rollout_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['AppHostingTrafficTargetArgs']]:
+    def target(self) -> pulumi.Input[Optional['AppHostingTrafficTargetArgs']]:
         """
         Set to manually control the desired traffic for the backend. This will
         cause current to eventually match this value. The percentages must add
@@ -308,31 +308,31 @@ class _AppHostingTrafficState:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['AppHostingTrafficTargetArgs']]):
+    def target(self, value: pulumi.Input[Optional['AppHostingTrafficTargetArgs']]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System-assigned, unique identifier.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time at which the backend was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -342,11 +342,11 @@ class AppHostingTraffic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_policy: Optional[pulumi.Input[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
-                 target: Optional[pulumi.Input[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
+                 backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
                  __props__=None):
         """
         Controls traffic configuration for a backend.
@@ -666,11 +666,11 @@ class AppHostingTraffic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rollout_policy: Optional[pulumi.Input[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
-                 target: Optional[pulumi.Input[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
+                 backend: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
+                 target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -706,18 +706,18 @@ class AppHostingTraffic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            currents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict']]]]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rollout_policy: Optional[pulumi.Input[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
-            target: Optional[pulumi.Input[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppHostingTraffic':
+            backend: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            currents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppHostingTrafficCurrentArgs', 'AppHostingTrafficCurrentArgsDict']]]]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rollout_policy: pulumi.Input[Optional[Union['AppHostingTrafficRolloutPolicyArgs', 'AppHostingTrafficRolloutPolicyArgsDict']]] = None,
+            target: pulumi.Input[Optional[Union['AppHostingTrafficTargetArgs', 'AppHostingTrafficTargetArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppHostingTraffic':
         """
         Get an existing AppHostingTraffic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

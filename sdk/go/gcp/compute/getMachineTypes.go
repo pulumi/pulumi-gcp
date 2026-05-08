@@ -47,7 +47,7 @@ import (
 // return err
 // }
 // var exampleInstanceTemplate []*compute.InstanceTemplate
-// for key0, val0 := range interface{}(std.Toset(ctx, &std.TosetArgs{
+// for key0, val0 := range []interface{}(std.Toset(ctx, &std.TosetArgs{
 // Input: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:9,15-43),
 // }, nil).Result) {
 // __res, err := compute.NewInstanceTemplate(ctx, fmt.Sprintf("example-%v", key0), &compute.InstanceTemplateArgs{

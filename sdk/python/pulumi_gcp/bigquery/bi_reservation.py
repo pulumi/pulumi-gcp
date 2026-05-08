@@ -22,9 +22,9 @@ __all__ = ['BiReservationArgs', 'BiReservation']
 class BiReservationArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 preferred_tables: pulumi.Input[Optional[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BiReservation resource.
 
@@ -57,7 +57,7 @@ class BiReservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="preferredTables")
-    def preferred_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]:
+    def preferred_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]:
         """
         Preferred tables to use BI capacity for.
         Structure is documented below.
@@ -65,12 +65,12 @@ class BiReservationArgs:
         return pulumi.get(self, "preferred_tables")
 
     @preferred_tables.setter
-    def preferred_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]):
+    def preferred_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]):
         pulumi.set(self, "preferred_tables", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -78,31 +78,31 @@ class BiReservationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of a reservation, in bytes.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 @pulumi.input_type
 class _BiReservationState:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_tables: pulumi.Input[Optional[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BiReservation resources.
 
@@ -131,31 +131,31 @@ class _BiReservationState:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LOCATION_DESCRIPTION
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="preferredTables")
-    def preferred_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]:
+    def preferred_tables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]:
         """
         Preferred tables to use BI capacity for.
         Structure is documented below.
@@ -163,12 +163,12 @@ class _BiReservationState:
         return pulumi.get(self, "preferred_tables")
 
     @preferred_tables.setter
-    def preferred_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]):
+    def preferred_tables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BiReservationPreferredTableArgs']]]]):
         pulumi.set(self, "preferred_tables", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -176,24 +176,24 @@ class _BiReservationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of a reservation, in bytes.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last update timestamp of a reservation.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -201,7 +201,7 @@ class _BiReservationState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -211,10 +211,10 @@ class BiReservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Represents a BI Reservation.
@@ -235,7 +235,7 @@ class BiReservation(pulumi.CustomResource):
 
         reservation = gcp.bigquery.BiReservation("reservation",
             location="us-west2",
-            size=3000000000)
+            size=int(3000000000))
         ```
 
         ## Import
@@ -289,7 +289,7 @@ class BiReservation(pulumi.CustomResource):
 
         reservation = gcp.bigquery.BiReservation("reservation",
             location="us-west2",
-            size=3000000000)
+            size=int(3000000000))
         ```
 
         ## Import
@@ -324,10 +324,10 @@ class BiReservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 preferred_tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -355,12 +355,12 @@ class BiReservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            preferred_tables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'BiReservation':
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            preferred_tables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BiReservationPreferredTableArgs', 'BiReservationPreferredTableArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'BiReservation':
         """
         Get an existing BiReservation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

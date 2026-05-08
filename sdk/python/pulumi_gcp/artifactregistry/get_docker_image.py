@@ -246,10 +246,10 @@ def get_docker_image(image_name: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         update_time=pulumi.get(__ret__, 'update_time'),
         upload_time=pulumi.get(__ret__, 'upload_time'))
-def get_docker_image_output(image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                            location: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_docker_image_output(image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                            location: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDockerImageResult]:
     """
     This data source fetches information from a provided Artifact Registry repository, including the fully qualified name and URI for an image, based on a the latest version of image name and optional digest or tag.

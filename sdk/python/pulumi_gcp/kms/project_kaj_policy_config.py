@@ -21,8 +21,8 @@ __all__ = ['ProjectKajPolicyConfigArgs', 'ProjectKajPolicyConfig']
 @pulumi.input_type
 class ProjectKajPolicyConfigArgs:
     def __init__(__self__, *,
-                 default_key_access_justification_policy: Optional[pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_key_access_justification_policy: pulumi.Input[Optional['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectKajPolicyConfig resource.
 
@@ -40,7 +40,7 @@ class ProjectKajPolicyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultKeyAccessJustificationPolicy")
-    def default_key_access_justification_policy(self) -> Optional[pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
+    def default_key_access_justification_policy(self) -> pulumi.Input[Optional['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
         """
         The default key access justification policy used when a CryptoKey is
         created in this project. This is only used when a Key Access Justifications
@@ -50,12 +50,12 @@ class ProjectKajPolicyConfigArgs:
         return pulumi.get(self, "default_key_access_justification_policy")
 
     @default_key_access_justification_policy.setter
-    def default_key_access_justification_policy(self, value: Optional[pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
+    def default_key_access_justification_policy(self, value: pulumi.Input[Optional['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
         pulumi.set(self, "default_key_access_justification_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -63,15 +63,15 @@ class ProjectKajPolicyConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ProjectKajPolicyConfigState:
     def __init__(__self__, *,
-                 default_key_access_justification_policy: Optional[pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_key_access_justification_policy: pulumi.Input[Optional['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectKajPolicyConfig resources.
 
@@ -89,7 +89,7 @@ class _ProjectKajPolicyConfigState:
 
     @_builtins.property
     @pulumi.getter(name="defaultKeyAccessJustificationPolicy")
-    def default_key_access_justification_policy(self) -> Optional[pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
+    def default_key_access_justification_policy(self) -> pulumi.Input[Optional['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
         """
         The default key access justification policy used when a CryptoKey is
         created in this project. This is only used when a Key Access Justifications
@@ -99,12 +99,12 @@ class _ProjectKajPolicyConfigState:
         return pulumi.get(self, "default_key_access_justification_policy")
 
     @default_key_access_justification_policy.setter
-    def default_key_access_justification_policy(self, value: Optional[pulumi.Input['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
+    def default_key_access_justification_policy(self, value: pulumi.Input[Optional['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
         pulumi.set(self, "default_key_access_justification_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -112,7 +112,7 @@ class _ProjectKajPolicyConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -122,8 +122,8 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: Optional[pulumi.Input[Union['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         `ProjectKajPolicyConfig` is a project-level singleton resource
@@ -289,8 +289,8 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: Optional[pulumi.Input[Union['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,8 +312,8 @@ class ProjectKajPolicyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_key_access_justification_policy: Optional[pulumi.Input[Union['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectKajPolicyConfig':
+            default_key_access_justification_policy: pulumi.Input[Optional[Union['ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectKajPolicyConfig':
         """
         Get an existing ProjectKajPolicyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

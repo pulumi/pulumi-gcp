@@ -115,7 +115,7 @@ export interface GetRegistryImageOutputArgs {
     /**
      * The image digest to fetch, if any.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The image name.
      */
@@ -123,13 +123,13 @@ export interface GetRegistryImageOutputArgs {
     /**
      * The project ID that this image is attached to.  If not provider, provider project will be used instead.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The tag to fetch, if any.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }

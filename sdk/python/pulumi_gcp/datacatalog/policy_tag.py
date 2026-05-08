@@ -21,8 +21,8 @@ class PolicyTagArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  taxonomy: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_policy_tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolicyTag resource.
 
@@ -73,7 +73,7 @@ class PolicyTagArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of this policy tag. It must: contain only unicode characters, tabs,
         newlines, carriage returns and page breaks; and be at most 2000 bytes long when
@@ -83,12 +83,12 @@ class PolicyTagArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPolicyTag")
-    def parent_policy_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_policy_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of this policy tag's parent policy tag.
         If empty, it means this policy tag is a top level policy tag.
@@ -97,19 +97,19 @@ class PolicyTagArgs:
         return pulumi.get(self, "parent_policy_tag")
 
     @parent_policy_tag.setter
-    def parent_policy_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_policy_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_policy_tag", value)
 
 
 @pulumi.input_type
 class _PolicyTagState:
     def __init__(__self__, *,
-                 child_policy_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 taxonomy: Optional[pulumi.Input[_builtins.str]] = None):
+                 child_policy_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 taxonomy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyTag resources.
 
@@ -143,19 +143,19 @@ class _PolicyTagState:
 
     @_builtins.property
     @pulumi.getter(name="childPolicyTags")
-    def child_policy_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def child_policy_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resource names of child policy tags of this policy tag.
         """
         return pulumi.get(self, "child_policy_tags")
 
     @child_policy_tags.setter
-    def child_policy_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def child_policy_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "child_policy_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of this policy tag. It must: contain only unicode characters, tabs,
         newlines, carriage returns and page breaks; and be at most 2000 bytes long when
@@ -165,12 +165,12 @@ class _PolicyTagState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User defined name of this policy tag. It must: be unique within the parent
         taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
@@ -179,12 +179,12 @@ class _PolicyTagState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of this policy tag, whose format is:
         "projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}"
@@ -192,12 +192,12 @@ class _PolicyTagState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPolicyTag")
-    def parent_policy_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_policy_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of this policy tag's parent policy tag.
         If empty, it means this policy tag is a top level policy tag.
@@ -206,19 +206,19 @@ class _PolicyTagState:
         return pulumi.get(self, "parent_policy_tag")
 
     @parent_policy_tag.setter
-    def parent_policy_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_policy_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_policy_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def taxonomy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def taxonomy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Taxonomy the policy tag is associated with
         """
         return pulumi.get(self, "taxonomy")
 
     @taxonomy.setter
-    def taxonomy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def taxonomy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "taxonomy", value)
 
 
@@ -228,10 +228,10 @@ class PolicyTag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 taxonomy: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 taxonomy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Denotes one policy tag in a taxonomy.
@@ -400,10 +400,10 @@ class PolicyTag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 taxonomy: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 taxonomy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,12 +433,12 @@ class PolicyTag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            child_policy_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_policy_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            taxonomy: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyTag':
+            child_policy_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_policy_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            taxonomy: pulumi.Input[Optional[_builtins.str]] = None) -> 'PolicyTag':
         """
         Get an existing PolicyTag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

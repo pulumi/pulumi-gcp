@@ -296,71 +296,71 @@ export interface ClusterState {
      * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
      * Structure is documented below.
      */
-    brokerCapacityConfig?: pulumi.Input<inputs.managedkafka.ClusterBrokerCapacityConfig>;
+    brokerCapacityConfig?: pulumi.Input<inputs.managedkafka.ClusterBrokerCapacityConfig | undefined>;
     /**
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.
      */
-    capacityConfig?: pulumi.Input<inputs.managedkafka.ClusterCapacityConfig>;
+    capacityConfig?: pulumi.Input<inputs.managedkafka.ClusterCapacityConfig | undefined>;
     /**
      * The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The time when the cluster was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
      * Structure is documented below.
      */
-    gcpConfig?: pulumi.Input<inputs.managedkafka.ClusterGcpConfig>;
+    gcpConfig?: pulumi.Input<inputs.managedkafka.ClusterGcpConfig | undefined>;
     /**
      * List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Defines rebalancing behavior of a Kafka cluster.
      * Structure is documented below.
      */
-    rebalanceConfig?: pulumi.Input<inputs.managedkafka.ClusterRebalanceConfig>;
+    rebalanceConfig?: pulumi.Input<inputs.managedkafka.ClusterRebalanceConfig | undefined>;
     /**
      * The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
      * Structure is documented below.
      */
-    tlsConfig?: pulumi.Input<inputs.managedkafka.ClusterTlsConfig>;
+    tlsConfig?: pulumi.Input<inputs.managedkafka.ClusterTlsConfig | undefined>;
     /**
      * The time when the cluster was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -371,7 +371,7 @@ export interface ClusterArgs {
      * Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
      * Structure is documented below.
      */
-    brokerCapacityConfig?: pulumi.Input<inputs.managedkafka.ClusterBrokerCapacityConfig>;
+    brokerCapacityConfig?: pulumi.Input<inputs.managedkafka.ClusterBrokerCapacityConfig | undefined>;
     /**
      * A capacity configuration of a Kafka cluster.
      * Structure is documented below.
@@ -391,7 +391,7 @@ export interface ClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
@@ -400,15 +400,15 @@ export interface ClusterArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Defines rebalancing behavior of a Kafka cluster.
      * Structure is documented below.
      */
-    rebalanceConfig?: pulumi.Input<inputs.managedkafka.ClusterRebalanceConfig>;
+    rebalanceConfig?: pulumi.Input<inputs.managedkafka.ClusterRebalanceConfig | undefined>;
     /**
      * TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
      * Structure is documented below.
      */
-    tlsConfig?: pulumi.Input<inputs.managedkafka.ClusterTlsConfig>;
+    tlsConfig?: pulumi.Input<inputs.managedkafka.ClusterTlsConfig | undefined>;
 }

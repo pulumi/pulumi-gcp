@@ -209,7 +209,7 @@ class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs:
 
 
 class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):
-    instance_role: NotRequired[pulumi.Input[_builtins.str]]
+    instance_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance role supports the following values:
     1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
@@ -218,23 +218,23 @@ class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):
     4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
     Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
     """
-    memberships: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgsDict']]]]
+    memberships: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]]
     """
     (Output)
     An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
     Structure is documented below.
     """
-    primary_instance: NotRequired[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict']]
+    primary_instance: NotRequired[pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]]
     """
     This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
     Structure is documented below.
     """
-    secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict']]]]
+    secondary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]]
     """
     List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
     Structure is documented below.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The last time cross instance replication config was updated.
@@ -243,11 +243,11 @@ class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigArgs:
     def __init__(__self__, *,
-                 instance_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]] = None,
-                 primary_instance: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']] = None,
-                 secondary_instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]] = None,
+                 primary_instance: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']] = None,
+                 secondary_instances: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_role: The instance role supports the following values:
                1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
@@ -278,7 +278,7 @@ class InstanceCrossInstanceReplicationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="instanceRole")
-    def instance_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance role supports the following values:
         1. `INSTANCE_ROLE_UNSPECIFIED`: This is an independent instance that has never participated in cross instance replication. It allows both reads and writes.
@@ -290,12 +290,12 @@ class InstanceCrossInstanceReplicationConfigArgs:
         return pulumi.get(self, "instance_role")
 
     @instance_role.setter
-    def instance_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def memberships(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]:
+    def memberships(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]:
         """
         (Output)
         An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
@@ -304,12 +304,12 @@ class InstanceCrossInstanceReplicationConfigArgs:
         return pulumi.get(self, "memberships")
 
     @memberships.setter
-    def memberships(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]):
+    def memberships(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]):
         pulumi.set(self, "memberships", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryInstance")
-    def primary_instance(self) -> Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]:
+    def primary_instance(self) -> pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]:
         """
         This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
         Structure is documented below.
@@ -317,12 +317,12 @@ class InstanceCrossInstanceReplicationConfigArgs:
         return pulumi.get(self, "primary_instance")
 
     @primary_instance.setter
-    def primary_instance(self, value: Optional[pulumi.Input['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]):
+    def primary_instance(self, value: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]):
         pulumi.set(self, "primary_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryInstances")
-    def secondary_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]:
+    def secondary_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]:
         """
         List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
         Structure is documented below.
@@ -330,12 +330,12 @@ class InstanceCrossInstanceReplicationConfigArgs:
         return pulumi.get(self, "secondary_instances")
 
     @secondary_instances.setter
-    def secondary_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]):
+    def secondary_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]):
         pulumi.set(self, "secondary_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The last time cross instance replication config was updated.
@@ -343,16 +343,16 @@ class InstanceCrossInstanceReplicationConfigArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 class InstanceCrossInstanceReplicationConfigMembershipArgsDict(TypedDict):
-    primary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict']]]]
+    primary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]]
     """
     Details of the primary instance that is used as the replication source for all the secondary instances.
     """
-    secondary_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict']]]]
+    secondary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]]
     """
     List of secondary instances that are replicating from the primary instance.
     """
@@ -360,8 +360,8 @@ class InstanceCrossInstanceReplicationConfigMembershipArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigMembershipArgs:
     def __init__(__self__, *,
-                 primary_instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]] = None,
-                 secondary_instances: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]] = None):
+                 primary_instances: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]] = None,
+                 secondary_instances: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]] primary_instances: Details of the primary instance that is used as the replication source for all the secondary instances.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]] secondary_instances: List of secondary instances that are replicating from the primary instance.
@@ -373,35 +373,35 @@ class InstanceCrossInstanceReplicationConfigMembershipArgs:
 
     @_builtins.property
     @pulumi.getter(name="primaryInstances")
-    def primary_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]:
+    def primary_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]:
         """
         Details of the primary instance that is used as the replication source for all the secondary instances.
         """
         return pulumi.get(self, "primary_instances")
 
     @primary_instances.setter
-    def primary_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]):
+    def primary_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]):
         pulumi.set(self, "primary_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryInstances")
-    def secondary_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]:
+    def secondary_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]:
         """
         List of secondary instances that are replicating from the primary instance.
         """
         return pulumi.get(self, "secondary_instances")
 
     @secondary_instances.setter
-    def secondary_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]):
+    def secondary_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]):
         pulumi.set(self, "secondary_instances", value)
 
 
 class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict(TypedDict):
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique id of the primary instance.
@@ -410,8 +410,8 @@ class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict(Ty
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs:
     def __init__(__self__, *,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance: The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
         :param pulumi.Input[_builtins.str] uid: (Output)
@@ -424,19 +424,19 @@ class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique id of the primary instance.
@@ -444,16 +444,16 @@ class InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict(TypedDict):
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. System assigned, unique identifier for the instance.
     """
@@ -461,8 +461,8 @@ class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict(
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs:
     def __init__(__self__, *,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance: The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
         :param pulumi.Input[_builtins.str] uid: Output only. System assigned, unique identifier for the instance.
@@ -474,35 +474,35 @@ class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. System assigned, unique identifier for the instance.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict(TypedDict):
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique id of the primary instance.
@@ -511,8 +511,8 @@ class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs:
     def __init__(__self__, *,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance: The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
         :param pulumi.Input[_builtins.str] uid: (Output)
@@ -525,19 +525,19 @@ class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique id of the primary instance.
@@ -545,17 +545,17 @@ class InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict(TypedDict):
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique id of the secondary instance.
@@ -564,8 +564,8 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict(TypedDict)
 @pulumi.input_type
 class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
     def __init__(__self__, *,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance: (Output)
                The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
@@ -579,7 +579,7 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
@@ -587,12 +587,12 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique id of the secondary instance.
@@ -600,7 +600,7 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -717,7 +717,7 @@ class InstanceDesiredPscAutoConnectionArgs:
 
 
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict(TypedDict):
-    connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict']]]]
+    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]]
     """
     Structure is documented below.
     """
@@ -725,7 +725,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict(Type
 @pulumi.input_type
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs:
     def __init__(__self__, *,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]] = None):
+                 connections: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]] connections: Structure is documented below.
         """
@@ -734,19 +734,19 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]:
+    def connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]):
+    def connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]):
         pulumi.set(self, "connections", value)
 
 
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict(TypedDict):
-    psc_connection: NotRequired[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict']]
+    psc_connection: NotRequired[pulumi.Input[Optional['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]]
     """
     Detailed information of a PSC connection that is created by the customer
     who owns the cluster.
@@ -756,7 +756,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArg
 @pulumi.input_type
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs:
     def __init__(__self__, *,
-                 psc_connection: Optional[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']] = None):
+                 psc_connection: pulumi.Input[Optional['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']] = None):
         """
         :param pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs'] psc_connection: Detailed information of a PSC connection that is created by the customer
                who owns the cluster.
@@ -767,7 +767,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArg
 
     @_builtins.property
     @pulumi.getter(name="pscConnection")
-    def psc_connection(self) -> Optional[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]:
+    def psc_connection(self) -> pulumi.Input[Optional['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]:
         """
         Detailed information of a PSC connection that is created by the customer
         who owns the cluster.
@@ -776,7 +776,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArg
         return pulumi.get(self, "psc_connection")
 
     @psc_connection.setter
-    def psc_connection(self, value: Optional[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]):
+    def psc_connection(self, value: pulumi.Input[Optional['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]):
         pulumi.set(self, "psc_connection", value)
 
 
@@ -805,7 +805,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
     """
     The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
     """
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. Type of a PSC Connection.
@@ -814,11 +814,11 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
     CONNECTION_TYPE_PRIMARY
     CONNECTION_TYPE_READER
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consumer project_id where the forwarding rule is created from.
     """
-    psc_connection_status: NotRequired[pulumi.Input[_builtins.str]]
+    psc_connection_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
@@ -835,9 +835,9 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
                  network: pulumi.Input[_builtins.str],
                  psc_connection_id: pulumi.Input[_builtins.str],
                  service_attachment: pulumi.Input[_builtins.str],
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] forwarding_rule: The URI of the consumer side forwarding rule.
                Format:
@@ -939,7 +939,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. Type of a PSC Connection.
@@ -951,24 +951,24 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consumer project_id where the forwarding rule is created from.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionStatus")
-    def psc_connection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
@@ -979,23 +979,23 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
         return pulumi.get(self, "psc_connection_status")
 
     @psc_connection_status.setter
-    def psc_connection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_status", value)
 
 
 class InstanceDiscoveryEndpointArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. IP address of the exposed endpoint clients connect to.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The consumer network where the IP address resides, in the form of
     projects/{project_id}/global/networks/{network_id}.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Ports of the exposed endpoint.
@@ -1004,9 +1004,9 @@ class InstanceDiscoveryEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceDiscoveryEndpointArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] address: (Output)
                Output only. IP address of the exposed endpoint clients connect to.
@@ -1025,7 +1025,7 @@ class InstanceDiscoveryEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. IP address of the exposed endpoint clients connect to.
@@ -1033,12 +1033,12 @@ class InstanceDiscoveryEndpointArgs:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The consumer network where the IP address resides, in the form of
@@ -1047,12 +1047,12 @@ class InstanceDiscoveryEndpointArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Ports of the exposed endpoint.
@@ -1060,12 +1060,12 @@ class InstanceDiscoveryEndpointArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class InstanceEndpointArgsDict(TypedDict):
-    connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointConnectionArgsDict']]]]
+    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]]]
     """
     A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
     Structure is documented below.
@@ -1074,7 +1074,7 @@ class InstanceEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceEndpointArgs:
     def __init__(__self__, *,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]] = None):
+                 connections: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]] connections: A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
                Structure is documented below.
@@ -1084,7 +1084,7 @@ class InstanceEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]]:
+    def connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]]:
         """
         A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
         Structure is documented below.
@@ -1092,12 +1092,12 @@ class InstanceEndpointArgs:
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]]):
+    def connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]]):
         pulumi.set(self, "connections", value)
 
 
 class InstanceEndpointConnectionArgsDict(TypedDict):
-    psc_auto_connection: NotRequired[pulumi.Input['InstanceEndpointConnectionPscAutoConnectionArgsDict']]
+    psc_auto_connection: NotRequired[pulumi.Input[Optional['InstanceEndpointConnectionPscAutoConnectionArgs']]]
     """
     Detailed information of a PSC connection that is created through service connectivity automation.
     Structure is documented below.
@@ -1106,7 +1106,7 @@ class InstanceEndpointConnectionArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceEndpointConnectionArgs:
     def __init__(__self__, *,
-                 psc_auto_connection: Optional[pulumi.Input['InstanceEndpointConnectionPscAutoConnectionArgs']] = None):
+                 psc_auto_connection: pulumi.Input[Optional['InstanceEndpointConnectionPscAutoConnectionArgs']] = None):
         """
         :param pulumi.Input['InstanceEndpointConnectionPscAutoConnectionArgs'] psc_auto_connection: Detailed information of a PSC connection that is created through service connectivity automation.
                Structure is documented below.
@@ -1116,7 +1116,7 @@ class InstanceEndpointConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnection")
-    def psc_auto_connection(self) -> Optional[pulumi.Input['InstanceEndpointConnectionPscAutoConnectionArgs']]:
+    def psc_auto_connection(self) -> pulumi.Input[Optional['InstanceEndpointConnectionPscAutoConnectionArgs']]:
         """
         Detailed information of a PSC connection that is created through service connectivity automation.
         Structure is documented below.
@@ -1124,12 +1124,12 @@ class InstanceEndpointConnectionArgs:
         return pulumi.get(self, "psc_auto_connection")
 
     @psc_auto_connection.setter
-    def psc_auto_connection(self, value: Optional[pulumi.Input['InstanceEndpointConnectionPscAutoConnectionArgs']]):
+    def psc_auto_connection(self, value: pulumi.Input[Optional['InstanceEndpointConnectionPscAutoConnectionArgs']]):
         pulumi.set(self, "psc_auto_connection", value)
 
 
 class InstanceEndpointConnectionPscAutoConnectionArgsDict(TypedDict):
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. Type of a PSC Connection.
@@ -1138,41 +1138,41 @@ class InstanceEndpointConnectionPscAutoConnectionArgsDict(TypedDict):
     CONNECTION_TYPE_PRIMARY
     CONNECTION_TYPE_READER
     """
-    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The URI of the consumer side forwarding rule.
     Format:
     projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The IP allocated on the consumer network for the PSC forwarding rule.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The consumer network where the IP address resides, in the form of
     projects/{project_id}/global/networks/{network_id}.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Ports of the exposed endpoint.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The consumer project_id where the forwarding rule is created from.
     """
-    psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    psc_connection_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The PSC connection id of the forwarding rule connected to the
     service attachment.
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -1181,14 +1181,14 @@ class InstanceEndpointConnectionPscAutoConnectionArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceEndpointConnectionPscAutoConnectionArgs:
     def __init__(__self__, *,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_type: (Output)
                Output Only. Type of a PSC Connection.
@@ -1234,7 +1234,7 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. Type of a PSC Connection.
@@ -1246,12 +1246,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The URI of the consumer side forwarding rule.
@@ -1261,12 +1261,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "forwarding_rule")
 
     @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The IP allocated on the consumer network for the PSC forwarding rule.
@@ -1274,12 +1274,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The consumer network where the IP address resides, in the form of
@@ -1288,12 +1288,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Ports of the exposed endpoint.
@@ -1301,12 +1301,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The consumer project_id where the forwarding rule is created from.
@@ -1314,12 +1314,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionId")
-    def psc_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The PSC connection id of the forwarding rule connected to the
@@ -1328,12 +1328,12 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "psc_connection_id")
 
     @psc_connection_id.setter
-    def psc_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -1341,7 +1341,7 @@ class InstanceEndpointConnectionPscAutoConnectionArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
@@ -1377,21 +1377,21 @@ class InstanceGcsSourceArgs:
 
 
 class InstanceMaintenancePolicyArgsDict(TypedDict):
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the policy was created.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the policy was last updated.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    weekly_maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]
+    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]]
     """
     Optional. Maintenance window that is applied to resources covered by this policy.
     Minimum 1. For the current version, the maximum number
@@ -1402,9 +1402,9 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMaintenancePolicyArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] create_time: (Output)
                The time when the policy was created.
@@ -1428,7 +1428,7 @@ class InstanceMaintenancePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the policy was created.
@@ -1438,12 +1438,12 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the policy was last updated.
@@ -1453,12 +1453,12 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyMaintenanceWindows")
-    def weekly_maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
+    def weekly_maintenance_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
         """
         Optional. Maintenance window that is applied to resources covered by this policy.
         Minimum 1. For the current version, the maximum number
@@ -1468,7 +1468,7 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "weekly_maintenance_windows")
 
     @weekly_maintenance_windows.setter
-    def weekly_maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
+    def weekly_maintenance_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
         pulumi.set(self, "weekly_maintenance_windows", value)
 
 
@@ -1491,7 +1491,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
     Start time of the window in UTC time.
     Structure is documented below.
     """
-    duration: NotRequired[pulumi.Input[_builtins.str]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Duration of the maintenance window.
@@ -1505,7 +1505,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
     def __init__(__self__, *,
                  day: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'],
-                 duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] day: The day of week that maintenance updates occur.
                - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
@@ -1566,7 +1566,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Duration of the maintenance window.
@@ -1577,25 +1577,25 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
 
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     An API may choose to allow the value "24:00:00" for scenarios like business closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59.
     An API may allow the value 60 if it allows leap-seconds.
@@ -1604,10 +1604,10 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDic
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
                An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1627,7 +1627,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1635,36 +1635,36 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59.
         An API may allow the value 60 if it allows leap-seconds.
@@ -1672,19 +1672,19 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class InstanceMaintenanceScheduleArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The end time of any upcoming scheduled maintenance for this cluster.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    schedule_deadline_time: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_deadline_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The deadline that the maintenance schedule start time
@@ -1692,7 +1692,7 @@ class InstanceMaintenanceScheduleArgsDict(TypedDict):
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The start time of any upcoming scheduled maintenance for this cluster.
@@ -1703,9 +1703,9 @@ class InstanceMaintenanceScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMaintenanceScheduleArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_deadline_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_deadline_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: (Output)
                The end time of any upcoming scheduled maintenance for this cluster.
@@ -1730,7 +1730,7 @@ class InstanceMaintenanceScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The end time of any upcoming scheduled maintenance for this cluster.
@@ -1740,12 +1740,12 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleDeadlineTime")
-    def schedule_deadline_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_deadline_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The deadline that the maintenance schedule start time
@@ -1756,12 +1756,12 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "schedule_deadline_time")
 
     @schedule_deadline_time.setter
-    def schedule_deadline_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_deadline_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_deadline_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The start time of any upcoming scheduled maintenance for this cluster.
@@ -1771,7 +1771,7 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -1804,7 +1804,7 @@ class InstanceManagedBackupSourceArgs:
 
 
 class InstanceManagedServerCaArgsDict(TypedDict):
-    ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgsDict']]]]
+    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]]
     """
     (Output)
     The PEM encoded CA certificate chains for managed server authentication
@@ -1814,7 +1814,7 @@ class InstanceManagedServerCaArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceManagedServerCaArgs:
     def __init__(__self__, *,
-                 ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]] = None):
+                 ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]] ca_certs: (Output)
                The PEM encoded CA certificate chains for managed server authentication
@@ -1825,7 +1825,7 @@ class InstanceManagedServerCaArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCerts")
-    def ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]:
+    def ca_certs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]:
         """
         (Output)
         The PEM encoded CA certificate chains for managed server authentication
@@ -1834,12 +1834,12 @@ class InstanceManagedServerCaArgs:
         return pulumi.get(self, "ca_certs")
 
     @ca_certs.setter
-    def ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]):
+    def ca_certs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]):
         pulumi.set(self, "ca_certs", value)
 
 
 class InstanceManagedServerCaCaCertArgsDict(TypedDict):
-    certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    certificates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     The certificates that form the CA chain, from leaf to root order
@@ -1848,7 +1848,7 @@ class InstanceManagedServerCaCaCertArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceManagedServerCaCaCertArgs:
     def __init__(__self__, *,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificates: (Output)
                The certificates that form the CA chain, from leaf to root order
@@ -1858,7 +1858,7 @@ class InstanceManagedServerCaCaCertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         The certificates that form the CA chain, from leaf to root order
@@ -1866,12 +1866,12 @@ class InstanceManagedServerCaCaCertArgs:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificates", value)
 
 
 class InstanceNodeConfigArgsDict(TypedDict):
-    size_gb: NotRequired[pulumi.Input[_builtins.float]]
+    size_gb: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     (Output)
     Output only. Memory size in GB of the node.
@@ -1880,7 +1880,7 @@ class InstanceNodeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceNodeConfigArgs:
     def __init__(__self__, *,
-                 size_gb: Optional[pulumi.Input[_builtins.float]] = None):
+                 size_gb: pulumi.Input[Optional[_builtins.float]] = None):
         """
         :param pulumi.Input[_builtins.float] size_gb: (Output)
                Output only. Memory size in GB of the node.
@@ -1890,7 +1890,7 @@ class InstanceNodeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def size_gb(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         (Output)
         Output only. Memory size in GB of the node.
@@ -1898,17 +1898,17 @@ class InstanceNodeConfigArgs:
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def size_gb(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "size_gb", value)
 
 
 class InstancePersistenceConfigArgsDict(TypedDict):
-    aof_config: NotRequired[pulumi.Input['InstancePersistenceConfigAofConfigArgsDict']]
+    aof_config: NotRequired[pulumi.Input[Optional['InstancePersistenceConfigAofConfigArgs']]]
     """
     Configuration for AOF based persistence.
     Structure is documented below.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Current persistence mode.
     Possible values:
@@ -1917,7 +1917,7 @@ class InstancePersistenceConfigArgsDict(TypedDict):
     AOF
     Possible values are: `DISABLED`, `RDB`, `AOF`.
     """
-    rdb_config: NotRequired[pulumi.Input['InstancePersistenceConfigRdbConfigArgsDict']]
+    rdb_config: NotRequired[pulumi.Input[Optional['InstancePersistenceConfigRdbConfigArgs']]]
     """
     Configuration for RDB based persistence.
     Structure is documented below.
@@ -1926,9 +1926,9 @@ class InstancePersistenceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePersistenceConfigArgs:
     def __init__(__self__, *,
-                 aof_config: Optional[pulumi.Input['InstancePersistenceConfigAofConfigArgs']] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdb_config: Optional[pulumi.Input['InstancePersistenceConfigRdbConfigArgs']] = None):
+                 aof_config: pulumi.Input[Optional['InstancePersistenceConfigAofConfigArgs']] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdb_config: pulumi.Input[Optional['InstancePersistenceConfigRdbConfigArgs']] = None):
         """
         :param pulumi.Input['InstancePersistenceConfigAofConfigArgs'] aof_config: Configuration for AOF based persistence.
                Structure is documented below.
@@ -1950,7 +1950,7 @@ class InstancePersistenceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="aofConfig")
-    def aof_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigAofConfigArgs']]:
+    def aof_config(self) -> pulumi.Input[Optional['InstancePersistenceConfigAofConfigArgs']]:
         """
         Configuration for AOF based persistence.
         Structure is documented below.
@@ -1958,12 +1958,12 @@ class InstancePersistenceConfigArgs:
         return pulumi.get(self, "aof_config")
 
     @aof_config.setter
-    def aof_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigAofConfigArgs']]):
+    def aof_config(self, value: pulumi.Input[Optional['InstancePersistenceConfigAofConfigArgs']]):
         pulumi.set(self, "aof_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Current persistence mode.
         Possible values:
@@ -1975,12 +1975,12 @@ class InstancePersistenceConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="rdbConfig")
-    def rdb_config(self) -> Optional[pulumi.Input['InstancePersistenceConfigRdbConfigArgs']]:
+    def rdb_config(self) -> pulumi.Input[Optional['InstancePersistenceConfigRdbConfigArgs']]:
         """
         Configuration for RDB based persistence.
         Structure is documented below.
@@ -1988,12 +1988,12 @@ class InstancePersistenceConfigArgs:
         return pulumi.get(self, "rdb_config")
 
     @rdb_config.setter
-    def rdb_config(self, value: Optional[pulumi.Input['InstancePersistenceConfigRdbConfigArgs']]):
+    def rdb_config(self, value: pulumi.Input[Optional['InstancePersistenceConfigRdbConfigArgs']]):
         pulumi.set(self, "rdb_config", value)
 
 
 class InstancePersistenceConfigAofConfigArgsDict(TypedDict):
-    append_fsync: NotRequired[pulumi.Input[_builtins.str]]
+    append_fsync: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The fsync mode.
     Possible values:
@@ -2005,7 +2005,7 @@ class InstancePersistenceConfigAofConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePersistenceConfigAofConfigArgs:
     def __init__(__self__, *,
-                 append_fsync: Optional[pulumi.Input[_builtins.str]] = None):
+                 append_fsync: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] append_fsync: Optional. The fsync mode.
                Possible values:
@@ -2018,7 +2018,7 @@ class InstancePersistenceConfigAofConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appendFsync")
-    def append_fsync(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def append_fsync(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The fsync mode.
         Possible values:
@@ -2029,12 +2029,12 @@ class InstancePersistenceConfigAofConfigArgs:
         return pulumi.get(self, "append_fsync")
 
     @append_fsync.setter
-    def append_fsync(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def append_fsync(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "append_fsync", value)
 
 
 class InstancePersistenceConfigRdbConfigArgsDict(TypedDict):
-    rdb_snapshot_period: NotRequired[pulumi.Input[_builtins.str]]
+    rdb_snapshot_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Period between RDB snapshots.
     Possible values:
@@ -2043,7 +2043,7 @@ class InstancePersistenceConfigRdbConfigArgsDict(TypedDict):
     TWELVE_HOURS
     TWENTY_FOUR_HOURS
     """
-    rdb_snapshot_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    rdb_snapshot_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Time that the first snapshot was/will be attempted, and to which future
     snapshots will be aligned. If not provided, the current time will be
@@ -2053,8 +2053,8 @@ class InstancePersistenceConfigRdbConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePersistenceConfigRdbConfigArgs:
     def __init__(__self__, *,
-                 rdb_snapshot_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdb_snapshot_start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 rdb_snapshot_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdb_snapshot_start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rdb_snapshot_period: Optional. Period between RDB snapshots.
                Possible values:
@@ -2073,7 +2073,7 @@ class InstancePersistenceConfigRdbConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="rdbSnapshotPeriod")
-    def rdb_snapshot_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdb_snapshot_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Period between RDB snapshots.
         Possible values:
@@ -2085,12 +2085,12 @@ class InstancePersistenceConfigRdbConfigArgs:
         return pulumi.get(self, "rdb_snapshot_period")
 
     @rdb_snapshot_period.setter
-    def rdb_snapshot_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdb_snapshot_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdb_snapshot_period", value)
 
     @_builtins.property
     @pulumi.getter(name="rdbSnapshotStartTime")
-    def rdb_snapshot_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdb_snapshot_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Time that the first snapshot was/will be attempted, and to which future
         snapshots will be aligned. If not provided, the current time will be
@@ -2099,12 +2099,12 @@ class InstancePersistenceConfigRdbConfigArgs:
         return pulumi.get(self, "rdb_snapshot_start_time")
 
     @rdb_snapshot_start_time.setter
-    def rdb_snapshot_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdb_snapshot_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdb_snapshot_start_time", value)
 
 
 class InstancePscAttachmentDetailArgsDict(TypedDict):
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. Type of a PSC Connection.
@@ -2113,7 +2113,7 @@ class InstancePscAttachmentDetailArgsDict(TypedDict):
     CONNECTION_TYPE_PRIMARY
     CONNECTION_TYPE_READER
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -2122,8 +2122,8 @@ class InstancePscAttachmentDetailArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePscAttachmentDetailArgs:
     def __init__(__self__, *,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_type: (Output)
                Output Only. Type of a PSC Connection.
@@ -2141,7 +2141,7 @@ class InstancePscAttachmentDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. Type of a PSC Connection.
@@ -2153,12 +2153,12 @@ class InstancePscAttachmentDetailArgs:
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -2166,12 +2166,12 @@ class InstancePscAttachmentDetailArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
 class InstancePscAutoConnectionArgsDict(TypedDict):
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. Type of a PSC Connection.
@@ -2180,41 +2180,41 @@ class InstancePscAutoConnectionArgsDict(TypedDict):
     CONNECTION_TYPE_PRIMARY
     CONNECTION_TYPE_READER
     """
-    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The URI of the consumer side forwarding rule.
     Format:
     projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The IP allocated on the consumer network for the PSC forwarding rule.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The consumer network where the IP address resides, in the form of
     projects/{project_id}/global/networks/{network_id}.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Ports of the exposed endpoint.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The consumer project_id where the forwarding rule is created from.
     """
-    psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    psc_connection_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The PSC connection id of the forwarding rule connected to the
     service attachment.
     """
-    psc_connection_status: NotRequired[pulumi.Input[_builtins.str]]
+    psc_connection_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
@@ -2222,7 +2222,7 @@ class InstancePscAutoConnectionArgsDict(TypedDict):
     ACTIVE
     NOT_FOUND
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -2231,15 +2231,15 @@ class InstancePscAutoConnectionArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePscAutoConnectionArgs:
     def __init__(__self__, *,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_type: (Output)
                Output Only. Type of a PSC Connection.
@@ -2292,7 +2292,7 @@ class InstancePscAutoConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. Type of a PSC Connection.
@@ -2304,12 +2304,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The URI of the consumer side forwarding rule.
@@ -2319,12 +2319,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "forwarding_rule")
 
     @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The IP allocated on the consumer network for the PSC forwarding rule.
@@ -2332,12 +2332,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The consumer network where the IP address resides, in the form of
@@ -2346,12 +2346,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Ports of the exposed endpoint.
@@ -2359,12 +2359,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The consumer project_id where the forwarding rule is created from.
@@ -2372,12 +2372,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionId")
-    def psc_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The PSC connection id of the forwarding rule connected to the
@@ -2386,12 +2386,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "psc_connection_id")
 
     @psc_connection_id.setter
-    def psc_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionStatus")
-    def psc_connection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
@@ -2402,12 +2402,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "psc_connection_status")
 
     @psc_connection_status.setter
-    def psc_connection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_status", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
@@ -2415,12 +2415,12 @@ class InstancePscAutoConnectionArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
 class InstanceStateInfoArgsDict(TypedDict):
-    update_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgsDict']]]]
+    update_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]]]
     """
     (Output)
     Represents information about instance with state UPDATING.
@@ -2430,7 +2430,7 @@ class InstanceStateInfoArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceStateInfoArgs:
     def __init__(__self__, *,
-                 update_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]] = None):
+                 update_infos: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]] update_infos: (Output)
                Represents information about instance with state UPDATING.
@@ -2441,7 +2441,7 @@ class InstanceStateInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="updateInfos")
-    def update_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]]:
+    def update_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]]:
         """
         (Output)
         Represents information about instance with state UPDATING.
@@ -2450,27 +2450,27 @@ class InstanceStateInfoArgs:
         return pulumi.get(self, "update_infos")
 
     @update_infos.setter
-    def update_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]]):
+    def update_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]]):
         pulumi.set(self, "update_infos", value)
 
 
 class InstanceStateInfoUpdateInfoArgsDict(TypedDict):
-    target_engine_version: NotRequired[pulumi.Input[_builtins.str]]
+    target_engine_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Target engine version for the instance.
     """
-    target_node_type: NotRequired[pulumi.Input[_builtins.str]]
+    target_node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Target node type for the instance.
     """
-    target_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    target_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Target number of replica nodes per shard for the instance.
     """
-    target_shard_count: NotRequired[pulumi.Input[_builtins.int]]
+    target_shard_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Output only. Target number of shards for the instance.
@@ -2479,10 +2479,10 @@ class InstanceStateInfoUpdateInfoArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceStateInfoUpdateInfoArgs:
     def __init__(__self__, *,
-                 target_engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_shard_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 target_engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_shard_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] target_engine_version: (Output)
                Output only. Target engine version for the instance.
@@ -2504,7 +2504,7 @@ class InstanceStateInfoUpdateInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="targetEngineVersion")
-    def target_engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Target engine version for the instance.
@@ -2512,12 +2512,12 @@ class InstanceStateInfoUpdateInfoArgs:
         return pulumi.get(self, "target_engine_version")
 
     @target_engine_version.setter
-    def target_engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="targetNodeType")
-    def target_node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Target node type for the instance.
@@ -2525,12 +2525,12 @@ class InstanceStateInfoUpdateInfoArgs:
         return pulumi.get(self, "target_node_type")
 
     @target_node_type.setter
-    def target_node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="targetReplicaCount")
-    def target_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Target number of replica nodes per shard for the instance.
@@ -2538,12 +2538,12 @@ class InstanceStateInfoUpdateInfoArgs:
         return pulumi.get(self, "target_replica_count")
 
     @target_replica_count.setter
-    def target_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="targetShardCount")
-    def target_shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Output only. Target number of shards for the instance.
@@ -2551,12 +2551,12 @@ class InstanceStateInfoUpdateInfoArgs:
         return pulumi.get(self, "target_shard_count")
 
     @target_shard_count.setter
-    def target_shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_shard_count", value)
 
 
 class InstanceZoneDistributionConfigArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
     Possible values:
@@ -2564,7 +2564,7 @@ class InstanceZoneDistributionConfigArgsDict(TypedDict):
     SINGLE_ZONE
     Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
     Ignored for MULTI_ZONE mode.
@@ -2573,8 +2573,8 @@ class InstanceZoneDistributionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceZoneDistributionConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
                Possible values:
@@ -2591,7 +2591,7 @@ class InstanceZoneDistributionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
         Possible values:
@@ -2602,12 +2602,12 @@ class InstanceZoneDistributionConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
         Ignored for MULTI_ZONE mode.
@@ -2615,7 +2615,7 @@ class InstanceZoneDistributionConfigArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 

@@ -32,8 +32,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -67,8 +67,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -116,8 +116,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -151,8 +151,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -200,8 +200,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -284,8 +284,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -319,8 +319,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -368,8 +368,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -403,8 +403,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -452,8 +452,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -487,8 +487,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2AcceleratorTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -571,8 +571,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -620,8 +620,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -654,8 +654,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -699,8 +699,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -733,8 +733,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -778,8 +778,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -812,8 +812,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -857,8 +857,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -891,8 +891,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -936,8 +936,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -970,8 +970,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1015,8 +1015,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1049,8 +1049,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1094,8 +1094,8 @@ public final class TpuFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.tpu.TpuFunctions;
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1128,8 +1128,8 @@ public final class TpuFunctions {
      * import com.pulumi.gcp.tpu.inputs.GetV2RuntimeVersionsArgs;
      * import com.pulumi.gcp.tpu.V2Vm;
      * import com.pulumi.gcp.tpu.V2VmArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

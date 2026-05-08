@@ -23,12 +23,12 @@ class AiIndexArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  metadata: pulumi.Input['AiIndexMetadataArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']] = None,
-                 index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiIndexEncryptionSpecArgs']] = None,
+                 index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiIndex resource.
 
@@ -94,19 +94,19 @@ class AiIndexArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Index.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiIndexEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
         Structure is documented below.
@@ -114,12 +114,12 @@ class AiIndexArgs:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiIndexEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="indexUpdateMethod")
-    def index_update_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_update_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
         * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -128,12 +128,12 @@ class AiIndexArgs:
         return pulumi.get(self, "index_update_method")
 
     @index_update_method.setter
-    def index_update_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_update_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_update_method", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -142,12 +142,12 @@ class AiIndexArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -155,42 +155,42 @@ class AiIndexArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the index. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AiIndexState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption_spec: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_stats: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]] = None,
-                 index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input['AiIndexMetadataArgs']] = None,
-                 metadata_schema_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployed_indexes: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption_spec: pulumi.Input[Optional['AiIndexEncryptionSpecArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_stats: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]] = None,
+                 index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional['AiIndexMetadataArgs']] = None,
+                 metadata_schema_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiIndex resources.
 
@@ -261,19 +261,19 @@ class _AiIndexState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deployedIndexes")
-    def deployed_indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]]:
+    def deployed_indexes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]]:
         """
         The pointers to DeployedIndexes created from this Index. An Index can be only deleted if all its DeployedIndexes had been undeployed first.
         Structure is documented below.
@@ -281,48 +281,48 @@ class _AiIndexState:
         return pulumi.get(self, "deployed_indexes")
 
     @deployed_indexes.setter
-    def deployed_indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]]):
+    def deployed_indexes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexDeployedIndexArgs']]]]):
         pulumi.set(self, "deployed_indexes", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Index.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionSpec")
-    def encryption_spec(self) -> Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]:
+    def encryption_spec(self) -> pulumi.Input[Optional['AiIndexEncryptionSpecArgs']]:
         """
         Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
         Structure is documented below.
@@ -330,24 +330,24 @@ class _AiIndexState:
         return pulumi.get(self, "encryption_spec")
 
     @encryption_spec.setter
-    def encryption_spec(self, value: Optional[pulumi.Input['AiIndexEncryptionSpecArgs']]):
+    def encryption_spec(self, value: pulumi.Input[Optional['AiIndexEncryptionSpecArgs']]):
         pulumi.set(self, "encryption_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to perform consistent read-modify-write updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="indexStats")
-    def index_stats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]]:
+    def index_stats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]]:
         """
         Stats of the index resource.
         Structure is documented below.
@@ -355,12 +355,12 @@ class _AiIndexState:
         return pulumi.get(self, "index_stats")
 
     @index_stats.setter
-    def index_stats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]]):
+    def index_stats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexIndexStatArgs']]]]):
         pulumi.set(self, "index_stats", value)
 
     @_builtins.property
     @pulumi.getter(name="indexUpdateMethod")
-    def index_update_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_update_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
         * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -369,12 +369,12 @@ class _AiIndexState:
         return pulumi.get(self, "index_update_method")
 
     @index_update_method.setter
-    def index_update_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_update_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_update_method", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels with user-defined metadata to organize your Indexes.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -383,12 +383,12 @@ class _AiIndexState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['AiIndexMetadataArgs']]:
+    def metadata(self) -> pulumi.Input[Optional['AiIndexMetadataArgs']]:
         """
         Additional information about the Index.
         Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
@@ -398,36 +398,36 @@ class _AiIndexState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['AiIndexMetadataArgs']]):
+    def metadata(self, value: pulumi.Input[Optional['AiIndexMetadataArgs']]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataSchemaUri")
-    def metadata_schema_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_schema_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Points to a YAML file stored on Google Cloud Storage describing additional information about the Index, that is specific to it. Unset if the Index does not have any additional information.
         """
         return pulumi.get(self, "metadata_schema_uri")
 
     @metadata_schema_uri.setter
-    def metadata_schema_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_schema_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_schema_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Index.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -435,12 +435,12 @@ class _AiIndexState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -448,31 +448,31 @@ class _AiIndexState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the index. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the Index was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -482,14 +482,14 @@ class AiIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
-                 index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
+                 index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
@@ -770,14 +770,14 @@ class AiIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_spec: Optional[pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
-                 index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 metadata: Optional[pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
+                 index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -820,23 +820,23 @@ class AiIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deployed_indexes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiIndexDeployedIndexArgs', 'AiIndexDeployedIndexArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption_spec: Optional[pulumi.Input[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            index_stats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict']]]]] = None,
-            index_update_method: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            metadata: Optional[pulumi.Input[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
-            metadata_schema_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiIndex':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deployed_indexes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexDeployedIndexArgs', 'AiIndexDeployedIndexArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption_spec: pulumi.Input[Optional[Union['AiIndexEncryptionSpecArgs', 'AiIndexEncryptionSpecArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            index_stats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AiIndexIndexStatArgs', 'AiIndexIndexStatArgsDict']]]]] = None,
+            index_update_method: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Union['AiIndexMetadataArgs', 'AiIndexMetadataArgsDict']]] = None,
+            metadata_schema_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiIndex':
         """
         Get an existing AiIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -117,8 +117,8 @@ def get_node_types(project: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_node_types_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_node_types_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeTypesResult]:
     """
     Provides available node types for Compute Engine sole-tenant nodes in a zone

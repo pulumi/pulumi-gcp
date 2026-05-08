@@ -21,8 +21,8 @@ class InstanceGroupMembershipArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[_builtins.str],
                  instance_group: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceGroupMembership resource.
 
@@ -65,7 +65,7 @@ class InstanceGroupMembershipArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -73,29 +73,29 @@ class InstanceGroupMembershipArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the instance group resides.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _InstanceGroupMembershipState:
     def __init__(__self__, *,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupMembership resources.
 
@@ -116,31 +116,31 @@ class _InstanceGroupMembershipState:
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An instance being added to the InstanceGroup
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroup")
-    def instance_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents an Instance Group resource name that the instance belongs to.
         """
         return pulumi.get(self, "instance_group")
 
     @instance_group.setter
-    def instance_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -148,19 +148,19 @@ class _InstanceGroupMembershipState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the instance group resides.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -170,10 +170,10 @@ class InstanceGroupMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents the Instance membership to the Instance Group.
@@ -334,10 +334,10 @@ class InstanceGroupMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -365,10 +365,10 @@ class InstanceGroupMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_group: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceGroupMembership':
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceGroupMembership':
         """
         Get an existing InstanceGroupMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

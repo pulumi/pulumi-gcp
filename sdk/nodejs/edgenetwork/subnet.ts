@@ -267,76 +267,76 @@ export interface SubnetState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
      */
-    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
      */
-    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Labels associated with this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The canonical name of this resource, with format
      * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network to which this router belongs.
      * Must be of the form: `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Current stage of the resource to the device by config push.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A unique ID that identifies this subnet.
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * The time when the subnet was last updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: `2014-10-02T15:01:23Z` and `2014-10-02T15:01:23.045123456Z`.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * VLAN ID for this subnetwork. If not specified, one is assigned automatically.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
     /**
      * The name of the target Distributed Cloud Edge zone.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -346,22 +346,22 @@ export interface SubnetArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
      */
-    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
      */
-    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Labels associated with this resource.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
      */
@@ -375,7 +375,7 @@ export interface SubnetArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A unique ID that identifies this subnet.
      */
@@ -383,7 +383,7 @@ export interface SubnetArgs {
     /**
      * VLAN ID for this subnetwork. If not specified, one is assigned automatically.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
     /**
      * The name of the target Distributed Cloud Edge zone.
      */

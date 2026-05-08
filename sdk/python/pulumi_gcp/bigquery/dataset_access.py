@@ -22,17 +22,17 @@ __all__ = ['DatasetAccessInitArgs', 'DatasetAccess']
 class DatasetAccessInitArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[_builtins.str],
-                 authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
-                 condition: Optional[pulumi.Input['DatasetAccessConditionArgs']] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
-                 special_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
+                 authorized_dataset: pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']] = None,
+                 condition: pulumi.Input[Optional['DatasetAccessConditionArgs']] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine: pulumi.Input[Optional['DatasetAccessRoutineArgs']] = None,
+                 special_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional['DatasetAccessViewArgs']] = None):
         """
         The set of arguments for constructing a DatasetAccess resource.
 
@@ -117,7 +117,7 @@ class DatasetAccessInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizedDataset")
-    def authorized_dataset(self) -> Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]:
+    def authorized_dataset(self) -> pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']]:
         """
         Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
@@ -125,12 +125,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "authorized_dataset")
 
     @authorized_dataset.setter
-    def authorized_dataset(self, value: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]):
+    def authorized_dataset(self, value: pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']]):
         pulumi.set(self, "authorized_dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DatasetAccessConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['DatasetAccessConditionArgs']]:
         """
         Condition for the binding. If CEL expression in this field is true, this
         access binding will be considered.
@@ -139,12 +139,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DatasetAccessConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['DatasetAccessConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A domain to grant access to. Any users signed in with the
         domain specified will be granted the specified access
@@ -152,24 +152,24 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="groupByEmail")
-    def group_by_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_by_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address of a Google Group to grant access to.
         """
         return pulumi.get(self, "group_by_email")
 
     @group_by_email.setter
-    def group_by_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_by_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_by_email", value)
 
     @_builtins.property
     @pulumi.getter(name="iamMember")
-    def iam_member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Some other type of member that appears in the IAM Policy but isn't a user,
         group, domain, or special group. For example: `allUsers`
@@ -177,12 +177,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "iam_member")
 
     @iam_member.setter
-    def iam_member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_member", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -190,12 +190,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the rights granted to the user specified by the other
         member of the access object. Basic, predefined, and custom roles are
@@ -207,12 +207,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArgs']]:
+    def routine(self) -> pulumi.Input[Optional['DatasetAccessRoutineArgs']]:
         """
         A routine from a different dataset to grant access to. Queries
         executed against that routine will have read access to tables in
@@ -224,12 +224,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "routine")
 
     @routine.setter
-    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArgs']]):
+    def routine(self, value: pulumi.Input[Optional['DatasetAccessRoutineArgs']]):
         pulumi.set(self, "routine", value)
 
     @_builtins.property
     @pulumi.getter(name="specialGroup")
-    def special_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def special_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A special group to grant access to. Possible values include:
         * `projectOwners`: Owners of the enclosing project.
@@ -240,12 +240,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "special_group")
 
     @special_group.setter
-    def special_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def special_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "special_group", value)
 
     @_builtins.property
     @pulumi.getter(name="userByEmail")
-    def user_by_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_by_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address of a user to grant access to. For example:
         fred@example.com
@@ -253,12 +253,12 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "user_by_email")
 
     @user_by_email.setter
-    def user_by_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_by_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_by_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input['DatasetAccessViewArgs']]:
+    def view(self) -> pulumi.Input[Optional['DatasetAccessViewArgs']]:
         """
         A view from a different dataset to grant access to. Queries
         executed against that view will have read access to tables in
@@ -270,26 +270,26 @@ class DatasetAccessInitArgs:
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input['DatasetAccessViewArgs']]):
+    def view(self, value: pulumi.Input[Optional['DatasetAccessViewArgs']]):
         pulumi.set(self, "view", value)
 
 
 @pulumi.input_type
 class _DatasetAccessState:
     def __init__(__self__, *,
-                 api_updated_member: Optional[pulumi.Input[_builtins.bool]] = None,
-                 authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
-                 condition: Optional[pulumi.Input['DatasetAccessConditionArgs']] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 routine: Optional[pulumi.Input['DatasetAccessRoutineArgs']] = None,
-                 special_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input['DatasetAccessViewArgs']] = None):
+                 api_updated_member: pulumi.Input[Optional[_builtins.bool]] = None,
+                 authorized_dataset: pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']] = None,
+                 condition: pulumi.Input[Optional['DatasetAccessConditionArgs']] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine: pulumi.Input[Optional['DatasetAccessRoutineArgs']] = None,
+                 special_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional['DatasetAccessViewArgs']] = None):
         """
         Input properties used for looking up and filtering DatasetAccess resources.
 
@@ -364,19 +364,19 @@ class _DatasetAccessState:
 
     @_builtins.property
     @pulumi.getter(name="apiUpdatedMember")
-    def api_updated_member(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def api_updated_member(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, represents that that the iam_member in the config was translated to a different member type by the API, and is stored in state as a different member type
         """
         return pulumi.get(self, "api_updated_member")
 
     @api_updated_member.setter
-    def api_updated_member(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def api_updated_member(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "api_updated_member", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedDataset")
-    def authorized_dataset(self) -> Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]:
+    def authorized_dataset(self) -> pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']]:
         """
         Grants all resources of particular types in a particular dataset read access to the current dataset.
         Structure is documented below.
@@ -384,12 +384,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "authorized_dataset")
 
     @authorized_dataset.setter
-    def authorized_dataset(self, value: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]):
+    def authorized_dataset(self, value: pulumi.Input[Optional['DatasetAccessAuthorizedDatasetArgs']]):
         pulumi.set(self, "authorized_dataset", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['DatasetAccessConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['DatasetAccessConditionArgs']]:
         """
         Condition for the binding. If CEL expression in this field is true, this
         access binding will be considered.
@@ -398,12 +398,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['DatasetAccessConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['DatasetAccessConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetId")
-    def dataset_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -412,12 +412,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter
-    def dataset_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A domain to grant access to. Any users signed in with the
         domain specified will be granted the specified access
@@ -425,24 +425,24 @@ class _DatasetAccessState:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="groupByEmail")
-    def group_by_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_by_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address of a Google Group to grant access to.
         """
         return pulumi.get(self, "group_by_email")
 
     @group_by_email.setter
-    def group_by_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_by_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_by_email", value)
 
     @_builtins.property
     @pulumi.getter(name="iamMember")
-    def iam_member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iam_member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Some other type of member that appears in the IAM Policy but isn't a user,
         group, domain, or special group. For example: `allUsers`
@@ -450,12 +450,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "iam_member")
 
     @iam_member.setter
-    def iam_member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iam_member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iam_member", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -463,12 +463,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the rights granted to the user specified by the other
         member of the access object. Basic, predefined, and custom roles are
@@ -480,12 +480,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def routine(self) -> Optional[pulumi.Input['DatasetAccessRoutineArgs']]:
+    def routine(self) -> pulumi.Input[Optional['DatasetAccessRoutineArgs']]:
         """
         A routine from a different dataset to grant access to. Queries
         executed against that routine will have read access to tables in
@@ -497,12 +497,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "routine")
 
     @routine.setter
-    def routine(self, value: Optional[pulumi.Input['DatasetAccessRoutineArgs']]):
+    def routine(self, value: pulumi.Input[Optional['DatasetAccessRoutineArgs']]):
         pulumi.set(self, "routine", value)
 
     @_builtins.property
     @pulumi.getter(name="specialGroup")
-    def special_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def special_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A special group to grant access to. Possible values include:
         * `projectOwners`: Owners of the enclosing project.
@@ -513,12 +513,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "special_group")
 
     @special_group.setter
-    def special_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def special_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "special_group", value)
 
     @_builtins.property
     @pulumi.getter(name="userByEmail")
-    def user_by_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_by_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address of a user to grant access to. For example:
         fred@example.com
@@ -526,12 +526,12 @@ class _DatasetAccessState:
         return pulumi.get(self, "user_by_email")
 
     @user_by_email.setter
-    def user_by_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_by_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_by_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input['DatasetAccessViewArgs']]:
+    def view(self) -> pulumi.Input[Optional['DatasetAccessViewArgs']]:
         """
         A view from a different dataset to grant access to. Queries
         executed against that view will have read access to tables in
@@ -543,7 +543,7 @@ class _DatasetAccessState:
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input['DatasetAccessViewArgs']]):
+    def view(self, value: pulumi.Input[Optional['DatasetAccessViewArgs']]):
         pulumi.set(self, "view", value)
 
 
@@ -553,18 +553,18 @@ class DatasetAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_dataset: Optional[pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
-                 condition: Optional[pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 routine: Optional[pulumi.Input[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
-                 special_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None,
+                 authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
+                 special_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None,
                  __props__=None):
         """
         Gives dataset access for a single entity. This resource is intended to be used in cases where
@@ -880,18 +880,18 @@ class DatasetAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_dataset: Optional[pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
-                 condition: Optional[pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
-                 dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 iam_member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 routine: Optional[pulumi.Input[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
-                 special_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None,
+                 authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
+                 condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
+                 dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 iam_member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
+                 special_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -926,19 +926,19 @@ class DatasetAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_updated_member: Optional[pulumi.Input[_builtins.bool]] = None,
-            authorized_dataset: Optional[pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
-            condition: Optional[pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
-            dataset_id: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            group_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-            iam_member: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            routine: Optional[pulumi.Input[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
-            special_group: Optional[pulumi.Input[_builtins.str]] = None,
-            user_by_email: Optional[pulumi.Input[_builtins.str]] = None,
-            view: Optional[pulumi.Input[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None) -> 'DatasetAccess':
+            api_updated_member: pulumi.Input[Optional[_builtins.bool]] = None,
+            authorized_dataset: pulumi.Input[Optional[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
+            condition: pulumi.Input[Optional[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
+            dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            group_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+            iam_member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            routine: pulumi.Input[Optional[Union['DatasetAccessRoutineArgs', 'DatasetAccessRoutineArgsDict']]] = None,
+            special_group: pulumi.Input[Optional[_builtins.str]] = None,
+            user_by_email: pulumi.Input[Optional[_builtins.str]] = None,
+            view: pulumi.Input[Optional[Union['DatasetAccessViewArgs', 'DatasetAccessViewArgsDict']]] = None) -> 'DatasetAccess':
         """
         Get an existing DatasetAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

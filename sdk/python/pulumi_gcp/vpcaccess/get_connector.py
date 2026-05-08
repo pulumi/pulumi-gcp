@@ -237,9 +237,9 @@ def get_connector(name: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         state=pulumi.get(__ret__, 'state'),
         subnets=pulumi.get(__ret__, 'subnets'))
-def get_connector_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_connector_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorResult]:
     """
     Get a Serverless VPC Access connector.

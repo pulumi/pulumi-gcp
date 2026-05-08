@@ -154,21 +154,21 @@ export interface ServicePerimeterResourceState {
     /**
      * The name of the Access Policy this resource belongs to.
      */
-    accessPolicyId?: pulumi.Input<string>;
+    accessPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service Perimeter to add this resource to.
      */
-    perimeterName?: pulumi.Input<string>;
+    perimeterName?: pulumi.Input<string | undefined>;
     /**
      * A GCP resource that is inside of the service perimeter.
      * Currently only projects are allowed.
      * Format: projects/{project_number}
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
 }
 
 /**

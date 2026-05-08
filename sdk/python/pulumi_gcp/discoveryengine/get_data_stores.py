@@ -112,8 +112,8 @@ def get_data_stores(location: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'))
-def get_data_stores_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_data_stores_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataStoresResult]:
     """
     Gets a list of existing Discovery Engine data stores.

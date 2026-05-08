@@ -20,7 +20,7 @@ __all__ = ['ProjectDefaultNetworkTierArgs', 'ProjectDefaultNetworkTier']
 class ProjectDefaultNetworkTierArgs:
     def __init__(__self__, *,
                  network_tier: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProjectDefaultNetworkTier resource.
 
@@ -52,7 +52,7 @@ class ProjectDefaultNetworkTierArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -60,15 +60,15 @@ class ProjectDefaultNetworkTierArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ProjectDefaultNetworkTierState:
     def __init__(__self__, *,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectDefaultNetworkTier resources.
 
@@ -86,7 +86,7 @@ class _ProjectDefaultNetworkTierState:
 
     @_builtins.property
     @pulumi.getter(name="networkTier")
-    def network_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default network tier to be configured for the project.
         This field can take the following values: `PREMIUM` or `STANDARD`.
@@ -96,12 +96,12 @@ class _ProjectDefaultNetworkTierState:
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
-    def network_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_tier", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -109,7 +109,7 @@ class _ProjectDefaultNetworkTierState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -119,8 +119,8 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Configures the Google Compute Engine
@@ -212,8 +212,8 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -237,8 +237,8 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_tier: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectDefaultNetworkTier':
+            network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectDefaultNetworkTier':
         """
         Get an existing ProjectDefaultNetworkTier resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

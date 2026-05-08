@@ -149,17 +149,17 @@ export interface DocumentAiWarehouseLocationState {
      * The access control mode for accessing the customer data.
      * Possible values are: `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI`, `ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_BYOID`, `ACL_MODE_UNIVERSAL_ACCESS`.
      */
-    accessControlMode?: pulumi.Input<string>;
+    accessControlMode?: pulumi.Input<string | undefined>;
     /**
      * The type of database used to store customer data.
      * Possible values are: `DB_INFRA_SPANNER`, `DB_CLOUD_SQL_POSTGRES`.
      */
-    databaseType?: pulumi.Input<string>;
+    databaseType?: pulumi.Input<string | undefined>;
     /**
      * The default role for the person who create a document.
      * Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
      */
-    documentCreatorDefaultRole?: pulumi.Input<string>;
+    documentCreatorDefaultRole?: pulumi.Input<string | undefined>;
     /**
      * The KMS key used for CMEK encryption. It is required that
      * the kms key is in the same region as the endpoint. The
@@ -167,15 +167,15 @@ export interface DocumentAiWarehouseLocationState {
      * encryption is available. If the kmsKey is left empty, no
      * encryption will be enforced.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the project.
      */
-    projectNumber?: pulumi.Input<string>;
+    projectNumber?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,7 +196,7 @@ export interface DocumentAiWarehouseLocationArgs {
      * The default role for the person who create a document.
      * Possible values are: `DOCUMENT_ADMIN`, `DOCUMENT_EDITOR`, `DOCUMENT_VIEWER`.
      */
-    documentCreatorDefaultRole?: pulumi.Input<string>;
+    documentCreatorDefaultRole?: pulumi.Input<string | undefined>;
     /**
      * The KMS key used for CMEK encryption. It is required that
      * the kms key is in the same region as the endpoint. The
@@ -204,7 +204,7 @@ export interface DocumentAiWarehouseLocationArgs {
      * encryption is available. If the kmsKey is left empty, no
      * encryption will be enforced.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
      */

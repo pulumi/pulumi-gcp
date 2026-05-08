@@ -232,38 +232,38 @@ export interface ParameterVersionState {
     /**
      * The time at which the Parameter Version was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The current state of Parameter Version. This field is only applicable for updating Parameter Version.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
      * `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
      */
-    kmsKeyVersion?: pulumi.Input<string>;
+    kmsKeyVersion?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Parameter Version. Format:
      * `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parameter Manager Parameter resource.
      */
-    parameter?: pulumi.Input<string>;
+    parameter?: pulumi.Input<string | undefined>;
     /**
      * The Parameter data.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    parameterData?: pulumi.Input<string>;
+    parameterData?: pulumi.Input<string | undefined>;
     /**
      * Version ID of the Parameter Version Resource. This must be unique within the Parameter.
      */
-    parameterVersionId?: pulumi.Input<string>;
+    parameterVersionId?: pulumi.Input<string | undefined>;
     /**
      * The time at which the Parameter Version was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -273,7 +273,7 @@ export interface ParameterVersionArgs {
     /**
      * The current state of Parameter Version. This field is only applicable for updating Parameter Version.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Parameter Manager Parameter resource.
      */

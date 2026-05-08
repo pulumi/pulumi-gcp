@@ -108,7 +108,7 @@ export interface GetReservationOutputArgs {
     /**
      * Project from which to list the Compute Reservation. Defaults to project declared in the provider.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Zone where the Compute Reservation resides.
      */

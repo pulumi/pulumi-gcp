@@ -270,8 +270,8 @@ def get_health_check(name: Optional[_builtins.str] = None,
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'),
         type=pulumi.get(__ret__, 'type'),
         unhealthy_threshold=pulumi.get(__ret__, 'unhealthy_threshold'))
-def get_health_check_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_health_check_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHealthCheckResult]:
     """
     Get information about a HealthCheck.

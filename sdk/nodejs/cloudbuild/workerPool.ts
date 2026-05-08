@@ -239,62 +239,62 @@ export interface WorkerPoolState {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. Time at which the request to create the `WorkerPool` was received.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Time at which the request to delete the `WorkerPool` was received.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * User-defined name of the `WorkerPool`.
      *
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration for the `WorkerPool`. Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig | undefined>;
     /**
      * Private Service Connect configuration for the pool.
      */
-    privateServiceConnect?: pulumi.Input<inputs.cloudbuild.WorkerPoolPrivateServiceConnect>;
+    privateServiceConnect?: pulumi.Input<inputs.cloudbuild.WorkerPoolPrivateServiceConnect | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Output only. A unique identifier for the `WorkerPool`.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. Time at which the request to update the `WorkerPool` was received.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
      */
-    workerConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolWorkerConfig>;
+    workerConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolWorkerConfig | undefined>;
 }
 
 /**
@@ -307,11 +307,11 @@ export interface WorkerPoolArgs {
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource
      */
@@ -322,21 +322,21 @@ export interface WorkerPoolArgs {
      *
      * - - -
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration for the `WorkerPool`. Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig | undefined>;
     /**
      * Private Service Connect configuration for the pool.
      */
-    privateServiceConnect?: pulumi.Input<inputs.cloudbuild.WorkerPoolPrivateServiceConnect>;
+    privateServiceConnect?: pulumi.Input<inputs.cloudbuild.WorkerPoolPrivateServiceConnect | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
      */
-    workerConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolWorkerConfig>;
+    workerConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolWorkerConfig | undefined>;
 }

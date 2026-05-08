@@ -22,13 +22,13 @@ __all__ = ['NoteArgs', 'Note']
 class NoteArgs:
     def __init__(__self__, *,
                  attestation_authority: pulumi.Input['NoteAttestationAuthorityArgs'],
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
-                 short_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
+                 short_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Note resource.
 
@@ -91,43 +91,43 @@ class NoteArgs:
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of expiration for this note. Leave empty if note does not expire.
         """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="longDescription")
-    def long_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def long_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A detailed description of the note
         """
         return pulumi.get(self, "long_description")
 
     @long_description.setter
-    def long_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def long_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "long_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the note.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -135,24 +135,24 @@ class NoteArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedNoteNames")
-    def related_note_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def related_note_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of other notes related to this note.
         """
         return pulumi.get(self, "related_note_names")
 
     @related_note_names.setter
-    def related_note_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def related_note_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "related_note_names", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedUrls")
-    def related_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
+    def related_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
         """
         URLs associated with this note and related metadata.
         Structure is documented below.
@@ -160,36 +160,36 @@ class NoteArgs:
         return pulumi.get(self, "related_urls")
 
     @related_urls.setter
-    def related_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]):
+    def related_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]):
         pulumi.set(self, "related_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="shortDescription")
-    def short_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def short_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A one sentence description of the note.
         """
         return pulumi.get(self, "short_description")
 
     @short_description.setter
-    def short_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def short_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "short_description", value)
 
 
 @pulumi.input_type
 class _NoteState:
     def __init__(__self__, *,
-                 attestation_authority: Optional[pulumi.Input['NoteAttestationAuthorityArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
-                 short_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 attestation_authority: pulumi.Input[Optional['NoteAttestationAuthorityArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]] = None,
+                 short_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Note resources.
 
@@ -241,7 +241,7 @@ class _NoteState:
 
     @_builtins.property
     @pulumi.getter(name="attestationAuthority")
-    def attestation_authority(self) -> Optional[pulumi.Input['NoteAttestationAuthorityArgs']]:
+    def attestation_authority(self) -> pulumi.Input[Optional['NoteAttestationAuthorityArgs']]:
         """
         Note kind that represents a logical attestation "role" or "authority".
         For example, an organization might have one AttestationAuthority for
@@ -257,72 +257,72 @@ class _NoteState:
         return pulumi.get(self, "attestation_authority")
 
     @attestation_authority.setter
-    def attestation_authority(self, value: Optional[pulumi.Input['NoteAttestationAuthorityArgs']]):
+    def attestation_authority(self, value: pulumi.Input[Optional['NoteAttestationAuthorityArgs']]):
         pulumi.set(self, "attestation_authority", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time this note was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of expiration for this note. Leave empty if note does not expire.
         """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of analysis this note describes
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter(name="longDescription")
-    def long_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def long_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A detailed description of the note
         """
         return pulumi.get(self, "long_description")
 
     @long_description.setter
-    def long_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def long_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "long_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the note.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -330,24 +330,24 @@ class _NoteState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedNoteNames")
-    def related_note_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def related_note_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Names of other notes related to this note.
         """
         return pulumi.get(self, "related_note_names")
 
     @related_note_names.setter
-    def related_note_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def related_note_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "related_note_names", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedUrls")
-    def related_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
+    def related_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]:
         """
         URLs associated with this note and related metadata.
         Structure is documented below.
@@ -355,31 +355,31 @@ class _NoteState:
         return pulumi.get(self, "related_urls")
 
     @related_urls.setter
-    def related_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]):
+    def related_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NoteRelatedUrlArgs']]]]):
         pulumi.set(self, "related_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="shortDescription")
-    def short_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def short_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A one sentence description of the note.
         """
         return pulumi.get(self, "short_description")
 
     @short_description.setter
-    def short_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def short_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "short_description", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time this note was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -389,14 +389,14 @@ class Note(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: Optional[pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
-                 short_description: Optional[pulumi.Input[_builtins.str]] = None,
+                 attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
+                 short_description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Container Analysis note is a high-level piece of metadata that
@@ -583,14 +583,14 @@ class Note(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attestation_authority: Optional[pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 long_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
-                 short_description: Optional[pulumi.Input[_builtins.str]] = None,
+                 attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 long_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
+                 short_description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,17 +623,17 @@ class Note(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attestation_authority: Optional[pulumi.Input[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_time: Optional[pulumi.Input[_builtins.str]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            long_description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            related_note_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            related_urls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
-            short_description: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Note':
+            attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            long_description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            related_note_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            related_urls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NoteRelatedUrlArgs', 'NoteRelatedUrlArgsDict']]]]] = None,
+            short_description: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Note':
         """
         Get an existing Note resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

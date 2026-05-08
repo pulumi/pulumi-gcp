@@ -150,9 +150,9 @@ export interface GetAddressGroupsOutputArgs {
      *
      * > **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project. Conflicts with `parent`.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

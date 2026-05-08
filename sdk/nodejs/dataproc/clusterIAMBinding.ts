@@ -236,12 +236,12 @@ export interface ClusterIAMBindingState {
      *
      * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
      */
-    cluster?: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition>;
+    cluster?: pulumi.Input<string | undefined>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition | undefined>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -252,17 +252,17 @@ export interface ClusterIAMBindingState {
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -270,7 +270,7 @@ export interface ClusterIAMBindingState {
      *
      * `gcp.dataproc.ClusterIAMPolicy` only:
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -283,7 +283,7 @@ export interface ClusterIAMBindingArgs {
      * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
      */
     cluster: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition | undefined>;
     /**
      * Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -299,12 +299,12 @@ export interface ClusterIAMBindingArgs {
      * The project in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region in which the cluster belongs. If it
      * is not provided, the provider will use a default.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
      * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format

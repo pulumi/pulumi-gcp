@@ -256,52 +256,52 @@ export interface GdcServiceInstanceState {
     /**
      * The timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Effective service account associated with ServiceInstance. This will be the serviceAccount if specified. Otherwise, it will be an automatically created per-resource P4SA that also automatically has Fleet Workload. Identity bindings applied.
      */
-    effectiveServiceAccount?: pulumi.Input<string>;
+    effectiveServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * Gdce cluster information.
      * Structure is documented below.
      */
-    gdceCluster?: pulumi.Input<inputs.dataproc.GdcServiceInstanceGdceCluster>;
+    gdceCluster?: pulumi.Input<inputs.dataproc.GdcServiceInstanceGdceCluster | undefined>;
     /**
      * The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the service instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether the service instance is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
      */
-    reconciling?: pulumi.Input<boolean>;
+    reconciling?: pulumi.Input<boolean | undefined>;
     /**
      * The intended state to which the service instance is reconciling. Possible values:
      * * `CREATING`
@@ -314,19 +314,19 @@ export interface GdcServiceInstanceState {
      * * `UPDATING`
      * * `FAILED`
      */
-    requestedState?: pulumi.Input<string>;
+    requestedState?: pulumi.Input<string | undefined>;
     /**
      * Requested service account to associate with ServiceInstance.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Id of the service instance.
      */
-    serviceInstanceId?: pulumi.Input<string>;
+    serviceInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Spark-specific service instance configuration.
      */
-    sparkServiceInstanceConfig?: pulumi.Input<inputs.dataproc.GdcServiceInstanceSparkServiceInstanceConfig>;
+    sparkServiceInstanceConfig?: pulumi.Input<inputs.dataproc.GdcServiceInstanceSparkServiceInstanceConfig | undefined>;
     /**
      * The current state. Possible values:
      * * `CREATING`
@@ -339,19 +339,19 @@ export interface GdcServiceInstanceState {
      * * `UPDATING`
      * * `FAILED`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A message explaining the current state.
      */
-    stateMessage?: pulumi.Input<string>;
+    stateMessage?: pulumi.Input<string | undefined>;
     /**
      * System generated unique identifier for this service instance, formatted as UUID4.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the resource was most recently updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -361,18 +361,18 @@ export interface GdcServiceInstanceArgs {
     /**
      * User-provided human-readable name to be used in user interfaces.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Gdce cluster information.
      * Structure is documented below.
      */
-    gdceCluster?: pulumi.Input<inputs.dataproc.GdcServiceInstanceGdceCluster>;
+    gdceCluster?: pulumi.Input<inputs.dataproc.GdcServiceInstanceGdceCluster | undefined>;
     /**
      * The labels to associate with this service instance. Labels may be used for filtering and billing tracking.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the resource.
      */
@@ -381,11 +381,11 @@ export interface GdcServiceInstanceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Requested service account to associate with ServiceInstance.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Id of the service instance.
      */
@@ -393,5 +393,5 @@ export interface GdcServiceInstanceArgs {
     /**
      * Spark-specific service instance configuration.
      */
-    sparkServiceInstanceConfig?: pulumi.Input<inputs.dataproc.GdcServiceInstanceSparkServiceInstanceConfig>;
+    sparkServiceInstanceConfig?: pulumi.Input<inputs.dataproc.GdcServiceInstanceSparkServiceInstanceConfig | undefined>;
 }

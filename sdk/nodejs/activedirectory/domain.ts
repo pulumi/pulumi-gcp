@@ -201,12 +201,12 @@ export interface DomainState {
      * The name of delegated administrator account used to perform Active Directory operations.
      * If not specified, setupadmin will be used.
      */
-    admin?: pulumi.Input<string>;
+    admin?: pulumi.Input<string | undefined>;
     /**
      * The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
-    authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the domain. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the domain,
@@ -215,51 +215,51 @@ export interface DomainState {
      * or `terraform destroy` that would delete the domain will fail.
      * When the field is set to false, deleting the domain is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The fully-qualified domain name of the exposed domain used by clients to connect to the service.
      * Similar to what would be chosen for an Active Directory set up on an internal network.
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
     /**
      * Resource labels that can contain user-provided metadata
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
      * e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
-    locations?: pulumi.Input<pulumi.Input<string>[]>;
+    locations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
      * Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
      */
-    reservedIpRange?: pulumi.Input<string>;
+    reservedIpRange?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -270,12 +270,12 @@ export interface DomainArgs {
      * The name of delegated administrator account used to perform Active Directory operations.
      * If not specified, setupadmin will be used.
      */
-    admin?: pulumi.Input<string>;
+    admin?: pulumi.Input<string | undefined>;
     /**
      * The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
-    authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the domain. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the domain,
@@ -284,7 +284,7 @@ export interface DomainArgs {
      * or `terraform destroy` that would delete the domain will fail.
      * When the field is set to false, deleting the domain is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
      * of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -295,7 +295,7 @@ export interface DomainArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
      * e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -305,7 +305,7 @@ export interface DomainArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
      * Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks

@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Monitoring
     ///         WindowsBasedSli = new Gcp.Monitoring.Inputs.SloWindowsBasedSliArgs
     ///         {
     ///             WindowPeriod = "400s",
-    ///             GoodBadMetricFilter = Std.Index.Join.Invoke(new()
+    ///             GoodBadMetricFilter = Std.Join.Invoke(new()
     ///             {
     ///                 Separator = " AND ",
     ///                 Input = new[]
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Monitoring
     ///             WindowPeriod = "600s",
     ///             MetricMeanInRange = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricMeanInRangeArgs
     ///             {
-    ///                 TimeSeries = Std.Index.Join.Invoke(new()
+    ///                 TimeSeries = Std.Join.Invoke(new()
     ///                 {
     ///                     Separator = " AND ",
     ///                     Input = new[]
@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.Monitoring
     ///             WindowPeriod = "400s",
     ///             MetricSumInRange = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricSumInRangeArgs
     ///             {
-    ///                 TimeSeries = Std.Index.Join.Invoke(new()
+    ///                 TimeSeries = Std.Join.Invoke(new()
     ///                 {
     ///                     Separator = " AND ",
     ///                     Input = new[]
@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.Monitoring
     ///                 {
     ///                     DistributionCut = new Gcp.Monitoring.Inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs
     ///                     {
-    ///                         DistributionFilter = Std.Index.Join.Invoke(new()
+    ///                         DistributionFilter = Std.Join.Invoke(new()
     ///                         {
     ///                             Separator = " AND ",
     ///                             Input = new[]

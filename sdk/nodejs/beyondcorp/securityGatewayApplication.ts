@@ -310,16 +310,16 @@ export interface SecurityGatewayApplicationState {
      * * Must contain between 4-63 characters from `/a-z-/`.
      * * Must end with a number or letter.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Output only. Timestamp when the resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. An arbitrary user-provided name for the Application resource.
      * Cannot exceed 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Required. Endpoint matchers associated with an application.
      * A combination of hostname and ports as endpoint matcher is used to match
@@ -334,34 +334,34 @@ export interface SecurityGatewayApplicationState {
      * Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
      * Structure is documented below.
      */
-    endpointMatchers?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher>[]>;
+    endpointMatchers?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher>[] | undefined>;
     /**
      * Identifier. Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Type of the external application.
      * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * ID of the Security Gateway resource this belongs to.
      */
-    securityGatewayId?: pulumi.Input<string>;
+    securityGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Output only. Timestamp when the resource was last modified.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. List of which upstream resource(s) to forward traffic to.
      * Structure is documented below.
      */
-    upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstream>[]>;
+    upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstream>[] | undefined>;
 }
 
 /**
@@ -379,7 +379,7 @@ export interface SecurityGatewayApplicationArgs {
      * Optional. An arbitrary user-provided name for the Application resource.
      * Cannot exceed 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Required. Endpoint matchers associated with an application.
      * A combination of hostname and ports as endpoint matcher is used to match
@@ -394,17 +394,17 @@ export interface SecurityGatewayApplicationArgs {
      * Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
      * Structure is documented below.
      */
-    endpointMatchers?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher>[]>;
+    endpointMatchers?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationEndpointMatcher>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Type of the external application.
      * Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * ID of the Security Gateway resource this belongs to.
      */
@@ -413,5 +413,5 @@ export interface SecurityGatewayApplicationArgs {
      * Optional. List of which upstream resource(s) to forward traffic to.
      * Structure is documented below.
      */
-    upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstream>[]>;
+    upstreams?: pulumi.Input<pulumi.Input<inputs.beyondcorp.SecurityGatewayApplicationUpstream>[] | undefined>;
 }

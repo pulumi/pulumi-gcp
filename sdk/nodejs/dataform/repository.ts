@@ -237,25 +237,25 @@ export interface RepositoryState {
     /**
      * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The repository's user-friendly name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      * Structure is documented below.
      */
-    gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
+    gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings | undefined>;
     /**
      * Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
      * It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Optional. Repository user labels.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -263,38 +263,38 @@ export interface RepositoryState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The repository's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
      */
-    npmrcEnvironmentVariablesSecretVersion?: pulumi.Input<string>;
+    npmrcEnvironmentVariablesSecretVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The service account to run workflow invocations under.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
      * Structure is documented below.
      */
-    workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides>;
+    workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides | undefined>;
 }
 
 /**
@@ -304,21 +304,21 @@ export interface RepositoryArgs {
     /**
      * Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The repository's user-friendly name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      * Structure is documented below.
      */
-    gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
+    gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings | undefined>;
     /**
      * Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
      * It is not possible to add or update the encryption key after the repository is created. Example projects/[kmsProjectId]/locations/[region]/keyRings/[keyRegion]/cryptoKeys/[key]
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * Optional. Repository user labels.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -326,31 +326,31 @@ export interface RepositoryArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The repository's name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
      */
-    npmrcEnvironmentVariablesSecretVersion?: pulumi.Input<string>;
+    npmrcEnvironmentVariablesSecretVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The service account to run workflow invocations under.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
      * Structure is documented below.
      */
-    workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides>;
+    workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides | undefined>;
 }

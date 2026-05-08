@@ -226,37 +226,37 @@ export interface DatabaseInstanceState {
      * The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
      * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      */
-    databaseUrl?: pulumi.Input<string>;
+    databaseUrl?: pulumi.Input<string | undefined>;
     /**
      * The intended database state. Possible values: ACTIVE, DISABLED.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified resource name of the Firebase Realtime Database, in
      * the format: projects/PROJECT_NUMBER/locations/REGION_IDENTIFIER/instances/INSTANCE_ID
      * PROJECT_NUMBER: The Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number)
      * Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region where the Firebase Realtime database resides.
      * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The current database state. Set desiredState to :DISABLED to disable the database and :ACTIVE to reenable the database
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The database type.
      * Each project can create one default Firebase Realtime Database, which cannot be deleted once created.
@@ -265,7 +265,7 @@ export interface DatabaseInstanceState {
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -275,7 +275,7 @@ export interface DatabaseInstanceArgs {
     /**
      * The intended database state. Possible values: ACTIVE, DISABLED.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * The globally unique identifier of the Firebase Realtime Database instance.
      * Instance IDs cannot be reused after deletion.
@@ -285,7 +285,7 @@ export interface DatabaseInstanceArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A reference to the region where the Firebase Realtime database resides.
      * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
@@ -299,5 +299,5 @@ export interface DatabaseInstanceArgs {
      * Default value is `USER_DATABASE`.
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

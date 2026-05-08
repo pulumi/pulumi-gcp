@@ -22,12 +22,12 @@ __all__ = ['RuntimeArgs', 'Runtime']
 class RuntimeArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
-                 virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None):
+                 access_config: pulumi.Input[Optional['RuntimeAccessConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 software_config: pulumi.Input[Optional['RuntimeSoftwareConfigArgs']] = None,
+                 virtual_machine: pulumi.Input[Optional['RuntimeVirtualMachineArgs']] = None):
         """
         The set of arguments for constructing a Runtime resource.
 
@@ -78,7 +78,7 @@ class RuntimeArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessConfig")
-    def access_config(self) -> Optional[pulumi.Input['RuntimeAccessConfigArgs']]:
+    def access_config(self) -> pulumi.Input[Optional['RuntimeAccessConfigArgs']]:
         """
         The config settings for accessing runtime.
         Structure is documented below.
@@ -86,12 +86,12 @@ class RuntimeArgs:
         return pulumi.get(self, "access_config")
 
     @access_config.setter
-    def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArgs']]):
+    def access_config(self, value: pulumi.Input[Optional['RuntimeAccessConfigArgs']]):
         pulumi.set(self, "access_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -105,24 +105,24 @@ class RuntimeArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the Notebook runtime.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -130,12 +130,12 @@ class RuntimeArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]:
+    def software_config(self) -> pulumi.Input[Optional['RuntimeSoftwareConfigArgs']]:
         """
         The config settings for software inside the runtime.
         Structure is documented below.
@@ -143,12 +143,12 @@ class RuntimeArgs:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]):
+    def software_config(self, value: pulumi.Input[Optional['RuntimeSoftwareConfigArgs']]):
         pulumi.set(self, "software_config", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> Optional[pulumi.Input['RuntimeVirtualMachineArgs']]:
+    def virtual_machine(self) -> pulumi.Input[Optional['RuntimeVirtualMachineArgs']]:
         """
         Use a Compute Engine VM image to start the managed notebook instance.
         Structure is documented below.
@@ -156,25 +156,25 @@ class RuntimeArgs:
         return pulumi.get(self, "virtual_machine")
 
     @virtual_machine.setter
-    def virtual_machine(self, value: Optional[pulumi.Input['RuntimeVirtualMachineArgs']]):
+    def virtual_machine(self, value: pulumi.Input[Optional['RuntimeVirtualMachineArgs']]):
         pulumi.set(self, "virtual_machine", value)
 
 
 @pulumi.input_type
 class _RuntimeState:
     def __init__(__self__, *,
-                 access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 health_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None):
+                 access_config: pulumi.Input[Optional['RuntimeAccessConfigArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 health_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeMetricArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 software_config: pulumi.Input[Optional['RuntimeSoftwareConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_machine: pulumi.Input[Optional['RuntimeVirtualMachineArgs']] = None):
         """
         Input properties used for looking up and filtering Runtime resources.
 
@@ -234,7 +234,7 @@ class _RuntimeState:
 
     @_builtins.property
     @pulumi.getter(name="accessConfig")
-    def access_config(self) -> Optional[pulumi.Input['RuntimeAccessConfigArgs']]:
+    def access_config(self) -> pulumi.Input[Optional['RuntimeAccessConfigArgs']]:
         """
         The config settings for accessing runtime.
         Structure is documented below.
@@ -242,24 +242,24 @@ class _RuntimeState:
         return pulumi.get(self, "access_config")
 
     @access_config.setter
-    def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArgs']]):
+    def access_config(self, value: pulumi.Input[Optional['RuntimeAccessConfigArgs']]):
         pulumi.set(self, "access_config", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="healthState")
-    def health_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The health state of this runtime. For a list of possible output
         values, see `https://cloud.google.com/vertex-ai/docs/workbench/
@@ -268,12 +268,12 @@ class _RuntimeState:
         return pulumi.get(self, "health_state")
 
     @health_state.setter
-    def health_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The labels to associate with this runtime. Label **keys** must
         contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
@@ -287,24 +287,24 @@ class _RuntimeState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the machine resides.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]]:
+    def metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeMetricArgs']]]]:
         """
         Contains Runtime daemon metrics such as Service status and JupyterLab
         status
@@ -313,24 +313,24 @@ class _RuntimeState:
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]]):
+    def metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeMetricArgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name specified for the Notebook runtime.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -338,12 +338,12 @@ class _RuntimeState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -351,12 +351,12 @@ class _RuntimeState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="softwareConfig")
-    def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]:
+    def software_config(self) -> pulumi.Input[Optional['RuntimeSoftwareConfigArgs']]:
         """
         The config settings for software inside the runtime.
         Structure is documented below.
@@ -364,24 +364,24 @@ class _RuntimeState:
         return pulumi.get(self, "software_config")
 
     @software_config.setter
-    def software_config(self, value: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]):
+    def software_config(self, value: pulumi.Input[Optional['RuntimeSoftwareConfigArgs']]):
         pulumi.set(self, "software_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of this runtime.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> Optional[pulumi.Input['RuntimeVirtualMachineArgs']]:
+    def virtual_machine(self) -> pulumi.Input[Optional['RuntimeVirtualMachineArgs']]:
         """
         Use a Compute Engine VM image to start the managed notebook instance.
         Structure is documented below.
@@ -389,7 +389,7 @@ class _RuntimeState:
         return pulumi.get(self, "virtual_machine")
 
     @virtual_machine.setter
-    def virtual_machine(self, value: Optional[pulumi.Input['RuntimeVirtualMachineArgs']]):
+    def virtual_machine(self, value: pulumi.Input[Optional['RuntimeVirtualMachineArgs']]):
         pulumi.set(self, "virtual_machine", value)
 
 
@@ -399,13 +399,13 @@ class Runtime(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: Optional[pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 software_config: Optional[pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
-                 virtual_machine: Optional[pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None,
+                 access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
+                 virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None,
                  __props__=None):
         """
         > **Warning:** `notebooks.Runtime` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
@@ -833,13 +833,13 @@ class Runtime(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_config: Optional[pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 software_config: Optional[pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
-                 virtual_machine: Optional[pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None,
+                 access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
+                 virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -875,18 +875,18 @@ class Runtime(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_config: Optional[pulumi.Input[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            health_state: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            software_config: Optional[pulumi.Input[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_machine: Optional[pulumi.Input[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None) -> 'Runtime':
+            access_config: pulumi.Input[Optional[Union['RuntimeAccessConfigArgs', 'RuntimeAccessConfigArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            health_state: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuntimeMetricArgs', 'RuntimeMetricArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            software_config: pulumi.Input[Optional[Union['RuntimeSoftwareConfigArgs', 'RuntimeSoftwareConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_machine: pulumi.Input[Optional[Union['RuntimeVirtualMachineArgs', 'RuntimeVirtualMachineArgsDict']]] = None) -> 'Runtime':
         """
         Get an existing Runtime resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

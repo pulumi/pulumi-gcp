@@ -23,10 +23,10 @@ class LinkedDatasetArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  link_id: pulumi.Input[_builtins.str],
-                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 bigquery_datasets: pulumi.Input[Optional[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LinkedDataset resource.
 
@@ -77,7 +77,7 @@ class LinkedDatasetArgs:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDatasets")
-    def bigquery_datasets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]:
+    def bigquery_datasets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]:
         """
         The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
         with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
@@ -87,58 +87,58 @@ class LinkedDatasetArgs:
         return pulumi.get(self, "bigquery_datasets")
 
     @bigquery_datasets.setter
-    def bigquery_datasets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]):
+    def bigquery_datasets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]):
         pulumi.set(self, "bigquery_datasets", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes this link. The maximum length of the description is 8000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the linked dataset.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the linked dataset.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
 @pulumi.input_type
 class _LinkedDatasetState:
     def __init__(__self__, *,
-                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None):
+                 bigquery_datasets: pulumi.Input[Optional[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LinkedDataset resources.
 
@@ -179,7 +179,7 @@ class _LinkedDatasetState:
 
     @_builtins.property
     @pulumi.getter(name="bigqueryDatasets")
-    def bigquery_datasets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]:
+    def bigquery_datasets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]:
         """
         The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
         with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
@@ -189,24 +189,24 @@ class _LinkedDatasetState:
         return pulumi.get(self, "bigquery_datasets")
 
     @bigquery_datasets.setter
-    def bigquery_datasets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]):
+    def bigquery_datasets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]]]):
         pulumi.set(self, "bigquery_datasets", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket to which the linked dataset is attached.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
         with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
@@ -215,60 +215,60 @@ class _LinkedDatasetState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes this link. The maximum length of the description is 8000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The linked dataset lifecycle state.
         """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
 
     @_builtins.property
     @pulumi.getter(name="linkId")
-    def link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the linked dataset.
         """
         return pulumi.get(self, "link_id")
 
     @link_id.setter
-    def link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the linked dataset.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the linked dataset. The name can have up to 100 characters. A valid link id
         (at the end of the link name) must only have alphanumeric characters and underscores within it.
@@ -276,19 +276,19 @@ class _LinkedDatasetState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent of the linked dataset.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
 
@@ -298,12 +298,12 @@ class LinkedDataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigquery_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Describes a BigQuery linked dataset
@@ -458,12 +458,12 @@ class LinkedDataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
+                 bigquery_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -496,15 +496,15 @@ class LinkedDataset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bigquery_datasets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-            link_id: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None) -> 'LinkedDataset':
+            bigquery_datasets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LinkedDatasetBigqueryDatasetArgs', 'LinkedDatasetBigqueryDatasetArgsDict']]]]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None) -> 'LinkedDataset':
         """
         Get an existing LinkedDataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

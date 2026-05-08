@@ -207,7 +207,7 @@ export interface AclState {
      * The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
      * Structure is documented below.
      */
-    aclEntries?: pulumi.Input<pulumi.Input<inputs.managedkafka.AclAclEntry>[]>;
+    aclEntries?: pulumi.Input<pulumi.Input<inputs.managedkafka.AclAclEntry>[] | undefined>;
     /**
      * The ID to use for the acl, which will become the final component of the acl's name. The structure of `aclId` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `aclId` is structured like one of the following:
      * For acls on the cluster: `cluster`
@@ -215,11 +215,11 @@ export interface AclState {
      * For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}`
      * For acls on all resources of a given type (i.e. the wildcard literal '*''): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`).
      */
-    aclId?: pulumi.Input<string>;
+    aclId?: pulumi.Input<string | undefined>;
     /**
      * The cluster name.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * `etag` is used for concurrency control. An `etag` is returned in the
      * response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
@@ -228,32 +228,32 @@ export interface AclState {
      * A terminal 'T' character in the etag indicates that the AclEntries were
      * truncated due to repeated field limits.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the acl. The `ACL_ID` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/acls/ACL_ID`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
      */
-    patternType?: pulumi.Input<string>;
+    patternType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -285,5 +285,5 @@ export interface AclArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

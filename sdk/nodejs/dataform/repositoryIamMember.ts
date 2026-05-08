@@ -90,23 +90,23 @@ export class RepositoryIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RepositoryIamMember resources.
  */
 export interface RepositoryIamMemberState {
-    condition?: pulumi.Input<inputs.dataform.RepositoryIamMemberCondition>;
-    etag?: pulumi.Input<string>;
-    member?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    repository?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    condition?: pulumi.Input<inputs.dataform.RepositoryIamMemberCondition | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    member?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    repository?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RepositoryIamMember resource.
  */
 export interface RepositoryIamMemberArgs {
-    condition?: pulumi.Input<inputs.dataform.RepositoryIamMemberCondition>;
+    condition?: pulumi.Input<inputs.dataform.RepositoryIamMemberCondition | undefined>;
     member: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     repository: pulumi.Input<string>;
     role: pulumi.Input<string>;
 }

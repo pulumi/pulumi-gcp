@@ -495,54 +495,54 @@ export interface EntryState {
      * The aspects that are attached to the entry.
      * Structure is documented below.
      */
-    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryAspect>[]>;
+    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryAspect>[] | undefined>;
     /**
      * The time when the Entry was created in Dataplex.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The entry group id of the entry group the entry will be created in.
      */
-    entryGroupId?: pulumi.Input<string>;
+    entryGroupId?: pulumi.Input<string | undefined>;
     /**
      * The entry id of the entry.
      */
-    entryId?: pulumi.Input<string>;
+    entryId?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    entrySource?: pulumi.Input<inputs.dataplex.EntryEntrySource>;
+    entrySource?: pulumi.Input<inputs.dataplex.EntryEntrySource | undefined>;
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
      */
-    entryType?: pulumi.Input<string>;
+    entryType?: pulumi.Input<string | undefined>;
     /**
      * A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
      * The maximum size of the field is 4000 characters.
      */
-    fullyQualifiedName?: pulumi.Input<string>;
+    fullyQualifiedName?: pulumi.Input<string | undefined>;
     /**
      * The location where entry will be created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
      */
-    parentEntry?: pulumi.Input<string>;
+    parentEntry?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The time when the entry was last updated in Dataplex.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -553,20 +553,20 @@ export interface EntryArgs {
      * The aspects that are attached to the entry.
      * Structure is documented below.
      */
-    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryAspect>[]>;
+    aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryAspect>[] | undefined>;
     /**
      * The entry group id of the entry group the entry will be created in.
      */
-    entryGroupId?: pulumi.Input<string>;
+    entryGroupId?: pulumi.Input<string | undefined>;
     /**
      * The entry id of the entry.
      */
-    entryId?: pulumi.Input<string>;
+    entryId?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    entrySource?: pulumi.Input<inputs.dataplex.EntryEntrySource>;
+    entrySource?: pulumi.Input<inputs.dataplex.EntryEntrySource | undefined>;
     /**
      * The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
      */
@@ -575,18 +575,18 @@ export interface EntryArgs {
      * A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
      * The maximum size of the field is 4000 characters.
      */
-    fullyQualifiedName?: pulumi.Input<string>;
+    fullyQualifiedName?: pulumi.Input<string | undefined>;
     /**
      * The location where entry will be created.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
      */
-    parentEntry?: pulumi.Input<string>;
+    parentEntry?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -345,55 +345,55 @@ export interface FirewallState {
      * connection.
      * Structure is documented below.
      */
-    allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[]>;
+    allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
      * a protocol and port-range tuple that describes a denied connection.
      * Structure is documented below.
      */
-    denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[]>;
+    denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[] | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
      * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      */
-    destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Direction of traffic to which this firewall applies; default is
      * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Denotes whether the firewall rule is disabled, i.e not applied to the
      * network it is associated with. When set to true, the firewall rule is
      * not enforced and the network behaves as if it did not exist. If this
      * is unspecified, the firewall rule will be enabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * This field denotes whether to enable logging for a particular firewall rule.
      * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      *
      * @deprecated Deprecated in favor of log_config
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * This field denotes the logging options for a particular firewall rule.
      * If defined, logging is enabled, and logs will be exported to Cloud Logging.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -403,16 +403,16 @@ export interface FirewallState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name or selfLink of the network to attach this firewall to.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.FirewallParams>;
+    params?: pulumi.Input<inputs.compute.FirewallParams | undefined>;
     /**
      * Priority for this rule. This is an integer between 0 and 65535, both
      * inclusive. When not specified, the value assumed is 1000. Relative
@@ -421,16 +421,16 @@ export interface FirewallState {
      * higher precedence than a rule with priority 1). DENY rules take
      * precedence over ALLOW rules having equal priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * If source ranges are specified, the firewall will apply only to
      * traffic that has source IP address in these ranges. These ranges must
@@ -442,7 +442,7 @@ export interface FirewallState {
      * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
      * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If source service accounts are specified, the firewall will apply only
      * to traffic originating from an instance with a service account in this
@@ -457,7 +457,7 @@ export interface FirewallState {
      * used at the same time as sourceTags or targetTags. For INGRESS traffic,
      * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If source tags are specified, the firewall will apply only to traffic
      * with source IP that belongs to a tag listed in source tags. Source
@@ -470,7 +470,7 @@ export interface FirewallState {
      * to match both properties for the firewall to apply. For INGRESS traffic,
      * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of service accounts indicating sets of instances located in the
      * network that may make network connections as specified in allowed[].
@@ -479,14 +479,14 @@ export interface FirewallState {
      * specified, the firewall rule applies to all instances on the specified
      * network.
      */
-    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of instance tags indicating sets of instances located in the
      * network that may make network connections as specified in allowed[].
      * If no targetTags are specified, the firewall rule applies to all
      * instances on the specified network.
      */
-    targetTags?: pulumi.Input<pulumi.Input<string>[]>;
+    targetTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -499,51 +499,51 @@ export interface FirewallArgs {
      * connection.
      * Structure is documented below.
      */
-    allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[]>;
+    allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[] | undefined>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
      * a protocol and port-range tuple that describes a denied connection.
      * Structure is documented below.
      */
-    denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[]>;
+    denies?: pulumi.Input<pulumi.Input<inputs.compute.FirewallDeny>[] | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
      * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      */
-    destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Direction of traffic to which this firewall applies; default is
      * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * Denotes whether the firewall rule is disabled, i.e not applied to the
      * network it is associated with. When set to true, the firewall rule is
      * not enforced and the network behaves as if it did not exist. If this
      * is unspecified, the firewall rule will be enabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * This field denotes whether to enable logging for a particular firewall rule.
      * If logging is enabled, logs will be exported to Stackdriver. Deprecated in favor of `logConfig`
      *
      * @deprecated Deprecated in favor of log_config
      */
-    enableLogging?: pulumi.Input<boolean>;
+    enableLogging?: pulumi.Input<boolean | undefined>;
     /**
      * This field denotes the logging options for a particular firewall rule.
      * If defined, logging is enabled, and logs will be exported to Cloud Logging.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.FirewallLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -553,7 +553,7 @@ export interface FirewallArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name or selfLink of the network to attach this firewall to.
      */
@@ -562,7 +562,7 @@ export interface FirewallArgs {
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.FirewallParams>;
+    params?: pulumi.Input<inputs.compute.FirewallParams | undefined>;
     /**
      * Priority for this rule. This is an integer between 0 and 65535, both
      * inclusive. When not specified, the value assumed is 1000. Relative
@@ -571,12 +571,12 @@ export interface FirewallArgs {
      * higher precedence than a rule with priority 1). DENY rules take
      * precedence over ALLOW rules having equal priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If source ranges are specified, the firewall will apply only to
      * traffic that has source IP address in these ranges. These ranges must
@@ -588,7 +588,7 @@ export interface FirewallArgs {
      * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
      * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If source service accounts are specified, the firewall will apply only
      * to traffic originating from an instance with a service account in this
@@ -603,7 +603,7 @@ export interface FirewallArgs {
      * used at the same time as sourceTags or targetTags. For INGRESS traffic,
      * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If source tags are specified, the firewall will apply only to traffic
      * with source IP that belongs to a tag listed in source tags. Source
@@ -616,7 +616,7 @@ export interface FirewallArgs {
      * to match both properties for the firewall to apply. For INGRESS traffic,
      * one of `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
-    sourceTags?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of service accounts indicating sets of instances located in the
      * network that may make network connections as specified in allowed[].
@@ -625,12 +625,12 @@ export interface FirewallArgs {
      * specified, the firewall rule applies to all instances on the specified
      * network.
      */
-    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of instance tags indicating sets of instances located in the
      * network that may make network connections as specified in allowed[].
      * If no targetTags are specified, the firewall rule applies to all
      * instances on the specified network.
      */
-    targetTags?: pulumi.Input<pulumi.Input<string>[]>;
+    targetTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

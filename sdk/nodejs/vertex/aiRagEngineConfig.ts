@@ -119,21 +119,21 @@ export interface AiRagEngineConfigState {
     /**
      * The resource name of the Dataset. This value is set by Google.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. The config of the RagManagedDb used by RagEngine.
      * Structure is documented below.
      */
-    ragManagedDbConfig?: pulumi.Input<inputs.vertex.AiRagEngineConfigRagManagedDbConfig>;
+    ragManagedDbConfig?: pulumi.Input<inputs.vertex.AiRagEngineConfigRagManagedDbConfig | undefined>;
     /**
      * The region of the RagEngineConfig. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -144,7 +144,7 @@ export interface AiRagEngineConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required. The config of the RagManagedDb used by RagEngine.
      * Structure is documented below.
@@ -153,5 +153,5 @@ export interface AiRagEngineConfigArgs {
     /**
      * The region of the RagEngineConfig. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

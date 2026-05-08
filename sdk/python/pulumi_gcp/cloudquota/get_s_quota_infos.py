@@ -111,8 +111,8 @@ def get_s_quota_infos(parent: Optional[_builtins.str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         quota_infos=pulumi.get(__ret__, 'quota_infos'),
         service=pulumi.get(__ret__, 'service'))
-def get_s_quota_infos_output(parent: Optional[pulumi.Input[_builtins.str]] = None,
-                             service: Optional[pulumi.Input[_builtins.str]] = None,
+def get_s_quota_infos_output(parent: pulumi.Input[Optional[_builtins.str]] = None,
+                             service: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSQuotaInfosResult]:
     """
     Provides information about all quotas for a given project, folder or organization.

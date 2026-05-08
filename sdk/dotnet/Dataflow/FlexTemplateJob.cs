@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Dataflow
     /// {
     ///     var config = new Config();
     ///     var bigDataJobSubscriptionId = config.Get("bigDataJobSubscriptionId") ?? "projects/myproject/subscriptions/messages";
-    ///     var bigDataJobNameSuffix = new Random.Index.Id("big_data_job_name_suffix", new()
+    ///     var bigDataJobNameSuffix = new Random.Id("big_data_job_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///         Keepers = 

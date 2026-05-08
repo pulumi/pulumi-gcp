@@ -243,55 +243,55 @@ export interface RecommendationEngineState {
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    commonConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineCommonConfig>;
+    commonConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineCommonConfig | undefined>;
     /**
      * Timestamp the Engine was created at.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
      */
-    dataStoreIds?: pulumi.Input<pulumi.Input<string>[]>;
+    dataStoreIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Unique ID to use for Recommendation Engine.
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`, `MEDIA`.
      */
-    industryVertical?: pulumi.Input<string>;
+    industryVertical?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Configurations for a Media Recommendation Engine. Only applicable on the data stores
      * with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
      * Structure is documented below.
      */
-    mediaRecommendationEngineConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineMediaRecommendationEngineConfig>;
+    mediaRecommendationEngineConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineMediaRecommendationEngineConfig | undefined>;
     /**
      * The unique full resource name of the recommendation engine. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Timestamp the Engine was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -302,7 +302,7 @@ export interface RecommendationEngineArgs {
      * Common config spec that specifies the metadata of the engine.
      * Structure is documented below.
      */
-    commonConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineCommonConfig>;
+    commonConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineCommonConfig | undefined>;
     /**
      * The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
      */
@@ -320,7 +320,7 @@ export interface RecommendationEngineArgs {
      * Default value is `GENERIC`.
      * Possible values are: `GENERIC`, `MEDIA`.
      */
-    industryVertical?: pulumi.Input<string>;
+    industryVertical?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -331,10 +331,10 @@ export interface RecommendationEngineArgs {
      * with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
      * Structure is documented below.
      */
-    mediaRecommendationEngineConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineMediaRecommendationEngineConfig>;
+    mediaRecommendationEngineConfig?: pulumi.Input<inputs.discoveryengine.RecommendationEngineMediaRecommendationEngineConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

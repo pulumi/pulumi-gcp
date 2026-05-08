@@ -230,10 +230,10 @@ def get_membership_binding(location: Optional[_builtins.str] = None,
         states=pulumi.get(__ret__, 'states'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_membership_binding_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                                  membership_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  membership_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_membership_binding_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                                  membership_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  membership_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMembershipBindingResult]:
     """
     Retrieves the details of a specific GKE Hub Membership Binding. Use this data source to retrieve the membership binding's configuration and state.

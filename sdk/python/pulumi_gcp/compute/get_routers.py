@@ -110,8 +110,8 @@ def get_routers(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         routers=pulumi.get(__ret__, 'routers'))
-def get_routers_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_routers_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoutersResult]:
     """
     Get a list of routers. For more information see

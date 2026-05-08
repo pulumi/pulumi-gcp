@@ -190,48 +190,48 @@ export interface DatabaseState {
     /**
      * The parent catalog.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * Output only. The creation time of the database. A timestamp in RFC3339
      * UTC "Zulu" format, with nanosecond resolution and up to nine fractional
      * digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The deletion time of the database. Only set after the
      * database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
      * nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time when this database is considered expired. Only set
      * after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits. Examples:
      * "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Options of a Hive database.
      * Structure is documented below.
      */
-    hiveOptions?: pulumi.Input<inputs.biglake.DatabaseHiveOptions>;
+    hiveOptions?: pulumi.Input<inputs.biglake.DatabaseHiveOptions | undefined>;
     /**
      * The name of the database.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The database type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Output only. The last modification time of the database. A timestamp in
      * RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and
      * "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface DatabaseArgs {
     /**
      * The name of the database.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The database type.
      */

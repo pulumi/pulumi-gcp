@@ -23,12 +23,12 @@ class FeedArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 details: Optional[pulumi.Input['FeedDetailsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failure_details: Optional[pulumi.Input['FeedFailureDetailsArgs']] = None,
-                 feed: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 details: pulumi.Input[Optional['FeedDetailsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failure_details: pulumi.Input[Optional['FeedFailureDetailsArgs']] = None,
+                 feed: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Feed resource.
 
@@ -89,7 +89,7 @@ class FeedArgs:
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input['FeedDetailsArgs']]:
+    def details(self) -> pulumi.Input[Optional['FeedDetailsArgs']]:
         """
         Additional details of the feed, these details are dynamic and will be
         different for each of the feeds.
@@ -98,36 +98,36 @@ class FeedArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input['FeedDetailsArgs']]):
+    def details(self, value: pulumi.Input[Optional['FeedDetailsArgs']]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer-provided feed name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the feed is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="failureDetails")
-    def failure_details(self) -> Optional[pulumi.Input['FeedFailureDetailsArgs']]:
+    def failure_details(self) -> pulumi.Input[Optional['FeedFailureDetailsArgs']]:
         """
         FeedFailureDetails contains details about the errors thrown by chronicle for
         the feeds. These are user visible details. These details help user identify
@@ -138,24 +138,24 @@ class FeedArgs:
         return pulumi.get(self, "failure_details")
 
     @failure_details.setter
-    def failure_details(self, value: Optional[pulumi.Input['FeedFailureDetailsArgs']]):
+    def failure_details(self, value: pulumi.Input[Optional['FeedFailureDetailsArgs']]):
         pulumi.set(self, "failure_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def feed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "feed")
 
     @feed.setter
-    def feed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feed", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -163,30 +163,30 @@ class FeedArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _FeedState:
     def __init__(__self__, *,
-                 details: Optional[pulumi.Input['FeedDetailsArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failure_details: Optional[pulumi.Input['FeedFailureDetailsArgs']] = None,
-                 failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_feed_initiation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 details: pulumi.Input[Optional['FeedDetailsArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failure_details: pulumi.Input[Optional['FeedFailureDetailsArgs']] = None,
+                 failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_feed_initiation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Feed resources.
 
@@ -254,7 +254,7 @@ class _FeedState:
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input['FeedDetailsArgs']]:
+    def details(self) -> pulumi.Input[Optional['FeedDetailsArgs']]:
         """
         Additional details of the feed, these details are dynamic and will be
         different for each of the feeds.
@@ -263,36 +263,36 @@ class _FeedState:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input['FeedDetailsArgs']]):
+    def details(self, value: pulumi.Input[Optional['FeedDetailsArgs']]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer-provided feed name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the feed is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="failureDetails")
-    def failure_details(self) -> Optional[pulumi.Input['FeedFailureDetailsArgs']]:
+    def failure_details(self) -> pulumi.Input[Optional['FeedFailureDetailsArgs']]:
         """
         FeedFailureDetails contains details about the errors thrown by chronicle for
         the feeds. These are user visible details. These details help user identify
@@ -303,84 +303,84 @@ class _FeedState:
         return pulumi.get(self, "failure_details")
 
     @failure_details.setter
-    def failure_details(self, value: Optional[pulumi.Input['FeedFailureDetailsArgs']]):
+    def failure_details(self, value: pulumi.Input[Optional['FeedFailureDetailsArgs']]):
         pulumi.set(self, "failure_details", value)
 
     @_builtins.property
     @pulumi.getter(name="failureMsg")
-    def failure_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failure_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Details about the most recent failure when feed state is FAILED.
         """
         return pulumi.get(self, "failure_msg")
 
     @failure_msg.setter
-    def failure_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failure_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failure_msg", value)
 
     @_builtins.property
     @pulumi.getter
-    def feed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "feed")
 
     @feed.setter
-    def feed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feed", value)
 
     @_builtins.property
     @pulumi.getter(name="feedServiceAccount")
-    def feed_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feed_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The service account used by Chronicle to ingest data from Cloud Storage. This is only available when the feed source type is GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN or GOOGLE_CLOUD_STORAGE.
         """
         return pulumi.get(self, "feed_service_account")
 
     @feed_service_account.setter
-    def feed_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feed_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feed_service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="lastFeedInitiationTime")
-    def last_feed_initiation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_feed_initiation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Latest timestamp when the transfer was successful for the feed.
         """
         return pulumi.get(self, "last_feed_initiation_time")
 
     @last_feed_initiation_time.setter
-    def last_feed_initiation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_feed_initiation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_feed_initiation_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the feed.
         Format:
@@ -389,12 +389,12 @@ class _FeedState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -402,67 +402,67 @@ class _FeedState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this feed can be updated or deleted.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="referenceId")
-    def reference_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference ID, this field will contain the legacy id of the feed.
         """
         return pulumi.get(self, "reference_id")
 
     @reference_id.setter
-    def reference_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The secret generated for the feed. This is only available when the feed source type is HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the feed (e.g., ACTIVE, INACTIVE).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the feed.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -472,14 +472,14 @@ class Feed(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 details: Optional[pulumi.Input[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failure_details: Optional[pulumi.Input[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
-                 feed: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
+                 feed: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The FeedsService is responsible for configuring and managing the ingestion of third-party security data and logs into Google Security Operations through various feed creation, updates, and lifecycle management, and schema validation.
@@ -780,14 +780,14 @@ class Feed(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 details: Optional[pulumi.Input[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failure_details: Optional[pulumi.Input[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
-                 feed: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
+                 feed: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -830,23 +830,23 @@ class Feed(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            details: Optional[pulumi.Input[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            failure_details: Optional[pulumi.Input[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
-            failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-            feed: Optional[pulumi.Input[_builtins.str]] = None,
-            feed_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            last_feed_initiation_time: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'Feed':
+            details: pulumi.Input[Optional[Union['FeedDetailsArgs', 'FeedDetailsArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            failure_details: pulumi.Input[Optional[Union['FeedFailureDetailsArgs', 'FeedFailureDetailsArgsDict']]] = None,
+            failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            feed: pulumi.Input[Optional[_builtins.str]] = None,
+            feed_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            last_feed_initiation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'Feed':
         """
         Get an existing Feed resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

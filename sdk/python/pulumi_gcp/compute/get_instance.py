@@ -615,10 +615,10 @@ def get_instance(name: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_instance_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        self_link: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        self_link: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
     Get information about a VM instance resource within GCE. For more information see

@@ -344,65 +344,65 @@ export interface ExampleState {
     /**
      * Resource ID segment making up resource `name`, defining the app the example belongs to. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    app?: pulumi.Input<string>;
+    app?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the example was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description of the example.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the example.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The agent that initially handles the conversation. If not specified, the
      * example represents a conversation that is handled by the root agent.
      * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
      */
-    entryAgent?: pulumi.Input<string>;
+    entryAgent?: pulumi.Input<string | undefined>;
     /**
      * Etag used to ensure the object hasn't changed during a read-modify-write
      * operation. If the etag is empty, the update will overwrite any concurrent
      * changes.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the example, which will become the final component of
      * the example's resource name. In Terraform, this field is required.
      */
-    exampleId?: pulumi.Input<string>;
+    exampleId?: pulumi.Input<string | undefined>;
     /**
      * The example may become invalid if referencing resources are deleted.
      * Invalid examples will not be used as few-shot examples.
      */
-    invalid?: pulumi.Input<boolean>;
+    invalid?: pulumi.Input<boolean | undefined>;
     /**
      * Resource ID segment making up resource `name`, defining what region the parent app is in. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The collection of messages that make up the conversation.
      * Structure is documented below.
      */
-    messages?: pulumi.Input<pulumi.Input<inputs.ces.ExampleMessage>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.ces.ExampleMessage>[] | undefined>;
     /**
      * Identifier. The unique identifier of the example.
      * Format:
      * `projects/{project}/locations/{location}/apps/{app}/examples/{example}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the example was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -416,7 +416,7 @@ export interface ExampleArgs {
     /**
      * Human-readable description of the example.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the example.
      */
@@ -426,7 +426,7 @@ export interface ExampleArgs {
      * example represents a conversation that is handled by the root agent.
      * Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
      */
-    entryAgent?: pulumi.Input<string>;
+    entryAgent?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the example, which will become the final component of
      * the example's resource name. In Terraform, this field is required.
@@ -440,10 +440,10 @@ export interface ExampleArgs {
      * The collection of messages that make up the conversation.
      * Structure is documented below.
      */
-    messages?: pulumi.Input<pulumi.Input<inputs.ces.ExampleMessage>[]>;
+    messages?: pulumi.Input<pulumi.Input<inputs.ces.ExampleMessage>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

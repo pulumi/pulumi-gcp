@@ -170,8 +170,8 @@ def get_external_address(name: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_external_address_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_external_address_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                parent: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalAddressResult]:
     """
     Use this data source to get details about a external address resource.

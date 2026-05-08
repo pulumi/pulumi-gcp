@@ -181,10 +181,10 @@ def get_document(collection: Optional[_builtins.str] = None,
         path=pulumi.get(__ret__, 'path'),
         project=pulumi.get(__ret__, 'project'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_document_output(collection: Optional[pulumi.Input[_builtins.str]] = None,
-                        database: Optional[pulumi.Input[_builtins.str]] = None,
-                        document_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_document_output(collection: pulumi.Input[Optional[_builtins.str]] = None,
+                        database: pulumi.Input[Optional[_builtins.str]] = None,
+                        document_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDocumentResult]:
     """
     Reads a document from a Firestore database.

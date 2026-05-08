@@ -271,72 +271,72 @@ export interface CxSecuritySettingsState {
      * This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
      * Structure is documented below.
      */
-    audioExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsAudioExportSettings>;
+    audioExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsAudioExportSettings | undefined>;
     /**
      * [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
      * Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
      * Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
      */
-    deidentifyTemplate?: pulumi.Input<string>;
+    deidentifyTemplate?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the security settings, unique within the location.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Controls conversation exporting settings to Insights after conversation is completed.
      * If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
      * Structure is documented below.
      */
-    insightsExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsInsightsExportSettings>;
+    insightsExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsInsightsExportSettings | undefined>;
     /**
      * [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
      * Note: inspectTemplate must be located in the same region as the SecuritySettings.
      * Format: projects/<Project ID>/locations/<Location ID>/inspectTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/inspectTemplates/<Template ID>
      */
-    inspectTemplate?: pulumi.Input<string>;
+    inspectTemplate?: pulumi.Input<string | undefined>;
     /**
      * The location these settings are located in. Settings can only be applied to an agent in the same location.
      * See [Available Regions](https://cloud.google.com/dialogflow/cx/docs/concept/region#avail) for a list of supported locations.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the settings.
      * Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * List of types of data to remove when retention settings triggers purge.
      * Each value may be one of: `DIALOGFLOW_HISTORY`.
      */
-    purgeDataTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    purgeDataTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
      * * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
      * Possible values are: `REDACT_DISK_STORAGE`.
      */
-    redactionScope?: pulumi.Input<string>;
+    redactionScope?: pulumi.Input<string | undefined>;
     /**
      * Defines how we redact data. If not set, defaults to not redacting.
      * * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
      * Possible values are: `REDACT_WITH_SERVICE`.
      */
-    redactionStrategy?: pulumi.Input<string>;
+    redactionStrategy?: pulumi.Input<string | undefined>;
     /**
      * Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
      * Possible values are: `REMOVE_AFTER_CONVERSATION`.
      */
-    retentionStrategy?: pulumi.Input<string>;
+    retentionStrategy?: pulumi.Input<string | undefined>;
     /**
      * Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
      * Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      */
-    retentionWindowDays?: pulumi.Input<number>;
+    retentionWindowDays?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -350,13 +350,13 @@ export interface CxSecuritySettingsArgs {
      * This setting won't effect audio input for implicit sessions via [Sessions.DetectIntent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/detectIntent#google.cloud.dialogflow.cx.v3.Sessions.DetectIntent).
      * Structure is documented below.
      */
-    audioExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsAudioExportSettings>;
+    audioExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsAudioExportSettings | undefined>;
     /**
      * [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
      * Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
      * Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
      */
-    deidentifyTemplate?: pulumi.Input<string>;
+    deidentifyTemplate?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the security settings, unique within the location.
      */
@@ -366,13 +366,13 @@ export interface CxSecuritySettingsArgs {
      * If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
      * Structure is documented below.
      */
-    insightsExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsInsightsExportSettings>;
+    insightsExportSettings?: pulumi.Input<inputs.diagflow.CxSecuritySettingsInsightsExportSettings | undefined>;
     /**
      * [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config.
      * Note: inspectTemplate must be located in the same region as the SecuritySettings.
      * Format: projects/<Project ID>/locations/<Location ID>/inspectTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/inspectTemplates/<Template ID>
      */
-    inspectTemplate?: pulumi.Input<string>;
+    inspectTemplate?: pulumi.Input<string | undefined>;
     /**
      * The location these settings are located in. Settings can only be applied to an agent in the same location.
      * See [Available Regions](https://cloud.google.com/dialogflow/cx/docs/concept/region#avail) for a list of supported locations.
@@ -382,33 +382,33 @@ export interface CxSecuritySettingsArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * List of types of data to remove when retention settings triggers purge.
      * Each value may be one of: `DIALOGFLOW_HISTORY`.
      */
-    purgeDataTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    purgeDataTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
      * * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
      * Possible values are: `REDACT_DISK_STORAGE`.
      */
-    redactionScope?: pulumi.Input<string>;
+    redactionScope?: pulumi.Input<string | undefined>;
     /**
      * Defines how we redact data. If not set, defaults to not redacting.
      * * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
      * Possible values are: `REDACT_WITH_SERVICE`.
      */
-    redactionStrategy?: pulumi.Input<string>;
+    redactionStrategy?: pulumi.Input<string | undefined>;
     /**
      * Defines how long we retain persisted data that contains sensitive info. Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      * * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
      * Possible values are: `REMOVE_AFTER_CONVERSATION`.
      */
-    retentionStrategy?: pulumi.Input<string>;
+    retentionStrategy?: pulumi.Input<string | undefined>;
     /**
      * Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
      * Only one of `retentionWindowDays` and `retentionStrategy` may be set.
      */
-    retentionWindowDays?: pulumi.Input<number>;
+    retentionWindowDays?: pulumi.Input<number | undefined>;
 }

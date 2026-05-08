@@ -111,8 +111,8 @@ def get_iam_policy(audit_configs: Optional[Sequence[Union['GetIAMPolicyAuditConf
         bindings=pulumi.get(__ret__, 'bindings'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetIAMPolicyAuditConfigArgs', 'GetIAMPolicyAuditConfigArgsDict']]]]] = None,
-                          bindings: Optional[pulumi.Input[Optional[Sequence[Union['GetIAMPolicyBindingArgs', 'GetIAMPolicyBindingArgsDict']]]]] = None,
+def get_iam_policy_output(audit_configs: pulumi.Input[Optional[Optional[Sequence[Union['GetIAMPolicyAuditConfigArgs', 'GetIAMPolicyAuditConfigArgsDict']]]]] = None,
+                          bindings: pulumi.Input[Optional[Optional[Sequence[Union['GetIAMPolicyBindingArgs', 'GetIAMPolicyBindingArgsDict']]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIAMPolicyResult]:
     """
     Generates an IAM policy document that may be referenced by and applied to

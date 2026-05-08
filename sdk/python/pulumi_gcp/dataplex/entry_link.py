@@ -26,8 +26,8 @@ class EntryLinkArgs:
                  entry_link_type: pulumi.Input[_builtins.str],
                  entry_references: pulumi.Input[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]],
                  location: pulumi.Input[_builtins.str],
-                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntryLink resource.
 
@@ -117,7 +117,7 @@ class EntryLinkArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aspects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]:
+    def aspects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]:
         """
         The Aspects attached to the Entry Link.
         Structure is documented below.
@@ -125,12 +125,12 @@ class EntryLinkArgs:
         return pulumi.get(self, "aspects")
 
     @aspects.setter
-    def aspects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]):
+    def aspects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]):
         pulumi.set(self, "aspects", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -138,23 +138,23 @@ class EntryLinkArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _EntryLinkState:
     def __init__(__self__, *,
-                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_references: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_references: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntryLink resources.
 
@@ -197,7 +197,7 @@ class _EntryLinkState:
 
     @_builtins.property
     @pulumi.getter
-    def aspects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]:
+    def aspects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]:
         """
         The Aspects attached to the Entry Link.
         Structure is documented below.
@@ -205,48 +205,48 @@ class _EntryLinkState:
         return pulumi.get(self, "aspects")
 
     @aspects.setter
-    def aspects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]):
+    def aspects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]]):
         pulumi.set(self, "aspects", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the Entry Link was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="entryGroupId")
-    def entry_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the entry group this entry link is in.
         """
         return pulumi.get(self, "entry_group_id")
 
     @entry_group_id.setter
-    def entry_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="entryLinkId")
-    def entry_link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the entry link to create.
         """
         return pulumi.get(self, "entry_link_id")
 
     @entry_link_id.setter
-    def entry_link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="entryLinkType")
-    def entry_link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Relative resource name of the Entry Link Type used to create this Entry Link. For example:
         projects/dataplex-types/locations/global/entryLinkTypes/definition
@@ -254,12 +254,12 @@ class _EntryLinkState:
         return pulumi.get(self, "entry_link_type")
 
     @entry_link_type.setter
-    def entry_link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_link_type", value)
 
     @_builtins.property
     @pulumi.getter(name="entryReferences")
-    def entry_references(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]]]:
+    def entry_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]]]:
         """
         Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
         Structure is documented below.
@@ -267,24 +267,24 @@ class _EntryLinkState:
         return pulumi.get(self, "entry_references")
 
     @entry_references.setter
-    def entry_references(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]]]):
+    def entry_references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]]]):
         pulumi.set(self, "entry_references", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the entry.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relative resource name of the Entry Link, of the form:
         projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
@@ -292,12 +292,12 @@ class _EntryLinkState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -305,19 +305,19 @@ class _EntryLinkState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the Entry Link was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -327,13 +327,13 @@ class EntryLink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
-                 entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+                 entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         EntryLink represents a link between two Entries.
@@ -640,13 +640,13 @@ class EntryLink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
-                 entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+                 entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -686,16 +686,16 @@ class EntryLink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aspects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_link_type: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_references: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'EntryLink':
+            aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkEntryReferenceArgs', 'EntryLinkEntryReferenceArgsDict']]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'EntryLink':
         """
         Get an existing EntryLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

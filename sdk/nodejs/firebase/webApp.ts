@@ -221,36 +221,36 @@ export interface WebAppState {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    apiKeyId?: pulumi.Input<string>;
+    apiKeyId?: pulumi.Input<string | undefined>;
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The URLs where the `WebApp` is hosted.
      */
-    appUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    appUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set to `ABANDON` to allow the WebApp to be untracked from terraform state
      * rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
      * serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-assigned display name of the App.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified resource name of the App, for example:
      * projects/projectId/webApps/appId
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -262,13 +262,13 @@ export interface WebAppArgs {
      * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      */
-    apiKeyId?: pulumi.Input<string>;
+    apiKeyId?: pulumi.Input<string | undefined>;
     /**
      * Set to `ABANDON` to allow the WebApp to be untracked from terraform state
      * rather than deleted upon `terraform destroy`. This is useful becaue the WebApp may be
      * serving traffic. Set to `DELETE` to delete the WebApp. Default to `DELETE`
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-assigned display name of the App.
      */
@@ -277,5 +277,5 @@ export interface WebAppArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

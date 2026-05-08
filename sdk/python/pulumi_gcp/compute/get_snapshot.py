@@ -337,10 +337,10 @@ def get_snapshot(filter: Optional[_builtins.str] = None,
         storage_bytes=pulumi.get(__ret__, 'storage_bytes'),
         storage_locations=pulumi.get(__ret__, 'storage_locations'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_snapshot_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        most_recent: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_snapshot_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotResult]:
     """
     To get more information about Snapshot, see:

@@ -405,19 +405,19 @@ export interface PipelineJobState {
      * Specifies the backfill configuration.
      * Structure is documented below.
      */
-    backfillPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobBackfillPipelineJob>;
+    backfillPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobBackfillPipelineJob | undefined>;
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * If true, disables writing lineage for the pipeline.
      */
-    disableLineage?: pulumi.Input<boolean>;
+    disableLineage?: pulumi.Input<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-supplied key-value pairs used to organize Pipeline Jobs.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -433,34 +433,34 @@ export interface PipelineJobState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location where the Pipeline Job is to run
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Specifies mapping configuration.
      * Structure is documented below.
      */
-    mappingPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobMappingPipelineJob>;
+    mappingPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobMappingPipelineJob | undefined>;
     /**
      * Specifies the name of the pipeline job. This field is user-assigned.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies reconciliation configuration.
      * Structure is documented below.
      */
-    reconciliationPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobReconciliationPipelineJob>;
+    reconciliationPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobReconciliationPipelineJob | undefined>;
     /**
      * The fully qualified name of this dataset
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -471,7 +471,7 @@ export interface PipelineJobArgs {
      * Specifies the backfill configuration.
      * Structure is documented below.
      */
-    backfillPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobBackfillPipelineJob>;
+    backfillPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobBackfillPipelineJob | undefined>;
     /**
      * Healthcare Dataset under which the Pipeline Job is to run
      */
@@ -479,7 +479,7 @@ export interface PipelineJobArgs {
     /**
      * If true, disables writing lineage for the pipeline.
      */
-    disableLineage?: pulumi.Input<boolean>;
+    disableLineage?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied key-value pairs used to organize Pipeline Jobs.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
@@ -495,7 +495,7 @@ export interface PipelineJobArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location where the Pipeline Job is to run
      */
@@ -504,14 +504,14 @@ export interface PipelineJobArgs {
      * Specifies mapping configuration.
      * Structure is documented below.
      */
-    mappingPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobMappingPipelineJob>;
+    mappingPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobMappingPipelineJob | undefined>;
     /**
      * Specifies the name of the pipeline job. This field is user-assigned.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies reconciliation configuration.
      * Structure is documented below.
      */
-    reconciliationPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobReconciliationPipelineJob>;
+    reconciliationPipelineJob?: pulumi.Input<inputs.healthcare.PipelineJobReconciliationPipelineJob | undefined>;
 }

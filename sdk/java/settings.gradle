@@ -11,4 +11,3 @@ pluginManagement {
 }
 
 rootProject.name = "com.pulumi.gcp"
-include("lib")

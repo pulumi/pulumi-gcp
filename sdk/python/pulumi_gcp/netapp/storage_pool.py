@@ -23,26 +23,26 @@ class StoragePoolArgs:
                  location: pulumi.Input[_builtins.str],
                  network: pulumi.Input[_builtins.str],
                  service_level: pulumi.Input[_builtins.str],
-                 active_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_auto_tiering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 custom_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_hot_tier_auto_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hot_tier_size_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 active_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_throughput_mibps: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StoragePool resource.
 
@@ -199,7 +199,7 @@ class StoragePoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
-    def active_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def active_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
         The policy needs to be in the same location as the storage pool.
@@ -207,12 +207,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "active_directory")
 
     @active_directory.setter
-    def active_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def active_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "active_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAutoTiering")
-    def allow_auto_tiering(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_auto_tiering(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
         Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
@@ -220,36 +220,36 @@ class StoragePoolArgs:
         return pulumi.get(self, "allow_auto_tiering")
 
     @allow_auto_tiering.setter
-    def allow_auto_tiering(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_auto_tiering(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_auto_tiering", value)
 
     @_builtins.property
     @pulumi.getter(name="customPerformanceEnabled")
-    def custom_performance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def custom_performance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         """
         return pulumi.get(self, "custom_performance_enabled")
 
     @custom_performance_enabled.setter
-    def custom_performance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def custom_performance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "custom_performance_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHotTierAutoResize")
-    def enable_hot_tier_auto_resize(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_hot_tier_auto_resize(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
         The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
@@ -257,12 +257,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "enable_hot_tier_auto_resize")
 
     @enable_hot_tier_auto_resize.setter
-    def enable_hot_tier_auto_resize(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_hot_tier_auto_resize(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_hot_tier_auto_resize", value)
 
     @_builtins.property
     @pulumi.getter(name="hotTierSizeGib")
-    def hot_tier_size_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hot_tier_size_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
         It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
@@ -270,12 +270,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "hot_tier_size_gib")
 
     @hot_tier_size_gib.setter
-    def hot_tier_size_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hot_tier_size_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hot_tier_size_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsConfig")
-    def kms_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
         The policy needs to be in the same location as the storage pool.
@@ -283,12 +283,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "kms_config")
 
     @kms_config.setter
-    def kms_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 
@@ -298,12 +298,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapEnabled")
-    def ldap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ldap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
         using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
@@ -311,12 +311,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "ldap_enabled")
 
     @ldap_enabled.setter
-    def ldap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ldap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ldap_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode of the storage pool.
         The operational mode of the storage pool. ONTAP mode enables operations
@@ -327,24 +327,24 @@ class StoragePoolArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -352,12 +352,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="qosType")
-    def qos_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS (Quality of Service) type of the storage pool.
         Possible values are: AUTO, MANUAL.
@@ -366,12 +366,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "qos_type")
 
     @qos_type.setter
-    def qos_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_type", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaZone")
-    def replica_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
         [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
@@ -379,13 +379,13 @@ class StoragePoolArgs:
         return pulumi.get(self, "replica_zone")
 
     @replica_zone.setter
-    def replica_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleTier")
     @_utilities.deprecated("""`scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""")
-    def scale_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta, Deprecated)
         The effective scale tier of the storage pool. If `scale_tier` is not
@@ -397,12 +397,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "scale_tier")
 
     @scale_tier.setter
-    def scale_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleType")
-    def scale_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
         Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
@@ -410,36 +410,36 @@ class StoragePoolArgs:
         return pulumi.get(self, "scale_type")
 
     @scale_type.setter
-    def scale_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_type", value)
 
     @_builtins.property
     @pulumi.getter(name="totalIops")
-    def total_iops(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_iops(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         """
         return pulumi.get(self, "total_iops")
 
     @total_iops.setter
-    def total_iops(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_iops(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="totalThroughputMibps")
-    def total_throughput_mibps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_throughput_mibps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         """
         return pulumi.get(self, "total_throughput_mibps")
 
     @total_throughput_mibps.setter
-    def total_throughput_mibps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_throughput_mibps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_throughput_mibps", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the storage pool.
         This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
@@ -449,12 +449,12 @@ class StoragePoolArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
         [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
@@ -463,45 +463,45 @@ class StoragePoolArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _StoragePoolState:
     def __init__(__self__, *,
-                 active_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_auto_tiering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 available_throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
-                 capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 cold_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_hot_tier_auto_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hot_tier_size_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 hot_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 qos_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 active_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 available_throughput_mibps: pulumi.Input[Optional[_builtins.float]] = None,
+                 capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 cold_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 qos_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_throughput_mibps: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StoragePool resources.
 
@@ -638,7 +638,7 @@ class _StoragePoolState:
 
     @_builtins.property
     @pulumi.getter(name="activeDirectory")
-    def active_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def active_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
         The policy needs to be in the same location as the storage pool.
@@ -646,12 +646,12 @@ class _StoragePoolState:
         return pulumi.get(self, "active_directory")
 
     @active_directory.setter
-    def active_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def active_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "active_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="allowAutoTiering")
-    def allow_auto_tiering(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_auto_tiering(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
         Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
@@ -659,84 +659,84 @@ class _StoragePoolState:
         return pulumi.get(self, "allow_auto_tiering")
 
     @allow_auto_tiering.setter
-    def allow_auto_tiering(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_auto_tiering(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_auto_tiering", value)
 
     @_builtins.property
     @pulumi.getter(name="availableThroughputMibps")
-    def available_throughput_mibps(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def available_throughput_mibps(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Available throughput of the storage pool (in MiB/s).
         """
         return pulumi.get(self, "available_throughput_mibps")
 
     @available_throughput_mibps.setter
-    def available_throughput_mibps(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def available_throughput_mibps(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "available_throughput_mibps", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityGib")
-    def capacity_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Capacity of the storage pool (in GiB).
         """
         return pulumi.get(self, "capacity_gib")
 
     @capacity_gib.setter
-    def capacity_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="coldTierSizeUsedGib")
-    def cold_tier_size_used_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cold_tier_size_used_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Total cold tier data rounded down to the nearest GiB used by the storage pool.
         """
         return pulumi.get(self, "cold_tier_size_used_gib")
 
     @cold_tier_size_used_gib.setter
-    def cold_tier_size_used_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cold_tier_size_used_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cold_tier_size_used_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="customPerformanceEnabled")
-    def custom_performance_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def custom_performance_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
         """
         return pulumi.get(self, "custom_performance_enabled")
 
     @custom_performance_enabled.setter
-    def custom_performance_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def custom_performance_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "custom_performance_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHotTierAutoResize")
-    def enable_hot_tier_auto_resize(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_hot_tier_auto_resize(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
         The increment will kick in only if the new size after increment is still less than or equal to storage pool size.
@@ -744,24 +744,24 @@ class _StoragePoolState:
         return pulumi.get(self, "enable_hot_tier_auto_resize")
 
     @enable_hot_tier_auto_resize.setter
-    def enable_hot_tier_auto_resize(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_hot_tier_auto_resize(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_hot_tier_auto_resize", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reports if volumes in the pool are encrypted using a Google-managed encryption key or CMEK.
         """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter(name="hotTierSizeGib")
-    def hot_tier_size_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hot_tier_size_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Total hot tier capacity for the Storage Pool. It is applicable only to Flex service level.
         It should be less than the minimum storage pool size and cannot be more than the current storage pool size. It cannot be decreased once set.
@@ -769,24 +769,24 @@ class _StoragePoolState:
         return pulumi.get(self, "hot_tier_size_gib")
 
     @hot_tier_size_gib.setter
-    def hot_tier_size_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hot_tier_size_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hot_tier_size_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="hotTierSizeUsedGib")
-    def hot_tier_size_used_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hot_tier_size_used_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Total hot tier data rounded down to the nearest GiB used by the storage pool.
         """
         return pulumi.get(self, "hot_tier_size_used_gib")
 
     @hot_tier_size_used_gib.setter
-    def hot_tier_size_used_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hot_tier_size_used_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hot_tier_size_used_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsConfig")
-    def kms_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
         The policy needs to be in the same location as the storage pool.
@@ -794,12 +794,12 @@ class _StoragePoolState:
         return pulumi.get(self, "kms_config")
 
     @kms_config.setter
-    def kms_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
 
@@ -809,12 +809,12 @@ class _StoragePoolState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapEnabled")
-    def ldap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ldap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When enabled, the volumes uses Active Directory as LDAP name service for UID/GID lookups. Required to enable extended group support for NFSv3,
         using security identifiers for NFSv4.1 or principal names for kerberized NFSv4.1.
@@ -822,24 +822,24 @@ class _StoragePoolState:
         return pulumi.get(self, "ldap_enabled")
 
     @ldap_enabled.setter
-    def ldap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ldap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ldap_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the location. For zonal Flex pools specify a zone name, in all other cases a region name.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mode of the storage pool.
         The operational mode of the storage pool. ONTAP mode enables operations
@@ -850,36 +850,36 @@ class _StoragePoolState:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the storage pool. Needs to be unique per location/region.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC network name with format: `projects/{{project}}/global/networks/{{network}}`
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -887,12 +887,12 @@ class _StoragePoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -900,12 +900,12 @@ class _StoragePoolState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="qosType")
-    def qos_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS (Quality of Service) type of the storage pool.
         Possible values are: AUTO, MANUAL.
@@ -914,12 +914,12 @@ class _StoragePoolState:
         return pulumi.get(self, "qos_type")
 
     @qos_type.setter
-    def qos_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_type", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaZone")
-    def replica_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the replica zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
         [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
@@ -927,13 +927,13 @@ class _StoragePoolState:
         return pulumi.get(self, "replica_zone")
 
     @replica_zone.setter
-    def replica_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleTier")
     @_utilities.deprecated("""`scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.""")
-    def scale_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta, Deprecated)
         The effective scale tier of the storage pool. If `scale_tier` is not
@@ -945,12 +945,12 @@ class _StoragePoolState:
         return pulumi.get(self, "scale_tier")
 
     @scale_tier.setter
-    def scale_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleType")
-    def scale_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
         Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
@@ -958,12 +958,12 @@ class _StoragePoolState:
         return pulumi.get(self, "scale_type")
 
     @scale_type.setter
-    def scale_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceLevel")
-    def service_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service level of the storage pool.
         Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
@@ -971,36 +971,36 @@ class _StoragePoolState:
         return pulumi.get(self, "service_level")
 
     @service_level.setter
-    def service_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_level", value)
 
     @_builtins.property
     @pulumi.getter(name="totalIops")
-    def total_iops(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_iops(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Custom Performance Total IOPS of the pool If not provided, it will be calculated based on the totalThroughputMibps
         """
         return pulumi.get(self, "total_iops")
 
     @total_iops.setter
-    def total_iops(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_iops(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="totalThroughputMibps")
-    def total_throughput_mibps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_throughput_mibps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Custom Performance Total Throughput of the pool (in MiB/s).
         """
         return pulumi.get(self, "total_throughput_mibps")
 
     @total_throughput_mibps.setter
-    def total_throughput_mibps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_throughput_mibps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_throughput_mibps", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the storage pool.
         This field is used to control whether the pool supports FILE based volumes only or UNIFIED (both FILE and BLOCK) volumes.
@@ -1010,36 +1010,36 @@ class _StoragePoolState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeCapacityGib")
-    def volume_capacity_gib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_capacity_gib(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Size allocated to volumes in the storage pool (in GiB).
         """
         return pulumi.get(self, "volume_capacity_gib")
 
     @volume_capacity_gib.setter
-    def volume_capacity_gib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_capacity_gib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_capacity_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeCount")
-    def volume_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def volume_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of volume in the storage pool.
         """
         return pulumi.get(self, "volume_count")
 
     @volume_count.setter
-    def volume_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def volume_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "volume_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
         [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
@@ -1048,7 +1048,7 @@ class _StoragePoolState:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -1058,30 +1058,30 @@ class StoragePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_auto_tiering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_hot_tier_auto_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hot_tier_size_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 active_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_throughput_mibps: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Storage pools act as containers for volumes. All volumes in a storage pool share the following information:
@@ -1336,30 +1336,30 @@ class StoragePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_auto_tiering: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_hot_tier_auto_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hot_tier_size_gib: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 active_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ldap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_throughput_mibps: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1421,38 +1421,38 @@ class StoragePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_directory: Optional[pulumi.Input[_builtins.str]] = None,
-            allow_auto_tiering: Optional[pulumi.Input[_builtins.bool]] = None,
-            available_throughput_mibps: Optional[pulumi.Input[_builtins.float]] = None,
-            capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-            cold_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_performance_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_hot_tier_auto_resize: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-            hot_tier_size_gib: Optional[pulumi.Input[_builtins.str]] = None,
-            hot_tier_size_used_gib: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_config: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ldap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            qos_type: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            scale_tier: Optional[pulumi.Input[_builtins.str]] = None,
-            scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-            service_level: Optional[pulumi.Input[_builtins.str]] = None,
-            total_iops: Optional[pulumi.Input[_builtins.str]] = None,
-            total_throughput_mibps: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_capacity_gib: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_count: Optional[pulumi.Input[_builtins.int]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'StoragePool':
+            active_directory: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_auto_tiering: pulumi.Input[Optional[_builtins.bool]] = None,
+            available_throughput_mibps: pulumi.Input[Optional[_builtins.float]] = None,
+            capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            cold_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_performance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_hot_tier_auto_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hot_tier_size_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            hot_tier_size_used_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_config: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ldap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            qos_type: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_level: pulumi.Input[Optional[_builtins.str]] = None,
+            total_iops: pulumi.Input[Optional[_builtins.str]] = None,
+            total_throughput_mibps: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_count: pulumi.Input[Optional[_builtins.int]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'StoragePool':
         """
         Get an existing StoragePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

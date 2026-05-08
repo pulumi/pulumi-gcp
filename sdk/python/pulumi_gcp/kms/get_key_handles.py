@@ -140,9 +140,9 @@ def get_key_handles(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         resource_type_selector=pulumi.get(__ret__, 'resource_type_selector'))
-def get_key_handles_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                           project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           resource_type_selector: Optional[pulumi.Input[_builtins.str]] = None,
+def get_key_handles_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                           project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           resource_type_selector: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyHandlesResult]:
     """
     Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.

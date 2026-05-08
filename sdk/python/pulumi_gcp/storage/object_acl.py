@@ -21,8 +21,8 @@ class ObjectACLArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  object: pulumi.Input[_builtins.str],
-                 predefined_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 predefined_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_entities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ObjectACL resource.
 
@@ -69,19 +69,19 @@ class ObjectACLArgs:
 
     @_builtins.property
     @pulumi.getter(name="predefinedAcl")
-    def predefined_acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predefined_acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         """
         return pulumi.get(self, "predefined_acl")
 
     @predefined_acl.setter
-    def predefined_acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predefined_acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predefined_acl", value)
 
     @_builtins.property
     @pulumi.getter(name="roleEntities")
-    def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
         Must be set if `predefined_acl` is not.
@@ -89,17 +89,17 @@ class ObjectACLArgs:
         return pulumi.get(self, "role_entities")
 
     @role_entities.setter
-    def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_entities", value)
 
 
 @pulumi.input_type
 class _ObjectACLState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 predefined_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 predefined_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_entities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ObjectACL resources.
 
@@ -122,19 +122,19 @@ class _ObjectACLState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket the object is stored in.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the object to apply the acl to.
 
@@ -143,24 +143,24 @@ class _ObjectACLState:
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object", value)
 
     @_builtins.property
     @pulumi.getter(name="predefinedAcl")
-    def predefined_acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predefined_acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         """
         return pulumi.get(self, "predefined_acl")
 
     @predefined_acl.setter
-    def predefined_acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predefined_acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predefined_acl", value)
 
     @_builtins.property
     @pulumi.getter(name="roleEntities")
-    def role_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def role_entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
         Must be set if `predefined_acl` is not.
@@ -168,7 +168,7 @@ class _ObjectACLState:
         return pulumi.get(self, "role_entities")
 
     @role_entities.setter
-    def role_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def role_entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "role_entities", value)
 
 
@@ -178,10 +178,10 @@ class ObjectACL(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 predefined_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 predefined_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_entities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Authoritatively manages the access control list (ACL) for an object in a Google
@@ -298,10 +298,10 @@ class ObjectACL(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None,
-                 predefined_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None,
+                 predefined_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_entities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,10 +329,10 @@ class ObjectACL(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            object: Optional[pulumi.Input[_builtins.str]] = None,
-            predefined_acl: Optional[pulumi.Input[_builtins.str]] = None,
-            role_entities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ObjectACL':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            object: pulumi.Input[Optional[_builtins.str]] = None,
+            predefined_acl: pulumi.Input[Optional[_builtins.str]] = None,
+            role_entities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ObjectACL':
         """
         Get an existing ObjectACL resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

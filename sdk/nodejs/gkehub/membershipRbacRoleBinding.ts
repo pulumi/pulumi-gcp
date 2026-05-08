@@ -224,57 +224,57 @@ export interface MembershipRbacRoleBindingState {
     /**
      * Time the RBAC Role Binding was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Time the RBAC Role Binding was deleted in UTC.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Location of the Membership
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Id of the membership
      */
-    membershipId?: pulumi.Input<string>;
+    membershipId?: pulumi.Input<string | undefined>;
     /**
      * The client-provided identifier of the RBAC Role Binding.
      */
-    membershipRbacRoleBindingId?: pulumi.Input<string>;
+    membershipRbacRoleBindingId?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the RBAC Role Binding
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Role to bind to the principal.
      * Structure is documented below.
      */
-    role?: pulumi.Input<inputs.gkehub.MembershipRbacRoleBindingRole>;
+    role?: pulumi.Input<inputs.gkehub.MembershipRbacRoleBindingRole | undefined>;
     /**
      * State of the RBAC Role Binding resource.
      * Structure is documented below.
      */
-    states?: pulumi.Input<pulumi.Input<inputs.gkehub.MembershipRbacRoleBindingState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.gkehub.MembershipRbacRoleBindingState>[] | undefined>;
     /**
      * Google-generated UUID for this resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time the RBAC Role Binding was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.
      * user is the name of the user as seen by the kubernetes cluster, example
      * "alice" or "alice@domain.tld"
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -297,7 +297,7 @@ export interface MembershipRbacRoleBindingArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Role to bind to the principal.
      * Structure is documented below.

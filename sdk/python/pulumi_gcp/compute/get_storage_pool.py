@@ -285,9 +285,9 @@ def get_storage_pool(name: Optional[_builtins.str] = None,
         statuses=pulumi.get(__ret__, 'statuses'),
         storage_pool_type=pulumi.get(__ret__, 'storage_pool_type'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_storage_pool_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            zone: Optional[pulumi.Input[_builtins.str]] = None,
+def get_storage_pool_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            zone: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStoragePoolResult]:
     """
     Provides access to available Google Compute Storage Pool resources for a given project and zone.

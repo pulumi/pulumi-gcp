@@ -22,11 +22,11 @@ __all__ = ['InterconnectAttachmentGroupArgs', 'InterconnectAttachmentGroup']
 class InterconnectAttachmentGroupArgs:
     def __init__(__self__, *,
                  intent: pulumi.Input['InterconnectAttachmentGroupIntentArgs'],
-                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InterconnectAttachmentGroup resource.
 
@@ -79,7 +79,7 @@ class InterconnectAttachmentGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]:
+    def attachments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]:
         """
         Attachments in the AttachmentGroup. Keys are arbitrary user-specified
         strings. Users are encouraged, but not required, to use their preferred
@@ -91,24 +91,24 @@ class InterconnectAttachmentGroupArgs:
         return pulumi.get(self, "attachments")
 
     @attachments.setter
-    def attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]):
+    def attachments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]):
         pulumi.set(self, "attachments", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="interconnectGroup")
-    def interconnect_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interconnect_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of an InterconnectGroup that groups these Attachments'
         Interconnects. Customers do not need to set this unless directed by
@@ -117,12 +117,12 @@ class InterconnectAttachmentGroupArgs:
         return pulumi.get(self, "interconnect_group")
 
     @interconnect_group.setter
-    def interconnect_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interconnect_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interconnect_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be
         1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -133,12 +133,12 @@ class InterconnectAttachmentGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -146,22 +146,22 @@ class InterconnectAttachmentGroupArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _InterconnectAttachmentGroupState:
     def __init__(__self__, *,
-                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]] = None,
-                 configureds: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredArgs']]]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 intent: Optional[pulumi.Input['InterconnectAttachmentGroupIntentArgs']] = None,
-                 interconnect_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_structures: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]] = None,
+                 configureds: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredArgs']]]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 intent: pulumi.Input[Optional['InterconnectAttachmentGroupIntentArgs']] = None,
+                 interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_structures: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InterconnectAttachmentGroup resources.
 
@@ -215,7 +215,7 @@ class _InterconnectAttachmentGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]:
+    def attachments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]:
         """
         Attachments in the AttachmentGroup. Keys are arbitrary user-specified
         strings. Users are encouraged, but not required, to use their preferred
@@ -227,12 +227,12 @@ class _InterconnectAttachmentGroupState:
         return pulumi.get(self, "attachments")
 
     @attachments.setter
-    def attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]):
+    def attachments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupAttachmentArgs']]]]):
         pulumi.set(self, "attachments", value)
 
     @_builtins.property
     @pulumi.getter
-    def configureds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredArgs']]]]:
+    def configureds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredArgs']]]]:
         """
         The redundancy this group is configured to support. The way a
         user queries what SLA their Attachment gets is by looking at this field of
@@ -242,36 +242,36 @@ class _InterconnectAttachmentGroupState:
         return pulumi.get(self, "configureds")
 
     @configureds.setter
-    def configureds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredArgs']]]]):
+    def configureds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupConfiguredArgs']]]]):
         pulumi.set(self, "configureds", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def intent(self) -> Optional[pulumi.Input['InterconnectAttachmentGroupIntentArgs']]:
+    def intent(self) -> pulumi.Input[Optional['InterconnectAttachmentGroupIntentArgs']]:
         """
         The user's intent for this group. This is the only required field besides
         the name that must be specified on group creation.
@@ -280,12 +280,12 @@ class _InterconnectAttachmentGroupState:
         return pulumi.get(self, "intent")
 
     @intent.setter
-    def intent(self, value: Optional[pulumi.Input['InterconnectAttachmentGroupIntentArgs']]):
+    def intent(self, value: pulumi.Input[Optional['InterconnectAttachmentGroupIntentArgs']]):
         pulumi.set(self, "intent", value)
 
     @_builtins.property
     @pulumi.getter(name="interconnectGroup")
-    def interconnect_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interconnect_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of an InterconnectGroup that groups these Attachments'
         Interconnects. Customers do not need to set this unless directed by
@@ -294,12 +294,12 @@ class _InterconnectAttachmentGroupState:
         return pulumi.get(self, "interconnect_group")
 
     @interconnect_group.setter
-    def interconnect_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interconnect_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interconnect_group", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalStructures")
-    def logical_structures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureArgs']]]]:
+    def logical_structures(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureArgs']]]]:
         """
         An analysis of the logical layout of Attachments in this
         group. Every Attachment in the group is shown once in this structure.
@@ -308,12 +308,12 @@ class _InterconnectAttachmentGroupState:
         return pulumi.get(self, "logical_structures")
 
     @logical_structures.setter
-    def logical_structures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureArgs']]]]):
+    def logical_structures(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentGroupLogicalStructureArgs']]]]):
         pulumi.set(self, "logical_structures", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be
         1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -324,12 +324,12 @@ class _InterconnectAttachmentGroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -337,7 +337,7 @@ class _InterconnectAttachmentGroupState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -347,12 +347,12 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 intent: Optional[pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
-                 interconnect_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
+                 interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An interconnect attachment group resource allows customers to create,
@@ -482,12 +482,12 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 intent: Optional[pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
-                 interconnect_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
+                 interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -518,15 +518,15 @@ class InterconnectAttachmentGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
-            configureds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupConfiguredArgs', 'InterconnectAttachmentGroupConfiguredArgsDict']]]]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            intent: Optional[pulumi.Input[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
-            interconnect_group: Optional[pulumi.Input[_builtins.str]] = None,
-            logical_structures: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupLogicalStructureArgs', 'InterconnectAttachmentGroupLogicalStructureArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'InterconnectAttachmentGroup':
+            attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupAttachmentArgs', 'InterconnectAttachmentGroupAttachmentArgsDict']]]]] = None,
+            configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupConfiguredArgs', 'InterconnectAttachmentGroupConfiguredArgsDict']]]]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            intent: pulumi.Input[Optional[Union['InterconnectAttachmentGroupIntentArgs', 'InterconnectAttachmentGroupIntentArgsDict']]] = None,
+            interconnect_group: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_structures: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentGroupLogicalStructureArgs', 'InterconnectAttachmentGroupLogicalStructureArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'InterconnectAttachmentGroup':
         """
         Get an existing InterconnectAttachmentGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -149,9 +149,9 @@ def get_address_groups(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         parent=pulumi.get(__ret__, 'parent'),
         project=pulumi.get(__ret__, 'project'))
-def get_address_groups_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                              parent: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_address_groups_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                              parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressGroupsResult]:
     """
     AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.

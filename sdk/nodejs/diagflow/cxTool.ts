@@ -419,47 +419,47 @@ export interface CxToolState {
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
      */
-    connectorSpec?: pulumi.Input<inputs.diagflow.CxToolConnectorSpec>;
+    connectorSpec?: pulumi.Input<inputs.diagflow.CxToolConnectorSpec | undefined>;
     /**
      * Data store search tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    dataStoreSpec?: pulumi.Input<inputs.diagflow.CxToolDataStoreSpec>;
+    dataStoreSpec?: pulumi.Input<inputs.diagflow.CxToolDataStoreSpec | undefined>;
     /**
      * High level description of the Tool and its usage.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the tool, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Client side executed function specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    functionSpec?: pulumi.Input<inputs.diagflow.CxToolFunctionSpec>;
+    functionSpec?: pulumi.Input<inputs.diagflow.CxToolFunctionSpec | undefined>;
     /**
      * The unique identifier of the Tool.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/tools/<Tool ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenAPI specification of the Tool.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    openApiSpec?: pulumi.Input<inputs.diagflow.CxToolOpenApiSpec>;
+    openApiSpec?: pulumi.Input<inputs.diagflow.CxToolOpenApiSpec | undefined>;
     /**
      * The agent to create a Tool for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The tool type.
      */
-    toolType?: pulumi.Input<string>;
+    toolType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -472,13 +472,13 @@ export interface CxToolArgs {
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, `functionSpec`, or `connectorSpec` may be set.
      * Structure is documented below.
      */
-    connectorSpec?: pulumi.Input<inputs.diagflow.CxToolConnectorSpec>;
+    connectorSpec?: pulumi.Input<inputs.diagflow.CxToolConnectorSpec | undefined>;
     /**
      * Data store search tool specification.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    dataStoreSpec?: pulumi.Input<inputs.diagflow.CxToolDataStoreSpec>;
+    dataStoreSpec?: pulumi.Input<inputs.diagflow.CxToolDataStoreSpec | undefined>;
     /**
      * High level description of the Tool and its usage.
      */
@@ -492,16 +492,16 @@ export interface CxToolArgs {
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    functionSpec?: pulumi.Input<inputs.diagflow.CxToolFunctionSpec>;
+    functionSpec?: pulumi.Input<inputs.diagflow.CxToolFunctionSpec | undefined>;
     /**
      * OpenAPI specification of the Tool.
      * This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
      * Structure is documented below.
      */
-    openApiSpec?: pulumi.Input<inputs.diagflow.CxToolOpenApiSpec>;
+    openApiSpec?: pulumi.Input<inputs.diagflow.CxToolOpenApiSpec | undefined>;
     /**
      * The agent to create a Tool for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }

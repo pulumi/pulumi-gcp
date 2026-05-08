@@ -213,8 +213,8 @@ def get_subnet(name: Optional[_builtins.str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),
         vlan_id=pulumi.get(__ret__, 'vlan_id'))
-def get_subnet_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                      parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_subnet_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                      parent: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetResult]:
     """
     Use this data source to get details about a subnet. Management subnets support only read operations and should be configured through this data source. User defined subnets can be configured using the resource as well as the datasource.

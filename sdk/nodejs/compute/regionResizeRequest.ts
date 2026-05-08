@@ -247,46 +247,46 @@ export interface RegionResizeRequestState {
     /**
      * The creation timestamp for this resize request in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resize-request.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The reference of the regional instance group manager this ResizeRequest is a part of.
      */
-    instanceGroupManager?: pulumi.Input<string>;
+    instanceGroupManager?: pulumi.Input<string | undefined>;
     /**
      * The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
      * Structure is documented below.
      */
-    requestedRunDuration?: pulumi.Input<inputs.compute.RegionResizeRequestRequestedRunDuration>;
+    requestedRunDuration?: pulumi.Input<inputs.compute.RegionResizeRequestRequestedRunDuration | undefined>;
     /**
      * The number of instances to be created by this resize request. The group's target size will be increased by this number.
      */
-    resizeBy?: pulumi.Input<number>;
+    resizeBy?: pulumi.Input<number | undefined>;
     /**
      * Current state of the request.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Status of the request.
      * Structure is documented below.
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatus>[] | undefined>;
 }
 
 /**
@@ -296,7 +296,7 @@ export interface RegionResizeRequestArgs {
     /**
      * An optional description of this resize-request.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The reference of the regional instance group manager this ResizeRequest is a part of.
      */
@@ -304,21 +304,21 @@ export interface RegionResizeRequestArgs {
     /**
      * The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The reference of the compute region scoping this request. If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Requested run duration for instances that will be created by this request. At the end of the run duration instances will be deleted.
      * Structure is documented below.
      */
-    requestedRunDuration?: pulumi.Input<inputs.compute.RegionResizeRequestRequestedRunDuration>;
+    requestedRunDuration?: pulumi.Input<inputs.compute.RegionResizeRequestRequestedRunDuration | undefined>;
     /**
      * The number of instances to be created by this resize request. The group's target size will be increased by this number.
      */

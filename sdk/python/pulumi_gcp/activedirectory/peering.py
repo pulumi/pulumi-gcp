@@ -22,10 +22,10 @@ class PeeringArgs:
                  authorized_network: pulumi.Input[_builtins.str],
                  domain_resource: pulumi.Input[_builtins.str],
                  peering_id: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Peering resource.
 
@@ -90,7 +90,7 @@ class PeeringArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels that can contain user-provided metadata
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -99,12 +99,12 @@ class PeeringArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -112,47 +112,47 @@ class PeeringArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of this Peering.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional information about the current status of this peering, if available.
         """
         return pulumi.get(self, "status_message")
 
     @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_message", value)
 
 
 @pulumi.input_type
 class _PeeringState:
     def __init__(__self__, *,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Peering resources.
 
@@ -194,43 +194,43 @@ class _PeeringState:
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         """
         return pulumi.get(self, "authorized_network")
 
     @authorized_network.setter
-    def authorized_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_network", value)
 
     @_builtins.property
     @pulumi.getter(name="domainResource")
-    def domain_resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
         """
         return pulumi.get(self, "domain_resource")
 
     @domain_resource.setter
-    def domain_resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_resource", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels that can contain user-provided metadata
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -239,36 +239,36 @@ class _PeeringState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringId")
-    def peering_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Required)
         """
         return pulumi.get(self, "peering_id")
 
     @peering_id.setter
-    def peering_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -276,12 +276,12 @@ class _PeeringState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -289,31 +289,31 @@ class _PeeringState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of this Peering.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional information about the current status of this peering, if available.
         """
         return pulumi.get(self, "status_message")
 
     @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_message", value)
 
 
@@ -323,13 +323,13 @@ class Peering(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_message: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a Peering for Managed AD instance.
@@ -473,13 +473,13 @@ class Peering(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_message: Optional[pulumi.Input[_builtins.str]] = None,
+                 authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_message: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -517,16 +517,16 @@ class Peering(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_network: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_resource: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            peering_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            status_message: Optional[pulumi.Input[_builtins.str]] = None) -> 'Peering':
+            authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_resource: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_message: pulumi.Input[Optional[_builtins.str]] = None) -> 'Peering':
         """
         Get an existing Peering resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

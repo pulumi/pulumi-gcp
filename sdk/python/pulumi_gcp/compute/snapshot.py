@@ -21,19 +21,19 @@ __all__ = ['SnapshotArgs', 'Snapshot']
 @pulumi.input_type
 class SnapshotArgs:
     def __init__(__self__, *,
-                 chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
-                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
-                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_encryption_key: pulumi.Input[Optional['SnapshotSnapshotEncryptionKeyArgs']] = None,
+                 snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
 
@@ -109,7 +109,7 @@ class SnapshotArgs:
 
     @_builtins.property
     @pulumi.getter(name="chainName")
-    def chain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creates the new snapshot in the snapshot chain labeled with the
         specified name. The chain name must be 1-63 characters long and
@@ -121,24 +121,24 @@ class SnapshotArgs:
         return pulumi.get(self, "chain_name")
 
     @chain_name.setter
-    def chain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="guestFlush")
-    def guest_flush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def guest_flush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
@@ -146,12 +146,12 @@ class SnapshotArgs:
         return pulumi.get(self, "guest_flush")
 
     @guest_flush.setter
-    def guest_flush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def guest_flush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "guest_flush", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this Snapshot.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -160,12 +160,12 @@ class SnapshotArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -178,12 +178,12 @@ class SnapshotArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -191,12 +191,12 @@ class SnapshotArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotEncryptionKey")
-    def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]:
+    def snapshot_encryption_key(self) -> pulumi.Input[Optional['SnapshotSnapshotEncryptionKeyArgs']]:
         """
         Encrypts the snapshot using a customer-supplied encryption key.
         After you encrypt a snapshot using a customer-supplied key, you must
@@ -213,12 +213,12 @@ class SnapshotArgs:
         return pulumi.get(self, "snapshot_encryption_key")
 
     @snapshot_encryption_key.setter
-    def snapshot_encryption_key(self, value: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]):
+    def snapshot_encryption_key(self, value: pulumi.Input[Optional['SnapshotSnapshotEncryptionKeyArgs']]):
         pulumi.set(self, "snapshot_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotType")
-    def snapshot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the type of the snapshot.
         Possible values are: `ARCHIVE`, `STANDARD`.
@@ -226,24 +226,24 @@ class SnapshotArgs:
         return pulumi.get(self, "snapshot_type")
 
     @snapshot_type.setter
-    def snapshot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the disk used to create this snapshot.
         """
         return pulumi.get(self, "source_disk")
 
     @source_disk.setter
-    def source_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDiskEncryptionKey")
-    def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]:
+    def source_disk_encryption_key(self) -> pulumi.Input[Optional['SnapshotSourceDiskEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -253,71 +253,71 @@ class SnapshotArgs:
         return pulumi.get(self, "source_disk_encryption_key")
 
     @source_disk_encryption_key.setter
-    def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]):
+    def source_disk_encryption_key(self, value: pulumi.Input[Optional['SnapshotSourceDiskEncryptionKeyArgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstantSnapshot")
-    def source_instant_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_instant_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the instant snapshot used to create this snapshot.
         """
         return pulumi.get(self, "source_instant_snapshot")
 
     @source_instant_snapshot.setter
-    def source_instant_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_instant_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_instant_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocations")
-    def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def storage_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         return pulumi.get(self, "storage_locations")
 
     @storage_locations.setter
-    def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def storage_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "storage_locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the disk is hosted.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _SnapshotState:
     def __init__(__self__, *,
-                 chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']] = None,
-                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_encryption_key: pulumi.Input[Optional['SnapshotSnapshotEncryptionKeyArgs']] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional['SnapshotSourceDiskEncryptionKeyArgs']] = None,
+                 source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
 
@@ -427,7 +427,7 @@ class _SnapshotState:
 
     @_builtins.property
     @pulumi.getter(name="chainName")
-    def chain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creates the new snapshot in the snapshot chain labeled with the
         specified name. The chain name must be 1-63 characters long and
@@ -439,60 +439,60 @@ class _SnapshotState:
         return pulumi.get(self, "chain_name")
 
     @chain_name.setter
-    def chain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSizeGb")
-    def disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the snapshot, specified in GB.
         """
         return pulumi.get(self, "disk_size_gb")
 
     @disk_size_gb.setter
-    def disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="guestFlush")
-    def guest_flush(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def guest_flush(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Beta)
         Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
@@ -500,12 +500,12 @@ class _SnapshotState:
         return pulumi.get(self, "guest_flush")
 
     @guest_flush.setter
-    def guest_flush(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def guest_flush(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "guest_flush", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource. Used
         internally during updates.
@@ -513,12 +513,12 @@ class _SnapshotState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels to apply to this Snapshot.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -527,12 +527,12 @@ class _SnapshotState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def licenses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of public visible licenses that apply to this snapshot. This
         can be because the original image had licenses attached (such as a
@@ -542,12 +542,12 @@ class _SnapshotState:
         return pulumi.get(self, "licenses")
 
     @licenses.setter
-    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def licenses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "licenses", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is
         created. The name must be 1-63 characters long, and comply with
@@ -560,12 +560,12 @@ class _SnapshotState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -573,12 +573,12 @@ class _SnapshotState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -586,24 +586,24 @@ class _SnapshotState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotEncryptionKey")
-    def snapshot_encryption_key(self) -> Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]:
+    def snapshot_encryption_key(self) -> pulumi.Input[Optional['SnapshotSnapshotEncryptionKeyArgs']]:
         """
         Encrypts the snapshot using a customer-supplied encryption key.
         After you encrypt a snapshot using a customer-supplied key, you must
@@ -620,24 +620,24 @@ class _SnapshotState:
         return pulumi.get(self, "snapshot_encryption_key")
 
     @snapshot_encryption_key.setter
-    def snapshot_encryption_key(self, value: Optional[pulumi.Input['SnapshotSnapshotEncryptionKeyArgs']]):
+    def snapshot_encryption_key(self, value: pulumi.Input[Optional['SnapshotSnapshotEncryptionKeyArgs']]):
         pulumi.set(self, "snapshot_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier for the resource.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotType")
-    def snapshot_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the type of the snapshot.
         Possible values are: `ARCHIVE`, `STANDARD`.
@@ -645,24 +645,24 @@ class _SnapshotState:
         return pulumi.get(self, "snapshot_type")
 
     @snapshot_type.setter
-    def snapshot_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDisk")
-    def source_disk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_disk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the disk used to create this snapshot.
         """
         return pulumi.get(self, "source_disk")
 
     @source_disk.setter
-    def source_disk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_disk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDiskEncryptionKey")
-    def source_disk_encryption_key(self) -> Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]:
+    def source_disk_encryption_key(self) -> pulumi.Input[Optional['SnapshotSourceDiskEncryptionKeyArgs']]:
         """
         The customer-supplied encryption key of the source snapshot. Required
         if the source snapshot is protected by a customer-supplied encryption
@@ -672,24 +672,24 @@ class _SnapshotState:
         return pulumi.get(self, "source_disk_encryption_key")
 
     @source_disk_encryption_key.setter
-    def source_disk_encryption_key(self, value: Optional[pulumi.Input['SnapshotSourceDiskEncryptionKeyArgs']]):
+    def source_disk_encryption_key(self, value: pulumi.Input[Optional['SnapshotSourceDiskEncryptionKeyArgs']]):
         pulumi.set(self, "source_disk_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstantSnapshot")
-    def source_instant_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_instant_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the instant snapshot used to create this snapshot.
         """
         return pulumi.get(self, "source_instant_snapshot")
 
     @source_instant_snapshot.setter
-    def source_instant_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_instant_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_instant_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="storageBytes")
-    def storage_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A size of the storage used by the snapshot. As snapshots share
         storage, this number is expected to change with snapshot
@@ -698,31 +698,31 @@ class _SnapshotState:
         return pulumi.get(self, "storage_bytes")
 
     @storage_bytes.setter
-    def storage_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocations")
-    def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def storage_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
         """
         return pulumi.get(self, "storage_locations")
 
     @storage_locations.setter
-    def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def storage_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "storage_locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the disk is hosted.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -732,19 +732,19 @@ class Snapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
-                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
-                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+                 snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a Persistent Disk Snapshot resource.
@@ -1088,19 +1088,19 @@ class Snapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_encryption_key: Optional[pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
-                 snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
-                 source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+                 snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+                 source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1144,28 +1144,28 @@ class Snapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            chain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            guest_flush: Optional[pulumi.Input[_builtins.bool]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            licenses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_encryption_key: Optional[pulumi.Input[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_disk: Optional[pulumi.Input[_builtins.str]] = None,
-            source_disk_encryption_key: Optional[pulumi.Input[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
-            source_instant_snapshot: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Snapshot':
+            chain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            guest_flush: pulumi.Input[Optional[_builtins.bool]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            licenses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_encryption_key: pulumi.Input[Optional[Union['SnapshotSnapshotEncryptionKeyArgs', 'SnapshotSnapshotEncryptionKeyArgsDict']]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            source_disk_encryption_key: pulumi.Input[Optional[Union['SnapshotSourceDiskEncryptionKeyArgs', 'SnapshotSourceDiskEncryptionKeyArgsDict']]] = None,
+            source_instant_snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Snapshot':
         """
         Get an existing Snapshot resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

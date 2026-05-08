@@ -23,18 +23,18 @@ class UptimeCheckConfigArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.str],
-                 checker_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
-                 http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
-                 log_check_failures: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitored_resource: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']] = None,
-                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
-                 tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 checker_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
+                 http_check: pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']] = None,
+                 log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitored_resource: pulumi.Input[Optional['UptimeCheckConfigMonitoredResourceArgs']] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional['UptimeCheckConfigResourceGroupArgs']] = None,
+                 selected_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 synthetic_monitor: pulumi.Input[Optional['UptimeCheckConfigSyntheticMonitorArgs']] = None,
+                 tcp_check: pulumi.Input[Optional['UptimeCheckConfigTcpCheckArgs']] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a UptimeCheckConfig resource.
 
@@ -115,7 +115,7 @@ class UptimeCheckConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkerType")
-    def checker_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checker_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
         Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
@@ -123,12 +123,12 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "checker_type")
 
     @checker_type.setter
-    def checker_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checker_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checker_type", value)
 
     @_builtins.property
     @pulumi.getter(name="contentMatchers")
-    def content_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]:
+    def content_matchers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]:
         """
         The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
         Structure is documented below.
@@ -136,12 +136,12 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "content_matchers")
 
     @content_matchers.setter
-    def content_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]):
+    def content_matchers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]):
         pulumi.set(self, "content_matchers", value)
 
     @_builtins.property
     @pulumi.getter(name="httpCheck")
-    def http_check(self) -> Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']]:
+    def http_check(self) -> pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']]:
         """
         Contains information needed to make an HTTP or HTTPS check.
         Structure is documented below.
@@ -149,24 +149,24 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "http_check")
 
     @http_check.setter
-    def http_check(self, value: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']]):
+    def http_check(self, value: pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']]):
         pulumi.set(self, "http_check", value)
 
     @_builtins.property
     @pulumi.getter(name="logCheckFailures")
-    def log_check_failures(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_check_failures(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to log the results of failed probes to Cloud Logging.
         """
         return pulumi.get(self, "log_check_failures")
 
     @log_check_failures.setter
-    def log_check_failures(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_check_failures(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_check_failures", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoredResource")
-    def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
+    def monitored_resource(self) -> pulumi.Input[Optional['UptimeCheckConfigMonitoredResourceArgs']]:
         """
         The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         configuration. The following monitored resource types are supported for
@@ -175,24 +175,24 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "monitored_resource")
 
     @monitored_resource.setter
-    def monitored_resource(self, value: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]):
+    def monitored_resource(self, value: pulumi.Input[Optional['UptimeCheckConfigMonitoredResourceArgs']]):
         pulumi.set(self, "monitored_resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -200,12 +200,12 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']]:
+    def resource_group(self) -> pulumi.Input[Optional['UptimeCheckConfigResourceGroupArgs']]:
         """
         The group resource associated with the configuration.
         Structure is documented below.
@@ -213,24 +213,24 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']]):
+    def resource_group(self, value: pulumi.Input[Optional['UptimeCheckConfigResourceGroupArgs']]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedRegions")
-    def selected_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def selected_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
         """
         return pulumi.get(self, "selected_regions")
 
     @selected_regions.setter
-    def selected_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def selected_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "selected_regions", value)
 
     @_builtins.property
     @pulumi.getter(name="syntheticMonitor")
-    def synthetic_monitor(self) -> Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']]:
+    def synthetic_monitor(self) -> pulumi.Input[Optional['UptimeCheckConfigSyntheticMonitorArgs']]:
         """
         A Synthetic Monitor deployed to a Cloud Functions V2 instance.
         Structure is documented below.
@@ -238,12 +238,12 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "synthetic_monitor")
 
     @synthetic_monitor.setter
-    def synthetic_monitor(self, value: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']]):
+    def synthetic_monitor(self, value: pulumi.Input[Optional['UptimeCheckConfigSyntheticMonitorArgs']]):
         pulumi.set(self, "synthetic_monitor", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpCheck")
-    def tcp_check(self) -> Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']]:
+    def tcp_check(self) -> pulumi.Input[Optional['UptimeCheckConfigTcpCheckArgs']]:
         """
         Contains information needed to make a TCP check.
         Structure is documented below.
@@ -251,41 +251,41 @@ class UptimeCheckConfigArgs:
         return pulumi.get(self, "tcp_check")
 
     @tcp_check.setter
-    def tcp_check(self, value: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']]):
+    def tcp_check(self, value: pulumi.Input[Optional['UptimeCheckConfigTcpCheckArgs']]):
         pulumi.set(self, "tcp_check", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
 @pulumi.input_type
 class _UptimeCheckConfigState:
     def __init__(__self__, *,
-                 checker_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_check: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']] = None,
-                 log_check_failures: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitored_resource: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']] = None,
-                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 synthetic_monitor: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']] = None,
-                 tcp_check: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 uptime_check_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 checker_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_check: pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']] = None,
+                 log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitored_resource: pulumi.Input[Optional['UptimeCheckConfigMonitoredResourceArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional['UptimeCheckConfigResourceGroupArgs']] = None,
+                 selected_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 synthetic_monitor: pulumi.Input[Optional['UptimeCheckConfigSyntheticMonitorArgs']] = None,
+                 tcp_check: pulumi.Input[Optional['UptimeCheckConfigTcpCheckArgs']] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 uptime_check_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering UptimeCheckConfig resources.
 
@@ -350,7 +350,7 @@ class _UptimeCheckConfigState:
 
     @_builtins.property
     @pulumi.getter(name="checkerType")
-    def checker_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checker_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The checker type to use for the check. If the monitored resource type is `servicedirectory_service`, `checker_type` must be set to `VPC_CHECKERS`.
         Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
@@ -358,12 +358,12 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "checker_type")
 
     @checker_type.setter
-    def checker_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checker_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checker_type", value)
 
     @_builtins.property
     @pulumi.getter(name="contentMatchers")
-    def content_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]:
+    def content_matchers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]:
         """
         The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
         Structure is documented below.
@@ -371,24 +371,24 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "content_matchers")
 
     @content_matchers.setter
-    def content_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]):
+    def content_matchers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]):
         pulumi.set(self, "content_matchers", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="httpCheck")
-    def http_check(self) -> Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']]:
+    def http_check(self) -> pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']]:
         """
         Contains information needed to make an HTTP or HTTPS check.
         Structure is documented below.
@@ -396,24 +396,24 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "http_check")
 
     @http_check.setter
-    def http_check(self, value: Optional[pulumi.Input['UptimeCheckConfigHttpCheckArgs']]):
+    def http_check(self, value: pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']]):
         pulumi.set(self, "http_check", value)
 
     @_builtins.property
     @pulumi.getter(name="logCheckFailures")
-    def log_check_failures(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_check_failures(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to log the results of failed probes to Cloud Logging.
         """
         return pulumi.get(self, "log_check_failures")
 
     @log_check_failures.setter
-    def log_check_failures(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_check_failures(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_check_failures", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoredResource")
-    def monitored_resource(self) -> Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]:
+    def monitored_resource(self) -> pulumi.Input[Optional['UptimeCheckConfigMonitoredResourceArgs']]:
         """
         The [monitored resource](https://cloud.google.com/monitoring/api/resources) associated with the
         configuration. The following monitored resource types are supported for
@@ -422,36 +422,36 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "monitored_resource")
 
     @monitored_resource.setter
-    def monitored_resource(self, value: Optional[pulumi.Input['UptimeCheckConfigMonitoredResourceArgs']]):
+    def monitored_resource(self, value: pulumi.Input[Optional['UptimeCheckConfigMonitoredResourceArgs']]):
         pulumi.set(self, "monitored_resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique resource name for this UptimeCheckConfig. The format is `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -459,12 +459,12 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroup")
-    def resource_group(self) -> Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']]:
+    def resource_group(self) -> pulumi.Input[Optional['UptimeCheckConfigResourceGroupArgs']]:
         """
         The group resource associated with the configuration.
         Structure is documented below.
@@ -472,24 +472,24 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "resource_group")
 
     @resource_group.setter
-    def resource_group(self, value: Optional[pulumi.Input['UptimeCheckConfigResourceGroupArgs']]):
+    def resource_group(self, value: pulumi.Input[Optional['UptimeCheckConfigResourceGroupArgs']]):
         pulumi.set(self, "resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedRegions")
-    def selected_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def selected_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
         """
         return pulumi.get(self, "selected_regions")
 
     @selected_regions.setter
-    def selected_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def selected_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "selected_regions", value)
 
     @_builtins.property
     @pulumi.getter(name="syntheticMonitor")
-    def synthetic_monitor(self) -> Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']]:
+    def synthetic_monitor(self) -> pulumi.Input[Optional['UptimeCheckConfigSyntheticMonitorArgs']]:
         """
         A Synthetic Monitor deployed to a Cloud Functions V2 instance.
         Structure is documented below.
@@ -497,12 +497,12 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "synthetic_monitor")
 
     @synthetic_monitor.setter
-    def synthetic_monitor(self, value: Optional[pulumi.Input['UptimeCheckConfigSyntheticMonitorArgs']]):
+    def synthetic_monitor(self, value: pulumi.Input[Optional['UptimeCheckConfigSyntheticMonitorArgs']]):
         pulumi.set(self, "synthetic_monitor", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpCheck")
-    def tcp_check(self) -> Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']]:
+    def tcp_check(self) -> pulumi.Input[Optional['UptimeCheckConfigTcpCheckArgs']]:
         """
         Contains information needed to make a TCP check.
         Structure is documented below.
@@ -510,43 +510,43 @@ class _UptimeCheckConfigState:
         return pulumi.get(self, "tcp_check")
 
     @tcp_check.setter
-    def tcp_check(self, value: Optional[pulumi.Input['UptimeCheckConfigTcpCheckArgs']]):
+    def tcp_check(self, value: pulumi.Input[Optional['UptimeCheckConfigTcpCheckArgs']]):
         pulumi.set(self, "tcp_check", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="uptimeCheckId")
-    def uptime_check_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uptime_check_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the uptime check
         """
         return pulumi.get(self, "uptime_check_id")
 
     @uptime_check_id.setter
-    def uptime_check_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uptime_check_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uptime_check_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userLabels")
-    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def user_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         return pulumi.get(self, "user_labels")
 
     @user_labels.setter
-    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def user_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_labels", value)
 
 
@@ -556,20 +556,20 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checker_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_check: Optional[pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
-                 log_check_failures: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitored_resource: Optional[pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input[Union['UptimeCheckConfigResourceGroupArgs', 'UptimeCheckConfigResourceGroupArgsDict']]] = None,
-                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 synthetic_monitor: Optional[pulumi.Input[Union['UptimeCheckConfigSyntheticMonitorArgs', 'UptimeCheckConfigSyntheticMonitorArgsDict']]] = None,
-                 tcp_check: Optional[pulumi.Input[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 checker_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_check: pulumi.Input[Optional[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
+                 log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitored_resource: pulumi.Input[Optional[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional[Union['UptimeCheckConfigResourceGroupArgs', 'UptimeCheckConfigResourceGroupArgsDict']]] = None,
+                 selected_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 synthetic_monitor: pulumi.Input[Optional[Union['UptimeCheckConfigSyntheticMonitorArgs', 'UptimeCheckConfigSyntheticMonitorArgsDict']]] = None,
+                 tcp_check: pulumi.Input[Optional[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This message configures which resources and services to monitor for availability.
@@ -1132,20 +1132,20 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checker_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_check: Optional[pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
-                 log_check_failures: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitored_resource: Optional[pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group: Optional[pulumi.Input[Union['UptimeCheckConfigResourceGroupArgs', 'UptimeCheckConfigResourceGroupArgsDict']]] = None,
-                 selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 synthetic_monitor: Optional[pulumi.Input[Union['UptimeCheckConfigSyntheticMonitorArgs', 'UptimeCheckConfigSyntheticMonitorArgsDict']]] = None,
-                 tcp_check: Optional[pulumi.Input[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 checker_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_check: pulumi.Input[Optional[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
+                 log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitored_resource: pulumi.Input[Optional[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group: pulumi.Input[Optional[Union['UptimeCheckConfigResourceGroupArgs', 'UptimeCheckConfigResourceGroupArgsDict']]] = None,
+                 selected_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 synthetic_monitor: pulumi.Input[Optional[Union['UptimeCheckConfigSyntheticMonitorArgs', 'UptimeCheckConfigSyntheticMonitorArgsDict']]] = None,
+                 tcp_check: pulumi.Input[Optional[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1185,22 +1185,22 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checker_type: Optional[pulumi.Input[_builtins.str]] = None,
-            content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            http_check: Optional[pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
-            log_check_failures: Optional[pulumi.Input[_builtins.bool]] = None,
-            monitored_resource: Optional[pulumi.Input[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group: Optional[pulumi.Input[Union['UptimeCheckConfigResourceGroupArgs', 'UptimeCheckConfigResourceGroupArgsDict']]] = None,
-            selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            synthetic_monitor: Optional[pulumi.Input[Union['UptimeCheckConfigSyntheticMonitorArgs', 'UptimeCheckConfigSyntheticMonitorArgsDict']]] = None,
-            tcp_check: Optional[pulumi.Input[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']]] = None,
-            timeout: Optional[pulumi.Input[_builtins.str]] = None,
-            uptime_check_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'UptimeCheckConfig':
+            checker_type: pulumi.Input[Optional[_builtins.str]] = None,
+            content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_check: pulumi.Input[Optional[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
+            log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
+            monitored_resource: pulumi.Input[Optional[Union['UptimeCheckConfigMonitoredResourceArgs', 'UptimeCheckConfigMonitoredResourceArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group: pulumi.Input[Optional[Union['UptimeCheckConfigResourceGroupArgs', 'UptimeCheckConfigResourceGroupArgsDict']]] = None,
+            selected_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            synthetic_monitor: pulumi.Input[Optional[Union['UptimeCheckConfigSyntheticMonitorArgs', 'UptimeCheckConfigSyntheticMonitorArgsDict']]] = None,
+            tcp_check: pulumi.Input[Optional[Union['UptimeCheckConfigTcpCheckArgs', 'UptimeCheckConfigTcpCheckArgsDict']]] = None,
+            timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            uptime_check_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'UptimeCheckConfig':
         """
         Get an existing UptimeCheckConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

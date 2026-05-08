@@ -22,9 +22,9 @@ __all__ = ['InstanceDesiredUserCreatedEndpointsArgs', 'InstanceDesiredUserCreate
 class InstanceDesiredUserCreatedEndpointsArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 desired_user_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceDesiredUserCreatedEndpoints resource.
 
@@ -57,7 +57,7 @@ class InstanceDesiredUserCreatedEndpointsArgs:
 
     @_builtins.property
     @pulumi.getter(name="desiredUserCreatedEndpoints")
-    def desired_user_created_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]:
+    def desired_user_created_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]:
         """
         A list of desired user endpoints
         Structure is documented below.
@@ -65,24 +65,24 @@ class InstanceDesiredUserCreatedEndpointsArgs:
         return pulumi.get(self, "desired_user_created_endpoints")
 
     @desired_user_created_endpoints.setter
-    def desired_user_created_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]):
+    def desired_user_created_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]):
         pulumi.set(self, "desired_user_created_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Memorystore instance these endpoints should be added to.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -90,17 +90,17 @@ class InstanceDesiredUserCreatedEndpointsArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _InstanceDesiredUserCreatedEndpointsState:
     def __init__(__self__, *,
-                 desired_user_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceDesiredUserCreatedEndpoints resources.
 
@@ -122,7 +122,7 @@ class _InstanceDesiredUserCreatedEndpointsState:
 
     @_builtins.property
     @pulumi.getter(name="desiredUserCreatedEndpoints")
-    def desired_user_created_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]:
+    def desired_user_created_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]:
         """
         A list of desired user endpoints
         Structure is documented below.
@@ -130,24 +130,24 @@ class _InstanceDesiredUserCreatedEndpointsState:
         return pulumi.get(self, "desired_user_created_endpoints")
 
     @desired_user_created_endpoints.setter
-    def desired_user_created_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]):
+    def desired_user_created_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs']]]]):
         pulumi.set(self, "desired_user_created_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Memorystore instance these endpoints should be added to.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -155,19 +155,19 @@ class _InstanceDesiredUserCreatedEndpointsState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the region of the Memorystore instance these endpoints should be added to.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -177,10 +177,10 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desired_user_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages user created connections for Memorystore instance
@@ -734,10 +734,10 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desired_user_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -763,10 +763,10 @@ class InstanceDesiredUserCreatedEndpoints(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            desired_user_created_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceDesiredUserCreatedEndpoints':
+            desired_user_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs', 'InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceDesiredUserCreatedEndpoints':
         """
         Get an existing InstanceDesiredUserCreatedEndpoints resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

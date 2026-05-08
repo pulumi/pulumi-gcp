@@ -251,76 +251,76 @@ export interface ControlState {
      * Changes the returned order of results.
      * Structure is documented below.
      */
-    boostAction?: pulumi.Input<inputs.discoveryengine.ControlBoostAction>;
+    boostAction?: pulumi.Input<inputs.discoveryengine.ControlBoostAction | undefined>;
     /**
      * The collection ID. Currently only accepts "defaultCollection".
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * The conditions under which the control is active.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.discoveryengine.ControlCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.discoveryengine.ControlCondition>[] | undefined>;
     /**
      * The unique id of the control.
      */
-    controlId?: pulumi.Input<string>;
+    controlId?: pulumi.Input<string | undefined>;
     /**
      * The display name of the control. This field must be a UTF-8 encoded
      * string with a length limit of 128 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The engine to add the control to.
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * Removes entries from returned results.
      * Structure is documented below.
      */
-    filterAction?: pulumi.Input<inputs.discoveryengine.ControlFilterAction>;
+    filterAction?: pulumi.Input<inputs.discoveryengine.ControlFilterAction | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the control. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/controls/{control_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Promotes a specified link for a query.
      * Structure is documented below.
      */
-    promoteAction?: pulumi.Input<inputs.discoveryengine.ControlPromoteAction>;
+    promoteAction?: pulumi.Input<inputs.discoveryengine.ControlPromoteAction | undefined>;
     /**
      * Redirects to a specified URI.
      * Structure is documented below.
      */
-    redirectAction?: pulumi.Input<inputs.discoveryengine.ControlRedirectAction>;
+    redirectAction?: pulumi.Input<inputs.discoveryengine.ControlRedirectAction | undefined>;
     /**
      * The solution type that the control belongs to.
      * Possible values are: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      */
-    solutionType?: pulumi.Input<string>;
+    solutionType?: pulumi.Input<string | undefined>;
     /**
      * Associates queries with each other.
      * Structure is documented below.
      */
-    synonymsAction?: pulumi.Input<inputs.discoveryengine.ControlSynonymsAction>;
+    synonymsAction?: pulumi.Input<inputs.discoveryengine.ControlSynonymsAction | undefined>;
     /**
      * The use cases that the control is used for.
      * Each value may be one of: `SEARCH_USE_CASE_SEARCH`, `SEARCH_USE_CASE_BROWSE`.
      */
-    useCases?: pulumi.Input<pulumi.Input<string>[]>;
+    useCases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -331,16 +331,16 @@ export interface ControlArgs {
      * Changes the returned order of results.
      * Structure is documented below.
      */
-    boostAction?: pulumi.Input<inputs.discoveryengine.ControlBoostAction>;
+    boostAction?: pulumi.Input<inputs.discoveryengine.ControlBoostAction | undefined>;
     /**
      * The collection ID. Currently only accepts "defaultCollection".
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * The conditions under which the control is active.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.discoveryengine.ControlCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.discoveryengine.ControlCondition>[] | undefined>;
     /**
      * The unique id of the control.
      */
@@ -358,7 +358,7 @@ export interface ControlArgs {
      * Removes entries from returned results.
      * Structure is documented below.
      */
-    filterAction?: pulumi.Input<inputs.discoveryengine.ControlFilterAction>;
+    filterAction?: pulumi.Input<inputs.discoveryengine.ControlFilterAction | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -368,17 +368,17 @@ export interface ControlArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Promotes a specified link for a query.
      * Structure is documented below.
      */
-    promoteAction?: pulumi.Input<inputs.discoveryengine.ControlPromoteAction>;
+    promoteAction?: pulumi.Input<inputs.discoveryengine.ControlPromoteAction | undefined>;
     /**
      * Redirects to a specified URI.
      * Structure is documented below.
      */
-    redirectAction?: pulumi.Input<inputs.discoveryengine.ControlRedirectAction>;
+    redirectAction?: pulumi.Input<inputs.discoveryengine.ControlRedirectAction | undefined>;
     /**
      * The solution type that the control belongs to.
      * Possible values are: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
@@ -388,10 +388,10 @@ export interface ControlArgs {
      * Associates queries with each other.
      * Structure is documented below.
      */
-    synonymsAction?: pulumi.Input<inputs.discoveryengine.ControlSynonymsAction>;
+    synonymsAction?: pulumi.Input<inputs.discoveryengine.ControlSynonymsAction | undefined>;
     /**
      * The use cases that the control is used for.
      * Each value may be one of: `SEARCH_USE_CASE_SEARCH`, `SEARCH_USE_CASE_BROWSE`.
      */
-    useCases?: pulumi.Input<pulumi.Input<string>[]>;
+    useCases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

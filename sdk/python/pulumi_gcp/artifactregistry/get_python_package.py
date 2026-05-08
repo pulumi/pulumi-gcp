@@ -186,10 +186,10 @@ def get_python_package(location: Optional[_builtins.str] = None,
         repository_id=pulumi.get(__ret__, 'repository_id'),
         update_time=pulumi.get(__ret__, 'update_time'),
         version=pulumi.get(__ret__, 'version'))
-def get_python_package_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                              package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                              project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_python_package_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                              package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                              project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPythonPackageResult]:
     """
     This data source fetches information from a provided Artifact Registry repository, based on a the latest version of the package and optional version.

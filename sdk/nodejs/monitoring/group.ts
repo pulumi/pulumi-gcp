@@ -170,34 +170,34 @@ export interface GroupState {
      * A user-assigned name for this group, used only for display
      * purposes.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The filter used to determine which monitored resources
      * belong to this group.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * If true, the members of this group are considered to be a
      * cluster. The system can perform additional analysis on
      * groups that are clusters.
      */
-    isCluster?: pulumi.Input<boolean>;
+    isCluster?: pulumi.Input<boolean | undefined>;
     /**
      * A unique identifier for this group. The format is
      * "projects/{project_id_or_number}/groups/{group_id}".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the group's parent, if it has one. The format is
      * "projects/{project_id_or_number}/groups/{group_id}". For
      * groups with no parent, parentName is the empty string, "".
      */
-    parentName?: pulumi.Input<string>;
+    parentName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -219,16 +219,16 @@ export interface GroupArgs {
      * cluster. The system can perform additional analysis on
      * groups that are clusters.
      */
-    isCluster?: pulumi.Input<boolean>;
+    isCluster?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the group's parent, if it has one. The format is
      * "projects/{project_id_or_number}/groups/{group_id}". For
      * groups with no parent, parentName is the empty string, "".
      */
-    parentName?: pulumi.Input<string>;
+    parentName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

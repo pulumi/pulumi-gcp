@@ -155,31 +155,31 @@ export interface OrganizationSettingsState {
     /**
      * If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
      */
-    disableDefaultSink?: pulumi.Input<boolean>;
+    disableDefaultSink?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name for the configured Cloud KMS key.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The service account that will be used by the Log Router to access your Cloud KMS key.
      */
-    kmsServiceAccountId?: pulumi.Input<string>;
+    kmsServiceAccountId?: pulumi.Input<string | undefined>;
     /**
      * The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
      */
-    loggingServiceAccountId?: pulumi.Input<string>;
+    loggingServiceAccountId?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the settings.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization for which to retrieve or configure settings.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,11 +189,11 @@ export interface OrganizationSettingsArgs {
     /**
      * If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
      */
-    disableDefaultSink?: pulumi.Input<boolean>;
+    disableDefaultSink?: pulumi.Input<boolean | undefined>;
     /**
      * The resource name for the configured Cloud KMS key.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The organization for which to retrieve or configure settings.
      */
@@ -201,5 +201,5 @@ export interface OrganizationSettingsArgs {
     /**
      * The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
 }

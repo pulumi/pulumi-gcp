@@ -60,8 +60,8 @@ class DocumentAiProcessorDefaultVersionArgs:
 @pulumi.input_type
 class _DocumentAiProcessorDefaultVersionState:
     def __init__(__self__, *,
-                 processor: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 processor: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DocumentAiProcessorDefaultVersion resources.
 
@@ -76,19 +76,19 @@ class _DocumentAiProcessorDefaultVersionState:
 
     @_builtins.property
     @pulumi.getter
-    def processor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def processor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processor to set the version on.
         """
         return pulumi.get(self, "processor")
 
     @processor.setter
-    def processor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def processor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "processor", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
         Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
@@ -96,7 +96,7 @@ class _DocumentAiProcessorDefaultVersionState:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -106,8 +106,8 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 processor: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 processor: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The default version for the processor. Deleting this resource is a no-op, and does not unset the default version.
@@ -202,8 +202,8 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 processor: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 processor: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,8 +229,8 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            processor: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'DocumentAiProcessorDefaultVersion':
+            processor: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'DocumentAiProcessorDefaultVersion':
         """
         Get an existing DocumentAiProcessorDefaultVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Vertex
     ///             {
     ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
     ///                 {
-    ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+    ///                     SourceArchive = Std.Filebase64.Invoke(new()
     ///                     {
     ///                         Input = "./test-fixtures/source.tar.gz",
     ///                     }).Apply(invoke =&gt; invoke.Result),
@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.Vertex
     ///             {
     ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
     ///                 {
-    ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+    ///                     SourceArchive = Std.Filebase64.Invoke(new()
     ///                     {
     ///                         Input = "./test-fixtures/agent_src.tar.gz",
     ///                     }).Apply(invoke =&gt; invoke.Result),
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.Vertex
     ///             {
     ///                 InlineSource = new Gcp.Vertex.Inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs
     ///                 {
-    ///                     SourceArchive = Std.Index.Filebase64.Invoke(new()
+    ///                     SourceArchive = Std.Filebase64.Invoke(new()
     ///                     {
     ///                         Input = "./test-fixtures/mds_agent_src.tar.gz",
     ///                     }).Apply(invoke =&gt; invoke.Result),
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.Vertex
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/artifactregistry.reader",
-    ///         Member = Std.Index.Jsondecode.Invoke(new()
+    ///         Member = Std.Jsondecode.Invoke(new()
     ///         {
     ///             Input = tenantMds.Apply(getAiReasoningEngineQueryResult =&gt; getAiReasoningEngineQueryResult.Output),
     ///         }).Apply(invoke =&gt; $"serviceAccount:{invoke.Result?.Output}"),
@@ -289,7 +289,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     ///     // Destroy network attachment 35 minutes after reasoning engine is deleted.
     ///     // It guarantees that the network attachment has no more active PSC interfaces.
-    ///     var wait35Minutes = new Time.Index.Sleep("wait_35_minutes", new()
+    ///     var wait35Minutes = new Time.Sleep("wait_35_minutes", new()
     ///     {
     ///         DestroyDuration = "35m",
     ///     }, new CustomResourceOptions
@@ -441,7 +441,7 @@ namespace Pulumi.Gcp.Vertex
     ///     });
     /// 
     ///     // Ensure we wait enough time for IAM permissions to be propagated
-    ///     var wait5Minutes = new Time.Index.Sleep("wait_5_minutes", new()
+    ///     var wait5Minutes = new Time.Sleep("wait_5_minutes", new()
     ///     {
     ///         CreateDuration = "5m",
     ///     }, new CustomResourceOptions

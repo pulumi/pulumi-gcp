@@ -60,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
+//			firebase2, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("firebase.googleapis.com"),
 //			})
@@ -80,7 +80,7 @@ import (
 //				CreateDuration: pulumi.String("30s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				ailogic,
-//				firebase,
+//				firebase2,
 //			}))
 //			if err != nil {
 //				return err
@@ -132,7 +132,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
+//			firebase2, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
 //				Project: project.ProjectId,
 //				Service: pulumi.String("firebase.googleapis.com"),
 //			})
@@ -167,7 +167,7 @@ import (
 //				CreateDuration: pulumi.String("30s"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				ailogic,
-//				firebase,
+//				firebase2,
 //			}))
 //			if err != nil {
 //				return err

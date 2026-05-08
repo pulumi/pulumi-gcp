@@ -25,10 +25,10 @@ class MulticastGroupConsumerActivationArgs:
                  multicast_consumer_association: pulumi.Input[_builtins.str],
                  multicast_group_consumer_activation_id: pulumi.Input[_builtins.str],
                  multicast_group_range_activation: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 log_config: Optional[pulumi.Input['MulticastGroupConsumerActivationLogConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 log_config: pulumi.Input[Optional['MulticastGroupConsumerActivationLogConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MulticastGroupConsumerActivation resource.
 
@@ -126,19 +126,19 @@ class MulticastGroupConsumerActivationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional text description of the multicast group consumer activation.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key-value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -147,12 +147,12 @@ class MulticastGroupConsumerActivationArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['MulticastGroupConsumerActivationLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['MulticastGroupConsumerActivationLogConfigArgs']]:
         """
         The logging configuration.
         Structure is documented below.
@@ -160,12 +160,12 @@ class MulticastGroupConsumerActivationArgs:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['MulticastGroupConsumerActivationLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['MulticastGroupConsumerActivationLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -173,28 +173,28 @@ class MulticastGroupConsumerActivationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _MulticastGroupConsumerActivationState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input['MulticastGroupConsumerActivationLogConfigArgs']] = None,
-                 multicast_consumer_association: Optional[pulumi.Input[_builtins.str]] = None,
-                 multicast_group_consumer_activation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multicast_group_range_activation: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 states: Optional[pulumi.Input[Sequence[pulumi.Input['MulticastGroupConsumerActivationStateArgs']]]] = None,
-                 unique_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional['MulticastGroupConsumerActivationLogConfigArgs']] = None,
+                 multicast_consumer_association: pulumi.Input[Optional[_builtins.str]] = None,
+                 multicast_group_consumer_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multicast_group_range_activation: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 states: pulumi.Input[Optional[Sequence[pulumi.Input['MulticastGroupConsumerActivationStateArgs']]]] = None,
+                 unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MulticastGroupConsumerActivation resources.
 
@@ -277,7 +277,7 @@ class _MulticastGroupConsumerActivationState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the multicast group consumer activation
         was created.
@@ -285,36 +285,36 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional text description of the multicast group consumer activation.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels as key-value pairs
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -323,24 +323,24 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> Optional[pulumi.Input['MulticastGroupConsumerActivationLogConfigArgs']]:
+    def log_config(self) -> pulumi.Input[Optional['MulticastGroupConsumerActivationLogConfigArgs']]:
         """
         The logging configuration.
         Structure is documented below.
@@ -348,12 +348,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "log_config")
 
     @log_config.setter
-    def log_config(self, value: Optional[pulumi.Input['MulticastGroupConsumerActivationLogConfigArgs']]):
+    def log_config(self, value: pulumi.Input[Optional['MulticastGroupConsumerActivationLogConfigArgs']]):
         pulumi.set(self, "log_config", value)
 
     @_builtins.property
     @pulumi.getter(name="multicastConsumerAssociation")
-    def multicast_consumer_association(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multicast_consumer_association(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the multicast consumer association that is in the
         same zone as this multicast group consumer activation.
@@ -363,12 +363,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "multicast_consumer_association")
 
     @multicast_consumer_association.setter
-    def multicast_consumer_association(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multicast_consumer_association(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multicast_consumer_association", value)
 
     @_builtins.property
     @pulumi.getter(name="multicastGroupConsumerActivationId")
-    def multicast_group_consumer_activation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multicast_group_consumer_activation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A unique name for the multicast group consumer activation.
         The name is restricted to letters, numbers, and hyphen, with the first
@@ -378,12 +378,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "multicast_group_consumer_activation_id")
 
     @multicast_group_consumer_activation_id.setter
-    def multicast_group_consumer_activation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multicast_group_consumer_activation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multicast_group_consumer_activation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="multicastGroupRangeActivation")
-    def multicast_group_range_activation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multicast_group_range_activation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the multicast group range activation created by the
         admin in the same zone as this multicast group consumer activation. Use the
@@ -393,12 +393,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "multicast_group_range_activation")
 
     @multicast_group_range_activation.setter
-    def multicast_group_range_activation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multicast_group_range_activation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multicast_group_range_activation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the multicast group consumer activation.
         Use the following format:
@@ -407,12 +407,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -420,12 +420,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -433,12 +433,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MulticastGroupConsumerActivationStateArgs']]]]:
+    def states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MulticastGroupConsumerActivationStateArgs']]]]:
         """
         (Output)
         The state of the multicast resource.
@@ -454,12 +454,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "states")
 
     @states.setter
-    def states(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MulticastGroupConsumerActivationStateArgs']]]]):
+    def states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MulticastGroupConsumerActivationStateArgs']]]]):
         pulumi.set(self, "states", value)
 
     @_builtins.property
     @pulumi.getter(name="uniqueId")
-    def unique_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unique_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Google-generated UUID for the resource. This value is
         unique across all multicast group consumer activation resources. If a group
@@ -469,12 +469,12 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "unique_id")
 
     @unique_id.setter
-    def unique_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unique_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unique_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the multicast group consumer activation
         was most recently updated.
@@ -482,7 +482,7 @@ class _MulticastGroupConsumerActivationState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -492,14 +492,14 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
-                 multicast_consumer_association: Optional[pulumi.Input[_builtins.str]] = None,
-                 multicast_group_consumer_activation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multicast_group_range_activation: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
+                 multicast_consumer_association: pulumi.Input[Optional[_builtins.str]] = None,
+                 multicast_group_consumer_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multicast_group_range_activation: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a multicast group consumer activation in the specified location of the current project.
@@ -702,14 +702,14 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_config: Optional[pulumi.Input[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
-                 multicast_consumer_association: Optional[pulumi.Input[_builtins.str]] = None,
-                 multicast_group_consumer_activation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multicast_group_range_activation: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
+                 multicast_consumer_association: pulumi.Input[Optional[_builtins.str]] = None,
+                 multicast_group_consumer_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multicast_group_range_activation: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -754,21 +754,21 @@ class MulticastGroupConsumerActivation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            log_config: Optional[pulumi.Input[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
-            multicast_consumer_association: Optional[pulumi.Input[_builtins.str]] = None,
-            multicast_group_consumer_activation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            multicast_group_range_activation: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MulticastGroupConsumerActivationStateArgs', 'MulticastGroupConsumerActivationStateArgsDict']]]]] = None,
-            unique_id: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'MulticastGroupConsumerActivation':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            log_config: pulumi.Input[Optional[Union['MulticastGroupConsumerActivationLogConfigArgs', 'MulticastGroupConsumerActivationLogConfigArgsDict']]] = None,
+            multicast_consumer_association: pulumi.Input[Optional[_builtins.str]] = None,
+            multicast_group_consumer_activation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            multicast_group_range_activation: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MulticastGroupConsumerActivationStateArgs', 'MulticastGroupConsumerActivationStateArgsDict']]]]] = None,
+            unique_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MulticastGroupConsumerActivation':
         """
         Get an existing MulticastGroupConsumerActivation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

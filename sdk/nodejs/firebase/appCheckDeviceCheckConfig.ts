@@ -181,36 +181,36 @@ export interface AppCheckDeviceCheckConfigState {
      * The ID of an
      * [Apple App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.iosApps#IosApp.FIELDS.app_id).
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The key identifier of a private key enabled with DeviceCheck, created in your Apple Developer account.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the DeviceCheck configuration object
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The contents of the private key (.p8) file associated with the key specified by keyId.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Whether the privateKey field was previously set. Since App Check will never return the
      * privateKey field, this field is the only way to find out whether it was previously set.
      */
-    privateKeySet?: pulumi.Input<boolean>;
+    privateKeySet?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
      * If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    tokenTtl?: pulumi.Input<string>;
+    tokenTtl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,11 +235,11 @@ export interface AppCheckDeviceCheckConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
      * If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    tokenTtl?: pulumi.Input<string>;
+    tokenTtl?: pulumi.Input<string | undefined>;
 }

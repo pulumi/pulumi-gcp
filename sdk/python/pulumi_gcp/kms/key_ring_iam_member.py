@@ -24,7 +24,7 @@ class KeyRingIAMMemberArgs:
                  key_ring_id: pulumi.Input[_builtins.str],
                  member: pulumi.Input[_builtins.str],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['KeyRingIAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a KeyRingIAMMember resource.
 
@@ -102,7 +102,7 @@ class KeyRingIAMMemberArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['KeyRingIAMMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -110,18 +110,18 @@ class KeyRingIAMMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['KeyRingIAMMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _KeyRingIAMMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_ring_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['KeyRingIAMMemberConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_ring_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyRingIAMMember resources.
 
@@ -157,7 +157,7 @@ class _KeyRingIAMMemberState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['KeyRingIAMMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -165,24 +165,24 @@ class _KeyRingIAMMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['KeyRingIAMMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the key ring's IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="keyRingId")
-    def key_ring_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_ring_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key ring ID, in the form
         `{project_id}/{location_name}/{key_ring_name}` or
@@ -192,12 +192,12 @@ class _KeyRingIAMMemberState:
         return pulumi.get(self, "key_ring_id")
 
     @key_ring_id.setter
-    def key_ring_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_ring_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_ring_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -211,12 +211,12 @@ class _KeyRingIAMMemberState:
         return pulumi.get(self, "member")
 
     @member.setter
-    def member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -225,7 +225,7 @@ class _KeyRingIAMMemberState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -235,10 +235,10 @@ class KeyRingIAMMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['KeyRingIAMMemberConditionArgs', 'KeyRingIAMMemberConditionArgsDict']]] = None,
-                 key_ring_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['KeyRingIAMMemberConditionArgs', 'KeyRingIAMMemberConditionArgsDict']]] = None,
+                 key_ring_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
@@ -623,10 +623,10 @@ class KeyRingIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['KeyRingIAMMemberConditionArgs', 'KeyRingIAMMemberConditionArgsDict']]] = None,
-                 key_ring_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['KeyRingIAMMemberConditionArgs', 'KeyRingIAMMemberConditionArgsDict']]] = None,
+                 key_ring_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -657,11 +657,11 @@ class KeyRingIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['KeyRingIAMMemberConditionArgs', 'KeyRingIAMMemberConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            key_ring_id: Optional[pulumi.Input[_builtins.str]] = None,
-            member: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'KeyRingIAMMember':
+            condition: pulumi.Input[Optional[Union['KeyRingIAMMemberConditionArgs', 'KeyRingIAMMemberConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            key_ring_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeyRingIAMMember':
         """
         Get an existing KeyRingIAMMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,12 +23,12 @@ class MirroringEndpointGroupArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  mirroring_endpoint_group_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mirroring_deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirroring_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mirroring_deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirroring_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MirroringEndpointGroup resource.
 
@@ -97,7 +97,7 @@ class MirroringEndpointGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the endpoint group.
         Used as additional context for the endpoint group.
@@ -105,12 +105,12 @@ class MirroringEndpointGroupArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key/value pairs that help to organize and filter resources.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -119,12 +119,12 @@ class MirroringEndpointGroupArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="mirroringDeploymentGroup")
-    def mirroring_deployment_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirroring_deployment_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment group that this DIRECT endpoint group is connected to, for example:
         `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -133,12 +133,12 @@ class MirroringEndpointGroupArgs:
         return pulumi.get(self, "mirroring_deployment_group")
 
     @mirroring_deployment_group.setter
-    def mirroring_deployment_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirroring_deployment_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirroring_deployment_group", value)
 
     @_builtins.property
     @pulumi.getter(name="mirroringDeploymentGroups")
-    def mirroring_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mirroring_deployment_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the deployment groups that this BROKER endpoint group is
         connected to, for example:
@@ -148,12 +148,12 @@ class MirroringEndpointGroupArgs:
         return pulumi.get(self, "mirroring_deployment_groups")
 
     @mirroring_deployment_groups.setter
-    def mirroring_deployment_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mirroring_deployment_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mirroring_deployment_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -161,12 +161,12 @@ class MirroringEndpointGroupArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the endpoint group.
         If left unspecified, defaults to DIRECT.
@@ -177,30 +177,30 @@ class MirroringEndpointGroupArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _MirroringEndpointGroupState:
     def __init__(__self__, *,
-                 associations: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationArgs']]]] = None,
-                 connected_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirroring_deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirroring_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mirroring_endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 associations: pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupAssociationArgs']]]] = None,
+                 connected_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirroring_deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirroring_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mirroring_endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MirroringEndpointGroup resources.
 
@@ -290,7 +290,7 @@ class _MirroringEndpointGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def associations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationArgs']]]]:
+    def associations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupAssociationArgs']]]]:
         """
         List of associations to this endpoint group.
         Structure is documented below.
@@ -298,12 +298,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "associations")
 
     @associations.setter
-    def associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupAssociationArgs']]]]):
+    def associations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupAssociationArgs']]]]):
         pulumi.set(self, "associations", value)
 
     @_builtins.property
     @pulumi.getter(name="connectedDeploymentGroups")
-    def connected_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupArgs']]]]:
+    def connected_deployment_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupArgs']]]]:
         """
         List of details about the connected deployment groups to this endpoint
         group.
@@ -312,12 +312,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "connected_deployment_groups")
 
     @connected_deployment_groups.setter
-    def connected_deployment_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupArgs']]]]):
+    def connected_deployment_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupArgs']]]]):
         pulumi.set(self, "connected_deployment_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         See https://google.aip.dev/148#timestamps.
@@ -325,12 +325,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the endpoint group.
         Used as additional context for the endpoint group.
@@ -338,24 +338,24 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key/value pairs that help to organize and filter resources.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -364,24 +364,24 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="mirroringDeploymentGroup")
-    def mirroring_deployment_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirroring_deployment_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment group that this DIRECT endpoint group is connected to, for example:
         `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
@@ -390,12 +390,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "mirroring_deployment_group")
 
     @mirroring_deployment_group.setter
-    def mirroring_deployment_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirroring_deployment_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirroring_deployment_group", value)
 
     @_builtins.property
     @pulumi.getter(name="mirroringDeploymentGroups")
-    def mirroring_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mirroring_deployment_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the deployment groups that this BROKER endpoint group is
         connected to, for example:
@@ -405,12 +405,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "mirroring_deployment_groups")
 
     @mirroring_deployment_groups.setter
-    def mirroring_deployment_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mirroring_deployment_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mirroring_deployment_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="mirroringEndpointGroupId")
-    def mirroring_endpoint_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirroring_endpoint_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the endpoint group, which will become the final component
         of the endpoint group's resource name.
@@ -418,12 +418,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "mirroring_endpoint_group_id")
 
     @mirroring_endpoint_group_id.setter
-    def mirroring_endpoint_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirroring_endpoint_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirroring_endpoint_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The connected deployment group's resource name, for example:
@@ -433,12 +433,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -446,12 +446,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -459,12 +459,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The current state of the resource does not match the user's intended state,
         and the system is working to reconcile them. This is part of the normal
@@ -474,12 +474,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -491,12 +491,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the endpoint group.
         If left unspecified, defaults to DIRECT.
@@ -507,12 +507,12 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was most recently updated.
         See https://google.aip.dev/148#timestamps.
@@ -520,7 +520,7 @@ class _MirroringEndpointGroupState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -530,14 +530,14 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirroring_deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirroring_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mirroring_endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirroring_deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirroring_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mirroring_endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An endpoint group is a consumer frontend for a deployment group (backend).
@@ -741,14 +741,14 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirroring_deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 mirroring_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mirroring_endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirroring_deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 mirroring_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mirroring_endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -791,23 +791,23 @@ class MirroringEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationArgs', 'MirroringEndpointGroupAssociationArgsDict']]]]] = None,
-            connected_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MirroringEndpointGroupConnectedDeploymentGroupArgs', 'MirroringEndpointGroupConnectedDeploymentGroupArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            mirroring_deployment_group: Optional[pulumi.Input[_builtins.str]] = None,
-            mirroring_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            mirroring_endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'MirroringEndpointGroup':
+            associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupAssociationArgs', 'MirroringEndpointGroupAssociationArgsDict']]]]] = None,
+            connected_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MirroringEndpointGroupConnectedDeploymentGroupArgs', 'MirroringEndpointGroupConnectedDeploymentGroupArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            mirroring_deployment_group: pulumi.Input[Optional[_builtins.str]] = None,
+            mirroring_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            mirroring_endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MirroringEndpointGroup':
         """
         Get an existing MirroringEndpointGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

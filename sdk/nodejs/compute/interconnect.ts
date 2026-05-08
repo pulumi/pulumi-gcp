@@ -405,20 +405,20 @@ export interface InterconnectState {
      * (Optional, Beta)
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      */
-    aaiEnabled?: pulumi.Input<boolean>;
+    aaiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
      */
-    adminEnabled?: pulumi.Input<boolean>;
+    adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      */
-    applicationAwareInterconnect?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnect>;
+    applicationAwareInterconnect?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnect | undefined>;
     /**
      * [Output Only] List of features that are available on this Interconnect connection based on the provisioned hardware and configuration.
      * Possible values include:
@@ -427,54 +427,54 @@ export interface InterconnectState {
      * - 'IF_CROSS_SITE_NETWORK': Indicates the Interconnect connection is provisioned for Cross-Site Networking.
      * Note: 'MACSEC' is a legacy value and has the same meaning as 'IF_MACSEC'.
      */
-    availableFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    availableFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      * Structure is documented below.
      */
-    circuitInfos?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectCircuitInfo>[]>;
+    circuitInfos?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectCircuitInfo>[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
      * for cross-cloud interconnect.
      */
-    customerName?: pulumi.Input<string>;
+    customerName?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of outages expected for this Interconnect.
      * Structure is documented below.
      */
-    expectedOutages?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectExpectedOutage>[]>;
+    expectedOutages?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectExpectedOutage>[] | undefined>;
     /**
      * IP address configured on the Google side of the Interconnect link.
      * This can be used only for ping tests.
      */
-    googleIpAddress?: pulumi.Input<string>;
+    googleIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Google reference ID to be used when raising support tickets with Google or otherwise to debug
      * backend connectivity issues.
      */
-    googleReferenceId?: pulumi.Input<string>;
+    googleReferenceId?: pulumi.Input<string | undefined>;
     /**
      * A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
      */
-    interconnectAttachments?: pulumi.Input<pulumi.Input<string>[]>;
+    interconnectAttachments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URLs of InterconnectGroups that include this Interconnect.
      * Order is arbitrary and items are unique.
      */
-    interconnectGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    interconnectGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      * Can take one of the following values:
@@ -482,7 +482,7 @@ export interface InterconnectState {
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      */
-    interconnectType?: pulumi.Input<string>;
+    interconnectType?: pulumi.Input<string | undefined>;
     /**
      * A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
      * of the labels set used for optimistic locking. The fingerprint is initially generated by
@@ -490,7 +490,7 @@ export interface InterconnectState {
      * You must always provide an up-to-date fingerprint hash in order to update or change labels,
      * otherwise the request will fail with error 412 conditionNotMet.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels for this resource. These can only be added or modified by the setLabels
      * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -498,7 +498,7 @@ export interface InterconnectState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of link requested. Note that this field indicates the speed of each of the links in the
      * bundle, not the speed of the entire bundle. Can take one of the following values:
@@ -507,23 +507,23 @@ export interface InterconnectState {
      * - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
      * Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
      */
-    linkType?: pulumi.Input<string>;
+    linkType?: pulumi.Input<string | undefined>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
      * Specifies the location inside Google's Networks.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      */
-    macsec?: pulumi.Input<inputs.compute.InterconnectMacsec>;
+    macsec?: pulumi.Input<inputs.compute.InterconnectMacsec | undefined>;
     /**
      * Enable or disable MACsec on this Interconnect connection.
      * MACsec enablement fails if the MACsec object is not specified.
      */
-    macsecEnabled?: pulumi.Input<boolean>;
+    macsecEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -531,7 +531,7 @@ export interface InterconnectState {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Email address to contact the customer NOC for operations and maintenance notifications
      * regarding this Interconnect. If specified, this will be used for notifications in addition to
@@ -539,7 +539,7 @@ export interface InterconnectState {
      * This field is required for users who sign up for Cloud Interconnect using workforce identity
      * federation.
      */
-    nocContactEmail?: pulumi.Input<string>;
+    nocContactEmail?: pulumi.Input<string | undefined>;
     /**
      * The current status of this Interconnect's functionality, which can take one of the following:
      * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may
@@ -549,37 +549,37 @@ export interface InterconnectState {
      * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No
      * attachments may be provisioned or updated on this Interconnect.
      */
-    operationalStatus?: pulumi.Input<string>;
+    operationalStatus?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.InterconnectParams>;
+    params?: pulumi.Input<inputs.compute.InterconnectParams | undefined>;
     /**
      * IP address configured on the customer side of the Interconnect link.
      * The customer should configure this IP address during turnup when prompted by Google NOC.
      * This can be used only for ping tests.
      */
-    peerIpAddress?: pulumi.Input<string>;
+    peerIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Number of links actually provisioned in this interconnect.
      */
-    provisionedLinkCount?: pulumi.Input<number>;
+    provisionedLinkCount?: pulumi.Input<number | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
      * of Google's network that the interconnect is connected to.
      */
-    remoteLocation?: pulumi.Input<string>;
+    remoteLocation?: pulumi.Input<string | undefined>;
     /**
      * List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
      * Possible values include:
@@ -589,15 +589,15 @@ export interface InterconnectState {
      * Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
      * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      */
-    requestedFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requestedFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */
-    requestedLinkCount?: pulumi.Input<number>;
+    requestedLinkCount?: pulumi.Input<number | undefined>;
     /**
      * Reserved for future use.
      */
-    satisfiesPzs?: pulumi.Input<boolean>;
+    satisfiesPzs?: pulumi.Input<boolean | undefined>;
     /**
      * (Output)
      * State of this notification. Note that the versions of this enum prefixed with "NS_" have
@@ -608,11 +608,11 @@ export interface InterconnectState {
      * outage was due to start.
      * - COMPLETED: The outage associated with this notification is complete.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
      */
-    wireGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    wireGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -623,30 +623,30 @@ export interface InterconnectArgs {
      * (Optional, Beta)
      * Enable or disable the Application Aware Interconnect(AAI) feature on this interconnect.
      */
-    aaiEnabled?: pulumi.Input<boolean>;
+    aaiEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Administrative status of the interconnect. When this is set to true, the Interconnect is
      * functional and can carry traffic. When set to false, no packets can be carried over the
      * interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
      */
-    adminEnabled?: pulumi.Input<boolean>;
+    adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      */
-    applicationAwareInterconnect?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnect>;
+    applicationAwareInterconnect?: pulumi.Input<inputs.compute.InterconnectApplicationAwareInterconnect | undefined>;
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
      * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
      * for cross-cloud interconnect.
      */
-    customerName?: pulumi.Input<string>;
+    customerName?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      * Can take one of the following values:
@@ -662,7 +662,7 @@ export interface InterconnectArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of link requested. Note that this field indicates the speed of each of the links in the
      * bundle, not the speed of the entire bundle. Can take one of the following values:
@@ -682,12 +682,12 @@ export interface InterconnectArgs {
      * Interconnect connection between Google and your on-premises router.
      * Structure is documented below.
      */
-    macsec?: pulumi.Input<inputs.compute.InterconnectMacsec>;
+    macsec?: pulumi.Input<inputs.compute.InterconnectMacsec | undefined>;
     /**
      * Enable or disable MACsec on this Interconnect connection.
      * MACsec enablement fails if the MACsec object is not specified.
      */
-    macsecEnabled?: pulumi.Input<boolean>;
+    macsecEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -695,7 +695,7 @@ export interface InterconnectArgs {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Email address to contact the customer NOC for operations and maintenance notifications
      * regarding this Interconnect. If specified, this will be used for notifications in addition to
@@ -703,22 +703,22 @@ export interface InterconnectArgs {
      * This field is required for users who sign up for Cloud Interconnect using workforce identity
      * federation.
      */
-    nocContactEmail?: pulumi.Input<string>;
+    nocContactEmail?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.InterconnectParams>;
+    params?: pulumi.Input<inputs.compute.InterconnectParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
      * of Google's network that the interconnect is connected to.
      */
-    remoteLocation?: pulumi.Input<string>;
+    remoteLocation?: pulumi.Input<string | undefined>;
     /**
      * List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
      * Possible values include:
@@ -728,7 +728,7 @@ export interface InterconnectArgs {
      * Note: 'MACSEC' is a legacy value for compatibility reasons and has the same effect as 'IF_MACSEC'. 'IF_MACSEC' is preferred.
      * Each value may be one of: `MACSEC`, `CROSS_SITE_NETWORK`, `IF_MACSEC`, `IF_L2_FORWARDING`.
      */
-    requestedFeatures?: pulumi.Input<pulumi.Input<string>[]>;
+    requestedFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */

@@ -29,8 +29,8 @@ public final class FilestoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.filestore.FilestoreFunctions;
      * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -72,8 +72,8 @@ public final class FilestoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.filestore.FilestoreFunctions;
      * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -115,8 +115,8 @@ public final class FilestoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.filestore.FilestoreFunctions;
      * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -158,8 +158,8 @@ public final class FilestoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.filestore.FilestoreFunctions;
      * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -201,8 +201,8 @@ public final class FilestoreFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.filestore.FilestoreFunctions;
      * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

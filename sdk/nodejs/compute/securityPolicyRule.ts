@@ -289,57 +289,57 @@ export interface SecurityPolicyRuleState {
      * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
      * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderAction | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    match?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatch>;
+    match?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatch | undefined>;
     /**
      * Preconfigured WAF configuration to be applied for the rule.
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    preconfiguredWafConfig?: pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfig>;
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
      * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
      * Structure is documented below.
      */
-    rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
+    rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
      * Structure is documented below.
      */
-    redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
+    redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions | undefined>;
     /**
      * The name of the security policy this rule belongs to.
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -358,28 +358,28 @@ export interface SecurityPolicyRuleArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
      * Structure is documented below.
      */
-    headerAction?: pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderAction>;
+    headerAction?: pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderAction | undefined>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
      */
-    match?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatch>;
+    match?: pulumi.Input<inputs.compute.SecurityPolicyRuleMatch | undefined>;
     /**
      * Preconfigured WAF configuration to be applied for the rule.
      * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
      * Structure is documented below.
      */
-    preconfiguredWafConfig?: pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfig>;
+    preconfiguredWafConfig?: pulumi.Input<inputs.compute.SecurityPolicyRulePreconfiguredWafConfig | undefined>;
     /**
      * If set to true, the specified action is not enforced.
      */
-    preview?: pulumi.Input<boolean>;
+    preview?: pulumi.Input<boolean | undefined>;
     /**
      * An integer indicating the priority of a rule in the list.
      * The priority must be a positive value between 0 and 2147483647.
@@ -390,17 +390,17 @@ export interface SecurityPolicyRuleArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
      * Structure is documented below.
      */
-    rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
+    rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions | undefined>;
     /**
      * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
      * Structure is documented below.
      */
-    redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
+    redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions | undefined>;
     /**
      * The name of the security policy this rule belongs to.
      */

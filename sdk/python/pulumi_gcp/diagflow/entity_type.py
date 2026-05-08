@@ -23,9 +23,9 @@ class EntityTypeArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  kind: pulumi.Input[_builtins.str],
-                 enable_fuzzy_extraction: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntityType resource.
 
@@ -82,19 +82,19 @@ class EntityTypeArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableFuzzyExtraction")
-    def enable_fuzzy_extraction(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_fuzzy_extraction(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables fuzzy entity extraction during classification.
         """
         return pulumi.get(self, "enable_fuzzy_extraction")
 
     @enable_fuzzy_extraction.setter
-    def enable_fuzzy_extraction(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_fuzzy_extraction(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_fuzzy_extraction", value)
 
     @_builtins.property
     @pulumi.getter
-    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]:
+    def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]:
         """
         The collection of entity entries associated with the entity type.
         Structure is documented below.
@@ -102,12 +102,12 @@ class EntityTypeArgs:
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]):
+    def entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]):
         pulumi.set(self, "entities", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -115,19 +115,19 @@ class EntityTypeArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _EntityTypeState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_fuzzy_extraction: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input['EntityTypeEntityArgs']]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntityType resources.
 
@@ -161,31 +161,31 @@ class _EntityTypeState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this entity type to be displayed on the console.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFuzzyExtraction")
-    def enable_fuzzy_extraction(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_fuzzy_extraction(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables fuzzy entity extraction during classification.
         """
         return pulumi.get(self, "enable_fuzzy_extraction")
 
     @enable_fuzzy_extraction.setter
-    def enable_fuzzy_extraction(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_fuzzy_extraction(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_fuzzy_extraction", value)
 
     @_builtins.property
     @pulumi.getter
-    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]:
+    def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]:
         """
         The collection of entity entries associated with the entity type.
         Structure is documented below.
@@ -193,12 +193,12 @@ class _EntityTypeState:
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]):
+    def entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntityTypeEntityArgs']]]]):
         pulumi.set(self, "entities", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the kind of entity type.
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
@@ -210,12 +210,12 @@ class _EntityTypeState:
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the entity type.
         Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
@@ -223,12 +223,12 @@ class _EntityTypeState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -236,7 +236,7 @@ class _EntityTypeState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -246,11 +246,11 @@ class EntityType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_fuzzy_extraction: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents an entity type. Entity types serve as a tool for extracting parameter values from natural language queries.
@@ -400,11 +400,11 @@ class EntityType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_fuzzy_extraction: Optional[pulumi.Input[_builtins.bool]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -434,12 +434,12 @@ class EntityType(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_fuzzy_extraction: Optional[pulumi.Input[_builtins.bool]] = None,
-            entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'EntityType':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_fuzzy_extraction: pulumi.Input[Optional[_builtins.bool]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntityTypeEntityArgs', 'EntityTypeEntityArgsDict']]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'EntityType':
         """
         Get an existing EntityType resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -21,7 +21,7 @@ class BrandArgs:
     def __init__(__self__, *,
                  application_title: pulumi.Input[_builtins.str],
                  support_email: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Brand resource.
 
@@ -69,7 +69,7 @@ class BrandArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -77,18 +77,18 @@ class BrandArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _BrandState:
     def __init__(__self__, *,
-                 application_title: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_internal_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_internal_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Brand resources.
 
@@ -119,19 +119,19 @@ class _BrandState:
 
     @_builtins.property
     @pulumi.getter(name="applicationTitle")
-    def application_title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application name displayed on OAuth consent screen.
         """
         return pulumi.get(self, "application_title")
 
     @application_title.setter
-    def application_title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_title", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
         NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
@@ -141,24 +141,24 @@ class _BrandState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgInternalOnly")
-    def org_internal_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def org_internal_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the brand is only intended for usage inside the GSuite organization only.
         """
         return pulumi.get(self, "org_internal_only")
 
     @org_internal_only.setter
-    def org_internal_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def org_internal_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "org_internal_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -166,12 +166,12 @@ class _BrandState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="supportEmail")
-    def support_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def support_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Support email displayed on the OAuth consent screen. Can be either a
         user or group email. When a user email is specified, the caller must
@@ -182,7 +182,7 @@ class _BrandState:
         return pulumi.get(self, "support_email")
 
     @support_email.setter
-    def support_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def support_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "support_email", value)
 
 
@@ -192,9 +192,9 @@ class Brand(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_title: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** This resource is deprecated on Jan 22, 2025. After Jan 19, 2026 the `iap.Brand` Terraform resource will no longer function as intended due to the deprecation of the IAP OAuth Admin APIs. New projects will not be able to use these APIs. March 19, 2026 The IAP OAuth Admin APIs will be permanently shut down. Access to this feature will no longer be available.
@@ -342,9 +342,9 @@ class Brand(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_title: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -373,11 +373,11 @@ class Brand(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_title: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_internal_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            support_email: Optional[pulumi.Input[_builtins.str]] = None) -> 'Brand':
+            application_title: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_internal_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            support_email: pulumi.Input[Optional[_builtins.str]] = None) -> 'Brand':
         """
         Get an existing Brand resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -184,10 +184,10 @@ def get_dns_authorization(domain: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         type=pulumi.get(__ret__, 'type'))
-def get_dns_authorization_output(domain: Optional[pulumi.Input[_builtins.str]] = None,
-                                 location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dns_authorization_output(domain: pulumi.Input[Optional[_builtins.str]] = None,
+                                 location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsAuthorizationResult]:
     """
     Use this data source to get information about a Certificate Manager DNS Authorization. For more details, see the [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.dnsAuthorizations).

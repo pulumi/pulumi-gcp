@@ -44,15 +44,15 @@ namespace Pulumi.Gcp.Chronicle
     ///     {
     ///         Location = "us",
     ///         Instance = "00000000-0000-0000-0000-000000000000",
-    ///         Rule = Output.Tuple(Std.Index.Split.Invoke(new()
+    ///         Rule = Output.Tuple(Std.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
-    ///         }), Std.Index.Split.Invoke(new()
+    ///         }), Std.Split.Invoke(new()
     ///         {
     ///             Separator = "/",
     ///             Text = googleChronicleRule.My_rule.Name,
-    ///         }).Apply(invoke =&gt; invoke.Result).Length).Apply(values =&gt;
+    ///         }).Apply(invoke =&gt; invoke.Result).Length()).Apply(values =&gt;
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;

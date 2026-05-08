@@ -67,10 +67,10 @@ class SourceIamPolicyArgs:
 @pulumi.input_type
 class _SourceIamPolicyState:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SourceIamPolicy resources.
 
@@ -88,16 +88,16 @@ class _SourceIamPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
@@ -105,25 +105,25 @@ class _SourceIamPolicyState:
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="policyData")
-    def policy_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "policy_data")
 
     @policy_data.setter
-    def policy_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
@@ -133,9 +133,9 @@ class SourceIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A Cloud Security Command Center's (Cloud SCC) finding source. A finding
@@ -245,9 +245,9 @@ class SourceIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -277,10 +277,10 @@ class SourceIamPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None) -> 'SourceIamPolicy':
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> 'SourceIamPolicy':
         """
         Get an existing SourceIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

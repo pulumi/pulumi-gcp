@@ -21,11 +21,11 @@ class AndroidAppArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  package_name: pulumi.Input[_builtins.str],
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha1_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sha256_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
 
@@ -83,7 +83,7 @@ class AndroidAppArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiKeyId")
-    def api_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
         If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
@@ -92,12 +92,12 @@ class AndroidAppArgs:
         return pulumi.get(self, "api_key_id")
 
     @api_key_id.setter
-    def api_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
         rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
@@ -106,12 +106,12 @@ class AndroidAppArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -119,47 +119,47 @@ class AndroidAppArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sha1Hashes")
-    def sha1_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sha1_hashes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The SHA1 certificate hashes for the AndroidApp.
         """
         return pulumi.get(self, "sha1_hashes")
 
     @sha1_hashes.setter
-    def sha1_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sha1_hashes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sha1_hashes", value)
 
     @_builtins.property
     @pulumi.getter(name="sha256Hashes")
-    def sha256_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sha256_hashes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The SHA256 certificate hashes for the AndroidApp.
         """
         return pulumi.get(self, "sha256_hashes")
 
     @sha256_hashes.setter
-    def sha256_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sha256_hashes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sha256_hashes", value)
 
 
 @pulumi.input_type
 class _AndroidAppState:
     def __init__(__self__, *,
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha1_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sha256_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AndroidApp resources.
 
@@ -206,7 +206,7 @@ class _AndroidAppState:
 
     @_builtins.property
     @pulumi.getter(name="apiKeyId")
-    def api_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
         If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
@@ -215,12 +215,12 @@ class _AndroidAppState:
         return pulumi.get(self, "api_key_id")
 
     @api_key_id.setter
-    def api_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique, Firebase-assigned identifier of the AndroidApp.
         This identifier should be treated as an opaque token, as the data format is not specified.
@@ -228,12 +228,12 @@ class _AndroidAppState:
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
         rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
@@ -242,24 +242,24 @@ class _AndroidAppState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-assigned display name of the AndroidApp.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This checksum is computed by the server based on the value of other fields, and it may be sent
         with update requests to ensure the client has an up-to-date value before proceeding.
@@ -267,12 +267,12 @@ class _AndroidAppState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified resource name of the AndroidApp, for example:
         projects/projectId/androidApps/appId
@@ -280,12 +280,12 @@ class _AndroidAppState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="packageName")
-    def package_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The canonical package name of the Android app as would appear in the Google Play
         Developer Console.
@@ -293,12 +293,12 @@ class _AndroidAppState:
         return pulumi.get(self, "package_name")
 
     @package_name.setter
-    def package_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -306,31 +306,31 @@ class _AndroidAppState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="sha1Hashes")
-    def sha1_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sha1_hashes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The SHA1 certificate hashes for the AndroidApp.
         """
         return pulumi.get(self, "sha1_hashes")
 
     @sha1_hashes.setter
-    def sha1_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sha1_hashes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sha1_hashes", value)
 
     @_builtins.property
     @pulumi.getter(name="sha256Hashes")
-    def sha256_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sha256_hashes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The SHA256 certificate hashes for the AndroidApp.
         """
         return pulumi.get(self, "sha256_hashes")
 
     @sha256_hashes.setter
-    def sha256_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sha256_hashes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sha256_hashes", value)
 
 
@@ -340,13 +340,13 @@ class AndroidApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha1_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sha256_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A Google Cloud Firebase Android application instance
@@ -535,13 +535,13 @@ class AndroidApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha1_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sha256_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,16 +575,16 @@ class AndroidApp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            package_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AndroidApp':
+            api_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            package_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sha1_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sha256_hashes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AndroidApp':
         """
         Get an existing AndroidApp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

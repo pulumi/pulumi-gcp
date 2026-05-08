@@ -164,8 +164,8 @@ def get_organization(domain: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         organization=pulumi.get(__ret__, 'organization'))
-def get_organization_output(domain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            organization: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_organization_output(domain: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            organization: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.

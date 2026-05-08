@@ -217,73 +217,73 @@ export interface MulticloudDataTransferConfigState {
     /**
      * Time when the MulticloudDataTransferConfig resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The number of Destination resources in use with the
      * MulticloudDataTransferConfig resource.
      */
-    destinationsActiveCount?: pulumi.Input<number>;
+    destinationsActiveCount?: pulumi.Input<number | undefined>;
     /**
      * The number of Destination resources configured for the
      * MulticloudDataTransferConfig resource.
      */
-    destinationsCount?: pulumi.Input<number>;
+    destinationsCount?: pulumi.Input<number | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The etag is computed by the server, and might be sent with update and
      * delete requests so that the client has an up-to-date value before
      * proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the multicloud data transfer config.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the MulticloudDataTransferConfig resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Maps services to their current or planned states. Service names are keys,
      * and the associated values describe the state of the service.
      * Structure is documented below.
      */
-    services?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.MulticloudDataTransferConfigService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.MulticloudDataTransferConfigService>[] | undefined>;
     /**
      * The Google-generated unique ID for the MulticloudDataTransferConfig
      * resource. This value is unique across all MulticloudDataTransferConfig
      * resources. If a resource is deleted and another with the same name is
      * created, the new resource is assigned a different and unique ID.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time when the MulticloudDataTransferConfig resource was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -293,14 +293,14 @@ export interface MulticloudDataTransferConfigArgs {
     /**
      * A description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the multicloud data transfer config.
      */
@@ -308,16 +308,16 @@ export interface MulticloudDataTransferConfigArgs {
     /**
      * The name of the MulticloudDataTransferConfig resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Maps services to their current or planned states. Service names are keys,
      * and the associated values describe the state of the service.
      * Structure is documented below.
      */
-    services?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.MulticloudDataTransferConfigService>[]>;
+    services?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.MulticloudDataTransferConfigService>[] | undefined>;
 }

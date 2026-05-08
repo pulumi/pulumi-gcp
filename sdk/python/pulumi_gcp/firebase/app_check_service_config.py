@@ -20,8 +20,8 @@ __all__ = ['AppCheckServiceConfigArgs', 'AppCheckServiceConfig']
 class AppCheckServiceConfigArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[_builtins.str],
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppCheckServiceConfig resource.
 
@@ -83,7 +83,7 @@ class AppCheckServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enforcementMode")
-    def enforcement_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforcement_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The App Check enforcement mode for a service supported by App Check. Valid values are
         (Unset)
@@ -115,12 +115,12 @@ class AppCheckServiceConfigArgs:
         return pulumi.get(self, "enforcement_mode")
 
     @enforcement_mode.setter
-    def enforcement_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforcement_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforcement_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -128,17 +128,17 @@ class AppCheckServiceConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _AppCheckServiceConfigState:
     def __init__(__self__, *,
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppCheckServiceConfig resources.
 
@@ -188,7 +188,7 @@ class _AppCheckServiceConfigState:
 
     @_builtins.property
     @pulumi.getter(name="enforcementMode")
-    def enforcement_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforcement_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The App Check enforcement mode for a service supported by App Check. Valid values are
         (Unset)
@@ -220,24 +220,24 @@ class _AppCheckServiceConfigState:
         return pulumi.get(self, "enforcement_mode")
 
     @enforcement_mode.setter
-    def enforcement_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforcement_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforcement_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified resource name of the service enforcement configuration.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -245,12 +245,12 @@ class _AppCheckServiceConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
         firebasestorage.googleapis.com (Cloud Storage for Firebase)
@@ -261,7 +261,7 @@ class _AppCheckServiceConfigState:
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
 
@@ -271,9 +271,9 @@ class AppCheckServiceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The enforcement configuration for a service supported by App Check.
@@ -478,9 +478,9 @@ class AppCheckServiceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,10 +506,10 @@ class AppCheckServiceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enforcement_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppCheckServiceConfig':
+            enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppCheckServiceConfig':
         """
         Get an existing AppCheckServiceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

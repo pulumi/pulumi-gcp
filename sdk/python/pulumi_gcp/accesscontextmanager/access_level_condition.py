@@ -22,13 +22,13 @@ __all__ = ['AccessLevelConditionArgs', 'AccessLevelCondition']
 class AccessLevelConditionArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[_builtins.str],
-                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
-                 ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 negate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
+                 device_policy: pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']] = None,
+                 ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 negate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
         """
         The set of arguments for constructing a AccessLevelCondition resource.
 
@@ -98,7 +98,7 @@ class AccessLevelConditionArgs:
 
     @_builtins.property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]:
+    def device_policy(self) -> pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -108,12 +108,12 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]):
+    def device_policy(self, value: pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']]):
         pulumi.set(self, "device_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ipSubnetworks")
-    def ip_subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_subnetworks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of CIDR block IP subnetwork specification. May be IPv4
         or IPv6.
@@ -129,12 +129,12 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "ip_subnetworks")
 
     @ip_subnetworks.setter
-    def ip_subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_subnetworks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_subnetworks", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An allowed list of members (users, service accounts).
         Using groups is not supported yet.
@@ -147,12 +147,12 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def negate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def negate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to negate the Condition. If true, the Condition becomes
         a NAND over its non-empty fields, each field must be false for
@@ -161,12 +161,12 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "negate")
 
     @negate.setter
-    def negate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def negate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "negate", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The request must originate from one of the provided
         countries/regions.
@@ -175,12 +175,12 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regions", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAccessLevels")
-    def required_access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def required_access_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of other access levels defined in the same Policy,
         referenced by resource name. Referencing an AccessLevel which
@@ -191,12 +191,12 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "required_access_levels")
 
     @required_access_levels.setter
-    def required_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def required_access_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "required_access_levels", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcNetworkSources")
-    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
+    def vpc_network_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
         """
         The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
         Structure is documented below.
@@ -204,22 +204,22 @@ class AccessLevelConditionArgs:
         return pulumi.get(self, "vpc_network_sources")
 
     @vpc_network_sources.setter
-    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
+    def vpc_network_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
         pulumi.set(self, "vpc_network_sources", value)
 
 
 @pulumi.input_type
 class _AccessLevelConditionState:
     def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
-                 ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 negate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_policy: pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']] = None,
+                 ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 negate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering AccessLevelCondition resources.
 
@@ -281,31 +281,31 @@ class _AccessLevelConditionState:
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Access Level to add this condition to.
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicyId")
-    def access_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Access Policy this resource belongs to.
         """
         return pulumi.get(self, "access_policy_id")
 
     @access_policy_id.setter
-    def access_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="devicePolicy")
-    def device_policy(self) -> Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]:
+    def device_policy(self) -> pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']]:
         """
         Device specific restrictions, all restrictions must hold for
         the Condition to be true. If not specified, all devices are
@@ -315,12 +315,12 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "device_policy")
 
     @device_policy.setter
-    def device_policy(self, value: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']]):
+    def device_policy(self, value: pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']]):
         pulumi.set(self, "device_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="ipSubnetworks")
-    def ip_subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_subnetworks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of CIDR block IP subnetwork specification. May be IPv4
         or IPv6.
@@ -336,12 +336,12 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "ip_subnetworks")
 
     @ip_subnetworks.setter
-    def ip_subnetworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_subnetworks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_subnetworks", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An allowed list of members (users, service accounts).
         Using groups is not supported yet.
@@ -354,12 +354,12 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def negate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def negate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to negate the Condition. If true, the Condition becomes
         a NAND over its non-empty fields, each field must be false for
@@ -368,12 +368,12 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "negate")
 
     @negate.setter
-    def negate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def negate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "negate", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The request must originate from one of the provided
         countries/regions.
@@ -382,12 +382,12 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regions", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredAccessLevels")
-    def required_access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def required_access_levels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of other access levels defined in the same Policy,
         referenced by resource name. Referencing an AccessLevel which
@@ -398,12 +398,12 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "required_access_levels")
 
     @required_access_levels.setter
-    def required_access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def required_access_levels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "required_access_levels", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcNetworkSources")
-    def vpc_network_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
+    def vpc_network_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]:
         """
         The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
         Structure is documented below.
@@ -411,7 +411,7 @@ class _AccessLevelConditionState:
         return pulumi.get(self, "vpc_network_sources")
 
     @vpc_network_sources.setter
-    def vpc_network_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
+    def vpc_network_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionVpcNetworkSourceArgs']]]]):
         pulumi.set(self, "vpc_network_sources", value)
 
 
@@ -421,14 +421,14 @@ class AccessLevelCondition(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_policy: Optional[pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
-                 ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 negate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
+                 ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 negate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None,
                  __props__=None):
         """
         Allows configuring a single access level condition to be appended to an access level's conditions.
@@ -651,14 +651,14 @@ class AccessLevelCondition(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_policy: Optional[pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
-                 ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 negate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None,
+                 access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
+                 ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 negate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -689,15 +689,15 @@ class AccessLevelCondition(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            access_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            device_policy: Optional[pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
-            ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            negate: Optional[pulumi.Input[_builtins.bool]] = None,
-            regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            required_access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_network_sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None) -> 'AccessLevelCondition':
+            access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
+            ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            negate: pulumi.Input[Optional[_builtins.bool]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            required_access_levels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_network_sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessLevelConditionVpcNetworkSourceArgs', 'AccessLevelConditionVpcNetworkSourceArgsDict']]]]] = None) -> 'AccessLevelCondition':
         """
         Get an existing AccessLevelCondition resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

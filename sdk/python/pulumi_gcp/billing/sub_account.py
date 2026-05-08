@@ -21,7 +21,7 @@ class SubAccountArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  master_billing_account: pulumi.Input[_builtins.str],
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SubAccount resource.
 
@@ -64,7 +64,7 @@ class SubAccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
         will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
@@ -73,19 +73,19 @@ class SubAccountArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
 
 @pulumi.input_type
 class _SubAccountState:
     def __init__(__self__, *,
-                 billing_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_billing_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open: Optional[pulumi.Input[_builtins.bool]] = None):
+                 billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SubAccount resources.
 
@@ -114,19 +114,19 @@ class _SubAccountState:
 
     @_builtins.property
     @pulumi.getter(name="billingAccountId")
-    def billing_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing account id.
         """
         return pulumi.get(self, "billing_account_id")
 
     @billing_account_id.setter
-    def billing_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set to "RENAME_ON_DESTROY" the billing account display_name
         will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
@@ -135,24 +135,24 @@ class _SubAccountState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the billing account.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="masterBillingAccount")
-    def master_billing_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_billing_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the master billing account that the subaccount
         will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
@@ -160,31 +160,31 @@ class _SubAccountState:
         return pulumi.get(self, "master_billing_account")
 
     @master_billing_account.setter
-    def master_billing_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_billing_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_billing_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def open(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         `true` if the billing account is open, `false` if the billing account is closed.
         """
         return pulumi.get(self, "open")
 
     @open.setter
-    def open(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open", value)
 
 
@@ -194,9 +194,9 @@ class SubAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_billing_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows creation and management of a Google Cloud Billing Subaccount.
@@ -282,9 +282,9 @@ class SubAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_billing_account: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -314,12 +314,12 @@ class SubAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            billing_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            master_billing_account: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            open: Optional[pulumi.Input[_builtins.bool]] = None) -> 'SubAccount':
+            billing_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            master_billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open: pulumi.Input[Optional[_builtins.bool]] = None) -> 'SubAccount':
         """
         Get an existing SubAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -283,45 +283,45 @@ export interface CxTestCaseState {
     /**
      * When the test was created. A timestamp in RFC3339 text format.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The latest test result.
      * Structure is documented below.
      */
-    lastTestResults?: pulumi.Input<pulumi.Input<inputs.diagflow.CxTestCaseLastTestResult>[]>;
+    lastTestResults?: pulumi.Input<pulumi.Input<inputs.diagflow.CxTestCaseLastTestResult>[] | undefined>;
     /**
      * The unique identifier of the page.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional freeform notes about the test case. Limit of 400 characters.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * The agent to create the test case for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
      * Each tag should start with "#" and has a limit of 30 characters
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
      * Structure is documented below.
      */
-    testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.diagflow.CxTestCaseTestCaseConversationTurn>[]>;
+    testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.diagflow.CxTestCaseTestCaseConversationTurn>[] | undefined>;
     /**
      * Config for the test case.
      * Structure is documented below.
      */
-    testConfig?: pulumi.Input<inputs.diagflow.CxTestCaseTestConfig>;
+    testConfig?: pulumi.Input<inputs.diagflow.CxTestCaseTestConfig | undefined>;
 }
 
 /**
@@ -335,25 +335,25 @@ export interface CxTestCaseArgs {
     /**
      * Additional freeform notes about the test case. Limit of 400 characters.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * The agent to create the test case for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
      * Each tag should start with "#" and has a limit of 30 characters
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
      * Structure is documented below.
      */
-    testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.diagflow.CxTestCaseTestCaseConversationTurn>[]>;
+    testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.diagflow.CxTestCaseTestCaseConversationTurn>[] | undefined>;
     /**
      * Config for the test case.
      * Structure is documented below.
      */
-    testConfig?: pulumi.Input<inputs.diagflow.CxTestCaseTestConfig>;
+    testConfig?: pulumi.Input<inputs.diagflow.CxTestCaseTestConfig | undefined>;
 }

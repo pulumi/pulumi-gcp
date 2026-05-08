@@ -221,13 +221,13 @@ export interface RuleState {
      * The action this rule takes.
      * Possible values are: `ACTION_UNSPECIFIED`, `ALLOW`, `DENY`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Optional. A CEL expression for conditions that must be met in order for the
      * rule to apply. If not provided, the rule matches all objects.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.artifactregistry.RuleCondition>;
+    condition?: pulumi.Input<inputs.artifactregistry.RuleCondition | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -236,36 +236,36 @@ export interface RuleState {
      * gcp.artifactregistry.getLocations
      * data source for possible values.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name of the rule, for example:
      * "projects/p1/locations/us-central1/repositories/repo1/rules/rule1".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The operation the rule applies to.
      * Possible values are: `OPERATION_UNSPECIFIED`, `DOWNLOAD`.
      */
-    operation?: pulumi.Input<string>;
+    operation?: pulumi.Input<string | undefined>;
     /**
      * The package ID the rule applies to. If empty, this rule applies to all
      * packages inside the repository.
      */
-    packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The last part of the repository name, for example:
      * "repo1"
      */
-    repositoryId?: pulumi.Input<string>;
+    repositoryId?: pulumi.Input<string | undefined>;
     /**
      * The rule id to use for this repository.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -276,13 +276,13 @@ export interface RuleArgs {
      * The action this rule takes.
      * Possible values are: `ACTION_UNSPECIFIED`, `ALLOW`, `DENY`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Optional. A CEL expression for conditions that must be met in order for the
      * rule to apply. If not provided, the rule matches all objects.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.artifactregistry.RuleCondition>;
+    condition?: pulumi.Input<inputs.artifactregistry.RuleCondition | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -291,22 +291,22 @@ export interface RuleArgs {
      * gcp.artifactregistry.getLocations
      * data source for possible values.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The operation the rule applies to.
      * Possible values are: `OPERATION_UNSPECIFIED`, `DOWNLOAD`.
      */
-    operation?: pulumi.Input<string>;
+    operation?: pulumi.Input<string | undefined>;
     /**
      * The package ID the rule applies to. If empty, this rule applies to all
      * packages inside the repository.
      */
-    packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The last part of the repository name, for example:
      * "repo1"

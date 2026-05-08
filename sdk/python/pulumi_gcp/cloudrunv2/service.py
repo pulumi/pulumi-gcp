@@ -23,25 +23,25 @@ class ServiceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  template: pulumi.Input['ServiceTemplateArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
-                 build_config: Optional[pulumi.Input['ServiceBuildConfigArgs']] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_uri_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress: Optional[pulumi.Input[_builtins.str]] = None,
-                 invoker_iam_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_region_settings: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling: Optional[pulumi.Input['ServiceScalingArgs']] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['ServiceBinaryAuthorizationArgs']] = None,
+                 build_config: pulumi.Input[Optional['ServiceBuildConfigArgs']] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress: pulumi.Input[Optional[_builtins.str]] = None,
+                 invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_region_settings: pulumi.Input[Optional['ServiceMultiRegionSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling: pulumi.Input[Optional['ServiceScalingArgs']] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
 
@@ -162,7 +162,7 @@ class ServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
@@ -174,12 +174,12 @@ class ServiceArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['ServiceBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -187,12 +187,12 @@ class ServiceArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['ServiceBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['ServiceBuildConfigArgs']]:
+    def build_config(self) -> pulumi.Input[Optional['ServiceBuildConfigArgs']]:
         """
         Configuration for building a Cloud Run function.
         Structure is documented below.
@@ -200,36 +200,36 @@ class ServiceArgs:
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['ServiceBuildConfigArgs']]):
+    def build_config(self, value: pulumi.Input[Optional['ServiceBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary identifier for the API client.
         """
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary version identifier for the API client.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter(name="customAudiences")
-    def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
         For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
@@ -237,24 +237,24 @@ class ServiceArgs:
         return pulumi.get(self, "custom_audiences")
 
     @custom_audiences.setter
-    def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultUriDisabled")
-    def default_uri_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_uri_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disables public resolution of the default URI of this service.
         """
         return pulumi.get(self, "default_uri_disabled")
 
     @default_uri_disabled.setter
-    def default_uri_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_uri_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_uri_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the service. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the service,
@@ -266,36 +266,36 @@ class ServiceArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the Service. This field currently has a 512-character limit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="iapEnabled")
-    def iap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def iap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Used to enable/disable IAP for the cloud-run service.
         """
         return pulumi.get(self, "iap_enabled")
 
     @iap_enabled.setter
-    def iap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def iap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "iap_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
         Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -303,24 +303,24 @@ class ServiceArgs:
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress", value)
 
     @_builtins.property
     @pulumi.getter(name="invokerIamDisabled")
-    def invoker_iam_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invoker_iam_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         """
         return pulumi.get(self, "invoker_iam_disabled")
 
     @invoker_iam_disabled.setter
-    def invoker_iam_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invoker_iam_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invoker_iam_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
         environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -332,12 +332,12 @@ class ServiceArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
         If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -347,12 +347,12 @@ class ServiceArgs:
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_stage", value)
 
     @_builtins.property
     @pulumi.getter(name="multiRegionSettings")
-    def multi_region_settings(self) -> Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]:
+    def multi_region_settings(self) -> pulumi.Input[Optional['ServiceMultiRegionSettingsArgs']]:
         """
         Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
         Structure is documented below.
@@ -360,24 +360,24 @@ class ServiceArgs:
         return pulumi.get(self, "multi_region_settings")
 
     @multi_region_settings.setter
-    def multi_region_settings(self, value: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]):
+    def multi_region_settings(self, value: pulumi.Input[Optional['ServiceMultiRegionSettingsArgs']]):
         pulumi.set(self, "multi_region_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Service.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -385,12 +385,12 @@ class ServiceArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['ServiceScalingArgs']]:
+    def scaling(self) -> pulumi.Input[Optional['ServiceScalingArgs']]:
         """
         Scaling settings that apply to the whole service
         Structure is documented below.
@@ -398,12 +398,12 @@ class ServiceArgs:
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['ServiceScalingArgs']]):
+    def scaling(self, value: pulumi.Input[Optional['ServiceScalingArgs']]):
         pulumi.set(self, "scaling", value)
 
     @_builtins.property
     @pulumi.getter
-    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
+    def traffics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
         Structure is documented below.
@@ -411,55 +411,55 @@ class ServiceArgs:
         return pulumi.get(self, "traffics")
 
     @traffics.setter
-    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
+    def traffics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
         pulumi.set(self, "traffics", value)
 
 
 @pulumi.input_type
 class _ServiceState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
-                 build_config: Optional[pulumi.Input['ServiceBuildConfigArgs']] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_uri_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress: Optional[pulumi.Input[_builtins.str]] = None,
-                 invoker_iam_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 last_modifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_created_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_ready_revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_region_settings: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaling: Optional[pulumi.Input['ServiceScalingArgs']] = None,
-                 template: Optional[pulumi.Input['ServiceTemplateArgs']] = None,
-                 terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
-                 traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['ServiceBinaryAuthorizationArgs']] = None,
+                 build_config: pulumi.Input[Optional['ServiceBuildConfigArgs']] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceConditionArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress: pulumi.Input[Optional[_builtins.str]] = None,
+                 invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_created_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_ready_revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_region_settings: pulumi.Input[Optional['ServiceMultiRegionSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaling: pulumi.Input[Optional['ServiceScalingArgs']] = None,
+                 template: pulumi.Input[Optional['ServiceTemplateArgs']] = None,
+                 terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
+                 traffic_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
 
@@ -628,7 +628,7 @@ class _ServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected in new resources.
@@ -640,12 +640,12 @@ class _ServiceState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['ServiceBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -653,12 +653,12 @@ class _ServiceState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['ServiceBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> Optional[pulumi.Input['ServiceBuildConfigArgs']]:
+    def build_config(self) -> pulumi.Input[Optional['ServiceBuildConfigArgs']]:
         """
         Configuration for building a Cloud Run function.
         Structure is documented below.
@@ -666,36 +666,36 @@ class _ServiceState:
         return pulumi.get(self, "build_config")
 
     @build_config.setter
-    def build_config(self, value: Optional[pulumi.Input['ServiceBuildConfigArgs']]):
+    def build_config(self, value: pulumi.Input[Optional['ServiceBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary identifier for the API client.
         """
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary version identifier for the API client.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceConditionArgs']]]]:
         """
         The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -703,36 +703,36 @@ class _ServiceState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the authenticated creator.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="customAudiences")
-    def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_audiences(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
         For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
@@ -740,36 +740,36 @@ class _ServiceState:
         return pulumi.get(self, "custom_audiences")
 
     @custom_audiences.setter
-    def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_audiences(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_audiences", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultUriDisabled")
-    def default_uri_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_uri_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disables public resolution of the default URI of this service.
         """
         return pulumi.get(self, "default_uri_disabled")
 
     @default_uri_disabled.setter
-    def default_uri_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_uri_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_uri_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion time.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the service. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the service,
@@ -781,96 +781,96 @@ class _ServiceState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-provided description of the Service. This field currently has a 512-character limit.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter(name="iapEnabled")
-    def iap_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def iap_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Used to enable/disable IAP for the cloud-run service.
         """
         return pulumi.get(self, "iap_enabled")
 
     @iap_enabled.setter
-    def iap_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def iap_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "iap_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def ingress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
         Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -878,24 +878,24 @@ class _ServiceState:
         return pulumi.get(self, "ingress")
 
     @ingress.setter
-    def ingress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress", value)
 
     @_builtins.property
     @pulumi.getter(name="invokerIamDisabled")
-    def invoker_iam_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invoker_iam_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disables IAM permission check for run.routes.invoke for callers of this service. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         """
         return pulumi.get(self, "invoker_iam_disabled")
 
     @invoker_iam_disabled.setter
-    def invoker_iam_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invoker_iam_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invoker_iam_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
         environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -907,48 +907,48 @@ class _ServiceState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifier")
-    def last_modifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the last authenticated modifier.
         """
         return pulumi.get(self, "last_modifier")
 
     @last_modifier.setter
-    def last_modifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modifier", value)
 
     @_builtins.property
     @pulumi.getter(name="latestCreatedRevision")
-    def latest_created_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_created_revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "latest_created_revision")
 
     @latest_created_revision.setter
-    def latest_created_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_created_revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_created_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="latestReadyRevision")
-    def latest_ready_revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_ready_revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "latest_ready_revision")
 
     @latest_ready_revision.setter
-    def latest_ready_revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_ready_revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_ready_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
         If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -958,24 +958,24 @@ class _ServiceState:
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_stage", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the cloud run service
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="multiRegionSettings")
-    def multi_region_settings(self) -> Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]:
+    def multi_region_settings(self) -> pulumi.Input[Optional['ServiceMultiRegionSettingsArgs']]:
         """
         Settings for creating a Multi-Region Service. Make sure to use region = 'global' when using them. For more information, visit https://cloud.google.com/run/docs/multiple-regions#deploy
         Structure is documented below.
@@ -983,36 +983,36 @@ class _ServiceState:
         return pulumi.get(self, "multi_region_settings")
 
     @multi_region_settings.setter
-    def multi_region_settings(self, value: Optional[pulumi.Input['ServiceMultiRegionSettingsArgs']]):
+    def multi_region_settings(self, value: pulumi.Input[Optional['ServiceMultiRegionSettingsArgs']]):
         pulumi.set(self, "multi_region_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Service.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def observed_generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         """
         return pulumi.get(self, "observed_generation")
 
     @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def observed_generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "observed_generation", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1020,12 +1020,12 @@ class _ServiceState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1033,12 +1033,12 @@ class _ServiceState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Returns true if the Service is currently being acted upon by the system to bring it into the desired state.
         When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, observedGeneration, latest_ready_revison, trafficStatuses, and uri will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
@@ -1048,12 +1048,12 @@ class _ServiceState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['ServiceScalingArgs']]:
+    def scaling(self) -> pulumi.Input[Optional['ServiceScalingArgs']]:
         """
         Scaling settings that apply to the whole service
         Structure is documented below.
@@ -1061,12 +1061,12 @@ class _ServiceState:
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['ServiceScalingArgs']]):
+    def scaling(self, value: pulumi.Input[Optional['ServiceScalingArgs']]):
         pulumi.set(self, "scaling", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['ServiceTemplateArgs']]:
+    def template(self) -> pulumi.Input[Optional['ServiceTemplateArgs']]:
         """
         The template used to create revisions for this Service.
         Structure is documented below.
@@ -1074,12 +1074,12 @@ class _ServiceState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['ServiceTemplateArgs']]):
+    def template(self, value: pulumi.Input[Optional['ServiceTemplateArgs']]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="terminalConditions")
-    def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]]:
+    def terminal_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]]:
         """
         The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -1087,12 +1087,12 @@ class _ServiceState:
         return pulumi.get(self, "terminal_conditions")
 
     @terminal_conditions.setter
-    def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]]):
+    def terminal_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]]):
         pulumi.set(self, "terminal_conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficStatuses")
-    def traffic_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]]:
+    def traffic_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]]:
         """
         Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         Structure is documented below.
@@ -1100,12 +1100,12 @@ class _ServiceState:
         return pulumi.get(self, "traffic_statuses")
 
     @traffic_statuses.setter
-    def traffic_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]]):
+    def traffic_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]]):
         pulumi.set(self, "traffic_statuses", value)
 
     @_builtins.property
     @pulumi.getter
-    def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
+    def traffics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
         Structure is documented below.
@@ -1113,36 +1113,36 @@ class _ServiceState:
         return pulumi.get(self, "traffics")
 
     @traffics.setter
-    def traffics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
+    def traffics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]]):
         pulumi.set(self, "traffics", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Displays the target URI.
@@ -1150,19 +1150,19 @@ class _ServiceState:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         All URLs serving traffic for this Service.
         """
         return pulumi.get(self, "urls")
 
     @urls.setter
-    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "urls", value)
 
 
@@ -1172,27 +1172,27 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
-                 build_config: Optional[pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_uri_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress: Optional[pulumi.Input[_builtins.str]] = None,
-                 invoker_iam_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_region_settings: Optional[pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling: Optional[pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
-                 template: Optional[pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress: pulumi.Input[Optional[_builtins.str]] = None,
+                 invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
                  __props__=None):
         """
         Service acts as a top-level container that manages a set of configurations and revision templates which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
@@ -1739,7 +1739,7 @@ class Service(pulumi.CustomResource):
                         "cloud_storage_source": {
                             "bucket": sourcebucket.name,
                             "object": source_tar.name,
-                            "generation": source_tar.generation,
+                            "generation": source_tar.generation.apply(lambda x: str(x)),
                         },
                     },
                 }],
@@ -2394,7 +2394,7 @@ class Service(pulumi.CustomResource):
                         "cloud_storage_source": {
                             "bucket": sourcebucket.name,
                             "object": source_tar.name,
-                            "generation": source_tar.generation,
+                            "generation": source_tar.generation.apply(lambda x: str(x)),
                         },
                     },
                 }],
@@ -2462,27 +2462,27 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
-                 build_config: Optional[pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_uri_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 iap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ingress: Optional[pulumi.Input[_builtins.str]] = None,
-                 invoker_iam_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_region_settings: Optional[pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling: Optional[pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
-                 template: Optional[pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-                 traffics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
+                 build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ingress: pulumi.Input[Optional[_builtins.str]] = None,
+                 invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+                 template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
+                 traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2550,48 +2550,48 @@ class Service(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: Optional[pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
-            build_config: Optional[pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
-            client: Optional[pulumi.Input[_builtins.str]] = None,
-            client_version: Optional[pulumi.Input[_builtins.str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            default_uri_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            generation: Optional[pulumi.Input[_builtins.str]] = None,
-            iap_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ingress: Optional[pulumi.Input[_builtins.str]] = None,
-            invoker_iam_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            last_modifier: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_created_revision: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_ready_revision: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            multi_region_settings: Optional[pulumi.Input[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            scaling: Optional[pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
-            template: Optional[pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
-            terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict']]]]] = None,
-            traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficStatusArgs', 'ServiceTrafficStatusArgsDict']]]]] = None,
-            traffics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None,
-            urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Service':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
+            build_config: pulumi.Input[Optional[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
+            client: pulumi.Input[Optional[_builtins.str]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ingress: pulumi.Input[Optional[_builtins.str]] = None,
+            invoker_iam_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_created_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_ready_revision: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_region_settings: pulumi.Input[Optional[Union['ServiceMultiRegionSettingsArgs', 'ServiceMultiRegionSettingsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+            template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict']]]]] = None,
+            traffic_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficStatusArgs', 'ServiceTrafficStatusArgsDict']]]]] = None,
+            traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

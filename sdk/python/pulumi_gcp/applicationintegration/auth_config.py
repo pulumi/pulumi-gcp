@@ -23,13 +23,13 @@ class AuthConfigArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 client_certificate: Optional[pulumi.Input['AuthConfigClientCertificateArgs']] = None,
-                 decrypted_credential: Optional[pulumi.Input['AuthConfigDecryptedCredentialArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry_notification_durations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 override_valid_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_certificate: pulumi.Input[Optional['AuthConfigClientCertificateArgs']] = None,
+                 decrypted_credential: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 override_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthConfig resource.
 
@@ -92,7 +92,7 @@ class AuthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input['AuthConfigClientCertificateArgs']]:
+    def client_certificate(self) -> pulumi.Input[Optional['AuthConfigClientCertificateArgs']]:
         """
         Raw client certificate
         Structure is documented below.
@@ -100,12 +100,12 @@ class AuthConfigArgs:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input['AuthConfigClientCertificateArgs']]):
+    def client_certificate(self, value: pulumi.Input[Optional['AuthConfigClientCertificateArgs']]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="decryptedCredential")
-    def decrypted_credential(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialArgs']]:
+    def decrypted_credential(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']]:
         """
         Raw auth credentials.
         Structure is documented below.
@@ -113,24 +113,24 @@ class AuthConfigArgs:
         return pulumi.get(self, "decrypted_credential")
 
     @decrypted_credential.setter
-    def decrypted_credential(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialArgs']]):
+    def decrypted_credential(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']]):
         pulumi.set(self, "decrypted_credential", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the auth config.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryNotificationDurations")
-    def expiry_notification_durations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def expiry_notification_durations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -138,12 +138,12 @@ class AuthConfigArgs:
         return pulumi.get(self, "expiry_notification_durations")
 
     @expiry_notification_durations.setter
-    def expiry_notification_durations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def expiry_notification_durations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "expiry_notification_durations", value)
 
     @_builtins.property
     @pulumi.getter(name="overrideValidTime")
-    def override_valid_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def override_valid_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -151,12 +151,12 @@ class AuthConfigArgs:
         return pulumi.get(self, "override_valid_time")
 
     @override_valid_time.setter
-    def override_valid_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def override_valid_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "override_valid_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -164,12 +164,12 @@ class AuthConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The visibility of the auth config.
         Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
@@ -177,33 +177,33 @@ class AuthConfigArgs:
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
 
 @pulumi.input_type
 class _AuthConfigState:
     def __init__(__self__, *,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_certificate: Optional[pulumi.Input['AuthConfigClientCertificateArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 decrypted_credential: Optional[pulumi.Input['AuthConfigDecryptedCredentialArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted_credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry_notification_durations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 last_modifier_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 override_valid_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional['AuthConfigClientCertificateArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 decrypted_credential: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted_credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_modifier_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 override_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthConfig resources.
 
@@ -281,19 +281,19 @@ class _AuthConfigState:
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate id for client certificate.
         """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertificate")
-    def client_certificate(self) -> Optional[pulumi.Input['AuthConfigClientCertificateArgs']]:
+    def client_certificate(self) -> pulumi.Input[Optional['AuthConfigClientCertificateArgs']]:
         """
         Raw client certificate
         Structure is documented below.
@@ -301,12 +301,12 @@ class _AuthConfigState:
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
-    def client_certificate(self, value: Optional[pulumi.Input['AuthConfigClientCertificateArgs']]):
+    def client_certificate(self, value: pulumi.Input[Optional['AuthConfigClientCertificateArgs']]):
         pulumi.set(self, "client_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the auth config is created.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -314,36 +314,36 @@ class _AuthConfigState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorEmail")
-    def creator_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creator's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         """
         return pulumi.get(self, "creator_email")
 
     @creator_email.setter
-    def creator_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_email", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialType")
-    def credential_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credential_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Credential type of the encrypted credential.
         """
         return pulumi.get(self, "credential_type")
 
     @credential_type.setter
-    def credential_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credential_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_type", value)
 
     @_builtins.property
     @pulumi.getter(name="decryptedCredential")
-    def decrypted_credential(self) -> Optional[pulumi.Input['AuthConfigDecryptedCredentialArgs']]:
+    def decrypted_credential(self) -> pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']]:
         """
         Raw auth credentials.
         Structure is documented below.
@@ -351,36 +351,36 @@ class _AuthConfigState:
         return pulumi.get(self, "decrypted_credential")
 
     @decrypted_credential.setter
-    def decrypted_credential(self, value: Optional[pulumi.Input['AuthConfigDecryptedCredentialArgs']]):
+    def decrypted_credential(self, value: pulumi.Input[Optional['AuthConfigDecryptedCredentialArgs']]):
         pulumi.set(self, "decrypted_credential", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the auth config.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the auth config.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptedCredential")
-    def encrypted_credential(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypted_credential(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auth credential encrypted by Cloud KMS. Can be decrypted as Credential with proper KMS key.
         A base64-encoded string.
@@ -388,12 +388,12 @@ class _AuthConfigState:
         return pulumi.get(self, "encrypted_credential")
 
     @encrypted_credential.setter
-    def encrypted_credential(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypted_credential(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypted_credential", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryNotificationDurations")
-    def expiry_notification_durations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def expiry_notification_durations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         User can define the time to receive notification after which the auth config becomes invalid. Support up to 30 days. Support granularity in hours.
         A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -401,48 +401,48 @@ class _AuthConfigState:
         return pulumi.get(self, "expiry_notification_durations")
 
     @expiry_notification_durations.setter
-    def expiry_notification_durations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def expiry_notification_durations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "expiry_notification_durations", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifierEmail")
-    def last_modifier_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modifier_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
         """
         return pulumi.get(self, "last_modifier_email")
 
     @last_modifier_email.setter
-    def last_modifier_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modifier_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modifier_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location in which client needs to be provisioned.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of the auth config.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="overrideValidTime")
-    def override_valid_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def override_valid_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -450,12 +450,12 @@ class _AuthConfigState:
         return pulumi.get(self, "override_valid_time")
 
     @override_valid_time.setter
-    def override_valid_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def override_valid_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "override_valid_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -463,36 +463,36 @@ class _AuthConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason / details of the current status.
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the auth config.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the auth config is modified.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -500,12 +500,12 @@ class _AuthConfigState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="validTime")
-    def valid_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -513,12 +513,12 @@ class _AuthConfigState:
         return pulumi.get(self, "valid_time")
 
     @valid_time.setter
-    def valid_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The visibility of the auth config.
         Possible values are: `PRIVATE`, `CLIENT_VISIBLE`.
@@ -526,7 +526,7 @@ class _AuthConfigState:
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
 
@@ -536,15 +536,15 @@ class AuthConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: Optional[pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
-                 decrypted_credential: Optional[pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry_notification_durations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 override_valid_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
+                 decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 override_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The AuthConfig resource use to hold channels and connection config data.
@@ -685,15 +685,15 @@ class AuthConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_certificate: Optional[pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
-                 decrypted_credential: Optional[pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry_notification_durations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 override_valid_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
+                 decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 override_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -737,26 +737,26 @@ class AuthConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            client_certificate: Optional[pulumi.Input[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator_email: Optional[pulumi.Input[_builtins.str]] = None,
-            credential_type: Optional[pulumi.Input[_builtins.str]] = None,
-            decrypted_credential: Optional[pulumi.Input[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypted_credential: Optional[pulumi.Input[_builtins.str]] = None,
-            expiry_notification_durations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            last_modifier_email: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            override_valid_time: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reason: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            valid_time: Optional[pulumi.Input[_builtins.str]] = None,
-            visibility: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthConfig':
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_certificate: pulumi.Input[Optional[Union['AuthConfigClientCertificateArgs', 'AuthConfigClientCertificateArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_email: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+            decrypted_credential: pulumi.Input[Optional[Union['AuthConfigDecryptedCredentialArgs', 'AuthConfigDecryptedCredentialArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted_credential: pulumi.Input[Optional[_builtins.str]] = None,
+            expiry_notification_durations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_modifier_email: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            override_valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reason: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_time: pulumi.Input[Optional[_builtins.str]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthConfig':
         """
         Get an existing AuthConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -44,8 +44,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -84,8 +84,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -124,8 +124,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -164,8 +164,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -204,8 +204,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -244,8 +244,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -284,8 +284,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -324,8 +324,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -364,8 +364,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -404,8 +404,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -444,8 +444,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -484,8 +484,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -524,8 +524,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -564,8 +564,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -604,8 +604,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -644,8 +644,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -684,8 +684,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -724,8 +724,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -764,8 +764,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -804,8 +804,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -844,8 +844,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayApplicationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -886,8 +886,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayApplicationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -928,8 +928,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayApplicationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -970,8 +970,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayApplicationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1012,8 +1012,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayApplicationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1054,8 +1054,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1096,8 +1096,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1138,8 +1138,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1180,8 +1180,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1222,8 +1222,8 @@ public final class BeyondcorpFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
      * import com.pulumi.gcp.beyondcorp.inputs.GetSecurityGatewayIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

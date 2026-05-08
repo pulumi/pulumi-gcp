@@ -150,9 +150,9 @@ def get_token(identifier: Optional[_builtins.str] = None,
         token=pulumi.get(__ret__, 'token'),
         type=pulumi.get(__ret__, 'type'),
         verification_method=pulumi.get(__ret__, 'verification_method'))
-def get_token_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                     type: Optional[pulumi.Input[_builtins.str]] = None,
-                     verification_method: Optional[pulumi.Input[_builtins.str]] = None,
+def get_token_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                     type: pulumi.Input[Optional[_builtins.str]] = None,
+                     verification_method: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenResult]:
     """
     A verification token is used to demonstrate ownership of a website or domain.

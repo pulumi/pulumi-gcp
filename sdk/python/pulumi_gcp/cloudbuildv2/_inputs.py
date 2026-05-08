@@ -149,7 +149,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict(TypedDict):
     """
     Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated to this token.
@@ -159,7 +159,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[_builtins.str] username: (Output)
@@ -183,7 +183,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated to this token.
@@ -191,7 +191,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -200,7 +200,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict(TypedDict):
     """
     Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated to this token.
@@ -210,7 +210,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[_builtins.str] username: (Output)
@@ -234,7 +234,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated to this token.
@@ -242,7 +242,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -265,17 +265,17 @@ class ConnectionBitbucketDataCenterConfigArgsDict(TypedDict):
     """
     Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
     """
-    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    server_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Version of the Bitbucket Data Center running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]]
     """
     Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
     Structure is documented below.
     """
-    ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSL certificate to use for requests to the Bitbucket Data Center.
     """
@@ -287,9 +287,9 @@ class ConnectionBitbucketDataCenterConfigArgs:
                  host_uri: pulumi.Input[_builtins.str],
                  read_authorizer_credential: pulumi.Input['ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs'],
                  webhook_secret_secret_version: pulumi.Input[_builtins.str],
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca: Optional[pulumi.Input[_builtins.str]] = None):
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs'] authorizer_credential: Required. A http access token with the `REPO_ADMIN` scope access.
                Structure is documented below.
@@ -366,7 +366,7 @@ class ConnectionBitbucketDataCenterConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Version of the Bitbucket Data Center running on the `host_uri`.
@@ -374,12 +374,12 @@ class ConnectionBitbucketDataCenterConfigArgs:
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]:
         """
         Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
         Structure is documented below.
@@ -387,19 +387,19 @@ class ConnectionBitbucketDataCenterConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCa")
-    def ssl_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSL certificate to use for requests to the Bitbucket Data Center.
         """
         return pulumi.get(self, "ssl_ca")
 
     @ssl_ca.setter
-    def ssl_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca", value)
 
 
@@ -408,7 +408,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict(TypedDict)
     """
     Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated to this token.
@@ -418,7 +418,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict(TypedDict)
 class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[_builtins.str] username: (Output)
@@ -442,7 +442,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated to this token.
@@ -450,7 +450,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -459,7 +459,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict(TypedD
     """
     Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated to this token.
@@ -469,7 +469,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict(TypedD
 class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[_builtins.str] username: (Output)
@@ -493,7 +493,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated to this token.
@@ -501,7 +501,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -534,11 +534,11 @@ class ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs:
 
 
 class ConnectionGithubConfigArgsDict(TypedDict):
-    app_installation_id: NotRequired[pulumi.Input[_builtins.int]]
+    app_installation_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     GitHub App installation id.
     """
-    authorizer_credential: NotRequired[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgsDict']]
+    authorizer_credential: NotRequired[pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]]
     """
     OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
     Structure is documented below.
@@ -547,8 +547,8 @@ class ConnectionGithubConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionGithubConfigArgs:
     def __init__(__self__, *,
-                 app_installation_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 authorizer_credential: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']] = None):
+                 app_installation_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 authorizer_credential: pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] app_installation_id: GitHub App installation id.
         :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs'] authorizer_credential: OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
@@ -561,19 +561,19 @@ class ConnectionGithubConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appInstallationId")
-    def app_installation_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def app_installation_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         GitHub App installation id.
         """
         return pulumi.get(self, "app_installation_id")
 
     @app_installation_id.setter
-    def app_installation_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def app_installation_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "app_installation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizerCredential")
-    def authorizer_credential(self) -> Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]:
+    def authorizer_credential(self) -> pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]:
         """
         OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
         Structure is documented below.
@@ -581,16 +581,16 @@ class ConnectionGithubConfigArgs:
         return pulumi.get(self, "authorizer_credential")
 
     @authorizer_credential.setter
-    def authorizer_credential(self, value: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]):
+    def authorizer_credential(self, value: pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]):
         pulumi.set(self, "authorizer_credential", value)
 
 
 class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
-    oauth_token_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    oauth_token_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated to this token.
@@ -599,8 +599,8 @@ class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionGithubConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
-                 oauth_token_secret_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 oauth_token_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] oauth_token_secret_version: A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[_builtins.str] username: (Output)
@@ -613,19 +613,19 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter(name="oauthTokenSecretVersion")
-    def oauth_token_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth_token_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "oauth_token_secret_version")
 
     @oauth_token_secret_version.setter
-    def oauth_token_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth_token_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth_token_secret_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated to this token.
@@ -633,7 +633,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -642,32 +642,32 @@ class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
     """
     Required. The URI of the GitHub Enterprise host this connection is for.
     """
-    app_id: NotRequired[pulumi.Input[_builtins.int]]
+    app_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Id of the GitHub App created from the manifest.
     """
-    app_installation_id: NotRequired[pulumi.Input[_builtins.int]]
+    app_installation_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     ID of the installation of the GitHub App.
     """
-    app_slug: NotRequired[pulumi.Input[_builtins.str]]
+    app_slug: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL-friendly name of the GitHub App.
     """
-    private_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    private_key_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
     """
-    service_directory_config: NotRequired[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]]
     """
     Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
     Structure is documented below.
     """
-    ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSL certificate to use for requests to GitHub Enterprise.
     """
-    webhook_secret_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    webhook_secret_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
     """
@@ -676,13 +676,13 @@ class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
 class ConnectionGithubEnterpriseConfigArgs:
     def __init__(__self__, *,
                  host_uri: pulumi.Input[_builtins.str],
-                 app_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 app_installation_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 app_slug: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_secret_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_secret_secret_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 app_installation_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 app_slug: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_secret_secret_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host_uri: Required. The URI of the GitHub Enterprise host this connection is for.
         :param pulumi.Input[_builtins.int] app_id: Id of the GitHub App created from the manifest.
@@ -724,55 +724,55 @@ class ConnectionGithubEnterpriseConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Id of the GitHub App created from the manifest.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appInstallationId")
-    def app_installation_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def app_installation_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of the installation of the GitHub App.
         """
         return pulumi.get(self, "app_installation_id")
 
     @app_installation_id.setter
-    def app_installation_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def app_installation_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "app_installation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appSlug")
-    def app_slug(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_slug(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL-friendly name of the GitHub App.
         """
         return pulumi.get(self, "app_slug")
 
     @app_slug.setter
-    def app_slug(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_slug(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_slug", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeySecretVersion")
-    def private_key_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "private_key_secret_version")
 
     @private_key_secret_version.setter
-    def private_key_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_secret_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]:
         """
         Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
         Structure is documented below.
@@ -780,31 +780,31 @@ class ConnectionGithubEnterpriseConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCa")
-    def ssl_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSL certificate to use for requests to GitHub Enterprise.
         """
         return pulumi.get(self, "ssl_ca")
 
     @ssl_ca.setter
-    def ssl_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookSecretSecretVersion")
-    def webhook_secret_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook_secret_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "webhook_secret_secret_version")
 
     @webhook_secret_secret_version.setter
-    def webhook_secret_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook_secret_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook_secret_secret_version", value)
 
 
@@ -851,21 +851,21 @@ class ConnectionGitlabConfigArgsDict(TypedDict):
     """
     Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
     """
-    host_uri: NotRequired[pulumi.Input[_builtins.str]]
+    host_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
     """
-    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    server_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Version of the GitLab Enterprise server running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGitlabConfigServiceDirectoryConfigArgs']]]
     """
     Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
     Structure is documented below.
     """
-    ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSL certificate to use for requests to GitLab Enterprise.
     """
@@ -876,10 +876,10 @@ class ConnectionGitlabConfigArgs:
                  authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'],
                  read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'],
                  webhook_secret_secret_version: pulumi.Input[_builtins.str],
-                 host_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['ConnectionGitlabConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'] authorizer_credential: Required. A GitLab personal access token with the `api` scope access.
                Structure is documented below.
@@ -945,19 +945,19 @@ class ConnectionGitlabConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="hostUri")
-    def host_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
         """
         return pulumi.get(self, "host_uri")
 
     @host_uri.setter
-    def host_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Version of the GitLab Enterprise server running on the `host_uri`.
@@ -965,12 +965,12 @@ class ConnectionGitlabConfigArgs:
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['ConnectionGitlabConfigServiceDirectoryConfigArgs']]:
         """
         Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
         Structure is documented below.
@@ -978,19 +978,19 @@ class ConnectionGitlabConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['ConnectionGitlabConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCa")
-    def ssl_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSL certificate to use for requests to GitLab Enterprise.
         """
         return pulumi.get(self, "ssl_ca")
 
     @ssl_ca.setter
-    def ssl_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca", value)
 
 
@@ -999,7 +999,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgsDict(TypedDict):
     """
     Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated to this token.
@@ -1009,7 +1009,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionGitlabConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[_builtins.str] username: (Output)
@@ -1033,7 +1033,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated to this token.
@@ -1041,7 +1041,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1050,7 +1050,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgsDict(TypedDict):
     """
     Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated to this token.
@@ -1060,7 +1060,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[_builtins.str] username: (Output)
@@ -1084,7 +1084,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated to this token.
@@ -1092,7 +1092,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1127,14 +1127,14 @@ class ConnectionGitlabConfigServiceDirectoryConfigArgs:
 class ConnectionIAMBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConnectionIAMBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1160,25 +1160,25 @@ class ConnectionIAMBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ConnectionIAMMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ConnectionIAMMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1204,26 +1204,26 @@ class ConnectionIAMMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class ConnectionInstallationStateArgsDict(TypedDict):
-    action_uri: NotRequired[pulumi.Input[_builtins.str]]
+    action_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Link to follow for next action. Empty string if the installation is already complete.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
     """
-    stage: NotRequired[pulumi.Input[_builtins.str]]
+    stage: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Current step of the installation process.
@@ -1232,9 +1232,9 @@ class ConnectionInstallationStateArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionInstallationStateArgs:
     def __init__(__self__, *,
-                 action_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action_uri: (Output)
                Output only. Link to follow for next action. Empty string if the installation is already complete.
@@ -1252,7 +1252,7 @@ class ConnectionInstallationStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionUri")
-    def action_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Link to follow for next action. Empty string if the installation is already complete.
@@ -1260,12 +1260,12 @@ class ConnectionInstallationStateArgs:
         return pulumi.get(self, "action_uri")
 
     @action_uri.setter
-    def action_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
@@ -1273,12 +1273,12 @@ class ConnectionInstallationStateArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Current step of the installation process.
@@ -1286,7 +1286,7 @@ class ConnectionInstallationStateArgs:
         return pulumi.get(self, "stage")
 
     @stage.setter
-    def stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stage", value)
 
 

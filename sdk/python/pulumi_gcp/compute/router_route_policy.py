@@ -23,10 +23,10 @@ class RouterRoutePolicyArgs:
     def __init__(__self__, *,
                  router: pulumi.Input[_builtins.str],
                  terms: pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouterRoutePolicy resource.
 
@@ -78,19 +78,19 @@ class RouterRoutePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -98,24 +98,24 @@ class RouterRoutePolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router and NAT reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is policy's type, which is one of IMPORT or EXPORT
         Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
@@ -123,20 +123,20 @@ class RouterRoutePolicyArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _RouterRoutePolicyState:
     def __init__(__self__, *,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 terms: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 terms: pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterRoutePolicy resources.
 
@@ -169,7 +169,7 @@ class _RouterRoutePolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource.  Used
         internally during updates.
@@ -177,24 +177,24 @@ class _RouterRoutePolicyState:
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -202,36 +202,36 @@ class _RouterRoutePolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the router and NAT reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cloud Router in which this route policy will be configured.
         """
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter
-    def terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]]]:
+    def terms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]]]:
         """
         List of terms (the order in the list is not important, they are evaluated in order of priority).
         Structure is documented below.
@@ -239,12 +239,12 @@ class _RouterRoutePolicyState:
         return pulumi.get(self, "terms")
 
     @terms.setter
-    def terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]]]):
+    def terms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RouterRoutePolicyTermArgs']]]]):
         pulumi.set(self, "terms", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is policy's type, which is one of IMPORT or EXPORT
         Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
@@ -252,7 +252,7 @@ class _RouterRoutePolicyState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -262,12 +262,12 @@ class RouterRoutePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 terms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A route policy created in a router
@@ -496,12 +496,12 @@ class RouterRoutePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 terms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -532,13 +532,13 @@ class RouterRoutePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router: Optional[pulumi.Input[_builtins.str]] = None,
-            terms: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterRoutePolicy':
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            terms: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutePolicyTermArgs', 'RouterRoutePolicyTermArgsDict']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterRoutePolicy':
         """
         Get an existing RouterRoutePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

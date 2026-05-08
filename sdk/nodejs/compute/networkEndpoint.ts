@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * const default_endpoint = new gcp.compute.NetworkEndpoint("default-endpoint", {
  *     networkEndpointGroup: neg.name,
  *     instance: endpoint_instance.name,
- *     port: neg.defaultPort,
+ *     port: Number(neg.defaultPort),
  *     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
  * });
  * const group = new gcp.compute.NetworkEndpointGroup("group", {
@@ -197,32 +197,32 @@ export interface NetworkEndpointState {
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
      * range).
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * The network endpoint group this endpoint is part of.
      */
-    networkEndpointGroup?: pulumi.Input<string>;
+    networkEndpointGroup?: pulumi.Input<string | undefined>;
     /**
      * Port number of network endpoint.
      * **Note** `port` is required unless the Network Endpoint Group is created
      * with the type of `GCE_VM_IP`
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Zone where the containing network endpoint group is located.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,7 +234,7 @@ export interface NetworkEndpointArgs {
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * IPv4 address of network endpoint. The IP address must belong
      * to a VM in GCE (either the primary IP or as part of an aliased IP
@@ -250,14 +250,14 @@ export interface NetworkEndpointArgs {
      * **Note** `port` is required unless the Network Endpoint Group is created
      * with the type of `GCE_VM_IP`
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Zone where the containing network endpoint group is located.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

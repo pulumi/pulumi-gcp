@@ -184,14 +184,14 @@ __all__ = [
 class AddressGroupIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AddressGroupIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -217,25 +217,25 @@ class AddressGroupIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AddressGroupIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AddressGroupIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -261,22 +261,22 @@ class AddressGroupIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class AuthorizationPolicyRuleArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgsDict']]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]]
     """
     List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
     If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
     Structure is documented below.
     """
-    sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgsDict']]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]]
     """
     List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
     If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
@@ -286,8 +286,8 @@ class AuthorizationPolicyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class AuthorizationPolicyRuleArgs:
     def __init__(__self__, *,
-                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]] = None):
+                 destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]] destinations: List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
                If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
@@ -303,7 +303,7 @@ class AuthorizationPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]:
+    def destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]:
         """
         List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
         If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
@@ -312,12 +312,12 @@ class AuthorizationPolicyRuleArgs:
         return pulumi.get(self, "destinations")
 
     @destinations.setter
-    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]):
+    def destinations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]):
         pulumi.set(self, "destinations", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]:
         """
         List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
         If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
@@ -326,7 +326,7 @@ class AuthorizationPolicyRuleArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
 
@@ -343,7 +343,7 @@ class AuthorizationPolicyRuleDestinationArgsDict(TypedDict):
     """
     List of destination ports to match. At least one port should match.
     """
-    http_header_match: NotRequired[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict']]
+    http_header_match: NotRequired[pulumi.Input[Optional['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]]
     """
     Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
     Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
@@ -356,7 +356,7 @@ class AuthorizationPolicyRuleDestinationArgs:
                  hosts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  ports: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
-                 http_header_match: Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']] = None):
+                 http_header_match: pulumi.Input[Optional['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hosts: List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
@@ -409,7 +409,7 @@ class AuthorizationPolicyRuleDestinationArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpHeaderMatch")
-    def http_header_match(self) -> Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]:
+    def http_header_match(self) -> pulumi.Input[Optional['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]:
         """
         Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
         Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
@@ -418,7 +418,7 @@ class AuthorizationPolicyRuleDestinationArgs:
         return pulumi.get(self, "http_header_match")
 
     @http_header_match.setter
-    def http_header_match(self, value: Optional[pulumi.Input['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]):
+    def http_header_match(self, value: pulumi.Input[Optional['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]):
         pulumi.set(self, "http_header_match", value)
 
 
@@ -470,12 +470,12 @@ class AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs:
 
 
 class AuthorizationPolicyRuleSourceArgsDict(TypedDict):
-    ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
     The IP addresses of any load balancers or proxies should be considered untrusted.
     """
-    principals: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*".
     Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
@@ -484,8 +484,8 @@ class AuthorizationPolicyRuleSourceArgsDict(TypedDict):
 @pulumi.input_type
 class AuthorizationPolicyRuleSourceArgs:
     def __init__(__self__, *,
-                 ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_blocks: List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
                The IP addresses of any load balancers or proxies should be considered untrusted.
@@ -499,7 +499,7 @@ class AuthorizationPolicyRuleSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipBlocks")
-    def ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
         The IP addresses of any load balancers or proxies should be considered untrusted.
@@ -507,12 +507,12 @@ class AuthorizationPolicyRuleSourceArgs:
         return pulumi.get(self, "ip_blocks")
 
     @ip_blocks.setter
-    def ip_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_blocks", value)
 
     @_builtins.property
     @pulumi.getter
-    def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*".
         Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
@@ -520,17 +520,17 @@ class AuthorizationPolicyRuleSourceArgs:
         return pulumi.get(self, "principals")
 
     @principals.setter
-    def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "principals", value)
 
 
 class AuthzPolicyCustomProviderArgsDict(TypedDict):
-    authz_extension: NotRequired[pulumi.Input['AuthzPolicyCustomProviderAuthzExtensionArgsDict']]
+    authz_extension: NotRequired[pulumi.Input[Optional['AuthzPolicyCustomProviderAuthzExtensionArgs']]]
     """
     Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified.
     Structure is documented below.
     """
-    cloud_iap: NotRequired[pulumi.Input['AuthzPolicyCustomProviderCloudIapArgsDict']]
+    cloud_iap: NotRequired[pulumi.Input[Optional['AuthzPolicyCustomProviderCloudIapArgs']]]
     """
     Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places.
     Structure is documented below.
@@ -539,8 +539,8 @@ class AuthzPolicyCustomProviderArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyCustomProviderArgs:
     def __init__(__self__, *,
-                 authz_extension: Optional[pulumi.Input['AuthzPolicyCustomProviderAuthzExtensionArgs']] = None,
-                 cloud_iap: Optional[pulumi.Input['AuthzPolicyCustomProviderCloudIapArgs']] = None):
+                 authz_extension: pulumi.Input[Optional['AuthzPolicyCustomProviderAuthzExtensionArgs']] = None,
+                 cloud_iap: pulumi.Input[Optional['AuthzPolicyCustomProviderCloudIapArgs']] = None):
         """
         :param pulumi.Input['AuthzPolicyCustomProviderAuthzExtensionArgs'] authz_extension: Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified.
                Structure is documented below.
@@ -554,7 +554,7 @@ class AuthzPolicyCustomProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="authzExtension")
-    def authz_extension(self) -> Optional[pulumi.Input['AuthzPolicyCustomProviderAuthzExtensionArgs']]:
+    def authz_extension(self) -> pulumi.Input[Optional['AuthzPolicyCustomProviderAuthzExtensionArgs']]:
         """
         Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified.
         Structure is documented below.
@@ -562,12 +562,12 @@ class AuthzPolicyCustomProviderArgs:
         return pulumi.get(self, "authz_extension")
 
     @authz_extension.setter
-    def authz_extension(self, value: Optional[pulumi.Input['AuthzPolicyCustomProviderAuthzExtensionArgs']]):
+    def authz_extension(self, value: pulumi.Input[Optional['AuthzPolicyCustomProviderAuthzExtensionArgs']]):
         pulumi.set(self, "authz_extension", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudIap")
-    def cloud_iap(self) -> Optional[pulumi.Input['AuthzPolicyCustomProviderCloudIapArgs']]:
+    def cloud_iap(self) -> pulumi.Input[Optional['AuthzPolicyCustomProviderCloudIapArgs']]:
         """
         Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places.
         Structure is documented below.
@@ -575,7 +575,7 @@ class AuthzPolicyCustomProviderArgs:
         return pulumi.get(self, "cloud_iap")
 
     @cloud_iap.setter
-    def cloud_iap(self, value: Optional[pulumi.Input['AuthzPolicyCustomProviderCloudIapArgs']]):
+    def cloud_iap(self, value: pulumi.Input[Optional['AuthzPolicyCustomProviderCloudIapArgs']]):
         pulumi.set(self, "cloud_iap", value)
 
 
@@ -636,17 +636,17 @@ class AuthzPolicyCustomProviderCloudIapArgs:
 
 
 class AuthzPolicyHttpRuleArgsDict(TypedDict):
-    from_: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromArgsDict']]
+    from_: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromArgs']]]
     """
     Describes properties of one or more sources of a request.
     Structure is documented below.
     """
-    to: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToArgsDict']]
+    to: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToArgs']]]
     """
     Describes properties of one or more targets of a request
     Structure is documented below.
     """
-    when: NotRequired[pulumi.Input[_builtins.str]]
+    when: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
     """
@@ -654,9 +654,9 @@ class AuthzPolicyHttpRuleArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleArgs:
     def __init__(__self__, *,
-                 from_: Optional[pulumi.Input['AuthzPolicyHttpRuleFromArgs']] = None,
-                 to: Optional[pulumi.Input['AuthzPolicyHttpRuleToArgs']] = None,
-                 when: Optional[pulumi.Input[_builtins.str]] = None):
+                 from_: pulumi.Input[Optional['AuthzPolicyHttpRuleFromArgs']] = None,
+                 to: pulumi.Input[Optional['AuthzPolicyHttpRuleToArgs']] = None,
+                 when: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['AuthzPolicyHttpRuleFromArgs'] from_: Describes properties of one or more sources of a request.
                Structure is documented below.
@@ -673,7 +673,7 @@ class AuthzPolicyHttpRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="from")
-    def from_(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromArgs']]:
+    def from_(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleFromArgs']]:
         """
         Describes properties of one or more sources of a request.
         Structure is documented below.
@@ -681,12 +681,12 @@ class AuthzPolicyHttpRuleArgs:
         return pulumi.get(self, "from_")
 
     @from_.setter
-    def from_(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromArgs']]):
+    def from_(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleFromArgs']]):
         pulumi.set(self, "from_", value)
 
     @_builtins.property
     @pulumi.getter
-    def to(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleToArgs']]:
+    def to(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleToArgs']]:
         """
         Describes properties of one or more targets of a request
         Structure is documented below.
@@ -694,29 +694,29 @@ class AuthzPolicyHttpRuleArgs:
         return pulumi.get(self, "to")
 
     @to.setter
-    def to(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleToArgs']]):
+    def to(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleToArgs']]):
         pulumi.set(self, "to", value)
 
     @_builtins.property
     @pulumi.getter
-    def when(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def when(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
         """
         return pulumi.get(self, "when")
 
     @when.setter
-    def when(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def when(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "when", value)
 
 
 class AuthzPolicyHttpRuleFromArgsDict(TypedDict):
-    not_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgsDict']]]]
+    not_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]]]
     """
     Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
     Structure is documented below.
     """
-    sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgsDict']]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]]]
     """
     Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
     Structure is documented below.
@@ -725,8 +725,8 @@ class AuthzPolicyHttpRuleFromArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromArgs:
     def __init__(__self__, *,
-                 not_sources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]] = None):
+                 not_sources: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]] not_sources: Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
                Structure is documented below.
@@ -740,7 +740,7 @@ class AuthzPolicyHttpRuleFromArgs:
 
     @_builtins.property
     @pulumi.getter(name="notSources")
-    def not_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]]:
+    def not_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]]:
         """
         Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
         Structure is documented below.
@@ -748,12 +748,12 @@ class AuthzPolicyHttpRuleFromArgs:
         return pulumi.get(self, "not_sources")
 
     @not_sources.setter
-    def not_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]]):
+    def not_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]]):
         pulumi.set(self, "not_sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]]:
         """
         Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
         Structure is documented below.
@@ -761,23 +761,23 @@ class AuthzPolicyHttpRuleFromArgs:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 class AuthzPolicyHttpRuleFromNotSourceArgsDict(TypedDict):
-    ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict']]]]
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]]
     """
     A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
     Structure is documented below.
     """
-    principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict']]]]
+    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]]]
     """
     A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
     Limited to 5 principals.
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgsDict']]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]]]
     """
     A list of resources to match against the resource of the source VM of a request.
     Limited to 5 resources.
@@ -787,9 +787,9 @@ class AuthzPolicyHttpRuleFromNotSourceArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceArgs:
     def __init__(__self__, *,
-                 ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]] = None):
+                 ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]] ip_blocks: A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
                Structure is documented below.
@@ -809,7 +809,7 @@ class AuthzPolicyHttpRuleFromNotSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipBlocks")
-    def ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]:
+    def ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]:
         """
         A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
         Structure is documented below.
@@ -817,12 +817,12 @@ class AuthzPolicyHttpRuleFromNotSourceArgs:
         return pulumi.get(self, "ip_blocks")
 
     @ip_blocks.setter
-    def ip_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]):
+    def ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]):
         pulumi.set(self, "ip_blocks", value)
 
     @_builtins.property
     @pulumi.getter
-    def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]]:
+    def principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]]:
         """
         A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
         Limited to 5 principals.
@@ -831,12 +831,12 @@ class AuthzPolicyHttpRuleFromNotSourceArgs:
         return pulumi.get(self, "principals")
 
     @principals.setter
-    def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]]):
+    def principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]]):
         pulumi.set(self, "principals", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]]:
         """
         A list of resources to match against the resource of the source VM of a request.
         Limited to 5 resources.
@@ -845,7 +845,7 @@ class AuthzPolicyHttpRuleFromNotSourceArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
 
@@ -897,7 +897,7 @@ class AuthzPolicyHttpRuleFromNotSourceIpBlockArgs:
 
 
 class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -906,7 +906,7 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must match exactly the string specified here.
@@ -915,14 +915,14 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional, Deprecated)
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
 
     > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -931,19 +931,19 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
     """
-    principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict']]
+    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]]
     """
     Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
     Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
     Structure is documented below.
     """
-    principal_selector: NotRequired[pulumi.Input[_builtins.str]]
+    principal_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
     Default value is `CLIENT_CERT_URI_SAN`.
     Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -956,13 +956,13 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']] = None,
-                 principal_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']] = None,
+                 principal_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: (Optional, Deprecated)
                The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -1032,7 +1032,7 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""")
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -1044,13 +1044,13 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""")
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must match exactly the string specified here.
@@ -1062,13 +1062,13 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
     @_utilities.deprecated("""`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Deprecated)
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
@@ -1078,13 +1078,13 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""")
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -1096,12 +1096,12 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def principal(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]:
+    def principal(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]:
         """
         Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
         Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
@@ -1110,12 +1110,12 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         return pulumi.get(self, "principal")
 
     @principal.setter
-    def principal(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]):
+    def principal(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]):
         pulumi.set(self, "principal", value)
 
     @_builtins.property
     @pulumi.getter(name="principalSelector")
-    def principal_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
         Default value is `CLIENT_CERT_URI_SAN`.
@@ -1124,13 +1124,13 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         return pulumi.get(self, "principal_selector")
 
     @principal_selector.setter
-    def principal_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_selector", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""")
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -1142,34 +1142,34 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -1179,11 +1179,11 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -1212,7 +1212,7 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -1221,12 +1221,12 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -1235,24 +1235,24 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -1261,12 +1261,12 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -1275,17 +1275,17 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleFromNotSourceResourceArgsDict(TypedDict):
-    iam_service_account: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict']]
+    iam_service_account: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']]]
     """
     An IAM service account to match against the source service account of the VM sending the request.
     Structure is documented below.
     """
-    tag_value_id_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict']]
+    tag_value_id_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']]]
     """
     A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
     Structure is documented below.
@@ -1294,8 +1294,8 @@ class AuthzPolicyHttpRuleFromNotSourceResourceArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceResourceArgs:
     def __init__(__self__, *,
-                 iam_service_account: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']] = None,
-                 tag_value_id_set: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']] = None):
+                 iam_service_account: pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']] = None,
+                 tag_value_id_set: pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']] = None):
         """
         :param pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs'] iam_service_account: An IAM service account to match against the source service account of the VM sending the request.
                Structure is documented below.
@@ -1309,7 +1309,7 @@ class AuthzPolicyHttpRuleFromNotSourceResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="iamServiceAccount")
-    def iam_service_account(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']]:
+    def iam_service_account(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']]:
         """
         An IAM service account to match against the source service account of the VM sending the request.
         Structure is documented below.
@@ -1317,12 +1317,12 @@ class AuthzPolicyHttpRuleFromNotSourceResourceArgs:
         return pulumi.get(self, "iam_service_account")
 
     @iam_service_account.setter
-    def iam_service_account(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']]):
+    def iam_service_account(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']]):
         pulumi.set(self, "iam_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValueIdSet")
-    def tag_value_id_set(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']]:
+    def tag_value_id_set(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']]:
         """
         A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
         Structure is documented below.
@@ -1330,34 +1330,34 @@ class AuthzPolicyHttpRuleFromNotSourceResourceArgs:
         return pulumi.get(self, "tag_value_id_set")
 
     @tag_value_id_set.setter
-    def tag_value_id_set(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']]):
+    def tag_value_id_set(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']]):
         pulumi.set(self, "tag_value_id_set", value)
 
 
 class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -1367,11 +1367,11 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict(TypedDic
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -1400,7 +1400,7 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -1409,12 +1409,12 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -1423,24 +1423,24 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -1449,12 +1449,12 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -1463,12 +1463,12 @@ class AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict(TypedDict):
-    ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
     Limited to 5 matches.
@@ -1477,7 +1477,7 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs:
     def __init__(__self__, *,
-                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ids: A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
                Limited to 5 matches.
@@ -1487,7 +1487,7 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
         Limited to 5 matches.
@@ -1495,23 +1495,23 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ids", value)
 
 
 class AuthzPolicyHttpRuleFromSourceArgsDict(TypedDict):
-    ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgsDict']]]]
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]]
     """
     A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
     Structure is documented below.
     """
-    principals: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgsDict']]]]
+    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]]]
     """
     A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
     Limited to 5 principals.
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgsDict']]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]]]
     """
     A list of resources to match against the resource of the source VM of a request.
     Limited to 5 resources.
@@ -1521,9 +1521,9 @@ class AuthzPolicyHttpRuleFromSourceArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceArgs:
     def __init__(__self__, *,
-                 ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]] = None):
+                 ip_blocks: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]] ip_blocks: A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
                Structure is documented below.
@@ -1543,7 +1543,7 @@ class AuthzPolicyHttpRuleFromSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipBlocks")
-    def ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]:
+    def ip_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]:
         """
         A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
         Structure is documented below.
@@ -1551,12 +1551,12 @@ class AuthzPolicyHttpRuleFromSourceArgs:
         return pulumi.get(self, "ip_blocks")
 
     @ip_blocks.setter
-    def ip_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]):
+    def ip_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]):
         pulumi.set(self, "ip_blocks", value)
 
     @_builtins.property
     @pulumi.getter
-    def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]]:
+    def principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]]:
         """
         A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
         Limited to 5 principals.
@@ -1565,12 +1565,12 @@ class AuthzPolicyHttpRuleFromSourceArgs:
         return pulumi.get(self, "principals")
 
     @principals.setter
-    def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]]):
+    def principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]]):
         pulumi.set(self, "principals", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]]:
         """
         A list of resources to match against the resource of the source VM of a request.
         Limited to 5 resources.
@@ -1579,7 +1579,7 @@ class AuthzPolicyHttpRuleFromSourceArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
 
@@ -1631,7 +1631,7 @@ class AuthzPolicyHttpRuleFromSourceIpBlockArgs:
 
 
 class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -1640,7 +1640,7 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must match exactly the string specified here.
@@ -1649,14 +1649,14 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     (Optional, Deprecated)
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
 
     > **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -1665,19 +1665,19 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
     """
-    principal: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict']]
+    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]]
     """
     Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
     Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
     Structure is documented below.
     """
-    principal_selector: NotRequired[pulumi.Input[_builtins.str]]
+    principal_selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
     Default value is `CLIENT_CERT_URI_SAN`.
     Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -1690,13 +1690,13 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']] = None,
-                 principal_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']] = None,
+                 principal_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: (Optional, Deprecated)
                The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -1766,7 +1766,7 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.""")
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
@@ -1778,13 +1778,13 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.""")
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must match exactly the string specified here.
@@ -1796,13 +1796,13 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
     @_utilities.deprecated("""`principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.""")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Optional, Deprecated)
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
@@ -1812,13 +1812,13 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.""")
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -1830,12 +1830,12 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def principal(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]:
+    def principal(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]:
         """
         Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
         Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
@@ -1844,12 +1844,12 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         return pulumi.get(self, "principal")
 
     @principal.setter
-    def principal(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]):
+    def principal(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]):
         pulumi.set(self, "principal", value)
 
     @_builtins.property
     @pulumi.getter(name="principalSelector")
-    def principal_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
         Default value is `CLIENT_CERT_URI_SAN`.
@@ -1858,13 +1858,13 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         return pulumi.get(self, "principal_selector")
 
     @principal_selector.setter
-    def principal_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_selector", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""`principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.""")
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Deprecated)
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
@@ -1876,34 +1876,34 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -1913,11 +1913,11 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -1946,7 +1946,7 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -1955,12 +1955,12 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -1969,24 +1969,24 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -1995,12 +1995,12 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2009,17 +2009,17 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleFromSourceResourceArgsDict(TypedDict):
-    iam_service_account: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict']]
+    iam_service_account: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']]]
     """
     An IAM service account to match against the source service account of the VM sending the request.
     Structure is documented below.
     """
-    tag_value_id_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict']]
+    tag_value_id_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']]]
     """
     A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
     Structure is documented below.
@@ -2028,8 +2028,8 @@ class AuthzPolicyHttpRuleFromSourceResourceArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceResourceArgs:
     def __init__(__self__, *,
-                 iam_service_account: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']] = None,
-                 tag_value_id_set: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']] = None):
+                 iam_service_account: pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']] = None,
+                 tag_value_id_set: pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']] = None):
         """
         :param pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs'] iam_service_account: An IAM service account to match against the source service account of the VM sending the request.
                Structure is documented below.
@@ -2043,7 +2043,7 @@ class AuthzPolicyHttpRuleFromSourceResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="iamServiceAccount")
-    def iam_service_account(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']]:
+    def iam_service_account(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']]:
         """
         An IAM service account to match against the source service account of the VM sending the request.
         Structure is documented below.
@@ -2051,12 +2051,12 @@ class AuthzPolicyHttpRuleFromSourceResourceArgs:
         return pulumi.get(self, "iam_service_account")
 
     @iam_service_account.setter
-    def iam_service_account(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']]):
+    def iam_service_account(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']]):
         pulumi.set(self, "iam_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValueIdSet")
-    def tag_value_id_set(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']]:
+    def tag_value_id_set(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']]:
         """
         A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
         Structure is documented below.
@@ -2064,34 +2064,34 @@ class AuthzPolicyHttpRuleFromSourceResourceArgs:
         return pulumi.get(self, "tag_value_id_set")
 
     @tag_value_id_set.setter
-    def tag_value_id_set(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']]):
+    def tag_value_id_set(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']]):
         pulumi.set(self, "tag_value_id_set", value)
 
 
 class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -2101,11 +2101,11 @@ class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -2134,7 +2134,7 @@ class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -2143,12 +2143,12 @@ class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -2157,24 +2157,24 @@ class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2183,12 +2183,12 @@ class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2197,12 +2197,12 @@ class AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict(TypedDict):
-    ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
     Limited to 5 matches.
@@ -2211,7 +2211,7 @@ class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs:
     def __init__(__self__, *,
-                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ids: A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
                Limited to 5 matches.
@@ -2221,7 +2221,7 @@ class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
         Limited to 5 matches.
@@ -2229,17 +2229,17 @@ class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ids", value)
 
 
 class AuthzPolicyHttpRuleToArgsDict(TypedDict):
-    not_operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgsDict']]]]
+    not_operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]]]
     """
     Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
     Structure is documented below.
     """
-    operations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgsDict']]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]]
     """
     Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
     Structure is documented below.
@@ -2248,8 +2248,8 @@ class AuthzPolicyHttpRuleToArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToArgs:
     def __init__(__self__, *,
-                 not_operations: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]] = None,
-                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]] = None):
+                 not_operations: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]] = None,
+                 operations: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]] not_operations: Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
                Structure is documented below.
@@ -2263,7 +2263,7 @@ class AuthzPolicyHttpRuleToArgs:
 
     @_builtins.property
     @pulumi.getter(name="notOperations")
-    def not_operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]]:
+    def not_operations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]]:
         """
         Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
         Structure is documented below.
@@ -2271,12 +2271,12 @@ class AuthzPolicyHttpRuleToArgs:
         return pulumi.get(self, "not_operations")
 
     @not_operations.setter
-    def not_operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]]):
+    def not_operations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]]):
         pulumi.set(self, "not_operations", value)
 
     @_builtins.property
     @pulumi.getter
-    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]:
+    def operations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]:
         """
         Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
         Structure is documented below.
@@ -2284,27 +2284,27 @@ class AuthzPolicyHttpRuleToArgs:
         return pulumi.get(self, "operations")
 
     @operations.setter
-    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]):
+    def operations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]):
         pulumi.set(self, "operations", value)
 
 
 class AuthzPolicyHttpRuleToNotOperationArgsDict(TypedDict):
-    header_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict']]
+    header_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']]]
     """
     A list of headers to match against in http header.
     Structure is documented below.
     """
-    hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgsDict']]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]]]
     """
     A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
     Structure is documented below.
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
     """
-    paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgsDict']]]]
+    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]]]
     """
     A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
@@ -2315,10 +2315,10 @@ class AuthzPolicyHttpRuleToNotOperationArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationArgs:
     def __init__(__self__, *,
-                 header_set: Optional[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']] = None,
-                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]] = None):
+                 header_set: pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']] = None,
+                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]] = None,
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]] = None):
         """
         :param pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs'] header_set: A list of headers to match against in http header.
                Structure is documented below.
@@ -2342,7 +2342,7 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerSet")
-    def header_set(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']]:
+    def header_set(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']]:
         """
         A list of headers to match against in http header.
         Structure is documented below.
@@ -2350,12 +2350,12 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
         return pulumi.get(self, "header_set")
 
     @header_set.setter
-    def header_set(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']]):
+    def header_set(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']]):
         pulumi.set(self, "header_set", value)
 
     @_builtins.property
     @pulumi.getter
-    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]]:
+    def hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]]:
         """
         A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
         Limited to 10 matches.
@@ -2364,24 +2364,24 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
         return pulumi.get(self, "hosts")
 
     @hosts.setter
-    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]]):
+    def hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]]):
         pulumi.set(self, "hosts", value)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]]:
+    def paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]]:
         """
         A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
         Limited to 10 matches.
@@ -2391,12 +2391,12 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]]):
+    def paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]]):
         pulumi.set(self, "paths", value)
 
 
 class AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict']]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]]]
     """
     A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
     Structure is documented below.
@@ -2405,7 +2405,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHeaderSetArgs:
     def __init__(__self__, *,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]] = None):
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]] headers: A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
                Structure is documented below.
@@ -2415,7 +2415,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]]:
+    def headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]]:
         """
         A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
         Structure is documented below.
@@ -2423,16 +2423,16 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]]):
+    def headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]]):
         pulumi.set(self, "headers", value)
 
 
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the name of the header in the request.
     """
-    value: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict']]
+    value: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']]]
     """
     Specifies how the header match will be performed.
     Structure is documented below.
@@ -2441,8 +2441,8 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Specifies the name of the header in the request.
         :param pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs'] value: Specifies how the header match will be performed.
@@ -2455,19 +2455,19 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the name of the header in the request.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']]:
+    def value(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']]:
         """
         Specifies how the header match will be performed.
         Structure is documented below.
@@ -2475,34 +2475,34 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']]):
+    def value(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']]):
         pulumi.set(self, "value", value)
 
 
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -2512,11 +2512,11 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -2545,7 +2545,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -2554,12 +2554,12 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -2568,24 +2568,24 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2594,12 +2594,12 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2608,34 +2608,34 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleToNotOperationHostArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -2645,11 +2645,11 @@ class AuthzPolicyHttpRuleToNotOperationHostArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationHostArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -2678,7 +2678,7 @@ class AuthzPolicyHttpRuleToNotOperationHostArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -2687,12 +2687,12 @@ class AuthzPolicyHttpRuleToNotOperationHostArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -2701,24 +2701,24 @@ class AuthzPolicyHttpRuleToNotOperationHostArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2727,12 +2727,12 @@ class AuthzPolicyHttpRuleToNotOperationHostArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2741,34 +2741,34 @@ class AuthzPolicyHttpRuleToNotOperationHostArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleToNotOperationPathArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -2778,11 +2778,11 @@ class AuthzPolicyHttpRuleToNotOperationPathArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToNotOperationPathArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -2811,7 +2811,7 @@ class AuthzPolicyHttpRuleToNotOperationPathArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -2820,12 +2820,12 @@ class AuthzPolicyHttpRuleToNotOperationPathArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -2834,24 +2834,24 @@ class AuthzPolicyHttpRuleToNotOperationPathArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2860,12 +2860,12 @@ class AuthzPolicyHttpRuleToNotOperationPathArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -2874,32 +2874,32 @@ class AuthzPolicyHttpRuleToNotOperationPathArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleToOperationArgsDict(TypedDict):
-    header_set: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgsDict']]
+    header_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetArgs']]]
     """
     A list of headers to match against in http header.
     Structure is documented below.
     """
-    hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgsDict']]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]]]
     """
     A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
     Structure is documented below.
     """
-    mcp: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgsDict']]
+    mcp: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationMcpArgs']]]
     """
     Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
     Structure is documented below.
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
     """
-    paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgsDict']]]]
+    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]]]
     """
     A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
@@ -2910,11 +2910,11 @@ class AuthzPolicyHttpRuleToOperationArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationArgs:
     def __init__(__self__, *,
-                 header_set: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgs']] = None,
-                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]] = None,
-                 mcp: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgs']] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]] = None):
+                 header_set: pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetArgs']] = None,
+                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]] = None,
+                 mcp: pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationMcpArgs']] = None,
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]] = None):
         """
         :param pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgs'] header_set: A list of headers to match against in http header.
                Structure is documented below.
@@ -2942,7 +2942,7 @@ class AuthzPolicyHttpRuleToOperationArgs:
 
     @_builtins.property
     @pulumi.getter(name="headerSet")
-    def header_set(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgs']]:
+    def header_set(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetArgs']]:
         """
         A list of headers to match against in http header.
         Structure is documented below.
@@ -2950,12 +2950,12 @@ class AuthzPolicyHttpRuleToOperationArgs:
         return pulumi.get(self, "header_set")
 
     @header_set.setter
-    def header_set(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetArgs']]):
+    def header_set(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetArgs']]):
         pulumi.set(self, "header_set", value)
 
     @_builtins.property
     @pulumi.getter
-    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]]:
+    def hosts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]]:
         """
         A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
         Limited to 10 matches.
@@ -2964,12 +2964,12 @@ class AuthzPolicyHttpRuleToOperationArgs:
         return pulumi.get(self, "hosts")
 
     @hosts.setter
-    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]]):
+    def hosts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]]):
         pulumi.set(self, "hosts", value)
 
     @_builtins.property
     @pulumi.getter
-    def mcp(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgs']]:
+    def mcp(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationMcpArgs']]:
         """
         Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
         Structure is documented below.
@@ -2977,24 +2977,24 @@ class AuthzPolicyHttpRuleToOperationArgs:
         return pulumi.get(self, "mcp")
 
     @mcp.setter
-    def mcp(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpArgs']]):
+    def mcp(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationMcpArgs']]):
         pulumi.set(self, "mcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]]:
+    def paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]]:
         """
         A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
         Limited to 10 matches.
@@ -3004,12 +3004,12 @@ class AuthzPolicyHttpRuleToOperationArgs:
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]]):
+    def paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]]):
         pulumi.set(self, "paths", value)
 
 
 class AuthzPolicyHttpRuleToOperationHeaderSetArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict']]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]]]
     """
     A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
     Structure is documented below.
@@ -3018,7 +3018,7 @@ class AuthzPolicyHttpRuleToOperationHeaderSetArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHeaderSetArgs:
     def __init__(__self__, *,
-                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]] = None):
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]] headers: A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
                Structure is documented below.
@@ -3028,7 +3028,7 @@ class AuthzPolicyHttpRuleToOperationHeaderSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]]:
+    def headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]]:
         """
         A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
         Structure is documented below.
@@ -3036,16 +3036,16 @@ class AuthzPolicyHttpRuleToOperationHeaderSetArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]]):
+    def headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]]):
         pulumi.set(self, "headers", value)
 
 
 class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the name of the header in the request.
     """
-    value: NotRequired[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict']]
+    value: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']]]
     """
     Specifies how the header match will be performed.
     Structure is documented below.
@@ -3054,8 +3054,8 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Specifies the name of the header in the request.
         :param pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs'] value: Specifies how the header match will be performed.
@@ -3068,19 +3068,19 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the name of the header in the request.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']]:
+    def value(self) -> pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']]:
         """
         Specifies how the header match will be performed.
         Structure is documented below.
@@ -3088,34 +3088,34 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']]):
+    def value(self, value: pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']]):
         pulumi.set(self, "value", value)
 
 
 class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -3125,11 +3125,11 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -3158,7 +3158,7 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -3167,12 +3167,12 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -3181,24 +3181,24 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -3207,12 +3207,12 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -3221,34 +3221,34 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleToOperationHostArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -3258,11 +3258,11 @@ class AuthzPolicyHttpRuleToOperationHostArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationHostArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -3291,7 +3291,7 @@ class AuthzPolicyHttpRuleToOperationHostArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -3300,12 +3300,12 @@ class AuthzPolicyHttpRuleToOperationHostArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -3314,24 +3314,24 @@ class AuthzPolicyHttpRuleToOperationHostArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -3340,12 +3340,12 @@ class AuthzPolicyHttpRuleToOperationHostArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -3354,18 +3354,18 @@ class AuthzPolicyHttpRuleToOperationHostArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleToOperationMcpArgsDict(TypedDict):
-    base_protocol_methods_option: NotRequired[pulumi.Input[_builtins.str]]
+    base_protocol_methods_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
     Default value is `SKIP_BASE_PROTOCOL_METHODS`.
     Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgsDict']]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]]
     """
     Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
     Structure is documented below.
@@ -3374,8 +3374,8 @@ class AuthzPolicyHttpRuleToOperationMcpArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationMcpArgs:
     def __init__(__self__, *,
-                 base_protocol_methods_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]] = None):
+                 base_protocol_methods_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] base_protocol_methods_option: If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
                Default value is `SKIP_BASE_PROTOCOL_METHODS`.
@@ -3390,7 +3390,7 @@ class AuthzPolicyHttpRuleToOperationMcpArgs:
 
     @_builtins.property
     @pulumi.getter(name="baseProtocolMethodsOption")
-    def base_protocol_methods_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_protocol_methods_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
         Default value is `SKIP_BASE_PROTOCOL_METHODS`.
@@ -3399,12 +3399,12 @@ class AuthzPolicyHttpRuleToOperationMcpArgs:
         return pulumi.get(self, "base_protocol_methods_option")
 
     @base_protocol_methods_option.setter
-    def base_protocol_methods_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_protocol_methods_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_protocol_methods_option", value)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]:
         """
         Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
         Structure is documented below.
@@ -3412,7 +3412,7 @@ class AuthzPolicyHttpRuleToOperationMcpArgs:
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]):
         pulumi.set(self, "methods", value)
 
 
@@ -3425,7 +3425,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgsDict(TypedDict):
     3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
     Params cannot be specified for categories 1) and 2).
     """
-    params: NotRequired[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict']]]]
+    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]]
     """
     MCP method parameters to match against.
     Structure is documented below.
@@ -3435,7 +3435,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgsDict(TypedDict):
 class AuthzPolicyHttpRuleToOperationMcpMethodArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 params: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]] = None):
+                 params: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The MCP method to match against. Allowed values are as follows:
                1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
@@ -3467,7 +3467,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgs:
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]:
+    def params(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]:
         """
         MCP method parameters to match against.
         Structure is documented below.
@@ -3475,28 +3475,28 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]):
+    def params(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]):
         pulumi.set(self, "params", value)
 
 
 class AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A substring match on the MCP method parameter name.
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An exact match on the MCP method parameter name.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies that the string match should be case insensitive.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A prefix match on the MCP method parameter name.
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A suffix match on the MCP method parameter name.
     """
@@ -3504,11 +3504,11 @@ class AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationMcpMethodParamArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: A substring match on the MCP method parameter name.
         :param pulumi.Input[_builtins.str] exact: An exact match on the MCP method parameter name.
@@ -3529,89 +3529,89 @@ class AuthzPolicyHttpRuleToOperationMcpMethodParamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A substring match on the MCP method parameter name.
         """
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An exact match on the MCP method parameter name.
         """
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies that the string match should be case insensitive.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A prefix match on the MCP method parameter name.
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A suffix match on the MCP method parameter name.
         """
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyHttpRuleToOperationPathArgsDict(TypedDict):
-    contains: NotRequired[pulumi.Input[_builtins.str]]
+    contains: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
     Examples:
     * abc matches the value xyz.abc.def
     """
-    exact: NotRequired[pulumi.Input[_builtins.str]]
+    exact: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must match exactly the string specified here.
     Examples:
     * abc only matches the value abc.
     """
-    ignore_case: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_case: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
     """
-    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
     * abc matches the value abc.xyz
     """
-    suffix: NotRequired[pulumi.Input[_builtins.str]]
+    suffix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
     Examples:
@@ -3621,11 +3621,11 @@ class AuthzPolicyHttpRuleToOperationPathArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyHttpRuleToOperationPathArgs:
     def __init__(__self__, *,
-                 contains: Optional[pulumi.Input[_builtins.str]] = None,
-                 exact: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_case: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 contains: pulumi.Input[Optional[_builtins.str]] = None,
+                 exact: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_case: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contains: The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
                Examples:
@@ -3654,7 +3654,7 @@ class AuthzPolicyHttpRuleToOperationPathArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contains(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contains(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
         Examples:
@@ -3663,12 +3663,12 @@ class AuthzPolicyHttpRuleToOperationPathArgs:
         return pulumi.get(self, "contains")
 
     @contains.setter
-    def contains(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contains(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contains", value)
 
     @_builtins.property
     @pulumi.getter
-    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must match exactly the string specified here.
         Examples:
@@ -3677,24 +3677,24 @@ class AuthzPolicyHttpRuleToOperationPathArgs:
         return pulumi.get(self, "exact")
 
     @exact.setter
-    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exact", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCase")
-    def ignore_case(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_case(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
         """
         return pulumi.get(self, "ignore_case")
 
     @ignore_case.setter
-    def ignore_case(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_case(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -3703,12 +3703,12 @@ class AuthzPolicyHttpRuleToOperationPathArgs:
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
         Examples:
@@ -3717,19 +3717,19 @@ class AuthzPolicyHttpRuleToOperationPathArgs:
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 class AuthzPolicyTargetArgsDict(TypedDict):
-    load_balancing_scheme: NotRequired[pulumi.Input[_builtins.str]]
+    load_balancing_scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
     Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
     For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
     Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
     """
-    resources: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
     policy will be applied.
@@ -3738,8 +3738,8 @@ class AuthzPolicyTargetArgsDict(TypedDict):
 @pulumi.input_type
 class AuthzPolicyTargetArgs:
     def __init__(__self__, *,
-                 load_balancing_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 load_balancing_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] load_balancing_scheme: Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
                Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
@@ -3755,7 +3755,7 @@ class AuthzPolicyTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="loadBalancingScheme")
-    def load_balancing_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancing_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent
         Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
@@ -3765,12 +3765,12 @@ class AuthzPolicyTargetArgs:
         return pulumi.get(self, "load_balancing_scheme")
 
     @load_balancing_scheme.setter
-    def load_balancing_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancing_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancing_scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
         policy will be applied.
@@ -3778,17 +3778,17 @@ class AuthzPolicyTargetArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 
 class ClientTlsPolicyClientCertificateArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict']]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]]
     """
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgsDict']]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.
@@ -3797,8 +3797,8 @@ class ClientTlsPolicyClientCertificateArgsDict(TypedDict):
 @pulumi.input_type
 class ClientTlsPolicyClientCertificateArgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: pulumi.Input[Optional['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']] = None,
+                 grpc_endpoint: pulumi.Input[Optional['ClientTlsPolicyClientCertificateGrpcEndpointArgs']] = None):
         """
         :param pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs'] certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
                Structure is documented below.
@@ -3812,7 +3812,7 @@ class ClientTlsPolicyClientCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> pulumi.Input[Optional['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]:
         """
         The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
         Structure is documented below.
@@ -3820,12 +3820,12 @@ class ClientTlsPolicyClientCertificateArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: pulumi.Input[Optional['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> pulumi.Input[Optional['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -3833,7 +3833,7 @@ class ClientTlsPolicyClientCertificateArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: pulumi.Input[Optional['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
@@ -3894,12 +3894,12 @@ class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
 
 
 class ClientTlsPolicyServerValidationCaArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict']]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]]
     """
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict']]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.
@@ -3908,8 +3908,8 @@ class ClientTlsPolicyServerValidationCaArgsDict(TypedDict):
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaArgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: pulumi.Input[Optional['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']] = None,
+                 grpc_endpoint: pulumi.Input[Optional['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']] = None):
         """
         :param pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs'] certificate_provider_instance: The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
                Structure is documented below.
@@ -3923,7 +3923,7 @@ class ClientTlsPolicyServerValidationCaArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> pulumi.Input[Optional['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]:
         """
         The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
         Structure is documented below.
@@ -3931,12 +3931,12 @@ class ClientTlsPolicyServerValidationCaArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: pulumi.Input[Optional['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> pulumi.Input[Optional['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -3944,7 +3944,7 @@ class ClientTlsPolicyServerValidationCaArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: pulumi.Input[Optional['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
@@ -4005,7 +4005,7 @@ class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
 
 
 class FirewallEndpointEndpointSettingsArgsDict(TypedDict):
-    jumbo_frames_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    jumbo_frames_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether Jumbo Frames are enabled for the firewall endpoint.
     """
@@ -4013,7 +4013,7 @@ class FirewallEndpointEndpointSettingsArgsDict(TypedDict):
 @pulumi.input_type
 class FirewallEndpointEndpointSettingsArgs:
     def __init__(__self__, *,
-                 jumbo_frames_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 jumbo_frames_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] jumbo_frames_enabled: Indicates whether Jumbo Frames are enabled for the firewall endpoint.
         """
@@ -4022,19 +4022,19 @@ class FirewallEndpointEndpointSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="jumboFramesEnabled")
-    def jumbo_frames_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def jumbo_frames_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether Jumbo Frames are enabled for the firewall endpoint.
         """
         return pulumi.get(self, "jumbo_frames_enabled")
 
     @jumbo_frames_enabled.setter
-    def jumbo_frames_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def jumbo_frames_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "jumbo_frames_enabled", value)
 
 
 class InterceptDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The connected endpoint group's resource name, for example:
@@ -4045,7 +4045,7 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
 @pulumi.input_type
 class InterceptDeploymentGroupConnectedEndpointGroupArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: (Output)
                The connected endpoint group's resource name, for example:
@@ -4057,7 +4057,7 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The connected endpoint group's resource name, for example:
@@ -4067,16 +4067,16 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class InterceptDeploymentGroupLocationArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the deployment group, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4089,8 +4089,8 @@ class InterceptDeploymentGroupLocationArgsDict(TypedDict):
 @pulumi.input_type
 class InterceptDeploymentGroupLocationArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4107,19 +4107,19 @@ class InterceptDeploymentGroupLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the deployment group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4131,26 +4131,26 @@ class InterceptDeploymentGroupLocationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class InterceptEndpointGroupAssociationArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The connected deployment group's resource name, for example:
     `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
     See https://google.aip.dev/124.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The associated network, for example:
     projects/123456789/global/networks/my-network.
     See https://google.aip.dev/124.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4163,9 +4163,9 @@ class InterceptEndpointGroupAssociationArgsDict(TypedDict):
 @pulumi.input_type
 class InterceptEndpointGroupAssociationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: (Output)
                The connected deployment group's resource name, for example:
@@ -4191,7 +4191,7 @@ class InterceptEndpointGroupAssociationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The connected deployment group's resource name, for example:
@@ -4201,12 +4201,12 @@ class InterceptEndpointGroupAssociationArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The associated network, for example:
@@ -4216,12 +4216,12 @@ class InterceptEndpointGroupAssociationArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4233,16 +4233,16 @@ class InterceptEndpointGroupAssociationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class InterceptEndpointGroupAssociationLocationArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the association, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4255,8 +4255,8 @@ class InterceptEndpointGroupAssociationLocationArgsDict(TypedDict):
 @pulumi.input_type
 class InterceptEndpointGroupAssociationLocationArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the association, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4273,19 +4273,19 @@ class InterceptEndpointGroupAssociationLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4297,16 +4297,16 @@ class InterceptEndpointGroupAssociationLocationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class InterceptEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the association, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4319,8 +4319,8 @@ class InterceptEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
 @pulumi.input_type
 class InterceptEndpointGroupAssociationLocationsDetailArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the association, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4337,19 +4337,19 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4361,18 +4361,18 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class InterceptEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
-    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]
+    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]]
     """
     (Output)
     The list of locations where the deployment group is present.
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The connected deployment group's resource name, for example:
@@ -4383,8 +4383,8 @@ class InterceptEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
 @pulumi.input_type
 class InterceptEndpointGroupConnectedDeploymentGroupArgs:
     def __init__(__self__, *,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 locations: pulumi.Input[Optional[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]] locations: (Output)
                The list of locations where the deployment group is present.
@@ -4401,7 +4401,7 @@ class InterceptEndpointGroupConnectedDeploymentGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]:
+    def locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]:
         """
         (Output)
         The list of locations where the deployment group is present.
@@ -4410,12 +4410,12 @@ class InterceptEndpointGroupConnectedDeploymentGroupArgs:
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]):
+    def locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]):
         pulumi.set(self, "locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The connected deployment group's resource name, for example:
@@ -4425,16 +4425,16 @@ class InterceptEndpointGroupConnectedDeploymentGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the endpoint group, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4447,8 +4447,8 @@ class InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
 @pulumi.input_type
 class InterceptEndpointGroupConnectedDeploymentGroupLocationArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the endpoint group, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4465,19 +4465,19 @@ class InterceptEndpointGroupConnectedDeploymentGroupLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4489,12 +4489,12 @@ class InterceptEndpointGroupConnectedDeploymentGroupLocationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class MirroringDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The connected endpoint group's resource name, for example:
@@ -4505,7 +4505,7 @@ class MirroringDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
 @pulumi.input_type
 class MirroringDeploymentGroupConnectedEndpointGroupArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: (Output)
                The connected endpoint group's resource name, for example:
@@ -4517,7 +4517,7 @@ class MirroringDeploymentGroupConnectedEndpointGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The connected endpoint group's resource name, for example:
@@ -4527,16 +4527,16 @@ class MirroringDeploymentGroupConnectedEndpointGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class MirroringDeploymentGroupLocationArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the deployment group, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4549,8 +4549,8 @@ class MirroringDeploymentGroupLocationArgsDict(TypedDict):
 @pulumi.input_type
 class MirroringDeploymentGroupLocationArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the deployment group, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4567,19 +4567,19 @@ class MirroringDeploymentGroupLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the deployment group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4591,26 +4591,26 @@ class MirroringDeploymentGroupLocationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class MirroringEndpointGroupAssociationArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The connected deployment group's resource name, for example:
     `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
     See https://google.aip.dev/124.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The associated network, for example:
     projects/123456789/global/networks/my-network.
     See https://google.aip.dev/124.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4623,9 +4623,9 @@ class MirroringEndpointGroupAssociationArgsDict(TypedDict):
 @pulumi.input_type
 class MirroringEndpointGroupAssociationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: (Output)
                The connected deployment group's resource name, for example:
@@ -4651,7 +4651,7 @@ class MirroringEndpointGroupAssociationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The connected deployment group's resource name, for example:
@@ -4661,12 +4661,12 @@ class MirroringEndpointGroupAssociationArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The associated network, for example:
@@ -4676,12 +4676,12 @@ class MirroringEndpointGroupAssociationArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4693,16 +4693,16 @@ class MirroringEndpointGroupAssociationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class MirroringEndpointGroupAssociationLocationArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the association, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4715,8 +4715,8 @@ class MirroringEndpointGroupAssociationLocationArgsDict(TypedDict):
 @pulumi.input_type
 class MirroringEndpointGroupAssociationLocationArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the association, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4733,19 +4733,19 @@ class MirroringEndpointGroupAssociationLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4757,16 +4757,16 @@ class MirroringEndpointGroupAssociationLocationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class MirroringEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the association, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4779,8 +4779,8 @@ class MirroringEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
 @pulumi.input_type
 class MirroringEndpointGroupAssociationLocationsDetailArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the association, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4797,19 +4797,19 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the association, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4821,18 +4821,18 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class MirroringEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
-    locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]
+    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]]]
     """
     (Output)
     The list of locations where the deployment group is present.
     Structure is documented below.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The connected deployment group's resource name, for example:
@@ -4843,8 +4843,8 @@ class MirroringEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
 @pulumi.input_type
 class MirroringEndpointGroupConnectedDeploymentGroupArgs:
     def __init__(__self__, *,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 locations: pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]] locations: (Output)
                The list of locations where the deployment group is present.
@@ -4861,7 +4861,7 @@ class MirroringEndpointGroupConnectedDeploymentGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]]:
+    def locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]]:
         """
         (Output)
         The list of locations where the deployment group is present.
@@ -4870,12 +4870,12 @@ class MirroringEndpointGroupConnectedDeploymentGroupArgs:
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]]):
+    def locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]]):
         pulumi.set(self, "locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The connected deployment group's resource name, for example:
@@ -4885,16 +4885,16 @@ class MirroringEndpointGroupConnectedDeploymentGroupArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud location of the endpoint group, currently restricted to `global`.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The current state of the association in this location.
@@ -4907,8 +4907,8 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict(TypedDict):
 @pulumi.input_type
 class MirroringEndpointGroupConnectedDeploymentGroupLocationArgs:
     def __init__(__self__, *,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: The cloud location of the endpoint group, currently restricted to `global`.
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -4925,19 +4925,19 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud location of the endpoint group, currently restricted to `global`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The current state of the association in this location.
@@ -4949,16 +4949,16 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocationArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class SacAttachmentSymantecOptionsArgsDict(TypedDict):
-    symantec_location_name: NotRequired[pulumi.Input[_builtins.str]]
+    symantec_location_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
     """
-    symantec_site: NotRequired[pulumi.Input[_builtins.str]]
+    symantec_site: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Symantec data center identifier that this attachment will connect to.
     """
@@ -4966,8 +4966,8 @@ class SacAttachmentSymantecOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class SacAttachmentSymantecOptionsArgs:
     def __init__(__self__, *,
-                 symantec_location_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 symantec_site: Optional[pulumi.Input[_builtins.str]] = None):
+                 symantec_location_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 symantec_site: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] symantec_location_name: Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
         :param pulumi.Input[_builtins.str] symantec_site: Symantec data center identifier that this attachment will connect to.
@@ -4979,36 +4979,36 @@ class SacAttachmentSymantecOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="symantecLocationName")
-    def symantec_location_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def symantec_location_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations.
         """
         return pulumi.get(self, "symantec_location_name")
 
     @symantec_location_name.setter
-    def symantec_location_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def symantec_location_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "symantec_location_name", value)
 
     @_builtins.property
     @pulumi.getter(name="symantecSite")
-    def symantec_site(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def symantec_site(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Symantec data center identifier that this attachment will connect to.
         """
         return pulumi.get(self, "symantec_site")
 
     @symantec_site.setter
-    def symantec_site(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def symantec_site(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "symantec_site", value)
 
 
 class SacRealmPairingKeyArgsDict(TypedDict):
-    expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Key value.
@@ -5017,8 +5017,8 @@ class SacRealmPairingKeyArgsDict(TypedDict):
 @pulumi.input_type
 class SacRealmPairingKeyArgs:
     def __init__(__self__, *,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None):
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expire_time: (Output)
                Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
@@ -5032,7 +5032,7 @@ class SacRealmPairingKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
@@ -5040,12 +5040,12 @@ class SacRealmPairingKeyArgs:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Key value.
@@ -5053,22 +5053,22 @@ class SacRealmPairingKeyArgs:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
 
 class SacRealmSymantecOptionsArgsDict(TypedDict):
-    available_symantec_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    available_symantec_sites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     Symantec site IDs which the user can choose to connect to.
     """
-    secret_path: NotRequired[pulumi.Input[_builtins.str]]
+    secret_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
     A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
     """
-    symantec_connection_state: NotRequired[pulumi.Input[_builtins.str]]
+    symantec_connection_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Connection status to Symantec API
@@ -5077,9 +5077,9 @@ class SacRealmSymantecOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class SacRealmSymantecOptionsArgs:
     def __init__(__self__, *,
-                 available_symantec_sites: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 secret_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 symantec_connection_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 available_symantec_sites: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 secret_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 symantec_connection_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_symantec_sites: (Output)
                Symantec site IDs which the user can choose to connect to.
@@ -5097,7 +5097,7 @@ class SacRealmSymantecOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="availableSymantecSites")
-    def available_symantec_sites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def available_symantec_sites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         Symantec site IDs which the user can choose to connect to.
@@ -5105,12 +5105,12 @@ class SacRealmSymantecOptionsArgs:
         return pulumi.get(self, "available_symantec_sites")
 
     @available_symantec_sites.setter
-    def available_symantec_sites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def available_symantec_sites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "available_symantec_sites", value)
 
     @_builtins.property
     @pulumi.getter(name="secretPath")
-    def secret_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
         A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
@@ -5118,12 +5118,12 @@ class SacRealmSymantecOptionsArgs:
         return pulumi.get(self, "secret_path")
 
     @secret_path.setter
-    def secret_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_path", value)
 
     @_builtins.property
     @pulumi.getter(name="symantecConnectionState")
-    def symantec_connection_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def symantec_connection_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Connection status to Symantec API
@@ -5131,7 +5131,7 @@ class SacRealmSymantecOptionsArgs:
         return pulumi.get(self, "symantec_connection_state")
 
     @symantec_connection_state.setter
-    def symantec_connection_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def symantec_connection_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "symantec_connection_state", value)
 
 
@@ -5174,14 +5174,14 @@ class SecurityProfileCustomMirroringProfileArgsDict(TypedDict):
     a replica will be mirrored to the location-local target in this group.
     Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
     """
-    mirroring_deployment_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mirroring_deployment_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The target downstream Mirroring Deployment Groups.
     This field is used for Packet Broker mirroring endpoint groups to specify
     the deployment groups that the packet should be mirrored to by the broker.
     Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
     """
-    mirroring_endpoint_group_type: NotRequired[pulumi.Input[_builtins.str]]
+    mirroring_endpoint_group_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The type of the mirroring endpoint group this profile is attached to.
@@ -5194,8 +5194,8 @@ class SecurityProfileCustomMirroringProfileArgsDict(TypedDict):
 class SecurityProfileCustomMirroringProfileArgs:
     def __init__(__self__, *,
                  mirroring_endpoint_group: pulumi.Input[_builtins.str],
-                 mirroring_deployment_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mirroring_endpoint_group_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 mirroring_deployment_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mirroring_endpoint_group_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mirroring_endpoint_group: The target Mirroring Endpoint Group.
                When a mirroring rule with this security profile attached matches a packet,
@@ -5234,7 +5234,7 @@ class SecurityProfileCustomMirroringProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="mirroringDeploymentGroups")
-    def mirroring_deployment_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mirroring_deployment_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The target downstream Mirroring Deployment Groups.
         This field is used for Packet Broker mirroring endpoint groups to specify
@@ -5244,12 +5244,12 @@ class SecurityProfileCustomMirroringProfileArgs:
         return pulumi.get(self, "mirroring_deployment_groups")
 
     @mirroring_deployment_groups.setter
-    def mirroring_deployment_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mirroring_deployment_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mirroring_deployment_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="mirroringEndpointGroupType")
-    def mirroring_endpoint_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mirroring_endpoint_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The type of the mirroring endpoint group this profile is attached to.
@@ -5260,22 +5260,22 @@ class SecurityProfileCustomMirroringProfileArgs:
         return pulumi.get(self, "mirroring_endpoint_group_type")
 
     @mirroring_endpoint_group_type.setter
-    def mirroring_endpoint_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mirroring_endpoint_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mirroring_endpoint_group_type", value)
 
 
 class SecurityProfileThreatPreventionProfileArgsDict(TypedDict):
-    antivirus_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgsDict']]]]
+    antivirus_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]]]
     """
     Defines what action to take for antivirus threats per protocol.
     Structure is documented below.
     """
-    severity_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict']]]]
+    severity_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]]
     """
     The configuration for overriding threats actions by severity match.
     Structure is documented below.
     """
-    threat_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgsDict']]]]
+    threat_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]]
     """
     The configuration for overriding threats actions by threat id match.
     If a threat is matched both by configuration provided in severity overrides
@@ -5286,9 +5286,9 @@ class SecurityProfileThreatPreventionProfileArgsDict(TypedDict):
 @pulumi.input_type
 class SecurityProfileThreatPreventionProfileArgs:
     def __init__(__self__, *,
-                 antivirus_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]] = None,
-                 severity_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]] = None,
-                 threat_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]] = None):
+                 antivirus_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]] = None,
+                 severity_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]] = None,
+                 threat_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]] antivirus_overrides: Defines what action to take for antivirus threats per protocol.
                Structure is documented below.
@@ -5308,7 +5308,7 @@ class SecurityProfileThreatPreventionProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="antivirusOverrides")
-    def antivirus_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]]:
+    def antivirus_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]]:
         """
         Defines what action to take for antivirus threats per protocol.
         Structure is documented below.
@@ -5316,12 +5316,12 @@ class SecurityProfileThreatPreventionProfileArgs:
         return pulumi.get(self, "antivirus_overrides")
 
     @antivirus_overrides.setter
-    def antivirus_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]]):
+    def antivirus_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]]):
         pulumi.set(self, "antivirus_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="severityOverrides")
-    def severity_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]:
+    def severity_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]:
         """
         The configuration for overriding threats actions by severity match.
         Structure is documented below.
@@ -5329,12 +5329,12 @@ class SecurityProfileThreatPreventionProfileArgs:
         return pulumi.get(self, "severity_overrides")
 
     @severity_overrides.setter
-    def severity_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]):
+    def severity_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]):
         pulumi.set(self, "severity_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="threatOverrides")
-    def threat_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]:
+    def threat_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]:
         """
         The configuration for overriding threats actions by threat id match.
         If a threat is matched both by configuration provided in severity overrides
@@ -5344,7 +5344,7 @@ class SecurityProfileThreatPreventionProfileArgs:
         return pulumi.get(self, "threat_overrides")
 
     @threat_overrides.setter
-    def threat_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]):
+    def threat_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]):
         pulumi.set(self, "threat_overrides", value)
 
 
@@ -5464,7 +5464,7 @@ class SecurityProfileThreatPreventionProfileThreatOverrideArgsDict(TypedDict):
     """
     Vendor-specific ID of a threat to override.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of threat.
@@ -5475,7 +5475,7 @@ class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[_builtins.str],
                  threat_id: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action: Threat action.
                Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
@@ -5515,7 +5515,7 @@ class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of threat.
@@ -5523,12 +5523,12 @@ class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class SecurityProfileUrlFilteringProfileArgsDict(TypedDict):
-    url_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgsDict']]]]
+    url_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]]]
     """
     The configuration for action to take based on domain name match.
     A domain name would be checked for matching filters through the list in order of highest to lowest priority,
@@ -5539,7 +5539,7 @@ class SecurityProfileUrlFilteringProfileArgsDict(TypedDict):
 @pulumi.input_type
 class SecurityProfileUrlFilteringProfileArgs:
     def __init__(__self__, *,
-                 url_filters: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]] = None):
+                 url_filters: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]] url_filters: The configuration for action to take based on domain name match.
                A domain name would be checked for matching filters through the list in order of highest to lowest priority,
@@ -5551,7 +5551,7 @@ class SecurityProfileUrlFilteringProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="urlFilters")
-    def url_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]]:
+    def url_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]]:
         """
         The configuration for action to take based on domain name match.
         A domain name would be checked for matching filters through the list in order of highest to lowest priority,
@@ -5561,7 +5561,7 @@ class SecurityProfileUrlFilteringProfileArgs:
         return pulumi.get(self, "url_filters")
 
     @url_filters.setter
-    def url_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]]):
+    def url_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]]):
         pulumi.set(self, "url_filters", value)
 
 
@@ -5577,7 +5577,7 @@ class SecurityProfileUrlFilteringProfileUrlFilterArgsDict(TypedDict):
     Must be an integer from 0 and 2147483647, inclusive. Lower integers indicate higher priorities.
     The priority of a filter must be unique within a URL filtering profile.
     """
-    urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    urls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     A list of domain matcher strings that a domain name gets compared with to determine if the filter is applicable.
     A domain name must match with at least one of the strings in the list for a filter to be applicable.
@@ -5588,7 +5588,7 @@ class SecurityProfileUrlFilteringProfileUrlFilterArgs:
     def __init__(__self__, *,
                  filtering_action: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
-                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] filtering_action: The action to take when the filter is applied.
                Possible values are: `ALLOW`, `DENY`.
@@ -5632,7 +5632,7 @@ class SecurityProfileUrlFilteringProfileUrlFilterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of domain matcher strings that a domain name gets compared with to determine if the filter is applicable.
         A domain name must match with at least one of the strings in the list for a filter to be applicable.
@@ -5640,24 +5640,24 @@ class SecurityProfileUrlFilteringProfileUrlFilterArgs:
         return pulumi.get(self, "urls")
 
     @urls.setter
-    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "urls", value)
 
 
 class ServerTlsPolicyMtlsPolicyArgsDict(TypedDict):
-    client_validation_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict']]]]
+    client_validation_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]]
     """
     Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
     Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
     Structure is documented below.
     """
-    client_validation_mode: NotRequired[pulumi.Input[_builtins.str]]
+    client_validation_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
     Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
     Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
     """
-    client_validation_trust_config: NotRequired[pulumi.Input[_builtins.str]]
+    client_validation_trust_config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
     If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
@@ -5667,9 +5667,9 @@ class ServerTlsPolicyMtlsPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyArgs:
     def __init__(__self__, *,
-                 client_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]] = None,
-                 client_validation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_validation_trust_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_validation_cas: pulumi.Input[Optional[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]] = None,
+                 client_validation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_validation_trust_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
                Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -5690,7 +5690,7 @@ class ServerTlsPolicyMtlsPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientValidationCas")
-    def client_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]:
+    def client_validation_cas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]:
         """
         Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
         Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -5699,12 +5699,12 @@ class ServerTlsPolicyMtlsPolicyArgs:
         return pulumi.get(self, "client_validation_cas")
 
     @client_validation_cas.setter
-    def client_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]):
+    def client_validation_cas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]):
         pulumi.set(self, "client_validation_cas", value)
 
     @_builtins.property
     @pulumi.getter(name="clientValidationMode")
-    def client_validation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_validation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
         Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
@@ -5713,12 +5713,12 @@ class ServerTlsPolicyMtlsPolicyArgs:
         return pulumi.get(self, "client_validation_mode")
 
     @client_validation_mode.setter
-    def client_validation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_validation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_validation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="clientValidationTrustConfig")
-    def client_validation_trust_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_validation_trust_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
         If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
@@ -5727,18 +5727,18 @@ class ServerTlsPolicyMtlsPolicyArgs:
         return pulumi.get(self, "client_validation_trust_config")
 
     @client_validation_trust_config.setter
-    def client_validation_trust_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_validation_trust_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_validation_trust_config", value)
 
 
 class ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict']]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]]
     """
     Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
     Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict']]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.
@@ -5747,8 +5747,8 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict(TypedDict):
 @pulumi.input_type
 class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']] = None,
+                 grpc_endpoint: pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']] = None):
         """
         :param pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
                Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
@@ -5763,7 +5763,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]:
         """
         Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
         Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
@@ -5772,12 +5772,12 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -5785,7 +5785,7 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
@@ -5846,13 +5846,13 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
 
 
 class ServerTlsPolicyServerCertificateArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict']]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]]
     """
     Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
     Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgsDict']]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.
@@ -5861,8 +5861,8 @@ class ServerTlsPolicyServerCertificateArgsDict(TypedDict):
 @pulumi.input_type
 class ServerTlsPolicyServerCertificateArgs:
     def __init__(__self__, *,
-                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']] = None,
-                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']] = None):
+                 certificate_provider_instance: pulumi.Input[Optional['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']] = None,
+                 grpc_endpoint: pulumi.Input[Optional['ServerTlsPolicyServerCertificateGrpcEndpointArgs']] = None):
         """
         :param pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
                Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
@@ -5877,7 +5877,7 @@ class ServerTlsPolicyServerCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateProviderInstance")
-    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]:
+    def certificate_provider_instance(self) -> pulumi.Input[Optional['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]:
         """
         Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
         Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
@@ -5886,12 +5886,12 @@ class ServerTlsPolicyServerCertificateArgs:
         return pulumi.get(self, "certificate_provider_instance")
 
     @certificate_provider_instance.setter
-    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]):
+    def certificate_provider_instance(self, value: pulumi.Input[Optional['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]):
         pulumi.set(self, "certificate_provider_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="grpcEndpoint")
-    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]:
+    def grpc_endpoint(self) -> pulumi.Input[Optional['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]:
         """
         gRPC specific configuration to access the gRPC server to obtain the cert and private key.
         Structure is documented below.
@@ -5899,7 +5899,7 @@ class ServerTlsPolicyServerCertificateArgs:
         return pulumi.get(self, "grpc_endpoint")
 
     @grpc_endpoint.setter
-    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]):
+    def grpc_endpoint(self, value: pulumi.Input[Optional['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]):
         pulumi.set(self, "grpc_endpoint", value)
 
 
@@ -5960,24 +5960,24 @@ class ServerTlsPolicyServerCertificateGrpcEndpointArgs:
 
 
 class UllMirroringCollectorRuleMatchArgsDict(TypedDict):
-    direction: NotRequired[pulumi.Input[_builtins.str]]
+    direction: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Direction of traffic to match. When unset, matches any direction.
     Possible values:
     INGRESS: Traffic inbound to the capture point.
     EGRESS: Traffic outbound from the capture point.
     """
-    dst_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    dst_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Destination IP ranges to match. When unset, matches any destination IP
     range.
     """
-    ip_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    ip_protocols: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IP protocols to match. When unset, matches any IP protocol.
     Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
     """
-    src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    src_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Source IP ranges to match. When unset, matches any source IP range.
     """
@@ -5985,10 +5985,10 @@ class UllMirroringCollectorRuleMatchArgsDict(TypedDict):
 @pulumi.input_type
 class UllMirroringCollectorRuleMatchArgs:
     def __init__(__self__, *,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 src_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] direction: Direction of traffic to match. When unset, matches any direction.
                Possible values:
@@ -6011,7 +6011,7 @@ class UllMirroringCollectorRuleMatchArgs:
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Direction of traffic to match. When unset, matches any direction.
         Possible values:
@@ -6021,12 +6021,12 @@ class UllMirroringCollectorRuleMatchArgs:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="dstIpRanges")
-    def dst_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dst_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Destination IP ranges to match. When unset, matches any destination IP
         range.
@@ -6034,12 +6034,12 @@ class UllMirroringCollectorRuleMatchArgs:
         return pulumi.get(self, "dst_ip_ranges")
 
     @dst_ip_ranges.setter
-    def dst_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dst_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dst_ip_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocols")
-    def ip_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP protocols to match. When unset, matches any IP protocol.
         Examples: "tcp", "udp", "icmp". If unset, matches any IP protocol.
@@ -6047,19 +6047,19 @@ class UllMirroringCollectorRuleMatchArgs:
         return pulumi.get(self, "ip_protocols")
 
     @ip_protocols.setter
-    def ip_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="srcIpRanges")
-    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def src_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Source IP ranges to match. When unset, matches any source IP range.
         """
         return pulumi.get(self, "src_ip_ranges")
 
     @src_ip_ranges.setter
-    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def src_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
 
 

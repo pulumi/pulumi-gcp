@@ -83,15 +83,15 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
         ///     {
-        ///         MachineType = Output.Tuple(example, Std.Index.Startswith.Invoke(new()
+        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
-        ///         }), example, Std.Index.Startswith.Invoke(new()
+        ///         }), example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c2-",
-        ///         }), example, Std.Index.Startswith.Invoke(new()
+        ///         }), example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "n2-",
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Compute
         ///             var invoke1 = values.Item4;
         ///             var example2 = values.Item5;
         ///             var invoke2 = values.Item6;
-        ///             return Std.Index.Coalescelist.Invoke(new()
+        ///             return Std.Coalescelist.Invoke(new()
         ///             {
         ///                 Input = new[]
         ///                 {
@@ -211,15 +211,15 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
         ///     {
-        ///         MachineType = Output.Tuple(example, Std.Index.Startswith.Invoke(new()
+        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
-        ///         }), example, Std.Index.Startswith.Invoke(new()
+        ///         }), example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c2-",
-        ///         }), example, Std.Index.Startswith.Invoke(new()
+        ///         }), example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "n2-",
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.Compute
         ///             var invoke1 = values.Item4;
         ///             var example2 = values.Item5;
         ///             var invoke2 = values.Item6;
-        ///             return Std.Index.Coalescelist.Invoke(new()
+        ///             return Std.Coalescelist.Invoke(new()
         ///             {
         ///                 Input = new[]
         ///                 {
@@ -339,15 +339,15 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
         ///     {
-        ///         MachineType = Output.Tuple(example, Std.Index.Startswith.Invoke(new()
+        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
-        ///         }), example, Std.Index.Startswith.Invoke(new()
+        ///         }), example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c2-",
-        ///         }), example, Std.Index.Startswith.Invoke(new()
+        ///         }), example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "n2-",
@@ -359,7 +359,7 @@ namespace Pulumi.Gcp.Compute
         ///             var invoke1 = values.Item4;
         ///             var example2 = values.Item5;
         ///             var invoke2 = values.Item6;
-        ///             return Std.Index.Coalescelist.Invoke(new()
+        ///             return Std.Coalescelist.Invoke(new()
         ///             {
         ///                 Input = new[]
         ///                 {

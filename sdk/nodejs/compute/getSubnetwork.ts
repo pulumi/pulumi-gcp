@@ -154,20 +154,20 @@ export interface GetSubnetworkOutputArgs {
      * The name of the subnetwork. One of `name` or `selfLink`
      * must be specified.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region this subnetwork has been created in. If
      * unspecified, this defaults to the region configured in the provider.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The self link of the subnetwork. If `selfLink` is
      * specified, `name`, `project`, and `region` are ignored.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }

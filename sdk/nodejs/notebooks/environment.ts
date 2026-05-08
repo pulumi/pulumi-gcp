@@ -170,43 +170,43 @@ export interface EnvironmentState {
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
+    containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage | undefined>;
     /**
      * Instance creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A brief description of this environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of this environment for the UI.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The name specified for the Environment instance.
      * Format: projects/{project_id}/locations/{location}/environments/{environmentId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up.
      * The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
      */
-    postStartupScript?: pulumi.Input<string>;
+    postStartupScript?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
+    vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage | undefined>;
 }
 
 /**
@@ -217,15 +217,15 @@ export interface EnvironmentArgs {
      * Use a container image to start the notebook instance.
      * Structure is documented below.
      */
-    containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage>;
+    containerImage?: pulumi.Input<inputs.notebooks.EnvironmentContainerImage | undefined>;
     /**
      * A brief description of this environment.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of this environment for the UI.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * A reference to the zone where the machine resides.
      */
@@ -234,20 +234,20 @@ export interface EnvironmentArgs {
      * The name specified for the Environment instance.
      * Format: projects/{project_id}/locations/{location}/environments/{environmentId}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Path to a Bash script that automatically runs after a notebook instance fully boots up.
      * The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
      */
-    postStartupScript?: pulumi.Input<string>;
+    postStartupScript?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      * Structure is documented below.
      */
-    vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage>;
+    vmImage?: pulumi.Input<inputs.notebooks.EnvironmentVmImage | undefined>;
 }

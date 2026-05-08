@@ -23,10 +23,10 @@ class HostingCustomDomainArgs:
     def __init__(__self__, *,
                  custom_domain: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 cert_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HostingCustomDomain resource.
 
@@ -83,7 +83,7 @@ class HostingCustomDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="certPreference")
-    def cert_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_preference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A field that lets you specify which SSL certificate type Hosting creates
         for your domain name. Spark plan `CustomDomain`s only have access to the
@@ -93,12 +93,12 @@ class HostingCustomDomainArgs:
         return pulumi.get(self, "cert_preference")
 
     @cert_preference.setter
-    def cert_preference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_preference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_preference", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -106,12 +106,12 @@ class HostingCustomDomainArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectTarget")
-    def redirect_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A domain name that this CustomDomain should direct traffic towards. If
         specified, Hosting will respond to requests against this CustomDomain
@@ -121,12 +121,12 @@ class HostingCustomDomainArgs:
         return pulumi.get(self, "redirect_target")
 
     @redirect_target.setter
-    def redirect_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_target", value)
 
     @_builtins.property
     @pulumi.getter(name="waitDnsVerification")
-    def wait_dns_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_dns_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
         If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
@@ -135,31 +135,31 @@ class HostingCustomDomainArgs:
         return pulumi.get(self, "wait_dns_verification")
 
     @wait_dns_verification.setter
-    def wait_dns_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_dns_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_dns_verification", value)
 
 
 @pulumi.input_type
 class _HostingCustomDomainState:
     def __init__(__self__, *,
-                 cert_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 certs: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainIssueArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ownership_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 redirect_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 required_dns_updates: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateArgs']]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 certs: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainIssueArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ownership_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 required_dns_updates: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateArgs']]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering HostingCustomDomain resources.
 
@@ -296,7 +296,7 @@ class _HostingCustomDomainState:
 
     @_builtins.property
     @pulumi.getter(name="certPreference")
-    def cert_preference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_preference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A field that lets you specify which SSL certificate type Hosting creates
         for your domain name. Spark plan `CustomDomain`s only have access to the
@@ -306,12 +306,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "cert_preference")
 
     @cert_preference.setter
-    def cert_preference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_preference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_preference", value)
 
     @_builtins.property
     @pulumi.getter
-    def certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertArgs']]]]:
+    def certs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertArgs']]]]:
         """
         The SSL certificate Hosting has for this `CustomDomain`'s domain name.
         For new `CustomDomain`s, this often represents Hosting's intent to create
@@ -322,36 +322,36 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "certs")
 
     @certs.setter
-    def certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainCertArgs']]]]):
+    def certs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertArgs']]]]):
         pulumi.set(self, "certs", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `CustomDomain`'s create time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
         """
         return pulumi.get(self, "custom_domain")
 
     @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time the `CustomDomain` was deleted; null for `CustomDomains` that
         haven't been deleted. Deleted `CustomDomains` persist for approximately 30
@@ -360,12 +360,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that represents the current state of the `CustomDomain` and
         allows you to confirm its initial state in requests that would modify it.
@@ -373,12 +373,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum time before a soft-deleted `CustomDomain` is completely removed
         from Hosting; null for `CustomDomains` that haven't been deleted.
@@ -386,12 +386,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="hostState")
-    def host_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The host state of your domain name. Host state is determined by checking each
         IP address associated with your domain name to see if it's serving
@@ -417,12 +417,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "host_state")
 
     @host_state.setter
-    def host_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainIssueArgs']]]]:
+    def issues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainIssueArgs']]]]:
         """
         A set of errors Hosting systems encountered when trying to establish
         Hosting's ability to serve secure content for your domain name. Resolve
@@ -432,24 +432,24 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "issues")
 
     @issues.setter
-    def issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainIssueArgs']]]]):
+    def issues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainIssueArgs']]]]):
         pulumi.set(self, "issues", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified name of the `CustomDomain`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ownershipState")
-    def ownership_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ownership_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ownership state of your domain name. Ownership is determined at a
         Firebase project level, and established by adding `TXT` records to your
@@ -487,12 +487,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "ownership_state")
 
     @ownership_state.setter
-    def ownership_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ownership_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ownership_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -500,12 +500,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         if true, indicates that Hosting's systems are attempting to
         make the `CustomDomain`'s state match your preferred state. This is most
@@ -515,12 +515,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectTarget")
-    def redirect_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redirect_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A domain name that this CustomDomain should direct traffic towards. If
         specified, Hosting will respond to requests against this CustomDomain
@@ -530,12 +530,12 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "redirect_target")
 
     @redirect_target.setter
-    def redirect_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redirect_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redirect_target", value)
 
     @_builtins.property
     @pulumi.getter(name="requiredDnsUpdates")
-    def required_dns_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateArgs']]]]:
+    def required_dns_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateArgs']]]]:
         """
         A set of updates you should make to the domain name's DNS records to
         let Hosting serve secure content on its behalf.
@@ -544,36 +544,36 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "required_dns_updates")
 
     @required_dns_updates.setter
-    def required_dns_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateArgs']]]]):
+    def required_dns_updates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateArgs']]]]):
         pulumi.set(self, "required_dns_updates", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the site in which to create this custom domain association.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last time the `CustomDomain` was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="waitDnsVerification")
-    def wait_dns_verification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_dns_verification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
         If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
@@ -582,7 +582,7 @@ class _HostingCustomDomainState:
         return pulumi.get(self, "wait_dns_verification")
 
     @wait_dns_verification.setter
-    def wait_dns_verification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_dns_verification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_dns_verification", value)
 
 
@@ -592,12 +592,12 @@ class HostingCustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages Custom Domains for Firebase Hosting. Custom Domains link your
@@ -848,12 +848,12 @@ class HostingCustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_preference: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -895,24 +895,24 @@ class HostingCustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cert_preference: Optional[pulumi.Input[_builtins.str]] = None,
-            certs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            host_state: Optional[pulumi.Input[_builtins.str]] = None,
-            issues: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ownership_state: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            redirect_target: Optional[pulumi.Input[_builtins.str]] = None,
-            required_dns_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict']]]]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            wait_dns_verification: Optional[pulumi.Input[_builtins.bool]] = None) -> 'HostingCustomDomain':
+            cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
+            certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainCertArgs', 'HostingCustomDomainCertArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            host_state: pulumi.Input[Optional[_builtins.str]] = None,
+            issues: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainIssueArgs', 'HostingCustomDomainIssueArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ownership_state: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
+            required_dns_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostingCustomDomainRequiredDnsUpdateArgs', 'HostingCustomDomainRequiredDnsUpdateArgsDict']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None) -> 'HostingCustomDomain':
         """
         Get an existing HostingCustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

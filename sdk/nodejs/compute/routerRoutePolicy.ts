@@ -220,34 +220,34 @@ export interface RouterRoutePolicyState {
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router and NAT reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which this route policy will be configured.
      */
-    router?: pulumi.Input<string>;
+    router?: pulumi.Input<string | undefined>;
     /**
      * List of terms (the order in the list is not important, they are evaluated in order of priority).
      * Structure is documented below.
      */
-    terms?: pulumi.Input<pulumi.Input<inputs.compute.RouterRoutePolicyTerm>[]>;
+    terms?: pulumi.Input<pulumi.Input<inputs.compute.RouterRoutePolicyTerm>[] | undefined>;
     /**
      * This is policy's type, which is one of IMPORT or EXPORT
      * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,16 +257,16 @@ export interface RouterRoutePolicyArgs {
     /**
      * Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router and NAT reside.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which this route policy will be configured.
      */
@@ -280,5 +280,5 @@ export interface RouterRoutePolicyArgs {
      * This is policy's type, which is one of IMPORT or EXPORT
      * Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

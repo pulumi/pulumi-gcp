@@ -215,7 +215,7 @@ class ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTimeArgs:
 
 
 class ClusterCrossClusterReplicationConfigArgsDict(TypedDict):
-    cluster_role: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role of the cluster in cross cluster replication. Supported values are:
     1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
@@ -224,23 +224,23 @@ class ClusterCrossClusterReplicationConfigArgsDict(TypedDict):
     1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
     Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
     """
-    memberships: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgsDict']]]]
+    memberships: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]]]
     """
     (Output)
     An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
     Structure is documented below.
     """
-    primary_cluster: NotRequired[pulumi.Input['ClusterCrossClusterReplicationConfigPrimaryClusterArgsDict']]
+    primary_cluster: NotRequired[pulumi.Input[Optional['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']]]
     """
     Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
     Structure is documented below.
     """
-    secondary_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgsDict']]]]
+    secondary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]]]
     """
     List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
     Structure is documented below.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The last time cross cluster replication config was updated.
@@ -249,11 +249,11 @@ class ClusterCrossClusterReplicationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterCrossClusterReplicationConfigArgs:
     def __init__(__self__, *,
-                 cluster_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]] = None,
-                 primary_cluster: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']] = None,
-                 secondary_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 memberships: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]] = None,
+                 primary_cluster: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']] = None,
+                 secondary_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_role: The role of the cluster in cross cluster replication. Supported values are:
                1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
@@ -284,7 +284,7 @@ class ClusterCrossClusterReplicationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterRole")
-    def cluster_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the cluster in cross cluster replication. Supported values are:
         1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
@@ -296,12 +296,12 @@ class ClusterCrossClusterReplicationConfigArgs:
         return pulumi.get(self, "cluster_role")
 
     @cluster_role.setter
-    def cluster_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def memberships(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]]:
+    def memberships(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]]:
         """
         (Output)
         An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
@@ -310,12 +310,12 @@ class ClusterCrossClusterReplicationConfigArgs:
         return pulumi.get(self, "memberships")
 
     @memberships.setter
-    def memberships(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]]):
+    def memberships(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]]):
         pulumi.set(self, "memberships", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryCluster")
-    def primary_cluster(self) -> Optional[pulumi.Input['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']]:
+    def primary_cluster(self) -> pulumi.Input[Optional['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']]:
         """
         Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
         Structure is documented below.
@@ -323,12 +323,12 @@ class ClusterCrossClusterReplicationConfigArgs:
         return pulumi.get(self, "primary_cluster")
 
     @primary_cluster.setter
-    def primary_cluster(self, value: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']]):
+    def primary_cluster(self, value: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']]):
         pulumi.set(self, "primary_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryClusters")
-    def secondary_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]]:
+    def secondary_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]]:
         """
         List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
         Structure is documented below.
@@ -336,12 +336,12 @@ class ClusterCrossClusterReplicationConfigArgs:
         return pulumi.get(self, "secondary_clusters")
 
     @secondary_clusters.setter
-    def secondary_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]]):
+    def secondary_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]]):
         pulumi.set(self, "secondary_clusters", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The last time cross cluster replication config was updated.
@@ -349,16 +349,16 @@ class ClusterCrossClusterReplicationConfigArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 class ClusterCrossClusterReplicationConfigMembershipArgsDict(TypedDict):
-    primary_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgsDict']]]]
+    primary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]]]
     """
     Details of the primary cluster that is used as the replication source for all the secondary clusters.
     """
-    secondary_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgsDict']]]]
+    secondary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]]]
     """
     List of secondary clusters that are replicating from the primary cluster.
     """
@@ -366,8 +366,8 @@ class ClusterCrossClusterReplicationConfigMembershipArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterCrossClusterReplicationConfigMembershipArgs:
     def __init__(__self__, *,
-                 primary_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]] = None,
-                 secondary_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]] = None):
+                 primary_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]] = None,
+                 secondary_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]] primary_clusters: Details of the primary cluster that is used as the replication source for all the secondary clusters.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]] secondary_clusters: List of secondary clusters that are replicating from the primary cluster.
@@ -379,35 +379,35 @@ class ClusterCrossClusterReplicationConfigMembershipArgs:
 
     @_builtins.property
     @pulumi.getter(name="primaryClusters")
-    def primary_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]]:
+    def primary_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]]:
         """
         Details of the primary cluster that is used as the replication source for all the secondary clusters.
         """
         return pulumi.get(self, "primary_clusters")
 
     @primary_clusters.setter
-    def primary_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]]):
+    def primary_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]]):
         pulumi.set(self, "primary_clusters", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryClusters")
-    def secondary_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]]:
+    def secondary_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]]:
         """
         List of secondary clusters that are replicating from the primary cluster.
         """
         return pulumi.get(self, "secondary_clusters")
 
     @secondary_clusters.setter
-    def secondary_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]]):
+    def secondary_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]]):
         pulumi.set(self, "secondary_clusters", value)
 
 
 class ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgsDict(TypedDict):
-    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique id of the primary cluster.
@@ -416,8 +416,8 @@ class ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgsDict(Typed
 @pulumi.input_type
 class ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster: The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
         :param pulumi.Input[_builtins.str] uid: (Output)
@@ -430,19 +430,19 @@ class ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique id of the primary cluster.
@@ -450,17 +450,17 @@ class ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgsDict(TypedDict):
-    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique id of the secondary cluster.
@@ -469,8 +469,8 @@ class ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgsDict(Typ
 @pulumi.input_type
 class ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster: (Output)
                The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
@@ -484,7 +484,7 @@ class ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
@@ -492,12 +492,12 @@ class ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs:
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique id of the secondary cluster.
@@ -505,16 +505,16 @@ class ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class ClusterCrossClusterReplicationConfigPrimaryClusterArgsDict(TypedDict):
-    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique id of the primary cluster.
@@ -523,8 +523,8 @@ class ClusterCrossClusterReplicationConfigPrimaryClusterArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterCrossClusterReplicationConfigPrimaryClusterArgs:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster: The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
         :param pulumi.Input[_builtins.str] uid: (Output)
@@ -537,19 +537,19 @@ class ClusterCrossClusterReplicationConfigPrimaryClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique id of the primary cluster.
@@ -557,17 +557,17 @@ class ClusterCrossClusterReplicationConfigPrimaryClusterArgs:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class ClusterCrossClusterReplicationConfigSecondaryClusterArgsDict(TypedDict):
-    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
     """
-    uid: NotRequired[pulumi.Input[_builtins.str]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The unique id of the secondary cluster.
@@ -576,8 +576,8 @@ class ClusterCrossClusterReplicationConfigSecondaryClusterArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterCrossClusterReplicationConfigSecondaryClusterArgs:
     def __init__(__self__, *,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster: (Output)
                The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
@@ -591,7 +591,7 @@ class ClusterCrossClusterReplicationConfigSecondaryClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
@@ -599,12 +599,12 @@ class ClusterCrossClusterReplicationConfigSecondaryClusterArgs:
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The unique id of the secondary cluster.
@@ -612,20 +612,20 @@ class ClusterCrossClusterReplicationConfigSecondaryClusterArgs:
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
 class ClusterDiscoveryEndpointArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The IP allocated on the consumer network for the PSC forwarding rule.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Output only. The port number of the exposed Redis endpoint.
     """
-    psc_config: NotRequired[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgsDict']]
+    psc_config: NotRequired[pulumi.Input[Optional['ClusterDiscoveryEndpointPscConfigArgs']]]
     """
     Output only. Customer configuration for where the endpoint
     is created and accessed from.
@@ -635,9 +635,9 @@ class ClusterDiscoveryEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterDiscoveryEndpointArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 psc_config: Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs']] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 psc_config: pulumi.Input[Optional['ClusterDiscoveryEndpointPscConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
         :param pulumi.Input[_builtins.int] port: Output only. The port number of the exposed Redis endpoint.
@@ -654,31 +654,31 @@ class ClusterDiscoveryEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The IP allocated on the consumer network for the PSC forwarding rule.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Output only. The port number of the exposed Redis endpoint.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConfig")
-    def psc_config(self) -> Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs']]:
+    def psc_config(self) -> pulumi.Input[Optional['ClusterDiscoveryEndpointPscConfigArgs']]:
         """
         Output only. Customer configuration for where the endpoint
         is created and accessed from.
@@ -687,12 +687,12 @@ class ClusterDiscoveryEndpointArgs:
         return pulumi.get(self, "psc_config")
 
     @psc_config.setter
-    def psc_config(self, value: Optional[pulumi.Input['ClusterDiscoveryEndpointPscConfigArgs']]):
+    def psc_config(self, value: pulumi.Input[Optional['ClusterDiscoveryEndpointPscConfigArgs']]):
         pulumi.set(self, "psc_config", value)
 
 
 class ClusterDiscoveryEndpointPscConfigArgsDict(TypedDict):
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
     """
@@ -700,7 +700,7 @@ class ClusterDiscoveryEndpointPscConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterDiscoveryEndpointPscConfigArgs:
     def __init__(__self__, *,
-                 network: Optional[pulumi.Input[_builtins.str]] = None):
+                 network: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
         """
@@ -709,14 +709,14 @@ class ClusterDiscoveryEndpointPscConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
 
@@ -749,21 +749,21 @@ class ClusterGcsSourceArgs:
 
 
 class ClusterMaintenancePolicyArgsDict(TypedDict):
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time when the policy was created.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time when the policy was last updated.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    weekly_maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]
+    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]]
     """
     Optional. Maintenance window that is applied to resources covered by this policy.
     Minimum 1. For the current version, the maximum number
@@ -774,9 +774,9 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterMaintenancePolicyArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] create_time: (Output)
                Output only. The time when the policy was created.
@@ -800,7 +800,7 @@ class ClusterMaintenancePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time when the policy was created.
@@ -810,12 +810,12 @@ class ClusterMaintenancePolicyArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time when the policy was last updated.
@@ -825,12 +825,12 @@ class ClusterMaintenancePolicyArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyMaintenanceWindows")
-    def weekly_maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
+    def weekly_maintenance_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
         """
         Optional. Maintenance window that is applied to resources covered by this policy.
         Minimum 1. For the current version, the maximum number
@@ -840,7 +840,7 @@ class ClusterMaintenancePolicyArgs:
         return pulumi.get(self, "weekly_maintenance_windows")
 
     @weekly_maintenance_windows.setter
-    def weekly_maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
+    def weekly_maintenance_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
         pulumi.set(self, "weekly_maintenance_windows", value)
 
 
@@ -863,7 +863,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
     Required. Start time of the window in UTC time.
     Structure is documented below.
     """
-    duration: NotRequired[pulumi.Input[_builtins.str]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Duration of the maintenance window.
@@ -877,7 +877,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs:
     def __init__(__self__, *,
                  day: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'],
-                 duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] day: Required. The day of week that maintenance updates occur.
                - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
@@ -938,7 +938,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Duration of the maintenance window.
@@ -949,25 +949,25 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
 
 class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     An API may choose to allow the value "24:00:00" for scenarios like business closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59.
     An API may allow the value 60 if it allows leap-seconds.
@@ -976,10 +976,10 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict
 @pulumi.input_type
 class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
                An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -999,7 +999,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -1007,36 +1007,36 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59.
         An API may allow the value 60 if it allows leap-seconds.
@@ -1044,19 +1044,19 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class ClusterMaintenanceScheduleArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The end time of any upcoming scheduled maintenance for this cluster.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    schedule_deadline_time: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_deadline_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The deadline that the maintenance schedule start time
@@ -1064,7 +1064,7 @@ class ClusterMaintenanceScheduleArgsDict(TypedDict):
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The start time of any upcoming scheduled maintenance for this cluster.
@@ -1075,9 +1075,9 @@ class ClusterMaintenanceScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterMaintenanceScheduleArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_deadline_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_deadline_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: (Output)
                Output only. The end time of any upcoming scheduled maintenance for this cluster.
@@ -1102,7 +1102,7 @@ class ClusterMaintenanceScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The end time of any upcoming scheduled maintenance for this cluster.
@@ -1112,12 +1112,12 @@ class ClusterMaintenanceScheduleArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleDeadlineTime")
-    def schedule_deadline_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_deadline_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The deadline that the maintenance schedule start time
@@ -1128,12 +1128,12 @@ class ClusterMaintenanceScheduleArgs:
         return pulumi.get(self, "schedule_deadline_time")
 
     @schedule_deadline_time.setter
-    def schedule_deadline_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_deadline_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_deadline_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The start time of any upcoming scheduled maintenance for this cluster.
@@ -1143,7 +1143,7 @@ class ClusterMaintenanceScheduleArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -1176,7 +1176,7 @@ class ClusterManagedBackupSourceArgs:
 
 
 class ClusterManagedServerCaArgsDict(TypedDict):
-    ca_certs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgsDict']]]]
+    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]]
     """
     (Output)
     The PEM encoded CA certificate chains for redis managed server authentication
@@ -1186,7 +1186,7 @@ class ClusterManagedServerCaArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterManagedServerCaArgs:
     def __init__(__self__, *,
-                 ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]] = None):
+                 ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]] ca_certs: (Output)
                The PEM encoded CA certificate chains for redis managed server authentication
@@ -1197,7 +1197,7 @@ class ClusterManagedServerCaArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCerts")
-    def ca_certs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]:
+    def ca_certs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]:
         """
         (Output)
         The PEM encoded CA certificate chains for redis managed server authentication
@@ -1206,12 +1206,12 @@ class ClusterManagedServerCaArgs:
         return pulumi.get(self, "ca_certs")
 
     @ca_certs.setter
-    def ca_certs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]):
+    def ca_certs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]):
         pulumi.set(self, "ca_certs", value)
 
 
 class ClusterManagedServerCaCaCertArgsDict(TypedDict):
-    certificates: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    certificates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     (Output)
     The certificates that form the CA chain, from leaf to root order
@@ -1220,7 +1220,7 @@ class ClusterManagedServerCaCaCertArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterManagedServerCaCaCertArgs:
     def __init__(__self__, *,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificates: (Output)
                The certificates that form the CA chain, from leaf to root order
@@ -1230,7 +1230,7 @@ class ClusterManagedServerCaCaCertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (Output)
         The certificates that form the CA chain, from leaf to root order
@@ -1238,17 +1238,17 @@ class ClusterManagedServerCaCaCertArgs:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificates", value)
 
 
 class ClusterPersistenceConfigArgsDict(TypedDict):
-    aof_config: NotRequired[pulumi.Input['ClusterPersistenceConfigAofConfigArgsDict']]
+    aof_config: NotRequired[pulumi.Input[Optional['ClusterPersistenceConfigAofConfigArgs']]]
     """
     AOF configuration. This field will be ignored if mode is not AOF.
     Structure is documented below.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
     - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
@@ -1256,7 +1256,7 @@ class ClusterPersistenceConfigArgsDict(TypedDict):
     - AOF: AOF based Persistence is enabled.
     Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
     """
-    rdb_config: NotRequired[pulumi.Input['ClusterPersistenceConfigRdbConfigArgsDict']]
+    rdb_config: NotRequired[pulumi.Input[Optional['ClusterPersistenceConfigRdbConfigArgs']]]
     """
     RDB configuration. This field will be ignored if mode is not RDB.
     Structure is documented below.
@@ -1265,9 +1265,9 @@ class ClusterPersistenceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterPersistenceConfigArgs:
     def __init__(__self__, *,
-                 aof_config: Optional[pulumi.Input['ClusterPersistenceConfigAofConfigArgs']] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdb_config: Optional[pulumi.Input['ClusterPersistenceConfigRdbConfigArgs']] = None):
+                 aof_config: pulumi.Input[Optional['ClusterPersistenceConfigAofConfigArgs']] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdb_config: pulumi.Input[Optional['ClusterPersistenceConfigRdbConfigArgs']] = None):
         """
         :param pulumi.Input['ClusterPersistenceConfigAofConfigArgs'] aof_config: AOF configuration. This field will be ignored if mode is not AOF.
                Structure is documented below.
@@ -1288,7 +1288,7 @@ class ClusterPersistenceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="aofConfig")
-    def aof_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigAofConfigArgs']]:
+    def aof_config(self) -> pulumi.Input[Optional['ClusterPersistenceConfigAofConfigArgs']]:
         """
         AOF configuration. This field will be ignored if mode is not AOF.
         Structure is documented below.
@@ -1296,12 +1296,12 @@ class ClusterPersistenceConfigArgs:
         return pulumi.get(self, "aof_config")
 
     @aof_config.setter
-    def aof_config(self, value: Optional[pulumi.Input['ClusterPersistenceConfigAofConfigArgs']]):
+    def aof_config(self, value: pulumi.Input[Optional['ClusterPersistenceConfigAofConfigArgs']]):
         pulumi.set(self, "aof_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
         - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
@@ -1312,12 +1312,12 @@ class ClusterPersistenceConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter(name="rdbConfig")
-    def rdb_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigRdbConfigArgs']]:
+    def rdb_config(self) -> pulumi.Input[Optional['ClusterPersistenceConfigRdbConfigArgs']]:
         """
         RDB configuration. This field will be ignored if mode is not RDB.
         Structure is documented below.
@@ -1325,12 +1325,12 @@ class ClusterPersistenceConfigArgs:
         return pulumi.get(self, "rdb_config")
 
     @rdb_config.setter
-    def rdb_config(self, value: Optional[pulumi.Input['ClusterPersistenceConfigRdbConfigArgs']]):
+    def rdb_config(self, value: pulumi.Input[Optional['ClusterPersistenceConfigRdbConfigArgs']]):
         pulumi.set(self, "rdb_config", value)
 
 
 class ClusterPersistenceConfigAofConfigArgsDict(TypedDict):
-    append_fsync: NotRequired[pulumi.Input[_builtins.str]]
+    append_fsync: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Available fsync modes.
     - NO - Do not explicitly call fsync(). Rely on OS defaults.
@@ -1342,7 +1342,7 @@ class ClusterPersistenceConfigAofConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterPersistenceConfigAofConfigArgs:
     def __init__(__self__, *,
-                 append_fsync: Optional[pulumi.Input[_builtins.str]] = None):
+                 append_fsync: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] append_fsync: Optional. Available fsync modes.
                - NO - Do not explicitly call fsync(). Rely on OS defaults.
@@ -1355,7 +1355,7 @@ class ClusterPersistenceConfigAofConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appendFsync")
-    def append_fsync(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def append_fsync(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Available fsync modes.
         - NO - Do not explicitly call fsync(). Rely on OS defaults.
@@ -1366,12 +1366,12 @@ class ClusterPersistenceConfigAofConfigArgs:
         return pulumi.get(self, "append_fsync")
 
     @append_fsync.setter
-    def append_fsync(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def append_fsync(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "append_fsync", value)
 
 
 class ClusterPersistenceConfigRdbConfigArgsDict(TypedDict):
-    rdb_snapshot_period: NotRequired[pulumi.Input[_builtins.str]]
+    rdb_snapshot_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Available snapshot periods for scheduling.
     - ONE_HOUR:	Snapshot every 1 hour.
@@ -1380,7 +1380,7 @@ class ClusterPersistenceConfigRdbConfigArgsDict(TypedDict):
     - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
     Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
     """
-    rdb_snapshot_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    rdb_snapshot_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time that the first snapshot was/will be attempted, and to which
     future snapshots will be aligned.
@@ -1390,8 +1390,8 @@ class ClusterPersistenceConfigRdbConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterPersistenceConfigRdbConfigArgs:
     def __init__(__self__, *,
-                 rdb_snapshot_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdb_snapshot_start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 rdb_snapshot_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdb_snapshot_start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rdb_snapshot_period: Optional. Available snapshot periods for scheduling.
                - ONE_HOUR:	Snapshot every 1 hour.
@@ -1410,7 +1410,7 @@ class ClusterPersistenceConfigRdbConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="rdbSnapshotPeriod")
-    def rdb_snapshot_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdb_snapshot_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Available snapshot periods for scheduling.
         - ONE_HOUR:	Snapshot every 1 hour.
@@ -1422,12 +1422,12 @@ class ClusterPersistenceConfigRdbConfigArgs:
         return pulumi.get(self, "rdb_snapshot_period")
 
     @rdb_snapshot_period.setter
-    def rdb_snapshot_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdb_snapshot_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdb_snapshot_period", value)
 
     @_builtins.property
     @pulumi.getter(name="rdbSnapshotStartTime")
-    def rdb_snapshot_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdb_snapshot_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time that the first snapshot was/will be attempted, and to which
         future snapshots will be aligned.
@@ -1436,7 +1436,7 @@ class ClusterPersistenceConfigRdbConfigArgs:
         return pulumi.get(self, "rdb_snapshot_start_time")
 
     @rdb_snapshot_start_time.setter
-    def rdb_snapshot_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdb_snapshot_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdb_snapshot_start_time", value)
 
 
@@ -1475,23 +1475,23 @@ class ClusterPscConfigArgs:
 
 
 class ClusterPscConnectionArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The IP allocated on the consumer network for the PSC forwarding rule.
     """
-    forwarding_rule: NotRequired[pulumi.Input[_builtins.str]]
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
     """
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The consumer projectId where the forwarding rule is created from.
     """
-    psc_connection_id: NotRequired[pulumi.Input[_builtins.str]]
+    psc_connection_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. The PSC connection id of the forwarding rule connected to the service attachment.
     """
@@ -1499,11 +1499,11 @@ class ClusterPscConnectionArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterPscConnectionArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
         :param pulumi.Input[_builtins.str] forwarding_rule: Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
@@ -1524,72 +1524,72 @@ class ClusterPscConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The IP allocated on the consumer network for the PSC forwarding rule.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRule")
-    def forwarding_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
         """
         return pulumi.get(self, "forwarding_rule")
 
     @forwarding_rule.setter
-    def forwarding_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The consumer projectId where the forwarding rule is created from.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionId")
-    def psc_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The PSC connection id of the forwarding rule connected to the service attachment.
         """
         return pulumi.get(self, "psc_connection_id")
 
     @psc_connection_id.setter
-    def psc_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_id", value)
 
 
 class ClusterPscServiceAttachmentArgsDict(TypedDict):
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Type of a PSC connection targeting this service attachment.
     """
-    service_attachment: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Service attachment URI which your self-created PscConnection should use as
@@ -1598,8 +1598,8 @@ class ClusterPscServiceAttachmentArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterPscServiceAttachmentArgs:
     def __init__(__self__, *,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_type: (Output)
                Type of a PSC connection targeting this service attachment.
@@ -1613,7 +1613,7 @@ class ClusterPscServiceAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Type of a PSC connection targeting this service attachment.
@@ -1621,12 +1621,12 @@ class ClusterPscServiceAttachmentArgs:
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Service attachment URI which your self-created PscConnection should use as
@@ -1634,12 +1634,12 @@ class ClusterPscServiceAttachmentArgs:
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
 class ClusterStateInfoArgsDict(TypedDict):
-    update_info: NotRequired[pulumi.Input['ClusterStateInfoUpdateInfoArgsDict']]
+    update_info: NotRequired[pulumi.Input[Optional['ClusterStateInfoUpdateInfoArgs']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1648,7 +1648,7 @@ class ClusterStateInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterStateInfoArgs:
     def __init__(__self__, *,
-                 update_info: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']] = None):
+                 update_info: pulumi.Input[Optional['ClusterStateInfoUpdateInfoArgs']] = None):
         """
         :param pulumi.Input['ClusterStateInfoUpdateInfoArgs'] update_info: A nested object resource.
                Structure is documented below.
@@ -1658,7 +1658,7 @@ class ClusterStateInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="updateInfo")
-    def update_info(self) -> Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']]:
+    def update_info(self) -> pulumi.Input[Optional['ClusterStateInfoUpdateInfoArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -1666,16 +1666,16 @@ class ClusterStateInfoArgs:
         return pulumi.get(self, "update_info")
 
     @update_info.setter
-    def update_info(self, value: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']]):
+    def update_info(self, value: pulumi.Input[Optional['ClusterStateInfoUpdateInfoArgs']]):
         pulumi.set(self, "update_info", value)
 
 
 class ClusterStateInfoUpdateInfoArgsDict(TypedDict):
-    target_replica_count: NotRequired[pulumi.Input[_builtins.int]]
+    target_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target number of replica nodes per shard.
     """
-    target_shard_count: NotRequired[pulumi.Input[_builtins.int]]
+    target_shard_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Target number of shards for redis cluster.
     """
@@ -1683,8 +1683,8 @@ class ClusterStateInfoUpdateInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterStateInfoUpdateInfoArgs:
     def __init__(__self__, *,
-                 target_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_shard_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 target_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_shard_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] target_replica_count: Target number of replica nodes per shard.
         :param pulumi.Input[_builtins.int] target_shard_count: Target number of shards for redis cluster.
@@ -1696,31 +1696,31 @@ class ClusterStateInfoUpdateInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="targetReplicaCount")
-    def target_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target number of replica nodes per shard.
         """
         return pulumi.get(self, "target_replica_count")
 
     @target_replica_count.setter
-    def target_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_replica_count", value)
 
     @_builtins.property
     @pulumi.getter(name="targetShardCount")
-    def target_shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Target number of shards for redis cluster.
         """
         return pulumi.get(self, "target_shard_count")
 
     @target_shard_count.setter
-    def target_shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_shard_count", value)
 
 
 class ClusterUserCreatedConnectionsClusterEndpointArgsDict(TypedDict):
-    connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict']]]]
+    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]]
     """
     Structure is documented below.
     """
@@ -1728,7 +1728,7 @@ class ClusterUserCreatedConnectionsClusterEndpointArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterUserCreatedConnectionsClusterEndpointArgs:
     def __init__(__self__, *,
-                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]] = None):
+                 connections: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]] connections: Structure is documented below.
         """
@@ -1737,19 +1737,19 @@ class ClusterUserCreatedConnectionsClusterEndpointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]:
+    def connections(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]):
+    def connections(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]):
         pulumi.set(self, "connections", value)
 
 
 class ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict(TypedDict):
-    psc_connection: NotRequired[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDict']]
+    psc_connection: NotRequired[pulumi.Input[Optional['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]]
     """
     Detailed information of a PSC connection that is created by the customer
     who owns the cluster.
@@ -1759,7 +1759,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterUserCreatedConnectionsClusterEndpointConnectionArgs:
     def __init__(__self__, *,
-                 psc_connection: Optional[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']] = None):
+                 psc_connection: pulumi.Input[Optional['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']] = None):
         """
         :param pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs'] psc_connection: Detailed information of a PSC connection that is created by the customer
                who owns the cluster.
@@ -1770,7 +1770,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="pscConnection")
-    def psc_connection(self) -> Optional[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]:
+    def psc_connection(self) -> pulumi.Input[Optional['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]:
         """
         Detailed information of a PSC connection that is created by the customer
         who owns the cluster.
@@ -1779,7 +1779,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionArgs:
         return pulumi.get(self, "psc_connection")
 
     @psc_connection.setter
-    def psc_connection(self, value: Optional[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]):
+    def psc_connection(self, value: pulumi.Input[Optional['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]):
         pulumi.set(self, "psc_connection", value)
 
 
@@ -1808,7 +1808,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDic
     """
     The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
     """
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. Type of a PSC Connection.
@@ -1817,11 +1817,11 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDic
     CONNECTION_TYPE_PRIMARY
     CONNECTION_TYPE_READER
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consumer project_id where the forwarding rule is created from.
     """
-    psc_connection_status: NotRequired[pulumi.Input[_builtins.str]]
+    psc_connection_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
@@ -1838,9 +1838,9 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs:
                  network: pulumi.Input[_builtins.str],
                  psc_connection_id: pulumi.Input[_builtins.str],
                  service_attachment: pulumi.Input[_builtins.str],
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 psc_connection_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_connection_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IP allocated on the consumer network for the PSC forwarding rule.
         :param pulumi.Input[_builtins.str] forwarding_rule: The URI of the consumer side forwarding rule.
@@ -1942,7 +1942,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. Type of a PSC Connection.
@@ -1954,24 +1954,24 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs:
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consumer project_id where the forwarding rule is created from.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pscConnectionStatus")
-    def psc_connection_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psc_connection_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
@@ -1982,18 +1982,18 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs:
         return pulumi.get(self, "psc_connection_status")
 
     @psc_connection_status.setter
-    def psc_connection_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psc_connection_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psc_connection_status", value)
 
 
 class ClusterZoneDistributionConfigArgsDict(TypedDict):
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Immutable. The mode for zone distribution for Memorystore Redis cluster.
     If not provided, MULTI_ZONE will be used as default
     Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Immutable. The zone for single zone Memorystore Redis cluster.
     """
@@ -2001,8 +2001,8 @@ class ClusterZoneDistributionConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterZoneDistributionConfigArgs:
     def __init__(__self__, *,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] mode: Immutable. The mode for zone distribution for Memorystore Redis cluster.
                If not provided, MULTI_ZONE will be used as default
@@ -2016,7 +2016,7 @@ class ClusterZoneDistributionConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The mode for zone distribution for Memorystore Redis cluster.
         If not provided, MULTI_ZONE will be used as default
@@ -2025,44 +2025,44 @@ class ClusterZoneDistributionConfigArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The zone for single zone Memorystore Redis cluster.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 class InstanceMaintenancePolicyArgsDict(TypedDict):
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time when the policy was created.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Description of what this policy is for.
     Create/Update methods return INVALID_ARGUMENT if the
     length is greater than 512.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.str]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The time when the policy was last updated.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    weekly_maintenance_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]
+    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]]
     """
     Optional. Maintenance window that is applied to resources covered by this policy.
     Minimum 1. For the current version, the maximum number
@@ -2073,10 +2073,10 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMaintenancePolicyArgs:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_maintenance_windows: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] create_time: (Output)
                Output only. The time when the policy was created.
@@ -2105,7 +2105,7 @@ class InstanceMaintenancePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time when the policy was created.
@@ -2115,12 +2115,12 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Description of what this policy is for.
         Create/Update methods return INVALID_ARGUMENT if the
@@ -2129,12 +2129,12 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The time when the policy was last updated.
@@ -2144,12 +2144,12 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyMaintenanceWindows")
-    def weekly_maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
+    def weekly_maintenance_windows(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]:
         """
         Optional. Maintenance window that is applied to resources covered by this policy.
         Minimum 1. For the current version, the maximum number
@@ -2159,7 +2159,7 @@ class InstanceMaintenancePolicyArgs:
         return pulumi.get(self, "weekly_maintenance_windows")
 
     @weekly_maintenance_windows.setter
-    def weekly_maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
+    def weekly_maintenance_windows(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]):
         pulumi.set(self, "weekly_maintenance_windows", value)
 
 
@@ -2182,7 +2182,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
     Required. Start time of the window in UTC time.
     Structure is documented below.
     """
-    duration: NotRequired[pulumi.Input[_builtins.str]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Duration of the maintenance window.
@@ -2196,7 +2196,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
     def __init__(__self__, *,
                  day: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'],
-                 duration: Optional[pulumi.Input[_builtins.str]] = None):
+                 duration: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] day: Required. The day of week that maintenance updates occur.
                - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
@@ -2257,7 +2257,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Duration of the maintenance window.
@@ -2268,25 +2268,25 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
 
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDict):
-    hours: NotRequired[pulumi.Input[_builtins.int]]
+    hours: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hours of day in 24 hour format. Should be from 0 to 23.
     An API may choose to allow the value "24:00:00" for scenarios like business closing time.
     """
-    minutes: NotRequired[pulumi.Input[_builtins.int]]
+    minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minutes of hour of day. Must be from 0 to 59.
     """
-    nanos: NotRequired[pulumi.Input[_builtins.int]]
+    nanos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
     """
-    seconds: NotRequired[pulumi.Input[_builtins.int]]
+    seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Seconds of minutes of the time. Must normally be from 0 to 59.
     An API may allow the value 60 if it allows leap-seconds.
@@ -2295,10 +2295,10 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict(TypedDic
 @pulumi.input_type
 class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
     def __init__(__self__, *,
-                 hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 nanos: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 nanos: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] hours: Hours of day in 24 hour format. Should be from 0 to 23.
                An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -2318,7 +2318,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hours of day in 24 hour format. Should be from 0 to 23.
         An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -2326,36 +2326,36 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "hours")
 
     @hours.setter
-    def hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hours", value)
 
     @_builtins.property
     @pulumi.getter
-    def minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minutes of hour of day. Must be from 0 to 59.
         """
         return pulumi.get(self, "minutes")
 
     @minutes.setter
-    def minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nanos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nanos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
         """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
-    def nanos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nanos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nanos", value)
 
     @_builtins.property
     @pulumi.getter
-    def seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Seconds of minutes of the time. Must normally be from 0 to 59.
         An API may allow the value 60 if it allows leap-seconds.
@@ -2363,19 +2363,19 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs:
         return pulumi.get(self, "seconds")
 
     @seconds.setter
-    def seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds", value)
 
 
 class InstanceMaintenanceScheduleArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The end time of any upcoming scheduled maintenance for this instance.
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    schedule_deadline_time: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_deadline_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The deadline that the maintenance schedule start time
@@ -2383,7 +2383,7 @@ class InstanceMaintenanceScheduleArgsDict(TypedDict):
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The start time of any upcoming scheduled maintenance for this instance.
@@ -2394,9 +2394,9 @@ class InstanceMaintenanceScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMaintenanceScheduleArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_deadline_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_deadline_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: (Output)
                Output only. The end time of any upcoming scheduled maintenance for this instance.
@@ -2421,7 +2421,7 @@ class InstanceMaintenanceScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The end time of any upcoming scheduled maintenance for this instance.
@@ -2431,12 +2431,12 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleDeadlineTime")
-    def schedule_deadline_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_deadline_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The deadline that the maintenance schedule start time
@@ -2447,12 +2447,12 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "schedule_deadline_time")
 
     @schedule_deadline_time.setter
-    def schedule_deadline_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_deadline_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_deadline_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The start time of any upcoming scheduled maintenance for this instance.
@@ -2462,17 +2462,17 @@ class InstanceMaintenanceScheduleArgs:
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
 class InstanceNodeArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Node identifying string. e.g. 'node-0', 'node-1'
     """
-    zone: NotRequired[pulumi.Input[_builtins.str]]
+    zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Location of the node.
@@ -2481,8 +2481,8 @@ class InstanceNodeArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceNodeArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: (Output)
                Node identifying string. e.g. 'node-0', 'node-1'
@@ -2496,7 +2496,7 @@ class InstanceNodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Node identifying string. e.g. 'node-0', 'node-1'
@@ -2504,12 +2504,12 @@ class InstanceNodeArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Location of the node.
@@ -2517,19 +2517,19 @@ class InstanceNodeArgs:
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 class InstancePersistenceConfigArgsDict(TypedDict):
-    persistence_mode: NotRequired[pulumi.Input[_builtins.str]]
+    persistence_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
     - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
     - RDB: RDB based Persistence is enabled.
     Possible values are: `DISABLED`, `RDB`.
     """
-    rdb_next_snapshot_time: NotRequired[pulumi.Input[_builtins.str]]
+    rdb_next_snapshot_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The next time that a snapshot attempt is scheduled to occur.
@@ -2537,7 +2537,7 @@ class InstancePersistenceConfigArgsDict(TypedDict):
     to nine fractional digits.
     Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
     """
-    rdb_snapshot_period: NotRequired[pulumi.Input[_builtins.str]]
+    rdb_snapshot_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Available snapshot periods for scheduling.
     - ONE_HOUR:	Snapshot every 1 hour.
@@ -2546,7 +2546,7 @@ class InstancePersistenceConfigArgsDict(TypedDict):
     - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
     Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
     """
-    rdb_snapshot_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    rdb_snapshot_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Date and time that the first snapshot was/will be attempted,
     and to which future snapshots will be aligned. If not provided,
@@ -2559,10 +2559,10 @@ class InstancePersistenceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePersistenceConfigArgs:
     def __init__(__self__, *,
-                 persistence_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdb_next_snapshot_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdb_snapshot_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdb_snapshot_start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 persistence_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdb_next_snapshot_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdb_snapshot_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdb_snapshot_start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
                - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
@@ -2597,7 +2597,7 @@ class InstancePersistenceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="persistenceMode")
-    def persistence_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def persistence_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
         - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
@@ -2607,12 +2607,12 @@ class InstancePersistenceConfigArgs:
         return pulumi.get(self, "persistence_mode")
 
     @persistence_mode.setter
-    def persistence_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def persistence_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "persistence_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="rdbNextSnapshotTime")
-    def rdb_next_snapshot_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdb_next_snapshot_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The next time that a snapshot attempt is scheduled to occur.
@@ -2623,12 +2623,12 @@ class InstancePersistenceConfigArgs:
         return pulumi.get(self, "rdb_next_snapshot_time")
 
     @rdb_next_snapshot_time.setter
-    def rdb_next_snapshot_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdb_next_snapshot_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdb_next_snapshot_time", value)
 
     @_builtins.property
     @pulumi.getter(name="rdbSnapshotPeriod")
-    def rdb_snapshot_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdb_snapshot_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Available snapshot periods for scheduling.
         - ONE_HOUR:	Snapshot every 1 hour.
@@ -2640,12 +2640,12 @@ class InstancePersistenceConfigArgs:
         return pulumi.get(self, "rdb_snapshot_period")
 
     @rdb_snapshot_period.setter
-    def rdb_snapshot_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdb_snapshot_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdb_snapshot_period", value)
 
     @_builtins.property
     @pulumi.getter(name="rdbSnapshotStartTime")
-    def rdb_snapshot_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdb_snapshot_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Date and time that the first snapshot was/will be attempted,
         and to which future snapshots will be aligned. If not provided,
@@ -2657,32 +2657,32 @@ class InstancePersistenceConfigArgs:
         return pulumi.get(self, "rdb_snapshot_start_time")
 
     @rdb_snapshot_start_time.setter
-    def rdb_snapshot_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdb_snapshot_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdb_snapshot_start_time", value)
 
 
 class InstanceServerCaCertArgsDict(TypedDict):
-    cert: NotRequired[pulumi.Input[_builtins.str]]
+    cert: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The certificate data in PEM format.
     """
-    create_time: NotRequired[pulumi.Input[_builtins.str]]
+    create_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the certificate was created.
     """
-    expire_time: NotRequired[pulumi.Input[_builtins.str]]
+    expire_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The time when the certificate expires.
     """
-    serial_number: NotRequired[pulumi.Input[_builtins.str]]
+    serial_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Serial number, as extracted from the certificate.
     """
-    sha1_fingerprint: NotRequired[pulumi.Input[_builtins.str]]
+    sha1_fingerprint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Sha1 Fingerprint of the certificate.
@@ -2691,11 +2691,11 @@ class InstanceServerCaCertArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceServerCaCertArgs:
     def __init__(__self__, *,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 serial_number: Optional[pulumi.Input[_builtins.str]] = None,
-                 sha1_fingerprint: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 serial_number: pulumi.Input[Optional[_builtins.str]] = None,
+                 sha1_fingerprint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cert: (Output)
                The certificate data in PEM format.
@@ -2721,7 +2721,7 @@ class InstanceServerCaCertArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The certificate data in PEM format.
@@ -2729,12 +2729,12 @@ class InstanceServerCaCertArgs:
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the certificate was created.
@@ -2742,12 +2742,12 @@ class InstanceServerCaCertArgs:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The time when the certificate expires.
@@ -2755,12 +2755,12 @@ class InstanceServerCaCertArgs:
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial_number(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Serial number, as extracted from the certificate.
@@ -2768,12 +2768,12 @@ class InstanceServerCaCertArgs:
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
-    def serial_number(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial_number(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serial_number", value)
 
     @_builtins.property
     @pulumi.getter(name="sha1Fingerprint")
-    def sha1_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sha1_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Sha1 Fingerprint of the certificate.
@@ -2781,7 +2781,7 @@ class InstanceServerCaCertArgs:
         return pulumi.get(self, "sha1_fingerprint")
 
     @sha1_fingerprint.setter
-    def sha1_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sha1_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sha1_fingerprint", value)
 
 

@@ -21,12 +21,12 @@ __all__ = ['EnvironmentArgs', 'Environment']
 @pulumi.input_type
 class EnvironmentArgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArgs']] = None):
+                 config: pulumi.Input[Optional['EnvironmentConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config: pulumi.Input[Optional['EnvironmentStorageConfigArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -55,19 +55,19 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['EnvironmentConfigArgs']]:
         """
         Configuration parameters for this environment.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['EnvironmentConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 
@@ -77,69 +77,69 @@ class EnvironmentArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location or Compute Engine region for the environment.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfig")
-    def storage_config(self) -> Optional[pulumi.Input['EnvironmentStorageConfigArgs']]:
+    def storage_config(self) -> pulumi.Input[Optional['EnvironmentStorageConfigArgs']]:
         """
         Configuration options for storage used by Composer environment.
         """
         return pulumi.get(self, "storage_config")
 
     @storage_config.setter
-    def storage_config(self, value: Optional[pulumi.Input['EnvironmentStorageConfigArgs']]):
+    def storage_config(self, value: pulumi.Input[Optional['EnvironmentStorageConfigArgs']]):
         pulumi.set(self, "storage_config", value)
 
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config: Optional[pulumi.Input['EnvironmentStorageConfigArgs']] = None):
+                 config: pulumi.Input[Optional['EnvironmentConfigArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config: pulumi.Input[Optional['EnvironmentStorageConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
@@ -174,31 +174,31 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['EnvironmentConfigArgs']]:
         """
         Configuration parameters for this environment.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['EnvironmentConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
 
@@ -208,67 +208,67 @@ class _EnvironmentState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location or Compute Engine region for the environment.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfig")
-    def storage_config(self) -> Optional[pulumi.Input['EnvironmentStorageConfigArgs']]:
+    def storage_config(self) -> pulumi.Input[Optional['EnvironmentStorageConfigArgs']]:
         """
         Configuration options for storage used by Composer environment.
         """
         return pulumi.get(self, "storage_config")
 
     @storage_config.setter
-    def storage_config(self, value: Optional[pulumi.Input['EnvironmentStorageConfigArgs']]):
+    def storage_config(self, value: pulumi.Input[Optional['EnvironmentStorageConfigArgs']]):
         pulumi.set(self, "storage_config", value)
 
 
@@ -278,12 +278,12 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config: Optional[pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
                  __props__=None):
         """
         An environment for running orchestration tasks.
@@ -405,30 +405,30 @@ class Environment(pulumi.CustomResource):
                 "workloads_config": {
                     "scheduler": {
                         "cpu": 0.5,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                         "count": 1,
                     },
                     "triggerer": {
                         "cpu": 0.5,
-                        "memory_gb": 1,
+                        "memory_gb": float(1),
                         "count": 1,
                     },
                     "dag_processor": {
-                        "cpu": 1,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "cpu": float(1),
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                         "count": 1,
                     },
                     "web_server": {
                         "cpu": 0.5,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                     },
                     "worker": {
                         "cpu": 0.5,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                         "min_count": 1,
                         "max_count": 3,
                     },
@@ -472,18 +472,18 @@ class Environment(pulumi.CustomResource):
                     "scheduler": {
                         "cpu": 0.5,
                         "memory_gb": 1.875,
-                        "storage_gb": 1,
+                        "storage_gb": float(1),
                         "count": 1,
                     },
                     "web_server": {
                         "cpu": 0.5,
                         "memory_gb": 1.875,
-                        "storage_gb": 1,
+                        "storage_gb": float(1),
                     },
                     "worker": {
                         "cpu": 0.5,
                         "memory_gb": 1.875,
-                        "storage_gb": 1,
+                        "storage_gb": float(1),
                         "min_count": 1,
                         "max_count": 3,
                     },
@@ -598,7 +598,7 @@ class Environment(pulumi.CustomResource):
             region="us-central1",
             config={
                 "node_config": {
-                    "composer_network_attachment": projects / example_project / regions / us_central1 / network_attachments / example_network_attachment,
+                    "composer_network_attachment": str(float(projects) / float(example_project) / float(regions) / float(us_central1) / float(network_attachments) / float(example_network_attachment)),
                 },
             })
         ```
@@ -985,30 +985,30 @@ class Environment(pulumi.CustomResource):
                 "workloads_config": {
                     "scheduler": {
                         "cpu": 0.5,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                         "count": 1,
                     },
                     "triggerer": {
                         "cpu": 0.5,
-                        "memory_gb": 1,
+                        "memory_gb": float(1),
                         "count": 1,
                     },
                     "dag_processor": {
-                        "cpu": 1,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "cpu": float(1),
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                         "count": 1,
                     },
                     "web_server": {
                         "cpu": 0.5,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                     },
                     "worker": {
                         "cpu": 0.5,
-                        "memory_gb": 2,
-                        "storage_gb": 1,
+                        "memory_gb": float(2),
+                        "storage_gb": float(1),
                         "min_count": 1,
                         "max_count": 3,
                     },
@@ -1052,18 +1052,18 @@ class Environment(pulumi.CustomResource):
                     "scheduler": {
                         "cpu": 0.5,
                         "memory_gb": 1.875,
-                        "storage_gb": 1,
+                        "storage_gb": float(1),
                         "count": 1,
                     },
                     "web_server": {
                         "cpu": 0.5,
                         "memory_gb": 1.875,
-                        "storage_gb": 1,
+                        "storage_gb": float(1),
                     },
                     "worker": {
                         "cpu": 0.5,
                         "memory_gb": 1.875,
-                        "storage_gb": 1,
+                        "storage_gb": float(1),
                         "min_count": 1,
                         "max_count": 3,
                     },
@@ -1178,7 +1178,7 @@ class Environment(pulumi.CustomResource):
             region="us-central1",
             config={
                 "node_config": {
-                    "composer_network_attachment": projects / example_project / regions / us_central1 / network_attachments / example_network_attachment,
+                    "composer_network_attachment": str(float(projects) / float(example_project) / float(regions) / float(us_central1) / float(network_attachments) / float(example_network_attachment)),
                 },
             })
         ```
@@ -1442,12 +1442,12 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_config: Optional[pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1477,14 +1477,14 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_config: Optional[pulumi.Input[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None) -> 'Environment':
+            config: pulumi.Input[Optional[Union['EnvironmentConfigArgs', 'EnvironmentConfigArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_config: pulumi.Input[Optional[Union['EnvironmentStorageConfigArgs', 'EnvironmentStorageConfigArgsDict']]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

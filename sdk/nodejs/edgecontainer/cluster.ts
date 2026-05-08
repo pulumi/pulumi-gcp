@@ -322,50 +322,50 @@ export interface ClusterState {
      * RBAC policy that will be applied and managed by GEC.
      * Structure is documented below.
      */
-    authorization?: pulumi.Input<inputs.edgecontainer.ClusterAuthorization>;
+    authorization?: pulumi.Input<inputs.edgecontainer.ClusterAuthorization | undefined>;
     /**
      * The PEM-encoded public certificate of the cluster's CA.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    clusterCaCertificate?: pulumi.Input<string>;
+    clusterCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the cluster control plane.
      * Structure is documented below.
      */
-    controlPlane?: pulumi.Input<inputs.edgecontainer.ClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.edgecontainer.ClusterControlPlane | undefined>;
     /**
      * Remote control plane disk encryption options. This field is only used when
      * enabling CMEK support.
      * Structure is documented below.
      */
-    controlPlaneEncryption?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryption>;
+    controlPlaneEncryption?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryption | undefined>;
     /**
      * The control plane release version.
      */
-    controlPlaneVersion?: pulumi.Input<string>;
+    controlPlaneVersion?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The time when the maintenance event request was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The default maximum number of pods per node used if a maximum value is not
      * specified explicitly for a node pool in this cluster. If unspecified, the
      * Kubernetes default value will be used.
      */
-    defaultMaxPodsPerNode?: pulumi.Input<number>;
+    defaultMaxPodsPerNode?: pulumi.Input<number | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The IP address of the Kubernetes API server.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Address pools for cluster data plane external load balancing.
      */
-    externalLoadBalancerIpv4AddressPools?: pulumi.Input<pulumi.Input<string>[]>;
+    externalLoadBalancerIpv4AddressPools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -373,32 +373,32 @@ export interface ClusterState {
      * consistent policies across your systems.
      * Structure is documented below.
      */
-    fleet?: pulumi.Input<inputs.edgecontainer.ClusterFleet>;
+    fleet?: pulumi.Input<inputs.edgecontainer.ClusterFleet | undefined>;
     /**
      * User-defined labels for the edgecloud cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the resource.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * All the maintenance events scheduled for the cluster, including the ones
      * ongoing, planned for the future and done in the past (up to 90 days).
      * Structure is documented below.
      */
-    maintenanceEvents?: pulumi.Input<pulumi.Input<inputs.edgecontainer.ClusterMaintenanceEvent>[]>;
+    maintenanceEvents?: pulumi.Input<pulumi.Input<inputs.edgecontainer.ClusterMaintenanceEvent>[] | undefined>;
     /**
      * Cluster-wide maintenance policy configuration.
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicy | undefined>;
     /**
      * The GDCE cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -406,49 +406,49 @@ export interface ClusterState {
      * consistent policies across your systems.
      * Structure is documented below.
      */
-    networking?: pulumi.Input<inputs.edgecontainer.ClusterNetworking>;
+    networking?: pulumi.Input<inputs.edgecontainer.ClusterNetworking | undefined>;
     /**
      * The lowest release version among all worker nodes. This field can be empty
      * if the cluster does not have any worker nodes.
      */
-    nodeVersion?: pulumi.Input<string>;
+    nodeVersion?: pulumi.Input<string | undefined>;
     /**
      * The port number of the Kubernetes API server.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The release channel a cluster is subscribed to.
      * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
      */
-    releaseChannel?: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<string | undefined>;
     /**
      * Indicates the status of the cluster.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
      * Structure is documented below.
      */
-    systemAddonsConfig?: pulumi.Input<inputs.edgecontainer.ClusterSystemAddonsConfig>;
+    systemAddonsConfig?: pulumi.Input<inputs.edgecontainer.ClusterSystemAddonsConfig | undefined>;
     /**
      * The target cluster version. For example: "1.5.0".
      */
-    targetVersion?: pulumi.Input<string>;
+    targetVersion?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The time when the maintenance event message was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -464,23 +464,23 @@ export interface ClusterArgs {
      * The configuration of the cluster control plane.
      * Structure is documented below.
      */
-    controlPlane?: pulumi.Input<inputs.edgecontainer.ClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.edgecontainer.ClusterControlPlane | undefined>;
     /**
      * Remote control plane disk encryption options. This field is only used when
      * enabling CMEK support.
      * Structure is documented below.
      */
-    controlPlaneEncryption?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryption>;
+    controlPlaneEncryption?: pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryption | undefined>;
     /**
      * The default maximum number of pods per node used if a maximum value is not
      * specified explicitly for a node pool in this cluster. If unspecified, the
      * Kubernetes default value will be used.
      */
-    defaultMaxPodsPerNode?: pulumi.Input<number>;
+    defaultMaxPodsPerNode?: pulumi.Input<number | undefined>;
     /**
      * Address pools for cluster data plane external load balancing.
      */
-    externalLoadBalancerIpv4AddressPools?: pulumi.Input<pulumi.Input<string>[]>;
+    externalLoadBalancerIpv4AddressPools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -494,7 +494,7 @@ export interface ClusterArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the resource.
      */
@@ -503,11 +503,11 @@ export interface ClusterArgs {
      * Cluster-wide maintenance policy configuration.
      * Structure is documented below.
      */
-    maintenancePolicy?: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicy>;
+    maintenancePolicy?: pulumi.Input<inputs.edgecontainer.ClusterMaintenancePolicy | undefined>;
     /**
      * The GDCE cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Fleet related configuration.
      * Fleets are a Google Cloud concept for logically organizing clusters,
@@ -520,19 +520,19 @@ export interface ClusterArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The release channel a cluster is subscribed to.
      * Possible values are: `RELEASE_CHANNEL_UNSPECIFIED`, `NONE`, `REGULAR`.
      */
-    releaseChannel?: pulumi.Input<string>;
+    releaseChannel?: pulumi.Input<string | undefined>;
     /**
      * Config that customers are allowed to define for GDCE system add-ons.
      * Structure is documented below.
      */
-    systemAddonsConfig?: pulumi.Input<inputs.edgecontainer.ClusterSystemAddonsConfig>;
+    systemAddonsConfig?: pulumi.Input<inputs.edgecontainer.ClusterSystemAddonsConfig | undefined>;
     /**
      * The target cluster version. For example: "1.5.0".
      */
-    targetVersion?: pulumi.Input<string>;
+    targetVersion?: pulumi.Input<string | undefined>;
 }

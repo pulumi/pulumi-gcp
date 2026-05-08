@@ -214,16 +214,16 @@ export interface ConfigState {
     /**
      * Used for optimistic concurrency control when patching config.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Defines how Lineage should be ingested for this resource.
      * Structure is documented below.
      */
-    ingestion?: pulumi.Input<inputs.datalineage.ConfigIngestion>;
+    ingestion?: pulumi.Input<inputs.datalineage.ConfigIngestion | undefined>;
     /**
      * The region of the data lineage configuration for integration.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the config.
      * Format: organizations/{organization_id}/locations/{location}/config,
@@ -231,12 +231,12 @@ export interface ConfigState {
      * projects/{project_id}/locations/{location}/config,
      * or projects/{project_number}/locations/{location}/config.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent scope for the config.
      * Format: projects/{project-id|project-number} or folders/{folder-number} or organizations/{organization-number}.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }
 
 /**

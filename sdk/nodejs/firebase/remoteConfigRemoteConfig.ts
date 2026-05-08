@@ -189,12 +189,12 @@ export interface RemoteConfigRemoteConfigState {
      * The values of the condition names must be unique.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigCondition>[] | undefined>;
     /**
      * (Output)
      * Display name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Map of parameter group names to their descriptions and grouped parameters.
      * A group's name is mutable but must be unique among groups in the config.
@@ -208,18 +208,18 @@ export interface RemoteConfigRemoteConfigState {
      * search's layout and font.
      * Structure is documented below.
      */
-    parameterGroups?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameterGroup>[]>;
+    parameterGroups?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameterGroup>[] | undefined>;
     /**
      * Map of parameter keys to their optional default values and optional
      * conditional values.
      * Structure is documented below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameter>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Contains all metadata about a particular version of the Remote Config
      * template.
@@ -227,7 +227,7 @@ export interface RemoteConfigRemoteConfigState {
      * written.
      * Structure is documented below.
      */
-    versions?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigVersion>[]>;
+    versions?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigVersion>[] | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface RemoteConfigRemoteConfigArgs {
      * The values of the condition names must be unique.
      * Structure is documented below.
      */
-    conditions?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigCondition>[]>;
+    conditions?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigCondition>[] | undefined>;
     /**
      * Map of parameter group names to their descriptions and grouped parameters.
      * A group's name is mutable but must be unique among groups in the config.
@@ -253,16 +253,16 @@ export interface RemoteConfigRemoteConfigArgs {
      * search's layout and font.
      * Structure is documented below.
      */
-    parameterGroups?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameterGroup>[]>;
+    parameterGroups?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameterGroup>[] | undefined>;
     /**
      * Map of parameter keys to their optional default values and optional
      * conditional values.
      * Structure is documented below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.firebase.RemoteConfigRemoteConfigParameter>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

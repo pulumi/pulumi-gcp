@@ -194,9 +194,9 @@ def get_app_connection(name: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         type=pulumi.get(__ret__, 'type'))
-def get_app_connection_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                              project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_app_connection_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                              project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppConnectionResult]:
     """
     Get information about a Google BeyondCorp App Connection.

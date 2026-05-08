@@ -204,8 +204,8 @@ def get_account(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         unique_id=pulumi.get(__ret__, 'unique_id'))
-def get_account_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Get the service account from a project. For more information see

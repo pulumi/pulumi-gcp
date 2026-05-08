@@ -144,10 +144,10 @@ def get_account_jwt(delegates: Optional[Sequence[_builtins.str]] = None,
         jwt=pulumi.get(__ret__, 'jwt'),
         payload=pulumi.get(__ret__, 'payload'),
         target_service_account=pulumi.get(__ret__, 'target_service_account'))
-def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           expires_in: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                           payload: Optional[pulumi.Input[_builtins.str]] = None,
-                           target_service_account: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_jwt_output(delegates: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           expires_in: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                           payload: pulumi.Input[Optional[_builtins.str]] = None,
+                           target_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountJwtResult]:
     """
     This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.

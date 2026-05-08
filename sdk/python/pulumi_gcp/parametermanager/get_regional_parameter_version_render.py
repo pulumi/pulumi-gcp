@@ -182,10 +182,10 @@ def get_regional_parameter_version_render(location: Optional[_builtins.str] = No
         parameter_version_id=pulumi.get(__ret__, 'parameter_version_id'),
         project=pulumi.get(__ret__, 'project'),
         rendered_parameter_data=pulumi.get(__ret__, 'rendered_parameter_data'))
-def get_regional_parameter_version_render_output(location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 parameter: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 parameter_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regional_parameter_version_render_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 parameter: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 parameter_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalParameterVersionRenderResult]:
     """
     Get the value and metadata from a Parameter Manager Regional Parameter version with rendered payload data. For this datasource to work as expected, the principal of the parameter must be provided with the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/parameter-manager/docs/overview)  and [API](https://cloud.google.com/secret-manager/parameter-manager/docs/reference/rest/v1/projects.locations.parameters.versions/render).

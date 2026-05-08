@@ -370,11 +370,11 @@ export interface AspectTypeState {
     /**
      * The aspect type id of the aspect type.
      */
-    aspectTypeId?: pulumi.Input<string>;
+    aspectTypeId?: pulumi.Input<string | undefined>;
     /**
      * The time when the AspectType was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Classifies the data stored by the aspect.
      * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
@@ -382,61 +382,61 @@ export interface AspectTypeState {
      * <br><br>
      * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
      */
-    dataClassification?: pulumi.Input<string>;
+    dataClassification?: pulumi.Input<string | undefined>;
     /**
      * Description of the AspectType.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-defined labels for the AspectType.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where aspect type will be created in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * MetadataTemplate of the Aspect.
      */
-    metadataTemplate?: pulumi.Input<string>;
+    metadataTemplate?: pulumi.Input<string | undefined>;
     /**
      * The relative resource name of the AspectType, of the form: projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Denotes the transfer status of the Aspect Type. It is unspecified
      * for Aspect Type created from Dataplex API.
      */
-    transferStatus?: pulumi.Input<string>;
+    transferStatus?: pulumi.Input<string | undefined>;
     /**
      * System generated globally unique ID for the AspectType. This ID will be different if the AspectType is deleted and re-created with the same name.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The time when the AspectType was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -446,7 +446,7 @@ export interface AspectTypeArgs {
     /**
      * The aspect type id of the aspect type.
      */
-    aspectTypeId?: pulumi.Input<string>;
+    aspectTypeId?: pulumi.Input<string | undefined>;
     /**
      * Classifies the data stored by the aspect.
      * `DATA_CLASSIFICATION_UNSPECIFIED` denotes that the aspect contains only metadata
@@ -454,33 +454,33 @@ export interface AspectTypeArgs {
      * <br><br>
      * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
      */
-    dataClassification?: pulumi.Input<string>;
+    dataClassification?: pulumi.Input<string | undefined>;
     /**
      * Description of the AspectType.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User friendly display name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels for the AspectType.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location where aspect type will be created in.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * MetadataTemplate of the Aspect.
      */
-    metadataTemplate?: pulumi.Input<string>;
+    metadataTemplate?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

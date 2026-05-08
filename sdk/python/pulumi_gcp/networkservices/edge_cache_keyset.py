@@ -21,12 +21,12 @@ __all__ = ['EdgeCacheKeysetArgs', 'EdgeCacheKeyset']
 @pulumi.input_type
 class EdgeCacheKeysetArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
-                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
+                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None):
         """
         The set of arguments for constructing a EdgeCacheKeyset resource.
 
@@ -67,19 +67,19 @@ class EdgeCacheKeysetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -88,12 +88,12 @@ class EdgeCacheKeysetArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -102,12 +102,12 @@ class EdgeCacheKeysetArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -115,12 +115,12 @@ class EdgeCacheKeysetArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKeys")
-    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]:
+    def public_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]:
         """
         An ordered list of Ed25519 public keys to use for validating signed requests.
         You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
@@ -133,12 +133,12 @@ class EdgeCacheKeysetArgs:
         return pulumi.get(self, "public_keys")
 
     @public_keys.setter
-    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]):
+    def public_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]):
         pulumi.set(self, "public_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="validationSharedKeys")
-    def validation_shared_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]:
+    def validation_shared_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]:
         """
         An ordered list of shared keys to use for validating signed requests.
         Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
@@ -149,21 +149,21 @@ class EdgeCacheKeysetArgs:
         return pulumi.get(self, "validation_shared_keys")
 
     @validation_shared_keys.setter
-    def validation_shared_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]):
+    def validation_shared_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]):
         pulumi.set(self, "validation_shared_keys", value)
 
 
 @pulumi.input_type
 class _EdgeCacheKeysetState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]] = None):
         """
         Input properties used for looking up and filtering EdgeCacheKeyset resources.
 
@@ -211,31 +211,31 @@ class _EdgeCacheKeysetState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-readable description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the EdgeCache resource.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -244,12 +244,12 @@ class _EdgeCacheKeysetState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
@@ -258,12 +258,12 @@ class _EdgeCacheKeysetState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -271,12 +271,12 @@ class _EdgeCacheKeysetState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKeys")
-    def public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]:
+    def public_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]:
         """
         An ordered list of Ed25519 public keys to use for validating signed requests.
         You must specify `public_keys` or `validation_shared_keys` (or both). The keys in `public_keys` are checked first.
@@ -289,12 +289,12 @@ class _EdgeCacheKeysetState:
         return pulumi.get(self, "public_keys")
 
     @public_keys.setter
-    def public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]):
+    def public_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetPublicKeyArgs']]]]):
         pulumi.set(self, "public_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -302,12 +302,12 @@ class _EdgeCacheKeysetState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="validationSharedKeys")
-    def validation_shared_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]:
+    def validation_shared_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]:
         """
         An ordered list of shared keys to use for validating signed requests.
         Shared keys are secret.  Ensure that only authorized users can add `validation_shared_keys` to a keyset.
@@ -318,7 +318,7 @@ class _EdgeCacheKeysetState:
         return pulumi.get(self, "validation_shared_keys")
 
     @validation_shared_keys.setter
-    def validation_shared_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]):
+    def validation_shared_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheKeysetValidationSharedKeyArgs']]]]):
         pulumi.set(self, "validation_shared_keys", value)
 
 
@@ -328,12 +328,12 @@ class EdgeCacheKeyset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
-                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
+                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
                  __props__=None):
         """
         EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
@@ -528,12 +528,12 @@ class EdgeCacheKeyset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
-                 validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
+                 validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -563,14 +563,14 @@ class EdgeCacheKeyset(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            validation_shared_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None) -> 'EdgeCacheKeyset':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetPublicKeyArgs', 'EdgeCacheKeysetPublicKeyArgsDict']]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            validation_shared_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EdgeCacheKeysetValidationSharedKeyArgs', 'EdgeCacheKeysetValidationSharedKeyArgsDict']]]]] = None) -> 'EdgeCacheKeyset':
         """
         Get an existing EdgeCacheKeyset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

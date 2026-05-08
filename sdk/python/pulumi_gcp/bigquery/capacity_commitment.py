@@ -21,12 +21,12 @@ class CapacityCommitmentArgs:
     def __init__(__self__, *,
                  plan: pulumi.Input[_builtins.str],
                  slot_count: pulumi.Input[_builtins.int],
-                 capacity_commitment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_plan: Optional[pulumi.Input[_builtins.str]] = None):
+                 capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_plan: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CapacityCommitment resource.
 
@@ -85,7 +85,7 @@ class CapacityCommitmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="capacityCommitmentId")
-    def capacity_commitment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_commitment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
         empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
@@ -95,36 +95,36 @@ class CapacityCommitmentArgs:
         return pulumi.get(self, "capacity_commitment_id")
 
     @capacity_commitment_id.setter
-    def capacity_commitment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_commitment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_commitment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
-    def enforce_single_admin_project_per_org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforce_single_admin_project_per_org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If true, fail the request if another project in the organization has a capacity commitment.
         """
         return pulumi.get(self, "enforce_single_admin_project_per_org")
 
     @enforce_single_admin_project_per_org.setter
-    def enforce_single_admin_project_per_org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforce_single_admin_project_per_org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforce_single_admin_project_per_org", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the transfer config should reside.
         Examples: US, EU, asia-northeast1. The default value is US.
@@ -132,12 +132,12 @@ class CapacityCommitmentArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -145,37 +145,37 @@ class CapacityCommitmentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPlan")
-    def renewal_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 
     @renewal_plan.setter
-    def renewal_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_plan", value)
 
 
 @pulumi.input_type
 class _CapacityCommitmentState:
     def __init__(__self__, *,
-                 capacity_commitment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 commitment_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 commitment_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 slot_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 commitment_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 commitment_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 slot_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CapacityCommitment resources.
 
@@ -224,7 +224,7 @@ class _CapacityCommitmentState:
 
     @_builtins.property
     @pulumi.getter(name="capacityCommitmentId")
-    def capacity_commitment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_commitment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
         empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
@@ -234,60 +234,60 @@ class _CapacityCommitmentState:
         return pulumi.get(self, "capacity_commitment_id")
 
     @capacity_commitment_id.setter
-    def capacity_commitment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_commitment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_commitment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="commitmentEndTime")
-    def commitment_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commitment_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         """
         return pulumi.get(self, "commitment_end_time")
 
     @commitment_end_time.setter
-    def commitment_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commitment_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commitment_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="commitmentStartTime")
-    def commitment_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commitment_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         """
         return pulumi.get(self, "commitment_start_time")
 
     @commitment_start_time.setter
-    def commitment_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commitment_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commitment_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
-    def enforce_single_admin_project_per_org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enforce_single_admin_project_per_org(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If true, fail the request if another project in the organization has a capacity commitment.
         """
         return pulumi.get(self, "enforce_single_admin_project_per_org")
 
     @enforce_single_admin_project_per_org.setter
-    def enforce_single_admin_project_per_org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enforce_single_admin_project_per_org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enforce_single_admin_project_per_org", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The geographic location where the transfer config should reside.
         Examples: US, EU, asia-northeast1. The default value is US.
@@ -295,36 +295,36 @@ class _CapacityCommitmentState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         """
         return pulumi.get(self, "plan")
 
     @plan.setter
-    def plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -332,43 +332,43 @@ class _CapacityCommitmentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalPlan")
-    def renewal_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 
     @renewal_plan.setter
-    def renewal_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="slotCount")
-    def slot_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def slot_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of slots in this commitment.
         """
         return pulumi.get(self, "slot_count")
 
     @slot_count.setter
-    def slot_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def slot_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "slot_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the commitment
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -378,14 +378,14 @@ class CapacityCommitment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_commitment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 slot_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 slot_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Capacity commitment is a way to purchase compute capacity for BigQuery jobs (in the form of slots) with some committed period of usage. Annual commitments renew by default. Commitments can be removed after their commitment end time passes.
@@ -512,14 +512,14 @@ class CapacityCommitment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 capacity_commitment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 slot_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 slot_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -555,18 +555,18 @@ class CapacityCommitment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capacity_commitment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            commitment_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            commitment_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            edition: Optional[pulumi.Input[_builtins.str]] = None,
-            enforce_single_admin_project_per_org: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            plan: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_plan: Optional[pulumi.Input[_builtins.str]] = None,
-            slot_count: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'CapacityCommitment':
+            capacity_commitment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            commitment_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            commitment_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            enforce_single_admin_project_per_org: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            plan: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_plan: pulumi.Input[Optional[_builtins.str]] = None,
+            slot_count: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'CapacityCommitment':
         """
         Get an existing CapacityCommitment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

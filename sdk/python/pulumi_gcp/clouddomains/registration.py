@@ -25,12 +25,12 @@ class RegistrationArgs:
                  domain_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  yearly_price: pulumi.Input['RegistrationYearlyPriceArgs'],
-                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dns_settings: Optional[pulumi.Input['RegistrationDnsSettingsArgs']] = None,
-                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 management_settings: Optional[pulumi.Input['RegistrationManagementSettingsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dns_settings: pulumi.Input[Optional['RegistrationDnsSettingsArgs']] = None,
+                 domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 management_settings: pulumi.Input[Optional['RegistrationManagementSettingsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Registration resource.
 
@@ -123,19 +123,19 @@ class RegistrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="contactNotices")
-    def contact_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_notices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
         """
         return pulumi.get(self, "contact_notices")
 
     @contact_notices.setter
-    def contact_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_notices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_notices", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsSettings")
-    def dns_settings(self) -> Optional[pulumi.Input['RegistrationDnsSettingsArgs']]:
+    def dns_settings(self) -> pulumi.Input[Optional['RegistrationDnsSettingsArgs']]:
         """
         Settings controlling the DNS configuration of the Registration.
         Structure is documented below.
@@ -143,24 +143,24 @@ class RegistrationArgs:
         return pulumi.get(self, "dns_settings")
 
     @dns_settings.setter
-    def dns_settings(self, value: Optional[pulumi.Input['RegistrationDnsSettingsArgs']]):
+    def dns_settings(self, value: pulumi.Input[Optional['RegistrationDnsSettingsArgs']]):
         pulumi.set(self, "dns_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNotices")
-    def domain_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_notices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
         """
         return pulumi.get(self, "domain_notices")
 
     @domain_notices.setter
-    def domain_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_notices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_notices", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with the Registration.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -169,12 +169,12 @@ class RegistrationArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="managementSettings")
-    def management_settings(self) -> Optional[pulumi.Input['RegistrationManagementSettingsArgs']]:
+    def management_settings(self) -> pulumi.Input[Optional['RegistrationManagementSettingsArgs']]:
         """
         Settings for management of the Registration, including renewal, billing, and transfer
         Structure is documented below.
@@ -182,12 +182,12 @@ class RegistrationArgs:
         return pulumi.get(self, "management_settings")
 
     @management_settings.setter
-    def management_settings(self, value: Optional[pulumi.Input['RegistrationManagementSettingsArgs']]):
+    def management_settings(self, value: pulumi.Input[Optional['RegistrationManagementSettingsArgs']]):
         pulumi.set(self, "management_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -195,32 +195,32 @@ class RegistrationArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RegistrationState:
     def __init__(__self__, *,
-                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 contact_settings: Optional[pulumi.Input['RegistrationContactSettingsArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_settings: Optional[pulumi.Input['RegistrationDnsSettingsArgs']] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 issues: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 management_settings: Optional[pulumi.Input['RegistrationManagementSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 register_failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 supported_privacies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 yearly_price: Optional[pulumi.Input['RegistrationYearlyPriceArgs']] = None):
+                 contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 contact_settings: pulumi.Input[Optional['RegistrationContactSettingsArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_settings: pulumi.Input[Optional['RegistrationDnsSettingsArgs']] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 issues: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 management_settings: pulumi.Input[Optional['RegistrationManagementSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 register_failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_privacies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 yearly_price: pulumi.Input[Optional['RegistrationYearlyPriceArgs']] = None):
         """
         Input properties used for looking up and filtering Registration resources.
 
@@ -294,19 +294,19 @@ class _RegistrationState:
 
     @_builtins.property
     @pulumi.getter(name="contactNotices")
-    def contact_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_notices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
         """
         return pulumi.get(self, "contact_notices")
 
     @contact_notices.setter
-    def contact_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_notices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_notices", value)
 
     @_builtins.property
     @pulumi.getter(name="contactSettings")
-    def contact_settings(self) -> Optional[pulumi.Input['RegistrationContactSettingsArgs']]:
+    def contact_settings(self) -> pulumi.Input[Optional['RegistrationContactSettingsArgs']]:
         """
         Required. Settings for contact information linked to the Registration.
         Structure is documented below.
@@ -314,24 +314,24 @@ class _RegistrationState:
         return pulumi.get(self, "contact_settings")
 
     @contact_settings.setter
-    def contact_settings(self, value: Optional[pulumi.Input['RegistrationContactSettingsArgs']]):
+    def contact_settings(self, value: pulumi.Input[Optional['RegistrationContactSettingsArgs']]):
         pulumi.set(self, "contact_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Time at which the automation was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsSettings")
-    def dns_settings(self) -> Optional[pulumi.Input['RegistrationDnsSettingsArgs']]:
+    def dns_settings(self) -> pulumi.Input[Optional['RegistrationDnsSettingsArgs']]:
         """
         Settings controlling the DNS configuration of the Registration.
         Structure is documented below.
@@ -339,72 +339,72 @@ class _RegistrationState:
         return pulumi.get(self, "dns_settings")
 
     @dns_settings.setter
-    def dns_settings(self, value: Optional[pulumi.Input['RegistrationDnsSettingsArgs']]):
+    def dns_settings(self, value: pulumi.Input[Optional['RegistrationDnsSettingsArgs']]):
         pulumi.set(self, "dns_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. The domain name. Unicode domain names must be expressed in Punycode format.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNotices")
-    def domain_notices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domain_notices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
         """
         return pulumi.get(self, "domain_notices")
 
     @domain_notices.setter
-    def domain_notices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domain_notices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domain_notices", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Time at which the automation was updated.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def issues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def issues(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. The set of issues with the Registration that require attention.
         """
         return pulumi.get(self, "issues")
 
     @issues.setter
-    def issues(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def issues(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "issues", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of labels associated with the Registration.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -413,24 +413,24 @@ class _RegistrationState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="managementSettings")
-    def management_settings(self) -> Optional[pulumi.Input['RegistrationManagementSettingsArgs']]:
+    def management_settings(self) -> pulumi.Input[Optional['RegistrationManagementSettingsArgs']]:
         """
         Settings for management of the Registration, including renewal, billing, and transfer
         Structure is documented below.
@@ -438,24 +438,24 @@ class _RegistrationState:
         return pulumi.get(self, "management_settings")
 
     @management_settings.setter
-    def management_settings(self, value: Optional[pulumi.Input['RegistrationManagementSettingsArgs']]):
+    def management_settings(self, value: pulumi.Input[Optional['RegistrationManagementSettingsArgs']]):
         pulumi.set(self, "management_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/<domain_name>.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -463,12 +463,12 @@ class _RegistrationState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -476,48 +476,48 @@ class _RegistrationState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="registerFailureReason")
-    def register_failure_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def register_failure_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
         """
         return pulumi.get(self, "register_failure_reason")
 
     @register_failure_reason.setter
-    def register_failure_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def register_failure_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "register_failure_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The current state of the Registration.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedPrivacies")
-    def supported_privacies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_privacies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. Set of options for the contactSettings.privacy field that this Registration supports.
         """
         return pulumi.get(self, "supported_privacies")
 
     @supported_privacies.setter
-    def supported_privacies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_privacies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_privacies", value)
 
     @_builtins.property
     @pulumi.getter(name="yearlyPrice")
-    def yearly_price(self) -> Optional[pulumi.Input['RegistrationYearlyPriceArgs']]:
+    def yearly_price(self) -> pulumi.Input[Optional['RegistrationYearlyPriceArgs']]:
         """
         Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
         registrations.retrieveRegisterParameters or registrations.searchDomains calls.
@@ -526,7 +526,7 @@ class _RegistrationState:
         return pulumi.get(self, "yearly_price")
 
     @yearly_price.setter
-    def yearly_price(self, value: Optional[pulumi.Input['RegistrationYearlyPriceArgs']]):
+    def yearly_price(self, value: pulumi.Input[Optional['RegistrationYearlyPriceArgs']]):
         pulumi.set(self, "yearly_price", value)
 
 
@@ -536,16 +536,16 @@ class Registration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 contact_settings: Optional[pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
-                 dns_settings: Optional[pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 management_settings: Optional[pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
+                 contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
+                 dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
                  __props__=None):
         """
         Registers a new domain name and creates a corresponding Registration resource.
@@ -787,16 +787,16 @@ class Registration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 contact_settings: Optional[pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
-                 dns_settings: Optional[pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 management_settings: Optional[pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
+                 contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
+                 dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -845,25 +845,25 @@ class Registration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            contact_settings: Optional[pulumi.Input[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_settings: Optional[pulumi.Input[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            issues: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            management_settings: Optional[pulumi.Input[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            register_failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            supported_privacies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            yearly_price: Optional[pulumi.Input[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None) -> 'Registration':
+            contact_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            contact_settings: pulumi.Input[Optional[Union['RegistrationContactSettingsArgs', 'RegistrationContactSettingsArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_settings: pulumi.Input[Optional[Union['RegistrationDnsSettingsArgs', 'RegistrationDnsSettingsArgsDict']]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_notices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            issues: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            management_settings: pulumi.Input[Optional[Union['RegistrationManagementSettingsArgs', 'RegistrationManagementSettingsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            register_failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_privacies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            yearly_price: pulumi.Input[Optional[Union['RegistrationYearlyPriceArgs', 'RegistrationYearlyPriceArgsDict']]] = None) -> 'Registration':
         """
         Get an existing Registration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

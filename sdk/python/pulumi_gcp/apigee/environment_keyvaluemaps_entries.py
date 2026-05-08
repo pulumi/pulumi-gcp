@@ -21,7 +21,7 @@ class EnvironmentKeyvaluemapsEntriesArgs:
     def __init__(__self__, *,
                  env_keyvaluemap_id: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentKeyvaluemapsEntries resource.
 
@@ -62,23 +62,23 @@ class EnvironmentKeyvaluemapsEntriesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Resource URI that can be used to identify the scope of the key value map entries.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _EnvironmentKeyvaluemapsEntriesState:
     def __init__(__self__, *,
-                 env_keyvaluemap_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 env_keyvaluemap_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentKeyvaluemapsEntries resources.
 
@@ -96,7 +96,7 @@ class _EnvironmentKeyvaluemapsEntriesState:
 
     @_builtins.property
     @pulumi.getter(name="envKeyvaluemapId")
-    def env_keyvaluemap_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_keyvaluemap_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee environment keyvalumaps Id associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
@@ -104,31 +104,31 @@ class _EnvironmentKeyvaluemapsEntriesState:
         return pulumi.get(self, "env_keyvaluemap_id")
 
     @env_keyvaluemap_id.setter
-    def env_keyvaluemap_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_keyvaluemap_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_keyvaluemap_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Resource URI that can be used to identify the scope of the key value map entries.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Data or payload that is being retrieved and associated with the unique key.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -138,9 +138,9 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 env_keyvaluemap_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 env_keyvaluemap_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates key value entries in a key value map scoped to an environment.
@@ -336,9 +336,9 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 env_keyvaluemap_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 env_keyvaluemap_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -365,9 +365,9 @@ class EnvironmentKeyvaluemapsEntries(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            env_keyvaluemap_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvironmentKeyvaluemapsEntries':
+            env_keyvaluemap_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvironmentKeyvaluemapsEntries':
         """
         Get an existing EnvironmentKeyvaluemapsEntries resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

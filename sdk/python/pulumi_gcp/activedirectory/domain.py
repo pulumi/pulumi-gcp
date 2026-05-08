@@ -22,11 +22,11 @@ class DomainArgs:
                  domain_name: pulumi.Input[_builtins.str],
                  locations: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  reserved_ip_range: pulumi.Input[_builtins.str],
-                 admin: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
@@ -107,7 +107,7 @@ class DomainArgs:
 
     @_builtins.property
     @pulumi.getter
-    def admin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of delegated administrator account used to perform Active Directory operations.
         If not specified, setupadmin will be used.
@@ -115,12 +115,12 @@ class DomainArgs:
         return pulumi.get(self, "admin")
 
     @admin.setter
-    def admin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
         If CIDR subnets overlap between networks, domain creation will fail.
@@ -128,12 +128,12 @@ class DomainArgs:
         return pulumi.get(self, "authorized_networks")
 
     @authorized_networks.setter
-    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_networks", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the domain. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the domain,
@@ -145,12 +145,12 @@ class DomainArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels that can contain user-provided metadata
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -159,12 +159,12 @@ class DomainArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -172,25 +172,25 @@ class DomainArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 admin: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 admin: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
 
@@ -249,7 +249,7 @@ class _DomainState:
 
     @_builtins.property
     @pulumi.getter
-    def admin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of delegated administrator account used to perform Active Directory operations.
         If not specified, setupadmin will be used.
@@ -257,12 +257,12 @@ class _DomainState:
         return pulumi.get(self, "admin")
 
     @admin.setter
-    def admin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedNetworks")
-    def authorized_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_networks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The full names of the Google Compute Engine networks the domain instance is connected to. The domain is only available on networks listed in authorizedNetworks.
         If CIDR subnets overlap between networks, domain creation will fail.
@@ -270,12 +270,12 @@ class _DomainState:
         return pulumi.get(self, "authorized_networks")
 
     @authorized_networks.setter
-    def authorized_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_networks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_networks", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the domain. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the domain,
@@ -287,12 +287,12 @@ class _DomainState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
         of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
@@ -300,24 +300,24 @@ class _DomainState:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def fqdn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fqdn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified domain name of the exposed domain used by clients to connect to the service.
         Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -325,12 +325,12 @@ class _DomainState:
         return pulumi.get(self, "fqdn")
 
     @fqdn.setter
-    def fqdn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fqdn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fqdn", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource labels that can contain user-provided metadata
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -339,12 +339,12 @@ class _DomainState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
         e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -352,24 +352,24 @@ class _DomainState:
         return pulumi.get(self, "locations")
 
     @locations.setter
-    def locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "locations", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name of the domain using the format: `projects/{project}/locations/global/domains/{domainName}`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -377,12 +377,12 @@ class _DomainState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -390,12 +390,12 @@ class _DomainState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedIpRange")
-    def reserved_ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
         Ranges must be unique and non-overlapping with existing subnets in authorizedNetworks
@@ -403,7 +403,7 @@ class _DomainState:
         return pulumi.get(self, "reserved_ip_range")
 
     @reserved_ip_range.setter
-    def reserved_ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_ip_range", value)
 
 
@@ -413,14 +413,14 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a Microsoft AD domain
@@ -549,14 +549,14 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 admin: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -596,18 +596,18 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin: Optional[pulumi.Input[_builtins.str]] = None,
-            authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            fqdn: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reserved_ip_range: Optional[pulumi.Input[_builtins.str]] = None) -> 'Domain':
+            admin: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            fqdn: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reserved_ip_range: pulumi.Input[Optional[_builtins.str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

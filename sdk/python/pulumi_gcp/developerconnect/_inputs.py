@@ -127,22 +127,22 @@ class AccountConnectorCustomOauthConfigArgsDict(TypedDict):
     """
     The OAuth2 token request URL.
     """
-    pkce_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    pkce_disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Disable PKCE for this OAuth config. PKCE is enabled by default.
     """
-    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    server_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     SCM server version installed at the host URI.
     """
-    service_directory_config: NotRequired[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
     Structure is documented below.
     """
-    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SSL certificate to use for requests to a private service.
     """
@@ -157,10 +157,10 @@ class AccountConnectorCustomOauthConfigArgs:
                  scm_provider: pulumi.Input[_builtins.str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  token_uri: pulumi.Input[_builtins.str],
-                 pkce_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_config: Optional[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 pkce_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_uri: The OAuth2 authrization server URL.
         :param pulumi.Input[_builtins.str] client_id: The client ID of the OAuth application.
@@ -293,19 +293,19 @@ class AccountConnectorCustomOauthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="pkceDisabled")
-    def pkce_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pkce_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable PKCE for this OAuth config. PKCE is enabled by default.
         """
         return pulumi.get(self, "pkce_disabled")
 
     @pkce_disabled.setter
-    def pkce_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pkce_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pkce_disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         SCM server version installed at the host URI.
@@ -313,12 +313,12 @@ class AccountConnectorCustomOauthConfigArgs:
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]:
         """
         ServiceDirectoryConfig represents Service Directory configuration for a
         connection.
@@ -327,19 +327,19 @@ class AccountConnectorCustomOauthConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCaCertificate")
-    def ssl_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSL certificate to use for requests to a private service.
         """
         return pulumi.get(self, "ssl_ca_certificate")
 
     @ssl_ca_certificate.setter
-    def ssl_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca_certificate", value)
 
 
@@ -384,7 +384,7 @@ class AccountConnectorProviderOauthConfigArgsDict(TypedDict):
     In the event of changing scopes, user records under AccountConnector will
     be deleted and users will re-auth again.
     """
-    system_provider_id: NotRequired[pulumi.Input[_builtins.str]]
+    system_provider_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Possible values:
     GITHUB
@@ -401,7 +401,7 @@ class AccountConnectorProviderOauthConfigArgsDict(TypedDict):
 class AccountConnectorProviderOauthConfigArgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 system_provider_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 system_provider_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: User selected scopes to apply to the Oauth config
                In the event of changing scopes, user records under AccountConnector will
@@ -436,7 +436,7 @@ class AccountConnectorProviderOauthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="systemProviderId")
-    def system_provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         GITHUB
@@ -451,12 +451,12 @@ class AccountConnectorProviderOauthConfigArgs:
         return pulumi.get(self, "system_provider_id")
 
     @system_provider_id.setter
-    def system_provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_provider_id", value)
 
 
 class AccountConnectorProxyConfigArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Setting this to true allows the git and http proxies to perform actions on
     behalf of the user configured under the account connector.
@@ -465,7 +465,7 @@ class AccountConnectorProxyConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AccountConnectorProxyConfigArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Setting this to true allows the git and http proxies to perform actions on
                behalf of the user configured under the account connector.
@@ -475,7 +475,7 @@ class AccountConnectorProxyConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Setting this to true allows the git and http proxies to perform actions on
         behalf of the user configured under the account connector.
@@ -483,7 +483,7 @@ class AccountConnectorProxyConfigArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
@@ -597,7 +597,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict(TypedDict):
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -607,7 +607,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -635,7 +635,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -643,7 +643,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -654,7 +654,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict(TypedDict):
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -664,7 +664,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -692,7 +692,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -700,7 +700,7 @@ class ConnectionBitbucketCloudConfigReadAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -727,18 +727,18 @@ class ConnectionBitbucketDataCenterConfigArgsDict(TypedDict):
     events, formatted as `projects/*/secrets/*/versions/*`. This is used to
     validate webhooks.
     """
-    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    server_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
     Structure is documented below.
     """
-    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. SSL certificate authority to trust when making requests to Bitbucket Data
     Center.
@@ -751,9 +751,9 @@ class ConnectionBitbucketDataCenterConfigArgs:
                  host_uri: pulumi.Input[_builtins.str],
                  read_authorizer_credential: pulumi.Input['ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs'],
                  webhook_secret_secret_version: pulumi.Input[_builtins.str],
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs'] authorizer_credential: Represents a personal access token that authorized the Connection,
                and associated metadata.
@@ -840,7 +840,7 @@ class ConnectionBitbucketDataCenterConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
@@ -848,12 +848,12 @@ class ConnectionBitbucketDataCenterConfigArgs:
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]:
         """
         ServiceDirectoryConfig represents Service Directory configuration for a
         connection.
@@ -862,12 +862,12 @@ class ConnectionBitbucketDataCenterConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCaCertificate")
-    def ssl_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. SSL certificate authority to trust when making requests to Bitbucket Data
         Center.
@@ -875,7 +875,7 @@ class ConnectionBitbucketDataCenterConfigArgs:
         return pulumi.get(self, "ssl_ca_certificate")
 
     @ssl_ca_certificate.setter
-    def ssl_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca_certificate", value)
 
 
@@ -886,7 +886,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict(TypedDict)
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -896,7 +896,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgsDict(TypedDict)
 class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -924,7 +924,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -932,7 +932,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -943,7 +943,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict(TypedD
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -953,7 +953,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgsDict(TypedD
 class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -981,7 +981,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -989,7 +989,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1071,17 +1071,17 @@ class ConnectionGithubConfigArgsDict(TypedDict):
     DEVELOPER_CONNECT
     FIREBASE
     """
-    app_installation_id: NotRequired[pulumi.Input[_builtins.str]]
+    app_installation_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. GitHub App installation id.
     """
-    authorizer_credential: NotRequired[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgsDict']]
+    authorizer_credential: NotRequired[pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]]
     """
     Represents an OAuth token of the account that authorized the Connection,
     and associated metadata.
     Structure is documented below.
     """
-    installation_uri: NotRequired[pulumi.Input[_builtins.str]]
+    installation_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The URI to navigate to in order to manage the installation associated
@@ -1092,9 +1092,9 @@ class ConnectionGithubConfigArgsDict(TypedDict):
 class ConnectionGithubConfigArgs:
     def __init__(__self__, *,
                  github_app: pulumi.Input[_builtins.str],
-                 app_installation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorizer_credential: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']] = None,
-                 installation_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_installation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorizer_credential: pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']] = None,
+                 installation_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] github_app: Required. Immutable. The GitHub Application that was installed to the GitHub user or
                organization.
@@ -1137,19 +1137,19 @@ class ConnectionGithubConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appInstallationId")
-    def app_installation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_installation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. GitHub App installation id.
         """
         return pulumi.get(self, "app_installation_id")
 
     @app_installation_id.setter
-    def app_installation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_installation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_installation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizerCredential")
-    def authorizer_credential(self) -> Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]:
+    def authorizer_credential(self) -> pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]:
         """
         Represents an OAuth token of the account that authorized the Connection,
         and associated metadata.
@@ -1158,12 +1158,12 @@ class ConnectionGithubConfigArgs:
         return pulumi.get(self, "authorizer_credential")
 
     @authorizer_credential.setter
-    def authorizer_credential(self, value: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]):
+    def authorizer_credential(self, value: pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]):
         pulumi.set(self, "authorizer_credential", value)
 
     @_builtins.property
     @pulumi.getter(name="installationUri")
-    def installation_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installation_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The URI to navigate to in order to manage the installation associated
@@ -1172,7 +1172,7 @@ class ConnectionGithubConfigArgs:
         return pulumi.get(self, "installation_uri")
 
     @installation_uri.setter
-    def installation_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installation_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installation_uri", value)
 
 
@@ -1182,7 +1182,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
     Required. A SecretManager resource containing the OAuth token that authorizes
     the connection. Format: `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -1192,7 +1192,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionGithubConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  oauth_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] oauth_token_secret_version: Required. A SecretManager resource containing the OAuth token that authorizes
                the connection. Format: `projects/*/secrets/*/versions/*`.
@@ -1218,7 +1218,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -1226,7 +1226,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1235,46 +1235,46 @@ class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
     """
     Required. The URI of the GitHub Enterprise host this connection is for.
     """
-    app_id: NotRequired[pulumi.Input[_builtins.str]]
+    app_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. ID of the GitHub App created from the manifest.
     """
-    app_installation_id: NotRequired[pulumi.Input[_builtins.str]]
+    app_installation_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. ID of the installation of the GitHub App.
     """
-    app_slug: NotRequired[pulumi.Input[_builtins.str]]
+    app_slug: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The URL-friendly name of the GitHub App.
     """
-    installation_uri: NotRequired[pulumi.Input[_builtins.str]]
+    installation_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The URI to navigate to in order to manage the installation associated
     with this GitHubEnterpriseConfig.
     """
-    private_key_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    private_key_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. SecretManager resource containing the private key of the GitHub App,
     formatted as `projects/*/secrets/*/versions/*`.
     """
-    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    server_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. GitHub Enterprise version installed at the host_uri.
     """
-    service_directory_config: NotRequired[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
     Structure is documented below.
     """
-    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. SSL certificate to use for requests to GitHub Enterprise.
     """
-    webhook_secret_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    webhook_secret_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. SecretManager resource containing the webhook secret of the GitHub App,
     formatted as `projects/*/secrets/*/versions/*`.
@@ -1284,15 +1284,15 @@ class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
 class ConnectionGithubEnterpriseConfigArgs:
     def __init__(__self__, *,
                  host_uri: pulumi.Input[_builtins.str],
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_installation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_slug: Optional[pulumi.Input[_builtins.str]] = None,
-                 installation_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_secret_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_secret_secret_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_installation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_slug: pulumi.Input[Optional[_builtins.str]] = None,
+                 installation_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_secret_secret_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host_uri: Required. The URI of the GitHub Enterprise host this connection is for.
         :param pulumi.Input[_builtins.str] app_id: Optional. ID of the GitHub App created from the manifest.
@@ -1347,31 +1347,31 @@ class ConnectionGithubEnterpriseConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. ID of the GitHub App created from the manifest.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appInstallationId")
-    def app_installation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_installation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. ID of the installation of the GitHub App.
         """
         return pulumi.get(self, "app_installation_id")
 
     @app_installation_id.setter
-    def app_installation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_installation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_installation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appSlug")
-    def app_slug(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_slug(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The URL-friendly name of the GitHub App.
@@ -1379,12 +1379,12 @@ class ConnectionGithubEnterpriseConfigArgs:
         return pulumi.get(self, "app_slug")
 
     @app_slug.setter
-    def app_slug(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_slug(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_slug", value)
 
     @_builtins.property
     @pulumi.getter(name="installationUri")
-    def installation_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installation_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The URI to navigate to in order to manage the installation associated
@@ -1393,12 +1393,12 @@ class ConnectionGithubEnterpriseConfigArgs:
         return pulumi.get(self, "installation_uri")
 
     @installation_uri.setter
-    def installation_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installation_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installation_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeySecretVersion")
-    def private_key_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. SecretManager resource containing the private key of the GitHub App,
         formatted as `projects/*/secrets/*/versions/*`.
@@ -1406,12 +1406,12 @@ class ConnectionGithubEnterpriseConfigArgs:
         return pulumi.get(self, "private_key_secret_version")
 
     @private_key_secret_version.setter
-    def private_key_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_secret_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. GitHub Enterprise version installed at the host_uri.
@@ -1419,12 +1419,12 @@ class ConnectionGithubEnterpriseConfigArgs:
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]:
         """
         ServiceDirectoryConfig represents Service Directory configuration for a
         connection.
@@ -1433,24 +1433,24 @@ class ConnectionGithubEnterpriseConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCaCertificate")
-    def ssl_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. SSL certificate to use for requests to GitHub Enterprise.
         """
         return pulumi.get(self, "ssl_ca_certificate")
 
     @ssl_ca_certificate.setter
-    def ssl_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookSecretSecretVersion")
-    def webhook_secret_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook_secret_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. SecretManager resource containing the webhook secret of the GitHub App,
         formatted as `projects/*/secrets/*/versions/*`.
@@ -1458,7 +1458,7 @@ class ConnectionGithubEnterpriseConfigArgs:
         return pulumi.get(self, "webhook_secret_secret_version")
 
     @webhook_secret_secret_version.setter
-    def webhook_secret_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook_secret_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook_secret_secret_version", value)
 
 
@@ -1587,7 +1587,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgsDict(TypedDict):
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -1597,7 +1597,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionGitlabConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -1625,7 +1625,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -1633,7 +1633,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1644,7 +1644,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgsDict(TypedDict):
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -1654,7 +1654,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -1682,7 +1682,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -1690,7 +1690,7 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1717,18 +1717,18 @@ class ConnectionGitlabEnterpriseConfigArgsDict(TypedDict):
     formatted as `projects/*/secrets/*/versions/*`. This is used to validate
     webhooks.
     """
-    server_version: NotRequired[pulumi.Input[_builtins.str]]
+    server_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Version of the GitLab Enterprise server running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
     Structure is documented below.
     """
-    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. SSL Certificate Authority certificate to use for requests to GitLab
     Enterprise instance.
@@ -1741,9 +1741,9 @@ class ConnectionGitlabEnterpriseConfigArgs:
                  host_uri: pulumi.Input[_builtins.str],
                  read_authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs'],
                  webhook_secret_secret_version: pulumi.Input[_builtins.str],
-                 server_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 server_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs'] authorizer_credential: Represents a personal access token that authorized the Connection,
                and associated metadata.
@@ -1830,7 +1830,7 @@ class ConnectionGitlabEnterpriseConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="serverVersion")
-    def server_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Version of the GitLab Enterprise server running on the `host_uri`.
@@ -1838,12 +1838,12 @@ class ConnectionGitlabEnterpriseConfigArgs:
         return pulumi.get(self, "server_version")
 
     @server_version.setter
-    def server_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_version", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]:
         """
         ServiceDirectoryConfig represents Service Directory configuration for a
         connection.
@@ -1852,12 +1852,12 @@ class ConnectionGitlabEnterpriseConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCaCertificate")
-    def ssl_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. SSL Certificate Authority certificate to use for requests to GitLab
         Enterprise instance.
@@ -1865,7 +1865,7 @@ class ConnectionGitlabEnterpriseConfigArgs:
         return pulumi.get(self, "ssl_ca_certificate")
 
     @ssl_ca_certificate.setter
-    def ssl_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca_certificate", value)
 
 
@@ -1876,7 +1876,7 @@ class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict(TypedDict):
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -1886,7 +1886,7 @@ class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict(TypedDict):
 class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -1914,7 +1914,7 @@ class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -1922,7 +1922,7 @@ class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -1933,7 +1933,7 @@ class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict(TypedDict
     the Developer Connect connection. Format:
     `projects/*/secrets/*/versions/*`.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The username associated with this token.
@@ -1943,7 +1943,7 @@ class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict(TypedDict
 class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs:
     def __init__(__self__, *,
                  user_token_secret_version: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
                the Developer Connect connection. Format:
@@ -1971,7 +1971,7 @@ class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The username associated with this token.
@@ -1979,7 +1979,7 @@ class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -2022,23 +2022,23 @@ class ConnectionHttpConfigArgsDict(TypedDict):
     """
     The service provider's https endpoint.
     """
-    basic_authentication: NotRequired[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgsDict']]
+    basic_authentication: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigBasicAuthenticationArgs']]]
     """
     Basic authentication with username and password.
     Structure is documented below.
     """
-    bearer_token_authentication: NotRequired[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgsDict']]
+    bearer_token_authentication: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigBearerTokenAuthenticationArgs']]]
     """
     Bearer token authentication with a token.
     Structure is documented below.
     """
-    service_directory_config: NotRequired[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgsDict']]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigServiceDirectoryConfigArgs']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
     Structure is documented below.
     """
-    ssl_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_ca_certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SSL certificate to use for requests to the HTTP service provider.
     """
@@ -2047,10 +2047,10 @@ class ConnectionHttpConfigArgsDict(TypedDict):
 class ConnectionHttpConfigArgs:
     def __init__(__self__, *,
                  host_uri: pulumi.Input[_builtins.str],
-                 basic_authentication: Optional[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs']] = None,
-                 bearer_token_authentication: Optional[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgs']] = None,
-                 service_directory_config: Optional[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgs']] = None,
-                 ssl_ca_certificate: Optional[pulumi.Input[_builtins.str]] = None):
+                 basic_authentication: pulumi.Input[Optional['ConnectionHttpConfigBasicAuthenticationArgs']] = None,
+                 bearer_token_authentication: pulumi.Input[Optional['ConnectionHttpConfigBearerTokenAuthenticationArgs']] = None,
+                 service_directory_config: pulumi.Input[Optional['ConnectionHttpConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host_uri: The service provider's https endpoint.
         :param pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs'] basic_authentication: Basic authentication with username and password.
@@ -2086,7 +2086,7 @@ class ConnectionHttpConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicAuthentication")
-    def basic_authentication(self) -> Optional[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs']]:
+    def basic_authentication(self) -> pulumi.Input[Optional['ConnectionHttpConfigBasicAuthenticationArgs']]:
         """
         Basic authentication with username and password.
         Structure is documented below.
@@ -2094,12 +2094,12 @@ class ConnectionHttpConfigArgs:
         return pulumi.get(self, "basic_authentication")
 
     @basic_authentication.setter
-    def basic_authentication(self, value: Optional[pulumi.Input['ConnectionHttpConfigBasicAuthenticationArgs']]):
+    def basic_authentication(self, value: pulumi.Input[Optional['ConnectionHttpConfigBasicAuthenticationArgs']]):
         pulumi.set(self, "basic_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="bearerTokenAuthentication")
-    def bearer_token_authentication(self) -> Optional[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgs']]:
+    def bearer_token_authentication(self) -> pulumi.Input[Optional['ConnectionHttpConfigBearerTokenAuthenticationArgs']]:
         """
         Bearer token authentication with a token.
         Structure is documented below.
@@ -2107,12 +2107,12 @@ class ConnectionHttpConfigArgs:
         return pulumi.get(self, "bearer_token_authentication")
 
     @bearer_token_authentication.setter
-    def bearer_token_authentication(self, value: Optional[pulumi.Input['ConnectionHttpConfigBearerTokenAuthenticationArgs']]):
+    def bearer_token_authentication(self, value: pulumi.Input[Optional['ConnectionHttpConfigBearerTokenAuthenticationArgs']]):
         pulumi.set(self, "bearer_token_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceDirectoryConfig")
-    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgs']]:
+    def service_directory_config(self) -> pulumi.Input[Optional['ConnectionHttpConfigServiceDirectoryConfigArgs']]:
         """
         ServiceDirectoryConfig represents Service Directory configuration for a
         connection.
@@ -2121,19 +2121,19 @@ class ConnectionHttpConfigArgs:
         return pulumi.get(self, "service_directory_config")
 
     @service_directory_config.setter
-    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionHttpConfigServiceDirectoryConfigArgs']]):
+    def service_directory_config(self, value: pulumi.Input[Optional['ConnectionHttpConfigServiceDirectoryConfigArgs']]):
         pulumi.set(self, "service_directory_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCaCertificate")
-    def ssl_ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_ca_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL certificate to use for requests to the HTTP service provider.
         """
         return pulumi.get(self, "ssl_ca_certificate")
 
     @ssl_ca_certificate.setter
-    def ssl_ca_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_ca_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_ca_certificate", value)
 
 
@@ -2142,7 +2142,7 @@ class ConnectionHttpConfigBasicAuthenticationArgsDict(TypedDict):
     """
     The username to authenticate as.
     """
-    password_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    password_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password SecretManager secret version to authenticate as.
     """
@@ -2151,7 +2151,7 @@ class ConnectionHttpConfigBasicAuthenticationArgsDict(TypedDict):
 class ConnectionHttpConfigBasicAuthenticationArgs:
     def __init__(__self__, *,
                  username: pulumi.Input[_builtins.str],
-                 password_secret_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 password_secret_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] username: The username to authenticate as.
         :param pulumi.Input[_builtins.str] password_secret_version: The password SecretManager secret version to authenticate as.
@@ -2174,19 +2174,19 @@ class ConnectionHttpConfigBasicAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="passwordSecretVersion")
-    def password_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password SecretManager secret version to authenticate as.
         """
         return pulumi.get(self, "password_secret_version")
 
     @password_secret_version.setter
-    def password_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_secret_version", value)
 
 
 class ConnectionHttpConfigBearerTokenAuthenticationArgsDict(TypedDict):
-    token_secret_version: NotRequired[pulumi.Input[_builtins.str]]
+    token_secret_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The token SecretManager secret version to authenticate as.
     """
@@ -2194,7 +2194,7 @@ class ConnectionHttpConfigBearerTokenAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionHttpConfigBearerTokenAuthenticationArgs:
     def __init__(__self__, *,
-                 token_secret_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 token_secret_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] token_secret_version: The token SecretManager secret version to authenticate as.
         """
@@ -2203,14 +2203,14 @@ class ConnectionHttpConfigBearerTokenAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="tokenSecretVersion")
-    def token_secret_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_secret_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token SecretManager secret version to authenticate as.
         """
         return pulumi.get(self, "token_secret_version")
 
     @token_secret_version.setter
-    def token_secret_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_secret_version", value)
 
 
@@ -2249,17 +2249,17 @@ class ConnectionHttpConfigServiceDirectoryConfigArgs:
 
 
 class ConnectionInstallationStateArgsDict(TypedDict):
-    action_uri: NotRequired[pulumi.Input[_builtins.str]]
+    action_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. Link to follow for next action. Empty string if the installation is already
     complete.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Output only. Message of what the user should do next to continue the installation.
     Empty string if the installation is already complete.
     """
-    stage: NotRequired[pulumi.Input[_builtins.str]]
+    stage: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. Current step of the installation process.
@@ -2274,9 +2274,9 @@ class ConnectionInstallationStateArgsDict(TypedDict):
 @pulumi.input_type
 class ConnectionInstallationStateArgs:
     def __init__(__self__, *,
-                 action_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action_uri: Output only. Link to follow for next action. Empty string if the installation is already
                complete.
@@ -2300,7 +2300,7 @@ class ConnectionInstallationStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionUri")
-    def action_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Link to follow for next action. Empty string if the installation is already
         complete.
@@ -2308,12 +2308,12 @@ class ConnectionInstallationStateArgs:
         return pulumi.get(self, "action_uri")
 
     @action_uri.setter
-    def action_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Message of what the user should do next to continue the installation.
         Empty string if the installation is already complete.
@@ -2321,12 +2321,12 @@ class ConnectionInstallationStateArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. Current step of the installation process.
@@ -2340,22 +2340,22 @@ class ConnectionInstallationStateArgs:
         return pulumi.get(self, "stage")
 
     @stage.setter
-    def stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stage", value)
 
 
 class InsightsConfigArtifactConfigArgsDict(TypedDict):
-    google_artifact_analysis: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict']]
+    google_artifact_analysis: NotRequired[pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]]
     """
     Google Artifact Analysis configurations.
     Structure is documented below.
     """
-    google_artifact_registry: NotRequired[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict']]
+    google_artifact_registry: NotRequired[pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]]
     """
     Google Artifact Registry configurations.
     Structure is documented below.
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI of the artifact that is deployed.
     e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
@@ -2366,9 +2366,9 @@ class InsightsConfigArtifactConfigArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsConfigArtifactConfigArgs:
     def __init__(__self__, *,
-                 google_artifact_analysis: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']] = None,
-                 google_artifact_registry: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 google_artifact_analysis: pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']] = None,
+                 google_artifact_registry: pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs'] google_artifact_analysis: Google Artifact Analysis configurations.
                Structure is documented below.
@@ -2388,7 +2388,7 @@ class InsightsConfigArtifactConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="googleArtifactAnalysis")
-    def google_artifact_analysis(self) -> Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]:
+    def google_artifact_analysis(self) -> pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]:
         """
         Google Artifact Analysis configurations.
         Structure is documented below.
@@ -2396,12 +2396,12 @@ class InsightsConfigArtifactConfigArgs:
         return pulumi.get(self, "google_artifact_analysis")
 
     @google_artifact_analysis.setter
-    def google_artifact_analysis(self, value: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]):
+    def google_artifact_analysis(self, value: pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]):
         pulumi.set(self, "google_artifact_analysis", value)
 
     @_builtins.property
     @pulumi.getter(name="googleArtifactRegistry")
-    def google_artifact_registry(self) -> Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]:
+    def google_artifact_registry(self) -> pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]:
         """
         Google Artifact Registry configurations.
         Structure is documented below.
@@ -2409,12 +2409,12 @@ class InsightsConfigArtifactConfigArgs:
         return pulumi.get(self, "google_artifact_registry")
 
     @google_artifact_registry.setter
-    def google_artifact_registry(self, value: Optional[pulumi.Input['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]):
+    def google_artifact_registry(self, value: pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]):
         pulumi.set(self, "google_artifact_registry", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the artifact that is deployed.
         e.g. `us-docker.pkg.dev/my-project/my-repo/image`.
@@ -2424,7 +2424,7 @@ class InsightsConfigArtifactConfigArgs:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
 
@@ -2504,19 +2504,19 @@ class InsightsConfigArtifactConfigGoogleArtifactRegistryArgs:
 
 
 class InsightsConfigErrorArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgsDict']]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]]
     """
     (Output)
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
     Structure is documented below.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A developer-facing error message, which should be in English. Any
@@ -2527,9 +2527,9 @@ class InsightsConfigErrorArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsConfigErrorArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -2551,7 +2551,7 @@ class InsightsConfigErrorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -2559,12 +2559,12 @@ class InsightsConfigErrorArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]:
         """
         (Output)
         A list of messages that carry the error details.  There is a common set of
@@ -2574,12 +2574,12 @@ class InsightsConfigErrorArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A developer-facing error message, which should be in English. Any
@@ -2589,12 +2589,12 @@ class InsightsConfigErrorArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class InsightsConfigErrorDetailArgsDict(TypedDict):
-    detail_message: NotRequired[pulumi.Input[_builtins.str]]
+    detail_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A message with details about the error.
@@ -2603,7 +2603,7 @@ class InsightsConfigErrorDetailArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsConfigErrorDetailArgs:
     def __init__(__self__, *,
-                 detail_message: Optional[pulumi.Input[_builtins.str]] = None):
+                 detail_message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] detail_message: (Output)
                A message with details about the error.
@@ -2613,7 +2613,7 @@ class InsightsConfigErrorDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="detailMessage")
-    def detail_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A message with details about the error.
@@ -2621,7 +2621,7 @@ class InsightsConfigErrorDetailArgs:
         return pulumi.get(self, "detail_message")
 
     @detail_message.setter
-    def detail_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail_message", value)
 
 
@@ -2632,17 +2632,17 @@ class InsightsConfigRuntimeConfigArgsDict(TypedDict):
     For GKE, this is the cluster name.
     For Cloud Run, this is the service name.
     """
-    app_hub_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgsDict']]
+    app_hub_workload: NotRequired[pulumi.Input[Optional['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]]
     """
     AppHubWorkload represents the App Hub Workload.
     Structure is documented below.
     """
-    gke_workload: NotRequired[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgsDict']]
+    gke_workload: NotRequired[pulumi.Input[Optional['InsightsConfigRuntimeConfigGkeWorkloadArgs']]]
     """
     GKEWorkload represents the Google Kubernetes Engine runtime.
     Structure is documented below.
     """
-    state: NotRequired[pulumi.Input[_builtins.str]]
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The state of the Runtime.
@@ -2656,9 +2656,9 @@ class InsightsConfigRuntimeConfigArgsDict(TypedDict):
 class InsightsConfigRuntimeConfigArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 app_hub_workload: Optional[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgs']] = None,
-                 gke_workload: Optional[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_hub_workload: pulumi.Input[Optional['InsightsConfigRuntimeConfigAppHubWorkloadArgs']] = None,
+                 gke_workload: pulumi.Input[Optional['InsightsConfigRuntimeConfigGkeWorkloadArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The URI of the runtime configuration.
                For GKE, this is the cluster name.
@@ -2698,7 +2698,7 @@ class InsightsConfigRuntimeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="appHubWorkload")
-    def app_hub_workload(self) -> Optional[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]:
+    def app_hub_workload(self) -> pulumi.Input[Optional['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]:
         """
         AppHubWorkload represents the App Hub Workload.
         Structure is documented below.
@@ -2706,12 +2706,12 @@ class InsightsConfigRuntimeConfigArgs:
         return pulumi.get(self, "app_hub_workload")
 
     @app_hub_workload.setter
-    def app_hub_workload(self, value: Optional[pulumi.Input['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]):
+    def app_hub_workload(self, value: pulumi.Input[Optional['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]):
         pulumi.set(self, "app_hub_workload", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeWorkload")
-    def gke_workload(self) -> Optional[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgs']]:
+    def gke_workload(self) -> pulumi.Input[Optional['InsightsConfigRuntimeConfigGkeWorkloadArgs']]:
         """
         GKEWorkload represents the Google Kubernetes Engine runtime.
         Structure is documented below.
@@ -2719,12 +2719,12 @@ class InsightsConfigRuntimeConfigArgs:
         return pulumi.get(self, "gke_workload")
 
     @gke_workload.setter
-    def gke_workload(self, value: Optional[pulumi.Input['InsightsConfigRuntimeConfigGkeWorkloadArgs']]):
+    def gke_workload(self, value: pulumi.Input[Optional['InsightsConfigRuntimeConfigGkeWorkloadArgs']]):
         pulumi.set(self, "gke_workload", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The state of the Runtime.
@@ -2736,22 +2736,22 @@ class InsightsConfigRuntimeConfigArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
 class InsightsConfigRuntimeConfigAppHubWorkloadArgsDict(TypedDict):
-    criticality: NotRequired[pulumi.Input[_builtins.str]]
+    criticality: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The criticality of the App Hub Workload.
     """
-    environment: NotRequired[pulumi.Input[_builtins.str]]
+    environment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The environment of the App Hub Workload.
     """
-    workload: NotRequired[pulumi.Input[_builtins.str]]
+    workload: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The name of the App Hub Workload.
@@ -2762,9 +2762,9 @@ class InsightsConfigRuntimeConfigAppHubWorkloadArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
     def __init__(__self__, *,
-                 criticality: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 workload: Optional[pulumi.Input[_builtins.str]] = None):
+                 criticality: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] criticality: (Output)
                The criticality of the App Hub Workload.
@@ -2784,7 +2784,7 @@ class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
 
     @_builtins.property
     @pulumi.getter
-    def criticality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def criticality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The criticality of the App Hub Workload.
@@ -2792,12 +2792,12 @@ class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
         return pulumi.get(self, "criticality")
 
     @criticality.setter
-    def criticality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def criticality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "criticality", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The environment of the App Hub Workload.
@@ -2805,12 +2805,12 @@ class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter
-    def workload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The name of the App Hub Workload.
@@ -2820,7 +2820,7 @@ class InsightsConfigRuntimeConfigAppHubWorkloadArgs:
         return pulumi.get(self, "workload")
 
     @workload.setter
-    def workload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workload", value)
 
 
@@ -2831,7 +2831,7 @@ class InsightsConfigRuntimeConfigGkeWorkloadArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/clusters/{cluster}`.
     """
-    deployment: NotRequired[pulumi.Input[_builtins.str]]
+    deployment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The name of the GKE deployment.
@@ -2843,7 +2843,7 @@ class InsightsConfigRuntimeConfigGkeWorkloadArgsDict(TypedDict):
 class InsightsConfigRuntimeConfigGkeWorkloadArgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[_builtins.str],
-                 deployment: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster: The name of the GKE cluster.
                Format:
@@ -2873,7 +2873,7 @@ class InsightsConfigRuntimeConfigGkeWorkloadArgs:
 
     @_builtins.property
     @pulumi.getter
-    def deployment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the GKE deployment.
@@ -2883,12 +2883,12 @@ class InsightsConfigRuntimeConfigGkeWorkloadArgs:
         return pulumi.get(self, "deployment")
 
     @deployment.setter
-    def deployment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment", value)
 
 
 class InsightsConfigTargetProjectsArgsDict(TypedDict):
-    project_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    project_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The project IDs. Format {project}.
     """
@@ -2896,7 +2896,7 @@ class InsightsConfigTargetProjectsArgsDict(TypedDict):
 @pulumi.input_type
 class InsightsConfigTargetProjectsArgs:
     def __init__(__self__, *,
-                 project_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 project_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] project_ids: The project IDs. Format {project}.
         """
@@ -2905,14 +2905,14 @@ class InsightsConfigTargetProjectsArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectIds")
-    def project_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def project_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The project IDs. Format {project}.
         """
         return pulumi.get(self, "project_ids")
 
     @project_ids.setter
-    def project_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def project_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "project_ids", value)
 
 

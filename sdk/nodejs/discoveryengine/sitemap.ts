@@ -159,36 +159,36 @@ export interface SitemapState {
     /**
      * Timestamp when the sitemap was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the data store.
      */
-    dataStoreId?: pulumi.Input<string>;
+    dataStoreId?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the sitemap. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/siteSearchEngine/sitemaps/{sitemap_id}`.
      * This field must be a UTF-8 encoded string with a length limit of 1024
      * characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The unique id of the sitemap.
      */
-    sitemapId?: pulumi.Input<string>;
+    sitemapId?: pulumi.Input<string | undefined>;
     /**
      * Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,9 +208,9 @@ export interface SitemapArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }

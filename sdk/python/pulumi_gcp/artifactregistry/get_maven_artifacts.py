@@ -126,9 +126,9 @@ def get_maven_artifacts(location: Optional[_builtins.str] = None,
         maven_artifacts=pulumi.get(__ret__, 'maven_artifacts'),
         project=pulumi.get(__ret__, 'project'),
         repository_id=pulumi.get(__ret__, 'repository_id'))
-def get_maven_artifacts_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_maven_artifacts_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMavenArtifactsResult]:
     """
     Get information about Artifact Registry Maven artifacts.

@@ -23,10 +23,10 @@ class AuthorizedViewArgs:
     def __init__(__self__, *,
                  instance_name: pulumi.Input[_builtins.str],
                  table_name: pulumi.Input[_builtins.str],
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 subset_view: Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']] = None):
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 subset_view: pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']] = None):
         """
         The set of arguments for constructing a AuthorizedView resource.
 
@@ -78,7 +78,7 @@ class AuthorizedViewArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
         If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
@@ -86,24 +86,24 @@ class AuthorizedViewArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -111,12 +111,12 @@ class AuthorizedViewArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="subsetView")
-    def subset_view(self) -> Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']]:
+    def subset_view(self) -> pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']]:
         """
         An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
 
@@ -125,19 +125,19 @@ class AuthorizedViewArgs:
         return pulumi.get(self, "subset_view")
 
     @subset_view.setter
-    def subset_view(self, value: Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']]):
+    def subset_view(self, value: pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']]):
         pulumi.set(self, "subset_view", value)
 
 
 @pulumi.input_type
 class _AuthorizedViewState:
     def __init__(__self__, *,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 subset_view: Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 subset_view: pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizedView resources.
 
@@ -167,7 +167,7 @@ class _AuthorizedViewState:
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
         If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
@@ -175,36 +175,36 @@ class _AuthorizedViewState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Bigtable instance in which the authorized view belongs.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -212,12 +212,12 @@ class _AuthorizedViewState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="subsetView")
-    def subset_view(self) -> Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']]:
+    def subset_view(self) -> pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']]:
         """
         An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
 
@@ -226,19 +226,19 @@ class _AuthorizedViewState:
         return pulumi.get(self, "subset_view")
 
     @subset_view.setter
-    def subset_view(self, value: Optional[pulumi.Input['AuthorizedViewSubsetViewArgs']]):
+    def subset_view(self, value: pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']]):
         pulumi.set(self, "subset_view", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Bigtable table in which the authorized view belongs.
         """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
-    def table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_name", value)
 
 
@@ -248,12 +248,12 @@ class AuthorizedView(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 subset_view: Optional[pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a Google Cloud Bigtable authorized view inside a table. For more information see
@@ -451,12 +451,12 @@ class AuthorizedView(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 subset_view: Optional[pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -486,12 +486,12 @@ class AuthorizedView(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            subset_view: Optional[pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
-            table_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthorizedView':
+            deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            subset_view: pulumi.Input[Optional[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthorizedView':
         """
         Get an existing AuthorizedView resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

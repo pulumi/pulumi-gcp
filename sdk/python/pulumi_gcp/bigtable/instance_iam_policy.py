@@ -21,7 +21,7 @@ class InstanceIamPolicyArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[_builtins.str],
                  policy_data: pulumi.Input[_builtins.str],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIamPolicy resource.
 
@@ -61,7 +61,7 @@ class InstanceIamPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the instance belongs. If it
         is not provided, Terraform will use the provider default.
@@ -69,17 +69,17 @@ class InstanceIamPolicyArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _InstanceIamPolicyState:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceIamPolicy resources.
 
@@ -101,19 +101,19 @@ class _InstanceIamPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the instances's IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or relative resource id of the instance to manage IAM policies for.
 
@@ -122,21 +122,21 @@ class _InstanceIamPolicyState:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="policyData")
-    def policy_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "policy_data")
 
     @policy_data.setter
-    def policy_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in which the instance belongs. If it
         is not provided, Terraform will use the provider default.
@@ -144,7 +144,7 @@ class _InstanceIamPolicyState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -154,9 +154,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage IAM policies on bigtable instances. Each of these resources serves a different use case:
@@ -381,9 +381,9 @@ class InstanceIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,10 +411,10 @@ class InstanceIamPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_data: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceIamPolicy':
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_data: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceIamPolicy':
         """
         Get an existing InstanceIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

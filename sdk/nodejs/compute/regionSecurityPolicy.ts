@@ -276,53 +276,53 @@ export interface RegionSecurityPolicyState {
      * Advanced Options Config of this security policy.
      * Structure is documented below.
      */
-    advancedOptionsConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyAdvancedOptionsConfig>;
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyAdvancedOptionsConfig | undefined>;
     /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
      * Structure is documented below.
      */
-    ddosProtectionConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyDdosProtectionConfig>;
+    ddosProtectionConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyDdosProtectionConfig | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Fingerprint of this resource. This field is used internally during
      * updates of this resource.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created Region Security Policy should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRule>[] | undefined>;
     /**
      * Server-defined URL for the resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Server-defined URL for this resource with the resource id.
      */
-    selfLinkWithPolicyId?: pulumi.Input<string>;
+    selfLinkWithPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The type indicates the intended use of the security policy.
      * - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
@@ -331,14 +331,14 @@ export interface RegionSecurityPolicyState {
      * This field can be set only at resource creation time.
      * Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
      * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
      * Rules may then specify matching values for these fields.
      * Structure is documented below.
      */
-    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyUserDefinedField>[]>;
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyUserDefinedField>[] | undefined>;
 }
 
 /**
@@ -349,36 +349,36 @@ export interface RegionSecurityPolicyArgs {
      * Advanced Options Config of this security policy.
      * Structure is documented below.
      */
-    advancedOptionsConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyAdvancedOptionsConfig>;
+    advancedOptionsConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyAdvancedOptionsConfig | undefined>;
     /**
      * Configuration for Google Cloud Armor DDOS Proctection Config.
      * Structure is documented below.
      */
-    ddosProtectionConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyDdosProtectionConfig>;
+    ddosProtectionConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyDdosProtectionConfig | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
      * Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created Region Security Policy should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRule>[] | undefined>;
     /**
      * The type indicates the intended use of the security policy.
      * - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
@@ -387,12 +387,12 @@ export interface RegionSecurityPolicyArgs {
      * This field can be set only at resource creation time.
      * Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
      * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
      * Rules may then specify matching values for these fields.
      * Structure is documented below.
      */
-    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyUserDefinedField>[]>;
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyUserDefinedField>[] | undefined>;
 }

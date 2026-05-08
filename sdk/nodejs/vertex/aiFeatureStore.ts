@@ -248,63 +248,63 @@ export interface AiFeatureStoreState {
     /**
      * The timestamp of when the featurestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If set, both of the online and offline data storage will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureStoreEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureStoreEncryptionSpec | undefined>;
     /**
      * Used to perform consistent read-modify-write updates.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * If set to true, any EntityTypes and Features for this Featurestore will also be deleted
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * A set of key/value label pairs to assign to this Featurestore.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Config for online serving resources.
      * Structure is documented below.
      */
-    onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig>;
+    onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig | undefined>;
     /**
      * (Optional, Beta)
      * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      */
-    onlineStorageTtlDays?: pulumi.Input<number>;
+    onlineStorageTtlDays?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the dataset. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -315,39 +315,39 @@ export interface AiFeatureStoreArgs {
      * If set, both of the online and offline data storage will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureStoreEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiFeatureStoreEncryptionSpec | undefined>;
     /**
      * If set to true, any EntityTypes and Features for this Featurestore will also be deleted
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * A set of key/value label pairs to assign to this Featurestore.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Featurestore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Config for online serving resources.
      * Structure is documented below.
      */
-    onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig>;
+    onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig | undefined>;
     /**
      * (Optional, Beta)
      * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      */
-    onlineStorageTtlDays?: pulumi.Input<number>;
+    onlineStorageTtlDays?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the dataset. eg us-central1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

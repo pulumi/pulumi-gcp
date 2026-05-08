@@ -272,40 +272,40 @@ export interface RouterNamedSetState {
     /**
      * An optional description of the Named Set.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * CEL expressions that are comparable to constructs of this set's type.
      * Structure is documented below.
      */
-    elements?: pulumi.Input<pulumi.Input<inputs.compute.RouterNamedSetElement>[]>;
+    elements?: pulumi.Input<pulumi.Input<inputs.compute.RouterNamedSetElement>[] | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used
      * internally during updates.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The name of the Named Set, which must be a resource ID segment and unique
      * within all named sets owned by the Router.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which this Named Set will be configured.
      */
-    router?: pulumi.Input<string>;
+    router?: pulumi.Input<string | undefined>;
     /**
      * The type of the Named Set.
      * Possible values are: `NAMED_SET_TYPE_PREFIX`, `NAMED_SET_TYPE_COMMUNITY`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -315,26 +315,26 @@ export interface RouterNamedSetArgs {
     /**
      * An optional description of the Named Set.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * CEL expressions that are comparable to constructs of this set's type.
      * Structure is documented below.
      */
-    elements?: pulumi.Input<pulumi.Input<inputs.compute.RouterNamedSetElement>[]>;
+    elements?: pulumi.Input<pulumi.Input<inputs.compute.RouterNamedSetElement>[] | undefined>;
     /**
      * The name of the Named Set, which must be a resource ID segment and unique
      * within all named sets owned by the Router.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where the router resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud Router in which this Named Set will be configured.
      */

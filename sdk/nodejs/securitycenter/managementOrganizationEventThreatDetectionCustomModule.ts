@@ -178,43 +178,43 @@ export interface ManagementOrganizationEventThreatDetectionCustomModuleState {
      * Config for the module. For the resident module, its config value is defined at this level.
      * For the inherited module, its config value is inherited from the ancestor module.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The human readable name to be displayed for the module.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The state of enablement for the module at the given level of the hierarchy.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    enablementState?: pulumi.Input<string>;
+    enablementState?: pulumi.Input<string | undefined>;
     /**
      * The editor that last updated the custom module
      */
-    lastEditor?: pulumi.Input<string>;
+    lastEditor?: pulumi.Input<string | undefined>;
     /**
      * Location ID of the parent organization. Only global is supported at the moment.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Event Threat Detection custom module.
      * Its format is "organizations/{organization}/locations/{location}/eventThreatDetectionCustomModules/{eventThreatDetectionCustomModule}".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Numerical ID of the parent organization.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The time at which the custom module was last updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,20 +225,20 @@ export interface ManagementOrganizationEventThreatDetectionCustomModuleArgs {
      * Config for the module. For the resident module, its config value is defined at this level.
      * For the inherited module, its config value is inherited from the ancestor module.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The human readable name to be displayed for the module.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The state of enablement for the module at the given level of the hierarchy.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    enablementState?: pulumi.Input<string>;
+    enablementState?: pulumi.Input<string | undefined>;
     /**
      * Location ID of the parent organization. Only global is supported at the moment.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Numerical ID of the parent organization.
      */
@@ -246,5 +246,5 @@ export interface ManagementOrganizationEventThreatDetectionCustomModuleArgs {
     /**
      * Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

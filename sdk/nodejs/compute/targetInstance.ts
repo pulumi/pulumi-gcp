@@ -304,11 +304,11 @@ export interface TargetInstanceState {
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Compute instance VM handling traffic for this target instance.
      * Accepts the instance self-link, relative path
@@ -317,7 +317,7 @@ export interface TargetInstanceState {
      * the provider-default zone and the project will default to the
      * provider-level project.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -327,37 +327,37 @@ export interface TargetInstanceState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NAT option controlling how IPs are NAT'ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
      * Possible values are: `NO_NAT`.
      */
-    natPolicy?: pulumi.Input<string>;
+    natPolicy?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * URL of the zone where the target instance resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -367,7 +367,7 @@ export interface TargetInstanceArgs {
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Compute instance VM handling traffic for this target instance.
      * Accepts the instance self-link, relative path
@@ -386,31 +386,31 @@ export interface TargetInstanceArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NAT option controlling how IPs are NAT'ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
      * Possible values are: `NO_NAT`.
      */
-    natPolicy?: pulumi.Input<string>;
+    natPolicy?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
     /**
      * URL of the zone where the target instance resides.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

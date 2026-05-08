@@ -401,22 +401,22 @@ export interface ResourcePolicyState {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Replication consistency group for asynchronous disk replication.
      * Structure is documented below.
      */
-    diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy>;
+    diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy | undefined>;
     /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
-    groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
+    groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
     /**
      * Resource policy for scheduling instance operations.
      * Structure is documented below.
      */
-    instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
+    instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy | undefined>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -426,30 +426,30 @@ export interface ResourcePolicyState {
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where resource policy resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * Policy for creating snapshots of persistent disks.
      * Structure is documented below.
      */
-    snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
+    snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
     /**
      * Represents the workload policy.
      * Structure is documented below.
      */
-    workloadPolicy?: pulumi.Input<inputs.compute.ResourcePolicyWorkloadPolicy>;
+    workloadPolicy?: pulumi.Input<inputs.compute.ResourcePolicyWorkloadPolicy | undefined>;
 }
 
 /**
@@ -459,22 +459,22 @@ export interface ResourcePolicyArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Replication consistency group for asynchronous disk replication.
      * Structure is documented below.
      */
-    diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy>;
+    diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy | undefined>;
     /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
-    groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
+    groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
     /**
      * Resource policy for scheduling instance operations.
      * Structure is documented below.
      */
-    instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy>;
+    instanceSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicyInstanceSchedulePolicy | undefined>;
     /**
      * The name of the resource, provided by the client when initially creating
      * the resource. The resource name must be 1-63 characters long, and comply
@@ -484,24 +484,24 @@ export interface ResourcePolicyArgs {
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Region where resource policy resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Policy for creating snapshots of persistent disks.
      * Structure is documented below.
      */
-    snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy>;
+    snapshotSchedulePolicy?: pulumi.Input<inputs.compute.ResourcePolicySnapshotSchedulePolicy | undefined>;
     /**
      * Represents the workload policy.
      * Structure is documented below.
      */
-    workloadPolicy?: pulumi.Input<inputs.compute.ResourcePolicyWorkloadPolicy>;
+    workloadPolicy?: pulumi.Input<inputs.compute.ResourcePolicyWorkloadPolicy | undefined>;
 }

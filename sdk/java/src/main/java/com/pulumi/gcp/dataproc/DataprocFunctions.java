@@ -50,8 +50,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -92,8 +92,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -134,8 +134,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -176,8 +176,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -218,8 +218,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -260,8 +260,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -301,8 +301,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -342,8 +342,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -383,8 +383,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -424,8 +424,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -465,8 +465,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -506,8 +506,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -547,8 +547,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -588,8 +588,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -629,8 +629,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -670,8 +670,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -713,8 +713,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -756,8 +756,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -799,8 +799,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -842,8 +842,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreDatabaseIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -885,8 +885,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -927,8 +927,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -969,8 +969,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1011,8 +1011,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1053,8 +1053,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1095,8 +1095,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1136,8 +1136,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1177,8 +1177,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1218,8 +1218,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1259,8 +1259,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1300,8 +1300,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1342,8 +1342,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1384,8 +1384,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1426,8 +1426,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1468,8 +1468,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1510,8 +1510,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1554,8 +1554,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1598,8 +1598,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1642,8 +1642,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1686,8 +1686,8 @@ public final class DataprocFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.dataproc.DataprocFunctions;
      * import com.pulumi.gcp.dataproc.inputs.GetMetastoreTableIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

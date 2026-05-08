@@ -273,62 +273,62 @@ export interface TransferJobState {
     /**
      * When the Transfer Job was created.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * When the Transfer Job was deleted.
      */
-    deletionTime?: pulumi.Input<string>;
+    deletionTime?: pulumi.Input<string | undefined>;
     /**
      * Unique description to identify the Transfer Job.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
      */
-    eventStream?: pulumi.Input<inputs.storage.TransferJobEventStream>;
+    eventStream?: pulumi.Input<inputs.storage.TransferJobEventStream | undefined>;
     /**
      * When the Transfer Job was last modified.
      */
-    lastModificationTime?: pulumi.Input<string>;
+    lastModificationTime?: pulumi.Input<string | undefined>;
     /**
      * Logging configuration. Structure documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.storage.TransferJobLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.storage.TransferJobLoggingConfig | undefined>;
     /**
      * The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
      */
-    notificationConfig?: pulumi.Input<inputs.storage.TransferJobNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.storage.TransferJobNotificationConfig | undefined>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
      *
      * - - -
      */
-    replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec>;
+    replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec | undefined>;
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
-    schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
+    schedule?: pulumi.Input<inputs.storage.TransferJobSchedule | undefined>;
     /**
      * The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
      */
-    transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
+    transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec | undefined>;
 }
 
 /**
@@ -342,44 +342,44 @@ export interface TransferJobArgs {
     /**
      * Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
      */
-    eventStream?: pulumi.Input<inputs.storage.TransferJobEventStream>;
+    eventStream?: pulumi.Input<inputs.storage.TransferJobEventStream | undefined>;
     /**
      * Logging configuration. Structure documented below.
      */
-    loggingConfig?: pulumi.Input<inputs.storage.TransferJobLoggingConfig>;
+    loggingConfig?: pulumi.Input<inputs.storage.TransferJobLoggingConfig | undefined>;
     /**
      * The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
      */
-    notificationConfig?: pulumi.Input<inputs.storage.TransferJobNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.storage.TransferJobNotificationConfig | undefined>;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
      *
      * - - -
      */
-    replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec>;
+    replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec | undefined>;
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
-    schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
+    schedule?: pulumi.Input<inputs.storage.TransferJobSchedule | undefined>;
     /**
      * The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
      */
-    transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
+    transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec | undefined>;
 }

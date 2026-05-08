@@ -48,22 +48,22 @@ __all__ = [
 ]
 
 class FunctionBuildConfigArgsDict(TypedDict):
-    automatic_update_policy: NotRequired[pulumi.Input['FunctionBuildConfigAutomaticUpdatePolicyArgsDict']]
+    automatic_update_policy: NotRequired[pulumi.Input[Optional['FunctionBuildConfigAutomaticUpdatePolicyArgs']]]
     """
     Security patches are applied automatically to the runtime without requiring
     the function to be redeployed.
     """
-    build: NotRequired[pulumi.Input[_builtins.str]]
+    build: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Cloud Build name of the latest successful
     deployment of the function.
     """
-    docker_repository: NotRequired[pulumi.Input[_builtins.str]]
+    docker_repository: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User managed repository created in Artifact Registry optionally with a customer managed encryption key.
     """
-    entry_point: NotRequired[pulumi.Input[_builtins.str]]
+    entry_point: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the function (as defined in source code) that will be executed.
     Defaults to the resource name suffix, if not specified. For backward
@@ -71,30 +71,30 @@ class FunctionBuildConfigArgsDict(TypedDict):
     will try to use function named "function". For Node.js this is name of a
     function exported by the module specified in source_location.
     """
-    environment_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    environment_variables: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     User-provided build-time environment variables for the function.
     """
-    on_deploy_update_policy: NotRequired[pulumi.Input['FunctionBuildConfigOnDeployUpdatePolicyArgsDict']]
+    on_deploy_update_policy: NotRequired[pulumi.Input[Optional['FunctionBuildConfigOnDeployUpdatePolicyArgs']]]
     """
     Security patches are only applied when a function is redeployed.
     Structure is documented below.
     """
-    runtime: NotRequired[pulumi.Input[_builtins.str]]
+    runtime: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The runtime in which to run the function. Required when deploying a new
     function, optional when updating an existing function.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The fully-qualified name of the service account to be used for building the container.
     """
-    source: NotRequired[pulumi.Input['FunctionBuildConfigSourceArgsDict']]
+    source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceArgs']]]
     """
     The location of the function source code.
     Structure is documented below.
     """
-    worker_pool: NotRequired[pulumi.Input[_builtins.str]]
+    worker_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Cloud Build Custom Worker Pool that should be used to build the function.
     """
@@ -102,16 +102,16 @@ class FunctionBuildConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionBuildConfigArgs:
     def __init__(__self__, *,
-                 automatic_update_policy: Optional[pulumi.Input['FunctionBuildConfigAutomaticUpdatePolicyArgs']] = None,
-                 build: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 on_deploy_update_policy: Optional[pulumi.Input['FunctionBuildConfigOnDeployUpdatePolicyArgs']] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input['FunctionBuildConfigSourceArgs']] = None,
-                 worker_pool: Optional[pulumi.Input[_builtins.str]] = None):
+                 automatic_update_policy: pulumi.Input[Optional['FunctionBuildConfigAutomaticUpdatePolicyArgs']] = None,
+                 build: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 on_deploy_update_policy: pulumi.Input[Optional['FunctionBuildConfigOnDeployUpdatePolicyArgs']] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional['FunctionBuildConfigSourceArgs']] = None,
+                 worker_pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['FunctionBuildConfigAutomaticUpdatePolicyArgs'] automatic_update_policy: Security patches are applied automatically to the runtime without requiring
                the function to be redeployed.
@@ -157,7 +157,7 @@ class FunctionBuildConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="automaticUpdatePolicy")
-    def automatic_update_policy(self) -> Optional[pulumi.Input['FunctionBuildConfigAutomaticUpdatePolicyArgs']]:
+    def automatic_update_policy(self) -> pulumi.Input[Optional['FunctionBuildConfigAutomaticUpdatePolicyArgs']]:
         """
         Security patches are applied automatically to the runtime without requiring
         the function to be redeployed.
@@ -165,12 +165,12 @@ class FunctionBuildConfigArgs:
         return pulumi.get(self, "automatic_update_policy")
 
     @automatic_update_policy.setter
-    def automatic_update_policy(self, value: Optional[pulumi.Input['FunctionBuildConfigAutomaticUpdatePolicyArgs']]):
+    def automatic_update_policy(self, value: pulumi.Input[Optional['FunctionBuildConfigAutomaticUpdatePolicyArgs']]):
         pulumi.set(self, "automatic_update_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def build(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def build(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Cloud Build name of the latest successful
@@ -179,24 +179,24 @@ class FunctionBuildConfigArgs:
         return pulumi.get(self, "build")
 
     @build.setter
-    def build(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def build(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerRepository")
-    def docker_repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def docker_repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User managed repository created in Artifact Registry optionally with a customer managed encryption key.
         """
         return pulumi.get(self, "docker_repository")
 
     @docker_repository.setter
-    def docker_repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def docker_repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "docker_repository", value)
 
     @_builtins.property
     @pulumi.getter(name="entryPoint")
-    def entry_point(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_point(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the function (as defined in source code) that will be executed.
         Defaults to the resource name suffix, if not specified. For backward
@@ -207,24 +207,24 @@ class FunctionBuildConfigArgs:
         return pulumi.get(self, "entry_point")
 
     @entry_point.setter
-    def entry_point(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_point(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_point", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-provided build-time environment variables for the function.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="onDeployUpdatePolicy")
-    def on_deploy_update_policy(self) -> Optional[pulumi.Input['FunctionBuildConfigOnDeployUpdatePolicyArgs']]:
+    def on_deploy_update_policy(self) -> pulumi.Input[Optional['FunctionBuildConfigOnDeployUpdatePolicyArgs']]:
         """
         Security patches are only applied when a function is redeployed.
         Structure is documented below.
@@ -232,12 +232,12 @@ class FunctionBuildConfigArgs:
         return pulumi.get(self, "on_deploy_update_policy")
 
     @on_deploy_update_policy.setter
-    def on_deploy_update_policy(self, value: Optional[pulumi.Input['FunctionBuildConfigOnDeployUpdatePolicyArgs']]):
+    def on_deploy_update_policy(self, value: pulumi.Input[Optional['FunctionBuildConfigOnDeployUpdatePolicyArgs']]):
         pulumi.set(self, "on_deploy_update_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The runtime in which to run the function. Required when deploying a new
         function, optional when updating an existing function.
@@ -245,24 +245,24 @@ class FunctionBuildConfigArgs:
         return pulumi.get(self, "runtime")
 
     @runtime.setter
-    def runtime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully-qualified name of the service account to be used for building the container.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['FunctionBuildConfigSourceArgs']]:
         """
         The location of the function source code.
         Structure is documented below.
@@ -270,19 +270,19 @@ class FunctionBuildConfigArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['FunctionBuildConfigSourceArgs']]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="workerPool")
-    def worker_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def worker_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
         return pulumi.get(self, "worker_pool")
 
     @worker_pool.setter
-    def worker_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def worker_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "worker_pool", value)
 
 
@@ -296,7 +296,7 @@ class FunctionBuildConfigAutomaticUpdatePolicyArgs:
 
 
 class FunctionBuildConfigOnDeployUpdatePolicyArgsDict(TypedDict):
-    runtime_version: NotRequired[pulumi.Input[_builtins.str]]
+    runtime_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The runtime version which was used during latest function deployment.
@@ -305,7 +305,7 @@ class FunctionBuildConfigOnDeployUpdatePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionBuildConfigOnDeployUpdatePolicyArgs:
     def __init__(__self__, *,
-                 runtime_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 runtime_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] runtime_version: (Output)
                The runtime version which was used during latest function deployment.
@@ -315,7 +315,7 @@ class FunctionBuildConfigOnDeployUpdatePolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="runtimeVersion")
-    def runtime_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The runtime version which was used during latest function deployment.
@@ -323,17 +323,17 @@ class FunctionBuildConfigOnDeployUpdatePolicyArgs:
         return pulumi.get(self, "runtime_version")
 
     @runtime_version.setter
-    def runtime_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_version", value)
 
 
 class FunctionBuildConfigSourceArgsDict(TypedDict):
-    repo_source: NotRequired[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgsDict']]
+    repo_source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceRepoSourceArgs']]]
     """
     If provided, get the source from this location in a Cloud Source Repository.
     Structure is documented below.
     """
-    storage_source: NotRequired[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgsDict']]
+    storage_source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceStorageSourceArgs']]]
     """
     If provided, get the source from this location in Google Cloud Storage.
     Structure is documented below.
@@ -342,8 +342,8 @@ class FunctionBuildConfigSourceArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionBuildConfigSourceArgs:
     def __init__(__self__, *,
-                 repo_source: Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs']] = None,
-                 storage_source: Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs']] = None):
+                 repo_source: pulumi.Input[Optional['FunctionBuildConfigSourceRepoSourceArgs']] = None,
+                 storage_source: pulumi.Input[Optional['FunctionBuildConfigSourceStorageSourceArgs']] = None):
         """
         :param pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
                Structure is documented below.
@@ -357,7 +357,7 @@ class FunctionBuildConfigSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="repoSource")
-    def repo_source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs']]:
+    def repo_source(self) -> pulumi.Input[Optional['FunctionBuildConfigSourceRepoSourceArgs']]:
         """
         If provided, get the source from this location in a Cloud Source Repository.
         Structure is documented below.
@@ -365,12 +365,12 @@ class FunctionBuildConfigSourceArgs:
         return pulumi.get(self, "repo_source")
 
     @repo_source.setter
-    def repo_source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceRepoSourceArgs']]):
+    def repo_source(self, value: pulumi.Input[Optional['FunctionBuildConfigSourceRepoSourceArgs']]):
         pulumi.set(self, "repo_source", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSource")
-    def storage_source(self) -> Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs']]:
+    def storage_source(self) -> pulumi.Input[Optional['FunctionBuildConfigSourceStorageSourceArgs']]:
         """
         If provided, get the source from this location in Google Cloud Storage.
         Structure is documented below.
@@ -378,38 +378,38 @@ class FunctionBuildConfigSourceArgs:
         return pulumi.get(self, "storage_source")
 
     @storage_source.setter
-    def storage_source(self, value: Optional[pulumi.Input['FunctionBuildConfigSourceStorageSourceArgs']]):
+    def storage_source(self, value: pulumi.Input[Optional['FunctionBuildConfigSourceStorageSourceArgs']]):
         pulumi.set(self, "storage_source", value)
 
 
 class FunctionBuildConfigSourceRepoSourceArgsDict(TypedDict):
-    branch_name: NotRequired[pulumi.Input[_builtins.str]]
+    branch_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Regex matching branches to build.
     """
-    commit_sha: NotRequired[pulumi.Input[_builtins.str]]
+    commit_sha: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Regex matching tags to build.
     """
-    dir: NotRequired[pulumi.Input[_builtins.str]]
+    dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Directory, relative to the source root, in which to run the build.
     """
-    invert_regex: NotRequired[pulumi.Input[_builtins.bool]]
+    invert_regex: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only trigger a build if the revision regex does
     NOT match the revision regex.
     """
-    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ID of the project that owns the Cloud Source Repository. If omitted, the
     project ID requesting the build is assumed.
     """
-    repo_name: NotRequired[pulumi.Input[_builtins.str]]
+    repo_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Cloud Source Repository.
     """
-    tag_name: NotRequired[pulumi.Input[_builtins.str]]
+    tag_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Regex matching tags to build.
     """
@@ -417,13 +417,13 @@ class FunctionBuildConfigSourceRepoSourceArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionBuildConfigSourceRepoSourceArgs:
     def __init__(__self__, *,
-                 branch_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 invert_regex: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 branch_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 invert_regex: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] branch_name: Regex matching branches to build.
         :param pulumi.Input[_builtins.str] commit_sha: Regex matching tags to build.
@@ -452,43 +452,43 @@ class FunctionBuildConfigSourceRepoSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="branchName")
-    def branch_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regex matching branches to build.
         """
         return pulumi.get(self, "branch_name")
 
     @branch_name.setter
-    def branch_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_name", value)
 
     @_builtins.property
     @pulumi.getter(name="commitSha")
-    def commit_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regex matching tags to build.
         """
         return pulumi.get(self, "commit_sha")
 
     @commit_sha.setter
-    def commit_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_sha", value)
 
     @_builtins.property
     @pulumi.getter
-    def dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Directory, relative to the source root, in which to run the build.
         """
         return pulumi.get(self, "dir")
 
     @dir.setter
-    def dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dir", value)
 
     @_builtins.property
     @pulumi.getter(name="invertRegex")
-    def invert_regex(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invert_regex(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only trigger a build if the revision regex does
         NOT match the revision regex.
@@ -496,12 +496,12 @@ class FunctionBuildConfigSourceRepoSourceArgs:
         return pulumi.get(self, "invert_regex")
 
     @invert_regex.setter
-    def invert_regex(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invert_regex(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invert_regex", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the project that owns the Cloud Source Repository. If omitted, the
         project ID requesting the build is assumed.
@@ -509,45 +509,45 @@ class FunctionBuildConfigSourceRepoSourceArgs:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoName")
-    def repo_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Cloud Source Repository.
         """
         return pulumi.get(self, "repo_name")
 
     @repo_name.setter
-    def repo_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_name", value)
 
     @_builtins.property
     @pulumi.getter(name="tagName")
-    def tag_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regex matching tags to build.
         """
         return pulumi.get(self, "tag_name")
 
     @tag_name.setter
-    def tag_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_name", value)
 
 
 class FunctionBuildConfigSourceStorageSourceArgsDict(TypedDict):
-    bucket: NotRequired[pulumi.Input[_builtins.str]]
+    bucket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Google Cloud Storage bucket containing the source
     """
-    generation: NotRequired[pulumi.Input[_builtins.int]]
+    generation: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Google Cloud Storage generation for the object. If the generation
     is omitted, the latest generation will be used.
     """
-    object: NotRequired[pulumi.Input[_builtins.str]]
+    object: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Google Cloud Storage object containing the source.
     """
@@ -555,9 +555,9 @@ class FunctionBuildConfigSourceStorageSourceArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionBuildConfigSourceStorageSourceArgs:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 generation: Optional[pulumi.Input[_builtins.int]] = None,
-                 object: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 generation: pulumi.Input[Optional[_builtins.int]] = None,
+                 object: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket: Google Cloud Storage bucket containing the source
         :param pulumi.Input[_builtins.int] generation: Google Cloud Storage generation for the object. If the generation
@@ -573,19 +573,19 @@ class FunctionBuildConfigSourceStorageSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google Cloud Storage bucket containing the source
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Google Cloud Storage generation for the object. If the generation
         is omitted, the latest generation will be used.
@@ -593,19 +593,19 @@ class FunctionBuildConfigSourceStorageSourceArgs:
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google Cloud Storage object containing the source.
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object", value)
 
 
@@ -614,34 +614,34 @@ class FunctionEventTriggerArgsDict(TypedDict):
     """
     Required. The type of event to observe.
     """
-    event_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgsDict']]]]
+    event_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]]
     """
     Criteria used to filter events.
     Structure is documented below.
     """
-    pubsub_topic: NotRequired[pulumi.Input[_builtins.str]]
+    pubsub_topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of a Pub/Sub topic in the same project that will be used
     as the transport topic for the event delivery.
     """
-    retry_policy: NotRequired[pulumi.Input[_builtins.str]]
+    retry_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Describes the retry policy in case of function's execution failure.
     Retried execution is charged as any other execution.
     Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The email of the trigger's service account. The service account
     must have permission to invoke Cloud Run services. If empty, defaults to the
     Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
     """
-    trigger: NotRequired[pulumi.Input[_builtins.str]]
+    trigger: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Output only. The resource name of the Eventarc trigger.
     """
-    trigger_region: NotRequired[pulumi.Input[_builtins.str]]
+    trigger_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region that the trigger will be in. The trigger will only receive
     events originating in this region. It can be the same
@@ -653,12 +653,12 @@ class FunctionEventTriggerArgsDict(TypedDict):
 class FunctionEventTriggerArgs:
     def __init__(__self__, *,
                  event_type: pulumi.Input[_builtins.str],
-                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]] = None,
-                 pubsub_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 event_filters: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]] = None,
+                 pubsub_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] event_type: Required. The type of event to observe.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]] event_filters: Criteria used to filter events.
@@ -706,7 +706,7 @@ class FunctionEventTriggerArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventFilters")
-    def event_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]:
+    def event_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]:
         """
         Criteria used to filter events.
         Structure is documented below.
@@ -714,12 +714,12 @@ class FunctionEventTriggerArgs:
         return pulumi.get(self, "event_filters")
 
     @event_filters.setter
-    def event_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]):
+    def event_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]):
         pulumi.set(self, "event_filters", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubTopic")
-    def pubsub_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pubsub_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a Pub/Sub topic in the same project that will be used
         as the transport topic for the event delivery.
@@ -727,12 +727,12 @@ class FunctionEventTriggerArgs:
         return pulumi.get(self, "pubsub_topic")
 
     @pubsub_topic.setter
-    def pubsub_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pubsub_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pubsub_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="retryPolicy")
-    def retry_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retry_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes the retry policy in case of function's execution failure.
         Retried execution is charged as any other execution.
@@ -741,12 +741,12 @@ class FunctionEventTriggerArgs:
         return pulumi.get(self, "retry_policy")
 
     @retry_policy.setter
-    def retry_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retry_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retry_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The email of the trigger's service account. The service account
         must have permission to invoke Cloud Run services. If empty, defaults to the
@@ -755,12 +755,12 @@ class FunctionEventTriggerArgs:
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Output only. The resource name of the Eventarc trigger.
@@ -768,12 +768,12 @@ class FunctionEventTriggerArgs:
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerRegion")
-    def trigger_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region that the trigger will be in. The trigger will only receive
         events originating in this region. It can be the same
@@ -783,7 +783,7 @@ class FunctionEventTriggerArgs:
         return pulumi.get(self, "trigger_region")
 
     @trigger_region.setter
-    def trigger_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_region", value)
 
 
@@ -799,7 +799,7 @@ class FunctionEventTriggerEventFilterArgsDict(TypedDict):
     Required. The value for the attribute.
     If the operator field is set as `match-path-pattern`, this value can be a path pattern instead of an exact value.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The operator used for matching the events with the value of
     the filter. If not specified, only events that have an exact key-value
@@ -813,7 +813,7 @@ class FunctionEventTriggerEventFilterArgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
-                 operator: Optional[pulumi.Input[_builtins.str]] = None):
+                 operator: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] attribute: 'Required. The name of a CloudEvents attribute.
                Currently, only a subset of attributes are supported for filtering. Use the `gcloud eventarc providers describe` command to learn more about events and their attributes.
@@ -860,7 +860,7 @@ class FunctionEventTriggerEventFilterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The operator used for matching the events with the value of
         the filter. If not specified, only events that have an exact key-value
@@ -871,21 +871,21 @@ class FunctionEventTriggerEventFilterArgs:
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
 
 class FunctionIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FunctionIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -911,25 +911,25 @@ class FunctionIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class FunctionIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class FunctionIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -955,107 +955,107 @@ class FunctionIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class FunctionServiceConfigArgsDict(TypedDict):
-    all_traffic_on_latest_revision: NotRequired[pulumi.Input[_builtins.bool]]
+    all_traffic_on_latest_revision: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether 100% of traffic is routed to the latest revision. Defaults to true.
     """
-    available_cpu: NotRequired[pulumi.Input[_builtins.str]]
+    available_cpu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The number of CPUs used in a single container instance. Default value is calculated from available memory.
     """
-    available_memory: NotRequired[pulumi.Input[_builtins.str]]
+    available_memory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The amount of memory available for a function.
     Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
     supplied the value is interpreted as bytes.
     """
-    binary_authorization_policy: NotRequired[pulumi.Input[_builtins.str]]
+    binary_authorization_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The binary authorization policy to be checked when deploying the Cloud Run service.
     """
-    direct_vpc_egress: NotRequired[pulumi.Input[_builtins.str]]
+    direct_vpc_egress: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
     Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
     """
-    direct_vpc_network_interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgsDict']]]]
+    direct_vpc_network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]]]
     """
     The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
     Structure is documented below.
     """
-    environment_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    environment_variables: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Environment variables that shall be available during function execution.
     """
-    gcf_uri: NotRequired[pulumi.Input[_builtins.str]]
+    gcf_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     URIs of the Service deployed
     """
-    ingress_settings: NotRequired[pulumi.Input[_builtins.str]]
+    ingress_settings: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
     Default value is `ALLOW_ALL`.
     Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
     """
-    max_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    max_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The limit on the maximum number of function instances that may coexist at a
     given time.
     """
-    max_instance_request_concurrency: NotRequired[pulumi.Input[_builtins.int]]
+    max_instance_request_concurrency: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
     """
-    min_instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    min_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The limit on the minimum number of function instances that may coexist at a
     given time.
     """
-    secret_environment_variables: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgsDict']]]]
+    secret_environment_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]]
     """
     Secret environment variables configuration.
     Structure is documented below.
     """
-    secret_volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgsDict']]]]
+    secret_volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]]
     """
     Secret volumes configuration.
     Structure is documented below.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Name of the service associated with a Function.
     """
-    service_account_email: NotRequired[pulumi.Input[_builtins.str]]
+    service_account_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The email of the service account for this function.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The function execution timeout. Execution is considered failed and
     can be terminated if the function is not completed at the end of the
     timeout period. Defaults to 60 seconds.
     """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
+    uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     URI of the Service deployed.
     """
-    vpc_connector: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_connector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Serverless VPC Access connector that this cloud function can connect to.
     """
-    vpc_connector_egress_settings: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_connector_egress_settings: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Available egress settings.
     Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
@@ -1064,26 +1064,26 @@ class FunctionServiceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionServiceConfigArgs:
     def __init__(__self__, *,
-                 all_traffic_on_latest_revision: Optional[pulumi.Input[_builtins.bool]] = None,
-                 available_cpu: Optional[pulumi.Input[_builtins.str]] = None,
-                 available_memory: Optional[pulumi.Input[_builtins.str]] = None,
-                 binary_authorization_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 direct_vpc_egress: Optional[pulumi.Input[_builtins.str]] = None,
-                 direct_vpc_network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gcf_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingress_settings: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_instance_request_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]] = None,
-                 secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_connector_egress_settings: Optional[pulumi.Input[_builtins.str]] = None):
+                 all_traffic_on_latest_revision: pulumi.Input[Optional[_builtins.bool]] = None,
+                 available_cpu: pulumi.Input[Optional[_builtins.str]] = None,
+                 available_memory: pulumi.Input[Optional[_builtins.str]] = None,
+                 binary_authorization_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_vpc_egress: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_vpc_network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gcf_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingress_settings: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_instance_request_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 secret_environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]] = None,
+                 secret_volumes: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_connector_egress_settings: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true.
         :param pulumi.Input[_builtins.str] available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory.
@@ -1165,31 +1165,31 @@ class FunctionServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allTrafficOnLatestRevision")
-    def all_traffic_on_latest_revision(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_traffic_on_latest_revision(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether 100% of traffic is routed to the latest revision. Defaults to true.
         """
         return pulumi.get(self, "all_traffic_on_latest_revision")
 
     @all_traffic_on_latest_revision.setter
-    def all_traffic_on_latest_revision(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_traffic_on_latest_revision(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_traffic_on_latest_revision", value)
 
     @_builtins.property
     @pulumi.getter(name="availableCpu")
-    def available_cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def available_cpu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of CPUs used in a single container instance. Default value is calculated from available memory.
         """
         return pulumi.get(self, "available_cpu")
 
     @available_cpu.setter
-    def available_cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def available_cpu(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "available_cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="availableMemory")
-    def available_memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def available_memory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The amount of memory available for a function.
         Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
@@ -1198,24 +1198,24 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "available_memory")
 
     @available_memory.setter
-    def available_memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def available_memory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "available_memory", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorizationPolicy")
-    def binary_authorization_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def binary_authorization_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The binary authorization policy to be checked when deploying the Cloud Run service.
         """
         return pulumi.get(self, "binary_authorization_policy")
 
     @binary_authorization_policy.setter
-    def binary_authorization_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def binary_authorization_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "binary_authorization_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="directVpcEgress")
-    def direct_vpc_egress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direct_vpc_egress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
         Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
@@ -1223,12 +1223,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "direct_vpc_egress")
 
     @direct_vpc_egress.setter
-    def direct_vpc_egress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direct_vpc_egress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direct_vpc_egress", value)
 
     @_builtins.property
     @pulumi.getter(name="directVpcNetworkInterfaces")
-    def direct_vpc_network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]]:
+    def direct_vpc_network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]]:
         """
         The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
         Structure is documented below.
@@ -1236,24 +1236,24 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "direct_vpc_network_interfaces")
 
     @direct_vpc_network_interfaces.setter
-    def direct_vpc_network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]]):
+    def direct_vpc_network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]]):
         pulumi.set(self, "direct_vpc_network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Environment variables that shall be available during function execution.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="gcfUri")
-    def gcf_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcf_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         URIs of the Service deployed
@@ -1261,12 +1261,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "gcf_uri")
 
     @gcf_uri.setter
-    def gcf_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcf_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcf_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="ingressSettings")
-    def ingress_settings(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ingress_settings(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
         Default value is `ALLOW_ALL`.
@@ -1275,12 +1275,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "ingress_settings")
 
     @ingress_settings.setter
-    def ingress_settings(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ingress_settings(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ingress_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")
-    def max_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The limit on the maximum number of function instances that may coexist at a
         given time.
@@ -1288,24 +1288,24 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "max_instance_count")
 
     @max_instance_count.setter
-    def max_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceRequestConcurrency")
-    def max_instance_request_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_request_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         """
         return pulumi.get(self, "max_instance_request_concurrency")
 
     @max_instance_request_concurrency.setter
-    def max_instance_request_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_request_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_request_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="minInstanceCount")
-    def min_instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The limit on the minimum number of function instances that may coexist at a
         given time.
@@ -1313,12 +1313,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "min_instance_count")
 
     @min_instance_count.setter
-    def min_instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="secretEnvironmentVariables")
-    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]:
+    def secret_environment_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]:
         """
         Secret environment variables configuration.
         Structure is documented below.
@@ -1326,12 +1326,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "secret_environment_variables")
 
     @secret_environment_variables.setter
-    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]):
+    def secret_environment_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]):
         pulumi.set(self, "secret_environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="secretVolumes")
-    def secret_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]:
+    def secret_volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]:
         """
         Secret volumes configuration.
         Structure is documented below.
@@ -1339,12 +1339,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "secret_volumes")
 
     @secret_volumes.setter
-    def secret_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]):
+    def secret_volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]):
         pulumi.set(self, "secret_volumes", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Name of the service associated with a Function.
@@ -1352,24 +1352,24 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the service account for this function.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The function execution timeout. Execution is considered failed and
         can be terminated if the function is not completed at the end of the
@@ -1378,12 +1378,12 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         URI of the Service deployed.
@@ -1391,24 +1391,24 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConnector")
-    def vpc_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Serverless VPC Access connector that this cloud function can connect to.
         """
         return pulumi.get(self, "vpc_connector")
 
     @vpc_connector.setter
-    def vpc_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcConnectorEgressSettings")
-    def vpc_connector_egress_settings(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_connector_egress_settings(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Available egress settings.
         Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
@@ -1416,20 +1416,20 @@ class FunctionServiceConfigArgs:
         return pulumi.get(self, "vpc_connector_egress_settings")
 
     @vpc_connector_egress_settings.setter
-    def vpc_connector_egress_settings(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_connector_egress_settings(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_connector_egress_settings", value)
 
 
 class FunctionServiceConfigDirectVpcNetworkInterfaceArgsDict(TypedDict):
-    network: NotRequired[pulumi.Input[_builtins.str]]
+    network: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
     """
-    subnetwork: NotRequired[pulumi.Input[_builtins.str]]
+    subnetwork: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Network tags applied to this Cloud Function resource.
     """
@@ -1437,9 +1437,9 @@ class FunctionServiceConfigDirectVpcNetworkInterfaceArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionServiceConfigDirectVpcNetworkInterfaceArgs:
     def __init__(__self__, *,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] network: The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
         :param pulumi.Input[_builtins.str] subnetwork: The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
@@ -1454,38 +1454,38 @@ class FunctionServiceConfigDirectVpcNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC network to which the function will be connected. Specify either a VPC network or a subnet, or both. If you specify only a network, the subnet uses the same name as the network.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used.
         """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Network tags applied to this Cloud Function resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -1587,7 +1587,7 @@ class FunctionServiceConfigSecretVolumeArgsDict(TypedDict):
     """
     Name of the secret in secret manager (not the full resource name).
     """
-    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgsDict']]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]]
     """
     List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
     Structure is documented below.
@@ -1599,7 +1599,7 @@ class FunctionServiceConfigSecretVolumeArgs:
                  mount_path: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  secret: pulumi.Input[_builtins.str],
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]] = None):
+                 versions: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_path: The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
         :param pulumi.Input[_builtins.str] project_id: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
@@ -1651,7 +1651,7 @@ class FunctionServiceConfigSecretVolumeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]:
+    def versions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]:
         """
         List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
         Structure is documented below.
@@ -1659,7 +1659,7 @@ class FunctionServiceConfigSecretVolumeArgs:
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]):
+    def versions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
 

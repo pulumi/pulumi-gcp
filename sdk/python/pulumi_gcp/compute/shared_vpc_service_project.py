@@ -21,7 +21,7 @@ class SharedVPCServiceProjectArgs:
     def __init__(__self__, *,
                  host_project: pulumi.Input[_builtins.str],
                  service_project: pulumi.Input[_builtins.str],
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SharedVPCServiceProject resource.
 
@@ -60,23 +60,23 @@ class SharedVPCServiceProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
 
 @pulumi.input_type
 class _SharedVPCServiceProjectState:
     def __init__(__self__, *,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SharedVPCServiceProject resources.
 
@@ -93,38 +93,38 @@ class _SharedVPCServiceProjectState:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         """
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="hostProject")
-    def host_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of a host project to associate.
         """
         return pulumi.get(self, "host_project")
 
     @host_project.setter
-    def host_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceProject")
-    def service_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that will serve as a Shared VPC service project.
         """
         return pulumi.get(self, "service_project")
 
     @service_project.setter
-    def service_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_project", value)
 
 
@@ -134,9 +134,9 @@ class SharedVPCServiceProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Enables the Google Compute Engine
@@ -231,9 +231,9 @@ class SharedVPCServiceProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -260,9 +260,9 @@ class SharedVPCServiceProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            host_project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_project: Optional[pulumi.Input[_builtins.str]] = None) -> 'SharedVPCServiceProject':
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            host_project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_project: pulumi.Input[Optional[_builtins.str]] = None) -> 'SharedVPCServiceProject':
         """
         Get an existing SharedVPCServiceProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

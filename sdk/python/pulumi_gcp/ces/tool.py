@@ -24,12 +24,12 @@ class ToolArgs:
                  app: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  tool_id: pulumi.Input[_builtins.str],
-                 client_function: Optional[pulumi.Input['ToolClientFunctionArgs']] = None,
-                 data_store_tool: Optional[pulumi.Input['ToolDataStoreToolArgs']] = None,
-                 execution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_search_tool: Optional[pulumi.Input['ToolGoogleSearchToolArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 python_function: Optional[pulumi.Input['ToolPythonFunctionArgs']] = None):
+                 client_function: pulumi.Input[Optional['ToolClientFunctionArgs']] = None,
+                 data_store_tool: pulumi.Input[Optional['ToolDataStoreToolArgs']] = None,
+                 execution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_search_tool: pulumi.Input[Optional['ToolGoogleSearchToolArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 python_function: pulumi.Input[Optional['ToolPythonFunctionArgs']] = None):
         """
         The set of arguments for constructing a Tool resource.
 
@@ -116,7 +116,7 @@ class ToolArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientFunction")
-    def client_function(self) -> Optional[pulumi.Input['ToolClientFunctionArgs']]:
+    def client_function(self) -> pulumi.Input[Optional['ToolClientFunctionArgs']]:
         """
         Represents a client-side function that the agent can invoke. When the
         tool is chosen by the agent, control is handed off to the client.
@@ -127,12 +127,12 @@ class ToolArgs:
         return pulumi.get(self, "client_function")
 
     @client_function.setter
-    def client_function(self, value: Optional[pulumi.Input['ToolClientFunctionArgs']]):
+    def client_function(self, value: pulumi.Input[Optional['ToolClientFunctionArgs']]):
         pulumi.set(self, "client_function", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreTool")
-    def data_store_tool(self) -> Optional[pulumi.Input['ToolDataStoreToolArgs']]:
+    def data_store_tool(self) -> pulumi.Input[Optional['ToolDataStoreToolArgs']]:
         """
         Tool to retrieve from Vertex AI Search datastore or engine for grounding.
         Accepts either a datastore or an engine, but not both.
@@ -143,12 +143,12 @@ class ToolArgs:
         return pulumi.get(self, "data_store_tool")
 
     @data_store_tool.setter
-    def data_store_tool(self, value: Optional[pulumi.Input['ToolDataStoreToolArgs']]):
+    def data_store_tool(self, value: pulumi.Input[Optional['ToolDataStoreToolArgs']]):
         pulumi.set(self, "data_store_tool", value)
 
     @_builtins.property
     @pulumi.getter(name="executionType")
-    def execution_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         SYNCHRONOUS
@@ -157,12 +157,12 @@ class ToolArgs:
         return pulumi.get(self, "execution_type")
 
     @execution_type.setter
-    def execution_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_type", value)
 
     @_builtins.property
     @pulumi.getter(name="googleSearchTool")
-    def google_search_tool(self) -> Optional[pulumi.Input['ToolGoogleSearchToolArgs']]:
+    def google_search_tool(self) -> pulumi.Input[Optional['ToolGoogleSearchToolArgs']]:
         """
         Represents a tool to perform Google web searches for grounding.
         See
@@ -172,12 +172,12 @@ class ToolArgs:
         return pulumi.get(self, "google_search_tool")
 
     @google_search_tool.setter
-    def google_search_tool(self, value: Optional[pulumi.Input['ToolGoogleSearchToolArgs']]):
+    def google_search_tool(self, value: pulumi.Input[Optional['ToolGoogleSearchToolArgs']]):
         pulumi.set(self, "google_search_tool", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -185,12 +185,12 @@ class ToolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonFunction")
-    def python_function(self) -> Optional[pulumi.Input['ToolPythonFunctionArgs']]:
+    def python_function(self) -> pulumi.Input[Optional['ToolPythonFunctionArgs']]:
         """
         A Python function tool.
         Structure is documented below.
@@ -198,30 +198,30 @@ class ToolArgs:
         return pulumi.get(self, "python_function")
 
     @python_function.setter
-    def python_function(self, value: Optional[pulumi.Input['ToolPythonFunctionArgs']]):
+    def python_function(self, value: pulumi.Input[Optional['ToolPythonFunctionArgs']]):
         pulumi.set(self, "python_function", value)
 
 
 @pulumi.input_type
 class _ToolState:
     def __init__(__self__, *,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_function: Optional[pulumi.Input['ToolClientFunctionArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_store_tool: Optional[pulumi.Input['ToolDataStoreToolArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 generated_summary: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_search_tool: Optional[pulumi.Input['ToolGoogleSearchToolArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_api_tools: Optional[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 python_function: Optional[pulumi.Input['ToolPythonFunctionArgs']] = None,
-                 system_tools: Optional[pulumi.Input[Sequence[pulumi.Input['ToolSystemToolArgs']]]] = None,
-                 tool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_function: pulumi.Input[Optional['ToolClientFunctionArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_store_tool: pulumi.Input[Optional['ToolDataStoreToolArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 generated_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_search_tool: pulumi.Input[Optional['ToolGoogleSearchToolArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_api_tools: pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 python_function: pulumi.Input[Optional['ToolPythonFunctionArgs']] = None,
+                 system_tools: pulumi.Input[Optional[Sequence[pulumi.Input['ToolSystemToolArgs']]]] = None,
+                 tool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tool resources.
 
@@ -305,19 +305,19 @@ class _ToolState:
 
     @_builtins.property
     @pulumi.getter
-    def app(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "app")
 
     @app.setter
-    def app(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app", value)
 
     @_builtins.property
     @pulumi.getter(name="clientFunction")
-    def client_function(self) -> Optional[pulumi.Input['ToolClientFunctionArgs']]:
+    def client_function(self) -> pulumi.Input[Optional['ToolClientFunctionArgs']]:
         """
         Represents a client-side function that the agent can invoke. When the
         tool is chosen by the agent, control is handed off to the client.
@@ -328,24 +328,24 @@ class _ToolState:
         return pulumi.get(self, "client_function")
 
     @client_function.setter
-    def client_function(self, value: Optional[pulumi.Input['ToolClientFunctionArgs']]):
+    def client_function(self, value: pulumi.Input[Optional['ToolClientFunctionArgs']]):
         pulumi.set(self, "client_function", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the tool was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataStoreTool")
-    def data_store_tool(self) -> Optional[pulumi.Input['ToolDataStoreToolArgs']]:
+    def data_store_tool(self) -> pulumi.Input[Optional['ToolDataStoreToolArgs']]:
         """
         Tool to retrieve from Vertex AI Search datastore or engine for grounding.
         Accepts either a datastore or an engine, but not both.
@@ -356,12 +356,12 @@ class _ToolState:
         return pulumi.get(self, "data_store_tool")
 
     @data_store_tool.setter
-    def data_store_tool(self, value: Optional[pulumi.Input['ToolDataStoreToolArgs']]):
+    def data_store_tool(self, value: pulumi.Input[Optional['ToolDataStoreToolArgs']]):
         pulumi.set(self, "data_store_tool", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the allowed custom CA certificates. This
@@ -370,12 +370,12 @@ class _ToolState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Etag used to ensure the object hasn't changed during a read-modify-write
         operation. If the etag is empty, the update will overwrite any concurrent
@@ -384,12 +384,12 @@ class _ToolState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="executionType")
-    def execution_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         SYNCHRONOUS
@@ -398,12 +398,12 @@ class _ToolState:
         return pulumi.get(self, "execution_type")
 
     @execution_type.setter
-    def execution_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_type", value)
 
     @_builtins.property
     @pulumi.getter(name="generatedSummary")
-    def generated_summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generated_summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the tool is generated by the LLM assistant, this field contains a
         descriptive summary of the generation.
@@ -411,12 +411,12 @@ class _ToolState:
         return pulumi.get(self, "generated_summary")
 
     @generated_summary.setter
-    def generated_summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generated_summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generated_summary", value)
 
     @_builtins.property
     @pulumi.getter(name="googleSearchTool")
-    def google_search_tool(self) -> Optional[pulumi.Input['ToolGoogleSearchToolArgs']]:
+    def google_search_tool(self) -> pulumi.Input[Optional['ToolGoogleSearchToolArgs']]:
         """
         Represents a tool to perform Google web searches for grounding.
         See
@@ -426,24 +426,24 @@ class _ToolState:
         return pulumi.get(self, "google_search_tool")
 
     @google_search_tool.setter
-    def google_search_tool(self, value: Optional[pulumi.Input['ToolGoogleSearchToolArgs']]):
+    def google_search_tool(self, value: pulumi.Input[Optional['ToolGoogleSearchToolArgs']]):
         pulumi.set(self, "google_search_tool", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The name of the system tool.
@@ -451,12 +451,12 @@ class _ToolState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="openApiTools")
-    def open_api_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolArgs']]]]:
+    def open_api_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolArgs']]]]:
         """
         A remote API tool defined by an OpenAPI schema.
         Structure is documented below.
@@ -464,12 +464,12 @@ class _ToolState:
         return pulumi.get(self, "open_api_tools")
 
     @open_api_tools.setter
-    def open_api_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ToolOpenApiToolArgs']]]]):
+    def open_api_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolArgs']]]]):
         pulumi.set(self, "open_api_tools", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -477,12 +477,12 @@ class _ToolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pythonFunction")
-    def python_function(self) -> Optional[pulumi.Input['ToolPythonFunctionArgs']]:
+    def python_function(self) -> pulumi.Input[Optional['ToolPythonFunctionArgs']]:
         """
         A Python function tool.
         Structure is documented below.
@@ -490,12 +490,12 @@ class _ToolState:
         return pulumi.get(self, "python_function")
 
     @python_function.setter
-    def python_function(self, value: Optional[pulumi.Input['ToolPythonFunctionArgs']]):
+    def python_function(self, value: pulumi.Input[Optional['ToolPythonFunctionArgs']]):
         pulumi.set(self, "python_function", value)
 
     @_builtins.property
     @pulumi.getter(name="systemTools")
-    def system_tools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ToolSystemToolArgs']]]]:
+    def system_tools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ToolSystemToolArgs']]]]:
         """
         The system tool.
         Structure is documented below.
@@ -503,12 +503,12 @@ class _ToolState:
         return pulumi.get(self, "system_tools")
 
     @system_tools.setter
-    def system_tools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ToolSystemToolArgs']]]]):
+    def system_tools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ToolSystemToolArgs']]]]):
         pulumi.set(self, "system_tools", value)
 
     @_builtins.property
     @pulumi.getter(name="toolId")
-    def tool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the tool, which will become the final component of
         the tool's resource name. If not provided, a unique ID will be
@@ -517,19 +517,19 @@ class _ToolState:
         return pulumi.get(self, "tool_id")
 
     @tool_id.setter
-    def tool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the tool was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -539,15 +539,15 @@ class Tool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_function: Optional[pulumi.Input[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
-                 data_store_tool: Optional[pulumi.Input[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
-                 execution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_search_tool: Optional[pulumi.Input[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 python_function: Optional[pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
-                 tool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
+                 data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+                 execution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
+                 tool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Description
@@ -601,9 +601,9 @@ class Tool(pulumi.CustomResource):
                         "description": "An array",
                     }),
                     "max_items": 32,
-                    "maximum": 64,
+                    "maximum": float(64),
                     "min_items": 1,
-                    "minimum": 2,
+                    "minimum": float(2),
                     "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
@@ -646,9 +646,9 @@ class Tool(pulumi.CustomResource):
                         "description": "An array",
                     }),
                     "max_items": 32,
-                    "maximum": 64,
+                    "maximum": float(64),
                     "min_items": 1,
-                    "minimum": 2,
+                    "minimum": float(2),
                     "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
@@ -709,14 +709,14 @@ class Tool(pulumi.CustomResource):
                     "specs": [{
                         "condition_boost_specs": [{
                             "condition": "(lang_code: ANY(\\"en\\", \\"fr\\"))",
-                            "boost": 1,
+                            "boost": float(1),
                             "boost_control_spec": {
                                 "field_name": "example-field",
                                 "attribute_type": "NUMERICAL",
                                 "interpolation_type": "LINEAR",
                                 "control_points": [{
                                     "attribute_value": "1",
-                                    "boost_amount": 1,
+                                    "boost_amount": float(1),
                                 }],
                             },
                         }],
@@ -727,7 +727,7 @@ class Tool(pulumi.CustomResource):
                     "rewriter_config": {
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
-                            "temperature": 1,
+                            "temperature": float(1),
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -735,13 +735,13 @@ class Tool(pulumi.CustomResource):
                     "summarization_config": {
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
-                            "temperature": 1,
+                            "temperature": float(1),
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
                     },
                     "grounding_config": {
-                        "grounding_level": 3,
+                        "grounding_level": float(3),
                         "disabled": False,
                     },
                 }],
@@ -920,9 +920,9 @@ class Tool(pulumi.CustomResource):
                         "description": "An array",
                     }),
                     "max_items": 32,
-                    "maximum": 64,
+                    "maximum": float(64),
                     "min_items": 1,
-                    "minimum": 2,
+                    "minimum": float(2),
                     "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
@@ -965,9 +965,9 @@ class Tool(pulumi.CustomResource):
                         "description": "An array",
                     }),
                     "max_items": 32,
-                    "maximum": 64,
+                    "maximum": float(64),
                     "min_items": 1,
-                    "minimum": 2,
+                    "minimum": float(2),
                     "nullable": True,
                     "prefix_items": json.dumps([{
                         "type": "ARRAY",
@@ -1028,14 +1028,14 @@ class Tool(pulumi.CustomResource):
                     "specs": [{
                         "condition_boost_specs": [{
                             "condition": "(lang_code: ANY(\\"en\\", \\"fr\\"))",
-                            "boost": 1,
+                            "boost": float(1),
                             "boost_control_spec": {
                                 "field_name": "example-field",
                                 "attribute_type": "NUMERICAL",
                                 "interpolation_type": "LINEAR",
                                 "control_points": [{
                                     "attribute_value": "1",
-                                    "boost_amount": 1,
+                                    "boost_amount": float(1),
                                 }],
                             },
                         }],
@@ -1046,7 +1046,7 @@ class Tool(pulumi.CustomResource):
                     "rewriter_config": {
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
-                            "temperature": 1,
+                            "temperature": float(1),
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
@@ -1054,13 +1054,13 @@ class Tool(pulumi.CustomResource):
                     "summarization_config": {
                         "model_settings": {
                             "model": "gemini-3.0-flash-001",
-                            "temperature": 1,
+                            "temperature": float(1),
                         },
                         "prompt": "example-prompt",
                         "disabled": False,
                     },
                     "grounding_config": {
-                        "grounding_level": 3,
+                        "grounding_level": float(3),
                         "disabled": False,
                     },
                 }],
@@ -1167,15 +1167,15 @@ class Tool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_function: Optional[pulumi.Input[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
-                 data_store_tool: Optional[pulumi.Input[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
-                 execution_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_search_tool: Optional[pulumi.Input[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 python_function: Optional[pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
-                 tool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 app: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
+                 data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+                 execution_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
+                 tool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1218,23 +1218,23 @@ class Tool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app: Optional[pulumi.Input[_builtins.str]] = None,
-            client_function: Optional[pulumi.Input[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_store_tool: Optional[pulumi.Input[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_type: Optional[pulumi.Input[_builtins.str]] = None,
-            generated_summary: Optional[pulumi.Input[_builtins.str]] = None,
-            google_search_tool: Optional[pulumi.Input[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            open_api_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ToolOpenApiToolArgs', 'ToolOpenApiToolArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            python_function: Optional[pulumi.Input[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
-            system_tools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict']]]]] = None,
-            tool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Tool':
+            app: pulumi.Input[Optional[_builtins.str]] = None,
+            client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_type: pulumi.Input[Optional[_builtins.str]] = None,
+            generated_summary: pulumi.Input[Optional[_builtins.str]] = None,
+            google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_api_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolOpenApiToolArgs', 'ToolOpenApiToolArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            python_function: pulumi.Input[Optional[Union['ToolPythonFunctionArgs', 'ToolPythonFunctionArgsDict']]] = None,
+            system_tools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ToolSystemToolArgs', 'ToolSystemToolArgsDict']]]]] = None,
+            tool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Tool':
         """
         Get an existing Tool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

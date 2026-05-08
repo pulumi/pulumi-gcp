@@ -272,7 +272,7 @@ export interface SecurityActionState {
     /**
      * Allow a request through if it matches this SecurityAction.
      */
-    allow?: pulumi.Input<inputs.apigee.SecurityActionAllow>;
+    allow?: pulumi.Input<inputs.apigee.SecurityActionAllow | undefined>;
     /**
      * If unset, this would apply to all proxies in the environment.
      * If set, this action is enforced only if at least one proxy in the repeated
@@ -280,68 +280,68 @@ export interface SecurityActionState {
      * There can be at most 100 enabled actions with proxies set in an env.
      * Several other restrictions apply on conditions and are detailed later.
      */
-    apiProxies?: pulumi.Input<pulumi.Input<string>[]>;
+    apiProxies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A valid SecurityAction must contain at least one condition.
      * Structure is documented below.
      */
-    conditionConfig?: pulumi.Input<inputs.apigee.SecurityActionConditionConfig>;
+    conditionConfig?: pulumi.Input<inputs.apigee.SecurityActionConditionConfig | undefined>;
     /**
      * The create time for this SecurityAction.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
      * Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Deny a request through if it matches this SecurityAction.
      * Structure is documented below.
      */
-    deny?: pulumi.Input<inputs.apigee.SecurityActionDeny>;
+    deny?: pulumi.Input<inputs.apigee.SecurityActionDeny | undefined>;
     /**
      * An optional user provided description of the SecurityAction.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment that this security action applies to.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * The expiration for this SecurityAction.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9
      * fractional digits. Offsets other than "Z" are also accepted.
      * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Flag a request through if it matches this SecurityAction.
      * Structure is documented below.
      */
-    flag?: pulumi.Input<inputs.apigee.SecurityActionFlag>;
+    flag?: pulumi.Input<inputs.apigee.SecurityActionFlag | undefined>;
     /**
      * The organization that this security action applies to.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the SecurityAction, which will become the final component of the action's resource name.
      * This value should be 0-61 characters, and valid format is (^a-z?$).
      */
-    securityActionId?: pulumi.Input<string>;
+    securityActionId?: pulumi.Input<string | undefined>;
     /**
      * Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The TTL for this SecurityAction.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
     /**
      * The update time for this SecurityAction. This reflects when this SecurityAction changed states.
      * Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
      * Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -351,7 +351,7 @@ export interface SecurityActionArgs {
     /**
      * Allow a request through if it matches this SecurityAction.
      */
-    allow?: pulumi.Input<inputs.apigee.SecurityActionAllow>;
+    allow?: pulumi.Input<inputs.apigee.SecurityActionAllow | undefined>;
     /**
      * If unset, this would apply to all proxies in the environment.
      * If set, this action is enforced only if at least one proxy in the repeated
@@ -359,7 +359,7 @@ export interface SecurityActionArgs {
      * There can be at most 100 enabled actions with proxies set in an env.
      * Several other restrictions apply on conditions and are detailed later.
      */
-    apiProxies?: pulumi.Input<pulumi.Input<string>[]>;
+    apiProxies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A valid SecurityAction must contain at least one condition.
      * Structure is documented below.
@@ -369,11 +369,11 @@ export interface SecurityActionArgs {
      * Deny a request through if it matches this SecurityAction.
      * Structure is documented below.
      */
-    deny?: pulumi.Input<inputs.apigee.SecurityActionDeny>;
+    deny?: pulumi.Input<inputs.apigee.SecurityActionDeny | undefined>;
     /**
      * An optional user provided description of the SecurityAction.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Apigee environment that this security action applies to.
      */
@@ -384,12 +384,12 @@ export interface SecurityActionArgs {
      * fractional digits. Offsets other than "Z" are also accepted.
      * Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Flag a request through if it matches this SecurityAction.
      * Structure is documented below.
      */
-    flag?: pulumi.Input<inputs.apigee.SecurityActionFlag>;
+    flag?: pulumi.Input<inputs.apigee.SecurityActionFlag | undefined>;
     /**
      * The organization that this security action applies to.
      */
@@ -408,5 +408,5 @@ export interface SecurityActionArgs {
      * The TTL for this SecurityAction.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }

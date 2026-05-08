@@ -124,14 +124,14 @@ export class SourceIamPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SourceIamPolicy resources.
  */
 export interface SourceIamPolicyState {
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
      */
-    organization?: pulumi.Input<string>;
-    policyData?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
+    policyData?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**

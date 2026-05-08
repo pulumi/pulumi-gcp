@@ -24,15 +24,15 @@ class CloudControlArgs:
                  cloud_control_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 finding_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_specs: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]] = None,
-                 remediation_steps: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlRuleArgs']]]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 finding_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_specs: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]] = None,
+                 remediation_steps: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlRuleArgs']]]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CloudControl resource.
 
@@ -122,31 +122,31 @@ class CloudControlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The categories of the cloud control.
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "categories", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the cloud control. The maximum length is 2000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the cloud control. The maximum length is 200
         characters.
@@ -154,12 +154,12 @@ class CloudControlArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="findingCategory")
-    def finding_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finding_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The finding_category of the cloud control. The maximum length is 255
         characters.
@@ -167,12 +167,12 @@ class CloudControlArgs:
         return pulumi.get(self, "finding_category")
 
     @finding_category.setter
-    def finding_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finding_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finding_category", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterSpecs")
-    def parameter_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]:
+    def parameter_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]:
         """
         The parameter spec of the cloud control.
         Structure is documented below.
@@ -180,12 +180,12 @@ class CloudControlArgs:
         return pulumi.get(self, "parameter_specs")
 
     @parameter_specs.setter
-    def parameter_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]):
+    def parameter_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]):
         pulumi.set(self, "parameter_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="remediationSteps")
-    def remediation_steps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation_steps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remediation steps for the findings generated by the cloud control. The
         maximum length is 400 characters.
@@ -193,12 +193,12 @@ class CloudControlArgs:
         return pulumi.get(self, "remediation_steps")
 
     @remediation_steps.setter
-    def remediation_steps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation_steps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation_steps", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlRuleArgs']]]]:
         """
         The Policy to be enforced to prevent/detect resource non-compliance.
         Structure is documented below.
@@ -206,12 +206,12 @@ class CloudControlArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         CRITICAL
@@ -222,43 +222,43 @@ class CloudControlArgs:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedCloudProviders")
-    def supported_cloud_providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_cloud_providers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         cloud providers supported
         """
         return pulumi.get(self, "supported_cloud_providers")
 
     @supported_cloud_providers.setter
-    def supported_cloud_providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_cloud_providers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_cloud_providers", value)
 
 
 @pulumi.input_type
 class _CloudControlState:
     def __init__(__self__, *,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_control_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 finding_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 major_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_specs: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]] = None,
-                 related_frameworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 remediation_steps: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlRuleArgs']]]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 supported_enforcement_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 supported_target_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 finding_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 major_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_specs: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]] = None,
+                 related_frameworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 remediation_steps: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlRuleArgs']]]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 supported_enforcement_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 supported_target_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CloudControl resources.
 
@@ -335,19 +335,19 @@ class _CloudControlState:
 
     @_builtins.property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The categories of the cloud control.
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "categories", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudControlId")
-    def cloud_control_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_control_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the CloudControl.
         This is the last segment of the CloudControl resource name.
@@ -356,12 +356,12 @@ class _CloudControlState:
         return pulumi.get(self, "cloud_control_id")
 
     @cloud_control_id.setter
-    def cloud_control_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_control_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_control_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last updated time of the cloud control.
         The create_time is used because a new CC is created whenever we update an
@@ -370,24 +370,24 @@ class _CloudControlState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description of the cloud control. The maximum length is 2000 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the cloud control. The maximum length is 200
         characters.
@@ -395,12 +395,12 @@ class _CloudControlState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="findingCategory")
-    def finding_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def finding_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The finding_category of the cloud control. The maximum length is 255
         characters.
@@ -408,36 +408,36 @@ class _CloudControlState:
         return pulumi.get(self, "finding_category")
 
     @finding_category.setter
-    def finding_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def finding_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "finding_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Currently, only "global" is supported as a location.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="majorRevisionId")
-    def major_revision_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def major_revision_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Major revision of the cloud control incremented in ascending order.
         """
         return pulumi.get(self, "major_revision_id")
 
     @major_revision_id.setter
-    def major_revision_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def major_revision_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "major_revision_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The resource name of the cloud control.
         Format:
@@ -446,24 +446,24 @@ class _CloudControlState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterSpecs")
-    def parameter_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]:
+    def parameter_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]:
         """
         The parameter spec of the cloud control.
         Structure is documented below.
@@ -471,24 +471,24 @@ class _CloudControlState:
         return pulumi.get(self, "parameter_specs")
 
     @parameter_specs.setter
-    def parameter_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]):
+    def parameter_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecArgs']]]]):
         pulumi.set(self, "parameter_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedFrameworks")
-    def related_frameworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def related_frameworks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Frameworks that include this CloudControl
         """
         return pulumi.get(self, "related_frameworks")
 
     @related_frameworks.setter
-    def related_frameworks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def related_frameworks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "related_frameworks", value)
 
     @_builtins.property
     @pulumi.getter(name="remediationSteps")
-    def remediation_steps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation_steps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remediation steps for the findings generated by the cloud control. The
         maximum length is 400 characters.
@@ -496,12 +496,12 @@ class _CloudControlState:
         return pulumi.get(self, "remediation_steps")
 
     @remediation_steps.setter
-    def remediation_steps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation_steps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation_steps", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlRuleArgs']]]]:
         """
         The Policy to be enforced to prevent/detect resource non-compliance.
         Structure is documented below.
@@ -509,12 +509,12 @@ class _CloudControlState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudControlRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values:
         CRITICAL
@@ -525,43 +525,43 @@ class _CloudControlState:
         return pulumi.get(self, "severity")
 
     @severity.setter
-    def severity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "severity", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedCloudProviders")
-    def supported_cloud_providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_cloud_providers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         cloud providers supported
         """
         return pulumi.get(self, "supported_cloud_providers")
 
     @supported_cloud_providers.setter
-    def supported_cloud_providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_cloud_providers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_cloud_providers", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedEnforcementModes")
-    def supported_enforcement_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_enforcement_modes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The supported enforcement mode of the cloud control. Default is DETECTIVE.
         """
         return pulumi.get(self, "supported_enforcement_modes")
 
     @supported_enforcement_modes.setter
-    def supported_enforcement_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_enforcement_modes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_enforcement_modes", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedTargetResourceTypes")
-    def supported_target_resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def supported_target_resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         target resource types supported by the CloudControl.
         """
         return pulumi.get(self, "supported_target_resource_types")
 
     @supported_target_resource_types.setter
-    def supported_target_resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def supported_target_resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "supported_target_resource_types", value)
 
 
@@ -571,18 +571,18 @@ class CloudControl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_control_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 finding_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudControlParameterSpecArgs', 'CloudControlParameterSpecArgsDict']]]]] = None,
-                 remediation_steps: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudControlRuleArgs', 'CloudControlRuleArgsDict']]]]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 finding_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlParameterSpecArgs', 'CloudControlParameterSpecArgsDict']]]]] = None,
+                 remediation_steps: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlRuleArgs', 'CloudControlRuleArgsDict']]]]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Cloud controls are the building blocks that make up frameworks. Each cloud control is a unit encapsulating various platform-specific logic for prevention, detection, and audit.
@@ -665,7 +665,7 @@ class CloudControl(pulumi.CustomResource):
                     "value_type": "NUMBER",
                     "is_required": False,
                     "default_value": {
-                        "number_value": 10,
+                        "number_value": float(10),
                     },
                     "substitution_rules": [{
                         "placeholder_substitution_rule": {
@@ -736,7 +736,7 @@ class CloudControl(pulumi.CustomResource):
                                     "string_value": "staging",
                                 },
                                 {
-                                    "number_value": 1,
+                                    "number_value": float(1),
                                 },
                             ],
                         },
@@ -873,7 +873,7 @@ class CloudControl(pulumi.CustomResource):
                     "value_type": "NUMBER",
                     "is_required": False,
                     "default_value": {
-                        "number_value": 10,
+                        "number_value": float(10),
                     },
                     "substitution_rules": [{
                         "placeholder_substitution_rule": {
@@ -944,7 +944,7 @@ class CloudControl(pulumi.CustomResource):
                                     "string_value": "staging",
                                 },
                                 {
-                                    "number_value": 1,
+                                    "number_value": float(1),
                                 },
                             ],
                         },
@@ -983,18 +983,18 @@ class CloudControl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_control_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 finding_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudControlParameterSpecArgs', 'CloudControlParameterSpecArgsDict']]]]] = None,
-                 remediation_steps: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudControlRuleArgs', 'CloudControlRuleArgsDict']]]]] = None,
-                 severity: Optional[pulumi.Input[_builtins.str]] = None,
-                 supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 finding_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlParameterSpecArgs', 'CloudControlParameterSpecArgsDict']]]]] = None,
+                 remediation_steps: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlRuleArgs', 'CloudControlRuleArgsDict']]]]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1038,24 +1038,24 @@ class CloudControl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cloud_control_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            finding_category: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            major_revision_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter_specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudControlParameterSpecArgs', 'CloudControlParameterSpecArgsDict']]]]] = None,
-            related_frameworks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            remediation_steps: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudControlRuleArgs', 'CloudControlRuleArgsDict']]]]] = None,
-            severity: Optional[pulumi.Input[_builtins.str]] = None,
-            supported_cloud_providers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            supported_enforcement_modes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            supported_target_resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CloudControl':
+            categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_control_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            finding_category: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            major_revision_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlParameterSpecArgs', 'CloudControlParameterSpecArgsDict']]]]] = None,
+            related_frameworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            remediation_steps: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudControlRuleArgs', 'CloudControlRuleArgsDict']]]]] = None,
+            severity: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_cloud_providers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supported_enforcement_modes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            supported_target_resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CloudControl':
         """
         Get an existing CloudControl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

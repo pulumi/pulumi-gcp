@@ -205,11 +205,11 @@ export interface UserCredsState {
     /**
      * The timestamp at which these user creds were created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The Firestore database ID.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the user creds, which will become the final component
      * of the user cred's resource name.
@@ -217,30 +217,30 @@ export interface UserCredsState {
      * with first character a letter and the last a letter or a number. Must not
      * be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Describes the Resource Identity principal.
      * Structure is documented below.
      */
-    resourceIdentities?: pulumi.Input<pulumi.Input<inputs.firestore.UserCredsResourceIdentity>[]>;
+    resourceIdentities?: pulumi.Input<pulumi.Input<inputs.firestore.UserCredsResourceIdentity>[] | undefined>;
     /**
      * The plaintext server-generated password for the user creds.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    securePassword?: pulumi.Input<string>;
+    securePassword?: pulumi.Input<string | undefined>;
     /**
      * The state of the user creds.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp at which these user creds were updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,10 +258,10 @@ export interface UserCredsArgs {
      * with first character a letter and the last a letter or a number. Must not
      * be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

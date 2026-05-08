@@ -124,8 +124,8 @@ def get_account_key(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         public_key=pulumi.get(__ret__, 'public_key'),
         public_key_type=pulumi.get(__ret__, 'public_key_type'))
-def get_account_key_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           public_key_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_key_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           public_key_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountKeyResult]:
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).

@@ -160,50 +160,50 @@ export interface ServingConfigState {
     /**
      * The resource IDs of the boost controls to be applied.
      */
-    boostControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    boostControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The collection ID. Currently only accepts "defaultCollection".
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the engine associated with the serving config.
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * The resource IDs of the filter controls to be applied.
      */
-    filterControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    filterControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full resource name of the serving config. Values are of the format
      * `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The resource IDs of the promote controls to be applied.
      */
-    promoteControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    promoteControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource IDs of the redirect controls to be applied.
      */
-    redirectControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * 'The unique ID of the serving config. Currently only accepts "defaultSearch".'
      */
-    servingConfigId?: pulumi.Input<string>;
+    servingConfigId?: pulumi.Input<string | undefined>;
     /**
      * The resource IDs of the synonyms controls to be applied.
      */
-    synonymsControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    synonymsControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -213,11 +213,11 @@ export interface ServingConfigArgs {
     /**
      * The resource IDs of the boost controls to be applied.
      */
-    boostControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    boostControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The collection ID. Currently only accepts "defaultCollection".
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the engine associated with the serving config.
      */
@@ -225,7 +225,7 @@ export interface ServingConfigArgs {
     /**
      * The resource IDs of the filter controls to be applied.
      */
-    filterControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    filterControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -235,21 +235,21 @@ export interface ServingConfigArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The resource IDs of the promote controls to be applied.
      */
-    promoteControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    promoteControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource IDs of the redirect controls to be applied.
      */
-    redirectControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    redirectControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * 'The unique ID of the serving config. Currently only accepts "defaultSearch".'
      */
-    servingConfigId?: pulumi.Input<string>;
+    servingConfigId?: pulumi.Input<string | undefined>;
     /**
      * The resource IDs of the synonyms controls to be applied.
      */
-    synonymsControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    synonymsControlIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

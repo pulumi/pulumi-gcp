@@ -21,10 +21,10 @@ __all__ = ['RepositoryArgs', 'Repository']
 @pulumi.input_type
 class RepositoryArgs:
     def __init__(__self__, *,
-                 create_ignore_already_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None):
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Repository resource.
 
@@ -48,19 +48,19 @@ class RepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="createIgnoreAlreadyExists")
-    def create_ignore_already_exists(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_ignore_already_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, skip repository creation if a repository with the same name already exists.
         """
         return pulumi.get(self, "create_ignore_already_exists")
 
     @create_ignore_already_exists.setter
-    def create_ignore_already_exists(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_ignore_already_exists(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_ignore_already_exists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
@@ -68,12 +68,12 @@ class RepositoryArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -81,12 +81,12 @@ class RepositoryArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubConfigs")
-    def pubsub_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]:
+    def pubsub_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]:
         """
         How this repository publishes a change in the repository through Cloud Pub/Sub.
         Keyed by the topic names.
@@ -95,19 +95,19 @@ class RepositoryArgs:
         return pulumi.get(self, "pubsub_configs")
 
     @pubsub_configs.setter
-    def pubsub_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
+    def pubsub_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
         pulumi.set(self, "pubsub_configs", value)
 
 
 @pulumi.input_type
 class _RepositoryState:
     def __init__(__self__, *,
-                 create_ignore_already_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Repository resources.
 
@@ -137,19 +137,19 @@ class _RepositoryState:
 
     @_builtins.property
     @pulumi.getter(name="createIgnoreAlreadyExists")
-    def create_ignore_already_exists(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_ignore_already_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, skip repository creation if a repository with the same name already exists.
         """
         return pulumi.get(self, "create_ignore_already_exists")
 
     @create_ignore_already_exists.setter
-    def create_ignore_already_exists(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_ignore_already_exists(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_ignore_already_exists", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
@@ -157,12 +157,12 @@ class _RepositoryState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -170,12 +170,12 @@ class _RepositoryState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubConfigs")
-    def pubsub_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]:
+    def pubsub_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]:
         """
         How this repository publishes a change in the repository through Cloud Pub/Sub.
         Keyed by the topic names.
@@ -184,31 +184,31 @@ class _RepositoryState:
         return pulumi.get(self, "pubsub_configs")
 
     @pubsub_configs.setter
-    def pubsub_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
+    def pubsub_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]]):
         pulumi.set(self, "pubsub_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk usage of the repo, in bytes.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL to clone the repository from Google Cloud Source Repositories.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -218,10 +218,10 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_ignore_already_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         A repository (or repo) is a Git repository storing versioned source content.
@@ -361,10 +361,10 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_ignore_already_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,12 +390,12 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_ignore_already_exists: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Repository':
+            create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

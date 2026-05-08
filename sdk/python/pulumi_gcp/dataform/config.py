@@ -20,8 +20,8 @@ __all__ = ['ConfigArgs', 'Config']
 class ConfigArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 default_kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Config resource.
 
@@ -50,19 +50,19 @@ class ConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultKmsKeyName")
-    def default_kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. A reference to the customer-managed encryption key (CMEK) that will be used by default to encrypt user data.
         """
         return pulumi.get(self, "default_kms_key_name")
 
     @default_kms_key_name.setter
-    def default_kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -70,16 +70,16 @@ class ConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _ConfigState:
     def __init__(__self__, *,
-                 default_kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Config resources.
 
@@ -97,19 +97,19 @@ class _ConfigState:
 
     @_builtins.property
     @pulumi.getter(name="defaultKmsKeyName")
-    def default_kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. A reference to the customer-managed encryption key (CMEK) that will be used by default to encrypt user data.
         """
         return pulumi.get(self, "default_kms_key_name")
 
     @default_kms_key_name.setter
-    def default_kms_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_kms_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -117,19 +117,19 @@ class _ConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the region
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -139,9 +139,9 @@ class Config(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Config is a singleton resource used to configure the default Dataform settings for a specified location.
@@ -393,9 +393,9 @@ class Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,9 +420,9 @@ class Config(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_kms_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'Config':
+            default_kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'Config':
         """
         Get an existing Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

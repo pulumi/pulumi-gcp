@@ -156,11 +156,11 @@ export interface GetFileOutputArgs {
     /**
      * If `true` (default), the file at `outputPath` is always downloaded and overwritten on every read. If `false`, the download is skipped when the file already exists at `outputPath` and the Artifact Registry-reported hash matches the hash from the previous read — useful for large files that rarely change, to avoid re-downloading on every `plan`/`apply`.
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * The project in which the repository lives. Defaults to the provider project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the repository.
      */

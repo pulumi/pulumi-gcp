@@ -24,9 +24,9 @@ class WebRegionForwardingRuleServiceIamMemberArgs:
                  forwarding_rule_region_service_name: pulumi.Input[_builtins.str],
                  member: pulumi.Input[_builtins.str],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['WebRegionForwardingRuleServiceIamMemberConditionArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['WebRegionForwardingRuleServiceIamMemberConditionArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WebRegionForwardingRuleServiceIamMember resource.
 
@@ -115,7 +115,7 @@ class WebRegionForwardingRuleServiceIamMemberArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WebRegionForwardingRuleServiceIamMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['WebRegionForwardingRuleServiceIamMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -123,12 +123,12 @@ class WebRegionForwardingRuleServiceIamMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WebRegionForwardingRuleServiceIamMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['WebRegionForwardingRuleServiceIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -136,12 +136,12 @@ class WebRegionForwardingRuleServiceIamMemberArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to. If not specified,
         the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
@@ -150,20 +150,20 @@ class WebRegionForwardingRuleServiceIamMemberArgs:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _WebRegionForwardingRuleServiceIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['WebRegionForwardingRuleServiceIamMemberConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule_region_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['WebRegionForwardingRuleServiceIamMemberConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule_region_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebRegionForwardingRuleServiceIamMember resources.
 
@@ -209,7 +209,7 @@ class _WebRegionForwardingRuleServiceIamMemberState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['WebRegionForwardingRuleServiceIamMemberConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['WebRegionForwardingRuleServiceIamMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -217,36 +217,36 @@ class _WebRegionForwardingRuleServiceIamMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['WebRegionForwardingRuleServiceIamMemberConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['WebRegionForwardingRuleServiceIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRuleRegionServiceName")
-    def forwarding_rule_region_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule_region_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "forwarding_rule_region_service_name")
 
     @forwarding_rule_region_service_name.setter
-    def forwarding_rule_region_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule_region_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule_region_service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def member(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -264,12 +264,12 @@ class _WebRegionForwardingRuleServiceIamMemberState:
         return pulumi.get(self, "member")
 
     @member.setter
-    def member(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -277,12 +277,12 @@ class _WebRegionForwardingRuleServiceIamMemberState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to find the parent resource to bind the IAM policy to. If not specified,
         the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
@@ -291,12 +291,12 @@ class _WebRegionForwardingRuleServiceIamMemberState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
@@ -305,7 +305,7 @@ class _WebRegionForwardingRuleServiceIamMemberState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -315,12 +315,12 @@ class WebRegionForwardingRuleServiceIamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['WebRegionForwardingRuleServiceIamMemberConditionArgs', 'WebRegionForwardingRuleServiceIamMemberConditionArgsDict']]] = None,
-                 forwarding_rule_region_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['WebRegionForwardingRuleServiceIamMemberConditionArgs', 'WebRegionForwardingRuleServiceIamMemberConditionArgsDict']]] = None,
+                 forwarding_rule_region_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Identity-Aware Proxy WebRegionForwardingRuleService. Each of these resources serves a different use case:
@@ -923,12 +923,12 @@ class WebRegionForwardingRuleServiceIamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['WebRegionForwardingRuleServiceIamMemberConditionArgs', 'WebRegionForwardingRuleServiceIamMemberConditionArgsDict']]] = None,
-                 forwarding_rule_region_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 member: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['WebRegionForwardingRuleServiceIamMemberConditionArgs', 'WebRegionForwardingRuleServiceIamMemberConditionArgsDict']]] = None,
+                 forwarding_rule_region_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 member: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -961,13 +961,13 @@ class WebRegionForwardingRuleServiceIamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['WebRegionForwardingRuleServiceIamMemberConditionArgs', 'WebRegionForwardingRuleServiceIamMemberConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            forwarding_rule_region_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            member: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'WebRegionForwardingRuleServiceIamMember':
+            condition: pulumi.Input[Optional[Union['WebRegionForwardingRuleServiceIamMemberConditionArgs', 'WebRegionForwardingRuleServiceIamMemberConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarding_rule_region_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            member: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'WebRegionForwardingRuleServiceIamMember':
         """
         Get an existing WebRegionForwardingRuleServiceIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -585,51 +585,51 @@ export interface HealthCheckState {
      * How often (in seconds) to send a health check. The default value is 5
      * seconds.
      */
-    checkIntervalSec?: pulumi.Input<number>;
+    checkIntervalSec?: pulumi.Input<number | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    grpcHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcHealthCheck>;
+    grpcHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcTlsHealthCheck>;
+    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcTlsHealthCheck | undefined>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck>;
+    http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck>;
+    httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
+    httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck | undefined>;
     /**
      * Configure logging on this health check.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -639,16 +639,16 @@ export interface HealthCheckState {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The list of cloud regions from which health checks are performed. If
      * any regions are specified, then exactly 3 regions should be specified.
@@ -663,32 +663,32 @@ export interface HealthCheckState {
      * * The health check cannot be used with BackendService nor with managed
      * instance group auto-healing.
      */
-    sourceRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    sslHealthCheck?: pulumi.Input<inputs.compute.HealthCheckSslHealthCheck>;
+    sslHealthCheck?: pulumi.Input<inputs.compute.HealthCheckSslHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    tcpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckTcpHealthCheck>;
+    tcpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckTcpHealthCheck | undefined>;
     /**
      * How long (in seconds) to wait before claiming failure.
      * The default value is 5 seconds.  It is invalid for timeoutSec to have
      * greater value than checkIntervalSec.
      */
-    timeoutSec?: pulumi.Input<number>;
+    timeoutSec?: pulumi.Input<number | undefined>;
     /**
      * The type of the health check. One of HTTP, HTTPS, TCP, or SSL.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * A so-far healthy instance will be marked unhealthy after this many
      * consecutive failures. The default value is 2.
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -699,47 +699,47 @@ export interface HealthCheckArgs {
      * How often (in seconds) to send a health check. The default value is 5
      * seconds.
      */
-    checkIntervalSec?: pulumi.Input<number>;
+    checkIntervalSec?: pulumi.Input<number | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    grpcHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcHealthCheck>;
+    grpcHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcTlsHealthCheck>;
+    grpcTlsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckGrpcTlsHealthCheck | undefined>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck>;
+    http2HealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttp2HealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck>;
+    httpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck>;
+    httpsHealthCheck?: pulumi.Input<inputs.compute.HealthCheckHttpsHealthCheck | undefined>;
     /**
      * Configure logging on this health check.
      * Structure is documented below.
      */
-    logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig>;
+    logConfig?: pulumi.Input<inputs.compute.HealthCheckLogConfig | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -749,12 +749,12 @@ export interface HealthCheckArgs {
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The list of cloud regions from which health checks are performed. If
      * any regions are specified, then exactly 3 regions should be specified.
@@ -769,26 +769,26 @@ export interface HealthCheckArgs {
      * * The health check cannot be used with BackendService nor with managed
      * instance group auto-healing.
      */
-    sourceRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    sslHealthCheck?: pulumi.Input<inputs.compute.HealthCheckSslHealthCheck>;
+    sslHealthCheck?: pulumi.Input<inputs.compute.HealthCheckSslHealthCheck | undefined>;
     /**
      * A nested object resource.
      * Structure is documented below.
      */
-    tcpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckTcpHealthCheck>;
+    tcpHealthCheck?: pulumi.Input<inputs.compute.HealthCheckTcpHealthCheck | undefined>;
     /**
      * How long (in seconds) to wait before claiming failure.
      * The default value is 5 seconds.  It is invalid for timeoutSec to have
      * greater value than checkIntervalSec.
      */
-    timeoutSec?: pulumi.Input<number>;
+    timeoutSec?: pulumi.Input<number | undefined>;
     /**
      * A so-far healthy instance will be marked unhealthy after this many
      * consecutive failures. The default value is 2.
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }

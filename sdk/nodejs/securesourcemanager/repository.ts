@@ -227,7 +227,7 @@ export interface RepositoryState {
     /**
      * Time the repository was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the repository. Setting `ABANDON` allows the resource
      * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -238,50 +238,50 @@ export interface RepositoryState {
      * * PREVENT
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the repository, which cannot exceed 500 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Initial configurations for the repository.
      * Structure is documented below.
      */
-    initialConfig?: pulumi.Input<inputs.securesourcemanager.RepositoryInitialConfig>;
+    initialConfig?: pulumi.Input<inputs.securesourcemanager.RepositoryInitialConfig | undefined>;
     /**
      * The name of the instance in which the repository is hosted.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The location for the Repository.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the Repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID for the Repository.
      */
-    repositoryId?: pulumi.Input<string>;
+    repositoryId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the repository.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time the repository was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * URIs for the repository.
      * Structure is documented below.
      */
-    uris?: pulumi.Input<pulumi.Input<inputs.securesourcemanager.RepositoryUri>[]>;
+    uris?: pulumi.Input<pulumi.Input<inputs.securesourcemanager.RepositoryUri>[] | undefined>;
 }
 
 /**
@@ -298,16 +298,16 @@ export interface RepositoryArgs {
      * * PREVENT
      * * ABANDON
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the repository, which cannot exceed 500 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Initial configurations for the repository.
      * Structure is documented below.
      */
-    initialConfig?: pulumi.Input<inputs.securesourcemanager.RepositoryInitialConfig>;
+    initialConfig?: pulumi.Input<inputs.securesourcemanager.RepositoryInitialConfig | undefined>;
     /**
      * The name of the instance in which the repository is hosted.
      */
@@ -320,7 +320,7 @@ export interface RepositoryArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID for the Repository.
      */

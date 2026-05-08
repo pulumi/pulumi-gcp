@@ -22,12 +22,12 @@ __all__ = ['Hl7StoreArgs', 'Hl7Store']
 class Hl7StoreArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
-                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
-                 reject_duplicate_message: Optional[pulumi.Input[_builtins.bool]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['Hl7StoreNotificationConfigArgs']] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
+                 parser_config: pulumi.Input[Optional['Hl7StoreParserConfigArgs']] = None,
+                 reject_duplicate_message: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Hl7Store resource.
 
@@ -91,7 +91,7 @@ class Hl7StoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key-value pairs used to organize HL7v2 stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -108,12 +108,12 @@ class Hl7StoreArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the Hl7V2Store.
         ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -121,13 +121,13 @@ class Hl7StoreArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
     @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-    def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['Hl7StoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
         A nested object resource.
@@ -138,12 +138,12 @@ class Hl7StoreArgs:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['Hl7StoreNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]:
+    def notification_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]:
         """
         A list of notification configs. Each configuration uses a filter to determine whether to publish a
         message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -153,12 +153,12 @@ class Hl7StoreArgs:
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]):
+    def notification_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="parserConfig")
-    def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArgs']]:
+    def parser_config(self) -> pulumi.Input[Optional['Hl7StoreParserConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -166,35 +166,35 @@ class Hl7StoreArgs:
         return pulumi.get(self, "parser_config")
 
     @parser_config.setter
-    def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArgs']]):
+    def parser_config(self, value: pulumi.Input[Optional['Hl7StoreParserConfigArgs']]):
         pulumi.set(self, "parser_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectDuplicateMessage")
-    def reject_duplicate_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_duplicate_message(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether duplicate messages are allowed.
         """
         return pulumi.get(self, "reject_duplicate_message")
 
     @reject_duplicate_message.setter
-    def reject_duplicate_message(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_duplicate_message(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_duplicate_message", value)
 
 
 @pulumi.input_type
 class _Hl7StoreState:
     def __init__(__self__, *,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
-                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reject_duplicate_message: Optional[pulumi.Input[_builtins.bool]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['Hl7StoreNotificationConfigArgs']] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
+                 parser_config: pulumi.Input[Optional['Hl7StoreParserConfigArgs']] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reject_duplicate_message: pulumi.Input[Optional[_builtins.bool]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Hl7Store resources.
 
@@ -256,7 +256,7 @@ class _Hl7StoreState:
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -264,24 +264,24 @@ class _Hl7StoreState:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User-supplied key-value pairs used to organize HL7v2 stores.
         Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -298,12 +298,12 @@ class _Hl7StoreState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the Hl7V2Store.
         ** Changing this property may recreate the Hl7v2 store (removing all data) **
@@ -311,13 +311,13 @@ class _Hl7StoreState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
     @_utilities.deprecated("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
-    def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['Hl7StoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
         A nested object resource.
@@ -328,12 +328,12 @@ class _Hl7StoreState:
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['Hl7StoreNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]:
+    def notification_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]:
         """
         A list of notification configs. Each configuration uses a filter to determine whether to publish a
         message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -343,12 +343,12 @@ class _Hl7StoreState:
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]):
+    def notification_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="parserConfig")
-    def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArgs']]:
+    def parser_config(self) -> pulumi.Input[Optional['Hl7StoreParserConfigArgs']]:
         """
         A nested object resource.
         Structure is documented below.
@@ -356,12 +356,12 @@ class _Hl7StoreState:
         return pulumi.get(self, "parser_config")
 
     @parser_config.setter
-    def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArgs']]):
+    def parser_config(self, value: pulumi.Input[Optional['Hl7StoreParserConfigArgs']]):
         pulumi.set(self, "parser_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -369,31 +369,31 @@ class _Hl7StoreState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectDuplicateMessage")
-    def reject_duplicate_message(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_duplicate_message(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether duplicate messages are allowed.
         """
         return pulumi.get(self, "reject_duplicate_message")
 
     @reject_duplicate_message.setter
-    def reject_duplicate_message(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_duplicate_message(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_duplicate_message", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of this dataset
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
 
@@ -403,13 +403,13 @@ class Hl7Store(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['Hl7StoreNotificationConfigsArgs', 'Hl7StoreNotificationConfigsArgsDict']]]]] = None,
-                 parser_config: Optional[pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']]] = None,
-                 reject_duplicate_message: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['Hl7StoreNotificationConfigsArgs', 'Hl7StoreNotificationConfigsArgsDict']]]]] = None,
+                 parser_config: pulumi.Input[Optional[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']]] = None,
+                 reject_duplicate_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
@@ -788,13 +788,13 @@ class Hl7Store(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['Hl7StoreNotificationConfigsArgs', 'Hl7StoreNotificationConfigsArgsDict']]]]] = None,
-                 parser_config: Optional[pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']]] = None,
-                 reject_duplicate_message: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['Hl7StoreNotificationConfigsArgs', 'Hl7StoreNotificationConfigsArgsDict']]]]] = None,
+                 parser_config: pulumi.Input[Optional[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']]] = None,
+                 reject_duplicate_message: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -828,16 +828,16 @@ class Hl7Store(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dataset: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_config: Optional[pulumi.Input[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']]] = None,
-            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['Hl7StoreNotificationConfigsArgs', 'Hl7StoreNotificationConfigsArgsDict']]]]] = None,
-            parser_config: Optional[pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reject_duplicate_message: Optional[pulumi.Input[_builtins.bool]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None) -> 'Hl7Store':
+            dataset: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['Hl7StoreNotificationConfigsArgs', 'Hl7StoreNotificationConfigsArgsDict']]]]] = None,
+            parser_config: pulumi.Input[Optional[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reject_duplicate_message: pulumi.Input[Optional[_builtins.bool]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None) -> 'Hl7Store':
         """
         Get an existing Hl7Store resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

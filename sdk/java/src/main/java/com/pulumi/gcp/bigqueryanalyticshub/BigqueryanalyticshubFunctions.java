@@ -32,8 +32,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -74,8 +74,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -116,8 +116,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -158,8 +158,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -200,8 +200,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -242,8 +242,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetListingIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -285,8 +285,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetListingIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -328,8 +328,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetListingIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -371,8 +371,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetListingIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -414,8 +414,8 @@ public final class BigqueryanalyticshubFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
      * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetListingIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

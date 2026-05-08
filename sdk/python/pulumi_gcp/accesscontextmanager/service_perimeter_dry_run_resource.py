@@ -62,10 +62,10 @@ class ServicePerimeterDryRunResourceArgs:
 @pulumi.input_type
 class _ServicePerimeterDryRunResourceState:
     def __init__(__self__, *,
-                 access_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 perimeter_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterDryRunResource resources.
 
@@ -87,43 +87,43 @@ class _ServicePerimeterDryRunResourceState:
 
     @_builtins.property
     @pulumi.getter(name="accessPolicyId")
-    def access_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Access Policy this resource belongs to.
         """
         return pulumi.get(self, "access_policy_id")
 
     @access_policy_id.setter
-    def access_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="perimeterName")
-    def perimeter_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def perimeter_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Service Perimeter to add this resource to.
         """
         return pulumi.get(self, "perimeter_name")
 
     @perimeter_name.setter
-    def perimeter_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def perimeter_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "perimeter_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A GCP resource that is inside of the service perimeter.
         Currently only projects are allowed.
@@ -132,7 +132,7 @@ class _ServicePerimeterDryRunResourceState:
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
 
@@ -142,8 +142,8 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 perimeter_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows configuring a single GCP resource that should be inside of the `spec` block of a dry run service perimeter.
@@ -293,8 +293,8 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 perimeter_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
+                 perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,10 +322,10 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            perimeter_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServicePerimeterDryRunResource':
+            access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServicePerimeterDryRunResource':
         """
         Get an existing ServicePerimeterDryRunResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

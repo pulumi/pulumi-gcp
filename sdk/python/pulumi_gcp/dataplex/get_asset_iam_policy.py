@@ -169,11 +169,11 @@ def get_asset_iam_policy(asset: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-def get_asset_iam_policy_output(asset: Optional[pulumi.Input[_builtins.str]] = None,
-                                dataplex_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                                lake: Optional[pulumi.Input[_builtins.str]] = None,
-                                location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_asset_iam_policy_output(asset: pulumi.Input[Optional[_builtins.str]] = None,
+                                dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                                lake: pulumi.Input[Optional[_builtins.str]] = None,
+                                location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAssetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for asset

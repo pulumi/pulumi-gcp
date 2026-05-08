@@ -157,11 +157,11 @@ export interface FirewallRuleState {
      * The action to take if this rule matches.
      * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * An optional string description of this rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A positive integer that defines the order of rule evaluation.
      * Rules with the lowest priority are evaluated first.
@@ -169,16 +169,16 @@ export interface FirewallRuleState {
      * IPv6 traffic when no previous rule matches. Only the action of
      * this rule can be modified by the user.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * IP address or range, defined using CIDR notation, of requests that this rule applies to.
      */
-    sourceRange?: pulumi.Input<string>;
+    sourceRange?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,7 +193,7 @@ export interface FirewallRuleArgs {
     /**
      * An optional string description of this rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A positive integer that defines the order of rule evaluation.
      * Rules with the lowest priority are evaluated first.
@@ -201,12 +201,12 @@ export interface FirewallRuleArgs {
      * IPv6 traffic when no previous rule matches. Only the action of
      * this rule can be modified by the user.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * IP address or range, defined using CIDR notation, of requests that this rule applies to.
      */

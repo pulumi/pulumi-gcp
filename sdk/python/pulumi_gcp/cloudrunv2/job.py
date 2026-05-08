@@ -23,17 +23,17 @@ class JobArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  template: pulumi.Input['JobTemplateArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_execution_token: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['JobBinaryAuthorizationArgs']] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_execution_token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
 
@@ -128,7 +128,7 @@ class JobArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
@@ -140,12 +140,12 @@ class JobArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['JobBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['JobBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -153,36 +153,36 @@ class JobArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['JobBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['JobBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary identifier for the API client.
         """
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary version identifier for the API client.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the job. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the job,
@@ -194,12 +194,12 @@ class JobArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
         environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -211,12 +211,12 @@ class JobArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
         If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -226,24 +226,24 @@ class JobArgs:
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_stage", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Job.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -251,12 +251,12 @@ class JobArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="runExecutionToken")
-    def run_execution_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
@@ -265,12 +265,12 @@ class JobArgs:
         return pulumi.get(self, "run_execution_token")
 
     @run_execution_token.setter
-    def run_execution_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_execution_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_execution_token", value)
 
     @_builtins.property
     @pulumi.getter(name="startExecutionToken")
-    def start_execution_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
@@ -279,44 +279,44 @@ class JobArgs:
         return pulumi.get(self, "start_execution_token")
 
     @start_execution_token.setter
-    def start_execution_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_execution_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_execution_token", value)
 
 
 @pulumi.input_type
 class _JobState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['JobBinaryAuthorizationArgs']] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 last_modifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input['JobTemplateArgs']] = None,
-                 terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['JobBinaryAuthorizationArgs']] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['JobConditionArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_created_executions: pulumi.Input[Optional[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional['JobTemplateArgs']] = None,
+                 terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
 
@@ -451,7 +451,7 @@ class _JobState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
@@ -463,12 +463,12 @@ class _JobState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['JobBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['JobBinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
         Structure is documented below.
@@ -476,36 +476,36 @@ class _JobState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['JobBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['JobBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter
-    def client(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary identifier for the API client.
         """
         return pulumi.get(self, "client")
 
     @client.setter
-    def client(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Arbitrary version identifier for the API client.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobConditionArgs']]]]:
         """
         The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
         Structure is documented below.
@@ -513,12 +513,12 @@ class _JobState:
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Creation timestamp of the execution.
@@ -527,36 +527,36 @@ class _JobState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the authenticated creator.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion time.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the job. Defaults to true.
         When a`terraform destroy` or `pulumi up` would delete the job,
@@ -568,84 +568,84 @@ class _JobState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="executionCount")
-    def execution_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def execution_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of executions created for this job.
         """
         return pulumi.get(self, "execution_count")
 
     @execution_count.setter
-    def execution_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def execution_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "execution_count", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A number that monotonically increases every time the user modifies the desired state.
         """
         return pulumi.get(self, "generation")
 
     @generation.setter
-    def generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
         environment, state, etc. For more information, visit https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
@@ -657,24 +657,24 @@ class _JobState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifier")
-    def last_modifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the last authenticated modifier.
         """
         return pulumi.get(self, "last_modifier")
 
     @last_modifier.setter
-    def last_modifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modifier", value)
 
     @_builtins.property
     @pulumi.getter(name="latestCreatedExecutions")
-    def latest_created_executions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]]:
+    def latest_created_executions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]]:
         """
         Name of the last created execution.
         Structure is documented below.
@@ -682,12 +682,12 @@ class _JobState:
         return pulumi.get(self, "latest_created_executions")
 
     @latest_created_executions.setter
-    def latest_created_executions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]]):
+    def latest_created_executions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]]):
         pulumi.set(self, "latest_created_executions", value)
 
     @_builtins.property
     @pulumi.getter(name="launchStage")
-    def launch_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
         If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
@@ -697,48 +697,48 @@ class _JobState:
         return pulumi.get(self, "launch_stage")
 
     @launch_stage.setter
-    def launch_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_stage", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the cloud run job
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Job.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def observed_generation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The generation of this Job. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         """
         return pulumi.get(self, "observed_generation")
 
     @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def observed_generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "observed_generation", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -746,12 +746,12 @@ class _JobState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -759,12 +759,12 @@ class _JobState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def reconciling(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reconciling(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Returns true if the Job is currently being acted upon by the system to bring it into the desired state.
         When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
@@ -774,12 +774,12 @@ class _JobState:
         return pulumi.get(self, "reconciling")
 
     @reconciling.setter
-    def reconciling(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reconciling(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reconciling", value)
 
     @_builtins.property
     @pulumi.getter(name="runExecutionToken")
-    def run_execution_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
@@ -788,12 +788,12 @@ class _JobState:
         return pulumi.get(self, "run_execution_token")
 
     @run_execution_token.setter
-    def run_execution_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_execution_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_execution_token", value)
 
     @_builtins.property
     @pulumi.getter(name="startExecutionToken")
-    def start_execution_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
@@ -802,12 +802,12 @@ class _JobState:
         return pulumi.get(self, "start_execution_token")
 
     @start_execution_token.setter
-    def start_execution_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_execution_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_execution_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input['JobTemplateArgs']]:
+    def template(self) -> pulumi.Input[Optional['JobTemplateArgs']]:
         """
         The template used to create executions for this Job.
         Structure is documented below.
@@ -815,12 +815,12 @@ class _JobState:
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input['JobTemplateArgs']]):
+    def template(self, value: pulumi.Input[Optional['JobTemplateArgs']]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="terminalConditions")
-    def terminal_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]:
+    def terminal_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]:
         """
         The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
         Structure is documented below.
@@ -828,31 +828,31 @@ class _JobState:
         return pulumi.get(self, "terminal_conditions")
 
     @terminal_conditions.setter
-    def terminal_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]):
+    def terminal_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['JobTerminalConditionArgs']]]]):
         pulumi.set(self, "terminal_conditions", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -862,19 +862,19 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
                  __props__=None):
         """
         A Cloud Run Job resource that references a container image which is run to completion.
@@ -1702,19 +1702,19 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
-                 client: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
+                 client: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1771,37 +1771,37 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: Optional[pulumi.Input[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
-            client: Optional[pulumi.Input[_builtins.str]] = None,
-            client_version: Optional[pulumi.Input[_builtins.str]] = None,
-            conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobConditionArgs', 'JobConditionArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_count: Optional[pulumi.Input[_builtins.int]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.str]] = None,
-            generation: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            last_modifier: Optional[pulumi.Input[_builtins.str]] = None,
-            latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobLatestCreatedExecutionArgs', 'JobLatestCreatedExecutionArgsDict']]]]] = None,
-            launch_stage: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            observed_generation: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            reconciling: Optional[pulumi.Input[_builtins.bool]] = None,
-            run_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-            start_execution_token: Optional[pulumi.Input[_builtins.str]] = None,
-            template: Optional[pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
-            terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict']]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Job':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['JobBinaryAuthorizationArgs', 'JobBinaryAuthorizationArgsDict']]] = None,
+            client: pulumi.Input[Optional[_builtins.str]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobConditionArgs', 'JobConditionArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_count: pulumi.Input[Optional[_builtins.int]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.str]] = None,
+            generation: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            last_modifier: pulumi.Input[Optional[_builtins.str]] = None,
+            latest_created_executions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobLatestCreatedExecutionArgs', 'JobLatestCreatedExecutionArgsDict']]]]] = None,
+            launch_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            observed_generation: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
+            run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+            start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
+            terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

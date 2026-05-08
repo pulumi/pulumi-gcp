@@ -22,13 +22,13 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
-                 private_service_connect: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['WorkerPoolNetworkConfigArgs']] = None,
+                 private_service_connect: pulumi.Input[Optional['WorkerPoolPrivateServiceConnectArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_config: pulumi.Input[Optional['WorkerPoolWorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
 
@@ -77,7 +77,7 @@ class WorkerPoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 
@@ -87,24 +87,24 @@ class WorkerPoolArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined name of the `WorkerPool`.
 
@@ -114,75 +114,75 @@ class WorkerPoolArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['WorkerPoolNetworkConfigArgs']]:
         """
         Network configuration for the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['WorkerPoolNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnect")
-    def private_service_connect(self) -> Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]:
+    def private_service_connect(self) -> pulumi.Input[Optional['WorkerPoolPrivateServiceConnectArgs']]:
         """
         Private Service Connect configuration for the pool.
         """
         return pulumi.get(self, "private_service_connect")
 
     @private_service_connect.setter
-    def private_service_connect(self, value: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]):
+    def private_service_connect(self, value: pulumi.Input[Optional['WorkerPoolPrivateServiceConnectArgs']]):
         pulumi.set(self, "private_service_connect", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]:
+    def worker_config(self) -> pulumi.Input[Optional['WorkerPoolWorkerConfigArgs']]:
         """
         Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "worker_config")
 
     @worker_config.setter
-    def worker_config(self, value: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]):
+    def worker_config(self, value: pulumi.Input[Optional['WorkerPoolWorkerConfigArgs']]):
         pulumi.set(self, "worker_config", value)
 
 
 @pulumi.input_type
 class _WorkerPoolState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
-                 private_service_connect: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['WorkerPoolNetworkConfigArgs']] = None,
+                 private_service_connect: pulumi.Input[Optional['WorkerPoolPrivateServiceConnectArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_config: pulumi.Input[Optional['WorkerPoolWorkerConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkerPool resources.
 
@@ -238,7 +238,7 @@ class _WorkerPoolState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
 
@@ -248,72 +248,72 @@ class _WorkerPoolState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Time at which the request to create the `WorkerPool` was received.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Time at which the request to delete the `WorkerPool` was received.
         """
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the resource
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined name of the `WorkerPool`.
 
@@ -323,91 +323,91 @@ class _WorkerPoolState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['WorkerPoolNetworkConfigArgs']]:
         """
         Network configuration for the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['WorkerPoolNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateServiceConnect")
-    def private_service_connect(self) -> Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]:
+    def private_service_connect(self) -> pulumi.Input[Optional['WorkerPoolPrivateServiceConnectArgs']]:
         """
         Private Service Connect configuration for the pool.
         """
         return pulumi.get(self, "private_service_connect")
 
     @private_service_connect.setter
-    def private_service_connect(self, value: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]):
+    def private_service_connect(self, value: pulumi.Input[Optional['WorkerPoolPrivateServiceConnectArgs']]):
         pulumi.set(self, "private_service_connect", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. A unique identifier for the `WorkerPool`.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Time at which the request to update the `WorkerPool` was received.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]:
+    def worker_config(self) -> pulumi.Input[Optional['WorkerPoolWorkerConfigArgs']]:
         """
         Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "worker_config")
 
     @worker_config.setter
-    def worker_config(self, value: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']]):
+    def worker_config(self, value: pulumi.Input[Optional['WorkerPoolWorkerConfigArgs']]):
         pulumi.set(self, "worker_config", value)
 
 
@@ -417,14 +417,14 @@ class WorkerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
-                 private_service_connect: Optional[pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
+                 private_service_connect: pulumi.Input[Optional[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_config: pulumi.Input[Optional[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
                  __props__=None):
         """
         Definition of custom Cloud Build WorkerPools for running jobs with custom configuration and custom networking.
@@ -610,14 +610,14 @@ class WorkerPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
-                 private_service_connect: Optional[pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
+                 private_service_connect: pulumi.Input[Optional[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 worker_config: pulumi.Input[Optional[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -653,20 +653,20 @@ class WorkerPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
-            private_service_connect: Optional[pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None) -> 'WorkerPool':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
+            private_service_connect: pulumi.Input[Optional[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            worker_config: pulumi.Input[Optional[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None) -> 'WorkerPool':
         """
         Get an existing WorkerPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

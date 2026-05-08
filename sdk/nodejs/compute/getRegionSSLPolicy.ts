@@ -56,6 +56,6 @@ export function getRegionSSLPolicyOutput(args: GetRegionSSLPolicyOutputArgs, opt
  */
 export interface GetRegionSSLPolicyOutputArgs {
     name: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }

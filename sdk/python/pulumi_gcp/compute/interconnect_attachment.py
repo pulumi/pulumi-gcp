@@ -21,30 +21,30 @@ __all__ = ['InterconnectAttachmentArgs', 'InterconnectAttachment']
 @pulumi.input_type
 class InterconnectAttachmentArgs:
     def __init__(__self__, *,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_availability_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 l2_forwarding: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None):
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: pulumi.Input[Optional['InterconnectAttachmentL2ForwardingArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['InterconnectAttachmentParamsArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_tag8021q: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a InterconnectAttachment resource.
 
@@ -201,7 +201,7 @@ class InterconnectAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
-    def admin_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the VLAN attachment is enabled or disabled.  When using
         PARTNER type this will Pre-Activate the interconnect attachment
@@ -209,12 +209,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "admin_enabled")
 
     @admin_enabled.setter
-    def admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisioned bandwidth capacity for the interconnect attachment.
         For attachments of type DEDICATED, the user can set the bandwidth.
@@ -226,12 +226,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCloudRouterIpAddress")
-    def candidate_cloud_router_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_cloud_router_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv4 address + prefix length to be configured on the cloud router interface for this
         interconnect attachment. Example: 203.0.113.1/29
@@ -239,12 +239,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "candidate_cloud_router_ip_address")
 
     @candidate_cloud_router_ip_address.setter
-    def candidate_cloud_router_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_cloud_router_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_cloud_router_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCloudRouterIpv6Address")
-    def candidate_cloud_router_ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_cloud_router_ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv6 address + prefix length to be configured on the cloud router interface for this
         interconnect attachment. Example: 2001:db8::1/125
@@ -252,12 +252,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "candidate_cloud_router_ipv6_address")
 
     @candidate_cloud_router_ipv6_address.setter
-    def candidate_cloud_router_ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_cloud_router_ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_cloud_router_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCustomerRouterIpAddress")
-    def candidate_customer_router_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_customer_router_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv4 address + prefix length to be configured on the customer router interface for this
         interconnect attachment. Example: 203.0.113.2/29
@@ -265,12 +265,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "candidate_customer_router_ip_address")
 
     @candidate_customer_router_ip_address.setter
-    def candidate_customer_router_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_customer_router_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_customer_router_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCustomerRouterIpv6Address")
-    def candidate_customer_router_ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_customer_router_ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv6 address + prefix length to be configured on the customer router interface for this
         interconnect attachment. Example: 2001:db8::2/125
@@ -278,12 +278,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "candidate_customer_router_ipv6_address")
 
     @candidate_customer_router_ipv6_address.setter
-    def candidate_customer_router_ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_customer_router_ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_customer_router_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateSubnets")
-    def candidate_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def candidate_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Up to 16 candidate prefixes that can be used to restrict the allocation
         of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -296,24 +296,24 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "candidate_subnets")
 
     @candidate_subnets.setter
-    def candidate_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def candidate_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "candidate_subnets", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeAvailabilityDomain")
-    def edge_availability_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_availability_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired availability domain for the attachment. Only available for type
         PARTNER, at creation time. For improved reliability, customers should
@@ -325,12 +325,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "edge_availability_domain")
 
     @edge_availability_domain.setter
-    def edge_availability_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_availability_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_availability_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the user-supplied encryption option of this interconnect
         attachment. Can only be specified at attachment creation for PARTNER or
@@ -349,12 +349,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "encryption")
 
     @encryption.setter
-    def encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter
-    def interconnect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interconnect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the underlying Interconnect object that this attachment's
         traffic will traverse through. Required if type is DEDICATED, must not
@@ -363,12 +363,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "interconnect")
 
     @interconnect.setter
-    def interconnect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interconnect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interconnect", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecInternalAddresses")
-    def ipsec_internal_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipsec_internal_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URL of addresses that have been reserved for the interconnect attachment,
         Used only for interconnect attachment that has the encryption option as
@@ -389,12 +389,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "ipsec_internal_addresses")
 
     @ipsec_internal_addresses.setter
-    def ipsec_internal_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipsec_internal_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipsec_internal_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="l2Forwarding")
-    def l2_forwarding(self) -> Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]:
+    def l2_forwarding(self) -> pulumi.Input[Optional['InterconnectAttachmentL2ForwardingArgs']]:
         """
         L2 Interconnect Attachment related configuration.
         Structure is documented below.
@@ -402,12 +402,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "l2_forwarding")
 
     @l2_forwarding.setter
-    def l2_forwarding(self, value: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]):
+    def l2_forwarding(self, value: pulumi.Input[Optional['InterconnectAttachmentL2ForwardingArgs']]):
         pulumi.set(self, "l2_forwarding", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels
         method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -418,12 +418,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
         Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
@@ -431,12 +431,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The
         name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -448,12 +448,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['InterconnectAttachmentParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -461,12 +461,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['InterconnectAttachmentParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -474,24 +474,24 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the regional interconnect attachment resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the cloud router to be used for dynamic routing. This router must be in
         the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -501,12 +501,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
-    def stack_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stack type for this interconnect attachment to identify whether the IPv6
         feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -517,12 +517,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
-    def stack_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetLength")
-    def subnet_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def subnet_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
         except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
@@ -534,12 +534,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "subnet_length")
 
     @subnet_length.setter
-    def subnet_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def subnet_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "subnet_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of InterconnectAttachment you wish to create. Defaults to
         DEDICATED.
@@ -548,12 +548,12 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanTag8021q")
-    def vlan_tag8021q(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_tag8021q(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
         using PARTNER type this will be managed upstream.
@@ -561,52 +561,52 @@ class InterconnectAttachmentArgs:
         return pulumi.get(self, "vlan_tag8021q")
 
     @vlan_tag8021q.setter
-    def vlan_tag8021q(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_tag8021q(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_tag8021q", value)
 
 
 @pulumi.input_type
 class _InterconnectAttachmentState:
     def __init__(__self__, *,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 attachment_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 customer_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_availability_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 l2_forwarding: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pairing_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']] = None,
-                 partner_asn: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None):
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 attachment_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: pulumi.Input[Optional['InterconnectAttachmentL2ForwardingArgs']] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pairing_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['InterconnectAttachmentParamsArgs']] = None,
+                 partner_asn: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_interconnect_infos: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_tag8021q: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering InterconnectAttachment resources.
 
@@ -824,7 +824,7 @@ class _InterconnectAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
-    def admin_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the VLAN attachment is enabled or disabled.  When using
         PARTNER type this will Pre-Activate the interconnect attachment
@@ -832,24 +832,24 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "admin_enabled")
 
     @admin_enabled.setter
-    def admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="attachmentGroup")
-    def attachment_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def attachment_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the AttachmentGroup that includes this Attachment.
         """
         return pulumi.get(self, "attachment_group")
 
     @attachment_group.setter
-    def attachment_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def attachment_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attachment_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisioned bandwidth capacity for the interconnect attachment.
         For attachments of type DEDICATED, the user can set the bandwidth.
@@ -861,12 +861,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCloudRouterIpAddress")
-    def candidate_cloud_router_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_cloud_router_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv4 address + prefix length to be configured on the cloud router interface for this
         interconnect attachment. Example: 203.0.113.1/29
@@ -874,12 +874,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "candidate_cloud_router_ip_address")
 
     @candidate_cloud_router_ip_address.setter
-    def candidate_cloud_router_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_cloud_router_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_cloud_router_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCloudRouterIpv6Address")
-    def candidate_cloud_router_ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_cloud_router_ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv6 address + prefix length to be configured on the cloud router interface for this
         interconnect attachment. Example: 2001:db8::1/125
@@ -887,12 +887,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "candidate_cloud_router_ipv6_address")
 
     @candidate_cloud_router_ipv6_address.setter
-    def candidate_cloud_router_ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_cloud_router_ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_cloud_router_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCustomerRouterIpAddress")
-    def candidate_customer_router_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_customer_router_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv4 address + prefix length to be configured on the customer router interface for this
         interconnect attachment. Example: 203.0.113.2/29
@@ -900,12 +900,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "candidate_customer_router_ip_address")
 
     @candidate_customer_router_ip_address.setter
-    def candidate_customer_router_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_customer_router_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_customer_router_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateCustomerRouterIpv6Address")
-    def candidate_customer_router_ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def candidate_customer_router_ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Single IPv6 address + prefix length to be configured on the customer router interface for this
         interconnect attachment. Example: 2001:db8::2/125
@@ -913,12 +913,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "candidate_customer_router_ipv6_address")
 
     @candidate_customer_router_ipv6_address.setter
-    def candidate_customer_router_ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def candidate_customer_router_ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "candidate_customer_router_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="candidateSubnets")
-    def candidate_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def candidate_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Up to 16 candidate prefixes that can be used to restrict the allocation
         of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -931,12 +931,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "candidate_subnets")
 
     @candidate_subnets.setter
-    def candidate_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def candidate_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "candidate_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudRouterIpAddress")
-    def cloud_router_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_router_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address + prefix length to be configured on Cloud Router
         Interface for this interconnect attachment.
@@ -944,12 +944,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "cloud_router_ip_address")
 
     @cloud_router_ip_address.setter
-    def cloud_router_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_router_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_router_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudRouterIpv6Address")
-    def cloud_router_ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_router_ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address + prefix length to be configured on Cloud Router
         Interface for this interconnect attachment.
@@ -957,24 +957,24 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "cloud_router_ipv6_address")
 
     @cloud_router_ipv6_address.setter
-    def cloud_router_ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_router_ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_router_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="customerRouterIpAddress")
-    def customer_router_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_router_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address + prefix length to be configured on the customer
         router subinterface for this interconnect attachment.
@@ -982,12 +982,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "customer_router_ip_address")
 
     @customer_router_ip_address.setter
-    def customer_router_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_router_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_router_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="customerRouterIpv6Address")
-    def customer_router_ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_router_ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address + prefix length to be configured on the customer
         router subinterface for this interconnect attachment.
@@ -995,24 +995,24 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "customer_router_ipv6_address")
 
     @customer_router_ipv6_address.setter
-    def customer_router_ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_router_ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_router_ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="edgeAvailabilityDomain")
-    def edge_availability_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edge_availability_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Desired availability domain for the attachment. Only available for type
         PARTNER, at creation time. For improved reliability, customers should
@@ -1024,24 +1024,24 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "edge_availability_domain")
 
     @edge_availability_domain.setter
-    def edge_availability_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edge_availability_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edge_availability_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the user-supplied encryption option of this interconnect
         attachment. Can only be specified at attachment creation for PARTNER or
@@ -1060,12 +1060,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "encryption")
 
     @encryption.setter
-    def encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="googleReferenceId")
-    def google_reference_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_reference_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google reference ID, to be used when raising support tickets with
         Google or otherwise to debug backend connectivity issues.
@@ -1073,12 +1073,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "google_reference_id")
 
     @google_reference_id.setter
-    def google_reference_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_reference_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_reference_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def interconnect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interconnect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the underlying Interconnect object that this attachment's
         traffic will traverse through. Required if type is DEDICATED, must not
@@ -1087,12 +1087,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "interconnect")
 
     @interconnect.setter
-    def interconnect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interconnect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interconnect", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecInternalAddresses")
-    def ipsec_internal_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipsec_internal_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         URL of addresses that have been reserved for the interconnect attachment,
         Used only for interconnect attachment that has the encryption option as
@@ -1113,12 +1113,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "ipsec_internal_addresses")
 
     @ipsec_internal_addresses.setter
-    def ipsec_internal_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipsec_internal_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipsec_internal_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="l2Forwarding")
-    def l2_forwarding(self) -> Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]:
+    def l2_forwarding(self) -> pulumi.Input[Optional['InterconnectAttachmentL2ForwardingArgs']]:
         """
         L2 Interconnect Attachment related configuration.
         Structure is documented below.
@@ -1126,12 +1126,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "l2_forwarding")
 
     @l2_forwarding.setter
-    def l2_forwarding(self, value: Optional[pulumi.Input['InterconnectAttachmentL2ForwardingArgs']]):
+    def l2_forwarding(self, value: pulumi.Input[Optional['InterconnectAttachmentL2ForwardingArgs']]):
         pulumi.set(self, "l2_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
         of the labels set used for optimistic locking. The fingerprint is initially generated by
@@ -1142,12 +1142,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels for this resource. These can only be added or modified by the setLabels
         method. Each label key/value pair must comply with RFC1035. Label values may be empty.
@@ -1158,12 +1158,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment.
         Valid values are 1440, 1460, 1500, and 8896. If not specified, the value will default to 1440.
@@ -1171,12 +1171,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The
         name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -1188,12 +1188,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pairingKey")
-    def pairing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pairing_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only for type PARTNER. Not present for DEDICATED]. The opaque
         identifier of an PARTNER attachment used to initiate provisioning with
@@ -1202,12 +1202,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "pairing_key")
 
     @pairing_key.setter
-    def pairing_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pairing_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pairing_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]:
+    def params(self) -> pulumi.Input[Optional['InterconnectAttachmentParamsArgs']]:
         """
         Additional params passed with the request, but not persisted as part of resource payload
         Structure is documented below.
@@ -1215,12 +1215,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input['InterconnectAttachmentParamsArgs']]):
+    def params(self, value: pulumi.Input[Optional['InterconnectAttachmentParamsArgs']]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="partnerAsn")
-    def partner_asn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def partner_asn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output only for type PARTNER. Not present for DEDICATED]. Optional
         BGP ASN for the router that should be supplied by a layer 3 Partner if
@@ -1229,12 +1229,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "partner_asn")
 
     @partner_asn.setter
-    def partner_asn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def partner_asn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "partner_asn", value)
 
     @_builtins.property
     @pulumi.getter(name="privateInterconnectInfos")
-    def private_interconnect_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]:
+    def private_interconnect_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]:
         """
         Information specific to an InterconnectAttachment. This property
         is populated if the interconnect that this is attached to is of type DEDICATED.
@@ -1243,12 +1243,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "private_interconnect_infos")
 
     @private_interconnect_infos.setter
-    def private_interconnect_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]):
+    def private_interconnect_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]]):
         pulumi.set(self, "private_interconnect_infos", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -1256,12 +1256,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -1269,24 +1269,24 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the regional interconnect attachment resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def router(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the cloud router to be used for dynamic routing. This router must be in
         the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -1296,24 +1296,24 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "router")
 
     @router.setter
-    def router(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
-    def stack_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stack type for this interconnect attachment to identify whether the IPv6
         feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -1324,24 +1324,24 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
-    def stack_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Output Only] The current state of this attachment's functionality.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetLength")
-    def subnet_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def subnet_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
         except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a
@@ -1353,12 +1353,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "subnet_length")
 
     @subnet_length.setter
-    def subnet_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def subnet_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "subnet_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of InterconnectAttachment you wish to create. Defaults to
         DEDICATED.
@@ -1367,12 +1367,12 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanTag8021q")
-    def vlan_tag8021q(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_tag8021q(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
         using PARTNER type this will be managed upstream.
@@ -1380,7 +1380,7 @@ class _InterconnectAttachmentState:
         return pulumi.get(self, "vlan_tag8021q")
 
     @vlan_tag8021q.setter
-    def vlan_tag8021q(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_tag8021q(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_tag8021q", value)
 
 
@@ -1390,30 +1390,30 @@ class InterconnectAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_availability_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 l2_forwarding: Optional[pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None,
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_tag8021q: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Represents an InterconnectAttachment (VLAN attachment) resource. For more
@@ -1776,30 +1776,30 @@ class InterconnectAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_cloud_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_customer_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 edge_availability_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 interconnect: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 l2_forwarding: Optional[pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 router: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None,
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 interconnect: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 router: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_tag8021q: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1860,45 +1860,45 @@ class InterconnectAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            attachment_group: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            candidate_cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            candidate_cloud_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-            candidate_customer_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            candidate_customer_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-            candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cloud_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            customer_router_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            customer_router_ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            edge_availability_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            encryption: Optional[pulumi.Input[_builtins.str]] = None,
-            google_reference_id: Optional[pulumi.Input[_builtins.str]] = None,
-            interconnect: Optional[pulumi.Input[_builtins.str]] = None,
-            ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            l2_forwarding: Optional[pulumi.Input[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            mtu: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pairing_key: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
-            partner_asn: Optional[pulumi.Input[_builtins.str]] = None,
-            private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            router: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_length: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vlan_tag8021q: Optional[pulumi.Input[_builtins.int]] = None) -> 'InterconnectAttachment':
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            attachment_group: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            candidate_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_router_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            customer_router_ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            edge_availability_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
+            interconnect: pulumi.Input[Optional[_builtins.str]] = None,
+            ipsec_internal_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            l2_forwarding: pulumi.Input[Optional[Union['InterconnectAttachmentL2ForwardingArgs', 'InterconnectAttachmentL2ForwardingArgsDict']]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mtu: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pairing_key: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['InterconnectAttachmentParamsArgs', 'InterconnectAttachmentParamsArgsDict']]] = None,
+            partner_asn: pulumi.Input[Optional[_builtins.str]] = None,
+            private_interconnect_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_length: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_tag8021q: pulumi.Input[Optional[_builtins.int]] = None) -> 'InterconnectAttachment':
         """
         Get an existing InterconnectAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

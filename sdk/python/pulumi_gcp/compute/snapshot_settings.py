@@ -22,7 +22,7 @@ __all__ = ['SnapshotSettingsArgs', 'SnapshotSettings']
 class SnapshotSettingsArgs:
     def __init__(__self__, *,
                  storage_location: pulumi.Input['SnapshotSettingsStorageLocationArgs'],
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SnapshotSettings resource.
 
@@ -52,7 +52,7 @@ class SnapshotSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -60,15 +60,15 @@ class SnapshotSettingsArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _SnapshotSettingsState:
     def __init__(__self__, *,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input['SnapshotSettingsStorageLocationArgs']] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional['SnapshotSettingsStorageLocationArgs']] = None):
         """
         Input properties used for looking up and filtering SnapshotSettings resources.
 
@@ -85,7 +85,7 @@ class _SnapshotSettingsState:
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -93,12 +93,12 @@ class _SnapshotSettingsState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input['SnapshotSettingsStorageLocationArgs']]:
+    def storage_location(self) -> pulumi.Input[Optional['SnapshotSettingsStorageLocationArgs']]:
         """
         Policy of which storage location is going to be resolved, and additional data
         that particularizes how the policy is going to be carried out
@@ -107,7 +107,7 @@ class _SnapshotSettingsState:
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input['SnapshotSettingsStorageLocationArgs']]):
+    def storage_location(self, value: pulumi.Input[Optional['SnapshotSettingsStorageLocationArgs']]):
         pulumi.set(self, "storage_location", value)
 
 
@@ -117,8 +117,8 @@ class SnapshotSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None,
                  __props__=None):
         """
         Updates your project's snapshot settings and sets a new default storage location for snapshots.
@@ -231,8 +231,8 @@ class SnapshotSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,8 +256,8 @@ class SnapshotSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_location: Optional[pulumi.Input[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None) -> 'SnapshotSettings':
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[Union['SnapshotSettingsStorageLocationArgs', 'SnapshotSettingsStorageLocationArgsDict']]] = None) -> 'SnapshotSettings':
         """
         Get an existing SnapshotSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -124,9 +124,9 @@ def get_repositories(location: Optional[_builtins.str] = None,
         name_filter=pulumi.get(__ret__, 'name_filter'),
         project=pulumi.get(__ret__, 'project'),
         repositories=pulumi.get(__ret__, 'repositories'))
-def get_repositories_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                            name_filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_repositories_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                            name_filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoriesResult]:
     """
     Get information about Artifact Registry repositories.

@@ -23,14 +23,14 @@ class SecurityScanConfigArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  starting_urls: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
-                 blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 export_to_security_command_center: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_qps: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
-                 target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_agent: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']] = None,
+                 blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_qps: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional['SecurityScanConfigScheduleArgs']] = None,
+                 target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_agent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityScanConfig resource.
 
@@ -101,7 +101,7 @@ class SecurityScanConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']]:
         """
         The authentication configuration.
         If specified, service will use the authentication configuration during scanning.
@@ -110,12 +110,12 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="blacklistPatterns")
-    def blacklist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blacklist_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The blacklist URL patterns as described in
         https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -123,12 +123,12 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "blacklist_patterns")
 
     @blacklist_patterns.setter
-    def blacklist_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blacklist_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklist_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="exportToSecurityCommandCenter")
-    def export_to_security_command_center(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export_to_security_command_center(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls export of scan configurations and results to Cloud Security Command Center.
         Default value is `ENABLED`.
@@ -137,12 +137,12 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "export_to_security_command_center")
 
     @export_to_security_command_center.setter
-    def export_to_security_command_center(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export_to_security_command_center(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_to_security_command_center", value)
 
     @_builtins.property
     @pulumi.getter(name="maxQps")
-    def max_qps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_qps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
         Defaults to 15.
@@ -150,12 +150,12 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "max_qps")
 
     @max_qps.setter
-    def max_qps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_qps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_qps", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -163,12 +163,12 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['SecurityScanConfigScheduleArgs']]:
         """
         The schedule of the ScanConfig
         Structure is documented below.
@@ -176,12 +176,12 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['SecurityScanConfigScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPlatforms")
-    def target_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_platforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -189,12 +189,12 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "target_platforms")
 
     @target_platforms.setter
-    def target_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_platforms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_platforms", value)
 
     @_builtins.property
     @pulumi.getter(name="userAgent")
-    def user_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_agent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the user agents used for scanning
         Default value is `CHROME_LINUX`.
@@ -203,24 +203,24 @@ class SecurityScanConfigArgs:
         return pulumi.get(self, "user_agent")
 
     @user_agent.setter
-    def user_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_agent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_agent", value)
 
 
 @pulumi.input_type
 class _SecurityScanConfigState:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']] = None,
-                 blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_to_security_command_center: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_qps: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']] = None,
-                 starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_agent: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication: pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']] = None,
+                 blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_qps: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional['SecurityScanConfigScheduleArgs']] = None,
+                 starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_agent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityScanConfig resources.
 
@@ -273,7 +273,7 @@ class _SecurityScanConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]:
+    def authentication(self) -> pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']]:
         """
         The authentication configuration.
         If specified, service will use the authentication configuration during scanning.
@@ -282,12 +282,12 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['SecurityScanConfigAuthenticationArgs']]):
+    def authentication(self, value: pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="blacklistPatterns")
-    def blacklist_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def blacklist_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The blacklist URL patterns as described in
         https://cloud.google.com/security-scanner/docs/excluded-urls
@@ -295,24 +295,24 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "blacklist_patterns")
 
     @blacklist_patterns.setter
-    def blacklist_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def blacklist_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklist_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user provider display name of the ScanConfig.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="exportToSecurityCommandCenter")
-    def export_to_security_command_center(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export_to_security_command_center(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls export of scan configurations and results to Cloud Security Command Center.
         Default value is `ENABLED`.
@@ -321,12 +321,12 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "export_to_security_command_center")
 
     @export_to_security_command_center.setter
-    def export_to_security_command_center(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export_to_security_command_center(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_to_security_command_center", value)
 
     @_builtins.property
     @pulumi.getter(name="maxQps")
-    def max_qps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_qps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
         Defaults to 15.
@@ -334,12 +334,12 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "max_qps")
 
     @max_qps.setter
-    def max_qps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_qps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_qps", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A server defined name for this index. Format:
         `projects/{{project}}/scanConfigs/{{server_generated_id}}`
@@ -347,12 +347,12 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -360,12 +360,12 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['SecurityScanConfigScheduleArgs']]:
         """
         The schedule of the ScanConfig
         Structure is documented below.
@@ -373,24 +373,24 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['SecurityScanConfigScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['SecurityScanConfigScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="startingUrls")
-    def starting_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def starting_urls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The starting URLs from which the scanner finds site pages.
         """
         return pulumi.get(self, "starting_urls")
 
     @starting_urls.setter
-    def starting_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def starting_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "starting_urls", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPlatforms")
-    def target_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_platforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
         Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -398,12 +398,12 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "target_platforms")
 
     @target_platforms.setter
-    def target_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_platforms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_platforms", value)
 
     @_builtins.property
     @pulumi.getter(name="userAgent")
-    def user_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_agent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the user agents used for scanning
         Default value is `CHROME_LINUX`.
@@ -412,7 +412,7 @@ class _SecurityScanConfigState:
         return pulumi.get(self, "user_agent")
 
     @user_agent.setter
-    def user_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_agent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_agent", value)
 
 
@@ -422,16 +422,16 @@ class SecurityScanConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
-                 blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_to_security_command_center: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_qps: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
-                 starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_agent: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
+                 blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_qps: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
+                 starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A ScanConfig resource contains the configurations to launch a scan.
@@ -566,16 +566,16 @@ class SecurityScanConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
-                 blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_to_security_command_center: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_qps: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
-                 starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_agent: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
+                 blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_qps: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
+                 starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -610,17 +610,17 @@ class SecurityScanConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
-            blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            export_to_security_command_center: Optional[pulumi.Input[_builtins.str]] = None,
-            max_qps: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
-            starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            target_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            user_agent: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityScanConfig':
+            authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
+            blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
+            max_qps: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
+            starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            user_agent: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityScanConfig':
         """
         Get an existing SecurityScanConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

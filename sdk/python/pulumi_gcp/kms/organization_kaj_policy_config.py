@@ -22,7 +22,7 @@ __all__ = ['OrganizationKajPolicyConfigArgs', 'OrganizationKajPolicyConfig']
 class OrganizationKajPolicyConfigArgs:
     def __init__(__self__, *,
                  organization: pulumi.Input[_builtins.str],
-                 default_key_access_justification_policy: Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
+                 default_key_access_justification_policy: pulumi.Input[Optional['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None):
         """
         The set of arguments for constructing a OrganizationKajPolicyConfig resource.
 
@@ -50,7 +50,7 @@ class OrganizationKajPolicyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultKeyAccessJustificationPolicy")
-    def default_key_access_justification_policy(self) -> Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
+    def default_key_access_justification_policy(self) -> pulumi.Input[Optional['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
         """
         The default key access justification policy used when a CryptoKey is
         created in this organization. This is only used when a Key Access Justifications
@@ -60,15 +60,15 @@ class OrganizationKajPolicyConfigArgs:
         return pulumi.get(self, "default_key_access_justification_policy")
 
     @default_key_access_justification_policy.setter
-    def default_key_access_justification_policy(self, value: Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
+    def default_key_access_justification_policy(self, value: pulumi.Input[Optional['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
         pulumi.set(self, "default_key_access_justification_policy", value)
 
 
 @pulumi.input_type
 class _OrganizationKajPolicyConfigState:
     def __init__(__self__, *,
-                 default_key_access_justification_policy: Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_key_access_justification_policy: pulumi.Input[Optional['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationKajPolicyConfig resources.
 
@@ -85,7 +85,7 @@ class _OrganizationKajPolicyConfigState:
 
     @_builtins.property
     @pulumi.getter(name="defaultKeyAccessJustificationPolicy")
-    def default_key_access_justification_policy(self) -> Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
+    def default_key_access_justification_policy(self) -> pulumi.Input[Optional['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]:
         """
         The default key access justification policy used when a CryptoKey is
         created in this organization. This is only used when a Key Access Justifications
@@ -95,19 +95,19 @@ class _OrganizationKajPolicyConfigState:
         return pulumi.get(self, "default_key_access_justification_policy")
 
     @default_key_access_justification_policy.setter
-    def default_key_access_justification_policy(self, value: Optional[pulumi.Input['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
+    def default_key_access_justification_policy(self, value: pulumi.Input[Optional['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs']]):
         pulumi.set(self, "default_key_access_justification_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization number for which to retrieve config.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
 
@@ -117,8 +117,8 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: Optional[pulumi.Input[Union['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         `OrganizationKajPolicyConfig` is a organization-level singleton resource
@@ -249,8 +249,8 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_key_access_justification_policy: Optional[pulumi.Input[Union['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_key_access_justification_policy: pulumi.Input[Optional[Union['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -274,8 +274,8 @@ class OrganizationKajPolicyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_key_access_justification_policy: Optional[pulumi.Input[Union['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationKajPolicyConfig':
+            default_key_access_justification_policy: pulumi.Input[Optional[Union['OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgs', 'OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicyArgsDict']]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationKajPolicyConfig':
         """
         Get an existing OrganizationKajPolicyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

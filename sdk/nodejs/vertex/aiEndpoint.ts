@@ -345,87 +345,87 @@ export interface AiEndpointState {
      * (Output)
      * Output only. Timestamp when the DeployedModel was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
      */
-    dedicatedEndpointDns?: pulumi.Input<string>;
+    dedicatedEndpointDns?: pulumi.Input<string | undefined>;
     /**
      * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
      */
-    dedicatedEndpointEnabled?: pulumi.Input<boolean>;
+    dedicatedEndpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
      * Structure is documented below.
      */
-    deployedModels?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModel>[]>;
+    deployedModels?: pulumi.Input<pulumi.Input<inputs.vertex.AiEndpointDeployedModel>[] | undefined>;
     /**
      * The description of the Endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiEndpointEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiEndpointEncryptionSpec | undefined>;
     /**
      * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
      */
-    modelDeploymentMonitoringJob?: pulumi.Input<string>;
+    modelDeploymentMonitoringJob?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Configures the request-response logging for online prediction.
      * Structure is documented below.
      */
-    predictRequestResponseLoggingConfig?: pulumi.Input<inputs.vertex.AiEndpointPredictRequestResponseLoggingConfig>;
+    predictRequestResponseLoggingConfig?: pulumi.Input<inputs.vertex.AiEndpointPredictRequestResponseLoggingConfig | undefined>;
     /**
      * Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
      * Structure is documented below.
      */
-    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiEndpointPrivateServiceConnectConfig>;
+    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiEndpointPrivateServiceConnectConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region for the resource
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
      * If a DeployedModel's id is not listed in this map, then it receives no traffic.
@@ -434,11 +434,11 @@ export interface AiEndpointState {
      * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.
      * > **Note:** To set the map to empty, set `"{}"`, apply, and then remove the field from your config.
      */
-    trafficSplit?: pulumi.Input<string>;
+    trafficSplit?: pulumi.Input<string | undefined>;
     /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -448,11 +448,11 @@ export interface AiEndpointArgs {
     /**
      * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
      */
-    dedicatedEndpointEnabled?: pulumi.Input<boolean>;
+    dedicatedEndpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      */
@@ -461,13 +461,13 @@ export interface AiEndpointArgs {
      * Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
      * Structure is documented below.
      */
-    encryptionSpec?: pulumi.Input<inputs.vertex.AiEndpointEncryptionSpec>;
+    encryptionSpec?: pulumi.Input<inputs.vertex.AiEndpointEncryptionSpec | undefined>;
     /**
      * The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -475,30 +475,30 @@ export interface AiEndpointArgs {
     /**
      * The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * Configures the request-response logging for online prediction.
      * Structure is documented below.
      */
-    predictRequestResponseLoggingConfig?: pulumi.Input<inputs.vertex.AiEndpointPredictRequestResponseLoggingConfig>;
+    predictRequestResponseLoggingConfig?: pulumi.Input<inputs.vertex.AiEndpointPredictRequestResponseLoggingConfig | undefined>;
     /**
      * Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
      * Structure is documented below.
      */
-    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiEndpointPrivateServiceConnectConfig>;
+    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiEndpointPrivateServiceConnectConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region for the resource
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
      * If a DeployedModel's id is not listed in this map, then it receives no traffic.
@@ -507,5 +507,5 @@ export interface AiEndpointArgs {
      * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.
      * > **Note:** To set the map to empty, set `"{}"`, apply, and then remove the field from your config.
      */
-    trafficSplit?: pulumi.Input<string>;
+    trafficSplit?: pulumi.Input<string | undefined>;
 }

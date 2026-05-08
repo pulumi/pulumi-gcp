@@ -329,7 +329,7 @@ export interface DataAccessScopeState {
      * to see all data except data labeled with A and data labeled with B and data
      * with labels A and B.
      */
-    allowAll?: pulumi.Input<boolean>;
+    allowAll?: pulumi.Input<boolean | undefined>;
     /**
      * The allowed labels for the scope. There has to be at
      * least one label allowed for the scope to be valid.
@@ -339,21 +339,21 @@ export interface DataAccessScopeState {
      * to see data with labeled with A or B or (A and B).
      * Structure is documented below.
      */
-    allowedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeAllowedDataAccessLabel>[]>;
+    allowedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeAllowedDataAccessLabel>[] | undefined>;
     /**
      * Output only. The user who created the data access scope.
      */
-    author?: pulumi.Input<string>;
+    author?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which the data access scope was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
      * Needs to be compliant with https://google.aip.dev/122
      */
-    dataAccessScopeId?: pulumi.Input<string>;
+    dataAccessScopeId?: pulumi.Input<string | undefined>;
     /**
      * Optional. The denied labels for the scope.
      * The logical operator for evaluation of the denied labels is AND.
@@ -362,42 +362,42 @@ export interface DataAccessScopeState {
      * and data with labels A and B.
      * Structure is documented below.
      */
-    deniedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeDeniedDataAccessLabel>[]>;
+    deniedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeDeniedDataAccessLabel>[] | undefined>;
     /**
      * Optional. A description of the data access scope for a human reader.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Output only. The name to be used for display to customers of the data access scope.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Output only. The user who last updated the data access scope.
      */
-    lastEditor?: pulumi.Input<string>;
+    lastEditor?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The unique full name of the data access scope. This unique identifier is generated using values provided for the URL parameters.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{data_access_scope_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. The time at which the data access scope was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -414,7 +414,7 @@ export interface DataAccessScopeArgs {
      * to see all data except data labeled with A and data labeled with B and data
      * with labels A and B.
      */
-    allowAll?: pulumi.Input<boolean>;
+    allowAll?: pulumi.Input<boolean | undefined>;
     /**
      * The allowed labels for the scope. There has to be at
      * least one label allowed for the scope to be valid.
@@ -424,7 +424,7 @@ export interface DataAccessScopeArgs {
      * to see data with labeled with A or B or (A and B).
      * Structure is documented below.
      */
-    allowedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeAllowedDataAccessLabel>[]>;
+    allowedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeAllowedDataAccessLabel>[] | undefined>;
     /**
      * Required. The user provided scope id which will become the last part of the name
      * of the scope resource.
@@ -439,11 +439,11 @@ export interface DataAccessScopeArgs {
      * and data with labels A and B.
      * Structure is documented below.
      */
-    deniedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeDeniedDataAccessLabel>[]>;
+    deniedDataAccessLabels?: pulumi.Input<pulumi.Input<inputs.chronicle.DataAccessScopeDeniedDataAccessLabel>[] | undefined>;
     /**
      * Optional. A description of the data access scope for a human reader.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
@@ -456,5 +456,5 @@ export interface DataAccessScopeArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

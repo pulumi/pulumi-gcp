@@ -348,9 +348,9 @@ def get_trigger(location: Optional[_builtins.str] = None,
         trigger_id=pulumi.get(__ret__, 'trigger_id'),
         trigger_templates=pulumi.get(__ret__, 'trigger_templates'),
         webhook_configs=pulumi.get(__ret__, 'webhook_configs'))
-def get_trigger_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                       project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       trigger_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_trigger_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                       project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       trigger_id: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTriggerResult]:
     """
     To get more information about Cloudbuild Trigger, see:

@@ -606,9 +606,9 @@ def get_disk(name: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         users=pulumi.get(__ret__, 'users'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_disk_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                    project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                    project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskResult]:
     """
     Get information about a Google Compute Persistent disks.

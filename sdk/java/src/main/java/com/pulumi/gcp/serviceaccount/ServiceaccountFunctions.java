@@ -48,8 +48,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -86,8 +86,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -108,7 +108,7 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
+     *             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
      *                 .build()).result()))
@@ -138,8 +138,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -176,8 +176,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -198,7 +198,7 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
+     *             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
      *                 .build()).result()))
@@ -228,8 +228,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -266,8 +266,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -288,7 +288,7 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
+     *             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
      *                 .build()).result()))
@@ -318,8 +318,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -356,8 +356,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -378,7 +378,7 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
+     *             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
      *                 .build()).result()))
@@ -408,8 +408,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -446,8 +446,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.kubernetes.SecretArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.Base64decodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -468,7 +468,7 @@ public final class ServiceaccountFunctions {
      *             .build());
      * 
      *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(List.of(Map.of("name", "google-application-credentials")))
+     *             .metadata(Arrays.asList(Map.of("name", "google-application-credentials")))
      *             .data(Map.of("json", StdFunctions.base64decode(Base64decodeArgs.builder()
      *                 .input(mykey.privateKey())
      *                 .build()).result()))
@@ -504,8 +504,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.IAMBinding;
      * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -542,8 +542,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -600,8 +600,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.IAMBinding;
      * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -638,8 +638,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -696,8 +696,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.IAMBinding;
      * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -734,8 +734,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -792,8 +792,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.IAMBinding;
      * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -830,8 +830,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -888,8 +888,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.IAMBinding;
      * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -926,8 +926,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -983,8 +983,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1022,8 +1022,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1081,8 +1081,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1120,8 +1120,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1179,8 +1179,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1218,8 +1218,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1277,8 +1277,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1316,8 +1316,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1375,8 +1375,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1414,8 +1414,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountAccessTokenArgs;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1470,8 +1470,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountJwtArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1520,8 +1520,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountJwtArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1570,8 +1570,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountJwtArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1620,8 +1620,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountJwtArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1670,8 +1670,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountJwtArgs;
      * import static com.pulumi.codegen.internal.Serialization.*;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1721,8 +1721,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1774,8 +1774,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1827,8 +1827,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1880,8 +1880,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1933,8 +1933,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.gcp.serviceaccount.KeyArgs;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetAccountKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1982,8 +1982,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2022,8 +2022,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2062,8 +2062,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2102,8 +2102,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2142,8 +2142,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2186,8 +2186,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2219,8 +2219,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2252,8 +2252,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2285,8 +2285,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2330,8 +2330,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2363,8 +2363,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2396,8 +2396,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2429,8 +2429,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2474,8 +2474,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2507,8 +2507,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2540,8 +2540,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2573,8 +2573,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2618,8 +2618,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2651,8 +2651,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2684,8 +2684,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2717,8 +2717,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2762,8 +2762,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2795,8 +2795,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2828,8 +2828,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2861,8 +2861,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2906,8 +2906,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2939,8 +2939,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2972,8 +2972,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3005,8 +3005,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3050,8 +3050,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3083,8 +3083,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3116,8 +3116,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3149,8 +3149,8 @@ public final class ServiceaccountFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
      * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

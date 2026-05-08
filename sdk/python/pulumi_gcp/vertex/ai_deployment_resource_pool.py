@@ -21,10 +21,10 @@ __all__ = ['AiDeploymentResourcePoolArgs', 'AiDeploymentResourcePool']
 @pulumi.input_type
 class AiDeploymentResourcePoolArgs:
     def __init__(__self__, *,
-                 dedicated_resources: Optional[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 dedicated_resources: pulumi.Input[Optional['AiDeploymentResourcePoolDedicatedResourcesArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AiDeploymentResourcePool resource.
 
@@ -46,7 +46,7 @@ class AiDeploymentResourcePoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="dedicatedResources")
-    def dedicated_resources(self) -> Optional[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs']]:
+    def dedicated_resources(self) -> pulumi.Input[Optional['AiDeploymentResourcePoolDedicatedResourcesArgs']]:
         """
         The underlying dedicated resources that the deployment resource pool uses.
         Structure is documented below.
@@ -54,24 +54,24 @@ class AiDeploymentResourcePoolArgs:
         return pulumi.get(self, "dedicated_resources")
 
     @dedicated_resources.setter
-    def dedicated_resources(self, value: Optional[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs']]):
+    def dedicated_resources(self, value: pulumi.Input[Optional['AiDeploymentResourcePoolDedicatedResourcesArgs']]):
         pulumi.set(self, "dedicated_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -79,30 +79,30 @@ class AiDeploymentResourcePoolArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of deployment resource pool. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _AiDeploymentResourcePoolState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_resources: Optional[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_resources: pulumi.Input[Optional['AiDeploymentResourcePoolDedicatedResourcesArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiDeploymentResourcePool resources.
 
@@ -127,19 +127,19 @@ class _AiDeploymentResourcePoolState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedResources")
-    def dedicated_resources(self) -> Optional[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs']]:
+    def dedicated_resources(self) -> pulumi.Input[Optional['AiDeploymentResourcePoolDedicatedResourcesArgs']]:
         """
         The underlying dedicated resources that the deployment resource pool uses.
         Structure is documented below.
@@ -147,24 +147,24 @@ class _AiDeploymentResourcePoolState:
         return pulumi.get(self, "dedicated_resources")
 
     @dedicated_resources.setter
-    def dedicated_resources(self, value: Optional[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesArgs']]):
+    def dedicated_resources(self, value: pulumi.Input[Optional['AiDeploymentResourcePoolDedicatedResourcesArgs']]):
         pulumi.set(self, "dedicated_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -172,19 +172,19 @@ class _AiDeploymentResourcePoolState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of deployment resource pool. eg us-central1
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -194,10 +194,10 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 dedicated_resources: pulumi.Input[Optional[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         'DeploymentResourcePool can be shared by multiple deployed models,
@@ -335,10 +335,10 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_resources: Optional[pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 dedicated_resources: pulumi.Input[Optional[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -363,11 +363,11 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_resources: Optional[pulumi.Input[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'AiDeploymentResourcePool':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_resources: pulumi.Input[Optional[Union['AiDeploymentResourcePoolDedicatedResourcesArgs', 'AiDeploymentResourcePoolDedicatedResourcesArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiDeploymentResourcePool':
         """
         Get an existing AiDeploymentResourcePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

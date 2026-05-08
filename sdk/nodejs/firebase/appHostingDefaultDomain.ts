@@ -238,46 +238,46 @@ export interface AppHostingDefaultDomainState {
     /**
      * The ID of the Backend that this Domain is associated with
      */
-    backend?: pulumi.Input<string>;
+    backend?: pulumi.Input<string | undefined>;
     /**
      * Time at which the domain was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether the domain is disabled. Defaults to false.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * Server-computed checksum based on other values; may be sent
      * on update or delete to ensure operation is done on expected resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The location of the Backend that this Domain is associated with
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The resource name of the domain, e.g.
      * `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * System-assigned, unique identifier.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time at which the domain was last updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -291,7 +291,7 @@ export interface AppHostingDefaultDomainArgs {
     /**
      * Whether the domain is disabled. Defaults to false.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
      */
@@ -304,5 +304,5 @@ export interface AppHostingDefaultDomainArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

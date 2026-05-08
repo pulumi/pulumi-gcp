@@ -124,8 +124,8 @@ def get_images(filter: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         images=pulumi.get(__ret__, 'images'),
         project=pulumi.get(__ret__, 'project'))
-def get_images_output(filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_images_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     Get information about Google Compute Images. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see

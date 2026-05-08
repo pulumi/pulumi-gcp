@@ -356,7 +356,7 @@ export interface VolumeReplicationState {
     /**
      * Create time of the active directory. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A destination volume is created as part of replication creation. The destination volume will not became
      * under Terraform management unless you import it manually. If you delete the replication, this volume
@@ -366,128 +366,128 @@ export interface VolumeReplicationState {
      * For production use, it is recommended to keep this parameter false to avoid accidental volume
      * deletion. Handle with care. Default is false.
      */
-    deleteDestinationVolume?: pulumi.Input<boolean>;
+    deleteDestinationVolume?: pulumi.Input<boolean | undefined>;
     /**
      * An description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
      */
-    destinationVolume?: pulumi.Input<string>;
+    destinationVolume?: pulumi.Input<string | undefined>;
     /**
      * Destination volume parameters.
      * Structure is documented below.
      */
-    destinationVolumeParameters?: pulumi.Input<inputs.netapp.VolumeReplicationDestinationVolumeParameters>;
+    destinationVolumeParameters?: pulumi.Input<inputs.netapp.VolumeReplicationDestinationVolumeParameters | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
      * currently receives an update and stopping the update might be undesirable. Set this parameter to true
      * to stop anyway. All data transferred to the destination will be discarded and content of destination
      * volume will remain at the state of the last successful update. Default is false.
      */
-    forceStopping?: pulumi.Input<boolean>;
+    forceStopping?: pulumi.Input<boolean | undefined>;
     /**
      * Condition of the relationship. Can be one of the following:
      * - true: The replication relationship is healthy. It has not missed the most recent scheduled transfer.
      * - false: The replication relationship is not healthy. It has missed the most recent scheduled transfer.
      */
-    healthy?: pulumi.Input<boolean>;
+    healthy?: pulumi.Input<boolean | undefined>;
     /**
      * HybridPeeringDetails contains details about the hybrid peering.
      * Structure is documented below.
      */
-    hybridPeeringDetails?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeReplicationHybridPeeringDetail>[]>;
+    hybridPeeringDetails?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeReplicationHybridPeeringDetail>[] | undefined>;
     /**
      * Hybrid replication type.
      */
-    hybridReplicationType?: pulumi.Input<string>;
+    hybridReplicationType?: pulumi.Input<string | undefined>;
     /**
      * Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
      * Structure is documented below.
      */
-    hybridReplicationUserCommands?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeReplicationHybridReplicationUserCommand>[]>;
+    hybridReplicationUserCommands?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeReplicationHybridReplicationUserCommand>[] | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of region for this resource. The resource needs to be created in the region of the destination volume.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Indicates the state of the mirror between source and destination volumes. Depending on the amount of data
      * in your source volume, PREPARING phase can take hours or days. mirrorState = MIRRORED indicates your baseline
      * transfer ended and destination volume became accessible read-only. TRANSFERRING means a MIRRORED volume
      * currently receives an update. Updated every 5 minutes.
      */
-    mirrorState?: pulumi.Input<string>;
+    mirrorState?: pulumi.Input<string | undefined>;
     /**
      * The name of the replication. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
      * and act independently from the source volume.
      * Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
      * done to the destination volume with the content of the source volume.
      */
-    replicationEnabled?: pulumi.Input<boolean>;
+    replicationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the replication interval.
      * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
      */
-    replicationSchedule?: pulumi.Input<string>;
+    replicationSchedule?: pulumi.Input<string | undefined>;
     /**
      * Reverting a replication can swap source and destination volume roles. This field indicates if the `location` hosts
      * the source or destination volume. For resume and revert and resume operations it is critical to understand
      * which volume is the source volume, since it will overwrite changes done to the destination volume.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Full resource name of source volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
      */
-    sourceVolume?: pulumi.Input<string>;
+    sourceVolume?: pulumi.Input<string | undefined>;
     /**
      * Indicates the state of replication resource. State of the mirror itself is indicated in mirrorState.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * State details of the replication resource.
      */
-    stateDetails?: pulumi.Input<string>;
+    stateDetails?: pulumi.Input<string | undefined>;
     /**
      * Replication transfer statistics. All statistics are updated every 5 minutes.
      * Structure is documented below.
      */
-    transferStats?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeReplicationTransferStat>[]>;
+    transferStats?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeReplicationTransferStat>[] | undefined>;
     /**
      * The name of the existing source volume.
      */
-    volumeName?: pulumi.Input<string>;
+    volumeName?: pulumi.Input<string | undefined>;
     /**
      * Replication resource state is independent of mirror_state. With enough data, it can take many hours
      * for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
      * create/stop/resume operations, set this parameter to true. Default is false.
      */
-    waitForMirror?: pulumi.Input<boolean>;
+    waitForMirror?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -503,30 +503,30 @@ export interface VolumeReplicationArgs {
      * For production use, it is recommended to keep this parameter false to avoid accidental volume
      * deletion. Handle with care. Default is false.
      */
-    deleteDestinationVolume?: pulumi.Input<boolean>;
+    deleteDestinationVolume?: pulumi.Input<boolean | undefined>;
     /**
      * An description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Destination volume parameters.
      * Structure is documented below.
      */
-    destinationVolumeParameters?: pulumi.Input<inputs.netapp.VolumeReplicationDestinationVolumeParameters>;
+    destinationVolumeParameters?: pulumi.Input<inputs.netapp.VolumeReplicationDestinationVolumeParameters | undefined>;
     /**
      * Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
      * currently receives an update and stopping the update might be undesirable. Set this parameter to true
      * to stop anyway. All data transferred to the destination will be discarded and content of destination
      * volume will remain at the state of the last successful update. Default is false.
      */
-    forceStopping?: pulumi.Input<boolean>;
+    forceStopping?: pulumi.Input<boolean | undefined>;
     /**
      * Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of region for this resource. The resource needs to be created in the region of the destination volume.
      */
@@ -534,19 +534,19 @@ export interface VolumeReplicationArgs {
     /**
      * The name of the replication. Needs to be unique per location.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
      * and act independently from the source volume.
      * Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
      * done to the destination volume with the content of the source volume.
      */
-    replicationEnabled?: pulumi.Input<boolean>;
+    replicationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the replication interval.
      * Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
@@ -561,5 +561,5 @@ export interface VolumeReplicationArgs {
      * for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
      * create/stop/resume operations, set this parameter to true. Default is false.
      */
-    waitForMirror?: pulumi.Input<boolean>;
+    waitForMirror?: pulumi.Input<boolean | undefined>;
 }

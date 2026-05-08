@@ -102,15 +102,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			serial := pulumi.All(windows.Name, windows.Zone).ApplyT(func(_args []interface{}) (compute.GetInstanceSerialPortResult, error) {
-//				name := _args[0].(string)
-//				zone := _args[1].(string)
-//				return compute.GetInstanceSerialPortResult(interface{}(compute.GetInstanceSerialPort(ctx, &compute.GetInstanceSerialPortArgs{
-//					Instance: name,
-//					Zone:     pulumi.StringRef(pulumi.StringRef(zone)),
-//					Port:     4,
-//				}, nil))), nil
-//			}).(compute.GetInstanceSerialPortResultOutput)
+//			serial := compute.GetInstanceSerialPortOutput(ctx, compute.GetInstanceSerialPortOutputArgs{
+//				Instance: windows.Name,
+//				Zone:     windows.Zone,
+//				Port:     pulumi.Int(4),
+//			}, nil)
 //			ctx.Export("serialOut", serial.ApplyT(func(serial compute.GetInstanceSerialPortResult) (*string, error) {
 //				return &serial.Contents, nil
 //			}).(pulumi.StringPtrOutput))

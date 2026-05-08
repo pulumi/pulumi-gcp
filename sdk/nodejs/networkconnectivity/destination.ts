@@ -235,77 +235,77 @@ export interface DestinationState {
     /**
      * Time when the `Destination` resource was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The list of DestinationEndpoint resources configured for the IP prefix.
      * Structure is documented below.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.DestinationEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.DestinationEndpoint>[] | undefined>;
     /**
      * The etag is computed by the server, and might be sent with update and
      * delete requests so that the client has an up-to-date value before
      * proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The IP prefix that represents your workload on another CSP.
      */
-    ipPrefix?: pulumi.Input<string>;
+    ipPrefix?: pulumi.Input<string | undefined>;
     /**
      * User-defined labels.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the destination.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The multicloud data transfer config of the destination.
      */
-    multicloudDataTransferConfig?: pulumi.Input<string>;
+    multicloudDataTransferConfig?: pulumi.Input<string | undefined>;
     /**
      * The name of the destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The timeline of the expected `Destination` states or the current rest
      * state. If a state change is expected, the value is `ADDING`,
      * `DELETING` or `SUSPENDING`, depending on the action specified.
      * Structure is documented below.
      */
-    stateTimelines?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.DestinationStateTimeline>[]>;
+    stateTimelines?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.DestinationStateTimeline>[] | undefined>;
     /**
      * The Google-generated unique ID for the `Destination` resource.
      * This value is unique across all `Destination` resources.
      * If a resource is deleted and another with the same name is
      * created, the new resource is assigned a different and unique ID.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time when the `Destination` resource was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -315,7 +315,7 @@ export interface DestinationArgs {
     /**
      * A description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The list of DestinationEndpoint resources configured for the IP prefix.
      * Structure is documented below.
@@ -331,7 +331,7 @@ export interface DestinationArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location of the destination.
      */
@@ -343,10 +343,10 @@ export interface DestinationArgs {
     /**
      * The name of the destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

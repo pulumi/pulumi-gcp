@@ -22,10 +22,10 @@ __all__ = ['SacRealmArgs', 'SacRealm']
 class SacRealmArgs:
     def __init__(__self__, *,
                  security_service: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 symantec_options: Optional[pulumi.Input['SacRealmSymantecOptionsArgs']] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 symantec_options: pulumi.Input[Optional['SacRealmSymantecOptionsArgs']] = None):
         """
         The set of arguments for constructing a SacRealm resource.
 
@@ -66,7 +66,7 @@ class SacRealmArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 
@@ -76,24 +76,24 @@ class SacRealmArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Resource name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -101,12 +101,12 @@ class SacRealmArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="symantecOptions")
-    def symantec_options(self) -> Optional[pulumi.Input['SacRealmSymantecOptionsArgs']]:
+    def symantec_options(self) -> pulumi.Input[Optional['SacRealmSymantecOptionsArgs']]:
         """
         Configuration required for Symantec realms.
         Structure is documented below.
@@ -114,24 +114,24 @@ class SacRealmArgs:
         return pulumi.get(self, "symantec_options")
 
     @symantec_options.setter
-    def symantec_options(self, value: Optional[pulumi.Input['SacRealmSymantecOptionsArgs']]):
+    def symantec_options(self, value: pulumi.Input[Optional['SacRealmSymantecOptionsArgs']]):
         pulumi.set(self, "symantec_options", value)
 
 
 @pulumi.input_type
 class _SacRealmState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pairing_keys: Optional[pulumi.Input[Sequence[pulumi.Input['SacRealmPairingKeyArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 security_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 symantec_options: Optional[pulumi.Input['SacRealmSymantecOptionsArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pairing_keys: pulumi.Input[Optional[Sequence[pulumi.Input['SacRealmPairingKeyArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 security_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 symantec_options: pulumi.Input[Optional['SacRealmSymantecOptionsArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SacRealm resources.
 
@@ -180,31 +180,31 @@ class _SacRealmState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the realm was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
 
@@ -214,24 +214,24 @@ class _SacRealmState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. Resource name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="pairingKeys")
-    def pairing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SacRealmPairingKeyArgs']]]]:
+    def pairing_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SacRealmPairingKeyArgs']]]]:
         """
         Key to be shared with SSE service provider during pairing.
         Structure is documented below.
@@ -239,12 +239,12 @@ class _SacRealmState:
         return pulumi.get(self, "pairing_keys")
 
     @pairing_keys.setter
-    def pairing_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SacRealmPairingKeyArgs']]]]):
+    def pairing_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SacRealmPairingKeyArgs']]]]):
         pulumi.set(self, "pairing_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -252,12 +252,12 @@ class _SacRealmState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -265,12 +265,12 @@ class _SacRealmState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="securityService")
-    def security_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSE service provider associated with the realm.
         Possible values are: `SECURITY_SERVICE_UNSPECIFIED`, `PALO_ALTO_PRISMA_ACCESS`, `SYMANTEC_CLOUD_SWG`.
@@ -278,24 +278,24 @@ class _SacRealmState:
         return pulumi.get(self, "security_service")
 
     @security_service.setter
-    def security_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_service", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the realm.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="symantecOptions")
-    def symantec_options(self) -> Optional[pulumi.Input['SacRealmSymantecOptionsArgs']]:
+    def symantec_options(self) -> pulumi.Input[Optional['SacRealmSymantecOptionsArgs']]:
         """
         Configuration required for Symantec realms.
         Structure is documented below.
@@ -303,19 +303,19 @@ class _SacRealmState:
         return pulumi.get(self, "symantec_options")
 
     @symantec_options.setter
-    def symantec_options(self, value: Optional[pulumi.Input['SacRealmSymantecOptionsArgs']]):
+    def symantec_options(self, value: pulumi.Input[Optional['SacRealmSymantecOptionsArgs']]):
         pulumi.set(self, "symantec_options", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the realm was last updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -325,11 +325,11 @@ class SacRealm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 symantec_options: Optional[pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
                  __props__=None):
         """
         Secure Access Connect Realm resource
@@ -488,11 +488,11 @@ class SacRealm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 symantec_options: Optional[pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -527,17 +527,17 @@ class SacRealm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            pairing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SacRealmPairingKeyArgs', 'SacRealmPairingKeyArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            security_service: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            symantec_options: Optional[pulumi.Input[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'SacRealm':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pairing_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SacRealmPairingKeyArgs', 'SacRealmPairingKeyArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            security_service: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            symantec_options: pulumi.Input[Optional[Union['SacRealmSymantecOptionsArgs', 'SacRealmSymantecOptionsArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'SacRealm':
         """
         Get an existing SacRealm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

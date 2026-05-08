@@ -235,7 +235,7 @@ export interface PerInstanceConfigState {
     /**
      * The instance group manager this instance config is part of.
      */
-    instanceGroupManager?: pulumi.Input<string>;
+    instanceGroupManager?: pulumi.Input<string | undefined>;
     /**
      * The minimal action to perform on the instance during an update.
      * Default is `NONE`. Possible values are:
@@ -244,7 +244,7 @@ export interface PerInstanceConfigState {
      * * REFRESH
      * * NONE
      */
-    minimalAction?: pulumi.Input<string>;
+    minimalAction?: pulumi.Input<string | undefined>;
     /**
      * The most disruptive action to perform on the instance during an update.
      * Default is `REPLACE`. Possible values are:
@@ -253,36 +253,36 @@ export interface PerInstanceConfigState {
      * * REFRESH
      * * NONE
      */
-    mostDisruptiveAllowedAction?: pulumi.Input<string>;
+    mostDisruptiveAllowedAction?: pulumi.Input<string | undefined>;
     /**
      * The name for this per-instance config and its corresponding instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The preserved state for this instance.
      * Structure is documented below.
      */
-    preservedState?: pulumi.Input<inputs.compute.PerInstanceConfigPreservedState>;
+    preservedState?: pulumi.Input<inputs.compute.PerInstanceConfigPreservedState | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * When true, deleting this config will immediately remove the underlying instance.
      * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
      */
-    removeInstanceOnDestroy?: pulumi.Input<boolean>;
+    removeInstanceOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
      */
-    removeInstanceStateOnDestroy?: pulumi.Input<boolean>;
+    removeInstanceStateOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Zone where the containing instance group manager is located
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -301,7 +301,7 @@ export interface PerInstanceConfigArgs {
      * * REFRESH
      * * NONE
      */
-    minimalAction?: pulumi.Input<string>;
+    minimalAction?: pulumi.Input<string | undefined>;
     /**
      * The most disruptive action to perform on the instance during an update.
      * Default is `REPLACE`. Possible values are:
@@ -310,34 +310,34 @@ export interface PerInstanceConfigArgs {
      * * REFRESH
      * * NONE
      */
-    mostDisruptiveAllowedAction?: pulumi.Input<string>;
+    mostDisruptiveAllowedAction?: pulumi.Input<string | undefined>;
     /**
      * The name for this per-instance config and its corresponding instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The preserved state for this instance.
      * Structure is documented below.
      */
-    preservedState?: pulumi.Input<inputs.compute.PerInstanceConfigPreservedState>;
+    preservedState?: pulumi.Input<inputs.compute.PerInstanceConfigPreservedState | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * When true, deleting this config will immediately remove the underlying instance.
      * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
      */
-    removeInstanceOnDestroy?: pulumi.Input<boolean>;
+    removeInstanceOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
      */
-    removeInstanceStateOnDestroy?: pulumi.Input<boolean>;
+    removeInstanceStateOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Zone where the containing instance group manager is located
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }

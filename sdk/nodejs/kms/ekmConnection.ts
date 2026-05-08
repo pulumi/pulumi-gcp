@@ -174,40 +174,40 @@ export interface EkmConnectionState {
      * Output only. The time at which the EkmConnection was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      */
-    cryptoSpacePath?: pulumi.Input<string>;
+    cryptoSpacePath?: pulumi.Input<string | undefined>;
     /**
      * Optional. Etag of the currently stored EkmConnection.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
      * Default value is `MANUAL`.
      * Possible values are: `MANUAL`, `CLOUD_KMS`.
      */
-    keyManagementMode?: pulumi.Input<string>;
+    keyManagementMode?: pulumi.Input<string | undefined>;
     /**
      * The location for the EkmConnection.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the EkmConnection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
      * Structure is documented below.
      */
-    serviceResolvers?: pulumi.Input<pulumi.Input<inputs.kms.EkmConnectionServiceResolver>[]>;
+    serviceResolvers?: pulumi.Input<pulumi.Input<inputs.kms.EkmConnectionServiceResolver>[] | undefined>;
 }
 
 /**
@@ -217,17 +217,17 @@ export interface EkmConnectionArgs {
     /**
      * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
      */
-    cryptoSpacePath?: pulumi.Input<string>;
+    cryptoSpacePath?: pulumi.Input<string | undefined>;
     /**
      * Optional. Etag of the currently stored EkmConnection.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
      * Default value is `MANUAL`.
      * Possible values are: `MANUAL`, `CLOUD_KMS`.
      */
-    keyManagementMode?: pulumi.Input<string>;
+    keyManagementMode?: pulumi.Input<string | undefined>;
     /**
      * The location for the EkmConnection.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
@@ -236,12 +236,12 @@ export interface EkmConnectionArgs {
     /**
      * The resource name for the EkmConnection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
      * Structure is documented below.

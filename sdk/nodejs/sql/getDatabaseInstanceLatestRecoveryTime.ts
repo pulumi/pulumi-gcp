@@ -106,6 +106,6 @@ export interface GetDatabaseInstanceLatestRecoveryTimeOutputArgs {
     /**
      * The ID of the project in which the resource belongs.
      */
-    project?: pulumi.Input<string>;
-    sourceInstanceDeletionTime?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
+    sourceInstanceDeletionTime?: pulumi.Input<string | undefined>;
 }

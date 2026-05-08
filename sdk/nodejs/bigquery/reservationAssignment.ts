@@ -161,33 +161,33 @@ export interface ReservationAssignmentState {
     /**
      * The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
      */
-    assignee?: pulumi.Input<string>;
+    assignee?: pulumi.Input<string | undefined>;
     /**
      * Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
      */
-    jobType?: pulumi.Input<string>;
+    jobType?: pulumi.Input<string | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. The resource name of the assignment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The reservation for the resource
      */
-    reservation?: pulumi.Input<string>;
+    reservation?: pulumi.Input<string | undefined>;
     /**
      * Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
      * Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,12 +205,12 @@ export interface ReservationAssignmentArgs {
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The reservation for the resource
      */

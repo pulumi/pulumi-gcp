@@ -332,19 +332,19 @@ export interface RuleState {
      * Output only. The run frequencies that are allowed for the rule.
      * Populated in BASIC view and FULL view.
      */
-    allowedRunFrequencies?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedRunFrequencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Output only. The author of the rule. Extracted from the meta section of text.
      * Populated in BASIC view and FULL view.
      */
-    author?: pulumi.Input<string>;
+    author?: pulumi.Input<string | undefined>;
     /**
      * Output only. A list of a rule's corresponding compilation diagnostic messages
      * such as compilation errors and compilation warnings.
      * Populated in FULL view.
      * Structure is documented below.
      */
-    compilationDiagnostics?: pulumi.Input<pulumi.Input<inputs.chronicle.RuleCompilationDiagnostic>[]>;
+    compilationDiagnostics?: pulumi.Input<pulumi.Input<inputs.chronicle.RuleCompilationDiagnostic>[] | undefined>;
     /**
      * Output only. The current compilation state of the rule.
      * Populated in FULL view.
@@ -353,16 +353,16 @@ export interface RuleState {
      * SUCCEEDED
      * FAILED
      */
-    compilationState?: pulumi.Input<string>;
+    compilationState?: pulumi.Input<string | undefined>;
     /**
      * Output only. The timestamp of when the rule was created.
      * Populated in FULL view.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. Resource names of the data tables used in this rule.
      */
-    dataTables?: pulumi.Input<pulumi.Input<string>[]>;
+    dataTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Policy to determine if the rule should be deleted forcefully.
      * If deletionPolicy = "FORCE", any retrohunts and any detections associated with the rule
@@ -372,12 +372,12 @@ export interface RuleState {
      * deployment associated with this rule will also be deleted.
      * Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the severity level. Extracted from the meta section of
      * the rule text.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The etag for this rule.
      * If this is provided on update, the request will succeed if and only if it
@@ -385,58 +385,58 @@ export interface RuleState {
      * otherwise.
      * Populated in BASIC view and FULL view.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Output only. Additional metadata specified in the meta section of text.
      * Populated in FULL view.
      */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Full resource name for the rule. This unique identifier is generated using values provided for the URL parameters.
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Output only. Indicate the rule can run in near real time live rule.
      * If this is true, the rule uses the near real time live rule when the run
      * frequency is set to LIVE.
      */
-    nearRealTimeLiveRuleEligible?: pulumi.Input<boolean>;
+    nearRealTimeLiveRuleEligible?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Output only. Resource names of the reference lists used in this rule.
      * Populated in FULL view.
      */
-    referenceLists?: pulumi.Input<pulumi.Input<string>[]>;
+    referenceLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Output only. The timestamp of when the rule revision was created.
      * Populated in FULL, REVISION_METADATA_ONLY views.
      */
-    revisionCreateTime?: pulumi.Input<string>;
+    revisionCreateTime?: pulumi.Input<string | undefined>;
     /**
      * Output only. The revision ID of the rule.
      * A new revision is created whenever the rule text is changed in any way.
      * Format: v_{10 digits}_{9 digits}
      * Populated in REVISION_METADATA_ONLY view and FULL view.
      */
-    revisionId?: pulumi.Input<string>;
+    revisionId?: pulumi.Input<string | undefined>;
     /**
      * Rule Id is the ID of the Rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the DataAccessScope bound to this rule.
      * Populated in BASIC view and FULL view.
@@ -446,7 +446,7 @@ export interface RuleState {
      * The scope should be in the format:
      * "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * Output only. The severity of a rule's compilation diagnostic.
@@ -455,19 +455,19 @@ export interface RuleState {
      * WARNING
      * ERROR
      */
-    severities?: pulumi.Input<pulumi.Input<inputs.chronicle.RuleSeverity>[]>;
+    severities?: pulumi.Input<pulumi.Input<inputs.chronicle.RuleSeverity>[] | undefined>;
     /**
      * The YARA-L content of the rule.
      * Populated in FULL view.
      */
-    text?: pulumi.Input<string>;
+    text?: pulumi.Input<string | undefined>;
     /**
      * Possible values:
      * RULE_TYPE_UNSPECIFIED
      * SINGLE_EVENT
      * MULTI_EVENT
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -483,7 +483,7 @@ export interface RuleArgs {
      * deployment associated with this rule will also be deleted.
      * Possible values: DEFAULT, FORCE
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The etag for this rule.
      * If this is provided on update, the request will succeed if and only if it
@@ -491,7 +491,7 @@ export interface RuleArgs {
      * otherwise.
      * Populated in BASIC view and FULL view.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
@@ -504,11 +504,11 @@ export interface RuleArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rule Id is the ID of the Rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the DataAccessScope bound to this rule.
      * Populated in BASIC view and FULL view.
@@ -518,10 +518,10 @@ export interface RuleArgs {
      * The scope should be in the format:
      * "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The YARA-L content of the rule.
      * Populated in FULL view.
      */
-    text?: pulumi.Input<string>;
+    text?: pulumi.Input<string | undefined>;
 }

@@ -174,32 +174,32 @@ export interface AccessLevelState {
      * A set of predefined conditions for the access level and a combining function.
      * Structure is documented below.
      */
-    basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
+    basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic | undefined>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
      * See CEL spec at: https://github.com/google/cel-spec.
      * Structure is documented below.
      */
-    custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
+    custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom | undefined>;
     /**
      * Description of the AccessLevel and its use. Does not affect behavior.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,23 +210,23 @@ export interface AccessLevelArgs {
      * A set of predefined conditions for the access level and a combining function.
      * Structure is documented below.
      */
-    basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic>;
+    basic?: pulumi.Input<inputs.accesscontextmanager.AccessLevelBasic | undefined>;
     /**
      * Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
      * See CEL spec at: https://github.com/google/cel-spec.
      * Structure is documented below.
      */
-    custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom>;
+    custom?: pulumi.Input<inputs.accesscontextmanager.AccessLevelCustom | undefined>;
     /**
      * Description of the AccessLevel and its use. Does not affect behavior.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Resource name for the Access Level. The shortName component must begin
      * with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/accessLevels/{short_name}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The AccessPolicy this AccessLevel lives in.
      * Format: accessPolicies/{policy_id}

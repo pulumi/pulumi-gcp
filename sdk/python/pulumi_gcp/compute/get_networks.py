@@ -112,7 +112,7 @@ def get_networks(project: Optional[_builtins.str] = None,
         networks=pulumi.get(__ret__, 'networks'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-def get_networks_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_networks_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworksResult]:
     """
     List all networks in a specified Google Cloud project.

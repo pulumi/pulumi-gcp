@@ -58,8 +58,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -175,8 +175,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -292,8 +292,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -409,8 +409,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -526,8 +526,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestRunArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -626,8 +626,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -675,8 +675,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -724,8 +724,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -773,8 +773,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -822,8 +822,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -871,8 +871,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -920,8 +920,8 @@ public final class NetworkmanagementFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.networkmanagement.NetworkmanagementFunctions;
      * import com.pulumi.gcp.networkmanagement.inputs.GetConnectivityTestsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

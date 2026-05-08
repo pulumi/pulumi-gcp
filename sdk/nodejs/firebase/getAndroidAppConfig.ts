@@ -43,5 +43,5 @@ export function getAndroidAppConfigOutput(args: GetAndroidAppConfigOutputArgs, o
  */
 export interface GetAndroidAppConfigOutputArgs {
     appId: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -182,22 +182,22 @@ export interface SchemaState {
      * error indicating that the limit has been reached require manually
      * [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
      */
-    definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -213,20 +213,20 @@ export interface SchemaArgs {
      * error indicating that the limit has been reached require manually
      * [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
      */
-    definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
      * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

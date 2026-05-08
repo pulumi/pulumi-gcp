@@ -125,8 +125,8 @@ def get_repository_iam_policy(project: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         repository=pulumi.get(__ret__, 'repository'))
-def get_repository_iam_policy_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     repository: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repository_iam_policy_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     repository: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryIamPolicyResult]:
     """
     Retrieves the current IAM policy data for repository

@@ -333,9 +333,9 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         upcoming_maintenance_schedules=pulumi.get(__ret__, 'upcoming_maintenance_schedules'),
         update_time=pulumi.get(__ret__, 'update_time'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
     Use this data source to get information about a Lustre instance. For more information see the [API docs](https://docs.cloud.google.com/managed-lustre/docs/reference/rest/v1/projects.locations.instances).

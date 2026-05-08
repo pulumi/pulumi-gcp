@@ -222,10 +222,10 @@ def get_odb_subnet(location: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         purpose=pulumi.get(__ret__, 'purpose'),
         state=pulumi.get(__ret__, 'state'))
-def get_odb_subnet_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                          odb_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          odbnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                          project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_odb_subnet_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                          odb_subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          odbnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOdbSubnetResult]:
     """
     Get information about an ODB Subnet.

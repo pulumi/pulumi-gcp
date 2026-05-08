@@ -398,32 +398,32 @@ export interface SloState {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
+    basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli | undefined>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
      * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      */
-    calendarPeriod?: pulumi.Input<string>;
+    calendarPeriod?: pulumi.Input<string | undefined>;
     /**
      * Name used for UI elements listing this SLO.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The fraction of service that must be good in order for this objective
      * to be met. 0 < goal <= 0.999
      */
-    goal?: pulumi.Input<number>;
+    goal?: pulumi.Input<number | undefined>;
     /**
      * The full resource name for this service. The syntax is:
      * projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A request-based SLI defines a SLI for which atomic units of
      * service are counted directly.
@@ -434,20 +434,20 @@ export interface SloState {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
+    requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli | undefined>;
     /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.
      */
-    rollingPeriodDays?: pulumi.Input<number>;
+    rollingPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * ID of the service to which this SLO belongs.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
-    sloId?: pulumi.Input<string>;
+    sloId?: pulumi.Input<string | undefined>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -455,7 +455,7 @@ export interface SloState {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows
@@ -467,7 +467,7 @@ export interface SloState {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
+    windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli | undefined>;
 }
 
 /**
@@ -483,17 +483,17 @@ export interface SloArgs {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli>;
+    basicSli?: pulumi.Input<inputs.monitoring.SloBasicSli | undefined>;
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
      * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      */
-    calendarPeriod?: pulumi.Input<string>;
+    calendarPeriod?: pulumi.Input<string | undefined>;
     /**
      * Name used for UI elements listing this SLO.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The fraction of service that must be good in order for this objective
      * to be met. 0 < goal <= 0.999
@@ -503,7 +503,7 @@ export interface SloArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A request-based SLI defines a SLI for which atomic units of
      * service are counted directly.
@@ -514,12 +514,12 @@ export interface SloArgs {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli>;
+    requestBasedSli?: pulumi.Input<inputs.monitoring.SloRequestBasedSli | undefined>;
     /**
      * A rolling time period, semantically "in the past X days".
      * Must be between 1 to 30 days, inclusive.
      */
-    rollingPeriodDays?: pulumi.Input<number>;
+    rollingPeriodDays?: pulumi.Input<number | undefined>;
     /**
      * ID of the service to which this SLO belongs.
      */
@@ -527,7 +527,7 @@ export interface SloArgs {
     /**
      * The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
      */
-    sloId?: pulumi.Input<string>;
+    sloId?: pulumi.Input<string | undefined>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
@@ -535,7 +535,7 @@ export interface SloArgs {
      * can contain only lowercase letters, numerals, underscores, and dashes. Keys
      * must begin with a letter.
      */
-    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A windows-based SLI defines the criteria for time windows.
      * goodService is defined based off the count of these time windows
@@ -547,5 +547,5 @@ export interface SloArgs {
      * `basicSli`, `requestBasedSli`, `windowsBasedSli`
      * Structure is documented below.
      */
-    windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli>;
+    windowsBasedSli?: pulumi.Input<inputs.monitoring.SloWindowsBasedSli | undefined>;
 }

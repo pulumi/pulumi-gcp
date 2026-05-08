@@ -21,9 +21,9 @@ __all__ = ['SettingsArgs', 'Settings']
 @pulumi.input_type
 class SettingsArgs:
     def __init__(__self__, *,
-                 access_settings: Optional[pulumi.Input['SettingsAccessSettingsArgs']] = None,
-                 application_settings: Optional[pulumi.Input['SettingsApplicationSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_settings: pulumi.Input[Optional['SettingsAccessSettingsArgs']] = None,
+                 application_settings: pulumi.Input[Optional['SettingsApplicationSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Settings resource.
 
@@ -53,7 +53,7 @@ class SettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessSettings")
-    def access_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsArgs']]:
+    def access_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsArgs']]:
         """
         Top level wrapper for all access related setting in IAP.
         Structure is documented below.
@@ -61,12 +61,12 @@ class SettingsArgs:
         return pulumi.get(self, "access_settings")
 
     @access_settings.setter
-    def access_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsArgs']]):
+    def access_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsArgs']]):
         pulumi.set(self, "access_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationSettings")
-    def application_settings(self) -> Optional[pulumi.Input['SettingsApplicationSettingsArgs']]:
+    def application_settings(self) -> pulumi.Input[Optional['SettingsApplicationSettingsArgs']]:
         """
         Top level wrapper for all application related settings in IAP.
         Structure is documented below.
@@ -74,12 +74,12 @@ class SettingsArgs:
         return pulumi.get(self, "application_settings")
 
     @application_settings.setter
-    def application_settings(self, value: Optional[pulumi.Input['SettingsApplicationSettingsArgs']]):
+    def application_settings(self, value: pulumi.Input[Optional['SettingsApplicationSettingsArgs']]):
         pulumi.set(self, "application_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the IAP protected resource. Name can have below resources:
         * organizations/{organization_id}
@@ -97,16 +97,16 @@ class SettingsArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _SettingsState:
     def __init__(__self__, *,
-                 access_settings: Optional[pulumi.Input['SettingsAccessSettingsArgs']] = None,
-                 application_settings: Optional[pulumi.Input['SettingsApplicationSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_settings: pulumi.Input[Optional['SettingsAccessSettingsArgs']] = None,
+                 application_settings: pulumi.Input[Optional['SettingsApplicationSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
 
@@ -136,7 +136,7 @@ class _SettingsState:
 
     @_builtins.property
     @pulumi.getter(name="accessSettings")
-    def access_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsArgs']]:
+    def access_settings(self) -> pulumi.Input[Optional['SettingsAccessSettingsArgs']]:
         """
         Top level wrapper for all access related setting in IAP.
         Structure is documented below.
@@ -144,12 +144,12 @@ class _SettingsState:
         return pulumi.get(self, "access_settings")
 
     @access_settings.setter
-    def access_settings(self, value: Optional[pulumi.Input['SettingsAccessSettingsArgs']]):
+    def access_settings(self, value: pulumi.Input[Optional['SettingsAccessSettingsArgs']]):
         pulumi.set(self, "access_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationSettings")
-    def application_settings(self) -> Optional[pulumi.Input['SettingsApplicationSettingsArgs']]:
+    def application_settings(self) -> pulumi.Input[Optional['SettingsApplicationSettingsArgs']]:
         """
         Top level wrapper for all application related settings in IAP.
         Structure is documented below.
@@ -157,12 +157,12 @@ class _SettingsState:
         return pulumi.get(self, "application_settings")
 
     @application_settings.setter
-    def application_settings(self, value: Optional[pulumi.Input['SettingsApplicationSettingsArgs']]):
+    def application_settings(self, value: pulumi.Input[Optional['SettingsApplicationSettingsArgs']]):
         pulumi.set(self, "application_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the IAP protected resource. Name can have below resources:
         * organizations/{organization_id}
@@ -180,7 +180,7 @@ class _SettingsState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -190,9 +190,9 @@ class Settings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_settings: Optional[pulumi.Input[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
-                 application_settings: Optional[pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
+                 application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         IAP settings - manage IAP settings
@@ -480,9 +480,9 @@ class Settings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_settings: Optional[pulumi.Input[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
-                 application_settings: Optional[pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
+                 application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -505,9 +505,9 @@ class Settings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_settings: Optional[pulumi.Input[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
-            application_settings: Optional[pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Settings':
+            access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
+            application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Settings':
         """
         Get an existing Settings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

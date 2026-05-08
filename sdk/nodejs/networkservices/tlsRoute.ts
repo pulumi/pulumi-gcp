@@ -406,53 +406,53 @@ export interface TlsRouteState {
     /**
      * Time the TlsRoute was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/<gateway_name>
      */
-    gateways?: pulumi.Input<pulumi.Input<string>[]>;
+    gateways?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Location (region) of the TLS Route.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/<mesh_name>
      * The attached Mesh should be of a type SIDECAR
      */
-    meshes?: pulumi.Input<pulumi.Input<string>[]>;
+    meshes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the TlsRoute resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.networkservices.TlsRouteRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.networkservices.TlsRouteRule>[] | undefined>;
     /**
      * Server-defined URL of this resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
      * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/<target_tcp_proxy_name>
      */
-    targetProxies?: pulumi.Input<pulumi.Input<string>[]>;
+    targetProxies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Time the TlsRoute was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -462,31 +462,31 @@ export interface TlsRouteArgs {
     /**
      * A free-text description of the resource. Max length 1024 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
      * Each gateway reference should match the pattern: projects/*&#47;locations/*&#47;gateways/<gateway_name>
      */
-    gateways?: pulumi.Input<pulumi.Input<string>[]>;
+    gateways?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Location (region) of the TLS Route.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
      * Each mesh reference should match the pattern: projects/*&#47;locations/*&#47;meshes/<mesh_name>
      * The attached Mesh should be of a type SIDECAR
      */
-    meshes?: pulumi.Input<pulumi.Input<string>[]>;
+    meshes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the TlsRoute resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rules that define how traffic is routed and handled.
      * Structure is documented below.
@@ -496,5 +496,5 @@ export interface TlsRouteArgs {
      * TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
      * Each target proxy reference should match the pattern: projects/*&#47;locations/global/targetTcpProxies/<target_tcp_proxy_name>
      */
-    targetProxies?: pulumi.Input<pulumi.Input<string>[]>;
+    targetProxies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

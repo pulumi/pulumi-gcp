@@ -230,52 +230,52 @@ export interface VolumeQuotaRuleState {
     /**
      * Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description for the quota rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The maximum allowed capacity in MiB.
      */
-    diskLimitMib?: pulumi.Input<number>;
+    diskLimitMib?: pulumi.Input<number | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels as key value pairs of the quota rule. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the quotaRule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The state of the quota rule. Possible Values : [STATE_UNSPECIFIED, CREATING, UPDATING, READY, DELETING, ERROR]
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * State details of the quota rule
      */
-    stateDetails?: pulumi.Input<string>;
+    stateDetails?: pulumi.Input<string | undefined>;
     /**
      * The quota rule applies to the specified user or group.
      * Valid targets for volumes with NFS protocol enabled:
@@ -285,16 +285,16 @@ export interface VolumeQuotaRuleState {
      * - Windows SID for individual user quota
      * Leave empty for default quotas
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Types of Quota Rule.
      * Possible values are: `INDIVIDUAL_USER_QUOTA`, `INDIVIDUAL_GROUP_QUOTA`, `DEFAULT_USER_QUOTA`, `DEFAULT_GROUP_QUOTA`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Name of the volume to create the quotaRule in.
      */
-    volumeName?: pulumi.Input<string>;
+    volumeName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -304,7 +304,7 @@ export interface VolumeQuotaRuleArgs {
     /**
      * Description for the quota rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The maximum allowed capacity in MiB.
      */
@@ -315,20 +315,20 @@ export interface VolumeQuotaRuleArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Loction of the quotaRule. QuotaRules are child resources of volumes and live in the same location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the quotaRule.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The quota rule applies to the specified user or group.
      * Valid targets for volumes with NFS protocol enabled:
@@ -338,7 +338,7 @@ export interface VolumeQuotaRuleArgs {
      * - Windows SID for individual user quota
      * Leave empty for default quotas
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Types of Quota Rule.
      * Possible values are: `INDIVIDUAL_USER_QUOTA`, `INDIVIDUAL_GROUP_QUOTA`, `DEFAULT_USER_QUOTA`, `DEFAULT_GROUP_QUOTA`.

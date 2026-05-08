@@ -202,12 +202,12 @@ def get_instance_guest_attributes(name: Optional[_builtins.str] = None,
         variable_key=pulumi.get(__ret__, 'variable_key'),
         variable_value=pulumi.get(__ret__, 'variable_value'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_instance_guest_attributes_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                         project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         query_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         variable_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_guest_attributes_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         query_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         variable_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceGuestAttributesResult]:
     """
     Get information about a VM instance resource within GCE. For more information see

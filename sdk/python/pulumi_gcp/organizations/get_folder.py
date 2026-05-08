@@ -222,8 +222,8 @@ def get_folder(folder: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization=pulumi.get(__ret__, 'organization'),
         parent=pulumi.get(__ret__, 'parent'))
-def get_folder_output(folder: Optional[pulumi.Input[_builtins.str]] = None,
-                      lookup_organization: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_folder_output(folder: pulumi.Input[Optional[_builtins.str]] = None,
+                      lookup_organization: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderResult]:
     """
     Use this data source to get information about a Google Cloud Folder.

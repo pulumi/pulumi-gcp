@@ -24,17 +24,17 @@ class CloudVmClusterArgs:
                  cloud_vm_cluster_id: pulumi.Input[_builtins.str],
                  exadata_infrastructure: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
-                 backup_odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input['CloudVmClusterPropertiesArgs']] = None):
+                 backup_odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional['CloudVmClusterPropertiesArgs']] = None):
         """
         The set of arguments for constructing a CloudVmCluster resource.
 
@@ -140,7 +140,7 @@ class CloudVmClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupOdbSubnet")
-    def backup_odb_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_odb_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the backup OdbSubnet associated with the VM Cluster.
         Format:
@@ -149,60 +149,60 @@ class CloudVmClusterArgs:
         return pulumi.get(self, "backup_odb_subnet")
 
     @backup_odb_subnet.setter
-    def backup_odb_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_odb_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_odb_subnet", value)
 
     @_builtins.property
     @pulumi.getter(name="backupSubnetCidr")
-    def backup_subnet_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_subnet_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CIDR range of the backup subnet.
         """
         return pulumi.get(self, "backup_subnet_cidr")
 
     @backup_subnet_cidr.setter
-    def backup_subnet_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_subnet_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_subnet_cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network settings. CIDR to use for cluster IP allocation.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User friendly name for this resource.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels or tags associated with the VM Cluster.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -211,12 +211,12 @@ class CloudVmClusterArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC network.
         Format: projects/{project}/global/networks/{network}
@@ -224,12 +224,12 @@ class CloudVmClusterArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="odbNetwork")
-    def odb_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def odb_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OdbNetwork associated with the VM Cluster.
         Format:
@@ -240,12 +240,12 @@ class CloudVmClusterArgs:
         return pulumi.get(self, "odb_network")
 
     @odb_network.setter
-    def odb_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def odb_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "odb_network", value)
 
     @_builtins.property
     @pulumi.getter(name="odbSubnet")
-    def odb_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def odb_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OdbSubnet associated with the VM Cluster for
         IP allocation. Format:
@@ -254,12 +254,12 @@ class CloudVmClusterArgs:
         return pulumi.get(self, "odb_subnet")
 
     @odb_subnet.setter
-    def odb_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def odb_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "odb_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -267,12 +267,12 @@ class CloudVmClusterArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['CloudVmClusterPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['CloudVmClusterPropertiesArgs']]:
         """
         Various properties and settings associated with Exadata VM cluster.
         Structure is documented below.
@@ -280,32 +280,32 @@ class CloudVmClusterArgs:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['CloudVmClusterPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['CloudVmClusterPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
 
 @pulumi.input_type
 class _CloudVmClusterState:
     def __init__(__self__, *,
-                 backup_odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_vm_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 exadata_infrastructure: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_oracle_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input['CloudVmClusterPropertiesArgs']] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 backup_odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional['CloudVmClusterPropertiesArgs']] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CloudVmCluster resources.
 
@@ -391,7 +391,7 @@ class _CloudVmClusterState:
 
     @_builtins.property
     @pulumi.getter(name="backupOdbSubnet")
-    def backup_odb_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_odb_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the backup OdbSubnet associated with the VM Cluster.
         Format:
@@ -400,36 +400,36 @@ class _CloudVmClusterState:
         return pulumi.get(self, "backup_odb_subnet")
 
     @backup_odb_subnet.setter
-    def backup_odb_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_odb_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_odb_subnet", value)
 
     @_builtins.property
     @pulumi.getter(name="backupSubnetCidr")
-    def backup_subnet_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_subnet_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CIDR range of the backup subnet.
         """
         return pulumi.get(self, "backup_subnet_cidr")
 
     @backup_subnet_cidr.setter
-    def backup_subnet_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_subnet_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_subnet_cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network settings. CIDR to use for cluster IP allocation.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudVmClusterId")
-    def cloud_vm_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_vm_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VM Cluster to create. This value is restricted
         to (^a-z?$) and must be a maximum of 63
@@ -439,60 +439,60 @@ class _CloudVmClusterState:
         return pulumi.get(self, "cloud_vm_cluster_id")
 
     @cloud_vm_cluster_id.setter
-    def cloud_vm_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_vm_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_vm_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time that the VM cluster was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User friendly name for this resource.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="exadataInfrastructure")
-    def exadata_infrastructure(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exadata_infrastructure(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Exadata Infrastructure resource on which VM cluster
         resource is created, in the following format:
@@ -501,12 +501,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "exadata_infrastructure")
 
     @exadata_infrastructure.setter
-    def exadata_infrastructure(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exadata_infrastructure(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exadata_infrastructure", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpOracleZone")
-    def gcp_oracle_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_oracle_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
         of Exadata infrastructure.
@@ -514,12 +514,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "gcp_oracle_zone")
 
     @gcp_oracle_zone.setter
-    def gcp_oracle_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_oracle_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_oracle_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels or tags associated with the VM Cluster.
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -528,24 +528,24 @@ class _CloudVmClusterState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/DbNode`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier. The name of the VM Cluster resource with the format:
         projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
@@ -553,12 +553,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC network.
         Format: projects/{project}/global/networks/{network}
@@ -566,12 +566,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="odbNetwork")
-    def odb_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def odb_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OdbNetwork associated with the VM Cluster.
         Format:
@@ -582,12 +582,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "odb_network")
 
     @odb_network.setter
-    def odb_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def odb_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "odb_network", value)
 
     @_builtins.property
     @pulumi.getter(name="odbSubnet")
-    def odb_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def odb_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OdbSubnet associated with the VM Cluster for
         IP allocation. Format:
@@ -596,12 +596,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "odb_subnet")
 
     @odb_subnet.setter
-    def odb_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def odb_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "odb_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -609,12 +609,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['CloudVmClusterPropertiesArgs']]:
+    def properties(self) -> pulumi.Input[Optional['CloudVmClusterPropertiesArgs']]:
         """
         Various properties and settings associated with Exadata VM cluster.
         Structure is documented below.
@@ -622,12 +622,12 @@ class _CloudVmClusterState:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input['CloudVmClusterPropertiesArgs']]):
+    def properties(self, value: pulumi.Input[Optional['CloudVmClusterPropertiesArgs']]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -635,7 +635,7 @@ class _CloudVmClusterState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
 
@@ -645,20 +645,20 @@ class CloudVmCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_vm_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exadata_infrastructure: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
+                 backup_odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
                  __props__=None):
         """
         A CloudVmCluster resource.
@@ -786,8 +786,8 @@ class CloudVmCluster(pulumi.CustomResource):
                     "id": "UTC",
                 },
                 "node_count": 2,
-                "ocpu_count": 4,
-                "data_storage_size_tb": 2,
+                "ocpu_count": float(4),
+                "data_storage_size_tb": float(2),
                 "db_node_storage_size_gb": 120,
                 "db_server_ocids": [
                     mydbserver.db_servers[0].properties[0].ocid,
@@ -992,8 +992,8 @@ class CloudVmCluster(pulumi.CustomResource):
                     "id": "UTC",
                 },
                 "node_count": 2,
-                "ocpu_count": 4,
-                "data_storage_size_tb": 2,
+                "ocpu_count": float(4),
+                "data_storage_size_tb": float(2),
                 "db_node_storage_size_gb": 120,
                 "db_server_ocids": [
                     mydbserver.db_servers[0].properties[0].ocid,
@@ -1046,20 +1046,20 @@ class CloudVmCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_vm_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exadata_infrastructure: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_network: Optional[pulumi.Input[_builtins.str]] = None,
-                 odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
+                 backup_odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1106,25 +1106,25 @@ class CloudVmCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud_vm_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            exadata_infrastructure: Optional[pulumi.Input[_builtins.str]] = None,
-            gcp_oracle_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            odb_network: Optional[pulumi.Input[_builtins.str]] = None,
-            odb_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CloudVmCluster':
+            backup_odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_network: pulumi.Input[Optional[_builtins.str]] = None,
+            odb_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Union['CloudVmClusterPropertiesArgs', 'CloudVmClusterPropertiesArgsDict']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'CloudVmCluster':
         """
         Get an existing CloudVmCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

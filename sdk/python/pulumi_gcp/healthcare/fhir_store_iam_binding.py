@@ -24,7 +24,7 @@ class FhirStoreIamBindingArgs:
                  fhir_store_id: pulumi.Input[_builtins.str],
                  members: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  role: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['FhirStoreIamBindingConditionArgs']] = None):
         """
         The set of arguments for constructing a FhirStoreIamBinding resource.
 
@@ -100,22 +100,22 @@ class FhirStoreIamBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['FhirStoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['FhirStoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
 class _FhirStoreIamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 fhir_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['FhirStoreIamBindingConditionArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 fhir_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FhirStoreIamBinding resources.
 
@@ -149,28 +149,28 @@ class _FhirStoreIamBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['FhirStoreIamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FhirStoreIamBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['FhirStoreIamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The etag of the FHIR store's IAM policy.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="fhirStoreId")
-    def fhir_store_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fhir_store_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The FHIR store ID, in the form
         `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
@@ -180,12 +180,12 @@ class _FhirStoreIamBindingState:
         return pulumi.get(self, "fhir_store_id")
 
     @fhir_store_id.setter
-    def fhir_store_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fhir_store_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fhir_store_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -199,12 +199,12 @@ class _FhirStoreIamBindingState:
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
         `healthcare.FhirStoreIamBinding` can be used per role. Note that custom roles must be of the format
@@ -213,7 +213,7 @@ class _FhirStoreIamBindingState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
 
@@ -223,10 +223,10 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
-                 fhir_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
+                 fhir_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Warning:** These resources are in beta, and should be used with the terraform-provider-google-beta provider.
@@ -433,10 +433,10 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
-                 fhir_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
+                 fhir_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -467,11 +467,11 @@ class FhirStoreIamBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            fhir_store_id: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None) -> 'FhirStoreIamBinding':
+            condition: pulumi.Input[Optional[Union['FhirStoreIamBindingConditionArgs', 'FhirStoreIamBindingConditionArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            fhir_store_id: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None) -> 'FhirStoreIamBinding':
         """
         Get an existing FhirStoreIamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

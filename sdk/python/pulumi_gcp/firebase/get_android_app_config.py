@@ -100,8 +100,8 @@ def get_android_app_config(app_id: Optional[_builtins.str] = None,
         config_filename=pulumi.get(__ret__, 'config_filename'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-def get_android_app_config_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_android_app_config_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAndroidAppConfigResult]:
     """
     Use this data source to access information about an existing resource.

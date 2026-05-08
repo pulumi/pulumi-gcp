@@ -303,32 +303,32 @@ export interface QueueState {
      * to App Engine tasks in this queue
      * Structure is documented below.
      */
-    appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
+    appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
      * The desired state of the queue. Use this to pause and resume the queue.
      *
      * * RUNNING: The queue is running. Tasks can be dispatched.
      * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
      */
-    httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget>;
+    httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget | undefined>;
     /**
      * The location of the queue
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The queue name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rate limits for task dispatches.
      * The queue's actual dispatch rate is the result of:
@@ -339,21 +339,21 @@ export interface QueueState {
      * smooth sudden large traffic spikes.
      * Structure is documented below.
      */
-    rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits>;
+    rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits | undefined>;
     /**
      * Settings that determine the retry behavior.
      * Structure is documented below.
      */
-    retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig>;
+    retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig | undefined>;
     /**
      * Configuration options for writing logs to Stackdriver Logging.
      * Structure is documented below.
      */
-    stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.QueueStackdriverLoggingConfig>;
+    stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.QueueStackdriverLoggingConfig | undefined>;
     /**
      * The current state of the queue.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -365,19 +365,19 @@ export interface QueueArgs {
      * to App Engine tasks in this queue
      * Structure is documented below.
      */
-    appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
+    appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
      * The desired state of the queue. Use this to pause and resume the queue.
      *
      * * RUNNING: The queue is running. Tasks can be dispatched.
      * * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * Modifies HTTP target for HTTP tasks.
      * Structure is documented below.
      */
-    httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget>;
+    httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget | undefined>;
     /**
      * The location of the queue
      */
@@ -385,12 +385,12 @@ export interface QueueArgs {
     /**
      * The queue name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Rate limits for task dispatches.
      * The queue's actual dispatch rate is the result of:
@@ -401,15 +401,15 @@ export interface QueueArgs {
      * smooth sudden large traffic spikes.
      * Structure is documented below.
      */
-    rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits>;
+    rateLimits?: pulumi.Input<inputs.cloudtasks.QueueRateLimits | undefined>;
     /**
      * Settings that determine the retry behavior.
      * Structure is documented below.
      */
-    retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig>;
+    retryConfig?: pulumi.Input<inputs.cloudtasks.QueueRetryConfig | undefined>;
     /**
      * Configuration options for writing logs to Stackdriver Logging.
      * Structure is documented below.
      */
-    stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.QueueStackdriverLoggingConfig>;
+    stackdriverLoggingConfig?: pulumi.Input<inputs.cloudtasks.QueueStackdriverLoggingConfig | undefined>;
 }

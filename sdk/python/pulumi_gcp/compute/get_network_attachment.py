@@ -234,9 +234,9 @@ def get_network_attachment(name: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         self_link_with_id=pulumi.get(__ret__, 'self_link_with_id'),
         subnetworks=pulumi.get(__ret__, 'subnetworks'))
-def get_network_attachment_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                  project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  region: Optional[pulumi.Input[_builtins.str]] = None,
+def get_network_attachment_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  region: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAttachmentResult]:
     """
     Get a specific network attachment within a region. For more information see

@@ -165,19 +165,19 @@ export interface InstanceConfigState {
      * Only set for user managed configurations.
      * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      */
-    baseConfig?: pulumi.Input<string>;
+    baseConfig?: pulumi.Input<string | undefined>;
     /**
      * Output only. Whether this instance config is a Google or User Managed Configuration.
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * The name of this instance configuration as it appears in UIs.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * An object containing a list of "key": value pairs.
      * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -185,27 +185,27 @@ export interface InstanceConfigState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A unique identifier for the instance configuration. Values are of the
      * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The geographic placement of nodes in this instance configuration and their replication properties.
      * Structure is documented below.
      */
-    replicas?: pulumi.Input<pulumi.Input<inputs.spanner.InstanceConfigReplica>[]>;
+    replicas?: pulumi.Input<pulumi.Input<inputs.spanner.InstanceConfigReplica>[] | undefined>;
 }
 
 /**
@@ -217,7 +217,7 @@ export interface InstanceConfigArgs {
      * Only set for user managed configurations.
      * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      */
-    baseConfig?: pulumi.Input<string>;
+    baseConfig?: pulumi.Input<string | undefined>;
     /**
      * The name of this instance configuration as it appears in UIs.
      */
@@ -229,17 +229,17 @@ export interface InstanceConfigArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A unique identifier for the instance configuration. Values are of the
      * form projects/<project>/instanceConfigs/[a-z][-a-z0-9]*
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The geographic placement of nodes in this instance configuration and their replication properties.
      * Structure is documented below.

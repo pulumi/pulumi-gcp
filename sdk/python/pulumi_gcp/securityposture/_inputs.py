@@ -69,7 +69,7 @@ class PosturePolicySetArgsDict(TypedDict):
     """
     ID of the policy set.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the policy set.
     """
@@ -79,7 +79,7 @@ class PosturePolicySetArgs:
     def __init__(__self__, *,
                  policies: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]],
                  policy_set_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyArgs']]] policies: List of security policy
                Structure is documented below.
@@ -118,14 +118,14 @@ class PosturePolicySetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the policy set.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -139,12 +139,12 @@ class PosturePolicySetPolicyArgsDict(TypedDict):
     """
     ID of the policy.
     """
-    compliance_standards: NotRequired[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgsDict']]]]
+    compliance_standards: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]]]
     """
     Mapping for policy to security standards and controls.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the policy.
     """
@@ -154,8 +154,8 @@ class PosturePolicySetPolicyArgs:
     def __init__(__self__, *,
                  constraint: pulumi.Input['PosturePolicySetPolicyConstraintArgs'],
                  policy_id: pulumi.Input[_builtins.str],
-                 compliance_standards: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 compliance_standards: pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['PosturePolicySetPolicyConstraintArgs'] constraint: Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
                Structure is documented below.
@@ -198,7 +198,7 @@ class PosturePolicySetPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="complianceStandards")
-    def compliance_standards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]]:
+    def compliance_standards(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]]:
         """
         Mapping for policy to security standards and controls.
         Structure is documented below.
@@ -206,28 +206,28 @@ class PosturePolicySetPolicyArgs:
         return pulumi.get(self, "compliance_standards")
 
     @compliance_standards.setter
-    def compliance_standards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]]):
+    def compliance_standards(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]]):
         pulumi.set(self, "compliance_standards", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class PosturePolicySetPolicyComplianceStandardArgsDict(TypedDict):
-    control: NotRequired[pulumi.Input[_builtins.str]]
+    control: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Mapping of security controls for the policy.
     """
-    standard: NotRequired[pulumi.Input[_builtins.str]]
+    standard: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Mapping of compliance standards for the policy.
     """
@@ -235,8 +235,8 @@ class PosturePolicySetPolicyComplianceStandardArgsDict(TypedDict):
 @pulumi.input_type
 class PosturePolicySetPolicyComplianceStandardArgs:
     def __init__(__self__, *,
-                 control: Optional[pulumi.Input[_builtins.str]] = None,
-                 standard: Optional[pulumi.Input[_builtins.str]] = None):
+                 control: pulumi.Input[Optional[_builtins.str]] = None,
+                 standard: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] control: Mapping of security controls for the policy.
         :param pulumi.Input[_builtins.str] standard: Mapping of compliance standards for the policy.
@@ -248,46 +248,46 @@ class PosturePolicySetPolicyComplianceStandardArgs:
 
     @_builtins.property
     @pulumi.getter
-    def control(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mapping of security controls for the policy.
         """
         return pulumi.get(self, "control")
 
     @control.setter
-    def control(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control", value)
 
     @_builtins.property
     @pulumi.getter
-    def standard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mapping of compliance standards for the policy.
         """
         return pulumi.get(self, "standard")
 
     @standard.setter
-    def standard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standard", value)
 
 
 class PosturePolicySetPolicyConstraintArgsDict(TypedDict):
-    org_policy_constraint: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgsDict']]
+    org_policy_constraint: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']]]
     """
     Organization policy canned constraint definition.
     Structure is documented below.
     """
-    org_policy_constraint_custom: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict']]
+    org_policy_constraint_custom: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']]]
     """
     Organization policy custom constraint policy definition.
     Structure is documented below.
     """
-    security_health_analytics_custom_module: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDict']]
+    security_health_analytics_custom_module: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']]]
     """
     Definition of Security Health Analytics Custom Module.
     Structure is documented below.
     """
-    security_health_analytics_module: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict']]
+    security_health_analytics_module: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']]]
     """
     Security Health Analytics built-in detector definition.
     Structure is documented below.
@@ -296,10 +296,10 @@ class PosturePolicySetPolicyConstraintArgsDict(TypedDict):
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintArgs:
     def __init__(__self__, *,
-                 org_policy_constraint: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']] = None,
-                 org_policy_constraint_custom: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']] = None,
-                 security_health_analytics_custom_module: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']] = None,
-                 security_health_analytics_module: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']] = None):
+                 org_policy_constraint: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']] = None,
+                 org_policy_constraint_custom: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']] = None,
+                 security_health_analytics_custom_module: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']] = None,
+                 security_health_analytics_module: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']] = None):
         """
         :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs'] org_policy_constraint: Organization policy canned constraint definition.
                Structure is documented below.
@@ -321,7 +321,7 @@ class PosturePolicySetPolicyConstraintArgs:
 
     @_builtins.property
     @pulumi.getter(name="orgPolicyConstraint")
-    def org_policy_constraint(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']]:
+    def org_policy_constraint(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']]:
         """
         Organization policy canned constraint definition.
         Structure is documented below.
@@ -329,12 +329,12 @@ class PosturePolicySetPolicyConstraintArgs:
         return pulumi.get(self, "org_policy_constraint")
 
     @org_policy_constraint.setter
-    def org_policy_constraint(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']]):
+    def org_policy_constraint(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']]):
         pulumi.set(self, "org_policy_constraint", value)
 
     @_builtins.property
     @pulumi.getter(name="orgPolicyConstraintCustom")
-    def org_policy_constraint_custom(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']]:
+    def org_policy_constraint_custom(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']]:
         """
         Organization policy custom constraint policy definition.
         Structure is documented below.
@@ -342,12 +342,12 @@ class PosturePolicySetPolicyConstraintArgs:
         return pulumi.get(self, "org_policy_constraint_custom")
 
     @org_policy_constraint_custom.setter
-    def org_policy_constraint_custom(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']]):
+    def org_policy_constraint_custom(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']]):
         pulumi.set(self, "org_policy_constraint_custom", value)
 
     @_builtins.property
     @pulumi.getter(name="securityHealthAnalyticsCustomModule")
-    def security_health_analytics_custom_module(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']]:
+    def security_health_analytics_custom_module(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']]:
         """
         Definition of Security Health Analytics Custom Module.
         Structure is documented below.
@@ -355,12 +355,12 @@ class PosturePolicySetPolicyConstraintArgs:
         return pulumi.get(self, "security_health_analytics_custom_module")
 
     @security_health_analytics_custom_module.setter
-    def security_health_analytics_custom_module(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']]):
+    def security_health_analytics_custom_module(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']]):
         pulumi.set(self, "security_health_analytics_custom_module", value)
 
     @_builtins.property
     @pulumi.getter(name="securityHealthAnalyticsModule")
-    def security_health_analytics_module(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']]:
+    def security_health_analytics_module(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']]:
         """
         Security Health Analytics built-in detector definition.
         Structure is documented below.
@@ -368,7 +368,7 @@ class PosturePolicySetPolicyConstraintArgs:
         return pulumi.get(self, "security_health_analytics_module")
 
     @security_health_analytics_module.setter
-    def security_health_analytics_module(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']]):
+    def security_health_analytics_module(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']]):
         pulumi.set(self, "security_health_analytics_module", value)
 
 
@@ -428,7 +428,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict(TypedDic
     Definition of policy rules
     Structure is documented below.
     """
-    custom_constraint: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgsDict']]
+    custom_constraint: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']]]
     """
     Organization policy custom constraint definition.
     Structure is documented below.
@@ -438,7 +438,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict(TypedDic
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs:
     def __init__(__self__, *,
                  policy_rules: pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs']]],
-                 custom_constraint: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']] = None):
+                 custom_constraint: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs']]] policy_rules: Definition of policy rules
                Structure is documented below.
@@ -464,7 +464,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs:
 
     @_builtins.property
     @pulumi.getter(name="customConstraint")
-    def custom_constraint(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']]:
+    def custom_constraint(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']]:
         """
         Organization policy custom constraint definition.
         Structure is documented below.
@@ -472,7 +472,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs:
         return pulumi.get(self, "custom_constraint")
 
     @custom_constraint.setter
-    def custom_constraint(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']]):
+    def custom_constraint(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']]):
         pulumi.set(self, "custom_constraint", value)
 
 
@@ -498,11 +498,11 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
     """
     Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human-friendly description of the constraint to display as an error message when the policy is violated.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A human-friendly name for the constraint.
     """
@@ -515,8 +515,8 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
                  method_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  name: pulumi.Input[_builtins.str],
                  resource_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
                Possible values are: `ALLOW`, `DENY`.
@@ -600,51 +600,51 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly description of the constraint to display as an error message when the policy is violated.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A human-friendly name for the constraint.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
 
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDict(TypedDict):
-    allow_all: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
     """
-    condition: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgsDict']]
+    condition: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]]
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
     This page details the objects and attributes that are used to the build the CEL expressions for
     custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
     Structure is documented below.
     """
-    deny_all: NotRequired[pulumi.Input[_builtins.bool]]
+    deny_all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
     """
-    enforce: NotRequired[pulumi.Input[_builtins.bool]]
+    enforce: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
     This field can be set only in policies for boolean constraints.
     """
-    values: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict']]
+    values: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']]]
     """
     List of values to be used for this policy rule. This field can be set only in policies for list constraints.
     Structure is documented below.
@@ -653,11 +653,11 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDic
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
     def __init__(__self__, *,
-                 allow_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 condition: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']] = None,
-                 deny_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 values: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']] = None):
+                 allow_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 condition: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']] = None,
+                 deny_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 values: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
@@ -683,19 +683,19 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAll")
-    def allow_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         """
         return pulumi.get(self, "allow_all")
 
     @allow_all.setter
-    def allow_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
@@ -705,24 +705,24 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="denyAll")
-    def deny_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         """
         return pulumi.get(self, "deny_all")
 
     @deny_all.setter
-    def deny_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
         This field can be set only in policies for boolean constraints.
@@ -730,12 +730,12 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']]:
+    def values(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']]:
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         Structure is documented below.
@@ -743,7 +743,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']]):
+    def values(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']]):
         pulumi.set(self, "values", value)
 
 
@@ -752,15 +752,15 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditi
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     """
@@ -769,9 +769,9 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditi
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression
@@ -800,47 +800,47 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditi
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values allowed at this resource.
     """
-    denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    denied_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values denied at this resource.
     """
@@ -848,8 +848,8 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesA
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs:
     def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 denied_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 denied_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_values: List of values allowed at this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denied_values: List of values denied at this resource.
@@ -861,51 +861,51 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesA
 
     @_builtins.property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values allowed at this resource.
         """
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_values", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedValues")
-    def denied_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def denied_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values denied at this resource.
         """
         return pulumi.get(self, "denied_values")
 
     @denied_values.setter
-    def denied_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def denied_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "denied_values", value)
 
 
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict(TypedDict):
-    allow_all: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
     """
-    condition: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgsDict']]
+    condition: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]]
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
     This page details the objects and attributes that are used to the build the CEL expressions for
     custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
     Structure is documented below.
     """
-    deny_all: NotRequired[pulumi.Input[_builtins.bool]]
+    deny_all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
     """
-    enforce: NotRequired[pulumi.Input[_builtins.bool]]
+    enforce: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
     This field can be set only in policies for boolean constraints.
     """
-    values: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict']]
+    values: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']]]
     """
     List of values to be used for this policy rule. This field can be set only in policies for list constraints.
     Structure is documented below.
@@ -914,11 +914,11 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict(Type
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
     def __init__(__self__, *,
-                 allow_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 condition: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']] = None,
-                 deny_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enforce: Optional[pulumi.Input[_builtins.bool]] = None,
-                 values: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']] = None):
+                 allow_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 condition: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']] = None,
+                 deny_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+                 values: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
@@ -944,19 +944,19 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowAll")
-    def allow_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
         """
         return pulumi.get(self, "allow_all")
 
     @allow_all.setter
-    def allow_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]:
         """
         Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
         This page details the objects and attributes that are used to the build the CEL expressions for
@@ -966,24 +966,24 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="denyAll")
-    def deny_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         """
         return pulumi.get(self, "deny_all")
 
     @deny_all.setter
-    def deny_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enforce(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
         This field can be set only in policies for boolean constraints.
@@ -991,12 +991,12 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
         return pulumi.get(self, "enforce")
 
     @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enforce(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enforce", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']]:
+    def values(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']]:
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         Structure is documented below.
@@ -1004,7 +1004,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']]):
+    def values(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']]):
         pulumi.set(self, "values", value)
 
 
@@ -1013,15 +1013,15 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     """
@@ -1030,9 +1030,9 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression
@@ -1061,47 +1061,47 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values allowed at this resource.
     """
-    denied_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    denied_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of values denied at this resource.
     """
@@ -1109,8 +1109,8 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDic
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs:
     def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 denied_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allowed_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 denied_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_values: List of values allowed at this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denied_values: List of values denied at this resource.
@@ -1122,26 +1122,26 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values allowed at this resource.
         """
         return pulumi.get(self, "allowed_values")
 
     @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_values", value)
 
     @_builtins.property
     @pulumi.getter(name="deniedValues")
-    def denied_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def denied_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of values denied at this resource.
         """
         return pulumi.get(self, "denied_values")
 
     @denied_values.setter
-    def denied_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def denied_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "denied_values", value)
 
 
@@ -1151,18 +1151,18 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDic
     Custom module details.
     Structure is documented below.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name of the Security Health Analytics custom module. This
     display name becomes the finding category for all findings that are
     returned by this custom module.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     A server generated id of custom module.
     """
-    module_enablement_state: NotRequired[pulumi.Input[_builtins.str]]
+    module_enablement_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The state of enablement for the module at its level of the resource hierarchy.
     Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
@@ -1172,9 +1172,9 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDic
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs:
     def __init__(__self__, *,
                  config: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs'],
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_enablement_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_enablement_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs'] config: Custom module details.
                Structure is documented below.
@@ -1209,7 +1209,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Security Health Analytics custom module. This
         display name becomes the finding category for all findings that are
@@ -1218,12 +1218,12 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         A server generated id of custom module.
@@ -1231,12 +1231,12 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="moduleEnablementState")
-    def module_enablement_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def module_enablement_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of enablement for the module at its level of the resource hierarchy.
         Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
@@ -1244,7 +1244,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs:
         return pulumi.get(self, "module_enablement_state")
 
     @module_enablement_state.setter
-    def module_enablement_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def module_enablement_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "module_enablement_state", value)
 
 
@@ -1266,7 +1266,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
     The severity to assign to findings generated by the module.
     Possible values are: `SEVERITY_UNSPECIFIED`, `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
     """
-    custom_output: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict']]
+    custom_output: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']]]
     """
     Custom output properties. A set of optional name-value pairs that define custom source properties to
     return with each finding that is generated by the custom module. The custom
@@ -1274,12 +1274,12 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
     under `sourceProperties`.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Text that describes the vulnerability or misconfiguration that the custom
     module detects.
     """
-    recommendation: NotRequired[pulumi.Input[_builtins.str]]
+    recommendation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An explanation of the recommended steps that security teams can take to
     resolve the detected issue
@@ -1291,9 +1291,9 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
                  predicate: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs'],
                  resource_selector: pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelectorArgs'],
                  severity: pulumi.Input[_builtins.str],
-                 custom_output: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 recommendation: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_output: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 recommendation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs'] predicate: The CEL expression to evaluate to produce findings.When the expression
                evaluates to true against a resource, a finding is generated.
@@ -1366,7 +1366,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
 
     @_builtins.property
     @pulumi.getter(name="customOutput")
-    def custom_output(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']]:
+    def custom_output(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']]:
         """
         Custom output properties. A set of optional name-value pairs that define custom source properties to
         return with each finding that is generated by the custom module. The custom
@@ -1377,12 +1377,12 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
         return pulumi.get(self, "custom_output")
 
     @custom_output.setter
-    def custom_output(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']]):
+    def custom_output(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']]):
         pulumi.set(self, "custom_output", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text that describes the vulnerability or misconfiguration that the custom
         module detects.
@@ -1390,12 +1390,12 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def recommendation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recommendation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An explanation of the recommended steps that security teams can take to
         resolve the detected issue
@@ -1403,12 +1403,12 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
         return pulumi.get(self, "recommendation")
 
     @recommendation.setter
-    def recommendation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recommendation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recommendation", value)
 
 
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict(TypedDict):
-    properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgsDict']]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]]]
     """
     A list of custom output properties to add to the finding.
     Structure is documented below.
@@ -1417,7 +1417,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 @pulumi.input_type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs:
     def __init__(__self__, *,
-                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]] = None):
+                 properties: pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]] properties: A list of custom output properties to add to the finding.
                Structure is documented below.
@@ -1427,7 +1427,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]]:
+    def properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]]:
         """
         A list of custom output properties to add to the finding.
         Structure is documented below.
@@ -1435,7 +1435,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]]):
+    def properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]]):
         pulumi.set(self, "properties", value)
 
 
@@ -1444,7 +1444,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
     """
     Name of the property for the custom output.
     """
-    value_expression: NotRequired[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgsDict']]
+    value_expression: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']]]
     """
     The CEL expression for the custom output. A resource property can be
     specified to return the value of the property or a text string enclosed
@@ -1456,7 +1456,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 value_expression: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']] = None):
+                 value_expression: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] name: Name of the property for the custom output.
         :param pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs'] value_expression: The CEL expression for the custom output. A resource property can be
@@ -1482,7 +1482,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 
     @_builtins.property
     @pulumi.getter(name="valueExpression")
-    def value_expression(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']]:
+    def value_expression(self) -> pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']]:
         """
         The CEL expression for the custom output. A resource property can be
         specified to return the value of the property or a text string enclosed
@@ -1492,7 +1492,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
         return pulumi.get(self, "value_expression")
 
     @value_expression.setter
-    def value_expression(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']]):
+    def value_expression(self, value: pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']]):
         pulumi.set(self, "value_expression", value)
 
 
@@ -1501,15 +1501,15 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     """
@@ -1518,9 +1518,9 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression
@@ -1549,38 +1549,38 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -1589,15 +1589,15 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigP
     """
     Textual representation of an expression in Common Expression Language syntax.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the expression
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
     """
-    title: NotRequired[pulumi.Input[_builtins.str]]
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Title for the expression, i.e. a short string describing its purpose.
     """
@@ -1606,9 +1606,9 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigP
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicateArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[_builtins.str] description: Description of the expression
@@ -1637,38 +1637,38 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigP
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the expression
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title for the expression, i.e. a short string describing its purpose.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
 
@@ -1705,7 +1705,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict(Type
     """
     The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
     """
-    module_enablement_state: NotRequired[pulumi.Input[_builtins.str]]
+    module_enablement_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The state of enablement for the module at its level of the resource hierarchy.
     Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
@@ -1715,7 +1715,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict(Type
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs:
     def __init__(__self__, *,
                  module_name: pulumi.Input[_builtins.str],
-                 module_enablement_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 module_enablement_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] module_name: The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
         :param pulumi.Input[_builtins.str] module_enablement_state: The state of enablement for the module at its level of the resource hierarchy.
@@ -1739,7 +1739,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="moduleEnablementState")
-    def module_enablement_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def module_enablement_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of enablement for the module at its level of the resource hierarchy.
         Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
@@ -1747,7 +1747,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs:
         return pulumi.get(self, "module_enablement_state")
 
     @module_enablement_state.setter
-    def module_enablement_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def module_enablement_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "module_enablement_state", value)
 
 

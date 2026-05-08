@@ -266,47 +266,47 @@ export interface DataProductDataAssetState {
      * Access groups configurations.
      * Structure is documented below.
      */
-    accessGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductDataAssetAccessGroupConfig>[]>;
+    accessGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductDataAssetAccessGroupConfig>[] | undefined>;
     /**
      * The ID of the data asset.
      */
-    dataAssetId?: pulumi.Input<string>;
+    dataAssetId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent data product.
      */
-    dataProductId?: pulumi.Input<string>;
+    dataProductId?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-defined labels.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the data asset.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Full resource name of the cloud resource.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
     /**
      * System generated unique ID.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -317,7 +317,7 @@ export interface DataProductDataAssetArgs {
      * Access groups configurations.
      * Structure is documented below.
      */
-    accessGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductDataAssetAccessGroupConfig>[]>;
+    accessGroupConfigs?: pulumi.Input<pulumi.Input<inputs.dataplex.DataProductDataAssetAccessGroupConfig>[] | undefined>;
     /**
      * The ID of the data asset.
      */
@@ -331,7 +331,7 @@ export interface DataProductDataAssetArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the data asset.
      */
@@ -340,7 +340,7 @@ export interface DataProductDataAssetArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Full resource name of the cloud resource.
      */

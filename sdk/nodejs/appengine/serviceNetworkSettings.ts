@@ -155,16 +155,16 @@ export interface ServiceNetworkSettingsState {
      * Ingress settings for this service. Will apply to all versions.
      * Structure is documented below.
      */
-    networkSettings?: pulumi.Input<inputs.appengine.ServiceNetworkSettingsNetworkSettings>;
+    networkSettings?: pulumi.Input<inputs.appengine.ServiceNetworkSettingsNetworkSettings | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service these settings apply to.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,7 +180,7 @@ export interface ServiceNetworkSettingsArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service these settings apply to.
      */

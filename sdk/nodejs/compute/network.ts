@@ -347,47 +347,47 @@ export interface NetworkState {
      * When set to `false`, the network is created in "custom subnet mode" so
      * the user can explicitly connect subnetwork resources.
      */
-    autoCreateSubnetworks?: pulumi.Input<boolean>;
+    autoCreateSubnetworks?: pulumi.Input<boolean | undefined>;
     /**
      * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
      * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
      */
-    bgpAlwaysCompareMed?: pulumi.Input<boolean>;
+    bgpAlwaysCompareMed?: pulumi.Input<boolean | undefined>;
     /**
      * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
      * Possible values are: `LEGACY`, `STANDARD`.
      */
-    bgpBestPathSelectionMode?: pulumi.Input<string>;
+    bgpBestPathSelectionMode?: pulumi.Input<string | undefined>;
     /**
      * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
      * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
      */
-    bgpInterRegionCost?: pulumi.Input<string>;
+    bgpInterRegionCost?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
      * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
      */
-    deleteBgpAlwaysCompareMed?: pulumi.Input<boolean>;
+    deleteBgpAlwaysCompareMed?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
      */
-    deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
+    deleteDefaultRoutesOnCreate?: pulumi.Input<boolean | undefined>;
     /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable ULA internal ipv6 on this network. Enabling this feature will assign
      * a /48 from google defined ULA prefix fd20::/20.
      */
-    enableUlaInternalIpv6?: pulumi.Input<boolean>;
+    enableUlaInternalIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The gateway address for default routing out of the network. This value
      * is selected by GCP.
      */
-    gatewayIpv4?: pulumi.Input<string>;
+    gatewayIpv4?: pulumi.Input<string | undefined>;
     /**
      * When enabling ula internal ipv6, caller optionally can specify the /48 range
      * they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -395,7 +395,7 @@ export interface NetworkState {
      * fail if the speficied /48 is already in used by another resource.
      * If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
      */
-    internalIpv6Range?: pulumi.Input<string>;
+    internalIpv6Range?: pulumi.Input<string | undefined>;
     /**
      * Maximum Transmission Unit in bytes. The default value is 1460 bytes.
      * The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
@@ -403,7 +403,7 @@ export interface NetworkState {
      * with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
      * with varying MTUs.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -413,17 +413,17 @@ export interface NetworkState {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
-    networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
+    networkFirewallPolicyEnforcementOrder?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * A full or partial URL of the network profile to apply to this network.
      * This field can be set only at resource creation time. For example, the
@@ -431,24 +431,24 @@ export interface NetworkState {
      * * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
      * * projects/{projectId}/global/networkProfiles/{network_profile_name}
      */
-    networkProfile?: pulumi.Input<string>;
+    networkProfile?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
      *
      * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      */
-    numericId?: pulumi.Input<string>;
+    numericId?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.NetworkParams>;
+    params?: pulumi.Input<inputs.compute.NetworkParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The network-wide routing mode to use. If set to `REGIONAL`, this
      * network's cloud routers will only advertise routes with subnetworks
@@ -457,11 +457,11 @@ export interface NetworkState {
      * subnetworks of this network, across regions.
      * Possible values are: `REGIONAL`, `GLOBAL`.
      */
-    routingMode?: pulumi.Input<string>;
+    routingMode?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -475,42 +475,42 @@ export interface NetworkArgs {
      * When set to `false`, the network is created in "custom subnet mode" so
      * the user can explicitly connect subnetwork resources.
      */
-    autoCreateSubnetworks?: pulumi.Input<boolean>;
+    autoCreateSubnetworks?: pulumi.Input<boolean | undefined>;
     /**
      * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
      * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
      */
-    bgpAlwaysCompareMed?: pulumi.Input<boolean>;
+    bgpAlwaysCompareMed?: pulumi.Input<boolean | undefined>;
     /**
      * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
      * Possible values are: `LEGACY`, `STANDARD`.
      */
-    bgpBestPathSelectionMode?: pulumi.Input<string>;
+    bgpBestPathSelectionMode?: pulumi.Input<string | undefined>;
     /**
      * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
      * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
      */
-    bgpInterRegionCost?: pulumi.Input<string>;
+    bgpInterRegionCost?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the `bgpAlwaysCompareMed` field will be cleared.
      * If set to `false` (the default), `bgpAlwaysCompareMed` will be set to the value specified in the configuration.
      */
-    deleteBgpAlwaysCompareMed?: pulumi.Input<boolean>;
+    deleteBgpAlwaysCompareMed?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
      */
-    deleteDefaultRoutesOnCreate?: pulumi.Input<boolean>;
+    deleteDefaultRoutesOnCreate?: pulumi.Input<boolean | undefined>;
     /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enable ULA internal ipv6 on this network. Enabling this feature will assign
      * a /48 from google defined ULA prefix fd20::/20.
      */
-    enableUlaInternalIpv6?: pulumi.Input<boolean>;
+    enableUlaInternalIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * When enabling ula internal ipv6, caller optionally can specify the /48 range
      * they want from the google defined ULA prefix fd20::/20. The input must be a
@@ -518,7 +518,7 @@ export interface NetworkArgs {
      * fail if the speficied /48 is already in used by another resource.
      * If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
      */
-    internalIpv6Range?: pulumi.Input<string>;
+    internalIpv6Range?: pulumi.Input<string | undefined>;
     /**
      * Maximum Transmission Unit in bytes. The default value is 1460 bytes.
      * The minimum value for this field is 1300 and the maximum value is 8896 bytes (jumbo frames).
@@ -526,7 +526,7 @@ export interface NetworkArgs {
      * with an ICMP `Fragmentation-Needed` message if the packets are routed to the Internet or other VPCs
      * with varying MTUs.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -536,13 +536,13 @@ export interface NetworkArgs {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
-    networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
+    networkFirewallPolicyEnforcementOrder?: pulumi.Input<string | undefined>;
     /**
      * A full or partial URL of the network profile to apply to this network.
      * This field can be set only at resource creation time. For example, the
@@ -550,17 +550,17 @@ export interface NetworkArgs {
      * * https://www.googleapis.com/compute/v1/projects/{projectId}/global/networkProfiles/{network_profile_name}
      * * projects/{projectId}/global/networkProfiles/{network_profile_name}
      */
-    networkProfile?: pulumi.Input<string>;
+    networkProfile?: pulumi.Input<string | undefined>;
     /**
      * Additional params passed with the request, but not persisted as part of resource payload
      * Structure is documented below.
      */
-    params?: pulumi.Input<inputs.compute.NetworkParams>;
+    params?: pulumi.Input<inputs.compute.NetworkParams | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The network-wide routing mode to use. If set to `REGIONAL`, this
      * network's cloud routers will only advertise routes with subnetworks
@@ -569,5 +569,5 @@ export interface NetworkArgs {
      * subnetworks of this network, across regions.
      * Possible values are: `REGIONAL`, `GLOBAL`.
      */
-    routingMode?: pulumi.Input<string>;
+    routingMode?: pulumi.Input<string | undefined>;
 }

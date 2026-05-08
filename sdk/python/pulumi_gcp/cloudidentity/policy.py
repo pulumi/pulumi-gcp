@@ -79,10 +79,10 @@ class PolicyArgs:
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 customer: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_query: Optional[pulumi.Input['PolicyPolicyQueryArgs']] = None,
-                 setting: Optional[pulumi.Input['PolicySettingArgs']] = None):
+                 customer: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_query: pulumi.Input[Optional['PolicyPolicyQueryArgs']] = None,
+                 setting: pulumi.Input[Optional['PolicySettingArgs']] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -104,31 +104,31 @@ class _PolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def customer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The customer that the Policy belongs to. Format: `customers/{customer_id}`.
         """
         return pulumi.get(self, "customer")
 
     @customer.setter
-    def customer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the Policy. Format: `policies/{policy_id}`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyQuery")
-    def policy_query(self) -> Optional[pulumi.Input['PolicyPolicyQueryArgs']]:
+    def policy_query(self) -> pulumi.Input[Optional['PolicyPolicyQueryArgs']]:
         """
         The PolicyQuery the Setting applies to.
         Structure is documented below.
@@ -136,12 +136,12 @@ class _PolicyState:
         return pulumi.get(self, "policy_query")
 
     @policy_query.setter
-    def policy_query(self, value: Optional[pulumi.Input['PolicyPolicyQueryArgs']]):
+    def policy_query(self, value: pulumi.Input[Optional['PolicyPolicyQueryArgs']]):
         pulumi.set(self, "policy_query", value)
 
     @_builtins.property
     @pulumi.getter
-    def setting(self) -> Optional[pulumi.Input['PolicySettingArgs']]:
+    def setting(self) -> pulumi.Input[Optional['PolicySettingArgs']]:
         """
         The Setting configured by this Policy.
         Structure is documented below.
@@ -149,7 +149,7 @@ class _PolicyState:
         return pulumi.get(self, "setting")
 
     @setting.setter
-    def setting(self, value: Optional[pulumi.Input['PolicySettingArgs']]):
+    def setting(self, value: pulumi.Input[Optional['PolicySettingArgs']]):
         pulumi.set(self, "setting", value)
 
 
@@ -159,9 +159,9 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 customer: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_query: Optional[pulumi.Input[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
-                 setting: Optional[pulumi.Input[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None,
+                 customer: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
+                 setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None,
                  __props__=None):
         """
         A Cloud Identity Policy binds a Setting to a PolicyQuery for a Google Workspace / Cloud Identity customer.
@@ -296,9 +296,9 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 customer: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_query: Optional[pulumi.Input[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
-                 setting: Optional[pulumi.Input[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None,
+                 customer: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
+                 setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -328,10 +328,10 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            customer: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_query: Optional[pulumi.Input[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
-            setting: Optional[pulumi.Input[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None) -> 'Policy':
+            customer: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_query: pulumi.Input[Optional[Union['PolicyPolicyQueryArgs', 'PolicyPolicyQueryArgsDict']]] = None,
+            setting: pulumi.Input[Optional[Union['PolicySettingArgs', 'PolicySettingArgsDict']]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

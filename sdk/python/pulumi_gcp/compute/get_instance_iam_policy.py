@@ -141,9 +141,9 @@ def get_instance_iam_policy(instance_name: Optional[_builtins.str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_iam_policy_output(instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for instance

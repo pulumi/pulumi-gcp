@@ -90,13 +90,13 @@ class EndpointAttachmentArgs:
 @pulumi.input_type
 class _EndpointAttachmentState:
     def __init__(__self__, *,
-                 connection_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EndpointAttachment resources.
 
@@ -127,55 +127,55 @@ class _EndpointAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="connectionState")
-    def connection_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the endpoint attachment connection to the service attachment.
         """
         return pulumi.get(self, "connection_state")
 
     @connection_state.setter
-    def connection_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_state", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointAttachmentId")
-    def endpoint_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the endpoint attachment.
         """
         return pulumi.get(self, "endpoint_attachment_id")
 
     @endpoint_attachment_id.setter
-    def endpoint_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_attachment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of the endpoint attachment.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Endpoint Attachment in the following format:
         organizations/{organization}/endpointAttachments/{endpointAttachment}.
@@ -183,12 +183,12 @@ class _EndpointAttachmentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Apigee Organization associated with the Apigee instance,
         in the format `organizations/{{org_name}}`.
@@ -196,19 +196,19 @@ class _EndpointAttachmentState:
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachment")
-    def service_attachment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Format: projects/*/regions/*/serviceAttachments/*
         """
         return pulumi.get(self, "service_attachment")
 
     @service_attachment.setter
-    def service_attachment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment", value)
 
 
@@ -218,10 +218,10 @@ class EndpointAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Apigee Endpoint Attachment.
@@ -300,10 +300,10 @@ class EndpointAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,13 +338,13 @@ class EndpointAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_state: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_attachment: Optional[pulumi.Input[_builtins.str]] = None) -> 'EndpointAttachment':
+            connection_state: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_attachment: pulumi.Input[Optional[_builtins.str]] = None) -> 'EndpointAttachment':
         """
         Get an existing EndpointAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -223,12 +223,12 @@ export interface ManagementProjectSecurityHealthAnalyticsCustomModuleState {
      * or project in which you are viewing the custom module. Otherwise, ancestorModule
      * specifies the organization or folder from which the custom module is inherited.
      */
-    ancestorModule?: pulumi.Input<string>;
+    ancestorModule?: pulumi.Input<string | undefined>;
     /**
      * The user specified custom configuration for the module.
      * Structure is documented below.
      */
-    customConfig?: pulumi.Input<inputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig>;
+    customConfig?: pulumi.Input<inputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig | undefined>;
     /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are
@@ -236,36 +236,36 @@ export interface ManagementProjectSecurityHealthAnalyticsCustomModuleState {
      * 128 characters, start with a lowercase letter, and contain alphanumeric
      * characters or underscores only.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The enablement state of the custom module.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    enablementState?: pulumi.Input<string>;
+    enablementState?: pulumi.Input<string | undefined>;
     /**
      * The editor that last updated the custom module.
      */
-    lastEditor?: pulumi.Input<string>;
+    lastEditor?: pulumi.Input<string | undefined>;
     /**
      * Location ID of the parent organization. If not provided, 'global' will be used as the default location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the custom module. Its format is "projects/{project}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
      * The id {securityHealthAnalyticsCustomModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The time at which the custom module was last updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
      * up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -276,7 +276,7 @@ export interface ManagementProjectSecurityHealthAnalyticsCustomModuleArgs {
      * The user specified custom configuration for the module.
      * Structure is documented below.
      */
-    customConfig?: pulumi.Input<inputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig>;
+    customConfig?: pulumi.Input<inputs.securitycenter.ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfig | undefined>;
     /**
      * The display name of the Security Health Analytics custom module. This
      * display name becomes the finding category for all findings that are
@@ -284,19 +284,19 @@ export interface ManagementProjectSecurityHealthAnalyticsCustomModuleArgs {
      * 128 characters, start with a lowercase letter, and contain alphanumeric
      * characters or underscores only.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The enablement state of the custom module.
      * Possible values are: `ENABLED`, `DISABLED`.
      */
-    enablementState?: pulumi.Input<string>;
+    enablementState?: pulumi.Input<string | undefined>;
     /**
      * Location ID of the parent organization. If not provided, 'global' will be used as the default location.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

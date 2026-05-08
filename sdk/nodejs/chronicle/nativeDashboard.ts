@@ -260,87 +260,87 @@ export interface NativeDashboardState {
      * DASHBOARD_PRIVATE
      * DASHBOARD_PUBLIC
      */
-    access?: pulumi.Input<string>;
+    access?: pulumi.Input<string | undefined>;
     /**
      * A list of charts included in the dashboard definition.
      * Structure is documented below.
      */
-    charts?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardChart>[]>;
+    charts?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardChart>[] | undefined>;
     /**
      * The creation time of the dashboard.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user who created the dashboard.
      */
-    createUserId?: pulumi.Input<string>;
+    createUserId?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the Dashboard.
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * A description of the dashboard.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name/title of the dashboard visible to users.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Server-computed checksum for optimistic concurrency control,
      * sent on update and delete requests.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Global filters defined for the dashboard.
      * Structure is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardFilter>[] | undefined>;
     /**
      * (Output)
      * The server-generated fingerprint of the dashboard definition.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Chronicle instance.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Whether the dashboard is pinned by the user.
      */
-    isPinned?: pulumi.Input<boolean>;
+    isPinned?: pulumi.Input<boolean | undefined>;
     /**
      * (Output)
      * The time when this dashboard was last viewed.
      */
-    lastViewedTime?: pulumi.Input<string>;
+    lastViewedTime?: pulumi.Input<string | undefined>;
     /**
      * The location of the Chronicle instance.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full resource name of the dashboard.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of dashboard.
      * Possible values:
      * CURATED, PRIVATE, PUBLIC, CUSTOM, MARKETPLACE
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The time when the dashboard was last edited.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user who last edited the dashboard.
      */
-    updateUserId?: pulumi.Input<string>;
+    updateUserId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -353,16 +353,16 @@ export interface NativeDashboardArgs {
      * DASHBOARD_PRIVATE
      * DASHBOARD_PUBLIC
      */
-    access?: pulumi.Input<string>;
+    access?: pulumi.Input<string | undefined>;
     /**
      * A list of charts included in the dashboard definition.
      * Structure is documented below.
      */
-    charts?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardChart>[]>;
+    charts?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardChart>[] | undefined>;
     /**
      * A description of the dashboard.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name/title of the dashboard visible to users.
      */
@@ -371,7 +371,7 @@ export interface NativeDashboardArgs {
      * Global filters defined for the dashboard.
      * Structure is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.chronicle.NativeDashboardFilter>[] | undefined>;
     /**
      * The ID of the Chronicle instance.
      */
@@ -379,7 +379,7 @@ export interface NativeDashboardArgs {
     /**
      * Whether the dashboard is pinned by the user.
      */
-    isPinned?: pulumi.Input<boolean>;
+    isPinned?: pulumi.Input<boolean | undefined>;
     /**
      * The location of the Chronicle instance.
      */
@@ -388,11 +388,11 @@ export interface NativeDashboardArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The type of dashboard.
      * Possible values:
      * CURATED, PRIVATE, PUBLIC, CUSTOM, MARKETPLACE
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

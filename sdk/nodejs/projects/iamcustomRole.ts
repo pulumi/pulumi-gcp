@@ -167,38 +167,38 @@ export interface IAMCustomRoleState {
     /**
      * (Optional) The current deleted state of the role.
      */
-    deleted?: pulumi.Input<boolean>;
+    deleted?: pulumi.Input<boolean | undefined>;
     /**
      * A human-readable description for the role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The camel case role id to use for this role. Cannot contain `-` characters.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
      * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string | undefined>;
     /**
      * A human-readable title for the role.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface IAMCustomRoleArgs {
     /**
      * A human-readable description for the role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
@@ -217,17 +217,17 @@ export interface IAMCustomRoleArgs {
      * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The camel case role id to use for this role. Cannot contain `-` characters.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
      * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
      */
-    stage?: pulumi.Input<string>;
+    stage?: pulumi.Input<string | undefined>;
     /**
      * A human-readable title for the role.
      */

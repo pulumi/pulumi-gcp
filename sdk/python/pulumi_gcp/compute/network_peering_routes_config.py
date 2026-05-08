@@ -23,9 +23,9 @@ class NetworkPeeringRoutesConfigArgs:
                  import_custom_routes: pulumi.Input[_builtins.bool],
                  network: pulumi.Input[_builtins.str],
                  peering: pulumi.Input[_builtins.str],
-                 export_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkPeeringRoutesConfig resource.
 
@@ -103,7 +103,7 @@ class NetworkPeeringRoutesConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
-    def export_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def export_subnet_routes_with_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether subnet routes with public IP range are exported.
         IPv4 special-use ranges are always exported to peers and
@@ -112,12 +112,12 @@ class NetworkPeeringRoutesConfigArgs:
         return pulumi.get(self, "export_subnet_routes_with_public_ip")
 
     @export_subnet_routes_with_public_ip.setter
-    def export_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def export_subnet_routes_with_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "export_subnet_routes_with_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
-    def import_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_subnet_routes_with_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether subnet routes with public IP range are imported.
         IPv4 special-use ranges are always imported from peers and
@@ -126,12 +126,12 @@ class NetworkPeeringRoutesConfigArgs:
         return pulumi.get(self, "import_subnet_routes_with_public_ip")
 
     @import_subnet_routes_with_public_ip.setter
-    def import_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_subnet_routes_with_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_subnet_routes_with_public_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -139,20 +139,20 @@ class NetworkPeeringRoutesConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _NetworkPeeringRoutesConfigState:
     def __init__(__self__, *,
-                 export_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkPeeringRoutesConfig resources.
 
@@ -186,19 +186,19 @@ class _NetworkPeeringRoutesConfigState:
 
     @_builtins.property
     @pulumi.getter(name="exportCustomRoutes")
-    def export_custom_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def export_custom_routes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to export the custom routes to the peer network.
         """
         return pulumi.get(self, "export_custom_routes")
 
     @export_custom_routes.setter
-    def export_custom_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def export_custom_routes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "export_custom_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="exportSubnetRoutesWithPublicIp")
-    def export_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def export_subnet_routes_with_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether subnet routes with public IP range are exported.
         IPv4 special-use ranges are always exported to peers and
@@ -207,24 +207,24 @@ class _NetworkPeeringRoutesConfigState:
         return pulumi.get(self, "export_subnet_routes_with_public_ip")
 
     @export_subnet_routes_with_public_ip.setter
-    def export_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def export_subnet_routes_with_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "export_subnet_routes_with_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="importCustomRoutes")
-    def import_custom_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_custom_routes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to import the custom routes to the peer network.
         """
         return pulumi.get(self, "import_custom_routes")
 
     @import_custom_routes.setter
-    def import_custom_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_custom_routes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_custom_routes", value)
 
     @_builtins.property
     @pulumi.getter(name="importSubnetRoutesWithPublicIp")
-    def import_subnet_routes_with_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_subnet_routes_with_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether subnet routes with public IP range are imported.
         IPv4 special-use ranges are always imported from peers and
@@ -233,36 +233,36 @@ class _NetworkPeeringRoutesConfigState:
         return pulumi.get(self, "import_subnet_routes_with_public_ip")
 
     @import_subnet_routes_with_public_ip.setter
-    def import_subnet_routes_with_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_subnet_routes_with_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_subnet_routes_with_public_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the primary network for the peering.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def peering(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the peering.
         """
         return pulumi.get(self, "peering")
 
     @peering.setter
-    def peering(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -270,7 +270,7 @@ class _NetworkPeeringRoutesConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
@@ -280,13 +280,13 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 export_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manage a network peering's route settings without managing the peering as
@@ -452,13 +452,13 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 export_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 import_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 import_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,13 +493,13 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            export_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-            export_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            import_custom_routes: Optional[pulumi.Input[_builtins.bool]] = None,
-            import_subnet_routes_with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            peering: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkPeeringRoutesConfig':
+            export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            import_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            peering: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkPeeringRoutesConfig':
         """
         Get an existing NetworkPeeringRoutesConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

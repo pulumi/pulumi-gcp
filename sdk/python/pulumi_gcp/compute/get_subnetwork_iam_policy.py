@@ -142,9 +142,9 @@ def get_subnetwork_iam_policy(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'))
-def get_subnetwork_iam_policy_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
+def get_subnetwork_iam_policy_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetworkIamPolicyResult]:
     """
     Retrieves the current IAM policy data for subnetwork

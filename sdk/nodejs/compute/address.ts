@@ -369,26 +369,26 @@ export interface AddressState {
      * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The type of address to reserve.
      * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
      * Possible values are: `INTERNAL`, `EXTERNAL`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
      * The PDP must support enhanced IPv4 allocations.
@@ -399,31 +399,31 @@ export interface AddressState {
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
      */
-    ipCollection?: pulumi.Input<string>;
+    ipCollection?: pulumi.Input<string | undefined>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The endpoint type of this address, which should be VM or NETLB. This is
      * used for deciding which type of endpoint this address can be used after
      * the external IPv6 address reservation.
      * Possible values are: `VM`, `NETLB`.
      */
-    ipv6EndpointType?: pulumi.Input<string>;
+    ipv6EndpointType?: pulumi.Input<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource.  Used
      * internally during updates.
      */
-    labelFingerprint?: pulumi.Input<string>;
+    labelFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -432,34 +432,34 @@ export interface AddressState {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network in which to reserve the address. This field
      * can only be used with INTERNAL type with the VPC_PEERING and
      * IPSEC_INTERCONNECT purposes.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<string | undefined>;
     /**
      * The prefix length if the resource represents an IP range.
      */
-    prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -475,27 +475,27 @@ export interface AddressState {
      * this purpose.
      * This should only be set when using an Internal address.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork's IP range.
      * This field can only be used with INTERNAL type with
      * GCE_ENDPOINT/DNS_RESOLVER purposes.
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
     /**
      * The URLs of the resources that are using this address.
      */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
+    users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -507,18 +507,18 @@ export interface AddressArgs {
      * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The type of address to reserve.
      * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
      * Possible values are: `INTERNAL`, `EXTERNAL`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
      * The PDP must support enhanced IPv4 allocations.
@@ -529,26 +529,26 @@ export interface AddressArgs {
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
      */
-    ipCollection?: pulumi.Input<string>;
+    ipCollection?: pulumi.Input<string | undefined>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
      * Possible values are: `IPV4`, `IPV6`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The endpoint type of this address, which should be VM or NETLB. This is
      * used for deciding which type of endpoint this address can be used after
      * the external IPv6 address reservation.
      * Possible values are: `VM`, `NETLB`.
      */
-    ipv6EndpointType?: pulumi.Input<string>;
+    ipv6EndpointType?: pulumi.Input<string | undefined>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource. The name must be 1-63 characters long, and
      * comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -557,29 +557,29 @@ export interface AddressArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of the network in which to reserve the address. This field
      * can only be used with INTERNAL type with the VPC_PEERING and
      * IPSEC_INTERCONNECT purposes.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
-    networkTier?: pulumi.Input<string>;
+    networkTier?: pulumi.Input<string | undefined>;
     /**
      * The prefix length if the resource represents an IP range.
      */
-    prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
@@ -595,17 +595,17 @@ export interface AddressArgs {
      * this purpose.
      * This should only be set when using an Internal address.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * The Region in which the created address should reside.
      * If it is not provided, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The URL of the subnetwork in which to reserve the address. If an IP
      * address is specified, it must be within the subnetwork's IP range.
      * This field can only be used with INTERNAL type with
      * GCE_ENDPOINT/DNS_RESOLVER purposes.
      */
-    subnetwork?: pulumi.Input<string>;
+    subnetwork?: pulumi.Input<string | undefined>;
 }

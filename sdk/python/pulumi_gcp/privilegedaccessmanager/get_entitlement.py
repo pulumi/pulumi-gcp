@@ -228,9 +228,9 @@ def get_entitlement(entitlement_id: Optional[_builtins.str] = None,
         requester_justification_configs=pulumi.get(__ret__, 'requester_justification_configs'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_entitlement_output(entitlement_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           location: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           parent: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_entitlement_output(entitlement_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           location: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           parent: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntitlementResult]:
     """
     Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.

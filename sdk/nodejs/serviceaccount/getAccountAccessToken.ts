@@ -170,11 +170,11 @@ export interface GetAccountAccessTokenOutputArgs {
     /**
      * Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
      */
-    delegates?: pulumi.Input<pulumi.Input<string>[]>;
+    delegates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lifetime of the impersonated token (defaults to its max: `3600s`).
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string | undefined>;
     /**
      * The scopes the new credential should have (e.g. `["cloud-platform"]`)
      */

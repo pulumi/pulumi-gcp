@@ -397,37 +397,37 @@ export interface RecordSetState {
      * The name of the zone in which this record set will
      * reside.
      */
-    managedZone?: pulumi.Input<string>;
+    managedZone?: pulumi.Input<string | undefined>;
     /**
      * The DNS name this record set will apply to.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The configuration for steering traffic based on query.
      * Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
      * Structure is documented below.
      */
-    routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
+    routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy | undefined>;
     /**
      * The string data for the records in this record set
      * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
      */
-    rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    rrdatas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The DNS record set type.
      *
      * - - -
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -447,22 +447,22 @@ export interface RecordSetArgs {
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The configuration for steering traffic based on query.
      * Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
      * Structure is documented below.
      */
-    routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy>;
+    routingPolicy?: pulumi.Input<inputs.dns.RecordSetRoutingPolicy | undefined>;
     /**
      * The string data for the records in this record set
      * whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the Terraform configuration string (e.g. `"first255characters\" \"morecharacters"`).
      */
-    rrdatas?: pulumi.Input<pulumi.Input<string>[]>;
+    rrdatas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time-to-live of this record set (seconds).
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The DNS record set type.
      *

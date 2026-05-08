@@ -23,8 +23,8 @@ class EngineSplitTrafficArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[_builtins.str],
                  split: pulumi.Input['EngineSplitTrafficSplitArgs'],
-                 migrate_traffic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EngineSplitTraffic resource.
 
@@ -69,19 +69,19 @@ class EngineSplitTrafficArgs:
 
     @_builtins.property
     @pulumi.getter(name="migrateTraffic")
-    def migrate_traffic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def migrate_traffic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true traffic will be migrated to this version.
         """
         return pulumi.get(self, "migrate_traffic")
 
     @migrate_traffic.setter
-    def migrate_traffic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def migrate_traffic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "migrate_traffic", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -89,17 +89,17 @@ class EngineSplitTrafficArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _EngineSplitTrafficState:
     def __init__(__self__, *,
-                 migrate_traffic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 split: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']] = None):
+                 migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 split: pulumi.Input[Optional['EngineSplitTrafficSplitArgs']] = None):
         """
         Input properties used for looking up and filtering EngineSplitTraffic resources.
 
@@ -121,19 +121,19 @@ class _EngineSplitTrafficState:
 
     @_builtins.property
     @pulumi.getter(name="migrateTraffic")
-    def migrate_traffic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def migrate_traffic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true traffic will be migrated to this version.
         """
         return pulumi.get(self, "migrate_traffic")
 
     @migrate_traffic.setter
-    def migrate_traffic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def migrate_traffic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "migrate_traffic", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -141,24 +141,24 @@ class _EngineSplitTrafficState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service these settings apply to.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def split(self) -> Optional[pulumi.Input['EngineSplitTrafficSplitArgs']]:
+    def split(self) -> pulumi.Input[Optional['EngineSplitTrafficSplitArgs']]:
         """
         Mapping that defines fractional HTTP traffic diversion to different versions within the service.
         Structure is documented below.
@@ -166,7 +166,7 @@ class _EngineSplitTrafficState:
         return pulumi.get(self, "split")
 
     @split.setter
-    def split(self, value: Optional[pulumi.Input['EngineSplitTrafficSplitArgs']]):
+    def split(self, value: pulumi.Input[Optional['EngineSplitTrafficSplitArgs']]):
         pulumi.set(self, "split", value)
 
 
@@ -176,10 +176,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 migrate_traffic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 split: Optional[pulumi.Input[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None,
+                 migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None,
                  __props__=None):
         """
         Traffic routing configuration for versions within a single service. Traffic splits define how traffic directed to the service is assigned to versions.
@@ -252,8 +252,8 @@ class EngineSplitTraffic(pulumi.CustomResource):
                     liveappV1Version_id=liveapp_v1.version_id,
                     liveappV2Version_id=liveapp_v2.version_id
         ).apply(lambda resolved_outputs: {
-                    resolved_outputs['liveappV1Version_id']: 0.75,
-                    resolved_outputs['liveappV2Version_id']: 0.25,
+                    str(resolved_outputs['liveappV1Version_id']): 0.75,
+                    str(resolved_outputs['liveappV2Version_id']): 0.25,
                 })
         ,
             })
@@ -362,8 +362,8 @@ class EngineSplitTraffic(pulumi.CustomResource):
                     liveappV1Version_id=liveapp_v1.version_id,
                     liveappV2Version_id=liveapp_v2.version_id
         ).apply(lambda resolved_outputs: {
-                    resolved_outputs['liveappV1Version_id']: 0.75,
-                    resolved_outputs['liveappV2Version_id']: 0.25,
+                    str(resolved_outputs['liveappV1Version_id']): 0.75,
+                    str(resolved_outputs['liveappV2Version_id']): 0.25,
                 })
         ,
             })
@@ -401,10 +401,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 migrate_traffic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 split: Optional[pulumi.Input[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None,
+                 migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,10 +432,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            migrate_traffic: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            split: Optional[pulumi.Input[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None) -> 'EngineSplitTraffic':
+            migrate_traffic: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            split: pulumi.Input[Optional[Union['EngineSplitTrafficSplitArgs', 'EngineSplitTrafficSplitArgsDict']]] = None) -> 'EngineSplitTraffic':
         """
         Get an existing EngineSplitTraffic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

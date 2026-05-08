@@ -187,21 +187,21 @@ export interface VpcServiceControlsState {
      * Desired VPC Service Controls state service producer VPC network, as
      * described at the top of this page.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The network that the consumer is using to connect with services.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The id of the Google Cloud project containing the consumer network.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service that is managing peering connectivity for a service
      * producer's organization. For Google services that support this
      * functionality, this value is `servicenetworking.googleapis.com`.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,7 +220,7 @@ export interface VpcServiceControlsArgs {
     /**
      * The id of the Google Cloud project containing the consumer network.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The service that is managing peering connectivity for a service
      * producer's organization. For Google services that support this

@@ -21,8 +21,8 @@ class AnywhereCacheArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
-                 admission_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AnywhereCache resource.
 
@@ -66,7 +66,7 @@ class AnywhereCacheArgs:
 
     @_builtins.property
     @pulumi.getter(name="admissionPolicy")
-    def admission_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admission_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cache admission policy dictates whether a block should be inserted upon a cache miss.
         Default value is `admit-on-first-miss`.
@@ -75,34 +75,34 @@ class AnywhereCacheArgs:
         return pulumi.get(self, "admission_policy")
 
     @admission_policy.setter
-    def admission_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admission_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admission_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class _AnywhereCacheState:
     def __init__(__self__, *,
-                 admission_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 anywhere_cache_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 pending_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 anywhere_cache_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 pending_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AnywhereCache resources.
 
@@ -139,7 +139,7 @@ class _AnywhereCacheState:
 
     @_builtins.property
     @pulumi.getter(name="admissionPolicy")
-    def admission_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admission_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cache admission policy dictates whether a block should be inserted upon a cache miss.
         Default value is `admit-on-first-miss`.
@@ -148,103 +148,103 @@ class _AnywhereCacheState:
         return pulumi.get(self, "admission_policy")
 
     @admission_policy.setter
-    def admission_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admission_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admission_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="anywhereCacheId")
-    def anywhere_cache_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anywhere_cache_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Anywhere cache instance.
         """
         return pulumi.get(self, "anywhere_cache_id")
 
     @anywhere_cache_id.setter
-    def anywhere_cache_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anywhere_cache_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anywhere_cache_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to Bucket resource
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the cache instance in RFC 3339 format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingUpdate")
-    def pending_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pending_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the cache instance has an active Update long-running operation.
         """
         return pulumi.get(self, "pending_update")
 
     @pending_update.setter
-    def pending_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pending_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pending_update", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the cache instance.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The modification time of the cache instance metadata in RFC 3339 format.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone in which the cache instance needs to be created. For example, `us-central1-a.`
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -254,10 +254,10 @@ class AnywhereCache(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Google Cloud Storage (GCS) Anywhere Cache feature allows users to
@@ -373,10 +373,10 @@ class AnywhereCache(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admission_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -409,15 +409,15 @@ class AnywhereCache(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admission_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            anywhere_cache_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            pending_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'AnywhereCache':
+            admission_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            anywhere_cache_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            pending_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'AnywhereCache':
         """
         Get an existing AnywhereCache resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

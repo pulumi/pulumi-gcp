@@ -148,13 +148,13 @@ export interface TaxonomyState {
      * defaults to an empty list.
      * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      */
-    activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of this taxonomy. It must: contain only unicode characters,
      * tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
      * long when encoded in UTF-8. If not set, defaults to an empty description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User defined name of this taxonomy.
      * The taxonomy display name must be unique within an organization.
@@ -162,21 +162,21 @@ export interface TaxonomyState {
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Resource name of this taxonomy, whose format is:
      * "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Taxonomy location region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,13 +188,13 @@ export interface TaxonomyArgs {
      * defaults to an empty list.
      * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      */
-    activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of this taxonomy. It must: contain only unicode characters,
      * tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
      * long when encoded in UTF-8. If not set, defaults to an empty description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User defined name of this taxonomy.
      * The taxonomy display name must be unique within an organization.
@@ -207,9 +207,9 @@ export interface TaxonomyArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Taxonomy location region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

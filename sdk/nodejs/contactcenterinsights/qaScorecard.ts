@@ -159,36 +159,36 @@ export interface QaScorecardState {
     /**
      * The time at which this scorecard was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A text description explaining the intent of the scorecard.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user-specified display name of the scorecard.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the scorecard is the default one for the project.
      * A default scorecard cannot be deleted and will always appear first in
      * scorecard selector.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The scorecard name.
      * Format:
      * projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A unique ID for the new QaScorecard. This ID will become the final
      * component of the QaScorecard's resource name. If no ID is specified, a
@@ -196,17 +196,17 @@ export interface QaScorecardState {
      * This value should be 4-64 characters and must match the regular
      * expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`.
      */
-    qaScorecardId?: pulumi.Input<string>;
+    qaScorecardId?: pulumi.Input<string | undefined>;
     /**
      * Possible values:
      * QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
      * QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The most recent time at which the scorecard was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,17 +216,17 @@ export interface QaScorecardArgs {
     /**
      * A text description explaining the intent of the scorecard.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user-specified display name of the scorecard.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether the scorecard is the default one for the project.
      * A default scorecard cannot be deleted and will always appear first in
      * scorecard selector.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      */
@@ -235,7 +235,7 @@ export interface QaScorecardArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A unique ID for the new QaScorecard. This ID will become the final
      * component of the QaScorecard's resource name. If no ID is specified, a
@@ -249,5 +249,5 @@ export interface QaScorecardArgs {
      * QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
      * QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

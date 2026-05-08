@@ -22,11 +22,11 @@ class RuleDeploymentArgs:
                  instance: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  rule: pulumi.Input[_builtins.str],
-                 alerting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_frequency: Optional[pulumi.Input[_builtins.str]] = None):
+                 alerting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RuleDeployment resource.
 
@@ -103,7 +103,7 @@ class RuleDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alerting(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def alerting(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether detections resulting from this deployment should be considered
         alerts.
@@ -111,12 +111,12 @@ class RuleDeploymentArgs:
         return pulumi.get(self, "alerting")
 
     @alerting.setter
-    def alerting(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def alerting(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "alerting", value)
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The archive state of the rule deployment.
         Cannot be set to true unless enabled is set to false i.e.
@@ -129,24 +129,24 @@ class RuleDeploymentArgs:
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule is currently deployed continuously against incoming data.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -154,12 +154,12 @@ class RuleDeploymentArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="runFrequency")
-    def run_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The run frequency of the rule deployment.
         Possible values:
@@ -170,27 +170,27 @@ class RuleDeploymentArgs:
         return pulumi.get(self, "run_frequency")
 
     @run_frequency.setter
-    def run_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_frequency", value)
 
 
 @pulumi.input_type
 class _RuleDeploymentState:
     def __init__(__self__, *,
-                 alerting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archive_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 consumer_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 execution_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_alert_status_change_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 producer_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_frequency: Optional[pulumi.Input[_builtins.str]] = None):
+                 alerting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archive_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 consumer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 execution_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_alert_status_change_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 producer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RuleDeployment resources.
 
@@ -267,7 +267,7 @@ class _RuleDeploymentState:
 
     @_builtins.property
     @pulumi.getter
-    def alerting(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def alerting(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether detections resulting from this deployment should be considered
         alerts.
@@ -275,24 +275,24 @@ class _RuleDeploymentState:
         return pulumi.get(self, "alerting")
 
     @alerting.setter
-    def alerting(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def alerting(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "alerting", value)
 
     @_builtins.property
     @pulumi.getter(name="archiveTime")
-    def archive_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def archive_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp when the rule deployment archive state was last set to true. If the rule deployment's current archive state is not set to true, the field will be empty.
         """
         return pulumi.get(self, "archive_time")
 
     @archive_time.setter
-    def archive_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def archive_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "archive_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def archived(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def archived(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The archive state of the rule deployment.
         Cannot be set to true unless enabled is set to false i.e.
@@ -305,12 +305,12 @@ class _RuleDeploymentState:
         return pulumi.get(self, "archived")
 
     @archived.setter
-    def archived(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def archived(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "archived", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerRules")
-    def consumer_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def consumer_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. The names of the associated/chained consumer rules. Rules are considered
         consumers of this rule if their rule text explicitly filters on this rule's ruleid.
@@ -320,24 +320,24 @@ class _RuleDeploymentState:
         return pulumi.get(self, "consumer_rules")
 
     @consumer_rules.setter
-    def consumer_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def consumer_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "consumer_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the rule is currently deployed continuously against incoming data.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="executionState")
-    def execution_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution state of the rule deployment.
         Possible values:
@@ -348,48 +348,48 @@ class _RuleDeploymentState:
         return pulumi.get(self, "execution_state")
 
     @execution_state.setter
-    def execution_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Chronicle instance, which is the same as the customer ID.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="lastAlertStatusChangeTime")
-    def last_alert_status_change_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_alert_status_change_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The timestamp when the rule deployment alert state was lastly changed. This is filled regardless of the current alert state.E.g. if the current alert status is false, this timestamp will be the timestamp when the alert status was changed to false.
         """
         return pulumi.get(self, "last_alert_status_change_time")
 
     @last_alert_status_change_time.setter
-    def last_alert_status_change_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_alert_status_change_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_alert_status_change_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the rule deployment.
         Note that RuleDeployment is a child of the overall Rule, not any individual
@@ -401,12 +401,12 @@ class _RuleDeploymentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="producerRules")
-    def producer_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def producer_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Output only. The names of the associated/chained producer rules. Rules are considered
         producers for this rule if this rule explicitly filters on their ruleid.
@@ -416,12 +416,12 @@ class _RuleDeploymentState:
         return pulumi.get(self, "producer_rules")
 
     @producer_rules.setter
-    def producer_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def producer_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "producer_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -429,24 +429,24 @@ class _RuleDeploymentState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Rule ID of the rule.
         """
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="runFrequency")
-    def run_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The run frequency of the rule deployment.
         Possible values:
@@ -457,7 +457,7 @@ class _RuleDeploymentState:
         return pulumi.get(self, "run_frequency")
 
     @run_frequency.setter
-    def run_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_frequency", value)
 
 
@@ -467,14 +467,14 @@ class RuleDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alerting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 alerting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The RuleDeployment resource represents the deployment state of a Rule.
@@ -503,7 +503,7 @@ class RuleDeployment(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             enabled=True,
             alerting=True,
             archived=False,
@@ -525,7 +525,7 @@ class RuleDeployment(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             enabled=False,
             run_frequency="LIVE")
         ```
@@ -545,7 +545,7 @@ class RuleDeployment(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             enabled=True,
             alerting=True,
             archived=False)
@@ -624,7 +624,7 @@ class RuleDeployment(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             enabled=True,
             alerting=True,
             archived=False,
@@ -646,7 +646,7 @@ class RuleDeployment(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             enabled=False,
             run_frequency="LIVE")
         ```
@@ -666,7 +666,7 @@ class RuleDeployment(pulumi.CustomResource):
             instance="00000000-0000-0000-0000-000000000000",
             rule=len(std.split(separator="/",
                 text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-                text=google_chronicle_rule["my-rule"]["name"]).result[length - 1]),
+                text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
             enabled=True,
             alerting=True,
             archived=False)
@@ -704,14 +704,14 @@ class RuleDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alerting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 archived: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 alerting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 archived: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -751,20 +751,20 @@ class RuleDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alerting: Optional[pulumi.Input[_builtins.bool]] = None,
-            archive_time: Optional[pulumi.Input[_builtins.str]] = None,
-            archived: Optional[pulumi.Input[_builtins.bool]] = None,
-            consumer_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            execution_state: Optional[pulumi.Input[_builtins.str]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            last_alert_status_change_time: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            producer_rules: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            run_frequency: Optional[pulumi.Input[_builtins.str]] = None) -> 'RuleDeployment':
+            alerting: pulumi.Input[Optional[_builtins.bool]] = None,
+            archive_time: pulumi.Input[Optional[_builtins.str]] = None,
+            archived: pulumi.Input[Optional[_builtins.bool]] = None,
+            consumer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            execution_state: pulumi.Input[Optional[_builtins.str]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            last_alert_status_change_time: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            producer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            run_frequency: pulumi.Input[Optional[_builtins.str]] = None) -> 'RuleDeployment':
         """
         Get an existing RuleDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

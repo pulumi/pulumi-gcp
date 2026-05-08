@@ -26,10 +26,10 @@ class FoldersPolicyBindingArgs:
                  policy: pulumi.Input[_builtins.str],
                  policy_binding_id: pulumi.Input[_builtins.str],
                  target: pulumi.Input['FoldersPolicyBindingTargetArgs'],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input['FoldersPolicyBindingConditionArgs']] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional['FoldersPolicyBindingConditionArgs']] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FoldersPolicyBinding resource.
 
@@ -149,7 +149,7 @@ class FoldersPolicyBindingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
 
@@ -159,12 +159,12 @@ class FoldersPolicyBindingArgs:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FoldersPolicyBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['FoldersPolicyBindingConditionArgs']]:
         """
         Represents a textual expression in the Common Expression Language
         (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -194,24 +194,24 @@ class FoldersPolicyBindingArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FoldersPolicyBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['FoldersPolicyBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The description of the policy binding. Must be less than or equal to 63 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyKind")
-    def policy_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The kind of the policy to attach in this binding. This
         field must be one of the following:  - Left empty (will be automatically set
@@ -220,29 +220,29 @@ class FoldersPolicyBindingArgs:
         return pulumi.get(self, "policy_kind")
 
     @policy_kind.setter
-    def policy_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_kind", value)
 
 
 @pulumi.input_type
 class _FoldersPolicyBindingState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input['FoldersPolicyBindingConditionArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input['FoldersPolicyBindingTargetArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional['FoldersPolicyBindingConditionArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional['FoldersPolicyBindingTargetArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FoldersPolicyBinding resources.
 
@@ -327,7 +327,7 @@ class _FoldersPolicyBindingState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Optional. User defined annotations. See https://google.aip.dev/148#annotations for more details such as format and size limitations
 
@@ -337,12 +337,12 @@ class _FoldersPolicyBindingState:
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['FoldersPolicyBindingConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['FoldersPolicyBindingConditionArgs']]:
         """
         Represents a textual expression in the Common Expression Language
         (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
@@ -372,120 +372,120 @@ class _FoldersPolicyBindingState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['FoldersPolicyBindingConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['FoldersPolicyBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the policy binding was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The description of the policy binding. Must be less than or equal to 63 characters.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         """
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The etag for the policy binding. If this is provided on update, it must match the server's etag.
         """
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter
-    def folder(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent folder for the PolicyBinding.
         """
         return pulumi.get(self, "folder")
 
     @folder.setter
-    def folder(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the PolicyBinding.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy binding in the format `{binding_parent/locations/{location}/policyBindings/{policy_binding_id}`
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyBindingId")
-    def policy_binding_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_binding_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Policy Binding ID.
         """
         return pulumi.get(self, "policy_binding_id")
 
     @policy_binding_id.setter
-    def policy_binding_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_binding_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_binding_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyKind")
-    def policy_kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immutable. The kind of the policy to attach in this binding. This
         field must be one of the following:  - Left empty (will be automatically set
@@ -494,24 +494,24 @@ class _FoldersPolicyBindingState:
         return pulumi.get(self, "policy_kind")
 
     @policy_kind.setter
-    def policy_kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_kind", value)
 
     @_builtins.property
     @pulumi.getter(name="policyUid")
-    def policy_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The globally unique ID of the policy to be bound.
         """
         return pulumi.get(self, "policy_uid")
 
     @policy_uid.setter
-    def policy_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input['FoldersPolicyBindingTargetArgs']]:
+    def target(self) -> pulumi.Input[Optional['FoldersPolicyBindingTargetArgs']]:
         """
         Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
         Structure is documented below.
@@ -519,31 +519,31 @@ class _FoldersPolicyBindingState:
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input['FoldersPolicyBindingTargetArgs']]):
+    def target(self, value: pulumi.Input[Optional['FoldersPolicyBindingTargetArgs']]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. The time when the policy binding was most recently updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -553,15 +553,15 @@ class FoldersPolicyBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input[Union['FoldersPolicyBindingConditionArgs', 'FoldersPolicyBindingConditionArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional[Union['FoldersPolicyBindingConditionArgs', 'FoldersPolicyBindingConditionArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         """
         A policy binding to a folder. This is a Terraform resource, and maps to a policy binding resource in GCP.
@@ -739,15 +739,15 @@ class FoldersPolicyBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input[Union['FoldersPolicyBindingConditionArgs', 'FoldersPolicyBindingConditionArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional[Union['FoldersPolicyBindingConditionArgs', 'FoldersPolicyBindingConditionArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -793,22 +793,22 @@ class FoldersPolicyBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            condition: Optional[pulumi.Input[Union['FoldersPolicyBindingConditionArgs', 'FoldersPolicyBindingConditionArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            folder: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_binding_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_kind: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            target: Optional[pulumi.Input[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'FoldersPolicyBinding':
+            annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            condition: pulumi.Input[Optional[Union['FoldersPolicyBindingConditionArgs', 'FoldersPolicyBindingConditionArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            folder: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_binding_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_kind: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[Union['FoldersPolicyBindingTargetArgs', 'FoldersPolicyBindingTargetArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'FoldersPolicyBinding':
         """
         Get an existing FoldersPolicyBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

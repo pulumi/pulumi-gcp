@@ -257,8 +257,8 @@ def get_secret(project: Optional[_builtins.str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         version_aliases=pulumi.get(__ret__, 'version_aliases'),
         version_destroy_ttl=pulumi.get(__ret__, 'version_destroy_ttl'))
-def get_secret_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      secret_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_secret_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      secret_id: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretResult]:
     """
     Use this data source to get information about a Secret Manager Secret

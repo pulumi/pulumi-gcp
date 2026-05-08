@@ -443,24 +443,24 @@ export interface FhirStoreState {
      * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
      * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
      */
-    complexDataTypeReferenceParsing?: pulumi.Input<string>;
+    complexDataTypeReferenceParsing?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      */
-    consentConfig?: pulumi.Input<inputs.healthcare.FhirStoreConsentConfig>;
+    consentConfig?: pulumi.Input<inputs.healthcare.FhirStoreConsentConfig | undefined>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      */
-    dataset?: pulumi.Input<string>;
+    dataset?: pulumi.Input<string | undefined>;
     /**
      * If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
      * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
      * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
      */
-    defaultSearchHandlingStrict?: pulumi.Input<boolean>;
+    defaultSearchHandlingStrict?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -469,7 +469,7 @@ export interface FhirStoreState {
      * Patient.get$everything, will not return all the results if broken references exist.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    disableReferentialIntegrity?: pulumi.Input<boolean>;
+    disableReferentialIntegrity?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
      * of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
@@ -478,11 +478,11 @@ export interface FhirStoreState {
      * attempts to read the historical versions.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    disableResourceVersioning?: pulumi.Input<boolean>;
+    disableResourceVersioning?: pulumi.Input<boolean | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to allow the bulk import API to accept history bundles and directly insert historical resource
      * versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -491,13 +491,13 @@ export interface FhirStoreState {
      * ** Changing this property may recreate the FHIR store (removing all data) **
      * ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
      */
-    enableHistoryImport?: pulumi.Input<boolean>;
+    enableHistoryImport?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
-    enableHistoryModifications?: pulumi.Input<boolean>;
+    enableHistoryModifications?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
      * operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -506,7 +506,7 @@ export interface FhirStoreState {
      * identifiers, those IDs will be part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
      * notifications.
      */
-    enableUpdateCreate?: pulumi.Input<boolean>;
+    enableUpdateCreate?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied key-value pairs used to organize FHIR stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -520,12 +520,12 @@ export interface FhirStoreState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the FhirStore.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * A nested object resource.
@@ -535,21 +535,21 @@ export interface FhirStoreState {
      *
      * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
-    notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      * Structure is documented below.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[] | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The fully qualified name of this dataset
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in
      * this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -559,18 +559,18 @@ export interface FhirStoreState {
      * the order of dozens of seconds) is expected before the results show up in the streaming destination.
      * Structure is documented below.
      */
-    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[]>;
+    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[] | undefined>;
     /**
      * Configuration for how to validate incoming FHIR resources against configured profiles.
      * Structure is documented below.
      */
-    validationConfig?: pulumi.Input<inputs.healthcare.FhirStoreValidationConfig>;
+    validationConfig?: pulumi.Input<inputs.healthcare.FhirStoreValidationConfig | undefined>;
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
      * Possible values are: `DSTU2`, `STU3`, `R4`.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -581,13 +581,13 @@ export interface FhirStoreArgs {
      * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
      * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
      */
-    complexDataTypeReferenceParsing?: pulumi.Input<string>;
+    complexDataTypeReferenceParsing?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta)
      * Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version.
      * Structure is documented below.
      */
-    consentConfig?: pulumi.Input<inputs.healthcare.FhirStoreConsentConfig>;
+    consentConfig?: pulumi.Input<inputs.healthcare.FhirStoreConsentConfig | undefined>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -598,7 +598,7 @@ export interface FhirStoreArgs {
      * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
      * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
      */
-    defaultSearchHandlingStrict?: pulumi.Input<boolean>;
+    defaultSearchHandlingStrict?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -607,7 +607,7 @@ export interface FhirStoreArgs {
      * Patient.get$everything, will not return all the results if broken references exist.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    disableReferentialIntegrity?: pulumi.Input<boolean>;
+    disableReferentialIntegrity?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation
      * of FHIR store. If set to false, which is the default behavior, all write operations will cause historical
@@ -616,7 +616,7 @@ export interface FhirStoreArgs {
      * attempts to read the historical versions.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    disableResourceVersioning?: pulumi.Input<boolean>;
+    disableResourceVersioning?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to allow the bulk import API to accept history bundles and directly insert historical resource
      * versions into the FHIR store. Importing resource histories creates resource interactions that appear to have
@@ -625,13 +625,13 @@ export interface FhirStoreArgs {
      * ** Changing this property may recreate the FHIR store (removing all data) **
      * ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
      */
-    enableHistoryImport?: pulumi.Input<boolean>;
+    enableHistoryImport?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
-    enableHistoryModifications?: pulumi.Input<boolean>;
+    enableHistoryModifications?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
      * operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -640,7 +640,7 @@ export interface FhirStoreArgs {
      * identifiers, those IDs will be part of the FHIR resource path recorded in Cloud audit logs and Cloud Pub/Sub
      * notifications.
      */
-    enableUpdateCreate?: pulumi.Input<boolean>;
+    enableUpdateCreate?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied key-value pairs used to organize FHIR stores.
      * Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -654,12 +654,12 @@ export interface FhirStoreArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource name for the FhirStore.
      * ** Changing this property may recreate the FHIR store (removing all data) **
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Deprecated)
      * A nested object resource.
@@ -669,12 +669,12 @@ export interface FhirStoreArgs {
      *
      * @deprecated `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
      */
-    notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
+    notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      * Structure is documented below.
      */
-    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
+    notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[] | undefined>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in
      * this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -684,16 +684,16 @@ export interface FhirStoreArgs {
      * the order of dozens of seconds) is expected before the results show up in the streaming destination.
      * Structure is documented below.
      */
-    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[]>;
+    streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreStreamConfig>[] | undefined>;
     /**
      * Configuration for how to validate incoming FHIR resources against configured profiles.
      * Structure is documented below.
      */
-    validationConfig?: pulumi.Input<inputs.healthcare.FhirStoreValidationConfig>;
+    validationConfig?: pulumi.Input<inputs.healthcare.FhirStoreValidationConfig | undefined>;
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
      * Possible values are: `DSTU2`, `STU3`, `R4`.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

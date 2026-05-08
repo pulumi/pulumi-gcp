@@ -233,9 +233,9 @@ def get_storage_pool_types(project: Optional[_builtins.str] = None,
         storage_pool_type=pulumi.get(__ret__, 'storage_pool_type'),
         supported_disk_types=pulumi.get(__ret__, 'supported_disk_types'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_storage_pool_types_output(project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  storage_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                  zone: Optional[pulumi.Input[_builtins.str]] = None,
+def get_storage_pool_types_output(project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  storage_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStoragePoolTypesResult]:
     """
     Use this data source to access information about an existing resource.

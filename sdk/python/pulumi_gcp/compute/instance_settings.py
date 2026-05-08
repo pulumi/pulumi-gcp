@@ -22,8 +22,8 @@ __all__ = ['InstanceSettingsArgs', 'InstanceSettings']
 class InstanceSettingsArgs:
     def __init__(__self__, *,
                  zone: pulumi.Input[_builtins.str],
-                 metadata: Optional[pulumi.Input['InstanceSettingsMetadataArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 metadata: pulumi.Input[Optional['InstanceSettingsMetadataArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceSettings resource.
 
@@ -53,7 +53,7 @@ class InstanceSettingsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['InstanceSettingsMetadataArgs']]:
+    def metadata(self) -> pulumi.Input[Optional['InstanceSettingsMetadataArgs']]:
         """
         The metadata key/value pairs assigned to all the instances in the corresponding scope.
         Structure is documented below.
@@ -61,12 +61,12 @@ class InstanceSettingsArgs:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['InstanceSettingsMetadataArgs']]):
+    def metadata(self, value: pulumi.Input[Optional['InstanceSettingsMetadataArgs']]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -74,17 +74,17 @@ class InstanceSettingsArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _InstanceSettingsState:
     def __init__(__self__, *,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 metadata: Optional[pulumi.Input['InstanceSettingsMetadataArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional['InstanceSettingsMetadataArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceSettings resources.
 
@@ -107,7 +107,7 @@ class _InstanceSettingsState:
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint used for optimistic locking of this resource.  Used
         internally during updates.
@@ -115,12 +115,12 @@ class _InstanceSettingsState:
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input['InstanceSettingsMetadataArgs']]:
+    def metadata(self) -> pulumi.Input[Optional['InstanceSettingsMetadataArgs']]:
         """
         The metadata key/value pairs assigned to all the instances in the corresponding scope.
         Structure is documented below.
@@ -128,12 +128,12 @@ class _InstanceSettingsState:
         return pulumi.get(self, "metadata")
 
     @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input['InstanceSettingsMetadataArgs']]):
+    def metadata(self, value: pulumi.Input[Optional['InstanceSettingsMetadataArgs']]):
         pulumi.set(self, "metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -141,19 +141,19 @@ class _InstanceSettingsState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A reference to the zone where the machine resides.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -163,9 +163,9 @@ class InstanceSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents an Instance Settings resource. Instance settings are centralized configuration parameters that allow users to configure the default values for specific VM parameters that are normally set using GCE instance API methods.
@@ -282,9 +282,9 @@ class InstanceSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 metadata: Optional[pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -310,10 +310,10 @@ class InstanceSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            metadata: Optional[pulumi.Input[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceSettings':
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Union['InstanceSettingsMetadataArgs', 'InstanceSettingsMetadataArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceSettings':
         """
         Get an existing InstanceSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

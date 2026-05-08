@@ -498,36 +498,36 @@ export interface DataConnectorState {
      * capabilities for connectors that support the ACTIONS connector mode.
      * Structure is documented below.
      */
-    actionConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorActionConfig>;
+    actionConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorActionConfig | undefined>;
     /**
      * State of the action connector. This reflects whether the action connector
      * is initializing, active or has encountered errors. The possible value can be:
      * 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
      * 'INITIALIZATION_FAILED', 'UPDATING'.
      */
-    actionState?: pulumi.Input<string>;
+    actionState?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether full syncs are paused for this connector
      */
-    autoRunDisabled?: pulumi.Input<boolean>;
+    autoRunDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * BAP (Business Application Platform) configuration for the data
      * connector. Controls which actions are enabled for connectors
      * using the ACTIONS connector mode.
      * Structure is documented below.
      */
-    bapConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorBapConfig>;
+    bapConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorBapConfig | undefined>;
     /**
      * User actions that must be completed before the connector can start syncing data.
      * The possible values can be: 'ALLOWLIST_STATIC_IP', 'ALLOWLIST_IN_SERVICE_ATTACHMENT'.
      */
-    blockingReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    blockingReasons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The display name of the Collection.
      * Should be human readable, used to display collections in the Console
      * Dashboard. UTF-8 encoded string with limit of 1024 characters.
      */
-    collectionDisplayName?: pulumi.Input<string>;
+    collectionDisplayName?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Collection, which will become the final component
      * of the Collection's resource name. A new Collection is created as
@@ -537,13 +537,13 @@ export interface DataConnectorState {
      * standard with a length limit of 63 characters. Otherwise, an
      * INVALID_ARGUMENT error is returned.
      */
-    collectionId?: pulumi.Input<string>;
+    collectionId?: pulumi.Input<string | undefined>;
     /**
      * The modes enabled for this connector. The possible value can be:
      * 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
      * 'EUA', 'FEDERATED_AND_EUA'.
      */
-    connectorModes?: pulumi.Input<pulumi.Input<string>[]>;
+    connectorModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of connector. Each source can only map to one type.
      * For example, salesforce, confluence and jira have THIRD_PARTY connector
@@ -552,11 +552,11 @@ export interface DataConnectorState {
      * 'GCS', 'GOOGLE_MAIL', 'GOOGLE_CALENDAR', 'GOOGLE_DRIVE',
      * 'NATIVE_CLOUD_IDENTITY', 'THIRD_PARTY_FEDERATED', 'THIRD_PARTY_EUA', 'GCNV'.
      */
-    connectorType?: pulumi.Input<string>;
+    connectorType?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the DataConnector was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The identifier for the data source.
      * This is a partial list of supported connectors. Please refer to the
@@ -564,27 +564,27 @@ export interface DataConnectorState {
      * for the full list of connectors.
      * Supported first-party connectors include:
      */
-    dataSource?: pulumi.Input<string>;
+    dataSource?: pulumi.Input<string | undefined>;
     /**
      * The version of the data source. For example, `3` for Jira v3.
      */
-    dataSourceVersion?: pulumi.Input<number>;
+    dataSourceVersion?: pulumi.Input<number | undefined>;
     /**
      * Destination connector configurations for the data connector,
      * used to configure where data is served.
      * Structure is documented below.
      */
-    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorDestinationConfig>[]>;
+    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorDestinationConfig>[] | undefined>;
     /**
      * List of entities from the connected data source to ingest.
      * Structure is documented below.
      */
-    entities?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorEntity>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorEntity>[] | undefined>;
     /**
      * The errors from initialization or from the latest connector run.
      * Structure is documented below.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorError>[] | undefined>;
     /**
      * The refresh interval specifically for incremental data syncs. If unset,
      * incremental syncs will use the default from env, set to 3hrs.
@@ -593,15 +593,15 @@ export interface DataConnectorState {
      * set to the same value as the incremental refresh interval, incremental
      * sync will be disabled.
      */
-    incrementalRefreshInterval?: pulumi.Input<string>;
+    incrementalRefreshInterval?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether incremental syncs are paused for this connector.
      */
-    incrementalSyncDisabled?: pulumi.Input<boolean>;
+    incrementalSyncDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Params needed to access the source in the format of json string.
      */
-    jsonParams?: pulumi.Input<string>;
+    jsonParams?: pulumi.Input<string | undefined>;
     /**
      * The KMS key to be used to protect the DataStores managed by this connector.
      * Must be set for requests that need to comply with CMEK Org Policy
@@ -609,11 +609,11 @@ export interface DataConnectorState {
      * If this field is set and processed successfully, the DataStores created by
      * this connector will be protected by the KMS key.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * For periodic connectors only, the last time a data sync was completed.
      */
-    lastSyncTime?: pulumi.Input<string>;
+    lastSyncTime?: pulumi.Input<string | undefined>;
     /**
      * The most recent timestamp when this [DataConnector][] was paused,
      * affecting all functionalities such as data synchronization.
@@ -623,37 +623,37 @@ export interface DataConnectorState {
      * - No future data synchronization runs will be scheduled nor can be
      * triggered.
      */
-    latestPauseTime?: pulumi.Input<string>;
+    latestPauseTime?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The full resource name of the Data Connector.
      * Format: `projects/*&#47;locations/*&#47;collections/*&#47;dataConnector`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Params needed to access the source in the format of String-to-String (Key, Value) pairs.
      */
-    params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    params?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The tenant project ID associated with private connectivity connectors.
      * This project must be allowlisted by in order for the connector to function.
      */
-    privateConnectivityProjectId?: pulumi.Input<string>;
+    privateConnectivityProjectId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The real-time sync state. The possible values can be:
      * 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
      * 'INITIALIZATION_FAILED', 'UPDATING'.
      */
-    realtimeState?: pulumi.Input<string>;
+    realtimeState?: pulumi.Input<string | undefined>;
     /**
      * The refresh interval for data sync. If duration is set to 0, the data will
      * be synced in real time. The streaming feature is not supported yet. The
@@ -661,30 +661,30 @@ export interface DataConnectorState {
      * set to the same value as the incremental refresh interval, incremental
      * sync will be disabled.
      */
-    refreshInterval?: pulumi.Input<string>;
+    refreshInterval?: pulumi.Input<string | undefined>;
     /**
      * The state of connector. The possible value can be:
      * 'STATE_UNSPECIFIED', 'CREATING', 'ACTIVE', 'FAILED', 'RUNNING', 'WARNING',
      * 'INITIALIZATION_FAILED', 'UPDATING'.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The static IP addresses used by this connector.
      */
-    staticIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    staticIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether customer has enabled static IP addresses for this connector.
      */
-    staticIpEnabled?: pulumi.Input<boolean>;
+    staticIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The data synchronization mode supported by the data connector. The possible value can be:
      * 'PERIODIC', 'STREAMING'.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the DataConnector was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -696,18 +696,18 @@ export interface DataConnectorArgs {
      * capabilities for connectors that support the ACTIONS connector mode.
      * Structure is documented below.
      */
-    actionConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorActionConfig>;
+    actionConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorActionConfig | undefined>;
     /**
      * Indicates whether full syncs are paused for this connector
      */
-    autoRunDisabled?: pulumi.Input<boolean>;
+    autoRunDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * BAP (Business Application Platform) configuration for the data
      * connector. Controls which actions are enabled for connectors
      * using the ACTIONS connector mode.
      * Structure is documented below.
      */
-    bapConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorBapConfig>;
+    bapConfig?: pulumi.Input<inputs.discoveryengine.DataConnectorBapConfig | undefined>;
     /**
      * The display name of the Collection.
      * Should be human readable, used to display collections in the Console
@@ -729,7 +729,7 @@ export interface DataConnectorArgs {
      * 'DATA_INGESTION', 'ACTIONS', 'FEDERATED'
      * 'EUA', 'FEDERATED_AND_EUA'.
      */
-    connectorModes?: pulumi.Input<pulumi.Input<string>[]>;
+    connectorModes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The identifier for the data source.
      * This is a partial list of supported connectors. Please refer to the
@@ -741,18 +741,18 @@ export interface DataConnectorArgs {
     /**
      * The version of the data source. For example, `3` for Jira v3.
      */
-    dataSourceVersion?: pulumi.Input<number>;
+    dataSourceVersion?: pulumi.Input<number | undefined>;
     /**
      * Destination connector configurations for the data connector,
      * used to configure where data is served.
      * Structure is documented below.
      */
-    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorDestinationConfig>[]>;
+    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorDestinationConfig>[] | undefined>;
     /**
      * List of entities from the connected data source to ingest.
      * Structure is documented below.
      */
-    entities?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorEntity>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.discoveryengine.DataConnectorEntity>[] | undefined>;
     /**
      * The refresh interval specifically for incremental data syncs. If unset,
      * incremental syncs will use the default from env, set to 3hrs.
@@ -761,15 +761,15 @@ export interface DataConnectorArgs {
      * set to the same value as the incremental refresh interval, incremental
      * sync will be disabled.
      */
-    incrementalRefreshInterval?: pulumi.Input<string>;
+    incrementalRefreshInterval?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether incremental syncs are paused for this connector.
      */
-    incrementalSyncDisabled?: pulumi.Input<boolean>;
+    incrementalSyncDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Params needed to access the source in the format of json string.
      */
-    jsonParams?: pulumi.Input<string>;
+    jsonParams?: pulumi.Input<string | undefined>;
     /**
      * The KMS key to be used to protect the DataStores managed by this connector.
      * Must be set for requests that need to comply with CMEK Org Policy
@@ -777,7 +777,7 @@ export interface DataConnectorArgs {
      * If this field is set and processed successfully, the DataStores created by
      * this connector will be protected by the KMS key.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The geographic location where the data store should reside. The value can
      * only be one of "global", "us" and "eu".
@@ -786,12 +786,12 @@ export interface DataConnectorArgs {
     /**
      * Params needed to access the source in the format of String-to-String (Key, Value) pairs.
      */
-    params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    params?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The refresh interval for data sync. If duration is set to 0, the data will
      * be synced in real time. The streaming feature is not supported yet. The
@@ -803,10 +803,10 @@ export interface DataConnectorArgs {
     /**
      * Whether customer has enabled static IP addresses for this connector.
      */
-    staticIpEnabled?: pulumi.Input<boolean>;
+    staticIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The data synchronization mode supported by the data connector. The possible value can be:
      * 'PERIODIC', 'STREAMING'.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
 }

@@ -245,55 +245,55 @@ export interface AppConnectionState {
      * Address of the remote application endpoint for the BeyondCorp AppConnection.
      * Structure is documented below.
      */
-    applicationEndpoint?: pulumi.Input<inputs.beyondcorp.AppConnectionApplicationEndpoint>;
+    applicationEndpoint?: pulumi.Input<inputs.beyondcorp.AppConnectionApplicationEndpoint | undefined>;
     /**
      * List of AppConnectors that are authorised to be associated with this AppConnection
      */
-    connectors?: pulumi.Input<pulumi.Input<string>[]>;
+    connectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An arbitrary user-provided name for the AppConnection.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Gateway used by the AppConnection.
      * Structure is documented below.
      */
-    gateway?: pulumi.Input<inputs.beyondcorp.AppConnectionGateway>;
+    gateway?: pulumi.Input<inputs.beyondcorp.AppConnectionGateway | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the AppConnection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The region of the AppConnection.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The type of network connectivity used by the AppConnection. Refer
      * to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
      * for a list of possible values.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -308,40 +308,40 @@ export interface AppConnectionArgs {
     /**
      * List of AppConnectors that are authorised to be associated with this AppConnection
      */
-    connectors?: pulumi.Input<pulumi.Input<string>[]>;
+    connectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An arbitrary user-provided name for the AppConnection.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Gateway used by the AppConnection.
      * Structure is documented below.
      */
-    gateway?: pulumi.Input<inputs.beyondcorp.AppConnectionGateway>;
+    gateway?: pulumi.Input<inputs.beyondcorp.AppConnectionGateway | undefined>;
     /**
      * Resource labels to represent user provided metadata.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the AppConnection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The region of the AppConnection.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The type of network connectivity used by the AppConnection. Refer
      * to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
      * for a list of possible values.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

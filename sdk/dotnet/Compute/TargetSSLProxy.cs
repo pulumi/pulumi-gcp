@@ -36,11 +36,11 @@ namespace Pulumi.Gcp.Compute
     ///     var defaultSSLCertificate = new Gcp.Compute.SSLCertificate("default", new()
     ///     {
     ///         Name = "default-cert",
-    ///         PrivateKey = Std.Index.File.Invoke(new()
+    ///         PrivateKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "path/to/private.key",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         Certificate = Std.Index.File.Invoke(new()
+    ///         Certificate = Std.File.Invoke(new()
     ///         {
     ///             Input = "path/to/certificate.crt",
     ///         }).Apply(invoke =&gt; invoke.Result),

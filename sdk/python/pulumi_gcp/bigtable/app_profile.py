@@ -22,16 +22,16 @@ __all__ = ['AppProfileArgs', 'AppProfile']
 class AppProfileArgs:
     def __init__(__self__, *,
                  app_profile_id: pulumi.Input[_builtins.str],
-                 data_boost_isolation_read_only: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 multi_cluster_routing_use_any: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
-                 standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
+                 data_boost_isolation_read_only: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_cluster_routing_cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 single_cluster_routing: pulumi.Input[Optional['AppProfileSingleClusterRoutingArgs']] = None,
+                 standard_isolation: pulumi.Input[Optional['AppProfileStandardIsolationArgs']] = None):
         """
         The set of arguments for constructing a AppProfile resource.
 
@@ -89,7 +89,7 @@ class AppProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataBoostIsolationReadOnly")
-    def data_boost_isolation_read_only(self) -> Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]:
+    def data_boost_isolation_read_only(self) -> pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']]:
         """
         Specifies that this app profile is intended for read-only usage via the Data Boost feature.
         Structure is documented below.
@@ -97,60 +97,60 @@ class AppProfileArgs:
         return pulumi.get(self, "data_boost_isolation_read_only")
 
     @data_boost_isolation_read_only.setter
-    def data_boost_isolation_read_only(self, value: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]):
+    def data_boost_isolation_read_only(self, value: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']]):
         pulumi.set(self, "data_boost_isolation_read_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Long form description of the use case for this app profile.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreWarnings")
-    def ignore_warnings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_warnings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, ignore safety checks when deleting/updating the app profile.
         """
         return pulumi.get(self, "ignore_warnings")
 
     @ignore_warnings.setter
-    def ignore_warnings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_warnings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_warnings", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance to create the app profile within.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="multiClusterRoutingClusterIds")
-    def multi_cluster_routing_cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def multi_cluster_routing_cluster_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
         """
         return pulumi.get(self, "multi_cluster_routing_cluster_ids")
 
     @multi_cluster_routing_cluster_ids.setter
-    def multi_cluster_routing_cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def multi_cluster_routing_cluster_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "multi_cluster_routing_cluster_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="multiClusterRoutingUseAny")
-    def multi_cluster_routing_use_any(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_cluster_routing_use_any(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
         in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
@@ -159,12 +159,12 @@ class AppProfileArgs:
         return pulumi.get(self, "multi_cluster_routing_use_any")
 
     @multi_cluster_routing_use_any.setter
-    def multi_cluster_routing_use_any(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_cluster_routing_use_any(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_cluster_routing_use_any", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -172,24 +172,24 @@ class AppProfileArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rowAffinity")
-    def row_affinity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def row_affinity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
         """
         return pulumi.get(self, "row_affinity")
 
     @row_affinity.setter
-    def row_affinity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def row_affinity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "row_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="singleClusterRouting")
-    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]:
+    def single_cluster_routing(self) -> pulumi.Input[Optional['AppProfileSingleClusterRoutingArgs']]:
         """
         Use a single-cluster routing policy.
         Structure is documented below.
@@ -197,12 +197,12 @@ class AppProfileArgs:
         return pulumi.get(self, "single_cluster_routing")
 
     @single_cluster_routing.setter
-    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
+    def single_cluster_routing(self, value: pulumi.Input[Optional['AppProfileSingleClusterRoutingArgs']]):
         pulumi.set(self, "single_cluster_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="standardIsolation")
-    def standard_isolation(self) -> Optional[pulumi.Input['AppProfileStandardIsolationArgs']]:
+    def standard_isolation(self) -> pulumi.Input[Optional['AppProfileStandardIsolationArgs']]:
         """
         The standard options used for isolating this app profile's traffic from other use cases.
         Structure is documented below.
@@ -210,25 +210,25 @@ class AppProfileArgs:
         return pulumi.get(self, "standard_isolation")
 
     @standard_isolation.setter
-    def standard_isolation(self, value: Optional[pulumi.Input['AppProfileStandardIsolationArgs']]):
+    def standard_isolation(self, value: pulumi.Input[Optional['AppProfileStandardIsolationArgs']]):
         pulumi.set(self, "standard_isolation", value)
 
 
 @pulumi.input_type
 class _AppProfileState:
     def __init__(__self__, *,
-                 app_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_boost_isolation_read_only: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 multi_cluster_routing_use_any: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None,
-                 standard_isolation: Optional[pulumi.Input['AppProfileStandardIsolationArgs']] = None):
+                 app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_boost_isolation_read_only: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_cluster_routing_cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 single_cluster_routing: pulumi.Input[Optional['AppProfileSingleClusterRoutingArgs']] = None,
+                 standard_isolation: pulumi.Input[Optional['AppProfileStandardIsolationArgs']] = None):
         """
         Input properties used for looking up and filtering AppProfile resources.
 
@@ -278,19 +278,19 @@ class _AppProfileState:
 
     @_builtins.property
     @pulumi.getter(name="appProfileId")
-    def app_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
         """
         return pulumi.get(self, "app_profile_id")
 
     @app_profile_id.setter
-    def app_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_profile_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataBoostIsolationReadOnly")
-    def data_boost_isolation_read_only(self) -> Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]:
+    def data_boost_isolation_read_only(self) -> pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']]:
         """
         Specifies that this app profile is intended for read-only usage via the Data Boost feature.
         Structure is documented below.
@@ -298,60 +298,60 @@ class _AppProfileState:
         return pulumi.get(self, "data_boost_isolation_read_only")
 
     @data_boost_isolation_read_only.setter
-    def data_boost_isolation_read_only(self, value: Optional[pulumi.Input['AppProfileDataBoostIsolationReadOnlyArgs']]):
+    def data_boost_isolation_read_only(self, value: pulumi.Input[Optional['AppProfileDataBoostIsolationReadOnlyArgs']]):
         pulumi.set(self, "data_boost_isolation_read_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Long form description of the use case for this app profile.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreWarnings")
-    def ignore_warnings(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_warnings(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, ignore safety checks when deleting/updating the app profile.
         """
         return pulumi.get(self, "ignore_warnings")
 
     @ignore_warnings.setter
-    def ignore_warnings(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_warnings(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_warnings", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance to create the app profile within.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter(name="multiClusterRoutingClusterIds")
-    def multi_cluster_routing_cluster_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def multi_cluster_routing_cluster_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
         """
         return pulumi.get(self, "multi_cluster_routing_cluster_ids")
 
     @multi_cluster_routing_cluster_ids.setter
-    def multi_cluster_routing_cluster_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def multi_cluster_routing_cluster_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "multi_cluster_routing_cluster_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="multiClusterRoutingUseAny")
-    def multi_cluster_routing_use_any(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def multi_cluster_routing_use_any(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
         in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
@@ -360,24 +360,24 @@ class _AppProfileState:
         return pulumi.get(self, "multi_cluster_routing_use_any")
 
     @multi_cluster_routing_use_any.setter
-    def multi_cluster_routing_use_any(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def multi_cluster_routing_use_any(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "multi_cluster_routing_use_any", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name of the requested app profile. Values are of the form `projects/<project>/instances/<instance>/appProfiles/<appProfileId>`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -385,24 +385,24 @@ class _AppProfileState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="rowAffinity")
-    def row_affinity(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def row_affinity(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
         """
         return pulumi.get(self, "row_affinity")
 
     @row_affinity.setter
-    def row_affinity(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def row_affinity(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "row_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="singleClusterRouting")
-    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]:
+    def single_cluster_routing(self) -> pulumi.Input[Optional['AppProfileSingleClusterRoutingArgs']]:
         """
         Use a single-cluster routing policy.
         Structure is documented below.
@@ -410,12 +410,12 @@ class _AppProfileState:
         return pulumi.get(self, "single_cluster_routing")
 
     @single_cluster_routing.setter
-    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
+    def single_cluster_routing(self, value: pulumi.Input[Optional['AppProfileSingleClusterRoutingArgs']]):
         pulumi.set(self, "single_cluster_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="standardIsolation")
-    def standard_isolation(self) -> Optional[pulumi.Input['AppProfileStandardIsolationArgs']]:
+    def standard_isolation(self) -> pulumi.Input[Optional['AppProfileStandardIsolationArgs']]:
         """
         The standard options used for isolating this app profile's traffic from other use cases.
         Structure is documented below.
@@ -423,7 +423,7 @@ class _AppProfileState:
         return pulumi.get(self, "standard_isolation")
 
     @standard_isolation.setter
-    def standard_isolation(self, value: Optional[pulumi.Input['AppProfileStandardIsolationArgs']]):
+    def standard_isolation(self, value: pulumi.Input[Optional['AppProfileStandardIsolationArgs']]):
         pulumi.set(self, "standard_isolation", value)
 
 
@@ -433,17 +433,17 @@ class AppProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_boost_isolation_read_only: Optional[pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 multi_cluster_routing_use_any: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
-                 standard_isolation: Optional[pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
+                 app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_cluster_routing_cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
+                 standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
                  __props__=None):
         """
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
@@ -790,17 +790,17 @@ class AppProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_boost_isolation_read_only: Optional[pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 multi_cluster_routing_use_any: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 row_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-                 single_cluster_routing: Optional[pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
-                 standard_isolation: Optional[pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
+                 app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_cluster_routing_cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
+                 standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -836,18 +836,18 @@ class AppProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_boost_isolation_read_only: Optional[pulumi.Input[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_warnings: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            multi_cluster_routing_cluster_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            multi_cluster_routing_use_any: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            row_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
-            single_cluster_routing: Optional[pulumi.Input[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
-            standard_isolation: Optional[pulumi.Input[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None) -> 'AppProfile':
+            app_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_boost_isolation_read_only: pulumi.Input[Optional[Union['AppProfileDataBoostIsolationReadOnlyArgs', 'AppProfileDataBoostIsolationReadOnlyArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_warnings: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_cluster_routing_cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            multi_cluster_routing_use_any: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            row_affinity: pulumi.Input[Optional[_builtins.bool]] = None,
+            single_cluster_routing: pulumi.Input[Optional[Union['AppProfileSingleClusterRoutingArgs', 'AppProfileSingleClusterRoutingArgsDict']]] = None,
+            standard_isolation: pulumi.Input[Optional[Union['AppProfileStandardIsolationArgs', 'AppProfileStandardIsolationArgsDict']]] = None) -> 'AppProfile':
         """
         Get an existing AppProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -216,14 +216,14 @@ def get_object_signed_url(bucket: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         path=pulumi.get(__ret__, 'path'),
         signed_url=pulumi.get(__ret__, 'signed_url'))
-def get_object_signed_url_output(bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                                 content_md5: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 content_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 credentials: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 duration: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 extension_headers: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                                 http_method: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 path: Optional[pulumi.Input[_builtins.str]] = None,
+def get_object_signed_url_output(bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                                 content_md5: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 content_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 credentials: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 duration: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 extension_headers: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                                 http_method: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 path: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectSignedUrlResult]:
     """
     The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.

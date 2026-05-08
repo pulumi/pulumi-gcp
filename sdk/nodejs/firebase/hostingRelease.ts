@@ -224,25 +224,25 @@ export interface HostingReleaseState {
      * The ID of the channel to which the release belongs. If not provided, the release will
      * belong to the default "live" channel
      */
-    channelId?: pulumi.Input<string>;
+    channelId?: pulumi.Input<string | undefined>;
     /**
      * The deploy description when the release was created. The value can be up to 512 characters.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the release, in either of the following formats:
      * sites/SITE_ID/releases/RELEASE_ID
      * sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Release.
      */
-    releaseId?: pulumi.Input<string>;
+    releaseId?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID of the site to which the release belongs.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The type of the release; indicates what happened to the content of the site. There is no need to specify
      * `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
@@ -251,14 +251,14 @@ export interface HostingReleaseState {
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
      * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
      * The content of the version specified will be actively displayed on the appropriate URL.
      * The Version must belong to the same site as in the `siteId`.
      * This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -269,11 +269,11 @@ export interface HostingReleaseArgs {
      * The ID of the channel to which the release belongs. If not provided, the release will
      * belong to the default "live" channel
      */
-    channelId?: pulumi.Input<string>;
+    channelId?: pulumi.Input<string | undefined>;
     /**
      * The deploy description when the release was created. The value can be up to 512 characters.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * Required. The ID of the site to which the release belongs.
      */
@@ -286,12 +286,12 @@ export interface HostingReleaseArgs {
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
      * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
      * The content of the version specified will be actively displayed on the appropriate URL.
      * The Version must belong to the same site as in the `siteId`.
      * This parameter must be empty if the `type` of the release is `SITE_DISABLE`.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }

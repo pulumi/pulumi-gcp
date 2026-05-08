@@ -404,20 +404,20 @@ export interface PreventionInspectTemplateState {
     /**
      * A description of the inspect template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User set display name of the inspect template.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The core content of the template.
      * Structure is documented below.
      */
-    inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig>;
+    inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig | undefined>;
     /**
      * The resource name of the inspect template. Set by the server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The parent of the inspect template in any of the following formats:
      * * `projects/{{project}}`
@@ -425,13 +425,13 @@ export interface PreventionInspectTemplateState {
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -441,16 +441,16 @@ export interface PreventionInspectTemplateArgs {
     /**
      * A description of the inspect template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * User set display name of the inspect template.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The core content of the template.
      * Structure is documented below.
      */
-    inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig>;
+    inspectConfig?: pulumi.Input<inputs.dataloss.PreventionInspectTemplateInspectConfig | undefined>;
     /**
      * The parent of the inspect template in any of the following formats:
      * * `projects/{{project}}`
@@ -464,5 +464,5 @@ export interface PreventionInspectTemplateArgs {
      * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
      * 100 characters. Can be empty to allow the system to generate one.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
 }

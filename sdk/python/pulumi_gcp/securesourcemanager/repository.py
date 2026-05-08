@@ -24,10 +24,10 @@ class RepositoryArgs:
                  instance: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  repository_id: pulumi.Input[_builtins.str],
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_config: Optional[pulumi.Input['RepositoryInitialConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_config: pulumi.Input[Optional['RepositoryInitialConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repository resource.
 
@@ -98,7 +98,7 @@ class RepositoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the repository. Setting `ABANDON` allows the resource
         to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -112,24 +112,24 @@ class RepositoryArgs:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the repository, which cannot exceed 500 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="initialConfig")
-    def initial_config(self) -> Optional[pulumi.Input['RepositoryInitialConfigArgs']]:
+    def initial_config(self) -> pulumi.Input[Optional['RepositoryInitialConfigArgs']]:
         """
         Initial configurations for the repository.
         Structure is documented below.
@@ -137,12 +137,12 @@ class RepositoryArgs:
         return pulumi.get(self, "initial_config")
 
     @initial_config.setter
-    def initial_config(self, value: Optional[pulumi.Input['RepositoryInitialConfigArgs']]):
+    def initial_config(self, value: pulumi.Input[Optional['RepositoryInitialConfigArgs']]):
         pulumi.set(self, "initial_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -150,25 +150,25 @@ class RepositoryArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _RepositoryState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_config: Optional[pulumi.Input['RepositoryInitialConfigArgs']] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 uris: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryUriArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_config: pulumi.Input[Optional['RepositoryInitialConfigArgs']] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 uris: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryUriArgs']]]] = None):
         """
         Input properties used for looking up and filtering Repository resources.
 
@@ -222,19 +222,19 @@ class _RepositoryState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the repository was created in UTC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deletion policy for the repository. Setting `ABANDON` allows the resource
         to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
@@ -248,24 +248,24 @@ class _RepositoryState:
         return pulumi.get(self, "deletion_policy")
 
     @deletion_policy.setter
-    def deletion_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the repository, which cannot exceed 500 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="initialConfig")
-    def initial_config(self) -> Optional[pulumi.Input['RepositoryInitialConfigArgs']]:
+    def initial_config(self) -> pulumi.Input[Optional['RepositoryInitialConfigArgs']]:
         """
         Initial configurations for the repository.
         Structure is documented below.
@@ -273,48 +273,48 @@ class _RepositoryState:
         return pulumi.get(self, "initial_config")
 
     @initial_config.setter
-    def initial_config(self, value: Optional[pulumi.Input['RepositoryInitialConfigArgs']]):
+    def initial_config(self, value: pulumi.Input[Optional['RepositoryInitialConfigArgs']]):
         pulumi.set(self, "initial_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance in which the repository is hosted.
         """
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location for the Repository.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name for the Repository.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -322,48 +322,48 @@ class _RepositoryState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryId")
-    def repository_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for the Repository.
         """
         return pulumi.get(self, "repository_id")
 
     @repository_id.setter
-    def repository_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the repository.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the repository was updated in UTC.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryUriArgs']]]]:
+    def uris(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryUriArgs']]]]:
         """
         URIs for the repository.
         Structure is documented below.
@@ -371,7 +371,7 @@ class _RepositoryState:
         return pulumi.get(self, "uris")
 
     @uris.setter
-    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryUriArgs']]]]):
+    def uris(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryUriArgs']]]]):
         pulumi.set(self, "uris", value)
 
 
@@ -381,13 +381,13 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_config: Optional[pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Repositories store source code. It supports all Git SCM client commands and has built-in pull requests and issue tracking. Both HTTPS and SSH authentication are supported.
@@ -569,13 +569,13 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_config: Optional[pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -613,18 +613,18 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_config: Optional[pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
-            instance: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_id: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            uris: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]]] = None) -> 'Repository':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_config: pulumi.Input[Optional[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']]] = None,
+            instance: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            uris: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

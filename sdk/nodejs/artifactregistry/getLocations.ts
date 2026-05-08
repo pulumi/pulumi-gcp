@@ -127,5 +127,5 @@ export interface GetLocationsOutputArgs {
      * The project to list versions for. If it
      * is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

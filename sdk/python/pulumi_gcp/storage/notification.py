@@ -22,9 +22,9 @@ class NotificationArgs:
                  bucket: pulumi.Input[_builtins.str],
                  payload_format: pulumi.Input[_builtins.str],
                  topic: pulumi.Input[_builtins.str],
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 object_name_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 object_name_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notification resource.
 
@@ -93,52 +93,52 @@ class NotificationArgs:
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def event_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         """
         return pulumi.get(self, "event_types")
 
     @event_types.setter
-    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def event_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "event_types", value)
 
     @_builtins.property
     @pulumi.getter(name="objectNamePrefix")
-    def object_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         """
         return pulumi.get(self, "object_name_prefix")
 
     @object_name_prefix.setter
-    def object_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_name_prefix", value)
 
 
 @pulumi.input_type
 class _NotificationState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notification_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Notification resources.
 
@@ -175,91 +175,91 @@ class _NotificationState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="customAttributes")
-    def custom_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
         """
         return pulumi.get(self, "custom_attributes")
 
     @custom_attributes.setter
-    def custom_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def event_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
         """
         return pulumi.get(self, "event_types")
 
     @event_types.setter
-    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def event_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "event_types", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationId")
-    def notification_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notification_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the created notification.
         """
         return pulumi.get(self, "notification_id")
 
     @notification_id.setter
-    def notification_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notification_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notification_id", value)
 
     @_builtins.property
     @pulumi.getter(name="objectNamePrefix")
-    def object_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
         """
         return pulumi.get(self, "object_name_prefix")
 
     @object_name_prefix.setter
-    def object_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="payloadFormat")
-    def payload_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payload_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
         """
         return pulumi.get(self, "payload_format")
 
     @payload_format.setter
-    def payload_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payload_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payload_format", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cloud PubSub topic to which this subscription publishes. Expects either the
         topic name, assumed to belong to the default GCP provider project, or the project-level name,
@@ -271,7 +271,7 @@ class _NotificationState:
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 
@@ -281,12 +281,12 @@ class Notification(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 object_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 object_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates a new notification configuration on a specified bucket, establishing a flow of event notifications from GCS to a Cloud Pub/Sub topic.
@@ -447,12 +447,12 @@ class Notification(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 object_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 payload_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 object_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 payload_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -486,14 +486,14 @@ class Notification(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notification_id: Optional[pulumi.Input[_builtins.str]] = None,
-            object_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            payload_format: Optional[pulumi.Input[_builtins.str]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            topic: Optional[pulumi.Input[_builtins.str]] = None) -> 'Notification':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notification_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            payload_format: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            topic: pulumi.Input[Optional[_builtins.str]] = None) -> 'Notification':
         """
         Get an existing Notification resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

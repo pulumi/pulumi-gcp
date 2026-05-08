@@ -402,70 +402,70 @@ export interface AutonomousDatabaseState {
     /**
      * The password for the default ADMIN user.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Autonomous Database to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
      * characters in length. The value must start with a letter and end with
      * a letter or a number.
      */
-    autonomousDatabaseId?: pulumi.Input<string>;
+    autonomousDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * The subnet CIDR range for the Autonmous Database.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The date and time that the Autonomous Database was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the Autonomous Database. The database name must be unique in
      * the project. The name must begin with a letter and can
      * contain a maximum of 30 alphanumeric characters.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * List of supported GCP region to clone the Autonomous Database for disaster recovery.
      */
-    disasterRecoverySupportedLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    disasterRecoverySupportedLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the subscription entitlement associated with the Autonomous
      * Database.
      */
-    entitlementId?: pulumi.Input<string>;
+    entitlementId?: pulumi.Input<string | undefined>;
     /**
      * The labels or tags associated with the Autonomous Database.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Identifier. The name of the Autonomous Database resource in the following format:
      * projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC network used by the Autonomous Database.
      * Format: projects/{project}/global/networks/{network}
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbNetwork associated with the Autonomous Database.
      * Format:
@@ -473,37 +473,37 @@ export interface AutonomousDatabaseState {
      * It is optional but if specified, this should match the parent ODBNetwork of
      * the odbSubnet and backup_odb_subnet.
      */
-    odbNetwork?: pulumi.Input<string>;
+    odbNetwork?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbSubnet associated with the Autonomous Database for
      * IP allocation. Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    odbSubnet?: pulumi.Input<string>;
+    odbSubnet?: pulumi.Input<string | undefined>;
     /**
      * The peer Autonomous Database names of the given Autonomous Database.
      */
-    peerAutonomousDatabases?: pulumi.Input<pulumi.Input<string>[]>;
+    peerAutonomousDatabases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The properties of an Autonomous Database.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseProperties>;
+    properties?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseProperties | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The source Autonomous Database configuration for the standby Autonomous Database.
      * Structure is documented below.
      */
-    sourceConfig?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseSourceConfig>;
+    sourceConfig?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseSourceConfig | undefined>;
 }
 
 /**
@@ -513,7 +513,7 @@ export interface AutonomousDatabaseArgs {
     /**
      * The password for the default ADMIN user.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Autonomous Database to create. This value is restricted
      * to (^a-z?$) and must be a maximum of 63
@@ -524,28 +524,28 @@ export interface AutonomousDatabaseArgs {
     /**
      * The subnet CIDR range for the Autonmous Database.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The name of the Autonomous Database. The database name must be unique in
      * the project. The name must begin with a letter and can
      * contain a maximum of 30 alphanumeric characters.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The labels or tags associated with the Autonomous Database.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource ID segment making up resource `name`. See documentation for resource type `oracledatabase.googleapis.com/AutonomousDatabaseBackup`.
      */
@@ -554,7 +554,7 @@ export interface AutonomousDatabaseArgs {
      * The name of the VPC network used by the Autonomous Database.
      * Format: projects/{project}/global/networks/{network}
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbNetwork associated with the Autonomous Database.
      * Format:
@@ -562,26 +562,26 @@ export interface AutonomousDatabaseArgs {
      * It is optional but if specified, this should match the parent ODBNetwork of
      * the odbSubnet and backup_odb_subnet.
      */
-    odbNetwork?: pulumi.Input<string>;
+    odbNetwork?: pulumi.Input<string | undefined>;
     /**
      * The name of the OdbSubnet associated with the Autonomous Database for
      * IP allocation. Format:
      * projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
      */
-    odbSubnet?: pulumi.Input<string>;
+    odbSubnet?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The properties of an Autonomous Database.
      * Structure is documented below.
      */
-    properties?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseProperties>;
+    properties?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseProperties | undefined>;
     /**
      * The source Autonomous Database configuration for the standby Autonomous Database.
      * Structure is documented below.
      */
-    sourceConfig?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseSourceConfig>;
+    sourceConfig?: pulumi.Input<inputs.oracledatabase.AutonomousDatabaseSourceConfig | undefined>;
 }

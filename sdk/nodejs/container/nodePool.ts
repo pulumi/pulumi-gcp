@@ -317,13 +317,13 @@ export interface NodePoolState {
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
      */
-    autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
+    autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling | undefined>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
      * - - -
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -333,26 +333,26 @@ export interface NodePoolState {
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
      * ignore subsequent changes to this field.
      */
-    initialNodeCount?: pulumi.Input<number>;
+    initialNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The resource URLs of the managed instance groups associated with this node pool.
      */
-    instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The location (region or zone) of the cluster.
      *
      * - - -
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * List of instance group URLs which have been assigned to this node pool.
      */
-    managedInstanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    managedInstanceGroupUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
-    management?: pulumi.Input<inputs.container.NodePoolManagement>;
+    management?: pulumi.Input<inputs.container.NodePoolManagement | undefined>;
     /**
      * The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -360,37 +360,37 @@ export interface NodePoolState {
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
-    maxPodsPerNode?: pulumi.Input<number>;
+    maxPodsPerNode?: pulumi.Input<number | undefined>;
     /**
      * The name of the node pool. If left blank, the provider will
      * auto-generate a unique name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name for the node pool beginning
      * with the specified prefix. Conflicts with `name`.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The network configuration of the pool. Such as
      * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
      * documented below
      */
-    networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig | undefined>;
     /**
      * Parameters used in creating the node pool. See
      * gcp.container.Cluster for schema.
      */
-    nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig | undefined>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The node drain configuration of the pool. Structure is documented below.
      */
-    nodeDrainConfigs?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeDrainConfig>[]>;
+    nodeDrainConfigs?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeDrainConfig>[] | undefined>;
     /**
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
@@ -401,30 +401,30 @@ export interface NodePoolState {
      * upon being unset. You must manually reconcile the list of zones with your
      * cluster.
      */
-    nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
-    operation?: pulumi.Input<string>;
+    nodeLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    operation?: pulumi.Input<string | undefined>;
     /**
      * Specifies a custom placement policy for the
      * nodes.
      */
-    placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
+    placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy | undefined>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      *
      * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
-    queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning>;
+    queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning | undefined>;
     /**
      * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
-    upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
+    upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings | undefined>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -433,7 +433,7 @@ export interface NodePoolState {
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
      * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -444,7 +444,7 @@ export interface NodePoolArgs {
      * Configuration required by cluster autoscaler to adjust
      * the size of the node pool to the current cluster usage. Structure is documented below.
      */
-    autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
+    autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling | undefined>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
@@ -460,18 +460,18 @@ export interface NodePoolArgs {
      * need this value, don't set it.  If you do need it, you can use a lifecycle block to
      * ignore subsequent changes to this field.
      */
-    initialNodeCount?: pulumi.Input<number>;
+    initialNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The location (region or zone) of the cluster.
      *
      * - - -
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.
      */
-    management?: pulumi.Input<inputs.container.NodePoolManagement>;
+    management?: pulumi.Input<inputs.container.NodePoolManagement | undefined>;
     /**
      * The maximum number of pods per node in this node pool.
      * Note that this does not work on node pools which are "route-based" - that is, node
@@ -479,37 +479,37 @@ export interface NodePoolArgs {
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
      * for more information.
      */
-    maxPodsPerNode?: pulumi.Input<number>;
+    maxPodsPerNode?: pulumi.Input<number | undefined>;
     /**
      * The name of the node pool. If left blank, the provider will
      * auto-generate a unique name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Creates a unique name for the node pool beginning
      * with the specified prefix. Conflicts with `name`.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The network configuration of the pool. Such as
      * configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
      * documented below
      */
-    networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfig | undefined>;
     /**
      * Parameters used in creating the node pool. See
      * gcp.container.Cluster for schema.
      */
-    nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig>;
+    nodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfig | undefined>;
     /**
      * The number of nodes per instance group. This field can be used to
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The node drain configuration of the pool. Structure is documented below.
      */
-    nodeDrainConfigs?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeDrainConfig>[]>;
+    nodeDrainConfigs?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeDrainConfig>[] | undefined>;
     /**
      * The list of zones in which the node pool's nodes should be located. Nodes must
      * be in the region of their regional cluster or in the same region as their
@@ -520,29 +520,29 @@ export interface NodePoolArgs {
      * upon being unset. You must manually reconcile the list of zones with your
      * cluster.
      */
-    nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    nodeLocations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies a custom placement policy for the
      * nodes.
      */
-    placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
+    placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy | undefined>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
      *
      * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
-    queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning>;
+    queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning | undefined>;
     /**
      * Specify node upgrade settings to change how GKE upgrades nodes.
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      */
-    upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings>;
+    upgradeSettings?: pulumi.Input<inputs.container.NodePoolUpgradeSettings | undefined>;
     /**
      * The Kubernetes version for the nodes in this pool. Note that if this field
      * and `autoUpgrade` are both specified, they will fight each other for what the node version should
@@ -551,5 +551,5 @@ export interface NodePoolArgs {
      * when fuzzy versions are used. See the `gcp.container.getEngineVersions` data source's
      * `versionPrefix` field to approximate fuzzy versions in a provider-compatible way.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

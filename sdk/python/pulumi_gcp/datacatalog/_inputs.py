@@ -56,18 +56,18 @@ __all__ = [
 ]
 
 class EntryBigqueryDateShardedSpecArgsDict(TypedDict):
-    dataset: NotRequired[pulumi.Input[_builtins.str]]
+    dataset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The Data Catalog resource name of the dataset entry the current table belongs to, for example,
     projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}
     """
-    shard_count: NotRequired[pulumi.Input[_builtins.int]]
+    shard_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     Total number of shards.
     """
-    table_prefix: NotRequired[pulumi.Input[_builtins.str]]
+    table_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
@@ -77,9 +77,9 @@ class EntryBigqueryDateShardedSpecArgsDict(TypedDict):
 @pulumi.input_type
 class EntryBigqueryDateShardedSpecArgs:
     def __init__(__self__, *,
-                 dataset: Optional[pulumi.Input[_builtins.str]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 table_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataset: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 table_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] dataset: (Output)
                The Data Catalog resource name of the dataset entry the current table belongs to, for example,
@@ -99,7 +99,7 @@ class EntryBigqueryDateShardedSpecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dataset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The Data Catalog resource name of the dataset entry the current table belongs to, for example,
@@ -108,12 +108,12 @@ class EntryBigqueryDateShardedSpecArgs:
         return pulumi.get(self, "dataset")
 
     @dataset.setter
-    def dataset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset", value)
 
     @_builtins.property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         Total number of shards.
@@ -121,12 +121,12 @@ class EntryBigqueryDateShardedSpecArgs:
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shard_count", value)
 
     @_builtins.property
     @pulumi.getter(name="tablePrefix")
-    def table_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The table name prefix of the shards. The name of any given shard is [tablePrefix]YYYYMMDD,
@@ -135,23 +135,23 @@ class EntryBigqueryDateShardedSpecArgs:
         return pulumi.get(self, "table_prefix")
 
     @table_prefix.setter
-    def table_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_prefix", value)
 
 
 class EntryBigqueryTableSpecArgsDict(TypedDict):
-    table_source_type: NotRequired[pulumi.Input[_builtins.str]]
+    table_source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The table source type.
     """
-    table_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgsDict']]]]
+    table_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]]
     """
     (Output)
     Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
     Structure is documented below.
     """
-    view_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgsDict']]]]
+    view_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]]
     """
     (Output)
     Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
@@ -161,9 +161,9 @@ class EntryBigqueryTableSpecArgsDict(TypedDict):
 @pulumi.input_type
 class EntryBigqueryTableSpecArgs:
     def __init__(__self__, *,
-                 table_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]] = None,
-                 view_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]] = None):
+                 table_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_specs: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]] = None,
+                 view_specs: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] table_source_type: (Output)
                The table source type.
@@ -183,7 +183,7 @@ class EntryBigqueryTableSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="tableSourceType")
-    def table_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The table source type.
@@ -191,12 +191,12 @@ class EntryBigqueryTableSpecArgs:
         return pulumi.get(self, "table_source_type")
 
     @table_source_type.setter
-    def table_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tableSpecs")
-    def table_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]:
+    def table_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]:
         """
         (Output)
         Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
@@ -205,12 +205,12 @@ class EntryBigqueryTableSpecArgs:
         return pulumi.get(self, "table_specs")
 
     @table_specs.setter
-    def table_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]):
+    def table_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]):
         pulumi.set(self, "table_specs", value)
 
     @_builtins.property
     @pulumi.getter(name="viewSpecs")
-    def view_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]:
+    def view_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]:
         """
         (Output)
         Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
@@ -219,12 +219,12 @@ class EntryBigqueryTableSpecArgs:
         return pulumi.get(self, "view_specs")
 
     @view_specs.setter
-    def view_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]):
+    def view_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]):
         pulumi.set(self, "view_specs", value)
 
 
 class EntryBigqueryTableSpecTableSpecArgsDict(TypedDict):
-    grouped_entry: NotRequired[pulumi.Input[_builtins.str]]
+    grouped_entry: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
@@ -236,7 +236,7 @@ class EntryBigqueryTableSpecTableSpecArgsDict(TypedDict):
 @pulumi.input_type
 class EntryBigqueryTableSpecTableSpecArgs:
     def __init__(__self__, *,
-                 grouped_entry: Optional[pulumi.Input[_builtins.str]] = None):
+                 grouped_entry: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] grouped_entry: (Output)
                If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
@@ -249,7 +249,7 @@ class EntryBigqueryTableSpecTableSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupedEntry")
-    def grouped_entry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grouped_entry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
@@ -260,12 +260,12 @@ class EntryBigqueryTableSpecTableSpecArgs:
         return pulumi.get(self, "grouped_entry")
 
     @grouped_entry.setter
-    def grouped_entry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grouped_entry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grouped_entry", value)
 
 
 class EntryBigqueryTableSpecViewSpecArgsDict(TypedDict):
-    view_query: NotRequired[pulumi.Input[_builtins.str]]
+    view_query: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The query that defines the table view.
@@ -274,7 +274,7 @@ class EntryBigqueryTableSpecViewSpecArgsDict(TypedDict):
 @pulumi.input_type
 class EntryBigqueryTableSpecViewSpecArgs:
     def __init__(__self__, *,
-                 view_query: Optional[pulumi.Input[_builtins.str]] = None):
+                 view_query: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] view_query: (Output)
                The query that defines the table view.
@@ -284,7 +284,7 @@ class EntryBigqueryTableSpecViewSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="viewQuery")
-    def view_query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view_query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The query that defines the table view.
@@ -292,7 +292,7 @@ class EntryBigqueryTableSpecViewSpecArgs:
         return pulumi.get(self, "view_query")
 
     @view_query.setter
-    def view_query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view_query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view_query", value)
 
 
@@ -311,7 +311,7 @@ class EntryGcsFilesetSpecArgsDict(TypedDict):
     * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
     * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
     """
-    sample_gcs_file_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgsDict']]]]
+    sample_gcs_file_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]]
     """
     (Output)
     Sample files contained in this fileset, not all files contained in this fileset are represented here.
@@ -325,7 +325,7 @@ class EntryGcsFilesetSpecArgsDict(TypedDict):
 class EntryGcsFilesetSpecArgs:
     def __init__(__self__, *,
                  file_patterns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 sample_gcs_file_specs: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]] = None):
+                 sample_gcs_file_specs: pulumi.Input[Optional[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] file_patterns: Patterns to identify a set of files in Google Cloud Storage.
                See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames)
@@ -373,7 +373,7 @@ class EntryGcsFilesetSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="sampleGcsFileSpecs")
-    def sample_gcs_file_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]:
+    def sample_gcs_file_specs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]:
         """
         (Output)
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
@@ -385,16 +385,16 @@ class EntryGcsFilesetSpecArgs:
         return pulumi.get(self, "sample_gcs_file_specs")
 
     @sample_gcs_file_specs.setter
-    def sample_gcs_file_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]):
+    def sample_gcs_file_specs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]):
         pulumi.set(self, "sample_gcs_file_specs", value)
 
 
 class EntryGcsFilesetSpecSampleGcsFileSpecArgsDict(TypedDict):
-    file_path: NotRequired[pulumi.Input[_builtins.str]]
+    file_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The full file path
     """
-    size_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    size_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The size of the file, in bytes.
     """
@@ -402,8 +402,8 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgsDict(TypedDict):
 @pulumi.input_type
 class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
     def __init__(__self__, *,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_bytes: Optional[pulumi.Input[_builtins.int]] = None):
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_bytes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] file_path: The full file path
         :param pulumi.Input[_builtins.int] size_bytes: The size of the file, in bytes.
@@ -415,40 +415,40 @@ class EntryGcsFilesetSpecSampleGcsFileSpecArgs:
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full file path
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeBytes")
-    def size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the file, in bytes.
         """
         return pulumi.get(self, "size_bytes")
 
     @size_bytes.setter
-    def size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_bytes", value)
 
 
 class EntryGroupIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EntryGroupIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -474,25 +474,25 @@ class EntryGroupIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class EntryGroupIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EntryGroupIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -518,25 +518,25 @@ class EntryGroupIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class PolicyTagIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class PolicyTagIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -562,25 +562,25 @@ class PolicyTagIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class PolicyTagIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class PolicyTagIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -606,11 +606,11 @@ class PolicyTagIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -619,35 +619,35 @@ class TagFieldArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    bool_value: NotRequired[pulumi.Input[_builtins.bool]]
+    bool_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Holds the value for a tag field with boolean type.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The display name of this field
     """
-    double_value: NotRequired[pulumi.Input[_builtins.float]]
+    double_value: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Holds the value for a tag field with double type.
     """
-    enum_value: NotRequired[pulumi.Input[_builtins.str]]
+    enum_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
     """
-    order: NotRequired[pulumi.Input[_builtins.int]]
+    order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The order of this field with respect to other fields in this tag. For example, a higher value can indicate
     a more important field. The value can be negative. Multiple fields can have the same order, and field orders
     within a tag do not have to be sequential.
     """
-    string_value: NotRequired[pulumi.Input[_builtins.str]]
+    string_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Holds the value for a tag field with string type.
     """
-    timestamp_value: NotRequired[pulumi.Input[_builtins.str]]
+    timestamp_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Holds the value for a tag field with timestamp type.
     """
@@ -656,13 +656,13 @@ class TagFieldArgsDict(TypedDict):
 class TagFieldArgs:
     def __init__(__self__, *,
                  field_name: pulumi.Input[_builtins.str],
-                 bool_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 double_value: Optional[pulumi.Input[_builtins.float]] = None,
-                 enum_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 string_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 timestamp_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 bool_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 double_value: pulumi.Input[Optional[_builtins.float]] = None,
+                 enum_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 string_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 timestamp_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] field_name: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.bool] bool_value: Holds the value for a tag field with boolean type.
@@ -707,19 +707,19 @@ class TagFieldArgs:
 
     @_builtins.property
     @pulumi.getter(name="boolValue")
-    def bool_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bool_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Holds the value for a tag field with boolean type.
         """
         return pulumi.get(self, "bool_value")
 
     @bool_value.setter
-    def bool_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bool_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bool_value", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The display name of this field
@@ -727,36 +727,36 @@ class TagFieldArgs:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="doubleValue")
-    def double_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def double_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Holds the value for a tag field with double type.
         """
         return pulumi.get(self, "double_value")
 
     @double_value.setter
-    def double_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def double_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "double_value", value)
 
     @_builtins.property
     @pulumi.getter(name="enumValue")
-    def enum_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enum_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
         """
         return pulumi.get(self, "enum_value")
 
     @enum_value.setter
-    def enum_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enum_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enum_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The order of this field with respect to other fields in this tag. For example, a higher value can indicate
@@ -766,31 +766,31 @@ class TagFieldArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="stringValue")
-    def string_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def string_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Holds the value for a tag field with string type.
         """
         return pulumi.get(self, "string_value")
 
     @string_value.setter
-    def string_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def string_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "string_value", value)
 
     @_builtins.property
     @pulumi.getter(name="timestampValue")
-    def timestamp_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timestamp_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Holds the value for a tag field with timestamp type.
         """
         return pulumi.get(self, "timestamp_value")
 
     @timestamp_value.setter
-    def timestamp_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timestamp_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timestamp_value", value)
 
 
@@ -804,24 +804,24 @@ class TagTemplateFieldArgsDict(TypedDict):
     The type of value this tag field can contain.
     Structure is documented below.
     """
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A description for this field.
     """
-    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    display_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The display name for this field.
     """
-    is_required: NotRequired[pulumi.Input[_builtins.bool]]
+    is_required: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this is a required field. Defaults to false.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
     """
-    order: NotRequired[pulumi.Input[_builtins.int]]
+    order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The order of this field with respect to other fields in this tag template.
     A higher value indicates a more important field. The value can be negative.
@@ -833,11 +833,11 @@ class TagTemplateFieldArgs:
     def __init__(__self__, *,
                  field_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input['TagTemplateFieldTypeArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] field_id: The identifier for this object. Format specified above.
         :param pulumi.Input['TagTemplateFieldTypeArgs'] type: The type of value this tag field can contain.
@@ -891,43 +891,43 @@ class TagTemplateFieldArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for this field.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for this field.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isRequired")
-    def is_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is a required field. Defaults to false.
         """
         return pulumi.get(self, "is_required")
 
     @is_required.setter
-    def is_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         The resource name of the tag template field in URL format. Example: projects/{project_id}/locations/{location}/tagTemplates/{tagTemplateId}/fields/{field}
@@ -935,12 +935,12 @@ class TagTemplateFieldArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The order of this field with respect to other fields in this tag template.
         A higher value indicates a more important field. The value can be negative.
@@ -949,18 +949,18 @@ class TagTemplateFieldArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order", value)
 
 
 class TagTemplateFieldTypeArgsDict(TypedDict):
-    enum_type: NotRequired[pulumi.Input['TagTemplateFieldTypeEnumTypeArgsDict']]
+    enum_type: NotRequired[pulumi.Input[Optional['TagTemplateFieldTypeEnumTypeArgs']]]
     """
     Represents an enum type.
     Exactly one of `primitive_type` or `enum_type` must be set
     Structure is documented below.
     """
-    primitive_type: NotRequired[pulumi.Input[_builtins.str]]
+    primitive_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Represents primitive types - string, bool etc.
     Exactly one of `primitive_type` or `enum_type` must be set
@@ -970,8 +970,8 @@ class TagTemplateFieldTypeArgsDict(TypedDict):
 @pulumi.input_type
 class TagTemplateFieldTypeArgs:
     def __init__(__self__, *,
-                 enum_type: Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArgs']] = None,
-                 primitive_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 enum_type: pulumi.Input[Optional['TagTemplateFieldTypeEnumTypeArgs']] = None,
+                 primitive_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['TagTemplateFieldTypeEnumTypeArgs'] enum_type: Represents an enum type.
                Exactly one of `primitive_type` or `enum_type` must be set
@@ -987,7 +987,7 @@ class TagTemplateFieldTypeArgs:
 
     @_builtins.property
     @pulumi.getter(name="enumType")
-    def enum_type(self) -> Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArgs']]:
+    def enum_type(self) -> pulumi.Input[Optional['TagTemplateFieldTypeEnumTypeArgs']]:
         """
         Represents an enum type.
         Exactly one of `primitive_type` or `enum_type` must be set
@@ -996,12 +996,12 @@ class TagTemplateFieldTypeArgs:
         return pulumi.get(self, "enum_type")
 
     @enum_type.setter
-    def enum_type(self, value: Optional[pulumi.Input['TagTemplateFieldTypeEnumTypeArgs']]):
+    def enum_type(self, value: pulumi.Input[Optional['TagTemplateFieldTypeEnumTypeArgs']]):
         pulumi.set(self, "enum_type", value)
 
     @_builtins.property
     @pulumi.getter(name="primitiveType")
-    def primitive_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primitive_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents primitive types - string, bool etc.
         Exactly one of `primitive_type` or `enum_type` must be set
@@ -1010,7 +1010,7 @@ class TagTemplateFieldTypeArgs:
         return pulumi.get(self, "primitive_type")
 
     @primitive_type.setter
-    def primitive_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primitive_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primitive_type", value)
 
 
@@ -1088,14 +1088,14 @@ class TagTemplateFieldTypeEnumTypeAllowedValueArgs:
 class TagTemplateIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TagTemplateIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1121,25 +1121,25 @@ class TagTemplateIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class TagTemplateIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TagTemplateIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1165,25 +1165,25 @@ class TagTemplateIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class TaxonomyIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TaxonomyIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1209,25 +1209,25 @@ class TaxonomyIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class TaxonomyIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class TaxonomyIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1253,11 +1253,11 @@ class TaxonomyIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

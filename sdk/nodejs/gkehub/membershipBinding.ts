@@ -238,66 +238,66 @@ export interface MembershipBindingState {
     /**
      * Time the MembershipBinding was created in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Time the MembershipBinding was deleted in UTC.
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Labels for this Membership binding.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the membership
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The client-provided identifier of the membership binding.
      */
-    membershipBindingId?: pulumi.Input<string>;
+    membershipBindingId?: pulumi.Input<string | undefined>;
     /**
      * Id of the membership
      */
-    membershipId?: pulumi.Input<string>;
+    membershipId?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the membershipbinding itself
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A Workspace resource name in the format
      * `projects/*&#47;locations/*&#47;scopes/*`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * State of the membership binding resource.
      * Structure is documented below.
      */
-    states?: pulumi.Input<pulumi.Input<inputs.gkehub.MembershipBindingState>[]>;
+    states?: pulumi.Input<pulumi.Input<inputs.gkehub.MembershipBindingState>[] | undefined>;
     /**
      * Google-generated UUID for this resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Time the MembershipBinding was updated in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -310,7 +310,7 @@ export interface MembershipBindingArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Location of the membership
      */
@@ -327,7 +327,7 @@ export interface MembershipBindingArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A Workspace resource name in the format
      * `projects/*&#47;locations/*&#47;scopes/*`.

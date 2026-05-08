@@ -301,11 +301,11 @@ export interface EnterpriseKeyState {
     /**
      * Settings for keys that can be used by Android apps.
      */
-    androidSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyAndroidSettings>;
+    androidSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyAndroidSettings | undefined>;
     /**
      * The timestamp corresponding to the creation of this Key.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Human-readable display name of this key. Modifiable by user.
      *
@@ -313,46 +313,46 @@ export interface EnterpriseKeyState {
      *
      * - - -
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Settings for keys that can be used by iOS apps.
      */
-    iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings>;
+    iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The resource id for the Key, which is the same as the Site Key itself.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Options for user acceptance testing.
      */
-    testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions>;
+    testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
     /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).
      */
-    wafSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWafSettings>;
+    wafSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWafSettings | undefined>;
     /**
      * Settings for keys that can be used by websites.
      */
-    webSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWebSettings>;
+    webSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWebSettings | undefined>;
 }
 
 /**
@@ -362,7 +362,7 @@ export interface EnterpriseKeyArgs {
     /**
      * Settings for keys that can be used by Android apps.
      */
-    androidSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyAndroidSettings>;
+    androidSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyAndroidSettings | undefined>;
     /**
      * Human-readable display name of this key. Modifiable by user.
      *
@@ -374,28 +374,28 @@ export interface EnterpriseKeyArgs {
     /**
      * Settings for keys that can be used by iOS apps.
      */
-    iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings>;
+    iosSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyIosSettings | undefined>;
     /**
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The project for the resource
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Options for user acceptance testing.
      */
-    testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions>;
+    testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
     /**
      * Settings specific to keys that can be used for WAF (Web Application Firewall).
      */
-    wafSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWafSettings>;
+    wafSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWafSettings | undefined>;
     /**
      * Settings for keys that can be used by websites.
      */
-    webSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWebSettings>;
+    webSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWebSettings | undefined>;
 }

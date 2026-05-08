@@ -178,21 +178,21 @@ export interface InterconnectGroupState {
      * resource.
      * Structure is documented below.
      */
-    configureds?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupConfigured>[]>;
+    configureds?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupConfigured>[] | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
-    creationTimestamp?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user's intent for this group. This is the only required field besides
      * the name that must be specified on group creation.
      * Structure is documented below.
      */
-    intent?: pulumi.Input<inputs.compute.InterconnectGroupIntent>;
+    intent?: pulumi.Input<inputs.compute.InterconnectGroupIntent | undefined>;
     /**
      * Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
      * strings. Users are encouraged, but not required, to use their preferred
@@ -201,7 +201,7 @@ export interface InterconnectGroupState {
      * The size of this map is limited by an "Interconnects per group" quota.
      * Structure is documented below.
      */
-    interconnects?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupInterconnect>[]>;
+    interconnects?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupInterconnect>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -209,18 +209,18 @@ export interface InterconnectGroupState {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An analysis of the physical layout of Interconnects in this
      * group. Every Interconnect in the group is shown once in this structure.
      * Structure is documented below.
      */
-    physicalStructures?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupPhysicalStructure>[]>;
+    physicalStructures?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupPhysicalStructure>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -230,7 +230,7 @@ export interface InterconnectGroupArgs {
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The user's intent for this group. This is the only required field besides
      * the name that must be specified on group creation.
@@ -245,7 +245,7 @@ export interface InterconnectGroupArgs {
      * The size of this map is limited by an "Interconnects per group" quota.
      * Structure is documented below.
      */
-    interconnects?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupInterconnect>[]>;
+    interconnects?: pulumi.Input<pulumi.Input<inputs.compute.InterconnectGroupInterconnect>[] | undefined>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be
      * 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -253,10 +253,10 @@ export interface InterconnectGroupArgs {
      * character must be a lowercase letter, and all following characters must be a dash,
      * lowercase letter, or digit, except the last character, which cannot be a dash.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

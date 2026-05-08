@@ -64,17 +64,17 @@ __all__ = [
 ]
 
 class WorkstationClusterConditionArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
@@ -83,9 +83,9 @@ class WorkstationClusterConditionArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationClusterConditionArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -103,7 +103,7 @@ class WorkstationClusterConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -111,12 +111,12 @@ class WorkstationClusterConditionArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -124,12 +124,12 @@ class WorkstationClusterConditionArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -137,7 +137,7 @@ class WorkstationClusterConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
@@ -174,19 +174,19 @@ class WorkstationClusterPrivateClusterConfigArgsDict(TypedDict):
     """
     Whether Workstations endpoint is private.
     """
-    allowed_projects: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allowed_projects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
     By default, the workstation cluster's project and the VPC host project (if different) are allowed.
     """
-    cluster_hostname: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Hostname for the workstation cluster.
     This field will be populated only when private endpoint is enabled.
     To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
     """
-    service_attachment_uri: NotRequired[pulumi.Input[_builtins.str]]
+    service_attachment_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Service attachment URI for the workstation cluster.
@@ -198,9 +198,9 @@ class WorkstationClusterPrivateClusterConfigArgsDict(TypedDict):
 class WorkstationClusterPrivateClusterConfigArgs:
     def __init__(__self__, *,
                  enable_private_endpoint: pulumi.Input[_builtins.bool],
-                 allowed_projects: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_attachment_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_attachment_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_private_endpoint: Whether Workstations endpoint is private.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_projects: Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
@@ -236,7 +236,7 @@ class WorkstationClusterPrivateClusterConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowedProjects")
-    def allowed_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_projects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
         By default, the workstation cluster's project and the VPC host project (if different) are allowed.
@@ -244,12 +244,12 @@ class WorkstationClusterPrivateClusterConfigArgs:
         return pulumi.get(self, "allowed_projects")
 
     @allowed_projects.setter
-    def allowed_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_projects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_projects", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterHostname")
-    def cluster_hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Hostname for the workstation cluster.
@@ -259,12 +259,12 @@ class WorkstationClusterPrivateClusterConfigArgs:
         return pulumi.get(self, "cluster_hostname")
 
     @cluster_hostname.setter
-    def cluster_hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAttachmentUri")
-    def service_attachment_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_attachment_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Service attachment URI for the workstation cluster.
@@ -274,16 +274,16 @@ class WorkstationClusterPrivateClusterConfigArgs:
         return pulumi.get(self, "service_attachment_uri")
 
     @service_attachment_uri.setter
-    def service_attachment_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_attachment_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_attachment_uri", value)
 
 
 class WorkstationConfigAllowedPortArgsDict(TypedDict):
-    first: NotRequired[pulumi.Input[_builtins.int]]
+    first: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
     """
-    last: NotRequired[pulumi.Input[_builtins.int]]
+    last: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
     """
@@ -291,8 +291,8 @@ class WorkstationConfigAllowedPortArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigAllowedPortArgs:
     def __init__(__self__, *,
-                 first: Optional[pulumi.Input[_builtins.int]] = None,
-                 last: Optional[pulumi.Input[_builtins.int]] = None):
+                 first: pulumi.Input[Optional[_builtins.int]] = None,
+                 last: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] first: Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
         :param pulumi.Input[_builtins.int] last: Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
@@ -304,41 +304,41 @@ class WorkstationConfigAllowedPortArgs:
 
     @_builtins.property
     @pulumi.getter
-    def first(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def first(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
         """
         return pulumi.get(self, "first")
 
     @first.setter
-    def first(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def first(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "first", value)
 
     @_builtins.property
     @pulumi.getter
-    def last(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
         """
         return pulumi.get(self, "last")
 
     @last.setter
-    def last(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last", value)
 
 
 class WorkstationConfigConditionArgsDict(TypedDict):
-    code: NotRequired[pulumi.Input[_builtins.int]]
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]]
     """
     (Output)
     A list of messages that carry the error details.
     """
-    message: NotRequired[pulumi.Input[_builtins.str]]
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
     Human readable message indicating details about the current status.
@@ -347,9 +347,9 @@ class WorkstationConfigConditionArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigConditionArgs:
     def __init__(__self__, *,
-                 code: Optional[pulumi.Input[_builtins.int]] = None,
-                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None):
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 details: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] code: (Output)
                The status code, which should be an enum value of google.rpc.Code.
@@ -367,7 +367,7 @@ class WorkstationConfigConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Output)
         The status code, which should be an enum value of google.rpc.Code.
@@ -375,12 +375,12 @@ class WorkstationConfigConditionArgs:
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter
-    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
+    def details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]:
         """
         (Output)
         A list of messages that carry the error details.
@@ -388,12 +388,12 @@ class WorkstationConfigConditionArgs:
         return pulumi.get(self, "details")
 
     @details.setter
-    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
+    def details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "details", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
         Human readable message indicating details about the current status.
@@ -401,33 +401,33 @@ class WorkstationConfigConditionArgs:
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
 
 class WorkstationConfigContainerArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Arguments passed to the entrypoint.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     If set, overrides the default ENTRYPOINT specified by the image.
     """
-    env: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    env: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Environment variables passed to the container.
     The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Docker image defining the container. This image must be accessible by the config's service account.
     """
-    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     If set, overrides the USER specified in the image with the given uid.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If set, overrides the default DIR specified by the image.
     """
@@ -435,12 +435,12 @@ class WorkstationConfigContainerArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigContainerArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 env: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 env: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Arguments passed to the entrypoint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: If set, overrides the default ENTRYPOINT specified by the image.
@@ -465,31 +465,31 @@ class WorkstationConfigContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments passed to the entrypoint.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If set, overrides the default ENTRYPOINT specified by the image.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def env(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def env(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Environment variables passed to the container.
         The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
@@ -497,43 +497,43 @@ class WorkstationConfigContainerArgs:
         return pulumi.get(self, "env")
 
     @env.setter
-    def env(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def env(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "env", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Docker image defining the container. This image must be accessible by the config's service account.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If set, overrides the USER specified in the image with the given uid.
         """
         return pulumi.get(self, "run_as_user")
 
     @run_as_user.setter
-    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_user", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If set, overrides the default DIR specified by the image.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
@@ -585,12 +585,12 @@ class WorkstationConfigEncryptionKeyArgs:
 
 
 class WorkstationConfigEphemeralDirectoryArgsDict(TypedDict):
-    gce_pd: NotRequired[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgsDict']]
+    gce_pd: NotRequired[pulumi.Input[Optional['WorkstationConfigEphemeralDirectoryGcePdArgs']]]
     """
     An EphemeralDirectory backed by a Compute Engine persistent disk.
     Structure is documented below.
     """
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Location of this directory in the running workstation.
     """
@@ -598,8 +598,8 @@ class WorkstationConfigEphemeralDirectoryArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigEphemeralDirectoryArgs:
     def __init__(__self__, *,
-                 gce_pd: Optional[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs']] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 gce_pd: pulumi.Input[Optional['WorkstationConfigEphemeralDirectoryGcePdArgs']] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs'] gce_pd: An EphemeralDirectory backed by a Compute Engine persistent disk.
                Structure is documented below.
@@ -612,7 +612,7 @@ class WorkstationConfigEphemeralDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcePd")
-    def gce_pd(self) -> Optional[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs']]:
+    def gce_pd(self) -> pulumi.Input[Optional['WorkstationConfigEphemeralDirectoryGcePdArgs']]:
         """
         An EphemeralDirectory backed by a Compute Engine persistent disk.
         Structure is documented below.
@@ -620,38 +620,38 @@ class WorkstationConfigEphemeralDirectoryArgs:
         return pulumi.get(self, "gce_pd")
 
     @gce_pd.setter
-    def gce_pd(self, value: Optional[pulumi.Input['WorkstationConfigEphemeralDirectoryGcePdArgs']]):
+    def gce_pd(self, value: pulumi.Input[Optional['WorkstationConfigEphemeralDirectoryGcePdArgs']]):
         pulumi.set(self, "gce_pd", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of this directory in the running workstation.
         """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
 
 class WorkstationConfigEphemeralDirectoryGcePdArgsDict(TypedDict):
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the disk to use. Defaults to `"pd-standard"`.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
     """
-    source_image: NotRequired[pulumi.Input[_builtins.str]]
+    source_image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the disk image to use as the source for the disk.
     Must be empty `sourceSnapshot` is set.
     Updating `sourceImage` will update content in the ephemeral directory after the workstation is restarted.
     """
-    source_snapshot: NotRequired[pulumi.Input[_builtins.str]]
+    source_snapshot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the snapshot to use as the source for the disk.
     Must be empty if `sourceImage` is set.
@@ -662,10 +662,10 @@ class WorkstationConfigEphemeralDirectoryGcePdArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigEphemeralDirectoryGcePdArgs:
     def __init__(__self__, *,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_snapshot: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk to use. Defaults to `"pd-standard"`.
         :param pulumi.Input[_builtins.bool] read_only: Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
@@ -688,31 +688,31 @@ class WorkstationConfigEphemeralDirectoryGcePdArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the disk to use. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceImage")
-    def source_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the disk image to use as the source for the disk.
         Must be empty `sourceSnapshot` is set.
@@ -721,12 +721,12 @@ class WorkstationConfigEphemeralDirectoryGcePdArgs:
         return pulumi.get(self, "source_image")
 
     @source_image.setter
-    def source_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_image", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshot")
-    def source_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the snapshot to use as the source for the disk.
         Must be empty if `sourceImage` is set.
@@ -736,12 +736,12 @@ class WorkstationConfigEphemeralDirectoryGcePdArgs:
         return pulumi.get(self, "source_snapshot")
 
     @source_snapshot.setter
-    def source_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot", value)
 
 
 class WorkstationConfigHostArgsDict(TypedDict):
-    gce_instance: NotRequired[pulumi.Input['WorkstationConfigHostGceInstanceArgsDict']]
+    gce_instance: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceArgs']]]
     """
     A runtime using a Compute Engine instance.
     Structure is documented below.
@@ -750,7 +750,7 @@ class WorkstationConfigHostArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigHostArgs:
     def __init__(__self__, *,
-                 gce_instance: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']] = None):
+                 gce_instance: pulumi.Input[Optional['WorkstationConfigHostGceInstanceArgs']] = None):
         """
         :param pulumi.Input['WorkstationConfigHostGceInstanceArgs'] gce_instance: A runtime using a Compute Engine instance.
                Structure is documented below.
@@ -760,7 +760,7 @@ class WorkstationConfigHostArgs:
 
     @_builtins.property
     @pulumi.getter(name="gceInstance")
-    def gce_instance(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']]:
+    def gce_instance(self) -> pulumi.Input[Optional['WorkstationConfigHostGceInstanceArgs']]:
         """
         A runtime using a Compute Engine instance.
         Structure is documented below.
@@ -768,69 +768,69 @@ class WorkstationConfigHostArgs:
         return pulumi.get(self, "gce_instance")
 
     @gce_instance.setter
-    def gce_instance(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceArgs']]):
+    def gce_instance(self, value: pulumi.Input[Optional['WorkstationConfigHostGceInstanceArgs']]):
         pulumi.set(self, "gce_instance", value)
 
 
 class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgsDict']]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]]
     """
     An accelerator card attached to the instance.
     Structure is documented below.
     """
-    boost_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgsDict']]]]
+    boost_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]]]
     """
     A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
     Structure is documented below.
     """
-    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size of the boot disk in GB.
     """
-    confidential_instance_config: NotRequired[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict']]
+    confidential_instance_config: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]]
     """
     A set of Compute Engine Confidential VM instance options.
     Structure is documented below.
     """
-    disable_public_ip_addresses: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_public_ip_addresses: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether instances have no public IP address.
     """
-    disable_ssh: NotRequired[pulumi.Input[_builtins.bool]]
+    disable_ssh: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable SSH access to the VM.
     """
-    enable_nested_virtualization: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_nested_virtualization: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
     See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of a Compute Engine machine type.
     """
-    pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    pool_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of instances to pool for faster workstation startup.
     """
-    service_account: NotRequired[pulumi.Input[_builtins.str]]
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
     """
-    service_account_scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    service_account_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
     """
-    shielded_instance_config: NotRequired[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict']]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]]
     """
     A set of Compute Engine Shielded instance options.
     Structure is documented below.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Network tags to add to the Compute Engine machines backing the Workstations.
     """
-    vm_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    vm_tags: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Resource manager tags to be bound to the VM instances backing the Workstations.
     Tag keys and values have the same definition as
@@ -842,20 +842,20 @@ class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceArgs:
     def __init__(__self__, *,
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]] = None,
-                 boost_configs: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]] = None,
-                 boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 confidential_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']] = None,
-                 disable_public_ip_addresses: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_ssh: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 shielded_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vm_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]] = None,
+                 boost_configs: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 confidential_instance_config: pulumi.Input[Optional['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']] = None,
+                 disable_public_ip_addresses: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_ssh: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 shielded_instance_config: pulumi.Input[Optional['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vm_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]] accelerators: An accelerator card attached to the instance.
                Structure is documented below.
@@ -912,7 +912,7 @@ class WorkstationConfigHostGceInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]:
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]:
         """
         An accelerator card attached to the instance.
         Structure is documented below.
@@ -920,12 +920,12 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]):
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="boostConfigs")
-    def boost_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]]:
+    def boost_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]]:
         """
         A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
         Structure is documented below.
@@ -933,24 +933,24 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "boost_configs")
 
     @boost_configs.setter
-    def boost_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]]):
+    def boost_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]]):
         pulumi.set(self, "boost_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the boot disk in GB.
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
     @boot_disk_size_gb.setter
-    def boot_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialInstanceConfig")
-    def confidential_instance_config(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]:
+    def confidential_instance_config(self) -> pulumi.Input[Optional['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]:
         """
         A set of Compute Engine Confidential VM instance options.
         Structure is documented below.
@@ -958,36 +958,36 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "confidential_instance_config")
 
     @confidential_instance_config.setter
-    def confidential_instance_config(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]):
+    def confidential_instance_config(self, value: pulumi.Input[Optional['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]):
         pulumi.set(self, "confidential_instance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="disablePublicIpAddresses")
-    def disable_public_ip_addresses(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_public_ip_addresses(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether instances have no public IP address.
         """
         return pulumi.get(self, "disable_public_ip_addresses")
 
     @disable_public_ip_addresses.setter
-    def disable_public_ip_addresses(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_public_ip_addresses(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_public_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSsh")
-    def disable_ssh(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_ssh(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable SSH access to the VM.
         """
         return pulumi.get(self, "disable_ssh")
 
     @disable_ssh.setter
-    def disable_ssh(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_ssh(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_ssh", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNestedVirtualization")
-    def enable_nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_nested_virtualization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
         See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
@@ -995,60 +995,60 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "enable_nested_virtualization")
 
     @enable_nested_virtualization.setter
-    def enable_nested_virtualization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_nested_virtualization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a Compute Engine machine type.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pool_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of instances to pool for faster workstation startup.
         """
         return pulumi.get(self, "pool_size")
 
     @pool_size.setter
-    def pool_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pool_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool_size", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountScopes")
-    def service_account_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_account_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
         """
         return pulumi.get(self, "service_account_scopes")
 
     @service_account_scopes.setter
-    def service_account_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_account_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_account_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="shieldedInstanceConfig")
-    def shielded_instance_config(self) -> Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]:
+    def shielded_instance_config(self) -> pulumi.Input[Optional['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]:
         """
         A set of Compute Engine Shielded instance options.
         Structure is documented below.
@@ -1056,24 +1056,24 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "shielded_instance_config")
 
     @shielded_instance_config.setter
-    def shielded_instance_config(self, value: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]):
+    def shielded_instance_config(self, value: pulumi.Input[Optional['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Network tags to add to the Compute Engine machines backing the Workstations.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vmTags")
-    def vm_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def vm_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Resource manager tags to be bound to the VM instances backing the Workstations.
         Tag keys and values have the same definition as
@@ -1084,7 +1084,7 @@ class WorkstationConfigHostGceInstanceArgs:
         return pulumi.get(self, "vm_tags")
 
     @vm_tags.setter
-    def vm_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def vm_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vm_tags", value)
 
 
@@ -1140,25 +1140,25 @@ class WorkstationConfigHostGceInstanceBoostConfigArgsDict(TypedDict):
     """
     The id to be used for the boost config.
     """
-    accelerators: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict']]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]]]
     """
     An accelerator card attached to the boost instance.
     Structure is documented below.
     """
-    boot_disk_size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
     """
-    enable_nested_virtualization: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_nested_virtualization: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
     See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
     """
-    pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    pool_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of instances to pool for faster workstation boosting.
     """
@@ -1167,11 +1167,11 @@ class WorkstationConfigHostGceInstanceBoostConfigArgsDict(TypedDict):
 class WorkstationConfigHostGceInstanceBoostConfigArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
-                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]] = None,
-                 boot_disk_size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_nested_virtualization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_size: Optional[pulumi.Input[_builtins.int]] = None):
+                 accelerators: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The id to be used for the boost config.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]] accelerators: An accelerator card attached to the boost instance.
@@ -1208,7 +1208,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]]:
+    def accelerators(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]]:
         """
         An accelerator card attached to the boost instance.
         Structure is documented below.
@@ -1216,24 +1216,24 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
         return pulumi.get(self, "accelerators")
 
     @accelerators.setter
-    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]]):
+    def accelerators(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
 
     @_builtins.property
     @pulumi.getter(name="bootDiskSizeGb")
-    def boot_disk_size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the boot disk in GB. The minimum boot disk size is `30` GB. Defaults to `50` GB.
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
     @boot_disk_size_gb.setter
-    def boot_disk_size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "boot_disk_size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNestedVirtualization")
-    def enable_nested_virtualization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_nested_virtualization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable nested virtualization on the Compute Engine VMs backing boosted Workstations.
         See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
@@ -1241,31 +1241,31 @@ class WorkstationConfigHostGceInstanceBoostConfigArgs:
         return pulumi.get(self, "enable_nested_virtualization")
 
     @enable_nested_virtualization.setter
-    def enable_nested_virtualization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_nested_virtualization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pool_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of instances to pool for faster workstation boosting.
         """
         return pulumi.get(self, "pool_size")
 
     @pool_size.setter
-    def pool_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pool_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool_size", value)
 
 
@@ -1317,7 +1317,7 @@ class WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs:
 
 
 class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict(TypedDict):
-    enable_confidential_compute: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_confidential_compute: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the instance has confidential compute enabled.
     """
@@ -1325,7 +1325,7 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict(TypedDi
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_confidential_compute: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_confidential_compute: Whether the instance has confidential compute enabled.
         """
@@ -1334,27 +1334,27 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_confidential_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance has confidential compute enabled.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
-    def enable_confidential_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_confidential_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_confidential_compute", value)
 
 
 class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict(TypedDict):
-    enable_integrity_monitoring: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the instance has integrity monitoring enabled.
     """
-    enable_secure_boot: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the instance has Secure Boot enabled.
     """
-    enable_vtpm: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_vtpm: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the instance has the vTPM enabled.
     """
@@ -1362,9 +1362,9 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
     def __init__(__self__, *,
-                 enable_integrity_monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_secure_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_vtpm: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_vtpm: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_integrity_monitoring: Whether the instance has integrity monitoring enabled.
         :param pulumi.Input[_builtins.bool] enable_secure_boot: Whether the instance has Secure Boot enabled.
@@ -1379,52 +1379,52 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableIntegrityMonitoring")
-    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance has integrity monitoring enabled.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
-    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_integrity_monitoring", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecureBoot")
-    def enable_secure_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance has Secure Boot enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
-    def enable_secure_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_secure_boot", value)
 
     @_builtins.property
     @pulumi.getter(name="enableVtpm")
-    def enable_vtpm(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_vtpm(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance has the vTPM enabled.
         """
         return pulumi.get(self, "enable_vtpm")
 
     @enable_vtpm.setter
-    def enable_vtpm(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_vtpm(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_vtpm", value)
 
 
 class WorkstationConfigIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkstationConfigIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1450,25 +1450,25 @@ class WorkstationConfigIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class WorkstationConfigIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkstationConfigIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1494,21 +1494,21 @@ class WorkstationConfigIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class WorkstationConfigPersistentDirectoryArgsDict(TypedDict):
-    gce_pd: NotRequired[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgsDict']]
+    gce_pd: NotRequired[pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGcePdArgs']]]
     """
     A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
     Structure is documented below.
     """
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Location of this directory in the running workstation.
     """
@@ -1516,8 +1516,8 @@ class WorkstationConfigPersistentDirectoryArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigPersistentDirectoryArgs:
     def __init__(__self__, *,
-                 gce_pd: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 gce_pd: pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGcePdArgs']] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs'] gce_pd: A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
                Structure is documented below.
@@ -1530,7 +1530,7 @@ class WorkstationConfigPersistentDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="gcePd")
-    def gce_pd(self) -> Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']]:
+    def gce_pd(self) -> pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGcePdArgs']]:
         """
         A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
         Structure is documented below.
@@ -1538,42 +1538,42 @@ class WorkstationConfigPersistentDirectoryArgs:
         return pulumi.get(self, "gce_pd")
 
     @gce_pd.setter
-    def gce_pd(self, value: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']]):
+    def gce_pd(self, value: pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGcePdArgs']]):
         pulumi.set(self, "gce_pd", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Location of this directory in the running workstation.
         """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
 
 class WorkstationConfigPersistentDirectoryGcePdArgsDict(TypedDict):
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the disk to use. Defaults to `"pd-standard"`.
     """
-    fs_type: NotRequired[pulumi.Input[_builtins.str]]
+    fs_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
     """
-    reclaim_policy: NotRequired[pulumi.Input[_builtins.str]]
+    reclaim_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
     Possible values are: `DELETE`, `RETAIN`.
     """
-    size_gb: NotRequired[pulumi.Input[_builtins.int]]
+    size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
     Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
     """
-    source_snapshot: NotRequired[pulumi.Input[_builtins.str]]
+    source_snapshot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the snapshot to use as the source for the disk.
     Must be empty if `sourceImage` is set.
@@ -1584,11 +1584,11 @@ class WorkstationConfigPersistentDirectoryGcePdArgsDict(TypedDict):
 @pulumi.input_type
 class WorkstationConfigPersistentDirectoryGcePdArgs:
     def __init__(__self__, *,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 fs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reclaim_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_gb: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_snapshot: Optional[pulumi.Input[_builtins.str]] = None):
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 fs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reclaim_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_snapshot: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_type: Type of the disk to use. Defaults to `"pd-standard"`.
         :param pulumi.Input[_builtins.str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
@@ -1614,31 +1614,31 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the disk to use. Defaults to `"pd-standard"`.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="fsType")
-    def fs_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fs_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
         """
         return pulumi.get(self, "fs_type")
 
     @fs_type.setter
-    def fs_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fs_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fs_type", value)
 
     @_builtins.property
     @pulumi.getter(name="reclaimPolicy")
-    def reclaim_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reclaim_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         Possible values are: `DELETE`, `RETAIN`.
@@ -1646,12 +1646,12 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
         return pulumi.get(self, "reclaim_policy")
 
     @reclaim_policy.setter
-    def reclaim_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reclaim_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reclaim_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeGb")
-    def size_gb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
         Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
@@ -1659,12 +1659,12 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
-    def size_gb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_gb", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSnapshot")
-    def source_snapshot(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the snapshot to use as the source for the disk.
         Must be empty if `sourceImage` is set.
@@ -1674,7 +1674,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
         return pulumi.get(self, "source_snapshot")
 
     @source_snapshot.setter
-    def source_snapshot(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_snapshot", value)
 
 
@@ -1728,14 +1728,14 @@ class WorkstationConfigReadinessCheckArgs:
 class WorkstationIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkstationIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1761,25 +1761,25 @@ class WorkstationIamBindingConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 class WorkstationIamMemberConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
     title: pulumi.Input[_builtins.str]
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class WorkstationIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -1805,11 +1805,11 @@ class WorkstationIamMemberConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 

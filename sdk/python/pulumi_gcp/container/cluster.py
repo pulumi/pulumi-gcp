@@ -21,91 +21,91 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
-                 allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
-                 authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
-                 autopilot_cluster_policy_config: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']] = None,
-                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
-                 cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
-                 cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
-                 confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
-                 control_plane_endpoints_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']] = None,
-                 cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
-                 database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
-                 datapath_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
-                 enable_autopilot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_fqdn_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_intranode_visibility: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
-                 enable_kubernetes_alpha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_l4_ilb_subsetting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_legacy_abac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_multi_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_shielded_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enterprise_config: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']] = None,
-                 fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
-                 gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
-                 gke_auto_upgrade_config: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']] = None,
-                 identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
-                 in_transit_encryption_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
-                 logging_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
-                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']] = None,
-                 managed_opentelemetry_config: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']] = None,
-                 master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
-                 master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
-                 mesh_certificates: Optional[pulumi.Input['ClusterMeshCertificatesArgs']] = None,
-                 min_master_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
-                 monitoring_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_performance_config: Optional[pulumi.Input['ClusterNetworkPerformanceConfigArgs']] = None,
-                 network_policy: Optional[pulumi.Input['ClusterNetworkPolicyArgs']] = None,
-                 networking_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
-                 node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
-                 node_pool_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']] = None,
-                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
-                 node_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
-                 pod_autoscaling: Optional[pulumi.Input['ClusterPodAutoscalingArgs']] = None,
-                 pod_security_policy_config: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']] = None,
-                 private_cluster_config: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protect_config: Optional[pulumi.Input['ClusterProtectConfigArgs']] = None,
-                 rbac_binding_config: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']] = None,
-                 release_channel: Optional[pulumi.Input['ClusterReleaseChannelArgs']] = None,
-                 remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
-                 secret_manager_config: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']] = None,
-                 secret_sync_config: Optional[pulumi.Input['ClusterSecretSyncConfigArgs']] = None,
-                 security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
-                 service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
-                 user_managed_keys_config: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']] = None,
-                 vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
-                 workload_alts_config: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']] = None,
-                 workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
+                 addons_config: pulumi.Input[Optional['ClusterAddonsConfigArgs']] = None,
+                 allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 anonymous_authentication_config: pulumi.Input[Optional['ClusterAnonymousAuthenticationConfigArgs']] = None,
+                 authenticator_groups_config: pulumi.Input[Optional['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 autopilot_cluster_policy_config: pulumi.Input[Optional['ClusterAutopilotClusterPolicyConfigArgs']] = None,
+                 autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['ClusterBinaryAuthorizationArgs']] = None,
+                 cluster_autoscaling: pulumi.Input[Optional['ClusterClusterAutoscalingArgs']] = None,
+                 cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_telemetry: pulumi.Input[Optional['ClusterClusterTelemetryArgs']] = None,
+                 confidential_nodes: pulumi.Input[Optional['ClusterConfidentialNodesArgs']] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigArgs']] = None,
+                 cost_management_config: pulumi.Input[Optional['ClusterCostManagementConfigArgs']] = None,
+                 database_encryption: pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']] = None,
+                 datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snat_status: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_config: pulumi.Input[Optional['ClusterDnsConfigArgs']] = None,
+                 enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_k8s_beta_apis: pulumi.Input[Optional['ClusterEnableK8sBetaApisArgs']] = None,
+                 enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_multi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enterprise_config: pulumi.Input[Optional['ClusterEnterpriseConfigArgs']] = None,
+                 fleet: pulumi.Input[Optional['ClusterFleetArgs']] = None,
+                 gateway_api_config: pulumi.Input[Optional['ClusterGatewayApiConfigArgs']] = None,
+                 gke_auto_upgrade_config: pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']] = None,
+                 identity_service_config: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']] = None,
+                 in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_allocation_policy: pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional['ClusterLoggingConfigArgs']] = None,
+                 logging_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']] = None,
+                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']] = None,
+                 managed_opentelemetry_config: pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']] = None,
+                 master_auth: pulumi.Input[Optional['ClusterMasterAuthArgs']] = None,
+                 master_authorized_networks_config: pulumi.Input[Optional['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
+                 mesh_certificates: pulumi.Input[Optional['ClusterMeshCertificatesArgs']] = None,
+                 min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_config: pulumi.Input[Optional['ClusterMonitoringConfigArgs']] = None,
+                 monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_performance_config: pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']] = None,
+                 network_policy: pulumi.Input[Optional['ClusterNetworkPolicyArgs']] = None,
+                 networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional['ClusterNodeConfigArgs']] = None,
+                 node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_pool_auto_config: pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']] = None,
+                 node_pool_defaults: pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
+                 node_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['ClusterNotificationConfigArgs']] = None,
+                 pod_autoscaling: pulumi.Input[Optional['ClusterPodAutoscalingArgs']] = None,
+                 pod_security_policy_config: pulumi.Input[Optional['ClusterPodSecurityPolicyConfigArgs']] = None,
+                 private_cluster_config: pulumi.Input[Optional['ClusterPrivateClusterConfigArgs']] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protect_config: pulumi.Input[Optional['ClusterProtectConfigArgs']] = None,
+                 rbac_binding_config: pulumi.Input[Optional['ClusterRbacBindingConfigArgs']] = None,
+                 release_channel: pulumi.Input[Optional['ClusterReleaseChannelArgs']] = None,
+                 remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
+                 secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
+                 secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
+                 security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
+                 service_external_ips_config: pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu_config: pulumi.Input[Optional['ClusterTpuConfigArgs']] = None,
+                 user_managed_keys_config: pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']] = None,
+                 vertical_pod_autoscaling: pulumi.Input[Optional['ClusterVerticalPodAutoscalingArgs']] = None,
+                 workload_alts_config: pulumi.Input[Optional['ClusterWorkloadAltsConfigArgs']] = None,
+                 workload_identity_config: pulumi.Input[Optional['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -524,7 +524,7 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="addonsConfig")
-    def addons_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigArgs']]:
+    def addons_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigArgs']]:
         """
         The configuration for addons supported by GKE.
         Structure is documented below.
@@ -532,12 +532,12 @@ class ClusterArgs:
         return pulumi.get(self, "addons_config")
 
     @addons_config.setter
-    def addons_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigArgs']]):
+    def addons_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigArgs']]):
         pulumi.set(self, "addons_config", value)
 
     @_builtins.property
     @pulumi.getter(name="allowNetAdmin")
-    def allow_net_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_net_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NET_ADMIN for the cluster. Defaults to
         `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
@@ -546,24 +546,24 @@ class ClusterArgs:
         return pulumi.get(self, "allow_net_admin")
 
     @allow_net_admin.setter
-    def allow_net_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_net_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_net_admin", value)
 
     @_builtins.property
     @pulumi.getter(name="anonymousAuthenticationConfig")
-    def anonymous_authentication_config(self) -> Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]:
+    def anonymous_authentication_config(self) -> pulumi.Input[Optional['ClusterAnonymousAuthenticationConfigArgs']]:
         """
         Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
         """
         return pulumi.get(self, "anonymous_authentication_config")
 
     @anonymous_authentication_config.setter
-    def anonymous_authentication_config(self, value: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]):
+    def anonymous_authentication_config(self, value: pulumi.Input[Optional['ClusterAnonymousAuthenticationConfigArgs']]):
         pulumi.set(self, "anonymous_authentication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="authenticatorGroupsConfig")
-    def authenticator_groups_config(self) -> Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]:
+    def authenticator_groups_config(self) -> pulumi.Input[Optional['ClusterAuthenticatorGroupsConfigArgs']]:
         """
         Configuration for the
         [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -572,24 +572,24 @@ class ClusterArgs:
         return pulumi.get(self, "authenticator_groups_config")
 
     @authenticator_groups_config.setter
-    def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
+    def authenticator_groups_config(self, value: pulumi.Input[Optional['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autopilotClusterPolicyConfig")
-    def autopilot_cluster_policy_config(self) -> Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]:
+    def autopilot_cluster_policy_config(self) -> pulumi.Input[Optional['ClusterAutopilotClusterPolicyConfigArgs']]:
         """
         Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         """
         return pulumi.get(self, "autopilot_cluster_policy_config")
 
     @autopilot_cluster_policy_config.setter
-    def autopilot_cluster_policy_config(self, value: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]):
+    def autopilot_cluster_policy_config(self, value: pulumi.Input[Optional['ClusterAutopilotClusterPolicyConfigArgs']]):
         pulumi.set(self, "autopilot_cluster_policy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autopilotPrivilegedAdmissions")
-    def autopilot_privileged_admissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def autopilot_privileged_admissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The customer
         allowlist Cloud Storage paths for the cluster. These paths are used with the
@@ -601,12 +601,12 @@ class ClusterArgs:
         return pulumi.get(self, "autopilot_privileged_admissions")
 
     @autopilot_privileged_admissions.setter
-    def autopilot_privileged_admissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def autopilot_privileged_admissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "autopilot_privileged_admissions", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['ClusterBinaryAuthorizationArgs']]:
         """
         Configuration options for the Binary
         Authorization feature. Structure is documented below.
@@ -614,12 +614,12 @@ class ClusterArgs:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['ClusterBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAutoscaling")
-    def cluster_autoscaling(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingArgs']]:
+    def cluster_autoscaling(self) -> pulumi.Input[Optional['ClusterClusterAutoscalingArgs']]:
         """
         Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         automatically adjust the size of the cluster and create/delete node pools based
@@ -630,12 +630,12 @@ class ClusterArgs:
         return pulumi.get(self, "cluster_autoscaling")
 
     @cluster_autoscaling.setter
-    def cluster_autoscaling(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']]):
+    def cluster_autoscaling(self, value: pulumi.Input[Optional['ClusterClusterAutoscalingArgs']]):
         pulumi.set(self, "cluster_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterIpv4Cidr")
-    def cluster_ipv4_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_ipv4_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address range of the Kubernetes pods
         in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
@@ -645,12 +645,12 @@ class ClusterArgs:
         return pulumi.get(self, "cluster_ipv4_cidr")
 
     @cluster_ipv4_cidr.setter
-    def cluster_ipv4_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_ipv4_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_ipv4_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTelemetry")
-    def cluster_telemetry(self) -> Optional[pulumi.Input['ClusterClusterTelemetryArgs']]:
+    def cluster_telemetry(self) -> pulumi.Input[Optional['ClusterClusterTelemetryArgs']]:
         """
         ) Configuration for
         [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
@@ -659,24 +659,24 @@ class ClusterArgs:
         return pulumi.get(self, "cluster_telemetry")
 
     @cluster_telemetry.setter
-    def cluster_telemetry(self, value: Optional[pulumi.Input['ClusterClusterTelemetryArgs']]):
+    def cluster_telemetry(self, value: pulumi.Input[Optional['ClusterClusterTelemetryArgs']]):
         pulumi.set(self, "cluster_telemetry", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNodes")
-    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterConfidentialNodesArgs']]:
+    def confidential_nodes(self) -> pulumi.Input[Optional['ClusterConfidentialNodesArgs']]:
         """
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
     @confidential_nodes.setter
-    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterConfidentialNodesArgs']]):
+    def confidential_nodes(self, value: pulumi.Input[Optional['ClusterConfidentialNodesArgs']]):
         pulumi.set(self, "confidential_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneEndpointsConfig")
-    def control_plane_endpoints_config(self) -> Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]:
+    def control_plane_endpoints_config(self) -> pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigArgs']]:
         """
         Configuration for all of the cluster's control plane endpoints.
         Structure is documented below.
@@ -684,12 +684,12 @@ class ClusterArgs:
         return pulumi.get(self, "control_plane_endpoints_config")
 
     @control_plane_endpoints_config.setter
-    def control_plane_endpoints_config(self, value: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]):
+    def control_plane_endpoints_config(self, value: pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigArgs']]):
         pulumi.set(self, "control_plane_endpoints_config", value)
 
     @_builtins.property
     @pulumi.getter(name="costManagementConfig")
-    def cost_management_config(self) -> Optional[pulumi.Input['ClusterCostManagementConfigArgs']]:
+    def cost_management_config(self) -> pulumi.Input[Optional['ClusterCostManagementConfigArgs']]:
         """
         Configuration for the
         [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
@@ -698,36 +698,36 @@ class ClusterArgs:
         return pulumi.get(self, "cost_management_config")
 
     @cost_management_config.setter
-    def cost_management_config(self, value: Optional[pulumi.Input['ClusterCostManagementConfigArgs']]):
+    def cost_management_config(self, value: pulumi.Input[Optional['ClusterCostManagementConfigArgs']]):
         pulumi.set(self, "cost_management_config", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseEncryption")
-    def database_encryption(self) -> Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']]:
+    def database_encryption(self) -> pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "database_encryption")
 
     @database_encryption.setter
-    def database_encryption(self, value: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']]):
+    def database_encryption(self, value: pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']]):
         pulumi.set(self, "database_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="datapathProvider")
-    def datapath_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datapath_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         """
         return pulumi.get(self, "datapath_provider")
 
     @datapath_provider.setter
-    def datapath_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datapath_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datapath_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultMaxPodsPerNode")
-    def default_max_pods_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_max_pods_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default maximum number of pods
         per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -737,24 +737,24 @@ class ClusterArgs:
         return pulumi.get(self, "default_max_pods_per_node")
 
     @default_max_pods_per_node.setter
-    def default_max_pods_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_max_pods_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_max_pods_per_node", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSnatStatus")
-    def default_snat_status(self) -> Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']]:
+    def default_snat_status(self) -> pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']]:
         """
         [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         """
         return pulumi.get(self, "default_snat_status")
 
     @default_snat_status.setter
-    def default_snat_status(self, value: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']]):
+    def default_snat_status(self, value: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']]):
         pulumi.set(self, "default_snat_status", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from
         destroying the cluster.  Deleting this cluster via `terraform destroy` or
@@ -764,48 +764,48 @@ class ClusterArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableL4LbFirewallReconciliation")
-    def disable_l4_lb_firewall_reconciliation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_l4_lb_firewall_reconciliation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable L4 load balancer VPC firewalls to enable firewall policies.
         """
         return pulumi.get(self, "disable_l4_lb_firewall_reconciliation")
 
     @disable_l4_lb_firewall_reconciliation.setter
-    def disable_l4_lb_firewall_reconciliation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_l4_lb_firewall_reconciliation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_l4_lb_firewall_reconciliation", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsConfig")
-    def dns_config(self) -> Optional[pulumi.Input['ClusterDnsConfigArgs']]:
+    def dns_config(self) -> pulumi.Input[Optional['ClusterDnsConfigArgs']]:
         """
         Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         """
         return pulumi.get(self, "dns_config")
 
     @dns_config.setter
-    def dns_config(self, value: Optional[pulumi.Input['ClusterDnsConfigArgs']]):
+    def dns_config(self, value: pulumi.Input[Optional['ClusterDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutopilot")
-    def enable_autopilot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_autopilot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Autopilot for this cluster. Defaults to `false`.
         Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -815,48 +815,48 @@ class ClusterArgs:
         return pulumi.get(self, "enable_autopilot")
 
     @enable_autopilot.setter
-    def enable_autopilot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_autopilot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_autopilot", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
-    def enable_cilium_clusterwide_network_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cilium_clusterwide_network_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         """
         return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
 
     @enable_cilium_clusterwide_network_policy.setter
-    def enable_cilium_clusterwide_network_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cilium_clusterwide_network_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cilium_clusterwide_network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
-    def enable_fqdn_network_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_fqdn_network_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         """
         return pulumi.get(self, "enable_fqdn_network_policy")
 
     @enable_fqdn_network_policy.setter
-    def enable_fqdn_network_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_fqdn_network_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_fqdn_network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIntranodeVisibility")
-    def enable_intranode_visibility(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_intranode_visibility(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         """
         return pulumi.get(self, "enable_intranode_visibility")
 
     @enable_intranode_visibility.setter
-    def enable_intranode_visibility(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_intranode_visibility(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_intranode_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="enableK8sBetaApis")
-    def enable_k8s_beta_apis(self) -> Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]:
+    def enable_k8s_beta_apis(self) -> pulumi.Input[Optional['ClusterEnableK8sBetaApisArgs']]:
         """
         Configuration for Kubernetes Beta APIs.
         Structure is documented below.
@@ -864,12 +864,12 @@ class ClusterArgs:
         return pulumi.get(self, "enable_k8s_beta_apis")
 
     @enable_k8s_beta_apis.setter
-    def enable_k8s_beta_apis(self, value: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]):
+    def enable_k8s_beta_apis(self, value: pulumi.Input[Optional['ClusterEnableK8sBetaApisArgs']]):
         pulumi.set(self, "enable_k8s_beta_apis", value)
 
     @_builtins.property
     @pulumi.getter(name="enableKubernetesAlpha")
-    def enable_kubernetes_alpha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_kubernetes_alpha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Kubernetes Alpha features for
         this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -878,24 +878,24 @@ class ClusterArgs:
         return pulumi.get(self, "enable_kubernetes_alpha")
 
     @enable_kubernetes_alpha.setter
-    def enable_kubernetes_alpha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_kubernetes_alpha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_kubernetes_alpha", value)
 
     @_builtins.property
     @pulumi.getter(name="enableL4IlbSubsetting")
-    def enable_l4_ilb_subsetting(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_l4_ilb_subsetting(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether L4ILB Subsetting is enabled for this cluster.
         """
         return pulumi.get(self, "enable_l4_ilb_subsetting")
 
     @enable_l4_ilb_subsetting.setter
-    def enable_l4_ilb_subsetting(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_l4_ilb_subsetting(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_l4_ilb_subsetting", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLegacyAbac")
-    def enable_legacy_abac(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_legacy_abac(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the ABAC authorizer is enabled for this cluster.
         When enabled, identities in the system, including service accounts, nodes, and controllers,
@@ -905,36 +905,36 @@ class ClusterArgs:
         return pulumi.get(self, "enable_legacy_abac")
 
     @enable_legacy_abac.setter
-    def enable_legacy_abac(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_legacy_abac(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_legacy_abac", value)
 
     @_builtins.property
     @pulumi.getter(name="enableMultiNetworking")
-    def enable_multi_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_multi_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")
 
     @enable_multi_networking.setter
-    def enable_multi_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_multi_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_multi_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="enableShieldedNodes")
-    def enable_shielded_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_shielded_nodes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         """
         return pulumi.get(self, "enable_shielded_nodes")
 
     @enable_shielded_nodes.setter
-    def enable_shielded_nodes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_shielded_nodes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_shielded_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTpu")
-    def enable_tpu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_tpu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Cloud TPU resources in this cluster.
         See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -942,49 +942,49 @@ class ClusterArgs:
         return pulumi.get(self, "enable_tpu")
 
     @enable_tpu.setter
-    def enable_tpu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_tpu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_tpu", value)
 
     @_builtins.property
     @pulumi.getter(name="enterpriseConfig")
     @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
-    def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
+    def enterprise_config(self) -> pulumi.Input[Optional['ClusterEnterpriseConfigArgs']]:
         """
         (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         return pulumi.get(self, "enterprise_config")
 
     @enterprise_config.setter
-    def enterprise_config(self, value: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]):
+    def enterprise_config(self, value: pulumi.Input[Optional['ClusterEnterpriseConfigArgs']]):
         pulumi.set(self, "enterprise_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def fleet(self) -> Optional[pulumi.Input['ClusterFleetArgs']]:
+    def fleet(self) -> pulumi.Input[Optional['ClusterFleetArgs']]:
         """
         Fleet configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: Optional[pulumi.Input['ClusterFleetArgs']]):
+    def fleet(self, value: pulumi.Input[Optional['ClusterFleetArgs']]):
         pulumi.set(self, "fleet", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayApiConfig")
-    def gateway_api_config(self) -> Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]:
+    def gateway_api_config(self) -> pulumi.Input[Optional['ClusterGatewayApiConfigArgs']]:
         """
         Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         """
         return pulumi.get(self, "gateway_api_config")
 
     @gateway_api_config.setter
-    def gateway_api_config(self, value: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]):
+    def gateway_api_config(self, value: pulumi.Input[Optional['ClusterGatewayApiConfigArgs']]):
         pulumi.set(self, "gateway_api_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeAutoUpgradeConfig")
-    def gke_auto_upgrade_config(self) -> Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]:
+    def gke_auto_upgrade_config(self) -> pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']]:
         """
         Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
         Structure is documented below.
@@ -992,36 +992,36 @@ class ClusterArgs:
         return pulumi.get(self, "gke_auto_upgrade_config")
 
     @gke_auto_upgrade_config.setter
-    def gke_auto_upgrade_config(self, value: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]):
+    def gke_auto_upgrade_config(self, value: pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']]):
         pulumi.set(self, "gke_auto_upgrade_config", value)
 
     @_builtins.property
     @pulumi.getter(name="identityServiceConfig")
-    def identity_service_config(self) -> Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']]:
+    def identity_service_config(self) -> pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']]:
         """
         . Structure is documented below.
         """
         return pulumi.get(self, "identity_service_config")
 
     @identity_service_config.setter
-    def identity_service_config(self, value: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']]):
+    def identity_service_config(self, value: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']]):
         pulumi.set(self, "identity_service_config", value)
 
     @_builtins.property
     @pulumi.getter(name="inTransitEncryptionConfig")
-    def in_transit_encryption_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def in_transit_encryption_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         """
         return pulumi.get(self, "in_transit_encryption_config")
 
     @in_transit_encryption_config.setter
-    def in_transit_encryption_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def in_transit_encryption_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "in_transit_encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
-    def initial_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -1033,12 +1033,12 @@ class ClusterArgs:
         return pulumi.get(self, "initial_node_count")
 
     @initial_node_count.setter
-    def initial_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllocationPolicy")
-    def ip_allocation_policy(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']]:
+    def ip_allocation_policy(self) -> pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']]:
         """
         Configuration of cluster IP allocation for
         VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
@@ -1047,12 +1047,12 @@ class ClusterArgs:
         return pulumi.get(self, "ip_allocation_policy")
 
     @ip_allocation_policy.setter
-    def ip_allocation_policy(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']]):
+    def ip_allocation_policy(self, value: pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']]):
         pulumi.set(self, "ip_allocation_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location (region or zone) in which the cluster
         master will be created, as well as the default node location. If you specify a
@@ -1064,12 +1064,12 @@ class ClusterArgs:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['ClusterLoggingConfigArgs']]:
+    def logging_config(self) -> pulumi.Input[Optional['ClusterLoggingConfigArgs']]:
         """
         Logging configuration for the cluster.
         Structure is documented below.
@@ -1077,12 +1077,12 @@ class ClusterArgs:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['ClusterLoggingConfigArgs']]):
+    def logging_config(self, value: pulumi.Input[Optional['ClusterLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingService")
-    def logging_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logging_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logging service that the cluster should
         write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
@@ -1091,12 +1091,12 @@ class ClusterArgs:
         return pulumi.get(self, "logging_service")
 
     @logging_service.setter
-    def logging_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logging_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logging_service", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]:
         """
         The maintenance policy to use for the cluster. Structure is
         documented below.
@@ -1104,36 +1104,36 @@ class ClusterArgs:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
-    def managed_machine_learning_diagnostics_config(self) -> Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
+    def managed_machine_learning_diagnostics_config(self) -> pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
         """
         ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_machine_learning_diagnostics_config")
 
     @managed_machine_learning_diagnostics_config.setter
-    def managed_machine_learning_diagnostics_config(self, value: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]):
+    def managed_machine_learning_diagnostics_config(self, value: pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']]):
         pulumi.set(self, "managed_machine_learning_diagnostics_config", value)
 
     @_builtins.property
     @pulumi.getter(name="managedOpentelemetryConfig")
-    def managed_opentelemetry_config(self) -> Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]:
+    def managed_opentelemetry_config(self) -> pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]:
         """
         ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
     @managed_opentelemetry_config.setter
-    def managed_opentelemetry_config(self, value: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]):
+    def managed_opentelemetry_config(self, value: pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]):
         pulumi.set(self, "managed_opentelemetry_config", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAuth")
-    def master_auth(self) -> Optional[pulumi.Input['ClusterMasterAuthArgs']]:
+    def master_auth(self) -> pulumi.Input[Optional['ClusterMasterAuthArgs']]:
         """
         The authentication information for accessing the
         Kubernetes master. Some values in this block are only returned by the API if
@@ -1145,12 +1145,12 @@ class ClusterArgs:
         return pulumi.get(self, "master_auth")
 
     @master_auth.setter
-    def master_auth(self, value: Optional[pulumi.Input['ClusterMasterAuthArgs']]):
+    def master_auth(self, value: pulumi.Input[Optional['ClusterMasterAuthArgs']]):
         pulumi.set(self, "master_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAuthorizedNetworksConfig")
-    def master_authorized_networks_config(self) -> Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']]:
+    def master_authorized_networks_config(self) -> pulumi.Input[Optional['ClusterMasterAuthorizedNetworksConfigArgs']]:
         """
         The desired
         configuration options for master authorized networks. Omit the
@@ -1161,24 +1161,24 @@ class ClusterArgs:
         return pulumi.get(self, "master_authorized_networks_config")
 
     @master_authorized_networks_config.setter
-    def master_authorized_networks_config(self, value: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']]):
+    def master_authorized_networks_config(self, value: pulumi.Input[Optional['ClusterMasterAuthorizedNetworksConfigArgs']]):
         pulumi.set(self, "master_authorized_networks_config", value)
 
     @_builtins.property
     @pulumi.getter(name="meshCertificates")
-    def mesh_certificates(self) -> Optional[pulumi.Input['ClusterMeshCertificatesArgs']]:
+    def mesh_certificates(self) -> pulumi.Input[Optional['ClusterMeshCertificatesArgs']]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "mesh_certificates")
 
     @mesh_certificates.setter
-    def mesh_certificates(self, value: Optional[pulumi.Input['ClusterMeshCertificatesArgs']]):
+    def mesh_certificates(self, value: pulumi.Input[Optional['ClusterMeshCertificatesArgs']]):
         pulumi.set(self, "mesh_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="minMasterVersion")
-    def min_master_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_master_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum version of the master. GKE
         will auto-update the master to new versions, so this does not guarantee the
@@ -1197,12 +1197,12 @@ class ClusterArgs:
         return pulumi.get(self, "min_master_version")
 
     @min_master_version.setter
-    def min_master_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_master_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_master_version", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['ClusterMonitoringConfigArgs']]:
+    def monitoring_config(self) -> pulumi.Input[Optional['ClusterMonitoringConfigArgs']]:
         """
         Monitoring configuration for the cluster.
         Structure is documented below.
@@ -1210,12 +1210,12 @@ class ClusterArgs:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['ClusterMonitoringConfigArgs']]):
+    def monitoring_config(self, value: pulumi.Input[Optional['ClusterMonitoringConfigArgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringService")
-    def monitoring_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitoring_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The monitoring service that the cluster
         should write metrics to.
@@ -1228,12 +1228,12 @@ class ClusterArgs:
         return pulumi.get(self, "monitoring_service")
 
     @monitoring_service.setter
-    def monitoring_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitoring_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitoring_service", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster, unique within the project and
         location.
@@ -1243,12 +1243,12 @@ class ClusterArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or self_link of the Google Compute Engine
         network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -1257,24 +1257,24 @@ class ClusterArgs:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPerformanceConfig")
-    def network_performance_config(self) -> Optional[pulumi.Input['ClusterNetworkPerformanceConfigArgs']]:
+    def network_performance_config(self) -> pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']]:
         """
         Network bandwidth tier configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
     @network_performance_config.setter
-    def network_performance_config(self, value: Optional[pulumi.Input['ClusterNetworkPerformanceConfigArgs']]):
+    def network_performance_config(self, value: pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']]):
         pulumi.set(self, "network_performance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPolicy")
-    def network_policy(self) -> Optional[pulumi.Input['ClusterNetworkPolicyArgs']]:
+    def network_policy(self) -> pulumi.Input[Optional['ClusterNetworkPolicyArgs']]:
         """
         Configuration options for the
         [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -1283,12 +1283,12 @@ class ClusterArgs:
         return pulumi.get(self, "network_policy")
 
     @network_policy.setter
-    def network_policy(self, value: Optional[pulumi.Input['ClusterNetworkPolicyArgs']]):
+    def network_policy(self, value: pulumi.Input[Optional['ClusterNetworkPolicyArgs']]):
         pulumi.set(self, "network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="networkingMode")
-    def networking_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networking_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
@@ -1296,12 +1296,12 @@ class ClusterArgs:
         return pulumi.get(self, "networking_mode")
 
     @networking_mode.setter
-    def networking_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networking_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networking_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigArgs']]:
+    def node_config(self) -> pulumi.Input[Optional['ClusterNodeConfigArgs']]:
         """
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
@@ -1312,12 +1312,12 @@ class ClusterArgs:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['ClusterNodeConfigArgs']]):
+    def node_config(self, value: pulumi.Input[Optional['ClusterNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeLocations")
-    def node_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of zones in which the cluster's nodes
         are located. Nodes must be in the region of their regional cluster or in the
@@ -1334,12 +1334,12 @@ class ClusterArgs:
         return pulumi.get(self, "node_locations")
 
     @node_locations.setter
-    def node_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolAutoConfig")
-    def node_pool_auto_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]:
+    def node_pool_auto_config(self) -> pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']]:
         """
         Node pool configs that apply to auto-provisioned node pools in
         [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
@@ -1348,24 +1348,24 @@ class ClusterArgs:
         return pulumi.get(self, "node_pool_auto_config")
 
     @node_pool_auto_config.setter
-    def node_pool_auto_config(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]):
+    def node_pool_auto_config(self, value: pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']]):
         pulumi.set(self, "node_pool_auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolDefaults")
-    def node_pool_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]:
+    def node_pool_defaults(self) -> pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']]:
         """
         Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         """
         return pulumi.get(self, "node_pool_defaults")
 
     @node_pool_defaults.setter
-    def node_pool_defaults(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]):
+    def node_pool_defaults(self, value: pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']]):
         pulumi.set(self, "node_pool_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePools")
-    def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
+    def node_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
         List of node pools associated with this cluster.
         See container.NodePool for schema.
@@ -1377,12 +1377,12 @@ class ClusterArgs:
         return pulumi.get(self, "node_pools")
 
     @node_pools.setter
-    def node_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]):
+    def node_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]):
         pulumi.set(self, "node_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeVersion")
-    def node_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes version on the nodes. Must either be unset
         or set to the same value as `min_master_version` on create. Defaults to the default
@@ -1396,24 +1396,24 @@ class ClusterArgs:
         return pulumi.get(self, "node_version")
 
     @node_version.setter
-    def node_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_version", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['ClusterNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['ClusterNotificationConfigArgs']]:
         """
         Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         """
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['ClusterNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['ClusterNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="podAutoscaling")
-    def pod_autoscaling(self) -> Optional[pulumi.Input['ClusterPodAutoscalingArgs']]:
+    def pod_autoscaling(self) -> pulumi.Input[Optional['ClusterPodAutoscalingArgs']]:
         """
         Configuration for the
         Structure is documented below.
@@ -1421,12 +1421,12 @@ class ClusterArgs:
         return pulumi.get(self, "pod_autoscaling")
 
     @pod_autoscaling.setter
-    def pod_autoscaling(self, value: Optional[pulumi.Input['ClusterPodAutoscalingArgs']]):
+    def pod_autoscaling(self, value: pulumi.Input[Optional['ClusterPodAutoscalingArgs']]):
         pulumi.set(self, "pod_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="podSecurityPolicyConfig")
-    def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
+    def pod_security_policy_config(self) -> pulumi.Input[Optional['ClusterPodSecurityPolicyConfigArgs']]:
         """
         ) Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -1435,12 +1435,12 @@ class ClusterArgs:
         return pulumi.get(self, "pod_security_policy_config")
 
     @pod_security_policy_config.setter
-    def pod_security_policy_config(self, value: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]):
+    def pod_security_policy_config(self, value: pulumi.Input[Optional['ClusterPodSecurityPolicyConfigArgs']]):
         pulumi.set(self, "pod_security_policy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateClusterConfig")
-    def private_cluster_config(self) -> Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']]:
+    def private_cluster_config(self) -> pulumi.Input[Optional['ClusterPrivateClusterConfigArgs']]:
         """
         Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
         clusters with private nodes. Structure is documented below.
@@ -1448,24 +1448,24 @@ class ClusterArgs:
         return pulumi.get(self, "private_cluster_config")
 
     @private_cluster_config.setter
-    def private_cluster_config(self, value: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']]):
+    def private_cluster_config(self, value: pulumi.Input[Optional['ClusterPrivateClusterConfigArgs']]):
         pulumi.set(self, "private_cluster_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ipv6_google_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ipv6_google_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -1473,12 +1473,12 @@ class ClusterArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="protectConfig")
-    def protect_config(self) -> Optional[pulumi.Input['ClusterProtectConfigArgs']]:
+    def protect_config(self) -> pulumi.Input[Optional['ClusterProtectConfigArgs']]:
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
@@ -1486,12 +1486,12 @@ class ClusterArgs:
         return pulumi.get(self, "protect_config")
 
     @protect_config.setter
-    def protect_config(self, value: Optional[pulumi.Input['ClusterProtectConfigArgs']]):
+    def protect_config(self, value: pulumi.Input[Optional['ClusterProtectConfigArgs']]):
         pulumi.set(self, "protect_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rbacBindingConfig")
-    def rbac_binding_config(self) -> Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]:
+    def rbac_binding_config(self) -> pulumi.Input[Optional['ClusterRbacBindingConfigArgs']]:
         """
         RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
 
@@ -1500,12 +1500,12 @@ class ClusterArgs:
         return pulumi.get(self, "rbac_binding_config")
 
     @rbac_binding_config.setter
-    def rbac_binding_config(self, value: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]):
+    def rbac_binding_config(self, value: pulumi.Input[Optional['ClusterRbacBindingConfigArgs']]):
         pulumi.set(self, "rbac_binding_config", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseChannel")
-    def release_channel(self) -> Optional[pulumi.Input['ClusterReleaseChannelArgs']]:
+    def release_channel(self) -> pulumi.Input[Optional['ClusterReleaseChannelArgs']]:
         """
         Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -1520,12 +1520,12 @@ class ClusterArgs:
         return pulumi.get(self, "release_channel")
 
     @release_channel.setter
-    def release_channel(self, value: Optional[pulumi.Input['ClusterReleaseChannelArgs']]):
+    def release_channel(self, value: pulumi.Input[Optional['ClusterReleaseChannelArgs']]):
         pulumi.set(self, "release_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="removeDefaultNodePool")
-    def remove_default_node_pool(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_default_node_pool(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, deletes the default node
         pool upon cluster creation. If you're using `container.NodePool`
@@ -1535,12 +1535,12 @@ class ClusterArgs:
         return pulumi.get(self, "remove_default_node_pool")
 
     @remove_default_node_pool.setter
-    def remove_default_node_pool(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_default_node_pool(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_default_node_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceLabels")
-    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 
@@ -1550,12 +1550,12 @@ class ClusterArgs:
         return pulumi.get(self, "resource_labels")
 
     @resource_labels.setter
-    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceUsageExportConfig")
-    def resource_usage_export_config(self) -> Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']]:
+    def resource_usage_export_config(self) -> pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']]:
         """
         Configuration for the
         [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -1564,12 +1564,12 @@ class ClusterArgs:
         return pulumi.get(self, "resource_usage_export_config")
 
     @resource_usage_export_config.setter
-    def resource_usage_export_config(self, value: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']]):
+    def resource_usage_export_config(self, value: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']]):
         pulumi.set(self, "resource_usage_export_config", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
-    def secret_manager_config(self) -> Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]:
+    def secret_manager_config(self) -> pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]:
         """
         Configuration for the
         [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
@@ -1578,12 +1578,12 @@ class ClusterArgs:
         return pulumi.get(self, "secret_manager_config")
 
     @secret_manager_config.setter
-    def secret_manager_config(self, value: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]):
+    def secret_manager_config(self, value: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]):
         pulumi.set(self, "secret_manager_config", value)
 
     @_builtins.property
     @pulumi.getter(name="secretSyncConfig")
-    def secret_sync_config(self) -> Optional[pulumi.Input['ClusterSecretSyncConfigArgs']]:
+    def secret_sync_config(self) -> pulumi.Input[Optional['ClusterSecretSyncConfigArgs']]:
         """
         ) Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
@@ -1592,36 +1592,36 @@ class ClusterArgs:
         return pulumi.get(self, "secret_sync_config")
 
     @secret_sync_config.setter
-    def secret_sync_config(self, value: Optional[pulumi.Input['ClusterSecretSyncConfigArgs']]):
+    def secret_sync_config(self, value: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']]):
         pulumi.set(self, "secret_sync_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPostureConfig")
-    def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
+    def security_posture_config(self) -> pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']]:
         """
         Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "security_posture_config")
 
     @security_posture_config.setter
-    def security_posture_config(self, value: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]):
+    def security_posture_config(self, value: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']]):
         pulumi.set(self, "security_posture_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceExternalIpsConfig")
-    def service_external_ips_config(self) -> Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]:
+    def service_external_ips_config(self) -> pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "service_external_ips_config")
 
     @service_external_ips_config.setter
-    def service_external_ips_config(self, value: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]):
+    def service_external_ips_config(self, value: pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']]):
         pulumi.set(self, "service_external_ips_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or self_link of the Google Compute Engine
         subnetwork in which the cluster's instances are launched.
@@ -1629,36 +1629,36 @@ class ClusterArgs:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter(name="tpuConfig")
-    def tpu_config(self) -> Optional[pulumi.Input['ClusterTpuConfigArgs']]:
+    def tpu_config(self) -> pulumi.Input[Optional['ClusterTpuConfigArgs']]:
         """
         TPU configuration for the cluster.
         """
         return pulumi.get(self, "tpu_config")
 
     @tpu_config.setter
-    def tpu_config(self, value: Optional[pulumi.Input['ClusterTpuConfigArgs']]):
+    def tpu_config(self, value: pulumi.Input[Optional['ClusterTpuConfigArgs']]):
         pulumi.set(self, "tpu_config", value)
 
     @_builtins.property
     @pulumi.getter(name="userManagedKeysConfig")
-    def user_managed_keys_config(self) -> Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]:
+    def user_managed_keys_config(self) -> pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']]:
         """
         The custom keys configuration of the cluster Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 
     @user_managed_keys_config.setter
-    def user_managed_keys_config(self, value: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]):
+    def user_managed_keys_config(self, value: pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']]):
         pulumi.set(self, "user_managed_keys_config", value)
 
     @_builtins.property
     @pulumi.getter(name="verticalPodAutoscaling")
-    def vertical_pod_autoscaling(self) -> Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']]:
+    def vertical_pod_autoscaling(self) -> pulumi.Input[Optional['ClusterVerticalPodAutoscalingArgs']]:
         """
         Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         Structure is documented below.
@@ -1666,12 +1666,12 @@ class ClusterArgs:
         return pulumi.get(self, "vertical_pod_autoscaling")
 
     @vertical_pod_autoscaling.setter
-    def vertical_pod_autoscaling(self, value: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']]):
+    def vertical_pod_autoscaling(self, value: pulumi.Input[Optional['ClusterVerticalPodAutoscalingArgs']]):
         pulumi.set(self, "vertical_pod_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadAltsConfig")
-    def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
+    def workload_alts_config(self) -> pulumi.Input[Optional['ClusterWorkloadAltsConfigArgs']]:
         """
         )
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -1679,12 +1679,12 @@ class ClusterArgs:
         return pulumi.get(self, "workload_alts_config")
 
     @workload_alts_config.setter
-    def workload_alts_config(self, value: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]):
+    def workload_alts_config(self, value: pulumi.Input[Optional['ClusterWorkloadAltsConfigArgs']]):
         pulumi.set(self, "workload_alts_config", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityConfig")
-    def workload_identity_config(self) -> Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']]:
+    def workload_identity_config(self) -> pulumi.Input[Optional['ClusterWorkloadIdentityConfigArgs']]:
         """
         Workload Identity allows Kubernetes service accounts to act as a user-managed
         [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
@@ -1693,107 +1693,107 @@ class ClusterArgs:
         return pulumi.get(self, "workload_identity_config")
 
     @workload_identity_config.setter
-    def workload_identity_config(self, value: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']]):
+    def workload_identity_config(self, value: pulumi.Input[Optional['ClusterWorkloadIdentityConfigArgs']]):
         pulumi.set(self, "workload_identity_config", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
-                 allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 anonymous_authentication_config: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']] = None,
-                 authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
-                 autopilot_cluster_policy_config: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']] = None,
-                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
-                 cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
-                 cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
-                 confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
-                 control_plane_endpoints_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']] = None,
-                 cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
-                 database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
-                 datapath_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snat_status: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_config: Optional[pulumi.Input['ClusterDnsConfigArgs']] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_autopilot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_fqdn_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_intranode_visibility: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
-                 enable_kubernetes_alpha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_l4_ilb_subsetting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_legacy_abac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_multi_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_shielded_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 enterprise_config: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']] = None,
-                 fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
-                 gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
-                 gke_auto_upgrade_config: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']] = None,
-                 identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
-                 in_transit_encryption_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_allocation_policy: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']] = None,
-                 label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input['ClusterLoggingConfigArgs']] = None,
-                 logging_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
-                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']] = None,
-                 managed_opentelemetry_config: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']] = None,
-                 master_auth: Optional[pulumi.Input['ClusterMasterAuthArgs']] = None,
-                 master_authorized_networks_config: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
-                 master_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 mesh_certificates: Optional[pulumi.Input['ClusterMeshCertificatesArgs']] = None,
-                 min_master_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_config: Optional[pulumi.Input['ClusterMonitoringConfigArgs']] = None,
-                 monitoring_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_performance_config: Optional[pulumi.Input['ClusterNetworkPerformanceConfigArgs']] = None,
-                 network_policy: Optional[pulumi.Input['ClusterNetworkPolicyArgs']] = None,
-                 networking_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input['ClusterNodeConfigArgs']] = None,
-                 node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_pool_auto_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']] = None,
-                 node_pool_defaults: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']] = None,
-                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
-                 node_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input['ClusterNotificationConfigArgs']] = None,
-                 operation: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_autoscaling: Optional[pulumi.Input['ClusterPodAutoscalingArgs']] = None,
-                 pod_security_policy_config: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']] = None,
-                 private_cluster_config: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protect_config: Optional[pulumi.Input['ClusterProtectConfigArgs']] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 rbac_binding_config: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']] = None,
-                 release_channel: Optional[pulumi.Input['ClusterReleaseChannelArgs']] = None,
-                 remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
-                 secret_manager_config: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']] = None,
-                 secret_sync_config: Optional[pulumi.Input['ClusterSecretSyncConfigArgs']] = None,
-                 security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
-                 self_link: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
-                 services_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
-                 tpu_ipv4_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_managed_keys_config: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']] = None,
-                 vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
-                 workload_alts_config: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']] = None,
-                 workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
+                 addons_config: pulumi.Input[Optional['ClusterAddonsConfigArgs']] = None,
+                 allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 anonymous_authentication_config: pulumi.Input[Optional['ClusterAnonymousAuthenticationConfigArgs']] = None,
+                 authenticator_groups_config: pulumi.Input[Optional['ClusterAuthenticatorGroupsConfigArgs']] = None,
+                 autopilot_cluster_policy_config: pulumi.Input[Optional['ClusterAutopilotClusterPolicyConfigArgs']] = None,
+                 autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional['ClusterBinaryAuthorizationArgs']] = None,
+                 cluster_autoscaling: pulumi.Input[Optional['ClusterClusterAutoscalingArgs']] = None,
+                 cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_telemetry: pulumi.Input[Optional['ClusterClusterTelemetryArgs']] = None,
+                 confidential_nodes: pulumi.Input[Optional['ClusterConfidentialNodesArgs']] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigArgs']] = None,
+                 cost_management_config: pulumi.Input[Optional['ClusterCostManagementConfigArgs']] = None,
+                 database_encryption: pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']] = None,
+                 datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snat_status: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_config: pulumi.Input[Optional['ClusterDnsConfigArgs']] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_k8s_beta_apis: pulumi.Input[Optional['ClusterEnableK8sBetaApisArgs']] = None,
+                 enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_multi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 enterprise_config: pulumi.Input[Optional['ClusterEnterpriseConfigArgs']] = None,
+                 fleet: pulumi.Input[Optional['ClusterFleetArgs']] = None,
+                 gateway_api_config: pulumi.Input[Optional['ClusterGatewayApiConfigArgs']] = None,
+                 gke_auto_upgrade_config: pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']] = None,
+                 identity_service_config: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']] = None,
+                 in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_allocation_policy: pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']] = None,
+                 label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional['ClusterLoggingConfigArgs']] = None,
+                 logging_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']] = None,
+                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']] = None,
+                 managed_opentelemetry_config: pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']] = None,
+                 master_auth: pulumi.Input[Optional['ClusterMasterAuthArgs']] = None,
+                 master_authorized_networks_config: pulumi.Input[Optional['ClusterMasterAuthorizedNetworksConfigArgs']] = None,
+                 master_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 mesh_certificates: pulumi.Input[Optional['ClusterMeshCertificatesArgs']] = None,
+                 min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_config: pulumi.Input[Optional['ClusterMonitoringConfigArgs']] = None,
+                 monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_performance_config: pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']] = None,
+                 network_policy: pulumi.Input[Optional['ClusterNetworkPolicyArgs']] = None,
+                 networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional['ClusterNodeConfigArgs']] = None,
+                 node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_pool_auto_config: pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']] = None,
+                 node_pool_defaults: pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]] = None,
+                 node_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional['ClusterNotificationConfigArgs']] = None,
+                 operation: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_autoscaling: pulumi.Input[Optional['ClusterPodAutoscalingArgs']] = None,
+                 pod_security_policy_config: pulumi.Input[Optional['ClusterPodSecurityPolicyConfigArgs']] = None,
+                 private_cluster_config: pulumi.Input[Optional['ClusterPrivateClusterConfigArgs']] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protect_config: pulumi.Input[Optional['ClusterProtectConfigArgs']] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rbac_binding_config: pulumi.Input[Optional['ClusterRbacBindingConfigArgs']] = None,
+                 release_channel: pulumi.Input[Optional['ClusterReleaseChannelArgs']] = None,
+                 remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
+                 secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
+                 secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
+                 security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
+                 self_link: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_external_ips_config: pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']] = None,
+                 services_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu_config: pulumi.Input[Optional['ClusterTpuConfigArgs']] = None,
+                 tpu_ipv4_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_managed_keys_config: pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']] = None,
+                 vertical_pod_autoscaling: pulumi.Input[Optional['ClusterVerticalPodAutoscalingArgs']] = None,
+                 workload_alts_config: pulumi.Input[Optional['ClusterWorkloadAltsConfigArgs']] = None,
+                 workload_identity_config: pulumi.Input[Optional['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -2245,7 +2245,7 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="addonsConfig")
-    def addons_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigArgs']]:
+    def addons_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigArgs']]:
         """
         The configuration for addons supported by GKE.
         Structure is documented below.
@@ -2253,12 +2253,12 @@ class _ClusterState:
         return pulumi.get(self, "addons_config")
 
     @addons_config.setter
-    def addons_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigArgs']]):
+    def addons_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigArgs']]):
         pulumi.set(self, "addons_config", value)
 
     @_builtins.property
     @pulumi.getter(name="allowNetAdmin")
-    def allow_net_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_net_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NET_ADMIN for the cluster. Defaults to
         `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
@@ -2267,24 +2267,24 @@ class _ClusterState:
         return pulumi.get(self, "allow_net_admin")
 
     @allow_net_admin.setter
-    def allow_net_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_net_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_net_admin", value)
 
     @_builtins.property
     @pulumi.getter(name="anonymousAuthenticationConfig")
-    def anonymous_authentication_config(self) -> Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]:
+    def anonymous_authentication_config(self) -> pulumi.Input[Optional['ClusterAnonymousAuthenticationConfigArgs']]:
         """
         Configuration for [anonymous authentication restrictions](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict-anon-access). Structure is documented below.
         """
         return pulumi.get(self, "anonymous_authentication_config")
 
     @anonymous_authentication_config.setter
-    def anonymous_authentication_config(self, value: Optional[pulumi.Input['ClusterAnonymousAuthenticationConfigArgs']]):
+    def anonymous_authentication_config(self, value: pulumi.Input[Optional['ClusterAnonymousAuthenticationConfigArgs']]):
         pulumi.set(self, "anonymous_authentication_config", value)
 
     @_builtins.property
     @pulumi.getter(name="authenticatorGroupsConfig")
-    def authenticator_groups_config(self) -> Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]:
+    def authenticator_groups_config(self) -> pulumi.Input[Optional['ClusterAuthenticatorGroupsConfigArgs']]:
         """
         Configuration for the
         [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -2293,24 +2293,24 @@ class _ClusterState:
         return pulumi.get(self, "authenticator_groups_config")
 
     @authenticator_groups_config.setter
-    def authenticator_groups_config(self, value: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']]):
+    def authenticator_groups_config(self, value: pulumi.Input[Optional['ClusterAuthenticatorGroupsConfigArgs']]):
         pulumi.set(self, "authenticator_groups_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autopilotClusterPolicyConfig")
-    def autopilot_cluster_policy_config(self) -> Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]:
+    def autopilot_cluster_policy_config(self) -> pulumi.Input[Optional['ClusterAutopilotClusterPolicyConfigArgs']]:
         """
         Per-cluster configuration of Autopilot cluster policies in GKE clusters. This field can only be configured in non Autopilot clusters. Structure is documented below.
         """
         return pulumi.get(self, "autopilot_cluster_policy_config")
 
     @autopilot_cluster_policy_config.setter
-    def autopilot_cluster_policy_config(self, value: Optional[pulumi.Input['ClusterAutopilotClusterPolicyConfigArgs']]):
+    def autopilot_cluster_policy_config(self, value: pulumi.Input[Optional['ClusterAutopilotClusterPolicyConfigArgs']]):
         pulumi.set(self, "autopilot_cluster_policy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autopilotPrivilegedAdmissions")
-    def autopilot_privileged_admissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def autopilot_privileged_admissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The customer
         allowlist Cloud Storage paths for the cluster. These paths are used with the
@@ -2322,12 +2322,12 @@ class _ClusterState:
         return pulumi.get(self, "autopilot_privileged_admissions")
 
     @autopilot_privileged_admissions.setter
-    def autopilot_privileged_admissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def autopilot_privileged_admissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "autopilot_privileged_admissions", value)
 
     @_builtins.property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> pulumi.Input[Optional['ClusterBinaryAuthorizationArgs']]:
         """
         Configuration options for the Binary
         Authorization feature. Structure is documented below.
@@ -2335,12 +2335,12 @@ class _ClusterState:
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: pulumi.Input[Optional['ClusterBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAutoscaling")
-    def cluster_autoscaling(self) -> Optional[pulumi.Input['ClusterClusterAutoscalingArgs']]:
+    def cluster_autoscaling(self) -> pulumi.Input[Optional['ClusterClusterAutoscalingArgs']]:
         """
         Per-cluster configuration of Node Auto-Provisioning with Cluster Autoscaler to
         automatically adjust the size of the cluster and create/delete node pools based
@@ -2351,12 +2351,12 @@ class _ClusterState:
         return pulumi.get(self, "cluster_autoscaling")
 
     @cluster_autoscaling.setter
-    def cluster_autoscaling(self, value: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']]):
+    def cluster_autoscaling(self, value: pulumi.Input[Optional['ClusterClusterAutoscalingArgs']]):
         pulumi.set(self, "cluster_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterIpv4Cidr")
-    def cluster_ipv4_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_ipv4_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address range of the Kubernetes pods
         in this cluster in CIDR notation (e.g. `10.96.0.0/14`). Leave blank to have one
@@ -2366,12 +2366,12 @@ class _ClusterState:
         return pulumi.get(self, "cluster_ipv4_cidr")
 
     @cluster_ipv4_cidr.setter
-    def cluster_ipv4_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_ipv4_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_ipv4_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterTelemetry")
-    def cluster_telemetry(self) -> Optional[pulumi.Input['ClusterClusterTelemetryArgs']]:
+    def cluster_telemetry(self) -> pulumi.Input[Optional['ClusterClusterTelemetryArgs']]:
         """
         ) Configuration for
         [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
@@ -2380,24 +2380,24 @@ class _ClusterState:
         return pulumi.get(self, "cluster_telemetry")
 
     @cluster_telemetry.setter
-    def cluster_telemetry(self, value: Optional[pulumi.Input['ClusterClusterTelemetryArgs']]):
+    def cluster_telemetry(self, value: pulumi.Input[Optional['ClusterClusterTelemetryArgs']]):
         pulumi.set(self, "cluster_telemetry", value)
 
     @_builtins.property
     @pulumi.getter(name="confidentialNodes")
-    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterConfidentialNodesArgs']]:
+    def confidential_nodes(self) -> pulumi.Input[Optional['ClusterConfidentialNodesArgs']]:
         """
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
 
     @confidential_nodes.setter
-    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterConfidentialNodesArgs']]):
+    def confidential_nodes(self, value: pulumi.Input[Optional['ClusterConfidentialNodesArgs']]):
         pulumi.set(self, "confidential_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneEndpointsConfig")
-    def control_plane_endpoints_config(self) -> Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]:
+    def control_plane_endpoints_config(self) -> pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigArgs']]:
         """
         Configuration for all of the cluster's control plane endpoints.
         Structure is documented below.
@@ -2405,12 +2405,12 @@ class _ClusterState:
         return pulumi.get(self, "control_plane_endpoints_config")
 
     @control_plane_endpoints_config.setter
-    def control_plane_endpoints_config(self, value: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]):
+    def control_plane_endpoints_config(self, value: pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigArgs']]):
         pulumi.set(self, "control_plane_endpoints_config", value)
 
     @_builtins.property
     @pulumi.getter(name="costManagementConfig")
-    def cost_management_config(self) -> Optional[pulumi.Input['ClusterCostManagementConfigArgs']]:
+    def cost_management_config(self) -> pulumi.Input[Optional['ClusterCostManagementConfigArgs']]:
         """
         Configuration for the
         [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
@@ -2419,36 +2419,36 @@ class _ClusterState:
         return pulumi.get(self, "cost_management_config")
 
     @cost_management_config.setter
-    def cost_management_config(self, value: Optional[pulumi.Input['ClusterCostManagementConfigArgs']]):
+    def cost_management_config(self, value: pulumi.Input[Optional['ClusterCostManagementConfigArgs']]):
         pulumi.set(self, "cost_management_config", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseEncryption")
-    def database_encryption(self) -> Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']]:
+    def database_encryption(self) -> pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "database_encryption")
 
     @database_encryption.setter
-    def database_encryption(self, value: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']]):
+    def database_encryption(self, value: pulumi.Input[Optional['ClusterDatabaseEncryptionArgs']]):
         pulumi.set(self, "database_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="datapathProvider")
-    def datapath_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datapath_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         """
         return pulumi.get(self, "datapath_provider")
 
     @datapath_provider.setter
-    def datapath_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datapath_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datapath_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultMaxPodsPerNode")
-    def default_max_pods_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_max_pods_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default maximum number of pods
         per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -2458,24 +2458,24 @@ class _ClusterState:
         return pulumi.get(self, "default_max_pods_per_node")
 
     @default_max_pods_per_node.setter
-    def default_max_pods_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_max_pods_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_max_pods_per_node", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSnatStatus")
-    def default_snat_status(self) -> Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']]:
+    def default_snat_status(self) -> pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']]:
         """
         [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         """
         return pulumi.get(self, "default_snat_status")
 
     @default_snat_status.setter
-    def default_snat_status(self, value: Optional[pulumi.Input['ClusterDefaultSnatStatusArgs']]):
+    def default_snat_status(self, value: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']]):
         pulumi.set(self, "default_snat_status", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Terraform will be prevented from
         destroying the cluster.  Deleting this cluster via `terraform destroy` or
@@ -2485,60 +2485,60 @@ class _ClusterState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disableL4LbFirewallReconciliation")
-    def disable_l4_lb_firewall_reconciliation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_l4_lb_firewall_reconciliation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable L4 load balancer VPC firewalls to enable firewall policies.
         """
         return pulumi.get(self, "disable_l4_lb_firewall_reconciliation")
 
     @disable_l4_lb_firewall_reconciliation.setter
-    def disable_l4_lb_firewall_reconciliation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_l4_lb_firewall_reconciliation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_l4_lb_firewall_reconciliation", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsConfig")
-    def dns_config(self) -> Optional[pulumi.Input['ClusterDnsConfigArgs']]:
+    def dns_config(self) -> pulumi.Input[Optional['ClusterDnsConfigArgs']]:
         """
         Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         """
         return pulumi.get(self, "dns_config")
 
     @dns_config.setter
-    def dns_config(self, value: Optional[pulumi.Input['ClusterDnsConfigArgs']]):
+    def dns_config(self, value: pulumi.Input[Optional['ClusterDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutopilot")
-    def enable_autopilot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_autopilot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Autopilot for this cluster. Defaults to `false`.
         Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -2548,48 +2548,48 @@ class _ClusterState:
         return pulumi.get(self, "enable_autopilot")
 
     @enable_autopilot.setter
-    def enable_autopilot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_autopilot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_autopilot", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCiliumClusterwideNetworkPolicy")
-    def enable_cilium_clusterwide_network_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cilium_clusterwide_network_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. Defaults to false.
         """
         return pulumi.get(self, "enable_cilium_clusterwide_network_policy")
 
     @enable_cilium_clusterwide_network_policy.setter
-    def enable_cilium_clusterwide_network_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cilium_clusterwide_network_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cilium_clusterwide_network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFqdnNetworkPolicy")
-    def enable_fqdn_network_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_fqdn_network_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         """
         return pulumi.get(self, "enable_fqdn_network_policy")
 
     @enable_fqdn_network_policy.setter
-    def enable_fqdn_network_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_fqdn_network_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_fqdn_network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableIntranodeVisibility")
-    def enable_intranode_visibility(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_intranode_visibility(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         """
         return pulumi.get(self, "enable_intranode_visibility")
 
     @enable_intranode_visibility.setter
-    def enable_intranode_visibility(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_intranode_visibility(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_intranode_visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="enableK8sBetaApis")
-    def enable_k8s_beta_apis(self) -> Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]:
+    def enable_k8s_beta_apis(self) -> pulumi.Input[Optional['ClusterEnableK8sBetaApisArgs']]:
         """
         Configuration for Kubernetes Beta APIs.
         Structure is documented below.
@@ -2597,12 +2597,12 @@ class _ClusterState:
         return pulumi.get(self, "enable_k8s_beta_apis")
 
     @enable_k8s_beta_apis.setter
-    def enable_k8s_beta_apis(self, value: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]):
+    def enable_k8s_beta_apis(self, value: pulumi.Input[Optional['ClusterEnableK8sBetaApisArgs']]):
         pulumi.set(self, "enable_k8s_beta_apis", value)
 
     @_builtins.property
     @pulumi.getter(name="enableKubernetesAlpha")
-    def enable_kubernetes_alpha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_kubernetes_alpha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Kubernetes Alpha features for
         this cluster. Note that when this option is enabled, the cluster cannot be upgraded
@@ -2611,24 +2611,24 @@ class _ClusterState:
         return pulumi.get(self, "enable_kubernetes_alpha")
 
     @enable_kubernetes_alpha.setter
-    def enable_kubernetes_alpha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_kubernetes_alpha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_kubernetes_alpha", value)
 
     @_builtins.property
     @pulumi.getter(name="enableL4IlbSubsetting")
-    def enable_l4_ilb_subsetting(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_l4_ilb_subsetting(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether L4ILB Subsetting is enabled for this cluster.
         """
         return pulumi.get(self, "enable_l4_ilb_subsetting")
 
     @enable_l4_ilb_subsetting.setter
-    def enable_l4_ilb_subsetting(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_l4_ilb_subsetting(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_l4_ilb_subsetting", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLegacyAbac")
-    def enable_legacy_abac(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_legacy_abac(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the ABAC authorizer is enabled for this cluster.
         When enabled, identities in the system, including service accounts, nodes, and controllers,
@@ -2638,36 +2638,36 @@ class _ClusterState:
         return pulumi.get(self, "enable_legacy_abac")
 
     @enable_legacy_abac.setter
-    def enable_legacy_abac(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_legacy_abac(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_legacy_abac", value)
 
     @_builtins.property
     @pulumi.getter(name="enableMultiNetworking")
-    def enable_multi_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_multi_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")
 
     @enable_multi_networking.setter
-    def enable_multi_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_multi_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_multi_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="enableShieldedNodes")
-    def enable_shielded_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_shielded_nodes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         """
         return pulumi.get(self, "enable_shielded_nodes")
 
     @enable_shielded_nodes.setter
-    def enable_shielded_nodes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_shielded_nodes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_shielded_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTpu")
-    def enable_tpu(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_tpu(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Cloud TPU resources in this cluster.
         See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -2675,61 +2675,61 @@ class _ClusterState:
         return pulumi.get(self, "enable_tpu")
 
     @enable_tpu.setter
-    def enable_tpu(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_tpu(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_tpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of this cluster's Kubernetes master.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="enterpriseConfig")
     @_utilities.deprecated("""GKE Enterprise features are now available without an Enterprise tier. This field is deprecated and will be removed in a future major release""")
-    def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
+    def enterprise_config(self) -> pulumi.Input[Optional['ClusterEnterpriseConfigArgs']]:
         """
         (DEPRECATED) Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below. Deprecated as GKE Enterprise features are now available without an Enterprise tier. See https://cloud.google.com/blog/products/containers-kubernetes/gke-gets-new-pricing-and-capabilities-on-10th-birthday for the announcement of this change.
         """
         return pulumi.get(self, "enterprise_config")
 
     @enterprise_config.setter
-    def enterprise_config(self, value: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]):
+    def enterprise_config(self, value: pulumi.Input[Optional['ClusterEnterpriseConfigArgs']]):
         pulumi.set(self, "enterprise_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def fleet(self) -> Optional[pulumi.Input['ClusterFleetArgs']]:
+    def fleet(self) -> pulumi.Input[Optional['ClusterFleetArgs']]:
         """
         Fleet configuration for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "fleet")
 
     @fleet.setter
-    def fleet(self, value: Optional[pulumi.Input['ClusterFleetArgs']]):
+    def fleet(self, value: pulumi.Input[Optional['ClusterFleetArgs']]):
         pulumi.set(self, "fleet", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayApiConfig")
-    def gateway_api_config(self) -> Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]:
+    def gateway_api_config(self) -> pulumi.Input[Optional['ClusterGatewayApiConfigArgs']]:
         """
         Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         """
         return pulumi.get(self, "gateway_api_config")
 
     @gateway_api_config.setter
-    def gateway_api_config(self, value: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']]):
+    def gateway_api_config(self, value: pulumi.Input[Optional['ClusterGatewayApiConfigArgs']]):
         pulumi.set(self, "gateway_api_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeAutoUpgradeConfig")
-    def gke_auto_upgrade_config(self) -> Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]:
+    def gke_auto_upgrade_config(self) -> pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']]:
         """
         Configuration options for the auto-upgrade patch type feature, which provide more control over the speed of automatic upgrades of your GKE clusters.
         Structure is documented below.
@@ -2737,36 +2737,36 @@ class _ClusterState:
         return pulumi.get(self, "gke_auto_upgrade_config")
 
     @gke_auto_upgrade_config.setter
-    def gke_auto_upgrade_config(self, value: Optional[pulumi.Input['ClusterGkeAutoUpgradeConfigArgs']]):
+    def gke_auto_upgrade_config(self, value: pulumi.Input[Optional['ClusterGkeAutoUpgradeConfigArgs']]):
         pulumi.set(self, "gke_auto_upgrade_config", value)
 
     @_builtins.property
     @pulumi.getter(name="identityServiceConfig")
-    def identity_service_config(self) -> Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']]:
+    def identity_service_config(self) -> pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']]:
         """
         . Structure is documented below.
         """
         return pulumi.get(self, "identity_service_config")
 
     @identity_service_config.setter
-    def identity_service_config(self, value: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']]):
+    def identity_service_config(self, value: pulumi.Input[Optional['ClusterIdentityServiceConfigArgs']]):
         pulumi.set(self, "identity_service_config", value)
 
     @_builtins.property
     @pulumi.getter(name="inTransitEncryptionConfig")
-    def in_transit_encryption_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def in_transit_encryption_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the config of in-transit encryption. Valid values are `IN_TRANSIT_ENCRYPTION_DISABLED` and `IN_TRANSIT_ENCRYPTION_INTER_NODE_TRANSPARENT`.
         """
         return pulumi.get(self, "in_transit_encryption_config")
 
     @in_transit_encryption_config.setter
-    def in_transit_encryption_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def in_transit_encryption_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "in_transit_encryption_config", value)
 
     @_builtins.property
     @pulumi.getter(name="initialNodeCount")
-    def initial_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes to create in this
         cluster's default node pool. In regional or multi-zonal clusters, this is the
@@ -2778,12 +2778,12 @@ class _ClusterState:
         return pulumi.get(self, "initial_node_count")
 
     @initial_node_count.setter
-    def initial_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllocationPolicy")
-    def ip_allocation_policy(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']]:
+    def ip_allocation_policy(self) -> pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']]:
         """
         Configuration of cluster IP allocation for
         VPC-native clusters. If this block is unset during creation, it will be set by the GKE backend.
@@ -2792,24 +2792,24 @@ class _ClusterState:
         return pulumi.get(self, "ip_allocation_policy")
 
     @ip_allocation_policy.setter
-    def ip_allocation_policy(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyArgs']]):
+    def ip_allocation_policy(self, value: pulumi.Input[Optional['ClusterIpAllocationPolicyArgs']]):
         pulumi.set(self, "ip_allocation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="labelFingerprint")
-    def label_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint of the set of labels for this cluster.
         """
         return pulumi.get(self, "label_fingerprint")
 
     @label_fingerprint.setter
-    def label_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location (region or zone) in which the cluster
         master will be created, as well as the default node location. If you specify a
@@ -2821,12 +2821,12 @@ class _ClusterState:
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingConfig")
-    def logging_config(self) -> Optional[pulumi.Input['ClusterLoggingConfigArgs']]:
+    def logging_config(self) -> pulumi.Input[Optional['ClusterLoggingConfigArgs']]:
         """
         Logging configuration for the cluster.
         Structure is documented below.
@@ -2834,12 +2834,12 @@ class _ClusterState:
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
-    def logging_config(self, value: Optional[pulumi.Input['ClusterLoggingConfigArgs']]):
+    def logging_config(self, value: pulumi.Input[Optional['ClusterLoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingService")
-    def logging_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logging_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logging service that the cluster should
         write logs to. Available options include `logging.googleapis.com`(Legacy Stackdriver),
@@ -2848,12 +2848,12 @@ class _ClusterState:
         return pulumi.get(self, "logging_service")
 
     @logging_service.setter
-    def logging_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logging_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logging_service", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]:
         """
         The maintenance policy to use for the cluster. Structure is
         documented below.
@@ -2861,36 +2861,36 @@ class _ClusterState:
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['ClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
-    def managed_machine_learning_diagnostics_config(self) -> Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
+    def managed_machine_learning_diagnostics_config(self) -> pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
         """
         ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_machine_learning_diagnostics_config")
 
     @managed_machine_learning_diagnostics_config.setter
-    def managed_machine_learning_diagnostics_config(self, value: Optional[pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs']]):
+    def managed_machine_learning_diagnostics_config(self, value: pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']]):
         pulumi.set(self, "managed_machine_learning_diagnostics_config", value)
 
     @_builtins.property
     @pulumi.getter(name="managedOpentelemetryConfig")
-    def managed_opentelemetry_config(self) -> Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]:
+    def managed_opentelemetry_config(self) -> pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]:
         """
         ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_opentelemetry_config")
 
     @managed_opentelemetry_config.setter
-    def managed_opentelemetry_config(self, value: Optional[pulumi.Input['ClusterManagedOpentelemetryConfigArgs']]):
+    def managed_opentelemetry_config(self, value: pulumi.Input[Optional['ClusterManagedOpentelemetryConfigArgs']]):
         pulumi.set(self, "managed_opentelemetry_config", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAuth")
-    def master_auth(self) -> Optional[pulumi.Input['ClusterMasterAuthArgs']]:
+    def master_auth(self) -> pulumi.Input[Optional['ClusterMasterAuthArgs']]:
         """
         The authentication information for accessing the
         Kubernetes master. Some values in this block are only returned by the API if
@@ -2902,12 +2902,12 @@ class _ClusterState:
         return pulumi.get(self, "master_auth")
 
     @master_auth.setter
-    def master_auth(self, value: Optional[pulumi.Input['ClusterMasterAuthArgs']]):
+    def master_auth(self, value: pulumi.Input[Optional['ClusterMasterAuthArgs']]):
         pulumi.set(self, "master_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAuthorizedNetworksConfig")
-    def master_authorized_networks_config(self) -> Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']]:
+    def master_authorized_networks_config(self) -> pulumi.Input[Optional['ClusterMasterAuthorizedNetworksConfigArgs']]:
         """
         The desired
         configuration options for master authorized networks. Omit the
@@ -2918,12 +2918,12 @@ class _ClusterState:
         return pulumi.get(self, "master_authorized_networks_config")
 
     @master_authorized_networks_config.setter
-    def master_authorized_networks_config(self, value: Optional[pulumi.Input['ClusterMasterAuthorizedNetworksConfigArgs']]):
+    def master_authorized_networks_config(self, value: pulumi.Input[Optional['ClusterMasterAuthorizedNetworksConfigArgs']]):
         pulumi.set(self, "master_authorized_networks_config", value)
 
     @_builtins.property
     @pulumi.getter(name="masterVersion")
-    def master_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current version of the master in the cluster. This may
         be different than the `min_master_version` set in the config if the master
@@ -2932,24 +2932,24 @@ class _ClusterState:
         return pulumi.get(self, "master_version")
 
     @master_version.setter
-    def master_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_version", value)
 
     @_builtins.property
     @pulumi.getter(name="meshCertificates")
-    def mesh_certificates(self) -> Optional[pulumi.Input['ClusterMeshCertificatesArgs']]:
+    def mesh_certificates(self) -> pulumi.Input[Optional['ClusterMeshCertificatesArgs']]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "mesh_certificates")
 
     @mesh_certificates.setter
-    def mesh_certificates(self, value: Optional[pulumi.Input['ClusterMeshCertificatesArgs']]):
+    def mesh_certificates(self, value: pulumi.Input[Optional['ClusterMeshCertificatesArgs']]):
         pulumi.set(self, "mesh_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="minMasterVersion")
-    def min_master_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_master_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum version of the master. GKE
         will auto-update the master to new versions, so this does not guarantee the
@@ -2968,12 +2968,12 @@ class _ClusterState:
         return pulumi.get(self, "min_master_version")
 
     @min_master_version.setter
-    def min_master_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_master_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_master_version", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringConfig")
-    def monitoring_config(self) -> Optional[pulumi.Input['ClusterMonitoringConfigArgs']]:
+    def monitoring_config(self) -> pulumi.Input[Optional['ClusterMonitoringConfigArgs']]:
         """
         Monitoring configuration for the cluster.
         Structure is documented below.
@@ -2981,12 +2981,12 @@ class _ClusterState:
         return pulumi.get(self, "monitoring_config")
 
     @monitoring_config.setter
-    def monitoring_config(self, value: Optional[pulumi.Input['ClusterMonitoringConfigArgs']]):
+    def monitoring_config(self, value: pulumi.Input[Optional['ClusterMonitoringConfigArgs']]):
         pulumi.set(self, "monitoring_config", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringService")
-    def monitoring_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitoring_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The monitoring service that the cluster
         should write metrics to.
@@ -2999,12 +2999,12 @@ class _ClusterState:
         return pulumi.get(self, "monitoring_service")
 
     @monitoring_service.setter
-    def monitoring_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitoring_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitoring_service", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster, unique within the project and
         location.
@@ -3014,12 +3014,12 @@ class _ClusterState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or self_link of the Google Compute Engine
         network to which the cluster is connected. For Shared VPC, set this to the self link of the
@@ -3028,24 +3028,24 @@ class _ClusterState:
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPerformanceConfig")
-    def network_performance_config(self) -> Optional[pulumi.Input['ClusterNetworkPerformanceConfigArgs']]:
+    def network_performance_config(self) -> pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']]:
         """
         Network bandwidth tier configuration.
         """
         return pulumi.get(self, "network_performance_config")
 
     @network_performance_config.setter
-    def network_performance_config(self, value: Optional[pulumi.Input['ClusterNetworkPerformanceConfigArgs']]):
+    def network_performance_config(self, value: pulumi.Input[Optional['ClusterNetworkPerformanceConfigArgs']]):
         pulumi.set(self, "network_performance_config", value)
 
     @_builtins.property
     @pulumi.getter(name="networkPolicy")
-    def network_policy(self) -> Optional[pulumi.Input['ClusterNetworkPolicyArgs']]:
+    def network_policy(self) -> pulumi.Input[Optional['ClusterNetworkPolicyArgs']]:
         """
         Configuration options for the
         [NetworkPolicy](https://kubernetes.io/docs/concepts/services-networking/networkpolicies/)
@@ -3054,12 +3054,12 @@ class _ClusterState:
         return pulumi.get(self, "network_policy")
 
     @network_policy.setter
-    def network_policy(self, value: Optional[pulumi.Input['ClusterNetworkPolicyArgs']]):
+    def network_policy(self, value: pulumi.Input[Optional['ClusterNetworkPolicyArgs']]):
         pulumi.set(self, "network_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="networkingMode")
-    def networking_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networking_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines whether alias IPs or routes will be used for pod IPs in the cluster.
         Options are `VPC_NATIVE` or `ROUTES`. `VPC_NATIVE` enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases). Newly created clusters will default to `VPC_NATIVE`.
@@ -3067,12 +3067,12 @@ class _ClusterState:
         return pulumi.get(self, "networking_mode")
 
     @networking_mode.setter
-    def networking_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networking_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networking_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeConfig")
-    def node_config(self) -> Optional[pulumi.Input['ClusterNodeConfigArgs']]:
+    def node_config(self) -> pulumi.Input[Optional['ClusterNodeConfigArgs']]:
         """
         Parameters used in creating the default node pool.
         Generally, this field should not be used at the same time as a
@@ -3083,12 +3083,12 @@ class _ClusterState:
         return pulumi.get(self, "node_config")
 
     @node_config.setter
-    def node_config(self, value: Optional[pulumi.Input['ClusterNodeConfigArgs']]):
+    def node_config(self, value: pulumi.Input[Optional['ClusterNodeConfigArgs']]):
         pulumi.set(self, "node_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeLocations")
-    def node_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_locations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of zones in which the cluster's nodes
         are located. Nodes must be in the region of their regional cluster or in the
@@ -3105,12 +3105,12 @@ class _ClusterState:
         return pulumi.get(self, "node_locations")
 
     @node_locations.setter
-    def node_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_locations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_locations", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolAutoConfig")
-    def node_pool_auto_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]:
+    def node_pool_auto_config(self) -> pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']]:
         """
         Node pool configs that apply to auto-provisioned node pools in
         [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
@@ -3119,24 +3119,24 @@ class _ClusterState:
         return pulumi.get(self, "node_pool_auto_config")
 
     @node_pool_auto_config.setter
-    def node_pool_auto_config(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigArgs']]):
+    def node_pool_auto_config(self, value: pulumi.Input[Optional['ClusterNodePoolAutoConfigArgs']]):
         pulumi.set(self, "node_pool_auto_config", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePoolDefaults")
-    def node_pool_defaults(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]:
+    def node_pool_defaults(self) -> pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']]:
         """
         Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object. Structure is documented below.
         """
         return pulumi.get(self, "node_pool_defaults")
 
     @node_pool_defaults.setter
-    def node_pool_defaults(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsArgs']]):
+    def node_pool_defaults(self, value: pulumi.Input[Optional['ClusterNodePoolDefaultsArgs']]):
         pulumi.set(self, "node_pool_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePools")
-    def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
+    def node_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]:
         """
         List of node pools associated with this cluster.
         See container.NodePool for schema.
@@ -3148,12 +3148,12 @@ class _ClusterState:
         return pulumi.get(self, "node_pools")
 
     @node_pools.setter
-    def node_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]):
+    def node_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolArgs']]]]):
         pulumi.set(self, "node_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeVersion")
-    def node_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes version on the nodes. Must either be unset
         or set to the same value as `min_master_version` on create. Defaults to the default
@@ -3167,33 +3167,33 @@ class _ClusterState:
         return pulumi.get(self, "node_version")
 
     @node_version.setter
-    def node_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_version", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['ClusterNotificationConfigArgs']]:
+    def notification_config(self) -> pulumi.Input[Optional['ClusterNotificationConfigArgs']]:
         """
         Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
         """
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['ClusterNotificationConfigArgs']]):
+    def notification_config(self, value: pulumi.Input[Optional['ClusterNotificationConfigArgs']]):
         pulumi.set(self, "notification_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "operation")
 
     @operation.setter
-    def operation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation", value)
 
     @_builtins.property
     @pulumi.getter(name="podAutoscaling")
-    def pod_autoscaling(self) -> Optional[pulumi.Input['ClusterPodAutoscalingArgs']]:
+    def pod_autoscaling(self) -> pulumi.Input[Optional['ClusterPodAutoscalingArgs']]:
         """
         Configuration for the
         Structure is documented below.
@@ -3201,12 +3201,12 @@ class _ClusterState:
         return pulumi.get(self, "pod_autoscaling")
 
     @pod_autoscaling.setter
-    def pod_autoscaling(self, value: Optional[pulumi.Input['ClusterPodAutoscalingArgs']]):
+    def pod_autoscaling(self, value: pulumi.Input[Optional['ClusterPodAutoscalingArgs']]):
         pulumi.set(self, "pod_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="podSecurityPolicyConfig")
-    def pod_security_policy_config(self) -> Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]:
+    def pod_security_policy_config(self) -> pulumi.Input[Optional['ClusterPodSecurityPolicyConfigArgs']]:
         """
         ) Configuration for the
         [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
@@ -3215,12 +3215,12 @@ class _ClusterState:
         return pulumi.get(self, "pod_security_policy_config")
 
     @pod_security_policy_config.setter
-    def pod_security_policy_config(self, value: Optional[pulumi.Input['ClusterPodSecurityPolicyConfigArgs']]):
+    def pod_security_policy_config(self, value: pulumi.Input[Optional['ClusterPodSecurityPolicyConfigArgs']]):
         pulumi.set(self, "pod_security_policy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateClusterConfig")
-    def private_cluster_config(self) -> Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']]:
+    def private_cluster_config(self) -> pulumi.Input[Optional['ClusterPrivateClusterConfigArgs']]:
         """
         Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
         clusters with private nodes. Structure is documented below.
@@ -3228,24 +3228,24 @@ class _ClusterState:
         return pulumi.get(self, "private_cluster_config")
 
     @private_cluster_config.setter
-    def private_cluster_config(self, value: Optional[pulumi.Input['ClusterPrivateClusterConfigArgs']]):
+    def private_cluster_config(self, value: pulumi.Input[Optional['ClusterPrivateClusterConfigArgs']]):
         pulumi.set(self, "private_cluster_config", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpv6GoogleAccess")
-    def private_ipv6_google_access(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ipv6_google_access(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
     @private_ipv6_google_access.setter
-    def private_ipv6_google_access(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ipv6_google_access(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs. If it
         is not provided, the provider project is used.
@@ -3253,12 +3253,12 @@ class _ClusterState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="protectConfig")
-    def protect_config(self) -> Optional[pulumi.Input['ClusterProtectConfigArgs']]:
+    def protect_config(self) -> pulumi.Input[Optional['ClusterProtectConfigArgs']]:
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
@@ -3266,24 +3266,24 @@ class _ClusterState:
         return pulumi.get(self, "protect_config")
 
     @protect_config.setter
-    def protect_config(self, value: Optional[pulumi.Input['ClusterProtectConfigArgs']]):
+    def protect_config(self, value: pulumi.Input[Optional['ClusterProtectConfigArgs']]):
         pulumi.set(self, "protect_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="rbacBindingConfig")
-    def rbac_binding_config(self) -> Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]:
+    def rbac_binding_config(self) -> pulumi.Input[Optional['ClusterRbacBindingConfigArgs']]:
         """
         RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
 
@@ -3292,12 +3292,12 @@ class _ClusterState:
         return pulumi.get(self, "rbac_binding_config")
 
     @rbac_binding_config.setter
-    def rbac_binding_config(self, value: Optional[pulumi.Input['ClusterRbacBindingConfigArgs']]):
+    def rbac_binding_config(self, value: pulumi.Input[Optional['ClusterRbacBindingConfigArgs']]):
         pulumi.set(self, "rbac_binding_config", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseChannel")
-    def release_channel(self) -> Optional[pulumi.Input['ClusterReleaseChannelArgs']]:
+    def release_channel(self) -> pulumi.Input[Optional['ClusterReleaseChannelArgs']]:
         """
         Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
         feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -3312,12 +3312,12 @@ class _ClusterState:
         return pulumi.get(self, "release_channel")
 
     @release_channel.setter
-    def release_channel(self, value: Optional[pulumi.Input['ClusterReleaseChannelArgs']]):
+    def release_channel(self, value: pulumi.Input[Optional['ClusterReleaseChannelArgs']]):
         pulumi.set(self, "release_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="removeDefaultNodePool")
-    def remove_default_node_pool(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove_default_node_pool(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, deletes the default node
         pool upon cluster creation. If you're using `container.NodePool`
@@ -3327,12 +3327,12 @@ class _ClusterState:
         return pulumi.get(self, "remove_default_node_pool")
 
     @remove_default_node_pool.setter
-    def remove_default_node_pool(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove_default_node_pool(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove_default_node_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceLabels")
-    def resource_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def resource_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The GCE resource labels (a map of key/value pairs) to be applied to the cluster.
 
@@ -3342,12 +3342,12 @@ class _ClusterState:
         return pulumi.get(self, "resource_labels")
 
     @resource_labels.setter
-    def resource_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def resource_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceUsageExportConfig")
-    def resource_usage_export_config(self) -> Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']]:
+    def resource_usage_export_config(self) -> pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']]:
         """
         Configuration for the
         [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
@@ -3356,12 +3356,12 @@ class _ClusterState:
         return pulumi.get(self, "resource_usage_export_config")
 
     @resource_usage_export_config.setter
-    def resource_usage_export_config(self, value: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']]):
+    def resource_usage_export_config(self, value: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']]):
         pulumi.set(self, "resource_usage_export_config", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
-    def secret_manager_config(self) -> Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]:
+    def secret_manager_config(self) -> pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]:
         """
         Configuration for the
         [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
@@ -3370,12 +3370,12 @@ class _ClusterState:
         return pulumi.get(self, "secret_manager_config")
 
     @secret_manager_config.setter
-    def secret_manager_config(self, value: Optional[pulumi.Input['ClusterSecretManagerConfigArgs']]):
+    def secret_manager_config(self, value: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]):
         pulumi.set(self, "secret_manager_config", value)
 
     @_builtins.property
     @pulumi.getter(name="secretSyncConfig")
-    def secret_sync_config(self) -> Optional[pulumi.Input['ClusterSecretSyncConfigArgs']]:
+    def secret_sync_config(self) -> pulumi.Input[Optional['ClusterSecretSyncConfigArgs']]:
         """
         ) Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
@@ -3384,48 +3384,48 @@ class _ClusterState:
         return pulumi.get(self, "secret_sync_config")
 
     @secret_sync_config.setter
-    def secret_sync_config(self, value: Optional[pulumi.Input['ClusterSecretSyncConfigArgs']]):
+    def secret_sync_config(self, value: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']]):
         pulumi.set(self, "secret_sync_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPostureConfig")
-    def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
+    def security_posture_config(self) -> pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']]:
         """
         Enable/Disable Security Posture API features for the cluster. Structure is documented below.
         """
         return pulumi.get(self, "security_posture_config")
 
     @security_posture_config.setter
-    def security_posture_config(self, value: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]):
+    def security_posture_config(self, value: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']]):
         pulumi.set(self, "security_posture_config", value)
 
     @_builtins.property
     @pulumi.getter(name="selfLink")
-    def self_link(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def self_link(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
 
     @self_link.setter
-    def self_link(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def self_link(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "self_link", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceExternalIpsConfig")
-    def service_external_ips_config(self) -> Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]:
+    def service_external_ips_config(self) -> pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']]:
         """
         Structure is documented below.
         """
         return pulumi.get(self, "service_external_ips_config")
 
     @service_external_ips_config.setter
-    def service_external_ips_config(self, value: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']]):
+    def service_external_ips_config(self, value: pulumi.Input[Optional['ClusterServiceExternalIpsConfigArgs']]):
         pulumi.set(self, "service_external_ips_config", value)
 
     @_builtins.property
     @pulumi.getter(name="servicesIpv4Cidr")
-    def services_ipv4_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def services_ipv4_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address range of the Kubernetes services in this
         cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -3435,12 +3435,12 @@ class _ClusterState:
         return pulumi.get(self, "services_ipv4_cidr")
 
     @services_ipv4_cidr.setter
-    def services_ipv4_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def services_ipv4_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "services_ipv4_cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnetwork(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnetwork(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name or self_link of the Google Compute Engine
         subnetwork in which the cluster's instances are launched.
@@ -3448,24 +3448,24 @@ class _ClusterState:
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
-    def subnetwork(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnetwork(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnetwork", value)
 
     @_builtins.property
     @pulumi.getter(name="tpuConfig")
-    def tpu_config(self) -> Optional[pulumi.Input['ClusterTpuConfigArgs']]:
+    def tpu_config(self) -> pulumi.Input[Optional['ClusterTpuConfigArgs']]:
         """
         TPU configuration for the cluster.
         """
         return pulumi.get(self, "tpu_config")
 
     @tpu_config.setter
-    def tpu_config(self, value: Optional[pulumi.Input['ClusterTpuConfigArgs']]):
+    def tpu_config(self, value: pulumi.Input[Optional['ClusterTpuConfigArgs']]):
         pulumi.set(self, "tpu_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tpuIpv4CidrBlock")
-    def tpu_ipv4_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tpu_ipv4_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address range of the Cloud TPUs in this cluster, in
         [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -3474,24 +3474,24 @@ class _ClusterState:
         return pulumi.get(self, "tpu_ipv4_cidr_block")
 
     @tpu_ipv4_cidr_block.setter
-    def tpu_ipv4_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tpu_ipv4_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tpu_ipv4_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="userManagedKeysConfig")
-    def user_managed_keys_config(self) -> Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]:
+    def user_managed_keys_config(self) -> pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']]:
         """
         The custom keys configuration of the cluster Structure is documented below.
         """
         return pulumi.get(self, "user_managed_keys_config")
 
     @user_managed_keys_config.setter
-    def user_managed_keys_config(self, value: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]):
+    def user_managed_keys_config(self, value: pulumi.Input[Optional['ClusterUserManagedKeysConfigArgs']]):
         pulumi.set(self, "user_managed_keys_config", value)
 
     @_builtins.property
     @pulumi.getter(name="verticalPodAutoscaling")
-    def vertical_pod_autoscaling(self) -> Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']]:
+    def vertical_pod_autoscaling(self) -> pulumi.Input[Optional['ClusterVerticalPodAutoscalingArgs']]:
         """
         Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         Structure is documented below.
@@ -3499,12 +3499,12 @@ class _ClusterState:
         return pulumi.get(self, "vertical_pod_autoscaling")
 
     @vertical_pod_autoscaling.setter
-    def vertical_pod_autoscaling(self, value: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']]):
+    def vertical_pod_autoscaling(self, value: pulumi.Input[Optional['ClusterVerticalPodAutoscalingArgs']]):
         pulumi.set(self, "vertical_pod_autoscaling", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadAltsConfig")
-    def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
+    def workload_alts_config(self) -> pulumi.Input[Optional['ClusterWorkloadAltsConfigArgs']]:
         """
         )
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -3512,12 +3512,12 @@ class _ClusterState:
         return pulumi.get(self, "workload_alts_config")
 
     @workload_alts_config.setter
-    def workload_alts_config(self, value: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]):
+    def workload_alts_config(self, value: pulumi.Input[Optional['ClusterWorkloadAltsConfigArgs']]):
         pulumi.set(self, "workload_alts_config", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadIdentityConfig")
-    def workload_identity_config(self) -> Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']]:
+    def workload_identity_config(self) -> pulumi.Input[Optional['ClusterWorkloadIdentityConfigArgs']]:
         """
         Workload Identity allows Kubernetes service accounts to act as a user-managed
         [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
@@ -3526,7 +3526,7 @@ class _ClusterState:
         return pulumi.get(self, "workload_identity_config")
 
     @workload_identity_config.setter
-    def workload_identity_config(self, value: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']]):
+    def workload_identity_config(self, value: pulumi.Input[Optional['ClusterWorkloadIdentityConfigArgs']]):
         pulumi.set(self, "workload_identity_config", value)
 
 
@@ -3536,91 +3536,91 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
-                 allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
-                 authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
-                 autopilot_cluster_policy_config: Optional[pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
-                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
-                 cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
-                 cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_telemetry: Optional[pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
-                 confidential_nodes: Optional[pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
-                 control_plane_endpoints_config: Optional[pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
-                 cost_management_config: Optional[pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
-                 database_encryption: Optional[pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
-                 datapath_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snat_status: Optional[pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_config: Optional[pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
-                 enable_autopilot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_fqdn_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_intranode_visibility: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_k8s_beta_apis: Optional[pulumi.Input[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
-                 enable_kubernetes_alpha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_l4_ilb_subsetting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_legacy_abac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_multi_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_shielded_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
-                 fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
-                 gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
-                 gke_auto_upgrade_config: Optional[pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
-                 identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
-                 in_transit_encryption_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_allocation_policy: Optional[pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
-                 logging_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
-                 managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
-                 master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
-                 master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
-                 mesh_certificates: Optional[pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
-                 min_master_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_config: Optional[pulumi.Input[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
-                 monitoring_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_performance_config: Optional[pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
-                 network_policy: Optional[pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
-                 networking_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
-                 node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_pool_auto_config: Optional[pulumi.Input[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
-                 node_pool_defaults: Optional[pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
-                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
-                 node_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
-                 pod_autoscaling: Optional[pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
-                 pod_security_policy_config: Optional[pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
-                 private_cluster_config: Optional[pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protect_config: Optional[pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
-                 rbac_binding_config: Optional[pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
-                 release_channel: Optional[pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
-                 remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_usage_export_config: Optional[pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
-                 secret_manager_config: Optional[pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
-                 secret_sync_config: Optional[pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
-                 security_posture_config: Optional[pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
-                 service_external_ips_config: Optional[pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_config: Optional[pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
-                 user_managed_keys_config: Optional[pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
-                 vertical_pod_autoscaling: Optional[pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
-                 workload_alts_config: Optional[pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
-                 workload_identity_config: Optional[pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
+                 addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
+                 allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
+                 authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+                 autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
+                 autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
+                 cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
+                 cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
+                 confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
+                 cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
+                 database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
+                 datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
+                 enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
+                 enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_multi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
+                 fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
+                 gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
+                 gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
+                 identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
+                 logging_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
+                 managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
+                 master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
+                 master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
+                 mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
+                 min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
+                 monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
+                 network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
+                 networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
+                 node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
+                 node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
+                 node_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
+                 pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
+                 pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
+                 private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
+                 rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
+                 release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
+                 remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
+                 secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
+                 secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
+                 security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
+                 service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
+                 user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
+                 vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
+                 workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
                  __props__=None):
         """
         Manages a Google Kubernetes Engine (GKE) cluster.
@@ -4116,91 +4116,91 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addons_config: Optional[pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
-                 allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
-                 authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
-                 autopilot_cluster_policy_config: Optional[pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
-                 autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
-                 cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
-                 cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_telemetry: Optional[pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
-                 confidential_nodes: Optional[pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
-                 control_plane_endpoints_config: Optional[pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
-                 cost_management_config: Optional[pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
-                 database_encryption: Optional[pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
-                 datapath_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_snat_status: Optional[pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_config: Optional[pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
-                 enable_autopilot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_fqdn_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_intranode_visibility: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_k8s_beta_apis: Optional[pulumi.Input[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
-                 enable_kubernetes_alpha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_l4_ilb_subsetting: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_legacy_abac: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_multi_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_shielded_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tpu: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
-                 fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
-                 gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
-                 gke_auto_upgrade_config: Optional[pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
-                 identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
-                 in_transit_encryption_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_allocation_policy: Optional[pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
-                 logging_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-                 managed_machine_learning_diagnostics_config: Optional[pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
-                 managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
-                 master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
-                 master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
-                 mesh_certificates: Optional[pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
-                 min_master_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_config: Optional[pulumi.Input[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
-                 monitoring_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_performance_config: Optional[pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
-                 network_policy: Optional[pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
-                 networking_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_config: Optional[pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
-                 node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_pool_auto_config: Optional[pulumi.Input[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
-                 node_pool_defaults: Optional[pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
-                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
-                 node_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_config: Optional[pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
-                 pod_autoscaling: Optional[pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
-                 pod_security_policy_config: Optional[pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
-                 private_cluster_config: Optional[pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
-                 private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protect_config: Optional[pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
-                 rbac_binding_config: Optional[pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
-                 release_channel: Optional[pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
-                 remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 resource_usage_export_config: Optional[pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
-                 secret_manager_config: Optional[pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
-                 secret_sync_config: Optional[pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
-                 security_posture_config: Optional[pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
-                 service_external_ips_config: Optional[pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
-                 subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-                 tpu_config: Optional[pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
-                 user_managed_keys_config: Optional[pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
-                 vertical_pod_autoscaling: Optional[pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
-                 workload_alts_config: Optional[pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
-                 workload_identity_config: Optional[pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
+                 addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
+                 allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
+                 authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+                 autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
+                 autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
+                 cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
+                 cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
+                 confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
+                 control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
+                 cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
+                 database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
+                 datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
+                 enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
+                 enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_multi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
+                 fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
+                 gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
+                 gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
+                 identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+                 in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
+                 logging_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+                 managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
+                 managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
+                 master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
+                 master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
+                 mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
+                 min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
+                 monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
+                 network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
+                 networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
+                 node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
+                 node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
+                 node_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
+                 pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
+                 pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
+                 private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
+                 private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
+                 rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
+                 release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
+                 remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
+                 secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
+                 secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
+                 security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
+                 service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+                 subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+                 tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
+                 user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
+                 vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
+                 workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -4316,100 +4316,100 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addons_config: Optional[pulumi.Input[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
-            allow_net_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-            anonymous_authentication_config: Optional[pulumi.Input[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
-            authenticator_groups_config: Optional[pulumi.Input[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
-            autopilot_cluster_policy_config: Optional[pulumi.Input[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
-            autopilot_privileged_admissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            binary_authorization: Optional[pulumi.Input[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
-            cluster_autoscaling: Optional[pulumi.Input[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
-            cluster_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_telemetry: Optional[pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
-            confidential_nodes: Optional[pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
-            control_plane_endpoints_config: Optional[pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
-            cost_management_config: Optional[pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
-            database_encryption: Optional[pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
-            datapath_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            default_max_pods_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-            default_snat_status: Optional[pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_l4_lb_firewall_reconciliation: Optional[pulumi.Input[_builtins.bool]] = None,
-            dns_config: Optional[pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_autopilot: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_cilium_clusterwide_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_fqdn_network_policy: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_intranode_visibility: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_k8s_beta_apis: Optional[pulumi.Input[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
-            enable_kubernetes_alpha: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_l4_ilb_subsetting: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_legacy_abac: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_multi_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_shielded_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_tpu: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
-            fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
-            gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
-            gke_auto_upgrade_config: Optional[pulumi.Input[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
-            identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
-            in_transit_encryption_config: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_allocation_policy: Optional[pulumi.Input[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
-            label_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            logging_config: Optional[pulumi.Input[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
-            logging_service: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
-            managed_machine_learning_diagnostics_config: Optional[pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
-            managed_opentelemetry_config: Optional[pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
-            master_auth: Optional[pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
-            master_authorized_networks_config: Optional[pulumi.Input[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
-            master_version: Optional[pulumi.Input[_builtins.str]] = None,
-            mesh_certificates: Optional[pulumi.Input[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
-            min_master_version: Optional[pulumi.Input[_builtins.str]] = None,
-            monitoring_config: Optional[pulumi.Input[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
-            monitoring_service: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            network_performance_config: Optional[pulumi.Input[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
-            network_policy: Optional[pulumi.Input[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
-            networking_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            node_config: Optional[pulumi.Input[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
-            node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            node_pool_auto_config: Optional[pulumi.Input[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
-            node_pool_defaults: Optional[pulumi.Input[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
-            node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
-            node_version: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_config: Optional[pulumi.Input[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
-            operation: Optional[pulumi.Input[_builtins.str]] = None,
-            pod_autoscaling: Optional[pulumi.Input[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
-            pod_security_policy_config: Optional[pulumi.Input[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
-            private_cluster_config: Optional[pulumi.Input[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
-            private_ipv6_google_access: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protect_config: Optional[pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rbac_binding_config: Optional[pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
-            release_channel: Optional[pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
-            remove_default_node_pool: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            resource_usage_export_config: Optional[pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
-            secret_manager_config: Optional[pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
-            secret_sync_config: Optional[pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
-            security_posture_config: Optional[pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
-            self_link: Optional[pulumi.Input[_builtins.str]] = None,
-            service_external_ips_config: Optional[pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
-            services_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            subnetwork: Optional[pulumi.Input[_builtins.str]] = None,
-            tpu_config: Optional[pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
-            tpu_ipv4_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            user_managed_keys_config: Optional[pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
-            vertical_pod_autoscaling: Optional[pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
-            workload_alts_config: Optional[pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
-            workload_identity_config: Optional[pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None) -> 'Cluster':
+            addons_config: pulumi.Input[Optional[Union['ClusterAddonsConfigArgs', 'ClusterAddonsConfigArgsDict']]] = None,
+            allow_net_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+            anonymous_authentication_config: pulumi.Input[Optional[Union['ClusterAnonymousAuthenticationConfigArgs', 'ClusterAnonymousAuthenticationConfigArgsDict']]] = None,
+            authenticator_groups_config: pulumi.Input[Optional[Union['ClusterAuthenticatorGroupsConfigArgs', 'ClusterAuthenticatorGroupsConfigArgsDict']]] = None,
+            autopilot_cluster_policy_config: pulumi.Input[Optional[Union['ClusterAutopilotClusterPolicyConfigArgs', 'ClusterAutopilotClusterPolicyConfigArgsDict']]] = None,
+            autopilot_privileged_admissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            binary_authorization: pulumi.Input[Optional[Union['ClusterBinaryAuthorizationArgs', 'ClusterBinaryAuthorizationArgsDict']]] = None,
+            cluster_autoscaling: pulumi.Input[Optional[Union['ClusterClusterAutoscalingArgs', 'ClusterClusterAutoscalingArgsDict']]] = None,
+            cluster_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_telemetry: pulumi.Input[Optional[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
+            confidential_nodes: pulumi.Input[Optional[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
+            control_plane_endpoints_config: pulumi.Input[Optional[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
+            cost_management_config: pulumi.Input[Optional[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
+            database_encryption: pulumi.Input[Optional[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
+            datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_intranode_visibility: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_k8s_beta_apis: pulumi.Input[Optional[Union['ClusterEnableK8sBetaApisArgs', 'ClusterEnableK8sBetaApisArgsDict']]] = None,
+            enable_kubernetes_alpha: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_l4_ilb_subsetting: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_legacy_abac: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_multi_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_shielded_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_tpu: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            enterprise_config: pulumi.Input[Optional[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
+            fleet: pulumi.Input[Optional[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
+            gateway_api_config: pulumi.Input[Optional[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
+            gke_auto_upgrade_config: pulumi.Input[Optional[Union['ClusterGkeAutoUpgradeConfigArgs', 'ClusterGkeAutoUpgradeConfigArgsDict']]] = None,
+            identity_service_config: pulumi.Input[Optional[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
+            in_transit_encryption_config: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_allocation_policy: pulumi.Input[Optional[Union['ClusterIpAllocationPolicyArgs', 'ClusterIpAllocationPolicyArgsDict']]] = None,
+            label_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            logging_config: pulumi.Input[Optional[Union['ClusterLoggingConfigArgs', 'ClusterLoggingConfigArgsDict']]] = None,
+            logging_service: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
+            managed_machine_learning_diagnostics_config: pulumi.Input[Optional[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']]] = None,
+            managed_opentelemetry_config: pulumi.Input[Optional[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']]] = None,
+            master_auth: pulumi.Input[Optional[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']]] = None,
+            master_authorized_networks_config: pulumi.Input[Optional[Union['ClusterMasterAuthorizedNetworksConfigArgs', 'ClusterMasterAuthorizedNetworksConfigArgsDict']]] = None,
+            master_version: pulumi.Input[Optional[_builtins.str]] = None,
+            mesh_certificates: pulumi.Input[Optional[Union['ClusterMeshCertificatesArgs', 'ClusterMeshCertificatesArgsDict']]] = None,
+            min_master_version: pulumi.Input[Optional[_builtins.str]] = None,
+            monitoring_config: pulumi.Input[Optional[Union['ClusterMonitoringConfigArgs', 'ClusterMonitoringConfigArgsDict']]] = None,
+            monitoring_service: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_performance_config: pulumi.Input[Optional[Union['ClusterNetworkPerformanceConfigArgs', 'ClusterNetworkPerformanceConfigArgsDict']]] = None,
+            network_policy: pulumi.Input[Optional[Union['ClusterNetworkPolicyArgs', 'ClusterNetworkPolicyArgsDict']]] = None,
+            networking_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            node_config: pulumi.Input[Optional[Union['ClusterNodeConfigArgs', 'ClusterNodeConfigArgsDict']]] = None,
+            node_locations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            node_pool_auto_config: pulumi.Input[Optional[Union['ClusterNodePoolAutoConfigArgs', 'ClusterNodePoolAutoConfigArgsDict']]] = None,
+            node_pool_defaults: pulumi.Input[Optional[Union['ClusterNodePoolDefaultsArgs', 'ClusterNodePoolDefaultsArgsDict']]] = None,
+            node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodePoolArgs', 'ClusterNodePoolArgsDict']]]]] = None,
+            node_version: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_config: pulumi.Input[Optional[Union['ClusterNotificationConfigArgs', 'ClusterNotificationConfigArgsDict']]] = None,
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            pod_autoscaling: pulumi.Input[Optional[Union['ClusterPodAutoscalingArgs', 'ClusterPodAutoscalingArgsDict']]] = None,
+            pod_security_policy_config: pulumi.Input[Optional[Union['ClusterPodSecurityPolicyConfigArgs', 'ClusterPodSecurityPolicyConfigArgsDict']]] = None,
+            private_cluster_config: pulumi.Input[Optional[Union['ClusterPrivateClusterConfigArgs', 'ClusterPrivateClusterConfigArgsDict']]] = None,
+            private_ipv6_google_access: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protect_config: pulumi.Input[Optional[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rbac_binding_config: pulumi.Input[Optional[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']]] = None,
+            release_channel: pulumi.Input[Optional[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']]] = None,
+            remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
+            secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
+            secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
+            security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            service_external_ips_config: pulumi.Input[Optional[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
+            services_ipv4_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
+            tpu_config: pulumi.Input[Optional[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
+            tpu_ipv4_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            user_managed_keys_config: pulumi.Input[Optional[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
+            vertical_pod_autoscaling: pulumi.Input[Optional[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
+            workload_alts_config: pulumi.Input[Optional[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
+            workload_identity_config: pulumi.Input[Optional[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

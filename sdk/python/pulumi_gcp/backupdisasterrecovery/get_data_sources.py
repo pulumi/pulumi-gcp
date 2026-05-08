@@ -154,11 +154,11 @@ def get_data_sources(backup_vault_id: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         order_by=pulumi.get(__ret__, 'order_by'),
         project=pulumi.get(__ret__, 'project'))
-def get_data_sources_output(backup_vault_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            location: Optional[pulumi.Input[_builtins.str]] = None,
-                            order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_data_sources_output(backup_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            location: pulumi.Input[Optional[_builtins.str]] = None,
+                            order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourcesResult]:
     """
     A Backup and DR Data Sources.

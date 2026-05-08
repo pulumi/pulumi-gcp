@@ -414,26 +414,26 @@ export interface CxAgentState {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings>;
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings | undefined>;
     /**
      * Answer feedback collection settings.
      * Structure is documented below.
      */
-    answerFeedbackSettings?: pulumi.Input<inputs.diagflow.CxAgentAnswerFeedbackSettings>;
+    answerFeedbackSettings?: pulumi.Input<inputs.diagflow.CxAgentAnswerFeedbackSettings | undefined>;
     /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
-    avatarUri?: pulumi.Input<string>;
+    avatarUri?: pulumi.Input<string | undefined>;
     /**
      * Settings for custom client certificates.
      * Structure is documented below.
      */
-    clientCertificateSettings?: pulumi.Input<inputs.diagflow.CxAgentClientCertificateSettings>;
+    clientCertificateSettings?: pulumi.Input<inputs.diagflow.CxAgentClientCertificateSettings | undefined>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
      */
-    defaultLanguageCode?: pulumi.Input<string>;
+    defaultLanguageCode?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, Terraform will delete the chat engine associated with the agent when the agent is destroyed.
      * Otherwise, the chat engine will persist.
@@ -450,23 +450,23 @@ export interface CxAgentState {
      * or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
      * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
      */
-    deleteChatEngineOnDestroy?: pulumi.Input<boolean>;
+    deleteChatEngineOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the agent, unique within the location.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
      */
-    enableMultiLanguageTraining?: pulumi.Input<boolean>;
+    enableMultiLanguageTraining?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
      */
-    enableSpellCorrection?: pulumi.Input<boolean>;
+    enableSpellCorrection?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
@@ -475,81 +475,81 @@ export interface CxAgentState {
      *
      * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
-    enableStackdriverLogging?: pulumi.Input<boolean>;
+    enableStackdriverLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Gen App Builder-related agent-level settings.
      * Structure is documented below.
      */
-    genAppBuilderSettings?: pulumi.Input<inputs.diagflow.CxAgentGenAppBuilderSettings>;
+    genAppBuilderSettings?: pulumi.Input<inputs.diagflow.CxAgentGenAppBuilderSettings | undefined>;
     /**
      * Git integration settings for this agent.
      * Structure is documented below.
      */
-    gitIntegrationSettings?: pulumi.Input<inputs.diagflow.CxAgentGitIntegrationSettings>;
+    gitIntegrationSettings?: pulumi.Input<inputs.diagflow.CxAgentGitIntegrationSettings | undefined>;
     /**
      * The name of the location this agent is located in.
      * > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
      * This is a one time step but at the moment you can only [configure location settings](https://cloud.google.com/dialogflow/cx/docs/concept/region#location-settings) via the Dialogflow CX console.
      * Another options is to use global location so you don't need to manually configure location settings.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the agent.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Settings for end user personalization.
      * Structure is documented below.
      */
-    personalizationSettings?: pulumi.Input<inputs.diagflow.CxAgentPersonalizationSettings>;
+    personalizationSettings?: pulumi.Input<inputs.diagflow.CxAgentPersonalizationSettings | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * A read only boolean field reflecting Zone Isolation status of the agent.
      */
-    satisfiesPzi?: pulumi.Input<boolean>;
+    satisfiesPzi?: pulumi.Input<boolean | undefined>;
     /**
      * A read only boolean field reflecting Zone Separation status of the agent.
      */
-    satisfiesPzs?: pulumi.Input<boolean>;
+    satisfiesPzs?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
-    securitySettings?: pulumi.Input<string>;
+    securitySettings?: pulumi.Input<string | undefined>;
     /**
      * Settings related to speech recognition.
      * Structure is documented below.
      */
-    speechToTextSettings?: pulumi.Input<inputs.diagflow.CxAgentSpeechToTextSettings>;
+    speechToTextSettings?: pulumi.Input<inputs.diagflow.CxAgentSpeechToTextSettings | undefined>;
     /**
      * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
      */
-    startFlow?: pulumi.Input<string>;
+    startFlow?: pulumi.Input<string | undefined>;
     /**
      * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
      */
-    startPlaybook?: pulumi.Input<string>;
+    startPlaybook?: pulumi.Input<string | undefined>;
     /**
      * The list of all languages supported by this agent (except for the default_language_code).
      */
-    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Settings related to speech synthesizing.
      * Structure is documented below.
      */
-    textToSpeechSettings?: pulumi.Input<inputs.diagflow.CxAgentTextToSpeechSettings>;
+    textToSpeechSettings?: pulumi.Input<inputs.diagflow.CxAgentTextToSpeechSettings | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -561,21 +561,21 @@ export interface CxAgentArgs {
      * Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
      * Structure is documented below.
      */
-    advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings>;
+    advancedSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettings | undefined>;
     /**
      * Answer feedback collection settings.
      * Structure is documented below.
      */
-    answerFeedbackSettings?: pulumi.Input<inputs.diagflow.CxAgentAnswerFeedbackSettings>;
+    answerFeedbackSettings?: pulumi.Input<inputs.diagflow.CxAgentAnswerFeedbackSettings | undefined>;
     /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
      */
-    avatarUri?: pulumi.Input<string>;
+    avatarUri?: pulumi.Input<string | undefined>;
     /**
      * Settings for custom client certificates.
      * Structure is documented below.
      */
-    clientCertificateSettings?: pulumi.Input<inputs.diagflow.CxAgentClientCertificateSettings>;
+    clientCertificateSettings?: pulumi.Input<inputs.diagflow.CxAgentClientCertificateSettings | undefined>;
     /**
      * The default language of the agent as a language tag. [See Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language)
      * for a list of the currently supported language codes. This field cannot be updated after creation.
@@ -597,11 +597,11 @@ export interface CxAgentArgs {
      * or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
      * The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
      */
-    deleteChatEngineOnDestroy?: pulumi.Input<boolean>;
+    deleteChatEngineOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the agent, unique within the location.
      */
@@ -609,11 +609,11 @@ export interface CxAgentArgs {
     /**
      * Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
      */
-    enableMultiLanguageTraining?: pulumi.Input<boolean>;
+    enableMultiLanguageTraining?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
      */
-    enableSpellCorrection?: pulumi.Input<boolean>;
+    enableSpellCorrection?: pulumi.Input<boolean | undefined>;
     /**
      * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
@@ -622,17 +622,17 @@ export interface CxAgentArgs {
      *
      * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
-    enableStackdriverLogging?: pulumi.Input<boolean>;
+    enableStackdriverLogging?: pulumi.Input<boolean | undefined>;
     /**
      * Gen App Builder-related agent-level settings.
      * Structure is documented below.
      */
-    genAppBuilderSettings?: pulumi.Input<inputs.diagflow.CxAgentGenAppBuilderSettings>;
+    genAppBuilderSettings?: pulumi.Input<inputs.diagflow.CxAgentGenAppBuilderSettings | undefined>;
     /**
      * Git integration settings for this agent.
      * Structure is documented below.
      */
-    gitIntegrationSettings?: pulumi.Input<inputs.diagflow.CxAgentGitIntegrationSettings>;
+    gitIntegrationSettings?: pulumi.Input<inputs.diagflow.CxAgentGitIntegrationSettings | undefined>;
     /**
      * The name of the location this agent is located in.
      * > **Note:** The first time you are deploying an Agent in your project you must configure location settings.
@@ -643,39 +643,39 @@ export interface CxAgentArgs {
     /**
      * Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for [agents.restore][].
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Settings for end user personalization.
      * Structure is documented below.
      */
-    personalizationSettings?: pulumi.Input<inputs.diagflow.CxAgentPersonalizationSettings>;
+    personalizationSettings?: pulumi.Input<inputs.diagflow.CxAgentPersonalizationSettings | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: projects/<Project ID>/locations/<Location ID>/securitySettings/<Security Settings ID>.
      */
-    securitySettings?: pulumi.Input<string>;
+    securitySettings?: pulumi.Input<string | undefined>;
     /**
      * Settings related to speech recognition.
      * Structure is documented below.
      */
-    speechToTextSettings?: pulumi.Input<inputs.diagflow.CxAgentSpeechToTextSettings>;
+    speechToTextSettings?: pulumi.Input<inputs.diagflow.CxAgentSpeechToTextSettings | undefined>;
     /**
      * Name of the start playbook in this agent. A start playbook will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: **projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/playbooks/<PlaybookID>**. Currently only the default playbook with id "00000000-0000-0000-0000-000000000000" is allowed.
      */
-    startPlaybook?: pulumi.Input<string>;
+    startPlaybook?: pulumi.Input<string | undefined>;
     /**
      * The list of all languages supported by this agent (except for the default_language_code).
      */
-    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Settings related to speech synthesizing.
      * Structure is documented below.
      */
-    textToSpeechSettings?: pulumi.Input<inputs.diagflow.CxAgentTextToSpeechSettings>;
+    textToSpeechSettings?: pulumi.Input<inputs.diagflow.CxAgentTextToSpeechSettings | undefined>;
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.

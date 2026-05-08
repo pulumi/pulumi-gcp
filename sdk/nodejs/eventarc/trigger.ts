@@ -272,84 +272,84 @@ export interface TriggerState {
     /**
      * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * Output only. The reason(s) why a trigger is in FAILED state.
      */
-    conditions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    conditions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. The creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Required. Destination specifies where the events should be sent to.
      * Structure is documented below.
      */
-    destination?: pulumi.Input<inputs.eventarc.TriggerDestination>;
+    destination?: pulumi.Input<inputs.eventarc.TriggerDestination | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      */
-    eventDataContentType?: pulumi.Input<string>;
+    eventDataContentType?: pulumi.Input<string | undefined>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      * Structure is documented below.
      */
-    matchingCriterias?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerMatchingCriteria>[]>;
+    matchingCriterias?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerMatchingCriteria>[] | undefined>;
     /**
      * Required. The resource name of the trigger. Must be unique within the location on the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The retry policy configuration for the Trigger.
      * Can only be set with Cloud Run destinations.
      * Structure is documented below.
      */
-    retryPolicy?: pulumi.Input<inputs.eventarc.TriggerRetryPolicy>;
+    retryPolicy?: pulumi.Input<inputs.eventarc.TriggerRetryPolicy | undefined>;
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * Structure is documented below.
      */
-    transport?: pulumi.Input<inputs.eventarc.TriggerTransport>;
+    transport?: pulumi.Input<inputs.eventarc.TriggerTransport | undefined>;
     /**
      * Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Output only. The last-modified time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -359,7 +359,7 @@ export interface TriggerArgs {
     /**
      * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * Required. Destination specifies where the events should be sent to.
      * Structure is documented below.
@@ -368,13 +368,13 @@ export interface TriggerArgs {
     /**
      * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
      */
-    eventDataContentType?: pulumi.Input<string>;
+    eventDataContentType?: pulumi.Input<string | undefined>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The location for the resource
      */
@@ -387,25 +387,25 @@ export interface TriggerArgs {
     /**
      * Required. The resource name of the trigger. Must be unique within the location on the project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The retry policy configuration for the Trigger.
      * Can only be set with Cloud Run destinations.
      * Structure is documented below.
      */
-    retryPolicy?: pulumi.Input<inputs.eventarc.TriggerRetryPolicy>;
+    retryPolicy?: pulumi.Input<inputs.eventarc.TriggerRetryPolicy | undefined>;
     /**
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      * Structure is documented below.
      */
-    transport?: pulumi.Input<inputs.eventarc.TriggerTransport>;
+    transport?: pulumi.Input<inputs.eventarc.TriggerTransport | undefined>;
 }

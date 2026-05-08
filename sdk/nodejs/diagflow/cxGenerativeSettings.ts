@@ -186,36 +186,36 @@ export interface CxGenerativeSettingsState {
      * Settings for Generative Fallback.
      * Structure is documented below.
      */
-    fallbackSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsFallbackSettings>;
+    fallbackSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsFallbackSettings | undefined>;
     /**
      * Settings for Generative Safety.
      * Structure is documented below.
      */
-    generativeSafetySettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings>;
+    generativeSafetySettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings | undefined>;
     /**
      * Settings for knowledge connector.
      * Structure is documented below.
      */
-    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings>;
+    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings | undefined>;
     /**
      * Language for this settings.
      */
-    languageCode?: pulumi.Input<string>;
+    languageCode?: pulumi.Input<string | undefined>;
     /**
      * LLM model settings.
      * Structure is documented below.
      */
-    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsLlmModelSettings>;
+    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsLlmModelSettings | undefined>;
     /**
      * The unique identifier of the generativeSettings.
      * Format: projects/<ProjectID>/locations/<LocationID>/agents/<AgentID>/generativeSettings.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The agent to create a flow for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -226,17 +226,17 @@ export interface CxGenerativeSettingsArgs {
      * Settings for Generative Fallback.
      * Structure is documented below.
      */
-    fallbackSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsFallbackSettings>;
+    fallbackSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsFallbackSettings | undefined>;
     /**
      * Settings for Generative Safety.
      * Structure is documented below.
      */
-    generativeSafetySettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings>;
+    generativeSafetySettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsGenerativeSafetySettings | undefined>;
     /**
      * Settings for knowledge connector.
      * Structure is documented below.
      */
-    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings>;
+    knowledgeConnectorSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsKnowledgeConnectorSettings | undefined>;
     /**
      * Language for this settings.
      */
@@ -245,10 +245,10 @@ export interface CxGenerativeSettingsArgs {
      * LLM model settings.
      * Structure is documented below.
      */
-    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsLlmModelSettings>;
+    llmModelSettings?: pulumi.Input<inputs.diagflow.CxGenerativeSettingsLlmModelSettings | undefined>;
     /**
      * The agent to create a flow for.
      * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
 }

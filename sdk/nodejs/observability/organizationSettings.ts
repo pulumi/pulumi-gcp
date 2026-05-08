@@ -172,27 +172,27 @@ export interface OrganizationSettingsState {
     /**
      * The default storage location for new resources, e.g. buckets. Only valid for global location.
      */
-    defaultStorageLocation?: pulumi.Input<string>;
+    defaultStorageLocation?: pulumi.Input<string | undefined>;
     /**
      * The default Cloud KMS key to use for new resources. Only valid for regional locations.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The location of the settings.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the settings.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * The service account used by Cloud Observability for this organization.
      */
-    serviceAccountId?: pulumi.Input<string>;
+    serviceAccountId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,11 +202,11 @@ export interface OrganizationSettingsArgs {
     /**
      * The default storage location for new resources, e.g. buckets. Only valid for global location.
      */
-    defaultStorageLocation?: pulumi.Input<string>;
+    defaultStorageLocation?: pulumi.Input<string | undefined>;
     /**
      * The default Cloud KMS key to use for new resources. Only valid for regional locations.
      */
-    kmsKeyName?: pulumi.Input<string>;
+    kmsKeyName?: pulumi.Input<string | undefined>;
     /**
      * The location of the settings.
      */

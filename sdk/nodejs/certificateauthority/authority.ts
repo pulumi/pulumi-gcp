@@ -603,38 +603,38 @@ export interface AuthorityState {
      * URLs for accessing content published by this CA, such as the CA certificate and CRLs.
      * Structure is documented below.
      */
-    accessUrls?: pulumi.Input<pulumi.Input<inputs.certificateauthority.AuthorityAccessUrl>[]>;
+    accessUrls?: pulumi.Input<pulumi.Input<inputs.certificateauthority.AuthorityAccessUrl>[] | undefined>;
     /**
      * The user provided Resource ID for this Certificate Authority.
      */
-    certificateAuthorityId?: pulumi.Input<string>;
+    certificateAuthorityId?: pulumi.Input<string | undefined>;
     /**
      * The config used to create a self-signed X.509 certificate or CSR.
      * Structure is documented below.
      */
-    config?: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
+    config?: pulumi.Input<inputs.certificateauthority.AuthorityConfig | undefined>;
     /**
      * The time at which this CertificateAuthority was created.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the CertificateAuthority.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the CertificateAuthority will fail.
      * When the field is set to false, deleting the CertificateAuthority is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
      * Possible values: ENABLED, DISABLED, STAGED.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
-    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -642,19 +642,19 @@ export interface AuthorityState {
      * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
      * created.
      */
-    gcsBucket?: pulumi.Input<string>;
+    gcsBucket?: pulumi.Input<string | undefined>;
     /**
      * This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
      * Use with care. Defaults to `false`.
      */
-    ignoreActiveCertificatesOnDeletion?: pulumi.Input<boolean>;
+    ignoreActiveCertificatesOnDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
      * is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
      * certificate. Otherwise, it is used to sign a CSR.
      * Structure is documented below.
      */
-    keySpec?: pulumi.Input<inputs.certificateauthority.AuthorityKeySpec>;
+    keySpec?: pulumi.Input<inputs.certificateauthority.AuthorityKeySpec | undefined>;
     /**
      * Labels with user-defined metadata.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
@@ -663,65 +663,65 @@ export interface AuthorityState {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
      * "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
      * fractional digits, terminated by 's'. Example: "3.5s".
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string | undefined>;
     /**
      * Location of the CertificateAuthority. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name for this CertificateAuthority in the format
      * projects/*&#47;locations/*&#47;certificateAuthorities/*.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
      */
-    pemCaCertificate?: pulumi.Input<string>;
+    pemCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * This CertificateAuthority's certificate chain, including the current
      * CertificateAuthority's certificate. Ordered such that the root issuer is the final
      * element (consistent with RFC 5246). For a self-signed CA, this will only list the current
      * CertificateAuthority's certificate.
      */
-    pemCaCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+    pemCaCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the CaPool this Certificate Authority belongs to.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The combination of labels configured directly on the resource
      *  and default labels configured on the provider.
      */
-    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If this flag is set, the Certificate Authority will be deleted as soon as
      * possible without a 30-day grace period where undeletion would have been
      * allowed. If you proceed, there will be no way to recover this CA.
      * Use with care. Defaults to `false`.
      */
-    skipGracePeriod?: pulumi.Input<boolean>;
+    skipGracePeriod?: pulumi.Input<boolean | undefined>;
     /**
      * The State for this CertificateAuthority.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * If this is a subordinate CertificateAuthority, this field will be set
      * with the subordinate configuration, which describes its issuers.
      * Structure is documented below.
      */
-    subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
+    subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
     /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
@@ -729,19 +729,19 @@ export interface AuthorityState {
      * Default value is `SELF_SIGNED`.
      * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The time at which this CertificateAuthority was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
      * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
      * that can be specified by users.
      * Structure is documented below.
      */
-    userDefinedAccessUrls?: pulumi.Input<inputs.certificateauthority.AuthorityUserDefinedAccessUrls>;
+    userDefinedAccessUrls?: pulumi.Input<inputs.certificateauthority.AuthorityUserDefinedAccessUrls | undefined>;
 }
 
 /**
@@ -763,12 +763,12 @@ export interface AuthorityArgs {
      * or `terraform destroy` that would delete the CertificateAuthority will fail.
      * When the field is set to false, deleting the CertificateAuthority is allowed.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
      * Possible values: ENABLED, DISABLED, STAGED.
      */
-    desiredState?: pulumi.Input<string>;
+    desiredState?: pulumi.Input<string | undefined>;
     /**
      * The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
      * such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
@@ -776,12 +776,12 @@ export interface AuthorityArgs {
      * my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
      * created.
      */
-    gcsBucket?: pulumi.Input<string>;
+    gcsBucket?: pulumi.Input<string | undefined>;
     /**
      * This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
      * Use with care. Defaults to `false`.
      */
-    ignoreActiveCertificatesOnDeletion?: pulumi.Input<boolean>;
+    ignoreActiveCertificatesOnDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
      * is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
@@ -797,13 +797,13 @@ export interface AuthorityArgs {
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
      * "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
      * fractional digits, terminated by 's'. Example: "3.5s".
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string | undefined>;
     /**
      * Location of the CertificateAuthority. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
@@ -812,7 +812,7 @@ export interface AuthorityArgs {
     /**
      * The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
      */
-    pemCaCertificate?: pulumi.Input<string>;
+    pemCaCertificate?: pulumi.Input<string | undefined>;
     /**
      * The name of the CaPool this Certificate Authority belongs to.
      */
@@ -821,20 +821,20 @@ export interface AuthorityArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * If this flag is set, the Certificate Authority will be deleted as soon as
      * possible without a 30-day grace period where undeletion would have been
      * allowed. If you proceed, there will be no way to recover this CA.
      * Use with care. Defaults to `false`.
      */
-    skipGracePeriod?: pulumi.Input<boolean>;
+    skipGracePeriod?: pulumi.Input<boolean | undefined>;
     /**
      * If this is a subordinate CertificateAuthority, this field will be set
      * with the subordinate configuration, which describes its issuers.
      * Structure is documented below.
      */
-    subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig>;
+    subordinateConfig?: pulumi.Input<inputs.certificateauthority.AuthoritySubordinateConfig | undefined>;
     /**
      * The Type of this CertificateAuthority.
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
@@ -842,11 +842,11 @@ export interface AuthorityArgs {
      * Default value is `SELF_SIGNED`.
      * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
      * that can be specified by users.
      * Structure is documented below.
      */
-    userDefinedAccessUrls?: pulumi.Input<inputs.certificateauthority.AuthorityUserDefinedAccessUrls>;
+    userDefinedAccessUrls?: pulumi.Input<inputs.certificateauthority.AuthorityUserDefinedAccessUrls | undefined>;
 }

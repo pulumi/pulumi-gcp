@@ -510,9 +510,9 @@ def get_function(name: Optional[_builtins.str] = None,
         version_id=pulumi.get(__ret__, 'version_id'),
         vpc_connector=pulumi.get(__ret__, 'vpc_connector'),
         vpc_connector_egress_settings=pulumi.get(__ret__, 'vpc_connector_egress_settings'))
-def get_function_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                        project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_function_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                        project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionResult]:
     """
     Get information about a Google Cloud Function. For more information see

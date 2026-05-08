@@ -245,12 +245,12 @@ def get_file(file_id: Optional[_builtins.str] = None,
         repository_id=pulumi.get(__ret__, 'repository_id'),
         size_bytes=pulumi.get(__ret__, 'size_bytes'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_file_output(file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                    location: Optional[pulumi.Input[_builtins.str]] = None,
-                    output_path: Optional[pulumi.Input[_builtins.str]] = None,
-                    overwrite: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                    project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    repository_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_file_output(file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                    location: pulumi.Input[Optional[_builtins.str]] = None,
+                    output_path: pulumi.Input[Optional[_builtins.str]] = None,
+                    overwrite: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    repository_id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileResult]:
     """
     Downloads a single file from a Google Artifact Registry repository to a local

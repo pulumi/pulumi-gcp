@@ -23,14 +23,14 @@ class AgentGatewayArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_managed: Optional[pulumi.Input['AgentGatewayGoogleManagedArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['AgentGatewayNetworkConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 self_managed: Optional[pulumi.Input['AgentGatewaySelfManagedArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_managed: pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['AgentGatewayNetworkConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 self_managed: pulumi.Input[Optional['AgentGatewaySelfManagedArgs']] = None):
         """
         The set of arguments for constructing a AgentGateway resource.
 
@@ -103,19 +103,19 @@ class AgentGatewayArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="googleManaged")
-    def google_managed(self) -> Optional[pulumi.Input['AgentGatewayGoogleManagedArgs']]:
+    def google_managed(self) -> pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']]:
         """
         Configuration for Google Managed deployment mode.
         Proxy is orchestrated and managed by GoogleCloud in a tenant project.
@@ -124,12 +124,12 @@ class AgentGatewayArgs:
         return pulumi.get(self, "google_managed")
 
     @google_managed.setter
-    def google_managed(self, value: Optional[pulumi.Input['AgentGatewayGoogleManagedArgs']]):
+    def google_managed(self, value: pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']]):
         pulumi.set(self, "google_managed", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the AgentGateway resource.
 
@@ -139,24 +139,24 @@ class AgentGatewayArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the AgentGateway resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['AgentGatewayNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['AgentGatewayNetworkConfigArgs']]:
         """
         Network configuration for the AgentGateway.
         Structure is documented below.
@@ -164,12 +164,12 @@ class AgentGatewayArgs:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['AgentGatewayNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['AgentGatewayNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -177,12 +177,12 @@ class AgentGatewayArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def registries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
         Note: Currently limited to project-scoped registries Must be of format
@@ -191,12 +191,12 @@ class AgentGatewayArgs:
         return pulumi.get(self, "registries")
 
     @registries.setter
-    def registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def registries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "registries", value)
 
     @_builtins.property
     @pulumi.getter(name="selfManaged")
-    def self_managed(self) -> Optional[pulumi.Input['AgentGatewaySelfManagedArgs']]:
+    def self_managed(self) -> pulumi.Input[Optional['AgentGatewaySelfManagedArgs']]:
         """
         Configuration for Self Managed deployment mode.
         Attach to existing Application Load Balancers or Secure Web Proxies.
@@ -205,29 +205,29 @@ class AgentGatewayArgs:
         return pulumi.get(self, "self_managed")
 
     @self_managed.setter
-    def self_managed(self, value: Optional[pulumi.Input['AgentGatewaySelfManagedArgs']]):
+    def self_managed(self, value: pulumi.Input[Optional['AgentGatewaySelfManagedArgs']]):
         pulumi.set(self, "self_managed", value)
 
 
 @pulumi.input_type
 class _AgentGatewayState:
     def __init__(__self__, *,
-                 agent_gateway_cards: Optional[pulumi.Input[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_managed: Optional[pulumi.Input['AgentGatewayGoogleManagedArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input['AgentGatewayNetworkConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 self_managed: Optional[pulumi.Input['AgentGatewaySelfManagedArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_gateway_cards: pulumi.Input[Optional[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_managed: pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional['AgentGatewayNetworkConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 self_managed: pulumi.Input[Optional['AgentGatewaySelfManagedArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AgentGateway resources.
 
@@ -300,7 +300,7 @@ class _AgentGatewayState:
 
     @_builtins.property
     @pulumi.getter(name="agentGatewayCards")
-    def agent_gateway_cards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]]]:
+    def agent_gateway_cards(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]]]:
         """
         AgentGatewayOutputCard contains informational output-only fields.
         Structure is documented below.
@@ -308,48 +308,48 @@ class _AgentGatewayState:
         return pulumi.get(self, "agent_gateway_cards")
 
     @agent_gateway_cards.setter
-    def agent_gateway_cards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]]]):
+    def agent_gateway_cards(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AgentGatewayAgentGatewayCardArgs']]]]):
         pulumi.set(self, "agent_gateway_cards", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Etag of the resource.
         If this is provided, it must match the server's etag. If the provided etag
@@ -359,12 +359,12 @@ class _AgentGatewayState:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="googleManaged")
-    def google_managed(self) -> Optional[pulumi.Input['AgentGatewayGoogleManagedArgs']]:
+    def google_managed(self) -> pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']]:
         """
         Configuration for Google Managed deployment mode.
         Proxy is orchestrated and managed by GoogleCloud in a tenant project.
@@ -373,12 +373,12 @@ class _AgentGatewayState:
         return pulumi.get(self, "google_managed")
 
     @google_managed.setter
-    def google_managed(self, value: Optional[pulumi.Input['AgentGatewayGoogleManagedArgs']]):
+    def google_managed(self, value: pulumi.Input[Optional['AgentGatewayGoogleManagedArgs']]):
         pulumi.set(self, "google_managed", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of label tags associated with the AgentGateway resource.
 
@@ -388,36 +388,36 @@ class _AgentGatewayState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the agent gateway.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the AgentGateway resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConfig")
-    def network_config(self) -> Optional[pulumi.Input['AgentGatewayNetworkConfigArgs']]:
+    def network_config(self) -> pulumi.Input[Optional['AgentGatewayNetworkConfigArgs']]:
         """
         Network configuration for the AgentGateway.
         Structure is documented below.
@@ -425,12 +425,12 @@ class _AgentGatewayState:
         return pulumi.get(self, "network_config")
 
     @network_config.setter
-    def network_config(self, value: Optional[pulumi.Input['AgentGatewayNetworkConfigArgs']]):
+    def network_config(self, value: pulumi.Input[Optional['AgentGatewayNetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -438,12 +438,12 @@ class _AgentGatewayState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of protocols supported by an Agent Gateway.
         Each value may be one of: `MCP`.
@@ -451,12 +451,12 @@ class _AgentGatewayState:
         return pulumi.get(self, "protocols")
 
     @protocols.setter
-    def protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -464,12 +464,12 @@ class _AgentGatewayState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def registries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway.
         Note: Currently limited to project-scoped registries Must be of format
@@ -478,12 +478,12 @@ class _AgentGatewayState:
         return pulumi.get(self, "registries")
 
     @registries.setter
-    def registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def registries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "registries", value)
 
     @_builtins.property
     @pulumi.getter(name="selfManaged")
-    def self_managed(self) -> Optional[pulumi.Input['AgentGatewaySelfManagedArgs']]:
+    def self_managed(self) -> pulumi.Input[Optional['AgentGatewaySelfManagedArgs']]:
         """
         Configuration for Self Managed deployment mode.
         Attach to existing Application Load Balancers or Secure Web Proxies.
@@ -492,19 +492,19 @@ class _AgentGatewayState:
         return pulumi.get(self, "self_managed")
 
     @self_managed.setter
-    def self_managed(self, value: Optional[pulumi.Input['AgentGatewaySelfManagedArgs']]):
+    def self_managed(self, value: pulumi.Input[Optional['AgentGatewaySelfManagedArgs']]):
         pulumi.set(self, "self_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the resource was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -514,16 +514,16 @@ class AgentGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_managed: Optional[pulumi.Input[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 self_managed: Optional[pulumi.Input[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
                  __props__=None):
         """
         AgentGateway represents the agent gateway resource.
@@ -741,16 +741,16 @@ class AgentGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_managed: Optional[pulumi.Input[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_config: Optional[pulumi.Input[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 registries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 self_managed: Optional[pulumi.Input[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -792,22 +792,22 @@ class AgentGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_gateway_cards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            google_managed: Optional[pulumi.Input[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_config: Optional[pulumi.Input[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            registries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            self_managed: Optional[pulumi.Input[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AgentGateway':
+            agent_gateway_cards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AgentGatewayAgentGatewayCardArgs', 'AgentGatewayAgentGatewayCardArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            google_managed: pulumi.Input[Optional[Union['AgentGatewayGoogleManagedArgs', 'AgentGatewayGoogleManagedArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_config: pulumi.Input[Optional[Union['AgentGatewayNetworkConfigArgs', 'AgentGatewayNetworkConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            registries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            self_managed: pulumi.Input[Optional[Union['AgentGatewaySelfManagedArgs', 'AgentGatewaySelfManagedArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AgentGateway':
         """
         Get an existing AgentGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

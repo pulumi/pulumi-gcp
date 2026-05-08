@@ -25,11 +25,11 @@ class CertificateIssuanceConfigArgs:
                  key_algorithm: pulumi.Input[_builtins.str],
                  lifetime: pulumi.Input[_builtins.str],
                  rotation_window_percentage: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CertificateIssuanceConfig resource.
 
@@ -126,19 +126,19 @@ class CertificateIssuanceConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One or more paragraphs of text description of a CertificateIssuanceConfig.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         'Set of label tags associated with the CertificateIssuanceConfig resource.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
@@ -149,24 +149,24 @@ class CertificateIssuanceConfigArgs:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate Manager location. If not specified, "global" is used.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined name of the certificate issuance config.
         CertificateIssuanceConfig names must be unique globally.
@@ -174,12 +174,12 @@ class CertificateIssuanceConfigArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -187,26 +187,26 @@ class CertificateIssuanceConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _CertificateIssuanceConfigState:
     def __init__(__self__, *,
-                 certificate_authority_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 key_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 rotation_window_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate_authority_config: pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 rotation_window_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificateIssuanceConfig resources.
 
@@ -270,7 +270,7 @@ class _CertificateIssuanceConfigState:
 
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityConfig")
-    def certificate_authority_config(self) -> Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]:
+    def certificate_authority_config(self) -> pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]:
         """
         The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
         Structure is documented below.
@@ -278,12 +278,12 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "certificate_authority_config")
 
     @certificate_authority_config.setter
-    def certificate_authority_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]):
+    def certificate_authority_config(self, value: pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigArgs']]):
         pulumi.set(self, "certificate_authority_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
         accurate to nanoseconds with up to nine fractional digits.
@@ -292,36 +292,36 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One or more paragraphs of text description of a CertificateIssuanceConfig.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
-    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
     @effective_labels.setter
-    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="keyAlgorithm")
-    def key_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key algorithm to use when generating the private key.
         Possible values are: `RSA_2048`, `ECDSA_P256`.
@@ -329,12 +329,12 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "key_algorithm")
 
     @key_algorithm.setter
-    def key_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         'Set of label tags associated with the CertificateIssuanceConfig resource.
         An object containing a list of "key": value pairs. Example: { "name": "wrench", "count": "3" }.
@@ -345,12 +345,12 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def lifetime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifetime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Lifetime of issued certificates. A duration in seconds with up to nine fractional digits, ending with 's'.
         Example: "1814400s". Valid values are from 21 days (1814400s) to 30 days (2592000s)
@@ -358,24 +358,24 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "lifetime")
 
     @lifetime.setter
-    def lifetime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifetime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifetime", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Certificate Manager location. If not specified, "global" is used.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined name of the certificate issuance config.
         CertificateIssuanceConfig names must be unique globally.
@@ -383,12 +383,12 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -396,12 +396,12 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="pulumiLabels")
-    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The combination of labels configured directly on the resource
          and default labels configured on the provider.
@@ -409,12 +409,12 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "pulumi_labels")
 
     @pulumi_labels.setter
-    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationWindowPercentage")
-    def rotation_window_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rotation_window_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
         Must be a number between 1-99, inclusive.
@@ -424,12 +424,12 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "rotation_window_percentage")
 
     @rotation_window_percentage.setter
-    def rotation_window_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rotation_window_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rotation_window_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last update timestamp of a CertificateIssuanceConfig. Timestamp is in RFC3339 UTC "Zulu" format,
         accurate to nanoseconds with up to nine fractional digits.
@@ -438,7 +438,7 @@ class _CertificateIssuanceConfigState:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -448,15 +448,15 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: Optional[pulumi.Input[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_window_percentage: Optional[pulumi.Input[_builtins.int]] = None,
+                 certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_window_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Certificate represents a HTTP-reachable backend for a Certificate.
@@ -685,15 +685,15 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_authority_config: Optional[pulumi.Input[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotation_window_percentage: Optional[pulumi.Input[_builtins.int]] = None,
+                 certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotation_window_percentage: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -736,19 +736,19 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_authority_config: Optional[pulumi.Input[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            key_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            lifetime: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            rotation_window_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'CertificateIssuanceConfig':
+            certificate_authority_config: pulumi.Input[Optional[Union['CertificateIssuanceConfigCertificateAuthorityConfigArgs', 'CertificateIssuanceConfigCertificateAuthorityConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            key_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            lifetime: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            rotation_window_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'CertificateIssuanceConfig':
         """
         Get an existing CertificateIssuanceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

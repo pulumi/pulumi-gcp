@@ -192,7 +192,7 @@ export interface DatabaseState {
      * for more details and supported values. Postgres databases only support
      * a value of `UTF8` at creation time.
      */
-    charset?: pulumi.Input<string>;
+    charset?: pulumi.Input<string | undefined>;
     /**
      * The collation value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -200,33 +200,33 @@ export interface DatabaseState {
      * for more details and supported values. Postgres databases only support
      * a value of `en_US.UTF8` at creation time.
      */
-    collation?: pulumi.Input<string>;
+    collation?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the database. Setting ABANDON allows the resource
      * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
      * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
      * values are: "ABANDON", "DELETE". Defaults to "DELETE".
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The name of the database in the Cloud SQL instance.
      * This does not include the project ID or instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The URI of the created resource.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -240,7 +240,7 @@ export interface DatabaseArgs {
      * for more details and supported values. Postgres databases only support
      * a value of `UTF8` at creation time.
      */
-    charset?: pulumi.Input<string>;
+    charset?: pulumi.Input<string | undefined>;
     /**
      * The collation value. See MySQL's
      * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
@@ -248,14 +248,14 @@ export interface DatabaseArgs {
      * for more details and supported values. Postgres databases only support
      * a value of `en_US.UTF8` at creation time.
      */
-    collation?: pulumi.Input<string>;
+    collation?: pulumi.Input<string | undefined>;
     /**
      * The deletion policy for the database. Setting ABANDON allows the resource
      * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
      * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
      * values are: "ABANDON", "DELETE". Defaults to "DELETE".
      */
-    deletionPolicy?: pulumi.Input<string>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
@@ -265,10 +265,10 @@ export interface DatabaseArgs {
      * The name of the database in the Cloud SQL instance.
      * This does not include the project ID or instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }

@@ -308,89 +308,89 @@ export interface PrivateCloudState {
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Time when the resource was scheduled for deletion.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
-    deletionDelayHours?: pulumi.Input<number>;
+    deletionDelayHours?: pulumi.Input<number | undefined>;
     /**
      * User-provided description for this private cloud.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Time when the resource will be irreversibly deleted.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Details about a HCX Cloud Manager appliance.
      * Structure is documented below.
      */
-    hcxes?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudHcx>[]>;
+    hcxes?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudHcx>[] | undefined>;
     /**
      * The location where the PrivateCloud should reside.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The management cluster for this private cloud. This used for creating and managing the default cluster.
      * Structure is documented below.
      */
-    managementCluster?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementCluster>;
+    managementCluster?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementCluster | undefined>;
     /**
      * The ID of the PrivateCloud.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration in the consumer project with which the peering has to be done.
      * Structure is documented below.
      */
-    networkConfig?: pulumi.Input<inputs.vmwareengine.PrivateCloudNetworkConfig>;
+    networkConfig?: pulumi.Input<inputs.vmwareengine.PrivateCloudNetworkConfig | undefined>;
     /**
      * Details about a NSX Manager appliance.
      * Structure is documented below.
      */
-    nsxes?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudNsx>[]>;
+    nsxes?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudNsx>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      */
-    sendDeletionDelayHoursIfZero?: pulumi.Input<boolean>;
+    sendDeletionDelayHoursIfZero?: pulumi.Input<boolean | undefined>;
     /**
      * State of the appliance.
      * Possible values are: `ACTIVE`, `CREATING`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Initial type of the private cloud.
      * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * System-generated unique identifier for the resource.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * Last update time of this resource.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Details about a vCenter Server management appliance.
      * Structure is documented below.
      */
-    vcenters?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudVcenter>[]>;
+    vcenters?: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudVcenter>[] | undefined>;
 }
 
 /**
@@ -400,11 +400,11 @@ export interface PrivateCloudArgs {
     /**
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
-    deletionDelayHours?: pulumi.Input<number>;
+    deletionDelayHours?: pulumi.Input<number | undefined>;
     /**
      * User-provided description for this private cloud.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The location where the PrivateCloud should reside.
      */
@@ -417,7 +417,7 @@ export interface PrivateCloudArgs {
     /**
      * The ID of the PrivateCloud.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network configuration in the consumer project with which the peering has to be done.
      * Structure is documented below.
@@ -427,14 +427,14 @@ export interface PrivateCloudArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
      */
-    sendDeletionDelayHoursIfZero?: pulumi.Input<boolean>;
+    sendDeletionDelayHoursIfZero?: pulumi.Input<boolean | undefined>;
     /**
      * Initial type of the private cloud.
      * Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

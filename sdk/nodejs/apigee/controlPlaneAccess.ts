@@ -151,18 +151,18 @@ export interface ControlPlaneAccessState {
      * The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      */
-    analyticsPublisherIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    analyticsPublisherIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the Apigee organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
      * The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      * The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
      */
-    synchronizerIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    synchronizerIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -174,16 +174,16 @@ export interface ControlPlaneAccessArgs {
      * The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      */
-    analyticsPublisherIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    analyticsPublisherIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the Apigee organization.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Array of service accounts to grant access to control plane resources (for the Synchronizer component), each specified using the following format: `serviceAccount:service-account-name`.
      * The `service-account-name` is formatted like an email address. For example: serviceAccount@my_project_id.iam.gserviceaccount.com
      * You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
      * The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
      */
-    synchronizerIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    synchronizerIdentities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

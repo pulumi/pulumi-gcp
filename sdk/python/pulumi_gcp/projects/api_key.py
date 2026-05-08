@@ -21,11 +21,11 @@ __all__ = ['ApiKeyArgs', 'ApiKey']
 @pulumi.input_type
 class ApiKeyArgs:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrictions: pulumi.Input[Optional['ApiKeyRestrictionsArgs']] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiKey resource.
 
@@ -52,19 +52,19 @@ class ApiKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable display name of this API key. Modifiable by user.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 
@@ -75,56 +75,56 @@ class ApiKeyArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsArgs']]:
+    def restrictions(self) -> pulumi.Input[Optional['ApiKeyRestrictionsArgs']]:
         """
         Key restrictions.
         """
         return pulumi.get(self, "restrictions")
 
     @restrictions.setter
-    def restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsArgs']]):
+    def restrictions(self, value: pulumi.Input[Optional['ApiKeyRestrictionsArgs']]):
         pulumi.set(self, "restrictions", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
 
 @pulumi.input_type
 class _ApiKeyState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrictions: Optional[pulumi.Input['ApiKeyRestrictionsArgs']] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrictions: pulumi.Input[Optional['ApiKeyRestrictionsArgs']] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiKey resources.
 
@@ -157,31 +157,31 @@ class _ApiKeyState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable display name of this API key. Modifiable by user.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="keyString")
-    def key_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         """
         return pulumi.get(self, "key_string")
 
     @key_string.setter
-    def key_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_string", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 
@@ -192,55 +192,55 @@ class _ApiKeyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project for the resource
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def restrictions(self) -> Optional[pulumi.Input['ApiKeyRestrictionsArgs']]:
+    def restrictions(self) -> pulumi.Input[Optional['ApiKeyRestrictionsArgs']]:
         """
         Key restrictions.
         """
         return pulumi.get(self, "restrictions")
 
     @restrictions.setter
-    def restrictions(self, value: Optional[pulumi.Input['ApiKeyRestrictionsArgs']]):
+    def restrictions(self, value: pulumi.Input[Optional['ApiKeyRestrictionsArgs']]):
         pulumi.set(self, "restrictions", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Output only. Unique id in UUID4 format.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -250,11 +250,11 @@ class ApiKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrictions: Optional[pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrictions: pulumi.Input[Optional[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Apikeys Key resource
@@ -551,11 +551,11 @@ class ApiKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restrictions: Optional[pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restrictions: pulumi.Input[Optional[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -584,13 +584,13 @@ class ApiKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            key_string: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            restrictions: Optional[pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
-            service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApiKey':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_string: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            restrictions: pulumi.Input[Optional[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiKey':
         """
         Get an existing ApiKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

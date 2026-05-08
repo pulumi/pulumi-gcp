@@ -26,13 +26,13 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
                  firewall_policy: pulumi.Input[_builtins.str],
                  match: pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchArgs'],
                  priority: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]] = None,
-                 tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]] = None,
+                 tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NetworkFirewallPolicyPacketMirroringRule resource.
 
@@ -148,19 +148,19 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description for this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the firewall policy rule is disabled.
         When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
@@ -169,12 +169,12 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -182,24 +182,24 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional name for the rule. This field is not a unique identifier and can be updated.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProfileGroup")
-    def security_profile_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_profile_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fully-qualified URL of a SecurityProfile resource instance.
         Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
@@ -208,12 +208,12 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
         return pulumi.get(self, "security_profile_group")
 
     @security_profile_group.setter
-    def security_profile_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_profile_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_profile_group", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSecureTags")
-    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]:
+    def target_secure_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]:
         """
         A list of secure tags that controls which instances the firewall rule applies to.
         If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
@@ -223,12 +223,12 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
         return pulumi.get(self, "target_secure_tags")
 
     @target_secure_tags.setter
-    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]):
+    def target_secure_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]):
         pulumi.set(self, "target_secure_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsInspect")
-    def tls_inspect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_inspect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean flag indicating if the traffic should be TLS decrypted.
         Can be set only if action = 'mirror' and cannot be set for other actions.
@@ -236,28 +236,28 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs:
         return pulumi.get(self, "tls_inspect")
 
     @tls_inspect.setter
-    def tls_inspect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_inspect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_inspect", value)
 
 
 @pulumi.input_type
 class _NetworkFirewallPolicyPacketMirroringRuleState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchArgs']] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_tuple_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]] = None,
-                 tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional['NetworkFirewallPolicyPacketMirroringRuleMatchArgs']] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]] = None,
+                 tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering NetworkFirewallPolicyPacketMirroringRule resources.
 
@@ -323,43 +323,43 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Action to perform when the client connection triggers the rule. Valid actions are "mirror", "do_not_mirror", "goto_next".
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional description for this resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction in which this rule applies.
         Possible values are: `INGRESS`, `EGRESS`.
@@ -367,12 +367,12 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Denotes whether the firewall policy rule is disabled.
         When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist.
@@ -381,36 +381,36 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallPolicy")
-    def firewall_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The firewall policy of the resource.
         """
         return pulumi.get(self, "firewall_policy")
 
     @firewall_policy.setter
-    def firewall_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the resource. Always `compute#packetMirroringRule` for firewall policy packet mirroring rules
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchArgs']]:
+    def match(self) -> pulumi.Input[Optional['NetworkFirewallPolicyPacketMirroringRuleMatchArgs']]:
         """
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         Structure is documented below.
@@ -418,12 +418,12 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleMatchArgs']]):
+    def match(self, value: pulumi.Input[Optional['NetworkFirewallPolicyPacketMirroringRuleMatchArgs']]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An integer indicating the priority of a rule in the list.
         The priority must be a positive value between 0 and 2147483647.
@@ -432,12 +432,12 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -445,36 +445,36 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional name for the rule. This field is not a unique identifier and can be updated.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleTupleCount")
-    def rule_tuple_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_tuple_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Calculation of the complexity of a single firewall policy rule.
         """
         return pulumi.get(self, "rule_tuple_count")
 
     @rule_tuple_count.setter
-    def rule_tuple_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_tuple_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_tuple_count", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProfileGroup")
-    def security_profile_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_profile_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A fully-qualified URL of a SecurityProfile resource instance.
         Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
@@ -483,12 +483,12 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "security_profile_group")
 
     @security_profile_group.setter
-    def security_profile_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_profile_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_profile_group", value)
 
     @_builtins.property
     @pulumi.getter(name="targetSecureTags")
-    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]:
+    def target_secure_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]:
         """
         A list of secure tags that controls which instances the firewall rule applies to.
         If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
@@ -498,12 +498,12 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "target_secure_tags")
 
     @target_secure_tags.setter
-    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]):
+    def target_secure_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs']]]]):
         pulumi.set(self, "target_secure_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsInspect")
-    def tls_inspect(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls_inspect(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean flag indicating if the traffic should be TLS decrypted.
         Can be set only if action = 'mirror' and cannot be set for other actions.
@@ -511,7 +511,7 @@ class _NetworkFirewallPolicyPacketMirroringRuleState:
         return pulumi.get(self, "tls_inspect")
 
     @tls_inspect.setter
-    def tls_inspect(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls_inspect(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls_inspect", value)
 
 
@@ -521,18 +521,18 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
-                 tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
+                 tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Represents a packet mirroring rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (mirror or do_not_mirror).
@@ -775,18 +775,18 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 match: Optional[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
-                 tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
+                 tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -831,21 +831,21 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            firewall_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            match: Optional[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_tuple_count: Optional[pulumi.Input[_builtins.int]] = None,
-            security_profile_group: Optional[pulumi.Input[_builtins.str]] = None,
-            target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
-            tls_inspect: Optional[pulumi.Input[_builtins.bool]] = None) -> 'NetworkFirewallPolicyPacketMirroringRule':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            firewall_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            match: pulumi.Input[Optional[Union['NetworkFirewallPolicyPacketMirroringRuleMatchArgs', 'NetworkFirewallPolicyPacketMirroringRuleMatchArgsDict']]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_tuple_count: pulumi.Input[Optional[_builtins.int]] = None,
+            security_profile_group: pulumi.Input[Optional[_builtins.str]] = None,
+            target_secure_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgs', 'NetworkFirewallPolicyPacketMirroringRuleTargetSecureTagArgsDict']]]]] = None,
+            tls_inspect: pulumi.Input[Optional[_builtins.bool]] = None) -> 'NetworkFirewallPolicyPacketMirroringRule':
         """
         Get an existing NetworkFirewallPolicyPacketMirroringRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

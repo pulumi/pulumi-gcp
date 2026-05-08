@@ -24,9 +24,9 @@ class InboundSamlConfigArgs:
                  display_name: pulumi.Input[_builtins.str],
                  idp_config: pulumi.Input['InboundSamlConfigIdpConfigArgs'],
                  sp_config: pulumi.Input['InboundSamlConfigSpConfigArgs'],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InboundSamlConfig resource.
 
@@ -94,19 +94,19 @@ class InboundSamlConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this config allows users to sign in with the provider.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
         hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
@@ -115,12 +115,12 @@ class InboundSamlConfigArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -128,19 +128,19 @@ class InboundSamlConfigArgs:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 @pulumi.input_type
 class _InboundSamlConfigState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idp_config: Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_config: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idp_config: pulumi.Input[Optional['InboundSamlConfigIdpConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_config: pulumi.Input[Optional['InboundSamlConfigSpConfigArgs']] = None):
         """
         Input properties used for looking up and filtering InboundSamlConfig resources.
 
@@ -172,31 +172,31 @@ class _InboundSamlConfigState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human friendly display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this config allows users to sign in with the provider.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="idpConfig")
-    def idp_config(self) -> Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']]:
+    def idp_config(self) -> pulumi.Input[Optional['InboundSamlConfigIdpConfigArgs']]:
         """
         SAML IdP configuration when the project acts as the relying party
         Structure is documented below.
@@ -204,12 +204,12 @@ class _InboundSamlConfigState:
         return pulumi.get(self, "idp_config")
 
     @idp_config.setter
-    def idp_config(self, value: Optional[pulumi.Input['InboundSamlConfigIdpConfigArgs']]):
+    def idp_config(self, value: pulumi.Input[Optional['InboundSamlConfigIdpConfigArgs']]):
         pulumi.set(self, "idp_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
         hyphens, underscores or periods. The part after 'saml.' must also start with a lowercase letter, end with an
@@ -218,12 +218,12 @@ class _InboundSamlConfigState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
         If it is not provided, the provider project is used.
@@ -231,12 +231,12 @@ class _InboundSamlConfigState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="spConfig")
-    def sp_config(self) -> Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']]:
+    def sp_config(self) -> pulumi.Input[Optional['InboundSamlConfigSpConfigArgs']]:
         """
         SAML SP (Service Provider) configuration when the project acts as the relying party to receive
         and accept an authentication assertion issued by a SAML identity provider.
@@ -245,7 +245,7 @@ class _InboundSamlConfigState:
         return pulumi.get(self, "sp_config")
 
     @sp_config.setter
-    def sp_config(self, value: Optional[pulumi.Input['InboundSamlConfigSpConfigArgs']]):
+    def sp_config(self, value: pulumi.Input[Optional['InboundSamlConfigSpConfigArgs']]):
         pulumi.set(self, "sp_config", value)
 
 
@@ -255,12 +255,12 @@ class InboundSamlConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idp_config: Optional[pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_config: Optional[pulumi.Input[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None,
                  __props__=None):
         """
         Inbound SAML configuration for a Identity Toolkit project.
@@ -398,12 +398,12 @@ class InboundSamlConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idp_config: Optional[pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 sp_config: Optional[pulumi.Input[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,12 +435,12 @@ class InboundSamlConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            idp_config: Optional[pulumi.Input[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            sp_config: Optional[pulumi.Input[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None) -> 'InboundSamlConfig':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            idp_config: pulumi.Input[Optional[Union['InboundSamlConfigIdpConfigArgs', 'InboundSamlConfigIdpConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            sp_config: pulumi.Input[Optional[Union['InboundSamlConfigSpConfigArgs', 'InboundSamlConfigSpConfigArgsDict']]] = None) -> 'InboundSamlConfig':
         """
         Get an existing InboundSamlConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -121,9 +121,9 @@ def get_kms_key_ring(location: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'))
-def get_kms_key_ring_output(location: Optional[pulumi.Input[_builtins.str]] = None,
-                            name: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_kms_key_ring_output(location: pulumi.Input[Optional[_builtins.str]] = None,
+                            name: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSKeyRingResult]:
     """
     Provides access to Google Cloud Platform KMS KeyRing. For more information see

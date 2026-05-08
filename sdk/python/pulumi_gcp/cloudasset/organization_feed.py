@@ -25,10 +25,10 @@ class OrganizationFeedArgs:
                  feed_id: pulumi.Input[_builtins.str],
                  feed_output_config: pulumi.Input['OrganizationFeedFeedOutputConfigArgs'],
                  org_id: pulumi.Input[_builtins.str],
-                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 condition: Optional[pulumi.Input['OrganizationFeedConditionArgs']] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 condition: pulumi.Input[Optional['OrganizationFeedConditionArgs']] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OrganizationFeed resource.
 
@@ -123,7 +123,7 @@ class OrganizationFeedArgs:
 
     @_builtins.property
     @pulumi.getter(name="assetNames")
-    def asset_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def asset_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the full names of the assets to receive updates. You must specify either or both of
         assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
@@ -133,12 +133,12 @@ class OrganizationFeedArgs:
         return pulumi.get(self, "asset_names")
 
     @asset_names.setter
-    def asset_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def asset_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "asset_names", value)
 
     @_builtins.property
     @pulumi.getter(name="assetTypes")
-    def asset_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def asset_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of types of the assets to receive updates. You must specify either or both of assetNames
         and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -149,12 +149,12 @@ class OrganizationFeedArgs:
         return pulumi.get(self, "asset_types")
 
     @asset_types.setter
-    def asset_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def asset_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "asset_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['OrganizationFeedConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['OrganizationFeedConditionArgs']]:
         """
         A condition which determines whether an asset update should be published. If specified, an asset
         will be returned only when the expression evaluates to true. When set, expression field
@@ -166,12 +166,12 @@ class OrganizationFeedArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['OrganizationFeedConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['OrganizationFeedConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Asset content type. If not specified, no content but the asset name and type will be returned.
         Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
@@ -179,22 +179,22 @@ class OrganizationFeedArgs:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
 
 @pulumi.input_type
 class _OrganizationFeedState:
     def __init__(__self__, *,
-                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input['OrganizationFeedConditionArgs']] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_output_config: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional['OrganizationFeedConditionArgs']] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_output_config: pulumi.Input[Optional['OrganizationFeedFeedOutputConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationFeed resources.
 
@@ -245,7 +245,7 @@ class _OrganizationFeedState:
 
     @_builtins.property
     @pulumi.getter(name="assetNames")
-    def asset_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def asset_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the full names of the assets to receive updates. You must specify either or both of
         assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
@@ -255,12 +255,12 @@ class _OrganizationFeedState:
         return pulumi.get(self, "asset_names")
 
     @asset_names.setter
-    def asset_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def asset_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "asset_names", value)
 
     @_builtins.property
     @pulumi.getter(name="assetTypes")
-    def asset_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def asset_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of types of the assets to receive updates. You must specify either or both of assetNames
         and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
@@ -271,12 +271,12 @@ class _OrganizationFeedState:
         return pulumi.get(self, "asset_types")
 
     @asset_types.setter
-    def asset_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def asset_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "asset_types", value)
 
     @_builtins.property
     @pulumi.getter(name="billingProject")
-    def billing_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project whose identity will be used when sending messages to the
         destination pubsub topic. It also specifies the project for API
@@ -285,12 +285,12 @@ class _OrganizationFeedState:
         return pulumi.get(self, "billing_project")
 
     @billing_project.setter
-    def billing_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_project", value)
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['OrganizationFeedConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['OrganizationFeedConditionArgs']]:
         """
         A condition which determines whether an asset update should be published. If specified, an asset
         will be returned only when the expression evaluates to true. When set, expression field
@@ -302,12 +302,12 @@ class _OrganizationFeedState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['OrganizationFeedConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['OrganizationFeedConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Asset content type. If not specified, no content but the asset name and type will be returned.
         Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
@@ -315,24 +315,24 @@ class _OrganizationFeedState:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="feedId")
-    def feed_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feed_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         """
         return pulumi.get(self, "feed_id")
 
     @feed_id.setter
-    def feed_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feed_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feed_id", value)
 
     @_builtins.property
     @pulumi.getter(name="feedOutputConfig")
-    def feed_output_config(self) -> Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArgs']]:
+    def feed_output_config(self) -> pulumi.Input[Optional['OrganizationFeedFeedOutputConfigArgs']]:
         """
         Output configuration for asset feed destination.
         Structure is documented below.
@@ -340,31 +340,31 @@ class _OrganizationFeedState:
         return pulumi.get(self, "feed_output_config")
 
     @feed_output_config.setter
-    def feed_output_config(self, value: Optional[pulumi.Input['OrganizationFeedFeedOutputConfigArgs']]):
+    def feed_output_config(self, value: pulumi.Input[Optional['OrganizationFeedFeedOutputConfigArgs']]):
         pulumi.set(self, "feed_output_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization this feed should be created in.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
 
@@ -374,14 +374,14 @@ class OrganizationFeed(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input[Union['OrganizationFeedConditionArgs', 'OrganizationFeedConditionArgsDict']]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_output_config: Optional[pulumi.Input[Union['OrganizationFeedFeedOutputConfigArgs', 'OrganizationFeedFeedOutputConfigArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['OrganizationFeedConditionArgs', 'OrganizationFeedConditionArgsDict']]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_output_config: pulumi.Input[Optional[Union['OrganizationFeedFeedOutputConfigArgs', 'OrganizationFeedFeedOutputConfigArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Describes a Cloud Asset Inventory feed used to to listen to asset updates.
@@ -559,14 +559,14 @@ class OrganizationFeed(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 condition: Optional[pulumi.Input[Union['OrganizationFeedConditionArgs', 'OrganizationFeedConditionArgsDict']]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feed_output_config: Optional[pulumi.Input[Union['OrganizationFeedFeedOutputConfigArgs', 'OrganizationFeedFeedOutputConfigArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 condition: pulumi.Input[Optional[Union['OrganizationFeedConditionArgs', 'OrganizationFeedConditionArgsDict']]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feed_output_config: pulumi.Input[Optional[Union['OrganizationFeedFeedOutputConfigArgs', 'OrganizationFeedFeedOutputConfigArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -603,15 +603,15 @@ class OrganizationFeed(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            asset_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            asset_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            billing_project: Optional[pulumi.Input[_builtins.str]] = None,
-            condition: Optional[pulumi.Input[Union['OrganizationFeedConditionArgs', 'OrganizationFeedConditionArgsDict']]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            feed_id: Optional[pulumi.Input[_builtins.str]] = None,
-            feed_output_config: Optional[pulumi.Input[Union['OrganizationFeedFeedOutputConfigArgs', 'OrganizationFeedFeedOutputConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationFeed':
+            asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_project: pulumi.Input[Optional[_builtins.str]] = None,
+            condition: pulumi.Input[Optional[Union['OrganizationFeedConditionArgs', 'OrganizationFeedConditionArgsDict']]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            feed_id: pulumi.Input[Optional[_builtins.str]] = None,
+            feed_output_config: pulumi.Input[Optional[Union['OrganizationFeedFeedOutputConfigArgs', 'OrganizationFeedFeedOutputConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationFeed':
         """
         Get an existing OrganizationFeed resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

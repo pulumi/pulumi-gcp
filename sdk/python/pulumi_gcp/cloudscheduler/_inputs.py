@@ -40,25 +40,25 @@ class JobAppEngineHttpTargetArgsDict(TypedDict):
     If the relative URL is empty, then the root path "/" will be used.
     No spaces are allowed, and the maximum length allowed is 2083 characters
     """
-    app_engine_routing: NotRequired[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgsDict']]
+    app_engine_routing: NotRequired[pulumi.Input[Optional['JobAppEngineHttpTargetAppEngineRoutingArgs']]]
     """
     App Engine Routing setting for the job.
     Structure is documented below.
     """
-    body: NotRequired[pulumi.Input[_builtins.str]]
+    body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP request body.
     A request body is allowed only if the HTTP method is POST or PUT.
     It will result in invalid argument error to set a body on a job with an incompatible HttpMethod.
     A base64-encoded string.
     """
-    headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     HTTP request headers.
     This map contains the header field names and values.
     Headers can be set when the job is created.
     """
-    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    http_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Which HTTP method to use for the request.
     """
@@ -67,10 +67,10 @@ class JobAppEngineHttpTargetArgsDict(TypedDict):
 class JobAppEngineHttpTargetArgs:
     def __init__(__self__, *,
                  relative_uri: pulumi.Input[_builtins.str],
-                 app_engine_routing: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']] = None,
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_engine_routing: pulumi.Input[Optional['JobAppEngineHttpTargetAppEngineRoutingArgs']] = None,
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] relative_uri: The relative URI.
                The relative URL must begin with "/" and must be a valid HTTP relative URL.
@@ -116,7 +116,7 @@ class JobAppEngineHttpTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="appEngineRouting")
-    def app_engine_routing(self) -> Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']]:
+    def app_engine_routing(self) -> pulumi.Input[Optional['JobAppEngineHttpTargetAppEngineRoutingArgs']]:
         """
         App Engine Routing setting for the job.
         Structure is documented below.
@@ -124,12 +124,12 @@ class JobAppEngineHttpTargetArgs:
         return pulumi.get(self, "app_engine_routing")
 
     @app_engine_routing.setter
-    def app_engine_routing(self, value: Optional[pulumi.Input['JobAppEngineHttpTargetAppEngineRoutingArgs']]):
+    def app_engine_routing(self, value: pulumi.Input[Optional['JobAppEngineHttpTargetAppEngineRoutingArgs']]):
         pulumi.set(self, "app_engine_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP request body.
         A request body is allowed only if the HTTP method is POST or PUT.
@@ -139,12 +139,12 @@ class JobAppEngineHttpTargetArgs:
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         HTTP request headers.
         This map contains the header field names and values.
@@ -153,34 +153,34 @@ class JobAppEngineHttpTargetArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which HTTP method to use for the request.
         """
         return pulumi.get(self, "http_method")
 
     @http_method.setter
-    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_method", value)
 
 
 class JobAppEngineHttpTargetAppEngineRoutingArgsDict(TypedDict):
-    instance: NotRequired[pulumi.Input[_builtins.str]]
+    instance: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     App instance.
     By default, the job is sent to an instance which is available when the job is attempted.
     """
-    service: NotRequired[pulumi.Input[_builtins.str]]
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     App service.
     By default, the job is sent to the service which is the default service when the job is attempted.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     App version.
     By default, the job is sent to the version which is the default version when the job is attempted.
@@ -189,9 +189,9 @@ class JobAppEngineHttpTargetAppEngineRoutingArgsDict(TypedDict):
 @pulumi.input_type
 class JobAppEngineHttpTargetAppEngineRoutingArgs:
     def __init__(__self__, *,
-                 instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance: App instance.
                By default, the job is sent to an instance which is available when the job is attempted.
@@ -209,7 +209,7 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App instance.
         By default, the job is sent to an instance which is available when the job is attempted.
@@ -217,12 +217,12 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
         return pulumi.get(self, "instance")
 
     @instance.setter
-    def instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App service.
         By default, the job is sent to the service which is the default service when the job is attempted.
@@ -230,12 +230,12 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         App version.
         By default, the job is sent to the version which is the default version when the job is attempted.
@@ -243,7 +243,7 @@ class JobAppEngineHttpTargetAppEngineRoutingArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -252,29 +252,29 @@ class JobHttpTargetArgsDict(TypedDict):
     """
     The full URI path that the request will be sent to.
     """
-    body: NotRequired[pulumi.Input[_builtins.str]]
+    body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP request body.
     A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
     It is an error to set body on a job with an incompatible HttpMethod.
     A base64-encoded string.
     """
-    headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     This map contains the header field names and values.
     Repeated headers are not supported, but a header value can contain commas.
     """
-    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    http_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Which HTTP method to use for the request.
     """
-    oauth_token: NotRequired[pulumi.Input['JobHttpTargetOauthTokenArgsDict']]
+    oauth_token: NotRequired[pulumi.Input[Optional['JobHttpTargetOauthTokenArgs']]]
     """
     Contains information needed for generating an OAuth token.
     This type of authorization should be used when sending requests to a GCP endpoint.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input['JobHttpTargetOidcTokenArgsDict']]
+    oidc_token: NotRequired[pulumi.Input[Optional['JobHttpTargetOidcTokenArgs']]]
     """
     Contains information needed for generating an OpenID Connect token.
     This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
@@ -285,11 +285,11 @@ class JobHttpTargetArgsDict(TypedDict):
 class JobHttpTargetArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[_builtins.str],
-                 body: Optional[pulumi.Input[_builtins.str]] = None,
-                 headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_token: Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']] = None,
-                 oidc_token: Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']] = None):
+                 body: pulumi.Input[Optional[_builtins.str]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_token: pulumi.Input[Optional['JobHttpTargetOauthTokenArgs']] = None,
+                 oidc_token: pulumi.Input[Optional['JobHttpTargetOidcTokenArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] uri: The full URI path that the request will be sent to.
         :param pulumi.Input[_builtins.str] body: HTTP request body.
@@ -332,7 +332,7 @@ class JobHttpTargetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP request body.
         A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
@@ -342,12 +342,12 @@ class JobHttpTargetArgs:
         return pulumi.get(self, "body")
 
     @body.setter
-    def body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "body", value)
 
     @_builtins.property
     @pulumi.getter
-    def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         This map contains the header field names and values.
         Repeated headers are not supported, but a header value can contain commas.
@@ -355,24 +355,24 @@ class JobHttpTargetArgs:
         return pulumi.get(self, "headers")
 
     @headers.setter
-    def headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Which HTTP method to use for the request.
         """
         return pulumi.get(self, "http_method")
 
     @http_method.setter
-    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_method", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthToken")
-    def oauth_token(self) -> Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']]:
+    def oauth_token(self) -> pulumi.Input[Optional['JobHttpTargetOauthTokenArgs']]:
         """
         Contains information needed for generating an OAuth token.
         This type of authorization should be used when sending requests to a GCP endpoint.
@@ -381,12 +381,12 @@ class JobHttpTargetArgs:
         return pulumi.get(self, "oauth_token")
 
     @oauth_token.setter
-    def oauth_token(self, value: Optional[pulumi.Input['JobHttpTargetOauthTokenArgs']]):
+    def oauth_token(self, value: pulumi.Input[Optional['JobHttpTargetOauthTokenArgs']]):
         pulumi.set(self, "oauth_token", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']]:
+    def oidc_token(self) -> pulumi.Input[Optional['JobHttpTargetOidcTokenArgs']]:
         """
         Contains information needed for generating an OpenID Connect token.
         This type of authorization should be used when sending requests to third party endpoints or Cloud Run.
@@ -395,7 +395,7 @@ class JobHttpTargetArgs:
         return pulumi.get(self, "oidc_token")
 
     @oidc_token.setter
-    def oidc_token(self, value: Optional[pulumi.Input['JobHttpTargetOidcTokenArgs']]):
+    def oidc_token(self, value: pulumi.Input[Optional['JobHttpTargetOidcTokenArgs']]):
         pulumi.set(self, "oidc_token", value)
 
 
@@ -405,7 +405,7 @@ class JobHttpTargetOauthTokenArgsDict(TypedDict):
     Service account email to be used for generating OAuth token.
     The service account must be within the same project as the job.
     """
-    scope: NotRequired[pulumi.Input[_builtins.str]]
+    scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OAuth scope to be used for generating OAuth access token. If not specified,
     "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -415,7 +415,7 @@ class JobHttpTargetOauthTokenArgsDict(TypedDict):
 class JobHttpTargetOauthTokenArgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[_builtins.str],
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to be used for generating OAuth token.
                The service account must be within the same project as the job.
@@ -441,7 +441,7 @@ class JobHttpTargetOauthTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OAuth scope to be used for generating OAuth access token. If not specified,
         "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -449,7 +449,7 @@ class JobHttpTargetOauthTokenArgs:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
@@ -459,7 +459,7 @@ class JobHttpTargetOidcTokenArgsDict(TypedDict):
     Service account email to be used for generating OAuth token.
     The service account must be within the same project as the job.
     """
-    audience: NotRequired[pulumi.Input[_builtins.str]]
+    audience: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Audience to be used when generating OIDC token. If not specified,
     the URI specified in target will be used.
@@ -469,7 +469,7 @@ class JobHttpTargetOidcTokenArgsDict(TypedDict):
 class JobHttpTargetOidcTokenArgs:
     def __init__(__self__, *,
                  service_account_email: pulumi.Input[_builtins.str],
-                 audience: Optional[pulumi.Input[_builtins.str]] = None):
+                 audience: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] service_account_email: Service account email to be used for generating OAuth token.
                The service account must be within the same project as the job.
@@ -495,7 +495,7 @@ class JobHttpTargetOidcTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audience to be used when generating OIDC token. If not specified,
         the URI specified in target will be used.
@@ -503,7 +503,7 @@ class JobHttpTargetOidcTokenArgs:
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
 
@@ -515,12 +515,12 @@ class JobPubsubTargetArgsDict(TypedDict):
     The topic name must be in the same format as required by PubSub's
     PublishRequest.name, e.g. `projects/my-project/topics/my-topic`.
     """
-    attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    attributes: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Attributes for PubsubMessage.
     Pubsub message must contain either non-empty data, or at least one attribute.
     """
-    data: NotRequired[pulumi.Input[_builtins.str]]
+    data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The message payload for PubsubMessage.
     Pubsub message must contain either non-empty data, or at least one attribute.
@@ -531,8 +531,8 @@ class JobPubsubTargetArgsDict(TypedDict):
 class JobPubsubTargetArgs:
     def __init__(__self__, *,
                  topic_name: pulumi.Input[_builtins.str],
-                 attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 data: Optional[pulumi.Input[_builtins.str]] = None):
+                 attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] topic_name: The full resource name for the Cloud Pub/Sub topic to which
                messages will be published when a job is delivered. ~>**NOTE:**
@@ -567,7 +567,7 @@ class JobPubsubTargetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Attributes for PubsubMessage.
         Pubsub message must contain either non-empty data, or at least one attribute.
@@ -575,12 +575,12 @@ class JobPubsubTargetArgs:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The message payload for PubsubMessage.
         Pubsub message must contain either non-empty data, or at least one attribute.
@@ -589,35 +589,35 @@ class JobPubsubTargetArgs:
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data", value)
 
 
 class JobRetryConfigArgsDict(TypedDict):
-    max_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
+    max_backoff_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum amount of time to wait before retrying a job after it fails.
     A duration in seconds with up to nine fractional digits, terminated by 's'.
     """
-    max_doublings: NotRequired[pulumi.Input[_builtins.int]]
+    max_doublings: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The time between retries will double maxDoublings times.
     A job's retry interval starts at minBackoffDuration,
     then doubles maxDoublings times, then increases linearly,
     and finally retries retries at intervals of maxBackoffDuration up to retryCount times.
     """
-    max_retry_duration: NotRequired[pulumi.Input[_builtins.str]]
+    max_retry_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time limit for retrying a failed job, measured from time when an execution was first attempted.
     If specified with retryCount, the job will be retried until both limits are reached.
     A duration in seconds with up to nine fractional digits, terminated by 's'.
     """
-    min_backoff_duration: NotRequired[pulumi.Input[_builtins.str]]
+    min_backoff_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum amount of time to wait before retrying a job after it fails.
     A duration in seconds with up to nine fractional digits, terminated by 's'.
     """
-    retry_count: NotRequired[pulumi.Input[_builtins.int]]
+    retry_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of attempts that the system will make to run a
     job using the exponential backoff procedure described by maxDoublings.
@@ -627,11 +627,11 @@ class JobRetryConfigArgsDict(TypedDict):
 @pulumi.input_type
 class JobRetryConfigArgs:
     def __init__(__self__, *,
-                 max_backoff_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_doublings: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retry_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_backoff_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 retry_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_backoff_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_doublings: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retry_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_backoff_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 retry_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] max_backoff_duration: The maximum amount of time to wait before retrying a job after it fails.
                A duration in seconds with up to nine fractional digits, terminated by 's'.
@@ -661,7 +661,7 @@ class JobRetryConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxBackoffDuration")
-    def max_backoff_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_backoff_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of time to wait before retrying a job after it fails.
         A duration in seconds with up to nine fractional digits, terminated by 's'.
@@ -669,12 +669,12 @@ class JobRetryConfigArgs:
         return pulumi.get(self, "max_backoff_duration")
 
     @max_backoff_duration.setter
-    def max_backoff_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_backoff_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_backoff_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="maxDoublings")
-    def max_doublings(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_doublings(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time between retries will double maxDoublings times.
         A job's retry interval starts at minBackoffDuration,
@@ -684,12 +684,12 @@ class JobRetryConfigArgs:
         return pulumi.get(self, "max_doublings")
 
     @max_doublings.setter
-    def max_doublings(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_doublings(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_doublings", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetryDuration")
-    def max_retry_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_retry_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time limit for retrying a failed job, measured from time when an execution was first attempted.
         If specified with retryCount, the job will be retried until both limits are reached.
@@ -698,12 +698,12 @@ class JobRetryConfigArgs:
         return pulumi.get(self, "max_retry_duration")
 
     @max_retry_duration.setter
-    def max_retry_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_retry_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_retry_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="minBackoffDuration")
-    def min_backoff_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_backoff_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum amount of time to wait before retrying a job after it fails.
         A duration in seconds with up to nine fractional digits, terminated by 's'.
@@ -711,12 +711,12 @@ class JobRetryConfigArgs:
         return pulumi.get(self, "min_backoff_duration")
 
     @min_backoff_duration.setter
-    def min_backoff_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_backoff_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_backoff_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="retryCount")
-    def retry_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of attempts that the system will make to run a
         job using the exponential backoff procedure described by maxDoublings.
@@ -725,7 +725,7 @@ class JobRetryConfigArgs:
         return pulumi.get(self, "retry_count")
 
     @retry_count.setter
-    def retry_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_count", value)
 
 

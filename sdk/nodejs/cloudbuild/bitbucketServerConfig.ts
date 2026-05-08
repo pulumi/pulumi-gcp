@@ -289,58 +289,58 @@ export interface BitbucketServerConfigState {
      * Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
      * Changing this field will result in deleting/ recreating the resource.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * Connected Bitbucket Server repositories for this config.
      * Structure is documented below.
      */
-    connectedRepositories?: pulumi.Input<pulumi.Input<inputs.cloudbuild.BitbucketServerConfigConnectedRepository>[]>;
+    connectedRepositories?: pulumi.Input<pulumi.Input<inputs.cloudbuild.BitbucketServerConfigConnectedRepository>[] | undefined>;
     /**
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
      * If you need to change it, please create another BitbucketServerConfig.
      */
-    hostUri?: pulumi.Input<string>;
+    hostUri?: pulumi.Input<string | undefined>;
     /**
      * The location of this bitbucket server config.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name for the config.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
      * This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
      * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
      * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      */
-    peeredNetwork?: pulumi.Input<string>;
+    peeredNetwork?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Secret Manager secrets needed by the config.
      * Structure is documented below.
      */
-    secrets?: pulumi.Input<inputs.cloudbuild.BitbucketServerConfigSecrets>;
+    secrets?: pulumi.Input<inputs.cloudbuild.BitbucketServerConfigSecrets | undefined>;
     /**
      * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
      */
-    sslCa?: pulumi.Input<string>;
+    sslCa?: pulumi.Input<string | undefined>;
     /**
      * Username of the account Cloud Build will use on Bitbucket Server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
      */
-    webhookKey?: pulumi.Input<string>;
+    webhookKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -360,7 +360,7 @@ export interface BitbucketServerConfigArgs {
      * Connected Bitbucket Server repositories for this config.
      * Structure is documented below.
      */
-    connectedRepositories?: pulumi.Input<pulumi.Input<inputs.cloudbuild.BitbucketServerConfigConnectedRepository>[]>;
+    connectedRepositories?: pulumi.Input<pulumi.Input<inputs.cloudbuild.BitbucketServerConfigConnectedRepository>[] | undefined>;
     /**
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
      * If you need to change it, please create another BitbucketServerConfig.
@@ -376,12 +376,12 @@ export interface BitbucketServerConfigArgs {
      * no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
      * projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
      */
-    peeredNetwork?: pulumi.Input<string>;
+    peeredNetwork?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Secret Manager secrets needed by the config.
      * Structure is documented below.
@@ -390,7 +390,7 @@ export interface BitbucketServerConfigArgs {
     /**
      * SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
      */
-    sslCa?: pulumi.Input<string>;
+    sslCa?: pulumi.Input<string | undefined>;
     /**
      * Username of the account Cloud Build will use on Bitbucket Server.
      */

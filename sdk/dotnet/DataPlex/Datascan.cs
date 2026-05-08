@@ -918,7 +918,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-dataplex.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions
@@ -1146,7 +1146,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         },
     ///     });
     /// 
-    ///     var waitForBqSync = new Time.Index.Sleep("wait_for_bq_sync", new()
+    ///     var waitForBqSync = new Time.Sleep("wait_for_bq_sync", new()
     ///     {
     ///         CreateDuration = "300s",
     ///     }, new CustomResourceOptions
@@ -1271,7 +1271,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         },
     ///     });
     /// 
-    ///     var waitForAspectPropagation = new Time.Index.Sleep("wait_for_aspect_propagation", new()
+    ///     var waitForAspectPropagation = new Time.Sleep("wait_for_aspect_propagation", new()
     ///     {
     ///         CreateDuration = "300s",
     ///     }, new CustomResourceOptions
@@ -1359,7 +1359,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-dataplex.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var wait120Seconds = new Time.Index.Sleep("wait_120_seconds", new()
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
     ///     {
     ///         CreateDuration = "120s",
     ///     }, new CustomResourceOptions

@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     }), std.split({
  *         separator: "/",
  *         text: googleChronicleRule["my-rule"].name,
- *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]),
+ *     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
  *     processInterval: {
  *         startTime: "2025-01-01T00:00:00Z",
  *         endTime: "2025-01-01T12:00:00Z",
@@ -212,7 +212,7 @@ export interface RetrohuntState {
     /**
      * The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
      */
-    RetrohuntId?: pulumi.Input<string>;
+    RetrohuntId?: pulumi.Input<string | undefined>;
     /**
      * Represents a time interval, encoded as a Timestamp start (inclusive) and a
      * Timestamp end (exclusive).
@@ -221,15 +221,15 @@ export interface RetrohuntState {
      * When both start and end are unspecified, the interval matches any time.
      * Structure is documented below.
      */
-    executionIntervals?: pulumi.Input<pulumi.Input<inputs.chronicle.RetrohuntExecutionInterval>[]>;
+    executionIntervals?: pulumi.Input<pulumi.Input<inputs.chronicle.RetrohuntExecutionInterval>[] | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the retrohunt.
      * Retrohunt is the child of a rule revision. {rule} in the format below is
@@ -237,7 +237,7 @@ export interface RetrohuntState {
      * Format:
      * projects/{project}/locations/{location}/instances/{instance}/rules/{rule}/retrohunts/{retrohunt}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Represents a time interval, encoded as a Timestamp start (inclusive) and a
      * Timestamp end (exclusive).
@@ -246,20 +246,20 @@ export interface RetrohuntState {
      * When both start and end are unspecified, the interval matches any time.
      * Structure is documented below.
      */
-    processInterval?: pulumi.Input<inputs.chronicle.RetrohuntProcessInterval>;
+    processInterval?: pulumi.Input<inputs.chronicle.RetrohuntProcessInterval | undefined>;
     /**
      * Output only. Percent progress of the retrohunt towards completion, from 0.00 to 100.00.
      */
-    progressPercentage?: pulumi.Input<number>;
+    progressPercentage?: pulumi.Input<number | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Rule ID of the rule.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Output only. The state of the retrohunt.
      * Possible values:
@@ -268,7 +268,7 @@ export interface RetrohuntState {
      * CANCELLED
      * FAILED
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -278,7 +278,7 @@ export interface RetrohuntArgs {
     /**
      * The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
      */
-    RetrohuntId?: pulumi.Input<string>;
+    RetrohuntId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Chronicle instance, which is the same as the customer ID.
      */
@@ -300,7 +300,7 @@ export interface RetrohuntArgs {
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Rule ID of the rule.
      */

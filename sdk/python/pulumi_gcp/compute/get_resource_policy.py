@@ -188,9 +188,9 @@ def get_resource_policy(name: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         snapshot_schedule_policies=pulumi.get(__ret__, 'snapshot_schedule_policies'),
         workload_policies=pulumi.get(__ret__, 'workload_policies'))
-def get_resource_policy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                               project: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resource_policy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                               project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcePolicyResult]:
     """
     Provide access to a Resource Policy's attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).
